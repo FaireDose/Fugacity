@@ -2,7 +2,7 @@
 
 Fugacity grows through chemical engineers who want an open process simulator: people who
 know the models behind Aspen or DWSIM, can tell a sensible result from a wrong one, and
-want better open tools for teaching and design. You don't need to be a software engineer.
+want easy accesible open tools for teaching and design. You don't need to be a software engineer.
 
 **The main way to contribute is through your AI assistant**: ChatGPT, Claude, Gemini,
 Copilot or any other. You bring the engineering (which equation of state, which mixing
