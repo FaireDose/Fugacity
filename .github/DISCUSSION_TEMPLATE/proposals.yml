@@ -1,0 +1,20 @@
+title: "[Proposal NNNN] "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: Discussion for a proposal in the proposals/ folder. Link the pull request that adds the proposal document. Polls here are advisory; see GOVERNANCE.md.
+  - type: input
+    id: pr
+    attributes:
+      label: Proposal pull request
+      placeholder: "https://github.com/FaireDose/Fugacity/pull/..."
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: The problem and the proposed change in a few sentences.
+    validations:
+      required: true

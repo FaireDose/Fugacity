@@ -1,5 +1,12 @@
 {
  "_about": "Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115-124, Table 12: isothermal P-x for acetic acid (1) + ethylene glycol (2) at 363.15 K. Table 17: excess enthalpy at 323.15 K.",
+ "source": {
+  "citation": "B. Schmid, M. D\u00f6ker, J. Gmehling, Measurement of the thermodynamic properties for the reactive system ethylene glycol\u2013acetic acid, Fluid Phase Equilibria 258 (2007) 115\u2013124",
+  "doi": "10.1016/j.fluid.2007.05.030",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.05.030.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "Table 12 (P-x), Table 17 (HE)"
+ },
  "T_K": 363.15,
  "px": [
   {

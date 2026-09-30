@@ -17,6 +17,13 @@ body:
       description: Full citation and DOI.
     validations:
       required: true
+  - type: checkboxes
+    id: open
+    attributes:
+      label: Open source
+      options:
+        - label: Anyone can read these sources for free (open access, ThermoML Archive, NIST WebBook, open repository, or an openly licensed databank).
+          required: true
   - type: textarea
     id: data
     attributes:

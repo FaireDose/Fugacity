@@ -7,7 +7,7 @@ meant to grow, one tested layer at a time, toward full flowsheets.
 
 ![Ternary map for methanol, acetone and chloroform with four azeotropes and residue curves](docs/images/ternary.png)
 
-> **Status: early (v0.1.1).** Ten components, two activity models, two diagram types.
+> **Status: early (v0.1.2).** Ten components, two activity models, two diagram types.
 > Results are model predictions. Check them against data before using them for design.
 
 ## What it does today
@@ -40,7 +40,7 @@ artifact.
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.1/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.2/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -109,11 +109,20 @@ examples/          ready-to-open pages
 
 ## Contributing
 
-Chemical engineers are the most useful contributors: data, parameters, validation
-cases and checking results. Professors and students can suggest changes through the
-[issue forms](https://github.com/FaireDose/Fugacity/issues/new/choose) (also linked
-under every diagram); every change is checked by a second person before it is merged.
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Chemical engineers are the most useful contributors. Four ways to help, described in
+[CONTRIBUTING.md](CONTRIBUTING.md):
+
+1. **Add or correct a component** from open data.
+2. **Find open experimental data** for a pair on the [data wanted list](docs/DATA_WANTED.md),
+   and fit parameters to it. A [contributor skill](skill/fugacity-contributor/SKILL.md)
+   lets Claude help with the search and the file formats.
+3. **Work on the roadmap**, including the architecture track, through
+   [proposals](proposals/README.md).
+4. **Review** other people's changes.
+
+Only freely accessible sources are used, so anyone can check every number. Every change
+is reviewed by someone other than its author. See [GOVERNANCE.md](GOVERNANCE.md) for how
+decisions are made and [SECURITY.md](SECURITY.md) for how the project is protected.
 
 ## Sources
 

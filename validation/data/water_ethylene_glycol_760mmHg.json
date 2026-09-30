@@ -1,5 +1,11 @@
 {
  "_about": "Water + ethylene glycol isobaric T-x-y at 760 mmHg. Compiled on the Wikipedia 'Ethylene glycol (data page)'. Mole fractions of water.",
+ "source": {
+  "citation": "Vapor-liquid equilibrium table for ethylene glycol/water at 760 mmHg, Wikipedia 'Ethylene glycol (data page)', compiled from the literature",
+  "url": "https://en.wikipedia.org/wiki/Ethylene_glycol_(data_page)",
+  "access": "Open (CC BY-SA text; the numbers are compiled experimental data).",
+  "note": "Secondary compilation with visible scatter. To be replaced by an open primary source, e.g. Kamihama et al., J. Chem. Eng. Data 57 (2012) 339, whose data is public in the NIST TRC ThermoML Archive."
+ },
  "P_kPa": 101.325,
  "txy": [
   {

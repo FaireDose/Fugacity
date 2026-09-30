@@ -16,3 +16,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+      - name: Data wanted list is up to date
+        run: |
+          npm run wanted
+          git diff --exit-code docs/DATA_WANTED.md || (echo "Run 'npm run wanted' and commit docs/DATA_WANTED.md" && exit 1)
