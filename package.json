@@ -1,0 +1,29 @@
+{
+  "name": "fugacity",
+  "version": "0.1.0",
+  "description": "Chemical process simulation built for AI chat artifacts, starting with phase equilibria.",
+  "license": "MIT",
+  "author": "FaireDose",
+  "repository": { "type": "git", "url": "git+https://github.com/FaireDose/Fugacity.git" },
+  "homepage": "https://github.com/FaireDose/Fugacity#readme",
+  "keywords": ["chemical-engineering", "thermodynamics", "vapor-liquid-equilibrium", "NRTL", "UNIQUAC", "residue-curves", "process-simulation", "flowsheet"],
+  "type": "module",
+  "main": "dist/fugacity.cjs",
+  "module": "dist/fugacity.mjs",
+  "browser": "dist/fugacity.js",
+  "unpkg": "dist/fugacity.js",
+  "jsdelivr": "dist/fugacity.js",
+  "exports": {
+    ".": { "import": "./dist/fugacity.mjs", "require": "./dist/fugacity.cjs" },
+    "./browser": "./dist/fugacity.js"
+  },
+  "files": ["dist", "src", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

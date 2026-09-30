@@ -1,0 +1,68 @@
+{
+  "_about": "Binary interaction parameters. NRTL: tau_ij = a_ij + b_ij/T, G_ij = exp(-alpha tau_ij). UNIQUAC: tau_ij = exp(a_ij + b_ij/T). T in K.",
+  "pairs": [
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "acetic-acid",
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 510.1906043275113,
+      "b_ji": -120.16209976762556,
+      "alpha": 0.3,
+      "source": "Fitted to reproduce the ChemSep UNIQUAC curve at 101.325 kPa (0.05 K, 0.0014 in y)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "acetic-acid",
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 126.65371408379717,
+      "b_ji": -204.81402363659222,
+      "source": "ChemSep UNIQUAC databank (via thermo library), DECHEMA-based."
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "ethylene-glycol",
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -474.76412671476163,
+      "b_ji": 684.6080527807567,
+      "alpha": 0.3,
+      "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 3.0 K, 0.010 in y."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "ethylene-glycol",
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -518.6285012134064,
+      "b_ji": 428.1871632806477,
+      "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 2.6 K, 0.011 in y."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetic-acid",
+      "j": "ethylene-glycol",
+      "a_ij": 0.4125369802968734,
+      "a_ji": -0.5332244035429985,
+      "b_ij": 382.2631994249983,
+      "b_ji": -149.93303198371075,
+      "alpha": 0.3,
+      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115: P-x at 363.15 K (AAD 1.3 %) and HE at 323.15 K (AAD 30 J/mol)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetic-acid",
+      "j": "ethylene-glycol",
+      "a_ij": -0.19894363597139786,
+      "a_ji": 0.3378950694611686,
+      "b_ij": -293.90635535845104,
+      "b_ji": 106.6778730953737,
+      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115: P-x at 363.15 K (AAD 1.0 %) and HE at 323.15 K (AAD 24 J/mol)."
+    }
+  ]
+}
