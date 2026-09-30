@@ -1,0 +1,54 @@
+import { brent, scanBracket } from "../util/solve.js";
+
+const clean = x => {
+  const v = x.map(u => Math.max(0, +u));
+  const s = v.reduce((a, b) => a + b, 0);
+  if (!(s > 0)) throw new Error("Composition must have a positive sum.");
+  return v.map(u => Math.max(u / s, 1e-12));
+};
+
+/** Boiling point of each pure component at P (kPa), in K. */
+export function pureBoilingPoints(sys, P) {
+  return sys.ids.map((_, i) => {
+    const x = new Array(sys.n).fill(1e-12); x[i] = 1;
+    const f = T => sys.equilibrium(x, T).P - P;
+    const [a, b] = scanBracket(f, 150, 900, 30);
+    return brent(f, a, b, { xtol: 1e-7 });
+  });
+}
+
+const tbCache = new WeakMap();
+function boilingRange(sys, P) {
+  let m = tbCache.get(sys);
+  if (!m) { m = new Map(); tbCache.set(sys, m); }
+  if (!m.has(P)) m.set(P, pureBoilingPoints(sys, P));
+  return m.get(P);
+}
+
+/**
+ * Bubble-point temperature at fixed pressure.
+ * @param {object} sys  from createSystem
+ * @param {number[]} x  liquid mole fractions (normalized automatically)
+ * @param {number} P    kPa
+ * @returns {{T:number, y:number[], gamma:number[]}}  T in K
+ */
+export function bubbleT(sys, x, P) {
+  x = clean(x);
+  const f = T => sys.equilibrium(x, T).P - P;
+  const tb = boilingRange(sys, P);
+  const lo = Math.min(...tb) - 80, hi = Math.max(...tb) + 20;
+  const [a, b] = scanBracket(f, lo, hi, 40);
+  const T = brent(f, a, b, { xtol: 1e-7 });
+  const e = sys.equilibrium(x, T);
+  return { T, y: e.y, gamma: e.gamma };
+}
+
+/**
+ * Bubble-point pressure at fixed temperature.
+ * @returns {{P:number, y:number[], gamma:number[]}}  P in kPa
+ */
+export function bubbleP(sys, x, T) {
+  x = clean(x);
+  const e = sys.equilibrium(x, T);
+  return { P: e.P, y: e.y, gamma: e.gamma };
+}

@@ -1,0 +1,109 @@
+{
+  "_about": "Pure-component data used by Fugacity. SI units unless stated.",
+  "components": {
+    "water": {
+      "name": "Water",
+      "formula": "H2O",
+      "cas": "7732-18-5",
+      "aliases": [
+        "h2o"
+      ],
+      "MW": 18.01528,
+      "Tc_K": 647.096,
+      "Pc_Pa": 22064000.0,
+      "Tb_K": 373.124,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 64.94173962113756,
+        "B": -6978.093113838669,
+        "C": -5.890563007289933,
+        "D": 3.262273273423934e-09,
+        "E": 3,
+        "Tmin_K": 273.16,
+        "Tmax_K": 523.15,
+        "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG)."
+      },
+      "uniquac": {
+        "r": 0.92,
+        "q": 1.4,
+        "source": "UNIFAC group volume/area sums (thermo library)"
+      }
+    },
+    "acetic-acid": {
+      "name": "Acetic acid",
+      "formula": "C2H4O2",
+      "cas": "64-19-7",
+      "aliases": [
+        "hoac",
+        "hac",
+        "ethanoic acid",
+        "acetic acid"
+      ],
+      "MW": 60.05196,
+      "Tc_K": 590.7,
+      "Pc_Pa": 5780000.0,
+      "Tb_K": 391.05,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 120.98581553455513,
+        "B": -8268.116845480032,
+        "C": -15.938859419591555,
+        "D": 0.017447154688474645,
+        "E": 1,
+        "Tmin_K": 290,
+        "Tmax_K": 523.15,
+        "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG)."
+      },
+      "uniquac": {
+        "r": 2.2024,
+        "q": 2.072,
+        "source": "UNIFAC group volume/area sums (thermo library)"
+      },
+      "association": {
+        "type": "dimer",
+        "log10K": {
+          "A": -10.4205,
+          "B": 3166.0
+        },
+        "K_unit": "1/mmHg",
+        "source": "Marek & Standart chemical theory; as used by Schmid et al. (2007)"
+      }
+    },
+    "ethylene-glycol": {
+      "name": "Ethylene glycol",
+      "formula": "C2H6O2",
+      "cas": "107-21-1",
+      "aliases": [
+        "eg",
+        "meg",
+        "1,2-ethanediol",
+        "ethanediol",
+        "ethylene glycol",
+        "monoethylene glycol"
+      ],
+      "MW": 62.06784,
+      "Tc_K": 719.0,
+      "Pc_Pa": 10508700.0,
+      "Tb_K": 470.313,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 91.76672103645562,
+        "B": -10691.046355001374,
+        "C": -9.389505167483144,
+        "D": 2.5837690042945316e-09,
+        "E": 3,
+        "Tmin_K": 290,
+        "Tmax_K": 560,
+        "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG)."
+      },
+      "uniquac": {
+        "r": 2.4088,
+        "q": 2.248,
+        "source": "UNIFAC group volume/area sums (thermo library)"
+      }
+    }
+  }
+}

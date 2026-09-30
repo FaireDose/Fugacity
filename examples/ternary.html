@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water, acetic acid, ethylene glycol</title>
+<body style="margin:0; padding:16px; font-family:system-ui, sans-serif">
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.0/dist/fugacity.js"></script>
+<script>
+  Fugacity.mount("#app", {
+    components: ["water", "acetic acid", "ethylene glycol"],
+    model: "NRTL",
+    P_kPa: 101.325
+  });
+</script>
+</body>
