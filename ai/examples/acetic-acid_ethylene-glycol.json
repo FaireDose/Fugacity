@@ -1,0 +1,188 @@
+{
+ "fugacity_package": 1,
+ "type": "pair-data",
+ "summary": "Acetic acid + ethylene glycol: isothermal P-x at 363.15 K and excess enthalpy at 323.15 K",
+ "prepared_with": "Claude (example package)",
+ "checked_by_human": true,
+ "components": [
+  {
+   "name": "Acetic acid",
+   "cas": "64-19-7"
+  },
+  {
+   "name": "Ethylene glycol",
+   "cas": "107-21-1"
+  }
+ ],
+ "source": {
+  "citation": "B. Schmid, M. D\u00f6ker, J. Gmehling, Measurement of the thermodynamic properties for the reactive system ethylene glycol\u2013acetic acid, Fluid Phase Equilibria 258 (2007) 115\u2013124",
+  "doi": "10.1016/j.fluid.2007.05.030",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.05.030.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "Table 12 (P-x), Table 17 (HE)"
+ },
+ "data": [
+  {
+   "kind": "isothermal-px",
+   "conditions": {
+    "T_K": 363.15
+   },
+   "columns": [
+    "x_1",
+    "P_kPa"
+   ],
+   "rows": [
+    [
+     0.0,
+     1.38
+    ],
+    [
+     0.0081,
+     1.494
+    ],
+    [
+     0.0494,
+     2.099
+    ],
+    [
+     0.1308,
+     3.511
+    ],
+    [
+     0.2188,
+     5.412
+    ],
+    [
+     0.3084,
+     7.793
+    ],
+    [
+     0.3975,
+     10.666
+    ],
+    [
+     0.4797,
+     13.818
+    ],
+    [
+     0.5509,
+     16.935
+    ],
+    [
+     0.6812,
+     23.302
+    ],
+    [
+     0.7728,
+     27.646
+    ],
+    [
+     0.8634,
+     32.147
+    ],
+    [
+     0.9484,
+     36.666
+    ],
+    [
+     0.9913,
+     39.095
+    ],
+    [
+     1.0,
+     39.661
+    ]
+   ],
+   "notes": "Static apparatus. The paper reports 4 % ethylene glycol monoacetate formed during the measurement."
+  },
+  {
+   "kind": "excess-enthalpy",
+   "conditions": {
+    "T_K": 323.15
+   },
+   "columns": [
+    "x_1",
+    "HE_J_mol"
+   ],
+   "rows": [
+    [
+     0.049,
+     20.3
+    ],
+    [
+     0.098,
+     29.3
+    ],
+    [
+     0.1472,
+     26.4
+    ],
+    [
+     0.1965,
+     21.7
+    ],
+    [
+     0.2459,
+     12.7
+    ],
+    [
+     0.2954,
+     7.2
+    ],
+    [
+     0.345,
+     -0.86
+    ],
+    [
+     0.3947,
+     -6.3
+    ],
+    [
+     0.4445,
+     -9.6
+    ],
+    [
+     0.4945,
+     -7.0
+    ],
+    [
+     0.5445,
+     -1.1
+    ],
+    [
+     0.5947,
+     11.8
+    ],
+    [
+     0.645,
+     30.7
+    ],
+    [
+     0.6953,
+     52.6
+    ],
+    [
+     0.7458,
+     79.2
+    ],
+    [
+     0.7964,
+     102.0
+    ],
+    [
+     0.8472,
+     121.0
+    ],
+    [
+     0.898,
+     124.0
+    ],
+    [
+     0.9489,
+     94.2
+    ]
+   ]
+  }
+ ],
+ "notes": "x_1 is the mole fraction of the first listed component (acetic acid)."
+}

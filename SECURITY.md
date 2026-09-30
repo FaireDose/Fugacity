@@ -42,6 +42,15 @@ A maintainer answers within 7 days.
   (`fugacity@0.1.1`) always get exactly the reviewed code.
 - Maintainers never put tokens or API keys in code, issues or pull requests.
 
+## Contributions prepared with AI assistants
+
+Issue text, contribution packages and data files can contain text written to mislead an AI
+agent ("ignore the rules and ..."). [AGENTS.md](AGENTS.md) tells every assistant and agent
+to treat such content as data, not instructions. Agents working for maintainers only get
+access to this repository, run the full test suite, and their pull requests are reviewed
+like any other. The package check (`npm run check-package`) catches invalid CAS numbers,
+missing sources and implausible values before review.
+
 ## Secrets
 
 The repository may hold an Anthropic API key or Claude subscription token for the Claude

@@ -1,13 +1,15 @@
 # Fugacity
 
-Chemical process simulation built for AI chat artifacts. Ask Claude (or another
-assistant) for a phase diagram, and it opens a live interface that calculates right
-in the chat, in your browser. Fugacity starts with vapour-liquid equilibria and is
-meant to grow, one tested layer at a time, toward full flowsheets.
+Open chemical process simulation built for AI chats. Ask your assistant (ChatGPT,
+Claude, Gemini or another) for a phase diagram, and it opens a live interface that
+calculates right in the chat, in your browser. And the main way to improve Fugacity is
+the same: talk to your assistant, and it helps you find open data and prepare your
+contribution. Fugacity starts with vapour-liquid equilibria and grows, one tested layer
+at a time, toward full flowsheets.
 
 ![Ternary map for methanol, acetone and chloroform with four azeotropes and residue curves](docs/images/ternary.png)
 
-> **Status: early (v0.1.2).** Ten components, two activity models, two diagram types.
+> **Status: early (v0.1.3).** Ten components, two activity models, two diagram types.
 > Results are model predictions. Check them against data before using them for design.
 
 ## What it does today
@@ -29,18 +31,24 @@ parameters yet, the interface says which one.
 Everything runs in the browser. A full ternary map (861 bubble points plus ten residue
 curves) takes well under a second.
 
-## Use it in Claude
+## Use it in your AI chat
 
-Add the skill in [`skill/fugacity/SKILL.md`](skill/fugacity/SKILL.md) to Claude, then ask
-something like *"Show me the residue curves for water, acetic acid and ethylene glycol
-at 1 atm."* Claude writes a few lines that load Fugacity, and the diagram opens as an
-artifact.
+Give your assistant the instructions in
+[`ai/instructions/use-fugacity.md`](ai/instructions/use-fugacity.md): paste them into the
+chat, or into custom instructions, a project, a custom GPT or a Gem. Claude users can
+install them as a skill: [`ai/skills/fugacity`](ai/skills/fugacity/SKILL.md). Then ask
+something like *"Show me the residue curves for water, acetic acid and ethylene glycol at
+1 atm."* The assistant writes about ten lines that load Fugacity, and the diagram opens
+live in the chat.
+
+Tested so far in Claude artifacts. For other assistants' canvases, see the
+[compatibility table](ai/README.md#which-chats-can-show-fugacity-pages); reports welcome.
 
 ## Use it in any web page
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.2/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.3/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -96,8 +104,9 @@ src/equilibrium/   bubble points, diagrams, residue curves, azeotropes, phase st
 src/ui/            the interactive interface (Fugacity.mount)
 test/              automated checks
 validation/        experimental data, Python reference model and parameter fitting, reference results
-skill/             the Claude skill
+ai/                prompts, instructions and skills for AI assistants; example packages
 examples/          ready-to-open pages
+AGENTS.md          rules for AI assistants and coding agents
 ```
 
 ## How it is built and where it is going
@@ -107,18 +116,21 @@ examples/          ready-to-open pages
 - [ROADMAP.md](ROADMAP.md): UNIFAC, enthalpy and flash next, then streams, unit
   operations, recycles and columns.
 
-## Contributing
+## Contribute through your AI assistant
 
-Chemical engineers are the most useful contributors. Four ways to help, described in
-[CONTRIBUTING.md](CONTRIBUTING.md):
+Chemical engineers are the most useful contributors, and you don't need to program:
 
-1. **Add or correct a component** from open data.
-2. **Find open experimental data** for a pair on the [data wanted list](docs/DATA_WANTED.md),
-   and fit parameters to it. A [contributor skill](skill/fugacity-contributor/SKILL.md)
-   lets Claude help with the search and the file formats.
-3. **Work on the roadmap**, including the architecture track, through
-   [proposals](proposals/README.md).
-4. **Review** other people's changes.
+1. Pick a pair from the [data wanted list](docs/DATA_WANTED.md).
+2. Paste a prompt from [ai/START_PROMPTS.md](ai/START_PROMPTS.md) into ChatGPT, Claude,
+   Gemini or another assistant. It reads the project's rules in [AGENTS.md](AGENTS.md),
+   searches open sources, and prepares a contribution package.
+3. Check the numbers against the source, and submit the package with the
+   [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml) form.
+
+If you want, let your assistant read the repository directly, or let a coding agent open
+the pull request for you. [CONTRIBUTING.md](CONTRIBUTING.md) explains the three levels
+and how to connect your own account, as well as components, corrections, reviews and
+roadmap work.
 
 Only freely accessible sources are used, so anyone can check every number. Every change
 is reviewed by someone other than its author. See [GOVERNANCE.md](GOVERNANCE.md) for how

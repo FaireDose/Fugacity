@@ -16,7 +16,7 @@ Load the library from jsdelivr with a pinned version, then call `Fugacity.mount`
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.2/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.3/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -53,7 +53,7 @@ Fugacity.listComponents();        // what the databank holds
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.1.2 holds
+- Only use components that `Fugacity.listComponents()` returns. Version 0.1.3 holds
   water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
   acid and ethylene glycol. Not every pair has parameters: the widget names missing
   pairs. If the user asks for other chemicals or pairs, say they are not in the

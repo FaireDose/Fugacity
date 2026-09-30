@@ -1,0 +1,55 @@
+name: AI-prepared contribution
+description: Submit a contribution package prepared with ChatGPT, Claude, Gemini or another assistant (or by hand).
+title: "[Package] "
+labels: ["ai-prepared", "needs review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the JSON contribution package your assistant prepared (format: AGENTS.md). A maintainer or a coding agent turns it into a pull request, and a reviewer checks it against the source before anything is merged.
+        New here? Start with the prompts in ai/START_PROMPTS.md.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Data for a pair
+        - New component
+        - Correction
+        - Review notes
+    validations:
+      required: true
+  - type: dropdown
+    id: assistant
+    attributes:
+      label: Prepared with
+      options:
+        - ChatGPT
+        - Claude
+        - Gemini
+        - GitHub Copilot
+        - Other assistant
+        - No assistant
+    validations:
+      required: true
+  - type: textarea
+    id: package
+    attributes:
+      label: Contribution package (JSON)
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I compared every number in the package with the source myself.
+          required: true
+        - label: Anyone can read the source for free (open access, ThermoML Archive, NIST WebBook, open repository, or an openly licensed databank).
+          required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Doubts about the data, other sources you found, pairs you plan to do next.

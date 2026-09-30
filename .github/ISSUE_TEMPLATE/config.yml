@@ -1,5 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: Contribute with your AI assistant
+    url: https://github.com/FaireDose/Fugacity/blob/main/ai/START_PROMPTS.md
+    about: Copy-paste prompts for ChatGPT, Claude, Gemini or another assistant.
   - name: How Fugacity is built
     url: https://github.com/FaireDose/Fugacity/blob/main/ARCHITECTURE.md
     about: Layers, data tiers and the review process.

@@ -7,8 +7,8 @@ responsibility. This document changes only through an accepted proposal.
 
 | Role | Who | Can |
 |---|---|---|
-| **User** | Anyone using Fugacity, in an artifact, a web page or code | Open issues, comment, vote in polls |
-| **Contributor** | Anyone who has opened a pull request | Propose changes and proposals from their own copy of the repository |
+| **User** | Anyone using Fugacity, in an AI chat, a web page or code | Open issues, comment, vote in polls |
+| **Contributor** | Anyone who has submitted a contribution package or a pull request, with or without an AI assistant | Propose changes and proposals |
 | **Data reviewer** | Experienced chemical engineers and academics, listed in `.github/CODEOWNERS` | Approve changes to `src/data/` and `validation/` |
 | **Maintainer** | People with write access, listed below | Merge approved pull requests, triage issues, ask Claude to draft pull requests, publish releases |
 | **Lead maintainer** | The project founder | Everything above, repository administration, final decision when there is no consensus |
@@ -37,13 +37,17 @@ this document) go through a proposal, see [proposals/](proposals/README.md):
 **Polls are advisory.** They show what users need and weigh in the decision, but they do
 not decide on their own: anyone can create accounts, so a public vote is easy to distort.
 
-## Implementation with Claude
+## Contributions prepared with AI assistants
 
-Once a proposal or issue is accepted, a maintainer may ask Claude to draft the pull
-request by writing `@claude` with instructions on the issue (see `ARCHITECTURE.md`).
-Claude's pull requests are reviewed like any other. Only maintainers can trigger Claude;
-the project's key is never shared. Contributors who work with Claude use their own
-account.
+Most contributions are prepared with an AI assistant (ChatGPT, Claude, Gemini or others)
+following [AGENTS.md](AGENTS.md). They are reviewed exactly like any other contribution:
+the contributor confirms they checked every number, and a reviewer compares the numbers
+with the open source. An assistant never counts as a reviewer.
+
+Contributors use their own assistant accounts. Maintainers may use a coding agent on the
+project's side, for example the Claude Code GitHub Action triggered with `@claude` on an
+issue, to turn contribution packages into pull requests. Only maintainers can trigger it,
+and the project's keys are never shared.
 
 ## Becoming a data reviewer or maintainer
 
