@@ -12,7 +12,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write    # to attach the skill files to the release
       id-token: write
     steps:
       - uses: actions/checkout@v4
@@ -26,3 +26,13 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm publish --provenance --access public
+      - name: Attach the skills to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p skill-zips
+          for d in ai/skills/*/; do
+            n=$(basename "$d")
+            (cd ai/skills && zip -qr "../../skill-zips/$n.zip" "$n")
+          done
+          gh release upload "${{ github.event.release.tag_name }}" skill-zips/*.zip --clobber

@@ -33,10 +33,12 @@ curves) takes well under a second.
 
 ## Use it in your AI chat
 
-Give your assistant the instructions in
-[`ai/instructions/use-fugacity.md`](ai/instructions/use-fugacity.md): paste them into the
-chat, or into custom instructions, a project, a custom GPT or a Gem. Claude users can
-install them as a skill: [`ai/skills/fugacity`](ai/skills/fugacity/SKILL.md). Then ask
+Install the **Fugacity skill** in your assistant: Claude, ChatGPT, Codex and other tools
+use the same skill format, and every [release](https://github.com/FaireDose/Fugacity/releases/latest)
+has it attached as `fugacity.zip` ([how to install](ai/README.md#install-the-skills)). For
+assistants without skills, paste the instructions in
+[`ai/instructions/use-fugacity.md`](ai/instructions/use-fugacity.md) into the chat or its
+custom instructions, project, custom GPT or Gem. Then ask
 something like *"Show me the residue curves for water, acetic acid and ethylene glycol at
 1 atm."* The assistant writes about ten lines that load Fugacity, and the diagram opens
 live in the chat.
@@ -113,8 +115,10 @@ AGENTS.md          rules for AI assistants and coding agents
 
 - [ARCHITECTURE.md](ARCHITECTURE.md): the layers from data to flowsheet, data quality
   tiers, the flowsheet file format, and the review process.
-- [ROADMAP.md](ROADMAP.md): UNIFAC, enthalpy and flash next, then streams, unit
-  operations, recycles and columns.
+- [ROADMAP.md](ROADMAP.md): the goal is a flowsheet simulator inside the chat, where you
+  draw units and streams by hand or describe changes to your assistant. Next: a first
+  flowsheet with material balances ([proposal 0002](proposals/0002-first-flowsheet.md)),
+  then energy balances and distillation.
 
 ## Contribute through your AI assistant
 
