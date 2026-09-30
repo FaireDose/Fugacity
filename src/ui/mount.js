@@ -1,8 +1,10 @@
 import { injectStyles } from "./styles.js";
 import { h } from "./dom.js";
-import { createSystem } from "../thermo/system.js";
+import { createSystem, listComponents, findComponent } from "../thermo/system.js";
 import { renderTxy } from "./txy.js";
 import { renderTernary } from "./ternary.js";
+
+const TIER = { fitted: "fitted to experimental data", databank: "databank", predicted: "predicted" };
 
 /**
  * Put an interactive phase-equilibrium view into a page element.
@@ -13,6 +15,7 @@ import { renderTernary } from "./ternary.js";
  * @param {"NRTL"|"UNIQUAC"|"ideal"} [cfg.model="NRTL"]
  * @param {number} [cfg.P_kPa=101.325]
  * @param {string} [cfg.title]
+ * @param {boolean} [cfg.picker=true]         let the viewer choose components
  * @param {boolean} [cfg.residueCurves=true]  ternary only
  * @param {boolean} [cfg.isotherms=true]      ternary only
  * @param {number} [cfg.grid=40]              ternary grid divisions
@@ -27,61 +30,99 @@ export function mount(target, cfg = {}) {
   if (!root) throw new Error(`Fugacity.mount: no element matches "${target}".`);
   injectStyles(root.ownerDocument);
 
+  const norm = m => (String(m || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : String(m || "NRTL").toUpperCase());
   const state = {
-    components: cfg.components || [],
-    model: (cfg.model || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : (cfg.model || "NRTL").toUpperCase(),
+    components: (cfg.components || []).slice(),
+    model: norm(cfg.model),
     P: cfg.P_kPa ?? 101.325,
+    picker: cfg.picker !== false,
     residueCurves: cfg.residueCurves !== false,
     isotherms: cfg.isotherms !== false,
     grid: cfg.grid ?? 40,
     allowMissingPairs: !!cfg.allowMissingPairs,
     title: cfg.title,
+    feedbackUrl: cfg.feedbackUrl ?? "https://github.com/FaireDose/Fugacity/issues/new/choose",
   };
+  const uid = Math.random().toString(36).slice(2, 7);
+  const all = listComponents();
 
   const box = h("div", { class: "fug" });
   root.replaceChildren(box);
 
+  function picker() {
+    const ids = state.components.map(c => { try { return findComponent(c); } catch { return null; } });
+    const sel = (k, allowNone) => {
+      const el = h("select", { id: `fug-c${k}-${uid}`, "aria-label": `Component ${k + 1}`, on: { change: ev => {
+        const v = ev.target.value;
+        const next = ids.slice();
+        if (v === "") next.splice(k, 1);
+        else {
+          const other = next.indexOf(v);
+          if (other >= 0 && other !== k) next[other] = next[k];   // picking a component already shown swaps the two
+          next[k] = v;
+        }
+        state.components = next.filter(Boolean);
+        state.title = undefined;
+        render();
+      } } },
+        allowNone ? h("option", { value: "" }, "(none)") : null,
+        ...all.map(c => h("option", { value: c.id, selected: ids[k] === c.id }, c.name)));
+      if (allowNone && !ids[k]) el.value = "";
+      return el;
+    };
+    return h("div", { class: "fug-controls" }, h("span", { class: "fug-sub" }, "Components"), sel(0), sel(1), sel(2, true));
+  }
+
   function render() {
-    let sys;
-    try {
-      sys = createSystem({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs });
-    } catch (e) {
-      box.replaceChildren(h("div", { class: "fug-err", role: "alert" }, e.message));
-      return;
-    }
-    const n = sys.n;
     const models = [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]];
     const seg = h("div", { class: "fug-seg", role: "group", "aria-label": "Activity model" },
       ...models.map(([m, label]) => h("button", {
         type: "button", "aria-pressed": String(state.model === m),
         on: { click: () => { state.model = m; render(); } },
       }, label)));
-    const pIn = h("input", { type: "number", id: "fug-p-" + Math.random().toString(36).slice(2, 7), value: state.P, min: 1, max: 1000, step: "any",
+    const pIn = h("input", { type: "number", id: `fug-p-${uid}`, value: state.P, min: 1, max: 1000, step: "any",
       on: { change: ev => { const v = +ev.target.value; if (v > 0) { state.P = v; render(); } } } });
+
+    let sys, error = null;
+    try {
+      sys = createSystem({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs });
+    } catch (e) {
+      error = e.message.startsWith("No ") && e.message.includes("parameters for")
+        ? e.message.split(". Pass")[0] + ". Pick other components, or suggest these pairs for the databank."
+        : e.message;
+    }
+    const n = sys ? sys.n : state.components.length;
     const checks = n === 3 ? [
-      h("label", {}, h("input", { type: "checkbox", checked: state.residueCurves, on: { change: ev => { state.residueCurves = ev.target.checked; render(); } } }), "Residue curves"),
-      h("label", {}, h("input", { type: "checkbox", checked: state.isotherms, on: { change: ev => { state.isotherms = ev.target.checked; render(); } } }), "Isotherms"),
+      h("label", {}, h("input", { type: "checkbox", id: `fug-rc-${uid}`, checked: state.residueCurves, on: { change: ev => { state.residueCurves = ev.target.checked; render(); } } }), "Residue curves"),
+      h("label", {}, h("input", { type: "checkbox", id: `fug-iso-${uid}`, checked: state.isotherms, on: { change: ev => { state.isotherms = ev.target.checked; render(); } } }), "Isotherms"),
     ] : [];
 
     const plot = h("div", { class: "fug-plot" }), side = h("div", { class: "fug-side", "aria-live": "polite" });
-    const title = state.title || sys.names.join(" + ");
-    const sources = sys.info.pairs.map(p => h("div", {}, `${p.pair.join(" + ")}: ${p.source}`));
-    if (sys.info.missingPairs.length) sources.push(h("div", {}, `Treated as ideal (no parameters): ${sys.info.missingPairs.map(m => m.join(" + ")).join("; ")}.`));
+    const title = state.title || (sys ? sys.names.join(" + ") : "Phase equilibrium");
+    const sources = sys ? sys.info.pairs.map(p => h("div", {}, `${p.pair.join(" + ")} (${TIER[p.tier] || p.tier}): ${p.source}`)) : [];
+    if (sys && sys.info.missingPairs.length) sources.push(h("div", {}, `Treated as ideal (no parameters): ${sys.info.missingPairs.map(m => m.join(" + ")).join("; ")}.`));
 
     box.replaceChildren(
       h("div", { class: "fug-head" },
         h("h3", { class: "fug-title" }, title),
-        h("span", { class: "fug-sub" }, `${n === 2 ? "T-x-y" : "Ternary"} · P = ${state.P} kPa · ${state.model} · vapour: ${sys.info.vapour}`)),
+        sys ? h("span", { class: "fug-sub" }, `${n === 2 ? "T-x-y" : "Ternary"} · P = ${state.P} kPa · ${state.model} · vapour: ${sys.info.vapour}`) : null),
+      state.picker ? picker() : null,
       h("div", { class: "fug-controls" }, seg, h("label", { for: pIn.id }, "Pressure, kPa", pIn), ...checks),
       h("div", { class: "fug-main" }, plot, side),
-      h("div", { class: "fug-foot" }, h("div", {}, "Parameter sources:"), ...sources, h("div", {}, "Calculated live in this page by Fugacity. Predictions, not measurements.")));
+      h("div", { class: "fug-foot" }, sources.length ? h("div", {}, "Parameter sources:") : null, ...sources,
+        h("div", {}, "Calculated live in this page by Fugacity. Predictions, not measurements. ",
+          state.feedbackUrl ? h("a", { href: state.feedbackUrl, target: "_blank", rel: "noopener" }, "Report a problem or suggest data") : null)));
 
+    if (error) { plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, error)); side.hidden = true; return; }
     try {
       if (n === 2) renderTxy(plot, side, sys, state.P);
-      else if (n === 3) renderTernary(plot, side, sys, state.P, state);
+      else if (n === 3) renderTernary(plot, side, sys, state.P, {
+        ...state, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs }),
+      });
       else throw new Error("The interface shows 2 or 3 components so far. Use the calculation functions for more.");
     } catch (e) {
       plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, e.message));
+      side.hidden = true;
     }
   }
 
@@ -90,7 +131,8 @@ export function mount(target, cfg = {}) {
     state,
     update(patch) {
       if (patch.P_kPa != null) state.P = patch.P_kPa;
-      Object.assign(state, Object.fromEntries(Object.entries(patch).filter(([k]) => k !== "P_kPa")));
+      if (patch.model) state.model = norm(patch.model);
+      Object.assign(state, Object.fromEntries(Object.entries(patch).filter(([k]) => !["P_kPa", "model"].includes(k))));
       render();
     },
   };

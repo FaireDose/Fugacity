@@ -1,0 +1,122 @@
+{
+ "_about": "Binary azeotropes at 101.325 kPa. Temperatures and weight percentages as tabulated in the Wikipedia 'Azeotrope tables' article (from Lange's Handbook of Chemistry 10th ed. and the CRC Handbook of Chemistry and Physics 44th ed.). Mole fractions converted from weight percent.",
+ "P_kPa": 101.325,
+ "ternary": [
+  {
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "T_C": 57.5,
+   "wt_pct": [
+    23.0,
+    30.0,
+    47.0
+   ],
+   "type": "saddle"
+  }
+ ],
+ "binary": [
+  {
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "T_C": 78.1,
+   "wt_pct_first": 95.5,
+   "x_first": 0.892,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "acetone",
+    "chloroform"
+   ],
+   "T_C": 64.7,
+   "wt_pct_first": 20.0,
+   "x_first": 0.339,
+   "type": "maximum-boiling"
+  },
+  {
+   "components": [
+    "acetone",
+    "methanol"
+   ],
+   "T_C": 55.7,
+   "wt_pct_first": 87.9,
+   "x_first": 0.8,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "methanol",
+    "benzene"
+   ],
+   "T_C": 58.3,
+   "wt_pct_first": 39.5,
+   "x_first": 0.614,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "methanol",
+    "toluene"
+   ],
+   "T_C": 63.8,
+   "wt_pct_first": 69.0,
+   "x_first": 0.865,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "ethanol",
+    "ethyl-acetate"
+   ],
+   "T_C": 71.8,
+   "wt_pct_first": 30.8,
+   "x_first": 0.46,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "ethanol",
+    "benzene"
+   ],
+   "T_C": 68.2,
+   "wt_pct_first": 32.4,
+   "x_first": 0.448,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "ethanol",
+    "toluene"
+   ],
+   "T_C": 76.7,
+   "wt_pct_first": 68.0,
+   "x_first": 0.81,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "chloroform",
+    "methanol"
+   ],
+   "T_C": 53.5,
+   "wt_pct_first": 87.4,
+   "x_first": 0.651,
+   "type": "minimum-boiling"
+  },
+  {
+   "components": [
+    "chloroform",
+    "ethanol"
+   ],
+   "T_C": 59.4,
+   "wt_pct_first": 93.0,
+   "x_first": 0.837,
+   "type": "minimum-boiling"
+  }
+ ]
+}

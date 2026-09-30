@@ -27,7 +27,7 @@
       "uniquac": {
         "r": 0.92,
         "q": 1.4,
-        "source": "UNIFAC group volume/area sums (thermo library)"
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       }
     },
     "acetic-acid": {
@@ -57,9 +57,9 @@
         "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG)."
       },
       "uniquac": {
-        "r": 2.2024,
-        "q": 2.072,
-        "source": "UNIFAC group volume/area sums (thermo library)"
+        "r": 2.23,
+        "q": 2.04,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "association": {
         "type": "dimer",
@@ -100,9 +100,221 @@
         "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG)."
       },
       "uniquac": {
-        "r": 2.4088,
-        "q": 2.248,
-        "source": "UNIFAC group volume/area sums (thermo library)"
+        "r": 2.41,
+        "q": 2.25,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "methanol": {
+      "name": "Methanol",
+      "formula": "CH4O",
+      "cas": "67-56-1",
+      "aliases": [
+        "meoh",
+        "methyl alcohol",
+        "ch3oh"
+      ],
+      "MW": 32.04186,
+      "Tc_K": 513.38,
+      "Pc_Pa": 8215850.0,
+      "Tb_K": 337.632,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 55.784553309674585,
+        "B": -5914.486552729425,
+        "C": -4.615092208837594,
+        "D": 3.316405569837015e-09,
+        "E": 3,
+        "Tmin_K": 250,
+        "Tmax_K": 470,
+        "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.10 % in range."
+      },
+      "uniquac": {
+        "r": 1.43,
+        "q": 1.43,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "ethanol": {
+      "name": "Ethanol",
+      "formula": "C2H6O",
+      "cas": "64-17-5",
+      "aliases": [
+        "etoh",
+        "ethyl alcohol"
+      ],
+      "MW": 46.06844,
+      "Tc_K": 514.71,
+      "Pc_Pa": 6268000.0,
+      "Tb_K": 351.57,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 59.498630689235405,
+        "B": -6602.705125159128,
+        "C": -4.983722497026738,
+        "D": 5.699474780131204e-10,
+        "E": 3,
+        "Tmin_K": 250,
+        "Tmax_K": 480,
+        "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.10 % in range."
+      },
+      "uniquac": {
+        "r": 2.11,
+        "q": 1.97,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "acetone": {
+      "name": "Acetone",
+      "formula": "C3H6O",
+      "cas": "67-64-1",
+      "aliases": [
+        "propanone",
+        "2-propanone",
+        "dimethyl ketone"
+      ],
+      "MW": 58.07914,
+      "Tc_K": 508.1,
+      "Pc_Pa": 4692400.0,
+      "Tb_K": 329.225,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 79.44972001820203,
+        "B": -6014.05373473099,
+        "C": -8.713029585484852,
+        "D": 7.849899633826955e-06,
+        "E": 2,
+        "Tmin_K": 250,
+        "Tmax_K": 470,
+        "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.05 % in range."
+      },
+      "uniquac": {
+        "r": 2.5735,
+        "q": 2.336,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "chloroform": {
+      "name": "Chloroform",
+      "formula": "CHCl3",
+      "cas": "67-66-3",
+      "aliases": [
+        "trichloromethane",
+        "chcl3"
+      ],
+      "MW": 119.37764,
+      "Tc_K": 536.2,
+      "Pc_Pa": 5330000.0,
+      "Tb_K": 334.35,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 107.18259388565174,
+        "B": -6572.211683312922,
+        "C": -13.978103599190009,
+        "D": 0.015682387746710966,
+        "E": 1,
+        "Tmin_K": 250,
+        "Tmax_K": 490,
+        "source": "Fitted to values from the open-source thermo library (WAGNER_MCGARRY correlation); max deviation 0.12 % in range."
+      },
+      "uniquac": {
+        "r": 2.7,
+        "q": 2.34,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "benzene": {
+      "name": "Benzene",
+      "formula": "C6H6",
+      "cas": "71-43-2",
+      "aliases": [
+        "c6h6"
+      ],
+      "MW": 78.11184,
+      "Tc_K": 562.02,
+      "Pc_Pa": 4907277.0,
+      "Tb_K": 353.219,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 114.48978776169639,
+        "B": -7183.701238943847,
+        "C": -15.032599665427405,
+        "D": 0.015774216386510914,
+        "E": 1,
+        "Tmin_K": 280,
+        "Tmax_K": 500,
+        "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.01 % in range."
+      },
+      "uniquac": {
+        "r": 3.1878,
+        "q": 2.4,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "toluene": {
+      "name": "Toluene",
+      "formula": "C7H8",
+      "cas": "108-88-3",
+      "aliases": [
+        "methylbenzene",
+        "methyl benzene"
+      ],
+      "MW": 92.13842,
+      "Tc_K": 591.75,
+      "Pc_Pa": 4126300.0,
+      "Tb_K": 383.746,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 83.02536876664797,
+        "B": -6983.408177710705,
+        "C": -9.11031856009634,
+        "D": 6.146575579359066e-06,
+        "E": 2,
+        "Tmin_K": 250,
+        "Tmax_K": 540,
+        "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.04 % in range."
+      },
+      "uniquac": {
+        "r": 3.9228,
+        "q": 2.968,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
+      }
+    },
+    "ethyl-acetate": {
+      "name": "Ethyl acetate",
+      "formula": "C4H8O2",
+      "cas": "141-78-6",
+      "aliases": [
+        "etoac",
+        "ethyl ethanoate",
+        "ethyl acetate"
+      ],
+      "MW": 88.10512,
+      "Tc_K": 523.3,
+      "Pc_Pa": 3870000.0,
+      "Tb_K": 350.25,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "A": 93.967395475743,
+        "B": -7098.971905735269,
+        "C": -10.78555828253902,
+        "D": 8.288344683238998e-06,
+        "E": 2,
+        "Tmin_K": 290,
+        "Tmax_K": 500,
+        "source": "Fitted to the Wagner-McGarry correlation (via the open-source thermo library); max deviation 0.13 % in range."
+      },
+      "uniquac": {
+        "r": 3.48,
+        "q": 3.12,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       }
     }
   }

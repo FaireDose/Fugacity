@@ -1,0 +1,31 @@
+name: Data or result correction
+description: A value, parameter or calculated result looks wrong.
+title: "[Correction] "
+labels: ["data", "needs review"]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: System and conditions
+      placeholder: "Acetone + chloroform, NRTL, 101.325 kPa"
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What Fugacity gives
+      placeholder: "Maximum-boiling azeotrope at 63.9 °C, x(acetone) = 0.38"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and the source
+      description: Please cite the paper, handbook or databank.
+      placeholder: "64.5 °C, x(acetone) = 0.34 (Gmehling et al., Azeotropic Data, 2004)"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else

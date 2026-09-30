@@ -10,12 +10,25 @@ Each step should be useful on its own and fully tested before the next one build
 - [x] Interface for 2 and 3 components, usable in AI chat artifacts
 - [x] Validation against experimental data and an independent Python model
 
-## v0.2 – More chemistry
+## v0.1.1 – More chemicals and review workflow (done)
 
+- [x] Seven more components (methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate) and ChemSep parameters
+- [x] Component picker in the interface
+- [x] Binary and ternary azeotropes, validated against handbook values
+- [x] Warning where the liquid would split into two phases (spinodal check)
+- [x] Quality tier on every parameter; data licenses recorded
+- [x] Reproducible parameter fitting (`validation/python/fit_parameters.py`)
+- [x] Issue forms, pull request checklist and code owners for independent review
+- [x] ARCHITECTURE.md
+
+## v0.2 – Foundation for flowsheets
+
+- [ ] Property package interface with enthalpy (ideal-gas Cp, heat of vaporization, excess enthalpy)
+- [ ] Data registry and data packs (script files that add components)
+- [ ] Modified UNIFAC (Dortmund) for pairs without fitted parameters, labelled `predicted`
+- [ ] Dew points (T and P); isothermal P-x-y view
+- [ ] Written specifications for the unit-operation interface and the flowsheet file
 - [ ] Grow the databank: common solvents, alcohols, acids, esters, hydrocarbons
-- [ ] Modified UNIFAC (Dortmund) for pairs without fitted parameters, clearly flagged
-- [ ] Dew points (T and P)
-- [ ] Isothermal P-x-y view in the interface
 - [ ] Parameter regression from user data inside the page
 
 ## v0.3 – Flash and streams

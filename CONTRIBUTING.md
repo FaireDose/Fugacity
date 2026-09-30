@@ -3,6 +3,19 @@
 You don't need to be a software engineer. The most valuable contributions are
 chemical-engineering ones: data, parameters, validation cases, and checking results.
 
+## How a change gets in
+
+1. **Suggest it.** Open an issue with one of the [forms](https://github.com/FaireDose/Fugacity/issues/new/choose):
+   new component, data correction, validation case, or bug. You don't need to write code.
+2. **Someone turns it into a pull request** with the data, its source and a test. This can
+   be you, another contributor, or Claude when a maintainer asks it to.
+3. **Automatic checks** run on every pull request.
+4. **A second person reviews it**, following the checklist in the pull request. The author
+   cannot be the reviewer. Changes to data and validation need a reviewer listed in
+   [`.github/CODEOWNERS`](.github/CODEOWNERS). Professors who want to review data can
+   ask to be added there.
+5. **It is merged and released** as a new version.
+
 ## Two rules
 
 1. **Every number has a source.** Parameters and data carry a `source` field that says
@@ -30,8 +43,15 @@ Add entries to [`src/data/binaries.json`](src/data/binaries.json), one per model
 - UNIQUAC: `tau_ij = exp(a_ij + b_ij/T)`
 - `source`: the paper and table, or the data they were fitted to and the fit quality
 
+Also give each pair a `tier`: `fitted` (you regressed it from cited data), `databank`
+(from a published parameter set) or `predicted` (group contribution).
+
 Put the experimental data you used in [`validation/data/`](validation/data) as JSON and
-add a test in [`test/`](test) that compares the model with it.
+add a test in [`test/`](test) that compares the model with it. To regress parameters,
+add an entry to `FITS` in [`validation/python/fit_parameters.py`](validation/python/fit_parameters.py)
+and run it with `--write`.
+
+Record any new data source and its license in [`src/data/LICENSES.md`](src/data/LICENSES.md).
 
 ## Report a wrong result
 

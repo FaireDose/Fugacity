@@ -1,0 +1,5 @@
+# Changes to data and validation need a review from a data maintainer.
+# Add co-maintainers here (for example professors who review data) as the project grows.
+/src/data/      @FaireDose
+/validation/    @FaireDose
+*               @FaireDose
