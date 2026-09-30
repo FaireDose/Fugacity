@@ -35,17 +35,17 @@ A maintainer answers within 7 days.
 ## How releases are protected
 
 - Releases are published to npm **only by the GitHub workflow**
-  (`.github/workflows/publish.yml`), with provenance: npm shows that the package was built
-  from this repository.
+  (`.github/workflows/publish.yml`) through npm **trusted publishing**: npm accepts a new
+  version only from that workflow in this repository, and no npm token is stored anywhere.
+  Each version carries a provenance record showing it was built from this repository.
 - An npm version can never be overwritten. Pages that load a pinned version
   (`fugacity@0.1.1`) always get exactly the reviewed code.
-- The npm access token is a repository secret. Maintainers never put tokens or API keys in
-  code, issues or pull requests.
+- Maintainers never put tokens or API keys in code, issues or pull requests.
 
 ## Secrets
 
-The repository may hold two kinds of secret: the npm publishing token, and an Anthropic
-API key or Claude subscription token for the Claude GitHub Action. They are available only
+The repository may hold an Anthropic API key or Claude subscription token for the Claude
+GitHub Action (npm publishing needs no secret). They are available only
 to workflows on this repository; GitHub withholds them from pull requests opened from
 forks. If a secret is exposed, revoke it at its source (npm, Claude Console) immediately and
 create a new one.
