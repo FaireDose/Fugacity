@@ -115,30 +115,31 @@ AGENTS.md          rules for AI assistants and coding agents
 
 - [ARCHITECTURE.md](ARCHITECTURE.md): the layers from data to flowsheet, data quality
   tiers, the flowsheet file format, and the review process.
-- [ROADMAP.md](ROADMAP.md): the goal is a flowsheet simulator inside the chat, where you
-  draw units and streams by hand or describe changes to your assistant. Next: a first
-  flowsheet with material balances ([proposal 0002](proposals/0002-first-flowsheet.md)),
-  then energy balances and distillation.
+- [ROADMAP.md](ROADMAP.md): UNIFAC, enthalpy and flash next, then streams, unit
+  operations, recycles and columns.
 
 ## Contribute through your AI assistant
 
-Chemical engineers are the most useful contributors, and you don't need to program:
+Fugacity is built by chemical engineers working with their AI assistants (ChatGPT,
+Claude, Gemini or others). You bring the engineering judgement; the assistant reads the
+project's rules in [AGENTS.md](AGENTS.md) and does the typing. You don't need to program.
 
-1. Pick a pair from the [data wanted list](docs/DATA_WANTED.md).
-2. Paste a prompt from [ai/START_PROMPTS.md](ai/START_PROMPTS.md) into ChatGPT, Claude,
-   Gemini or another assistant. It reads the project's rules in [AGENTS.md](AGENTS.md),
-   searches open sources, and prepares a contribution package.
-3. Check the numbers against the source, and submit the package with the
-   [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml) form.
+- **Develop the simulator:** equations of state (Peng–Robinson, SRK), activity models
+  (Wilson, UNIFAC), flash algorithms, unit operations, the flowsheet solver, distillation.
+  Pick an item from the [roadmap](ROADMAP.md), let your assistant help you write the
+  proposal, and build it, or let a coding agent build it on your own fork.
+- **Shape the roadmap:** propose new items and review other people's proposals.
+- **Add data:** find open experimental data for a pair on the
+  [data wanted list](docs/DATA_WANTED.md), or add a component.
 
-If you want, let your assistant read the repository directly, or let a coding agent open
-the pull request for you. [CONTRIBUTING.md](CONTRIBUTING.md) explains the three levels
-and how to connect your own account, as well as components, corrections, reviews and
-roadmap work.
+Start with a prompt from [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
+[CONTRIBUTING.md](CONTRIBUTING.md) explains the three levels (chat only, assistant reads
+the repository, coding agent opens the pull request), how to connect your own account,
+and a worked example of adding an equation of state.
 
-Only freely accessible sources are used, so anyone can check every number. Every change
-is reviewed by someone other than its author. See [GOVERNANCE.md](GOVERNANCE.md) for how
-decisions are made and [SECURITY.md](SECURITY.md) for how the project is protected.
+Only freely accessible sources are used, so anyone can check every number and equation.
+Every change is reviewed by someone other than its author. See [GOVERNANCE.md](GOVERNANCE.md)
+for how decisions are made and [SECURITY.md](SECURITY.md) for how the project is protected.
 
 ## Sources
 

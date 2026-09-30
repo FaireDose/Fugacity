@@ -3,7 +3,7 @@
 - **Status:** Draft
 - **Author(s):** Fugacity maintainers
 - **Discussion:** to be opened
-- **Roadmap item:** Architecture track, step A1 (enthalpy needed for v0.3)
+- **Roadmap item:** Architecture track, step A1
 
 ## Problem
 

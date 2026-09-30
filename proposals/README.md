@@ -22,4 +22,3 @@ interface or file format, the steps of the architecture track in the
 | # | Title | Status |
 |---|---|---|
 | 0001 | [Property package interface](0001-property-package.md) | Draft |
-| 0002 | [First flowsheet: material balances in the chat](0002-first-flowsheet.md) | Draft |

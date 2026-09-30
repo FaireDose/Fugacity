@@ -232,7 +232,6 @@ only people with write access can trigger it. See
 ## Next steps
 
 The design work ahead is laid out as the **architecture track** in
-[ROADMAP.md](ROADMAP.md) (steps A1–A12), ordered by the flowsheet releases. The next
-release, a first flowsheet with material balances drawn and solved in the chat page, is
-[proposal 0002](proposals/0002-first-flowsheet.md); enthalpy for energy balances is
+[ROADMAP.md](ROADMAP.md) (steps A1–A12). Each step is settled by a proposal before it is
+built; the first, the property package interface, is
 [proposal 0001](proposals/0001-property-package.md).

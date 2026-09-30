@@ -5,7 +5,7 @@ Copilot. This folder holds everything an assistant needs.
 
 | File | What it is for |
 |---|---|
-| [START_PROMPTS.md](START_PROMPTS.md) | Copy-paste prompts for contributing: find data, add a component, report a problem, review, draft a proposal |
+| [START_PROMPTS.md](START_PROMPTS.md) | Copy-paste prompts: develop models and algorithms, shape the roadmap, review, add data |
 | [instructions/use-fugacity.md](instructions/use-fugacity.md) | Instructions any assistant can follow to build Fugacity diagrams in a chat |
 | [skills/fugacity/](skills/fugacity/SKILL.md) | The same, as a skill (`SKILL.md` format) |
 | [skills/fugacity-contributor/](skills/fugacity-contributor/SKILL.md) | Contributor rules as a skill |

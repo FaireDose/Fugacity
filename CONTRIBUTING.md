@@ -1,23 +1,24 @@
 # Contributing
 
-Fugacity grows through chemical engineers: people who know where good data lives, can
-tell a sensible result from a wrong one, and want better open tools for teaching and
-design. You don't need to be a software engineer.
+Fugacity grows through chemical engineers who want an open process simulator: people who
+know the models behind Aspen or DWSIM, can tell a sensible result from a wrong one, and
+want better open tools for teaching and design. You don't need to be a software engineer.
 
 **The main way to contribute is through your AI assistant**: ChatGPT, Claude, Gemini,
-Copilot or any other. You talk to it; it searches open sources, reads the project's rules
-and prepares your contribution in the right format; you check the numbers and submit.
-Working without an assistant is also fine, see [below](#without-an-ai-assistant).
+Copilot or any other. You bring the engineering (which equation of state, which mixing
+rule, which flash algorithm, how to validate it); the assistant reads the project's rules,
+writes the code or prepares the data in the right format; you check the result and
+submit. Working without an assistant is also fine, see [below](#without-an-ai-assistant).
 
 ## What you can contribute
 
-| Contribution | What it involves | Typical time |
+| Contribution | Examples | Typical time |
 |---|---|---|
-| **Data for a pair** (most wanted) | Find open experimental VLE data for a pair on the [data wanted list](docs/DATA_WANTED.md) | 30–60 minutes with an assistant |
+| **Develop the simulator** | An equation of state (Peng–Robinson, SRK), an activity model (Wilson, UNIFAC), dew points and flash algorithms, enthalpy, unit operations, the flowsheet solver, new views. See [Develop the simulator](#develop-the-simulator) | days, with an assistant |
+| **Shape the roadmap** | Write a proposal for an architecture step, propose a new roadmap item, review someone's proposal | hours |
+| **Data for a pair** | Find open experimental VLE data for a pair on the [data wanted list](docs/DATA_WANTED.md) | 30–60 minutes with an assistant |
 | **A component** | Constants and vapour pressure from open sources | 20–30 minutes |
-| **A correction** | A value or result that disagrees with an open source | 10 minutes |
-| **A review** | Check someone else's numbers against their source | 15–30 minutes |
-| **Roadmap work** | A feature, or a proposal for an architecture step | days |
+| **A correction or a review** | A result that disagrees with an open source; checking someone else's work | 10–30 minutes |
 
 ## Contribute through your AI assistant
 
@@ -27,18 +28,22 @@ There are three levels. Start with level 1; move up only if you want to.
 
 You need: an AI assistant, and a free [GitHub account](https://github.com/signup) to submit.
 
-1. Pick a pair from the [data wanted list](docs/DATA_WANTED.md), or another contribution.
+1. Pick something: a roadmap item from [ROADMAP.md](ROADMAP.md), a model you know well,
+   or a pair from the [data wanted list](docs/DATA_WANTED.md).
 2. Open your assistant and paste a prompt from [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
    Each prompt points the assistant to the rules in [AGENTS.md](AGENTS.md). If your
    assistant can't open links, attach or paste that file.
-3. The assistant searches open sources and prepares a **contribution package**: one JSON
-   document with the data, its source and the table it came from.
-4. **Check every number against the source yourself.** Assistants make transcription
-   mistakes. Then set `"checked_by_human": true` in the package.
-5. Submit it with the
-   [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml)
-   form. A maintainer or a coding agent turns it into a pull request, and a reviewer checks
-   it.
+3. Work it out together:
+   - **Development:** the assistant drafts a **proposal** (the design, the equations with
+     open references, and how it will be validated) and can draft the code. Submit it with
+     the [model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
+     form. Once the proposal is accepted, the code follows through level 3 or a maintainer.
+   - **Data:** the assistant searches open sources and prepares a **contribution
+     package** (one JSON document with the data, its source and table). Check every number
+     against the source, set `"checked_by_human": true`, and submit it with the
+     [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml)
+     form.
+4. A maintainer or a coding agent turns it into a pull request, and a reviewer checks it.
 
 ### Level 2: let your assistant read the repository
 
@@ -58,7 +63,9 @@ Then continue as in level 1.
 
 ### Level 3: let a coding agent open the pull request
 
-Coding agents can change files, run the tests and open the pull request for you. Examples:
+This is the natural level for development work: equations of state, algorithms, unit
+operations and views are code, and a coding agent can write it, run the tests and open the
+pull request for you. Examples:
 Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor. Most of them read
 [AGENTS.md](AGENTS.md) automatically.
 
@@ -66,12 +73,67 @@ Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor. Most of them r
    [repository page](https://github.com/FaireDose/Fugacity) click **Fork** → **Create fork**.
 2. **Connect the agent to your GitHub account** with its own setup (each agent has a
    "connect GitHub" or "add repository" step). Give it access to your fork only.
-3. **Ask it**, for example: *"Follow AGENTS.md. Add the data in this package to Fugacity,
-   fit the parameters, run the tests, and open a pull request to FaireDose/Fugacity."*
-4. **Read what it changed** before the pull request goes out, and check the numbers.
+3. **Ask it**, for example: *"Follow AGENTS.md. Implement the Peng–Robinson equation of
+   state as described in the accepted proposal, validate it against an independent Python
+   implementation, run the tests, and open a pull request to FaireDose/Fugacity."*
+4. **Read what it changed** before the pull request goes out: the equations, the
+   references, and the validation results.
 
 Your assistant or agent runs on your own account and plan. The project never asks for
 your keys or passwords, and its own keys are used only by maintainers.
+
+## Develop the simulator
+
+The [roadmap](ROADMAP.md) is the list of what to build, from thermodynamics up to the
+flowsheet. Anyone can pick an item, and anyone can propose new ones.
+
+### How development works
+
+1. **Claim it.** Open an issue (or a
+   [model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
+   form) saying what you will build, so work isn't duplicated.
+2. **Propose it.** New models, algorithms, layers, interfaces and file formats start as a
+   short [proposal](proposals/README.md): the equations with open references, where the
+   code fits in [ARCHITECTURE.md](ARCHITECTURE.md), and how it will be validated. Small
+   items (a new view, a unit conversion, a fix) can go straight to a pull request.
+3. **Build it** in the right layer. Each layer only uses the one below it: a new equation of
+   state belongs in the thermodynamics layer and must not know about unit operations.
+4. **Validate it independently.** Compare against an independent implementation (the
+   Python reference in [`validation/python/`](validation/python), or an open library such
+   as [thermo](https://github.com/CalebBell/thermo)) and against open experimental data or
+   published worked examples. The comparison goes into `test/`.
+5. **Open the pull request.** A reviewer checks the equations, the references and the
+   validation.
+
+### Example: adding the Peng–Robinson equation of state
+
+1. **Proposal:** Peng–Robinson (1976) with the classic alpha function and van der Waals
+   mixing rules with binary interaction parameters `k_ij`; later variants (Twu alpha,
+   volume translation, Wong–Sandler mixing with an activity model) as follow-ups. It
+   extends the property package ([proposal 0001](proposals/0001-property-package.md)) with
+   fugacity coefficients for both phases (φ-φ), next to the existing γ-φ route.
+2. **Data:** critical constants and acentric factors from the NIST Chemistry WebBook or an
+   open databank; `k_ij` from an openly licensed set (ChemSep ships Peng–Robinson `k_ij`)
+   or fitted to open data. Acentric factors are a new component field.
+3. **Code:** `src/thermo/eos/pengRobinson.js`: cubic solution for Z, phase selection,
+   `ln φ_i`, residual enthalpy for later energy balances.
+4. **Validation:** pure-component vapour pressures and saturated densities against the NIST
+   WebBook; binary VLE for a hydrocarbon system against open data; every value also
+   against an independent Python implementation.
+5. **View:** allow `model: "PR"` in `Fugacity.mount`, so the T-x-y and P-x-y diagrams work
+   with the new model.
+
+### Other development items to pick up
+
+| Area | Items | Roadmap |
+|---|---|---|
+| Thermodynamics | Property package with enthalpy; Wilson; modified UNIFAC (Dortmund); SRK and Peng–Robinson; liquid-liquid equilibria | A1, A3, v0.2, v0.3, Later |
+| Equilibrium algorithms | Dew points; PT, PH and PQ flash; phase stability (tangent plane); VLLE | A4, v0.2, v0.3 |
+| Streams and units | Stream object; mixer, splitter, heater/cooler, pump, valve, flash drum | A5, A6, v0.3, v0.4 |
+| Flowsheet | File format; sequential-modular solver with recycles; design specifications | A7, A8, v0.4 |
+| Distillation | Shortcut column; McCabe–Thiele; rigorous MESH column | v0.5 |
+| Interface | P-x-y view; flowsheet drawing; stream tables; column profiles; background workers | A9, A11 |
+| Working with assistants | Schemas and checks that tell an assistant exactly what to fix | A10, C5 |
 
 ## Without an AI assistant
 
@@ -81,7 +143,9 @@ open a pull request. The formats are described below and in [AGENTS.md](AGENTS.m
 
 ## The rules
 
-These apply to everyone, human or AI, and are repeated in [AGENTS.md](AGENTS.md).
+These apply to everyone, human or AI, and are repeated in [AGENTS.md](AGENTS.md). Rules
+1–3 apply to every number: data, constants, parameters, and the reference values used to
+validate a model.
 
 1. **Open sources only.** Every number must come from a source that anyone can read for
    free, so any reviewer can check it:
@@ -102,6 +166,8 @@ These apply to everyone, human or AI, and are repeated in [AGENTS.md](AGENTS.md)
 3. **A person checks every number** an assistant transcribed. Numbers an assistant
    "remembers" without a source are never accepted.
 4. **Every model has a test** against experimental data or an independent calculation.
+   Equations and algorithms cite an open reference (textbook, open article, or openly
+   documented implementation).
 5. **Record the license** of any new source in [`src/data/LICENSES.md`](src/data/LICENSES.md).
 
 ## Formats
@@ -144,17 +210,13 @@ open_copy, access, tables). Parameters are fitted with
 [`validation/python/fit_parameters.py`](validation/python/fit_parameters.py): add an entry
 to `FITS` and run it with `--write`.
 
-## Roadmap work
+## Shape the roadmap
 
-The [roadmap](ROADMAP.md) lists what comes next, including the **architecture track**
-(design steps A1–A12) and the **assistant compatibility** track.
-
-- **Small items:** open an issue saying you're taking it, then a pull request.
-- **Architecture steps, interface or file-format changes:** write a proposal first, see
-  [proposals/](proposals/README.md). An assistant can help you draft it; see the prompt in
-  [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
-
-Engine code follows [ARCHITECTURE.md](ARCHITECTURE.md): each layer only uses the one below it.
+The roadmap is not fixed. To add an item or change priorities, open a
+[model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
+issue or a discussion in the *Proposals* category; larger changes become a proposal and
+are decided as described in [GOVERNANCE.md](GOVERNANCE.md). Reviewing other people's
+proposals, with your engineering judgement, is one of the most useful contributions.
 
 ## How a contribution gets in
 

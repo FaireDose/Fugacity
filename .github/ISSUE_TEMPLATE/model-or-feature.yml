@@ -1,0 +1,66 @@
+name: Model or feature
+description: Propose or claim development work - an equation of state, activity model, algorithm, unit operation, view - or a new roadmap item.
+title: "[Develop] "
+labels: ["development", "roadmap"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this to claim a roadmap item or to propose something new. You can draft the text with your AI assistant (see ai/START_PROMPTS.md). Larger items become a proposal in the proposals/ folder before code is merged; see CONTRIBUTING.md.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Thermodynamic model (equation of state, activity model, enthalpy)
+        - Equilibrium algorithm (dew point, flash, stability)
+        - Streams or unit operation
+        - Flowsheet solver or file format
+        - Distillation
+        - Interface or view
+        - Working with AI assistants
+        - New roadmap item or priority change
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: roadmap
+    attributes:
+      label: Roadmap item
+      description: The step in ROADMAP.md this belongs to (for example A4, v0.3, Later), or "new".
+      placeholder: "Later: Equations of state (Peng-Robinson, SRK)"
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What you want to build and why; the equations or algorithm with open references; where it fits in ARCHITECTURE.md.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How it will be validated
+      description: Independent implementation and/or open experimental data or published worked examples, with tolerances.
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who will implement it?
+      options:
+        - I will (with or without an AI coding agent)
+        - I would like help from a maintainer
+        - Just proposing for now
+    validations:
+      required: true
+  - type: dropdown
+    id: assistant
+    attributes:
+      label: Prepared with
+      options:
+        - ChatGPT
+        - Claude
+        - Gemini
+        - GitHub Copilot
+        - Other assistant
+        - No assistant
