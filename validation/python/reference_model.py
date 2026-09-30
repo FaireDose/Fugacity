@@ -27,12 +27,14 @@ def dimer_k(assoc, T):
 
 
 class System:
-    def __init__(self, ids, model):
-        self.ids, self.model = ids, model
+    def __init__(self, ids, model, psat=None, params=None):
+        """psat: optional list of fixed pure vapour pressures (kPa).
+        params: optional list of pair dicts that replace the databank entries."""
+        self.ids, self.model, self.psat_fixed = ids, model, psat
         self.c = [COMPONENTS[i] for i in ids]
         n = self.n = len(ids)
         self.a = np.zeros((n, n)); self.b = np.zeros((n, n)); self.alpha = np.full((n, n), 0.3)
-        for p in BINARIES:
+        for p in (params if params is not None else BINARIES):
             if p["model"] != model or p["i"] not in ids or p["j"] not in ids:
                 continue
             i, j = ids.index(p["i"]), ids.index(p["j"])
@@ -64,7 +66,7 @@ class System:
         g = self.gamma(x, T)
         app = np.zeros(self.n); P = 0.0
         for i, c in enumerate(self.c):
-            ps = psat_kpa(c, T)
+            ps = self.psat_fixed[i] if self.psat_fixed is not None else psat_kpa(c, T)
             if "association" in c:
                 K = dimer_k(c["association"], T)
                 pm_sat = (-1 + np.sqrt(1 + 4 * K * ps)) / (2 * K)
@@ -77,5 +79,11 @@ class System:
         return P, app / app.sum()
 
     def bubble_t(self, x, P):
-        T = brentq(lambda T: self.equilibrium(x, T)[0] - P, 280.0, 560.0, xtol=1e-10)
+        T = brentq(lambda T: self.equilibrium(x, T)[0] - P, 250.0, 600.0, xtol=1e-10)
         return T, self.equilibrium(x, T)[1]
+
+    def excess_enthalpy(self, x, T, h=0.05):
+        """H^E in J/mol from the temperature derivative of G^E/RT."""
+        x = np.clip(np.asarray(x, float), 1e-12, None); x = x / x.sum()
+        g = lambda t: x @ np.log(self.gamma(x, t))
+        return -8.314462618 * T ** 2 * (g(T + h) - g(T - h)) / (2 * h)

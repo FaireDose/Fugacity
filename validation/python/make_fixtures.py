@@ -11,19 +11,26 @@ from reference_model import System
 
 OUT = Path(__file__).resolve().parents[1] / "fixtures"
 OUT.mkdir(exist_ok=True)
+import itertools
+
 P = 101.325
-IDS = ["water", "acetic-acid", "ethylene-glycol"]
+TERNARIES = [["water", "acetic-acid", "ethylene-glycol"],
+             ["methanol", "acetone", "chloroform"],
+             ["ethanol", "water", "ethylene-glycol"]]
+BINARIES = sorted({tuple(sorted(p)) for t in TERNARIES for p in itertools.combinations(t, 2)})
 
 cases = []
 for model in ["NRTL", "UNIQUAC"]:
-    s = System(IDS, model)
-    n = 10
-    for i in range(n + 1):
-        for j in range(n + 1 - i):
-            x = [i / n, j / n, (n - i - j) / n]
-            T, y = s.bubble_t(x, P)
-            cases.append({"model": model, "components": IDS, "P_kPa": P, "x": x, "T_K": T, "y": list(y)})
-    for pair in [["water", "acetic-acid"], ["water", "ethylene-glycol"], ["acetic-acid", "ethylene-glycol"]]:
+    for ids in TERNARIES:
+        s = System(ids, model)
+        n = 8
+        for i in range(n + 1):
+            for j in range(n + 1 - i):
+                x = [i / n, j / n, (n - i - j) / n]
+                T, y = s.bubble_t(x, P)
+                cases.append({"model": model, "components": ids, "P_kPa": P, "x": x, "T_K": T, "y": list(y)})
+    for pair in BINARIES:
+        pair = list(pair)
         s2 = System(pair, model)
         for k in range(11):
             x = [k / 10, 1 - k / 10]

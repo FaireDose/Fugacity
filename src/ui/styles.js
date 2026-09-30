@@ -16,6 +16,8 @@ export const CSS = `
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fug{${DARK}} }
 :root[data-theme="dark"] .fug{${DARK}}
 .fug *{box-sizing:border-box}
+.fug [hidden]{display:none !important}
+.fug a{color:var(--fug-accent)}
 .fug-head{display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; justify-content:space-between}
 .fug-title{font-size:1.1rem; font-weight:600; margin:0; text-wrap:balance}
 .fug-sub{font-size:.8rem; color:var(--fug-muted)}
@@ -25,6 +27,8 @@ export const CSS = `
 .fug-seg button+button{border-left:1px solid var(--fug-rule)}
 .fug-seg button[aria-pressed="true"]{background:var(--fug-accent); color:var(--fug-on-accent)}
 .fug label{display:inline-flex; gap:6px; align-items:center; font-size:.85rem; color:var(--fug-fg2)}
+.fug select{font:inherit; font-size:.85rem; padding:4px 6px; border:1px solid var(--fug-rule); border-radius:6px; background:var(--fug-bg); color:var(--fug-fg); max-width:100%}
+.fug select:focus-visible{outline:2px solid var(--fug-accent); outline-offset:2px}
 .fug input[type=number]{width:6.5em; font:inherit; font-variant-numeric:tabular-nums; padding:4px 6px; border:1px solid var(--fug-rule); border-radius:6px; background:var(--fug-bg); color:var(--fug-fg)}
 .fug button:focus-visible,.fug input:focus-visible{outline:2px solid var(--fug-accent); outline-offset:2px}
 .fug-main{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start}

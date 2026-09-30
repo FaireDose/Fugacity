@@ -70,7 +70,7 @@ export function createSystem(cfg) {
     const [aij, aji, bij, bji] = p.flipped ? [p.a_ji, p.a_ij, p.b_ji, p.b_ij] : [p.a_ij, p.a_ji, p.b_ij, p.b_ji];
     a[i][j] = aij; a[j][i] = aji; b[i][j] = bij; b[j][i] = bji;
     alpha[i][j] = alpha[j][i] = p.alpha ?? 0.3;
-    pairs.push({ pair: [comps[i].name, comps[j].name], source: p.source });
+    pairs.push({ pair: [comps[i].name, comps[j].name], source: p.source, tier: p.tier || "databank" });
   }
   if (missing.length && !cfg.allowMissingPairs) {
     const list = missing.map(m => m.join(" + ")).join("; ");
@@ -79,7 +79,7 @@ export function createSystem(cfg) {
   // missing pairs: NRTL with zero tau is ideal; UNIQUAC with tau = 1 keeps only the combinatorial term
   let gammas;
   if (model === "NRTL") { for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) if (i !== j && !alpha[i][j]) alpha[i][j] = 0.3; gammas = nrtl({ a, b, alpha }); }
-  else if (model === "UNIQUAC") gammas = uniquac({ a, b, r: comps.map(c => c.uniquac.r), q: comps.map(c => c.uniquac.q) });
+  else if (model === "UNIQUAC") gammas = uniquac({ a, b, r: comps.map(c => c.uniquac.r), q: comps.map(c => c.uniquac.q), qp: comps.map(c => c.uniquac.qp ?? c.uniquac.q) });
   else gammas = () => new Array(n).fill(1);
 
   const assoc = comps.map(c => (useAssoc && c.association && c.association.type === "dimer") ? c.association : null);

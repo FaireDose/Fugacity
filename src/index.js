@@ -8,6 +8,8 @@ import { createSystem, listComponents, findComponent, MODELS } from "./thermo/sy
 import { bubbleT, bubbleP, pureBoilingPoints } from "./equilibrium/bubble.js";
 import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
+import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
+import { isLiquidStable } from "./equilibrium/stability.js";
 import { mount } from "./ui/mount.js";
 import pkg from "../package.json" with { type: "json" };
 
@@ -30,10 +32,14 @@ export function system(cfg) {
     pxy: (T, points) => pxy(sys, T, points),
     ternaryGrid: (P, n) => ternaryGrid(sys, P, n),
     residueCurve: (x0, P, opts) => residueCurve(sys, x0, P, opts),
+    azeotropes: P => binaryAzeotropes(sys, P),
+    findAzeotrope: (x0, P) => findAzeotrope(sys, x0, P),
+    isLiquidStable: (x, T) => isLiquidStable(sys, x, T),
   });
 }
 
 export {
   mount, createSystem, listComponents, findComponent, MODELS,
   bubbleT, bubbleP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
+  binaryAzeotropes, findAzeotrope, isLiquidStable,
 };

@@ -1,6 +1,7 @@
 import { s, h, text, ticks, svgPoint, C, fmt } from "./dom.js";
 import { txy } from "../equilibrium/diagrams.js";
 import { bubbleT } from "../equilibrium/bubble.js";
+import { isLiquidStable } from "../equilibrium/stability.js";
 
 /**
  * T-x-y diagram for a binary system at pressure P (kPa).
@@ -26,6 +27,14 @@ export function renderTxy(plot, side, sys, P) {
   text(svg, (L + W - R) / 2, H - 6, `x, y  ${sys.names[0]} (mole fraction)`, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12 });
   text(svg, 14, (T + H - B) / 2, "T, °C", { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12, transform: `rotate(-90 14 ${(T + H - B) / 2})` });
 
+  // spinodal check: shade compositions where the liquid would split
+  const unstable = data.filter(d => !isLiquidStable(sys, [d.x, 1 - d.x], d.T));
+  if (unstable.length) {
+    const x0 = Math.min(...unstable.map(d => d.x)), x1 = Math.max(...unstable.map(d => d.x));
+    s("rect", { x: sx(x0), y: T, width: Math.max(2, sx(x1) - sx(x0)), height: H - B - T, fill: "var(--fug-err-bg)", opacity: 0.9 }, svg);
+    text(svg, (sx(x0) + sx(x1)) / 2, T + 14, "two liquids", { "text-anchor": "middle", fill: "var(--fug-err-fg)", "font-size": 12 });
+  }
+
   const path = key => "M" + data.map(d => `${sx(d[key]).toFixed(1)},${sy(C(d.T)).toFixed(1)}`).join("L");
   s("path", { d: path("x"), fill: "none", stroke: "var(--fug-liq)", "stroke-width": 2, "stroke-linejoin": "round" }, svg);
   s("path", { d: path("y"), fill: "none", stroke: "var(--fug-vap)", "stroke-width": 2, "stroke-dasharray": "6 4", "stroke-linejoin": "round" }, svg);
@@ -48,13 +57,15 @@ export function renderTxy(plot, side, sys, P) {
     azeo.length ? h("span", {}, "● azeotrope") : null));
 
   const xOut = h("div", { class: "fug-num" }), tOut = h("div", { class: "fug-big" }), tab = h("tbody", { class: "fug-num" });
-  side.replaceChildren(
+  side.replaceChildren(...[
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Liquid composition"), xOut),
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Bubble temperature"), tOut),
     h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, ""), h("th", {}, "x"), h("th", {}, "y"), h("th", {}, "γ"))), tab),
+    unstable.length ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two phases in the shaded range. The curves there assume a single liquid and are not reliable.") : null,
     h("div", { class: "fug-foot" }, azeo.length
       ? azeo.map(z => `Azeotrope near x = ${fmt(z.x)}, T = ${fmt(C(z.T), 1)} °C`)
-      : "No azeotrope at this pressure."));
+      : "No azeotrope at this pressure."),
+  ].filter(Boolean));
 
   function show(x1) {
     x1 = Math.max(0, Math.min(1, x1));

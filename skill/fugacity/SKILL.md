@@ -16,7 +16,7 @@ Load the library from jsdelivr with a pinned version, then call `Fugacity.mount`
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.1/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -27,10 +27,11 @@ Load the library from jsdelivr with a pinned version, then call `Fugacity.mount`
 ```
 
 - Two components give a T-x-y diagram with hover tie lines, activity coefficients and
-  azeotrope detection. Three components give a ternary bubble-temperature map with
-  isotherms and residue curves.
-- Optional settings: `title`, `residueCurves` (true), `isotherms` (true), `grid` (40),
-  `allowMissingPairs` (false).
+  azeotropes. Three components give a ternary bubble-temperature map with isotherms,
+  residue curves and azeotropes. The viewer can switch components, model and pressure.
+- Regions where the liquid would split into two phases are shaded, with a warning.
+- Optional settings: `title`, `picker` (true), `residueCurves` (true), `isotherms` (true),
+  `grid` (40), `allowMissingPairs` (false).
 - The interface has its own model switch and pressure input, and follows the page's
   light or dark theme. Keep the rest of the page simple: a heading, a sentence on what
   the diagram shows, and the widget.
@@ -45,15 +46,18 @@ const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUA
 s.bubbleT([0.5, 0.5], 101.325);   // { T, y, gamma }
 s.bubbleP([0.5, 0.5], 373.15);    // { P, y, gamma }
 s.txy(101.325, 51);               // [{ x, T, y }, ...]
+s.azeotropes(101.325);            // binary: [{ x, T, type }]
 s.residueCurve([0.3, 0.3, 0.4], 101.325);
 Fugacity.listComponents();        // what the databank holds
 ```
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.1.0 holds
-  water, acetic acid and ethylene glycol. If the user asks for others, say they are not
-  in the databank yet; do not invent parameters.
+- Only use components that `Fugacity.listComponents()` returns. Version 0.1.1 holds
+  water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
+  acid and ethylene glycol. Not every pair has parameters: the widget names missing
+  pairs. If the user asks for other chemicals or pairs, say they are not in the
+  databank yet and point to the issue forms; do not invent parameters.
 - Missing binary parameters raise an error that names the pair. Do not switch on
   `allowMissingPairs` without telling the user that those pairs will be treated as ideal.
 - Results are model predictions. Say so, and point to the parameter sources the widget

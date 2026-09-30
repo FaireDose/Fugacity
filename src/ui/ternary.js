@@ -1,6 +1,8 @@
 import { s, h, text, svgPoint, rampColor, RAMP, C, fmt } from "./dom.js";
 import { ternaryGrid } from "../equilibrium/diagrams.js";
 import { residueCurve } from "../equilibrium/residue.js";
+import { isLiquidStable } from "../equilibrium/stability.js";
+import { ternaryAzeotropes } from "../equilibrium/azeotrope.js";
 
 // First component at the top, second bottom-left, third bottom-right.
 const V = [[300, 52], [64, 460], [536, 460]];
@@ -17,6 +19,8 @@ export function renderTernary(plot, side, sys, P, opts) {
   const grid = ternaryGrid(sys, P, n);
   const node = new Map(grid.nodes.map(d => [d.i + "," + d.j, d]));
   const get = (i, j) => node.get(i + "," + j);
+  for (const d of grid.nodes) d.stable = isLiquidStable(sys, d.x, d.T);
+  const anyUnstable = grid.nodes.some(d => !d.stable);
   const Ts = grid.nodes.map(d => C(d.T));
   const Tlo = Math.min(...Ts), Thi = Math.max(...Ts);
 
@@ -33,6 +37,17 @@ export function renderTernary(plot, side, sys, P, opts) {
     const v = nd.reduce((a, d) => a + C(d.T), 0) / 3;
     const c = rampColor((v - Tlo) / (Thi - Tlo));
     s("polygon", { points: nd.map(d => toXY(d.x).map(q => q.toFixed(2)).join(",")).join(" "), fill: c, stroke: c, "stroke-width": 0.6 }, gFill);
+  }
+  if (anyUnstable) {
+    const pid = "fug-hatch-" + Math.random().toString(36).slice(2, 8);
+    const pat = s("pattern", { id: pid, width: 7, height: 7, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, s("defs", {}, svg));
+    s("rect", { width: 7, height: 7, fill: "rgba(255,255,255,.35)" }, pat);
+    s("line", { x1: 0, y1: 0, x2: 0, y2: 7, stroke: "#8a1c1c", "stroke-width": 2.2 }, pat);
+    for (const t of tris) {
+      const nd = t.map(([i, j]) => get(i, j));
+      if (nd.every(d => d.stable)) continue;
+      s("polygon", { points: nd.map(d => toXY(d.x).map(q => q.toFixed(2)).join(",")).join(" "), fill: `url(#${pid})`, stroke: "none" }, gFill);
+    }
   }
 
   if (opts.isotherms) {
@@ -68,6 +83,12 @@ export function renderTernary(plot, side, sys, P, opts) {
     }
   }
 
+  const azeo = opts.makePairSystem ? ternaryAzeotropes(sys, P, opts.makePairSystem) : [];
+  for (const z of azeo) {
+    const [px, py] = toXY(z.x);
+    s("circle", { cx: px, cy: py, r: 6, fill: z.kind === "ternary" ? "var(--fug-vap)" : "var(--fug-fg)", stroke: "var(--fug-halo)", "stroke-width": 2.5 }, svg);
+  }
+
   // frame, ticks, vertex labels
   s("polygon", { points: V.map(p => p.join(",")).join(" "), fill: "none", stroke: "var(--fug-fg)", "stroke-width": 1.2 }, svg);
   for (let k = 1; k < 10; k++) {
@@ -93,16 +114,21 @@ export function renderTernary(plot, side, sys, P, opts) {
     opts.residueCurves ? h("span", { class: "fug-key" }, h("i", { style: "border-color:var(--fug-fg)" }), "Residue curve, arrow toward rising T") : null));
 
   const xOut = h("div", { class: "fug-num" }), tOut = h("div", { class: "fug-big" }), tab = h("tbody", { class: "fug-num" });
-  side.replaceChildren(
+  side.replaceChildren(...[
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Liquid composition"), xOut),
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Bubble temperature"), tOut),
     h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, ""), h("th", {}, "x"), h("th", {}, "y"))), tab),
-    h("div", { class: "fug-foot" }, "Hover or tap the diagram. ○ liquid, ● equilibrium vapour. Grid step " + (1 / n).toFixed(3) + "."));
+    anyUnstable ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two liquid phases in the hatched region. Results there assume a single liquid and are not reliable.") : null,
+    h("div", {}, h("div", { class: "fug-eyebrow" }, "Azeotropes at this pressure"),
+      azeo.length ? h("div", { class: "fug-num" }, ...azeo.map(z => h("div", {}, `${fmt(C(z.T), 1)} °C  ${z.x.map((v, k) => v > 1e-6 ? `${sys.names[k]} ${fmt(v, 2)}` : null).filter(Boolean).join(", ")}${z.kind === "ternary" ? " (ternary)" : ""}`)))
+        : h("div", { class: "fug-sub" }, "None found.")),
+    h("div", { class: "fug-foot" }, "Hover or tap the diagram. ○ liquid, ● equilibrium vapour. Grid step " + (1 / n).toFixed(3) + "."),
+  ].filter(Boolean));
 
   function show(i, j) {
     const d = get(i, j); if (!d) return;
     xOut.textContent = d.x.map((v, k) => `${sys.names[k]} ${fmt(v)}`).join(" · ");
-    tOut.textContent = `${fmt(C(d.T), 1)} °C`;
+    tOut.textContent = `${fmt(C(d.T), 1)} °C` + (d.stable ? "" : "  (two liquids)");
     tab.replaceChildren(...sys.names.map((nm, k) => h("tr", {}, h("td", {}, nm), h("td", {}, fmt(d.x[k])), h("td", {}, fmt(d.y[k])))));
     hover.replaceChildren();
     const a = toXY(d.x), b = toXY(d.y);
