@@ -34,6 +34,20 @@ an implementation, and tests. A step can start when the steps it depends on are 
 | **A11** Views | Flowsheet drawing, stream tables, column profiles, results export; views only call the layers below. | A7, A9 | Open |
 | **A12** Stability policy for 1.0 | Which interfaces are frozen, deprecation rules, long-term support of old versions. | A1–A11 | Open |
 
+## Assistant compatibility track
+
+Fugacity pages should work in every AI chat that can show HTML. Each item: test the
+one-line setup, document what works, and fix or report what doesn't.
+
+| Item | What | Status |
+|---|---|---|
+| **C1** | Claude artifacts | Works (0.1.2) |
+| **C2** | ChatGPT canvas | Open |
+| **C3** | Gemini canvas | Open |
+| **C4** | Other assistants and coding agents that preview HTML | Open |
+| **C5** | A package check page: paste a contribution package, see the check and the data plotted against the current model | Open |
+| **C6** | Instructions for assistants kept in sync with each release (version numbers in `ai/`) | Open |
+
 ## Data track
 
 | Item | What | Status |
@@ -70,6 +84,13 @@ an implementation, and tests. A step can start when the steps it depends on are 
 - [x] Governance, security policy, code of conduct, proposal process
 - [x] Architecture and data tracks in this roadmap
 - [x] First release on npm, so artifacts can load Fugacity with one line; trusted publishing
+
+### v0.1.3 – AI-first contributing
+
+- [x] AGENTS.md for all assistants and coding agents; llms.txt
+- [x] Contribution package format with a check (`npm run check-package`, `Fugacity.checkPackage`)
+- [x] Starter prompts, instructions for any assistant, skills in `ai/`
+- [x] AI-prepared contribution form; three contribution levels in CONTRIBUTING.md
 
 ### v0.2 – Thermodynamic foundation
 

@@ -10,6 +10,7 @@ import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
 import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
 import { isLiquidStable } from "./equilibrium/stability.js";
+import { checkPackage, validCas } from "./contrib/package-check.js";
 import { mount } from "./ui/mount.js";
 import pkg from "../package.json" with { type: "json" };
 
@@ -41,5 +42,5 @@ export function system(cfg) {
 export {
   mount, createSystem, listComponents, findComponent, MODELS,
   bubbleT, bubbleP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
-  binaryAzeotropes, findAzeotrope, isLiquidStable,
+  binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
 };

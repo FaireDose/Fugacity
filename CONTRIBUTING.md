@@ -4,55 +4,119 @@ Fugacity grows through chemical engineers: people who know where good data lives
 tell a sensible result from a wrong one, and want better open tools for teaching and
 design. You don't need to be a software engineer.
 
-There are four ways to help. Pick the one that fits your time.
+**The main way to contribute is through your AI assistant**: ChatGPT, Claude, Gemini,
+Copilot or any other. You talk to it; it searches open sources, reads the project's rules
+and prepares your contribution in the right format; you check the numbers and submit.
+Working without an assistant is also fine, see [below](#without-an-ai-assistant).
 
-| Way | You need | Typical time |
+## What you can contribute
+
+| Contribution | What it involves | Typical time |
 |---|---|---|
-| [1. Add or correct a component](#1-add-or-correct-a-component) | Pure-component data from an open source | 30 minutes |
-| [2. Find open data for a component or pair](#2-find-open-data-for-a-component-or-pair) | Library search skills, a spreadsheet | 1–3 hours per pair |
-| [3. Work on the roadmap](#3-work-on-the-roadmap) | Programming, or a clear engineering specification | days |
-| [4. Review](#4-review) | Experience in thermodynamics | 15–30 minutes per change |
+| **Data for a pair** (most wanted) | Find open experimental VLE data for a pair on the [data wanted list](docs/DATA_WANTED.md) | 30–60 minutes with an assistant |
+| **A component** | Constants and vapour pressure from open sources | 20–30 minutes |
+| **A correction** | A value or result that disagrees with an open source | 10 minutes |
+| **A review** | Check someone else's numbers against their source | 15–30 minutes |
+| **Roadmap work** | A feature, or a proposal for an architecture step | days |
 
-Every change, whoever makes it, goes through the same path:
+## Contribute through your AI assistant
 
-1. **Issue.** Describe what you want to add or fix with one of the
-   [issue forms](https://github.com/FaireDose/Fugacity/issues/new/choose).
-2. **Pull request.** You, another contributor, or Claude (when a maintainer asks it to)
-   turn the issue into a pull request with data, source and test.
-3. **Automatic checks** run on every pull request.
-4. **Independent review** by someone other than the author, following the checklist in
-   the pull request.
-5. **Merge and release.**
+There are three levels. Start with level 1; move up only if you want to.
+
+### Level 1: chat only (any assistant, any plan)
+
+You need: an AI assistant, and a free [GitHub account](https://github.com/signup) to submit.
+
+1. Pick a pair from the [data wanted list](docs/DATA_WANTED.md), or another contribution.
+2. Open your assistant and paste a prompt from [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
+   Each prompt points the assistant to the rules in [AGENTS.md](AGENTS.md). If your
+   assistant can't open links, attach or paste that file.
+3. The assistant searches open sources and prepares a **contribution package**: one JSON
+   document with the data, its source and the table it came from.
+4. **Check every number against the source yourself.** Assistants make transcription
+   mistakes. Then set `"checked_by_human": true` in the package.
+5. Submit it with the
+   [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml)
+   form. A maintainer or a coding agent turns it into a pull request, and a reviewer checks
+   it.
+
+### Level 2: let your assistant read the repository
+
+The assistant then sees the current data and the wanted list, so it avoids duplicates and
+uses the project's names. The repository is public, so this is read-only and safe.
+
+- **Claude:** in a chat, click **+** → **Add from GitHub**, paste
+  `https://github.com/FaireDose/Fugacity`, and select `AGENTS.md`, `docs/DATA_WANTED.md`
+  and the `src/data` folder.
+- **ChatGPT:** connect the GitHub app under **Settings → Apps** (called **Plugins** in some
+  versions), authorize it on GitHub, then mention the repository in your chat.
+  Availability depends on your plan.
+- **Other assistants:** give them the links in [llms.txt](llms.txt); most can read raw
+  files from GitHub.
+
+Then continue as in level 1.
+
+### Level 3: let a coding agent open the pull request
+
+Coding agents can change files, run the tests and open the pull request for you. Examples:
+Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor. Most of them read
+[AGENTS.md](AGENTS.md) automatically.
+
+1. **Make your own copy of the repository:** on the
+   [repository page](https://github.com/FaireDose/Fugacity) click **Fork** → **Create fork**.
+2. **Connect the agent to your GitHub account** with its own setup (each agent has a
+   "connect GitHub" or "add repository" step). Give it access to your fork only.
+3. **Ask it**, for example: *"Follow AGENTS.md. Add the data in this package to Fugacity,
+   fit the parameters, run the tests, and open a pull request to FaireDose/Fugacity."*
+4. **Read what it changed** before the pull request goes out, and check the numbers.
+
+Your assistant or agent runs on your own account and plan. The project never asks for
+your keys or passwords, and its own keys are used only by maintainers.
+
+## Without an AI assistant
+
+Everything above works by hand too: open an issue with one of the
+[forms](https://github.com/FaireDose/Fugacity/issues/new/choose), or edit the files and
+open a pull request. The formats are described below and in [AGENTS.md](AGENTS.md).
 
 ## The rules
 
+These apply to everyone, human or AI, and are repeated in [AGENTS.md](AGENTS.md).
+
 1. **Open sources only.** Every number must come from a source that anyone can read for
-   free, so any reviewer can check it. Accepted:
-   - open-access articles (for example CC BY journals such as *Data in Brief*, MDPI journals,
-     open-access papers in *J. Chem. Eng. Data*);
+   free, so any reviewer can check it:
+   - open-access articles (for example CC BY journals, open-access papers in
+     *J. Chem. Eng. Data*);
    - the [NIST TRC ThermoML Archive](https://trc.nist.gov/ThermoML/), which publishes the data
      of *J. Chem. Eng. Data*, *J. Chem. Thermodynamics*, *Fluid Phase Equilibria*,
      *Thermochimica Acta* and *Int. J. Thermophysics* (about 2003–2019) under the NIST open
      license, even when the article itself is behind a paywall;
    - the [NIST Chemistry WebBook](https://webbook.nist.gov/) for pure-component properties;
    - open data repositories (Zenodo, figshare, university repositories, open theses);
-   - open databanks with a license that allows redistribution (for example ChemSep,
-     Artistic License 2.0).
+   - databanks with a license that allows redistribution (for example ChemSep).
 
-   Not accepted: numbers copied from a paywalled article or a commercial databank (DDB,
-   DIPPR, DECHEMA volumes) that are not also available openly.
-2. **Every number has a source.** Each entry carries a `source` field: citation, DOI or
-   link, and the table or figure. Say if values were read off a graph.
-3. **Every model has a test.** New data comes with a test against experimental data or an
-   independent calculation.
-4. **Record the license.** A new source goes into [`src/data/LICENSES.md`](src/data/LICENSES.md).
-5. **No unchecked AI numbers.** If an AI assistant helped you find or transcribe data, you
-   must check every value against the source yourself. Numbers an assistant "remembers"
-   without a source are not accepted.
+   Not accepted: numbers from paywalled articles or commercial databanks (DDB, DIPPR,
+   DECHEMA volumes) that are not also available openly.
+2. **Every number has a source:** citation, DOI or link, and the table or figure. Say if
+   values were read off a graph.
+3. **A person checks every number** an assistant transcribed. Numbers an assistant
+   "remembers" without a source are never accepted.
+4. **Every model has a test** against experimental data or an independent calculation.
+5. **Record the license** of any new source in [`src/data/LICENSES.md`](src/data/LICENSES.md).
 
-## 1. Add or correct a component
+## Formats
 
-Components live in [`src/data/components.json`](src/data/components.json). One entry:
+### Contribution package
+
+What your assistant prepares; described in [AGENTS.md](AGENTS.md#contribution-package-format),
+with a full example in [ai/examples/](ai/examples/). To check a package:
+`npm run check-package -- file.json`, or in a page `Fugacity.checkPackage(pkg)`. The check
+catches missing sources, invalid CAS numbers, mole fractions outside 0–1 and similar
+mistakes; the reviewer still checks the numbers themselves.
+
+### Component entry
+
+Components live in [`src/data/components.json`](src/data/components.json):
 
 ```json
 "methanol": {
@@ -72,94 +136,37 @@ Components live in [`src/data/components.json`](src/data/components.json). One e
 }
 ```
 
-- **Constants** (MW, Tc, Pc, Tb): NIST Chemistry WebBook or an open databank.
-- **Vapour pressure:** coefficients from an open source, or fitted by you to open data
-  (describe the fit in `source`).
-- **UNIQUAC r and q:** from UNIFAC group sums or the ChemSep database.
-- A component is only useful with binary parameters for it; see way 2.
+### Validation data
 
-Then run `npm test` (it checks that every component boils at its `Tb_K`) and
-`npm run wanted` to update the list of missing pairs.
+Experimental data used for fitting or testing goes into
+[`validation/data/`](validation/data) as JSON with a `source` block (citation, doi,
+open_copy, access, tables). Parameters are fitted with
+[`validation/python/fit_parameters.py`](validation/python/fit_parameters.py): add an entry
+to `FITS` and run it with `--write`.
 
-## 2. Find open data for a component or pair
+## Roadmap work
 
-This is the most valuable contribution: it turns *databank* or *missing* pairs into
-pairs *fitted to experimental data*.
+The [roadmap](ROADMAP.md) lists what comes next, including the **architecture track**
+(design steps A1–A12) and the **assistant compatibility** track.
 
-1. **Pick a pair** from [docs/DATA_WANTED.md](docs/DATA_WANTED.md), or propose a new
-   component.
-2. **Claim it** by opening a
-   [validation case](https://github.com/FaireDose/Fugacity/issues/new?template=validation-case.yml)
-   issue with the pair in the title, so others don't duplicate the work.
-3. **Search open sources** (see the rules). Good starting points:
-   - the ThermoML Archive search at <https://trc.nist.gov/ThermoML/>;
-   - Google Scholar with "vapor-liquid equilibrium" + both names, filtered for free PDFs;
-   - open-access journals; Zenodo and figshare.
+- **Small items:** open an issue saying you're taking it, then a pull request.
+- **Architecture steps, interface or file-format changes:** write a proposal first, see
+  [proposals/](proposals/README.md). An assistant can help you draft it; see the prompt in
+  [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
 
-   Prefer isobaric T-x-y data near 1 atm with a thermodynamic consistency test, or
-   isothermal P-x(-y) data from a static apparatus. Azeotrope data and excess enthalpies
-   are useful checks.
-4. **Transcribe the data** into a new file in [`validation/data/`](validation/data), in this
-   format:
+Engine code follows [ARCHITECTURE.md](ARCHITECTURE.md): each layer only uses the one below it.
 
-   ```json
-   {
-     "_about": "One line: system, type of data, conditions.",
-     "source": {
-       "citation": "Authors, title, journal volume (year) pages",
-       "doi": "10.xxxx/...",
-       "open_copy": "https://... (where anyone can read the numbers)",
-       "access": "Open access, CC BY 4.0",
-       "tables": "Table 3"
-     },
-     "components": ["water", "ethanol"],
-     "P_kPa": 101.325,
-     "txy": [ { "T_C": 78.2, "x_1": 0.894, "y_1": 0.894 } ]
-   }
-   ```
+## How a contribution gets in
 
-5. **Fit or check parameters.** Add an entry to `FITS` in
-   [`validation/python/fit_parameters.py`](validation/python/fit_parameters.py) and run it
-   (`python validation/python/fit_parameters.py --write`), or open the pull request with the
-   data only and ask a maintainer to fit it.
-6. **Add a test** in [`test/`](test) that compares the model with your data, and open the
-   pull request.
+1. **Issue or package** submitted through a form.
+2. **Pull request** made by you, your coding agent, another contributor, or a maintainer
+   (possibly with Claude's GitHub integration).
+3. **Automatic checks** run: all tests, the validation data, the data wanted list.
+4. **Independent review** by someone other than the author, with the checklist in the
+   pull request. Data changes need a data reviewer (see [GOVERNANCE.md](GOVERNANCE.md)).
+5. **Merge and release.**
 
-### With Claude
-
-If you use Claude, add the contributor skill in
-[`skill/fugacity-contributor/SKILL.md`](skill/fugacity-contributor/SKILL.md). It tells Claude
-these rules and file formats. Then ask, for example:
-
-> Find open-access vapour-liquid equilibrium data for water + 1-propanol at 1 atm,
-> transcribe it into Fugacity's validation format, and fit NRTL parameters.
-
-Check every number Claude transcribes against the source before you open the pull
-request (rule 5). Your own Claude account pays for your usage; the project's key is only
-used by maintainers.
-
-## 3. Work on the roadmap
-
-The [roadmap](ROADMAP.md) lists what comes next, including the **architecture track**:
-design steps that each end in a written specification and tests.
-
-- **Small items** (a new view, a dew-point routine, a unit conversion): open an issue saying
-  you're taking it, then a pull request.
-- **Large items** (a new layer, a change to an interface or file format, anything in the
-  architecture track): write a proposal first, see [proposals/](proposals/README.md). Code
-  follows once the proposal is accepted.
-
-Every contribution to the engine follows [ARCHITECTURE.md](ARCHITECTURE.md): each layer
-only uses the one below it, through its documented interface.
-
-## 4. Review
-
-Reviewers keep Fugacity trustworthy. A review checks the source against the numbers, the
-fit quality, and whether the results make physical sense, using the checklist in every
-pull request. Experienced chemical engineers and professors can ask to become data
-reviewers; see [GOVERNANCE.md](GOVERNANCE.md).
-
-## Running the checks
+## Running the checks yourself
 
 You need [Node.js](https://nodejs.org) 22 or newer.
 
@@ -167,7 +174,8 @@ You need [Node.js](https://nodejs.org) 22 or newer.
 npm install
 npm run build
 npm test
-npm run wanted      # refresh docs/DATA_WANTED.md after changing data
+npm run wanted                           # refresh docs/DATA_WANTED.md after changing data
+npm run check-package -- file.json       # check a contribution package
 ```
 
 The Python tools in [`validation/python/`](validation/python) need numpy and scipy. After

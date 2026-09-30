@@ -203,11 +203,13 @@ loop. An equation-oriented mode can come later.
 
 Anyone can propose a change; nothing reaches a release without an independent check.
 
-1. **Proposal.** Anyone, for example a professor using the tool in a course, opens an
-   issue from a form: *New component*, *Data correction*, *Validation case* or *Bug*. The
-   interface links to these forms ("Report a problem or suggest data").
-2. **Pull request.** A contributor, or Claude when a maintainer asks it to, turns the
-   issue into a pull request with the data, its source and a test.
+1. **Proposal.** Anyone, for example a professor using the tool in a course, prepares a
+   contribution with their AI assistant (following [AGENTS.md](AGENTS.md)) or by hand,
+   and submits it with a form: *AI-prepared contribution*, *New component*, *Data
+   correction*, *Validation case* or *Bug*. The interface links to these forms.
+2. **Pull request.** A contributor, their coding agent, or a maintainer (possibly with a
+   coding agent such as the Claude Code GitHub Action) turns it into a pull request with
+   the data, its source and a test.
 3. **Automatic checks.** Every pull request runs the full test suite: the engine against
    the independent Python model, and all validation data.
 4. **Independent review.** A reviewer who did not write the change confirms the source,
@@ -218,7 +220,7 @@ Anyone can propose a change; nothing reaches a release without an independent ch
 Roles, decision rules and how to become a reviewer are in [GOVERNANCE.md](GOVERNANCE.md);
 protections for the repository and releases in [SECURITY.md](SECURITY.md).
 
-### Letting Claude draft pull requests (optional)
+### Letting a coding agent draft pull requests (optional)
 
 The repository can use the Claude Code GitHub Action: a maintainer writes
 `@claude please add this component as described` on an issue, and Claude opens a pull
