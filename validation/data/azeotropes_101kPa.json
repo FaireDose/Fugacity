@@ -1,5 +1,10 @@
 {
  "_about": "Binary azeotropes at 101.325 kPa. Temperatures and weight percentages as tabulated in the Wikipedia 'Azeotrope tables' article (from Lange's Handbook of Chemistry 10th ed. and the CRC Handbook of Chemistry and Physics 44th ed.). Mole fractions converted from weight percent.",
+ "source": {
+  "citation": "Azeotrope tables, Wikipedia, from Lange's Handbook of Chemistry (10th ed.) and CRC Handbook of Chemistry and Physics (44th ed.)",
+  "url": "https://en.wikipedia.org/wiki/Azeotrope_tables",
+  "access": "Open (CC BY-SA text; handbook values)."
+ },
  "P_kPa": 101.325,
  "ternary": [
   {

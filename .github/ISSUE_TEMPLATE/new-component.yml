@@ -26,6 +26,13 @@ body:
       description: Papers, tables or databanks with experimental VLE data or published parameters. Links or full citations.
     validations:
       required: true
+  - type: checkboxes
+    id: open
+    attributes:
+      label: Open source
+      options:
+        - label: Anyone can read these sources for free (open access, ThermoML Archive, NIST WebBook, open repository, or an openly licensed databank).
+          required: true
   - type: textarea
     id: data
     attributes:

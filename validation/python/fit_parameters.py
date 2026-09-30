@@ -57,7 +57,7 @@ FITS = [
     dict(pair=("water", "ethylene-glycol"), data="txy", temperature_dependent=False,
          describe="Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page)."),
     dict(pair=("acetic-acid", "ethylene-glycol"), data="schmid", temperature_dependent=True,
-         describe="Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115: P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K."),
+         describe="Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K."),
 ]
 
 

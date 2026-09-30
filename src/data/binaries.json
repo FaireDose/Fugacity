@@ -56,7 +56,7 @@
       "b_ij": 382.2484749860536,
       "b_ji": -149.92751645504197,
       "alpha": 0.3,
-      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115: P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 1.2 % in P, 30 J/mol in HE.",
+      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 1.2 % in P, 30 J/mol in HE.",
       "tier": "fitted"
     },
     {
@@ -67,7 +67,7 @@
       "a_ji": 0.341596584260477,
       "b_ij": -296.7713912079953,
       "b_ji": 106.72554144664836,
-      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115: P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 0.9 % in P, 24 J/mol in HE.",
+      "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 0.9 % in P, 24 J/mol in HE.",
       "tier": "fitted"
     },
     {

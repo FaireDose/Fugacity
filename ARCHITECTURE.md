@@ -215,6 +215,9 @@ Anyone can propose a change; nothing reaches a release without an independent ch
    Changes to `src/data/` and `validation/` need a reviewer listed in `CODEOWNERS`.
 5. **Release.** Merged changes are published as a new version.
 
+Roles, decision rules and how to become a reviewer are in [GOVERNANCE.md](GOVERNANCE.md);
+protections for the repository and releases in [SECURITY.md](SECURITY.md).
+
 ### Letting Claude draft pull requests (optional)
 
 The repository can use the Claude Code GitHub Action: a maintainer writes
@@ -224,11 +227,9 @@ the Claude GitHub App, and an `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN` s
 only people with write access can trigger it. See
 <https://code.claude.com/docs/en/github-actions>.
 
-## Next: v0.2 foundation
+## Next steps
 
-1. Property package with enthalpy (ideal-gas Cp, heat of vaporization, excess enthalpy).
-2. Data registry and data packs.
-3. Modified UNIFAC (Dortmund) as the `predicted` tier.
-4. Dew points; P-x-y view.
-5. Written specifications for the unit-operation interface and the flowsheet file,
-   with tests, before the first unit is built.
+The design work ahead is laid out as the **architecture track** in
+[ROADMAP.md](ROADMAP.md) (steps A1–A12). Each step is settled by a proposal before it is
+built; the first, the property package interface, is
+[proposal 0001](proposals/0001-property-package.md).
