@@ -4,7 +4,7 @@ Open chemical process simulation built for AI chats. Ask your assistant (ChatGPT
 Claude, Gemini or another) for a phase diagram, and it opens a live interface that
 calculates right in the chat, in your browser. And the main way to improve Fugacity is
 the same: talk to your assistant, and it helps you find open data and prepare your
-contribution. Fugacity starts with vapour-liquid equilibria and grows, one tested layer
+contribution. Fugacity is meant to starts with vapour-liquid equilibria and grow later by voluntary contributions, one tested layer
 at a time, toward full flowsheets.
 
 ![Ternary map for methanol, acetone and chloroform with four azeotropes and residue curves](docs/images/ternary.png)
