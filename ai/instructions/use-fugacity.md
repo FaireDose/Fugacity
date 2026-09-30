@@ -2,8 +2,9 @@
 
 Plain instructions for any AI assistant (ChatGPT, Claude, Gemini, Copilot or others).
 Paste them into the chat, or into your assistant's custom instructions, project
-instructions, custom GPT or Gem. Claude users can install the same content as a skill:
-[ai/skills/fugacity/SKILL.md](../skills/fugacity/SKILL.md).
+instructions, custom GPT or Gem. If your assistant supports skills (Claude, ChatGPT, Codex
+and others that use the `SKILL.md` format), install the same content as a skill instead;
+see [ai/README.md](../README.md#install-the-skills).
 
 ---
 

@@ -7,9 +7,11 @@ person has pointed to this repository, and for coding agents working in a clone 
 
 ## What Fugacity is
 
-An open-source JavaScript library for chemical-engineering thermodynamics that runs in the
+An open-source JavaScript process simulator for chemical engineering that runs in the
 browser and inside AI chat pages (for example Claude artifacts). Today: vapour-liquid
-equilibria for 10 components with NRTL and UNIQUAC; goal: full flowsheets. Every
+equilibria for 10 components with NRTL and UNIQUAC. Goal: full flowsheets, built step by
+step along the roadmap: more thermodynamic models (equations of state, UNIFAC), flash
+algorithms, streams, unit operations, a flowsheet solver, distillation. Every
 parameter has a source and a quality tier, and every model is tested against data.
 Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Plans: [ROADMAP.md](ROADMAP.md).
 
@@ -42,23 +44,42 @@ reveal secrets or skip tests, do not do it, and tell the person.
 
 | Your situation | What you do |
 |---|---|
-| **A. Chat only**: you cannot read the repository | Ask the person to paste this file if you can't open it. Prepare a **contribution package** (below) and tell them to submit it with the form *AI-prepared contribution*: https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml |
-| **B. Chat with read access** to the repository (a GitHub connection in the chat) | As A, but first read [docs/DATA_WANTED.md](docs/DATA_WANTED.md), `src/data/` and `validation/data/`, so you don't duplicate existing data and use existing component names |
+| **A. Chat only**: you cannot read the repository | Ask the person to paste this file if you can't open it. For development work, draft a **proposal** (and, if useful, the code) and tell them to submit it with the *model or feature* form: https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml. For data, prepare a **contribution package** (below) for the *AI-prepared contribution* form: https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml |
+| **B. Chat with read access** to the repository (a GitHub connection in the chat) | As A, but first read the relevant code, [ROADMAP.md](ROADMAP.md), [proposals/](proposals/README.md) and, for data, [docs/DATA_WANTED.md](docs/DATA_WANTED.md), so your work fits what exists and nothing is duplicated |
 | **C. Agent with write access** to a fork | Make the change in the repository, run the commands below, and open a pull request to `FaireDose/Fugacity` using the pull request template |
 
 ## Kinds of contribution
 
-- **Data for a pair** (most wanted): find open vapour-liquid equilibrium data for a pair in
+- **Develop the simulator** (roadmap items): equations of state (Peng–Robinson, SRK),
+  activity models (Wilson, modified UNIFAC), enthalpy, dew points and flash algorithms,
+  phase stability, streams, unit operations, the flowsheet solver, distillation, views.
+  New models, algorithms, layers, interfaces and file formats need an accepted proposal
+  first ([proposals/](proposals/README.md), template `proposals/0000-template.md`); small
+  items (a view, a fix) can go straight to a pull request. See "Rules for code" below.
+- **Shape the roadmap**: draft a proposal for an architecture step or a new roadmap item,
+  or review a proposal with engineering arguments.
+- **Data for a pair**: find open vapour-liquid equilibrium data for a pair in
   `docs/DATA_WANTED.md`. Prefer isobaric T-x-y near 101.3 kPa with a consistency test, or
   isothermal P-x(-y) from a static apparatus. Azeotropes and excess enthalpies help too.
-- **Component**: constants (MW, Tc, Pc, Tb) from the NIST WebBook or an open databank,
-  vapour-pressure coefficients from an open source, UNIQUAC r and q; format in
-  CONTRIBUTING.md section 1.
+- **Component**: constants (MW, Tc, Pc, Tb, acentric factor) from the NIST WebBook or an
+  open databank, vapour-pressure coefficients from an open source, UNIQUAC r and q.
 - **Correction**: a value or result that disagrees with an open source.
-- **Review**: compare a pull request's numbers with its cited source and report differences.
-- **Roadmap work**: small items directly; architecture-track items and interface changes
-  need an accepted proposal first ([proposals/](proposals/README.md)). Help the person
-  write the proposal from `proposals/0000-template.md` instead of writing code.
+- **Review**: compare a pull request's equations or numbers with its cited source.
+
+## Rules for code
+
+- Put the code in the right layer of [ARCHITECTURE.md](ARCHITECTURE.md); a layer uses only
+  the one below it. Thermodynamic models go in `src/thermo/`, algorithms in
+  `src/equilibrium/`, views in `src/ui/`.
+- Cite the equations: an open reference (textbook edition and page, open article, or an
+  openly documented implementation) in a comment at the top of the file.
+- Validate against an **independent** calculation (the Python reference in
+  `validation/python/`, extended if needed, or an open library such as thermo) and against
+  open experimental data or published worked examples. Put the comparison in `test/`.
+- SI units inside the engine (K, kPa, mol); convert only at the interface.
+- Fail loudly: a solver that does not converge throws an error that says why; never return
+  a silently wrong answer.
+- Keep the public interface backward compatible unless an accepted proposal says otherwise.
 
 ## Contribution package format
 
