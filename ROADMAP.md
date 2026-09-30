@@ -69,7 +69,7 @@ an implementation, and tests. A step can start when the steps it depends on are 
 - [x] Contributing guide with four ways to help; data wanted list; contributor skill for Claude
 - [x] Governance, security policy, code of conduct, proposal process
 - [x] Architecture and data tracks in this roadmap
-- [ ] First release on npm, so artifacts can load Fugacity with one line
+- [x] First release on npm, so artifacts can load Fugacity with one line; trusted publishing
 
 ### v0.2 – Thermodynamic foundation
 

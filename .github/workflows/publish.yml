@@ -1,6 +1,7 @@
 # Publishes the package to npm when a GitHub release is published.
-# One-time setup: create an npm access token (Automation type) and add it to
-# this repository as the secret NPM_TOKEN (Settings > Secrets and variables > Actions).
+# Uses npm trusted publishing: npm checks that the request comes from this
+# workflow in FaireDose/Fugacity, so no npm token is stored anywhere.
+# Configured on npmjs.com under Packages > fugacity > Settings > Trusted publishing.
 name: Publish to npm
 
 on:
@@ -19,9 +20,9 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
+      # trusted publishing needs npm 11.5.1 or newer
+      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm run build
       - run: npm test
       - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
