@@ -172,11 +172,22 @@
       "j": "acetone",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 149.0753649061816,
-      "b_ji": 59.42031348139431,
-      "alpha": 0.3003,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 87.5333785057155,
+      "b_ji": 127.598484808331,
+      "alpha": 0.3,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Du, Chen, Li, Guo, Zhang, Fluid Phase Equilib. 459 (2018) 10 (data public in the NIST TRC ThermoML Archive; validation/data/acetone_methanol_101kPa.json). AAD 0.12 K in T, 0.0020 in y (max 0.24 K, 0.0040). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 149.0753649061816,
+        "b_ji": 59.42031348139431,
+        "alpha": 0.3003,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "methanol",
+        "j": "acetone"
+      }
     },
     {
       "model": "NRTL",
@@ -184,11 +195,22 @@
       "j": "chloroform",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -53.07240035412078,
-      "b_ji": 671.9699770134955,
-      "alpha": 0.2873,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": -47.00390088301528,
+      "b_ji": 658.250831255862,
+      "alpha": 0.3,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Cao, Zhang, Liu, Wang, J. Chem. Eng. Data 59 (2014) 234 (data public in the NIST TRC ThermoML Archive; validation/data/chloroform_methanol_101kPa.json). AAD 0.11 K in T, 0.0067 in y (max 0.29 K, 0.0173). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.006 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": -53.07240035412078,
+        "b_ji": 671.9699770134955,
+        "alpha": 0.2873,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "methanol",
+        "j": "chloroform"
+      }
     },
     {
       "model": "NRTL",
@@ -292,11 +314,22 @@
       "j": "chloroform",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -327.69198091664146,
-      "b_ji": 151.89123044978064,
-      "alpha": 0.3054,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": -601.1148990313168,
+      "b_ji": 787.6916964671267,
+      "alpha": 0.3,
+      "source": "Fitted to 9 T-x-y points at 101.3 kPa from Gao, Zhao, Jia, Zhang, Appl. Sci. 8 (2018) 1519 (open access, CC BY 3.0; validation/data/acetone_chloroform_101kPa.json). AAD 0.16 K in T, 0.0029 in y (max 0.42 K, 0.0072). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": -327.69198091664146,
+        "b_ji": 151.89123044978064,
+        "alpha": 0.3054,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "acetone",
+        "j": "chloroform"
+      }
     },
     {
       "model": "NRTL",
@@ -452,10 +485,20 @@
       "j": "acetone",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 42.38940191161544,
-      "b_ji": -203.22641633035695,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 62.82680264697891,
+      "b_ji": -240.04867122853707,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Du, Chen, Li, Guo, Zhang, Fluid Phase Equilib. 459 (2018) 10 (data public in the NIST TRC ThermoML Archive; validation/data/acetone_methanol_101kPa.json). AAD 0.12 K in T, 0.0020 in y (max 0.25 K, 0.0040). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 42.38940191161544,
+        "b_ji": -203.22641633035695,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "methanol",
+        "j": "acetone"
+      }
     },
     {
       "model": "UNIQUAC",
@@ -463,10 +506,20 @@
       "j": "chloroform",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 136.60447778310848,
-      "b_ji": -651.884774485146,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 124.61466956343675,
+      "b_ji": -617.913383473519,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Cao, Zhang, Liu, Wang, J. Chem. Eng. Data 59 (2014) 234 (data public in the NIST TRC ThermoML Archive; validation/data/chloroform_methanol_101kPa.json). AAD 0.13 K in T, 0.0067 in y (max 0.37 K, 0.0193). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.006 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 136.60447778310848,
+        "b_ji": -651.884774485146,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "methanol",
+        "j": "chloroform"
+      }
     },
     {
       "model": "UNIQUAC",
@@ -562,10 +615,20 @@
       "j": "chloroform",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -788.0452616738485,
-      "b_ji": 393.31019778237334,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 104.66495584649239,
+      "b_ji": -10.08028816409249,
+      "source": "Fitted to 9 T-x-y points at 101.3 kPa from Gao, Zhao, Jia, Zhang, Appl. Sci. 8 (2018) 1519 (open access, CC BY 3.0; validation/data/acetone_chloroform_101kPa.json). AAD 0.14 K in T, 0.0030 in y (max 0.44 K, 0.0083). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": -788.0452616738485,
+        "b_ji": 393.31019778237334,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "acetone",
+        "j": "chloroform"
+      }
     },
     {
       "model": "UNIQUAC",

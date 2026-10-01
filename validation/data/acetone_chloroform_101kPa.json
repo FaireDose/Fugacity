@@ -1,0 +1,26 @@
+{
+ "_about": "Acetone (1) + chloroform (2): isobaric T-x-y at 101.3 kPa from Gao et al. (2018), Table A1. Rows as printed: T in K, liquid and vapour mole fractions of acetone.",
+ "source": {
+  "citation": "Q. Gao, Z. Zhao, P. Jia, X. Zhang, Effect of Ionic Liquids on the Isobaric Vapor-Liquid Equilibrium Behavior of Acetone-Chloroform, Applied Sciences 8 (2018) 1519",
+  "doi": "10.3390/app8091519",
+  "open_copy": "https://www.mdpi.com/2076-3417/8/9/1519/html",
+  "access": "Open access, Creative Commons Attribution 3.0 (CC BY 3.0).",
+  "tables": "Table A1 (appendix)"
+ },
+ "components": ["acetone", "chloroform"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["T_K", "x_1", "y_1"],
+ "rows": [
+  [335.7, 0.102, 0.067],
+  [336.9, 0.202, 0.160],
+  [337.6, 0.301, 0.280],
+  [337.6, 0.396, 0.401],
+  [336.9, 0.494, 0.544],
+  [335.9, 0.587, 0.660],
+  [334.5, 0.679, 0.765],
+  [332.5, 0.786, 0.866],
+  [331.0, 0.893, 0.945]
+ ],
+ "notes": "Modified Othmer still, gas chromatography (TCD). Standard uncertainties stated in the caption: u(T) = 0.1 K, u(x1) = u(y1) = 0.002. Purities above 99.5 % (mass). Only 9 points, no pure-component temperatures listed, no consistency test reported; the authors state agreement with Kojima et al. (1991). Read twice from the article page, both reads identical."
+}
