@@ -97,3 +97,45 @@ test("nitrogen + methane VLE vs experimental data (Janisch et al. 2007, ThermoML
     assert.ok(s.aadP < z.aadP, `${model}: the ChemSep k_ij improves the bubble pressure`);
   }
 });
+
+test("hydrogen + toluene vs experimental data (Tsuji 2005, Aslam 2016; ThermoML)", t => {
+  const tsuji = load("tsuji2005_hydrogen_toluene.json"), aslam = load("aslam2016_hydrogen_toluene.json");
+  const pts = [...tsuji.rows.map(([x, P]) => [tsuji.conditions.T_K, x, P]), ...aslam.rows.map(([T, P, x]) => [T, x, P])];
+  const stats = k => {
+    const s = system({ components: ["hydrogen", "toluene"], ...k });
+    const d = pts.map(([T, x, P]) => pct(s.bubbleP([x, 1 - x], T).P, P));
+    return { aad: d.reduce((a, v) => a + Math.abs(v), 0) / d.length, min: Math.min(...d), max: Math.max(...d), kij: s.info.pairs[0].kij, tier: s.info.pairs[0].tier };
+  };
+  const pr = stats({ model: "PR" }), srk = stats({ model: "SRK" });
+  const chemsepPR = stats({ model: "PR", kij: [[0, -0.51], [-0.51, 0]] }), zero = stats({ model: "PR", kij: [[0, 0], [0, 0]] });
+  t.diagnostic(JSON.stringify({ PR: pr, SRK: srk, "PR, ChemSep -0.51": chemsepPR, "PR, k_ij = 0": zero }, (k, v) => (typeof v === "number" ? +v.toFixed(3) : v), 1));
+  // PR: refitted to these data (tier "fitted"); SRK: the ChemSep value +0.39 (tier "databank")
+  assert.equal(pr.tier, "fitted");
+  assert.equal(srk.tier, "databank");
+  assert.equal(srk.kij, 0.39);
+  for (const [name, s] of [["PR", pr], ["SRK", srk]]) {
+    // the two data sets differ by about 15-20 % between them at 303 K: Tsuji above, Aslam below
+    assert.ok(s.aad < 7 && s.min > -10 && s.max < 14, `${name}: ${JSON.stringify(s)}`); // observed: AAD 6.5 %, -9.2 to +13.2 %
+  }
+  // why the ChemSep PR value was replaced: it under-predicts the bubble pressure by 66-78 %
+  assert.ok(chemsepPR.max < -60, JSON.stringify(chemsepPR));
+});
+
+test("residual enthalpy and cp of vapours: PR and SRK vs CoolProp (known limits for polar vapours)", t => {
+  const POLAR = new Set(["methanol", "ethanol", "acetone", "water"]);
+  const rows = [];
+  for (const r of coolprop.residual) {
+    for (const model of ["PR", "SRK"]) {
+      const s = system({ components: [r.component], model }).state(r.T_K, r.P_kPa, [1], "vapour");
+      const dh = s.hR_J_mol - r.hR_J_mol, dcp = s.cpR_J_molK - r.cpR_J_molK;
+      rows.push(`${model.padEnd(3)} ${r.component.padEnd(9)} ${r.T_K} K ${r.P_kPa} kPa: h_R ${s.hR_J_mol.toFixed(0)} vs ${r.hR_J_mol.toFixed(0)} J/mol (${dh >= 0 ? "+" : ""}${dh.toFixed(0)}); cp_R ${s.cpR_J_molK.toFixed(2)} vs ${r.cpR_J_molK.toFixed(2)} J/mol/K`);
+      // observed: non-polar within 270 J/mol and 4.2 J/mol/K; polar 240-700 J/mol too small in
+      // magnitude (27-45 %) and cp_R 3-4 times too small
+      const polar = POLAR.has(r.component);
+      assert.ok(Math.abs(dh) < (polar ? 750 : 300), `${model} ${r.component}: dh_R ${dh.toFixed(0)}`);
+      assert.ok(Math.abs(dcp) < (polar ? 16 : 5), `${model} ${r.component}: dcp_R ${dcp.toFixed(2)}`);
+      if (polar) assert.ok(s.hR_J_mol > r.hR_J_mol, `${model} ${r.component}: residual enthalpy too small in magnitude`);
+    }
+  }
+  t.diagnostic(rows.join("\n"));
+});

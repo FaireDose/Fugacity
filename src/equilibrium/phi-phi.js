@@ -21,6 +21,15 @@
  * with Brent's method. If neither finds a non-trivial solution it throws ("no two-phase
  * solution found": the state is at or above the mixture's critical region).
  *
+ * Liquid stability: at the solution, the liquid (the given one at a bubble point, the
+ * incipient one at a dew point) is checked with Michelsen's tangent-plane test
+ * (eos-stability.js). If it splits into two liquids, the point is not returned: the
+ * solver throws "the liquid splits into two liquid phases; three-phase equilibrium is not
+ * supported yet". When no bubble point is found, the same test is used to say why.
+ * Results carry `stability` ({ stable, tm }) and `warnings` (pairs with k_ij = 0, and
+ * temperatures outside the data range of a stored k_ij). Pass { stability: false } as
+ * the last argument to skip the test.
+ *
  * Units: T in K, P in kPa.
  */
 import { brent } from "../util/solve.js";
@@ -225,15 +234,16 @@ function normalize(v) {
 }
 
 /**
- * Bubble pressure at T (K) for liquid x. Returns { P (kPa), y, K, Z_L, Z_V, iterations }.
+ * Bubble pressure at T (K) for liquid x. Returns { P (kPa), y, K, Z_L, Z_V, iterations,
+ * stability, warnings }.
  * @param {object} sys  an equation-of-state system (model "PR" or "SRK")
  */
 export const eosBubbleP = (sys, x, T, opts) => solve(sys, x, T, "bubbleP", opts);
-/** Bubble temperature at P (kPa) for liquid x. Returns { T (K), y, K, Z_L, Z_V, iterations }. */
+/** Bubble temperature at P (kPa) for liquid x. Returns { T (K), y, ..., stability, warnings }. */
 export const eosBubbleT = (sys, x, P, opts) => solve(sys, x, P, "bubbleT", opts);
-/** Dew pressure at T (K) for vapour y. Returns { P (kPa), x, K, Z_L, Z_V, iterations }. */
+/** Dew pressure at T (K) for vapour y. Returns { P (kPa), x, ..., stability, warnings }. */
 export const eosDewP = (sys, y, T, opts) => solve(sys, y, T, "dewP", opts);
-/** Dew temperature at P (kPa) for vapour y. Returns { T (K), x, K, Z_L, Z_V, iterations }. */
+/** Dew temperature at P (kPa) for vapour y. Returns { T (K), x, ..., stability, warnings }. */
 export const eosDewT = (sys, y, P, opts) => solve(sys, y, P, "dewT", opts);
 
 /** Methods attached by Fugacity.system() to an equation-of-state system. */
