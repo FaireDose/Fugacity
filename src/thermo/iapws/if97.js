@@ -309,6 +309,12 @@ export function hIdealGas(T) {
   return R * T * tau * gammaIdeal(R2_0, 1, tau).gt;
 }
 
+/** Ideal-gas isobaric heat capacity of IF97 (region-2 ideal-gas part, -R tau^2 d2gamma°/dtau2), kJ/(kg K). */
+export function cpIdealGas(T) {
+  const tau = 540 / T;
+  return -R * tau * tau * gammaIdeal(R2_0, 1, tau).gtt;
+}
+
 // ---------------------------------------------------------------------------------------
 // Region 3 (Helmholtz energy)
 // ---------------------------------------------------------------------------------------

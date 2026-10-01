@@ -23,7 +23,9 @@ import { evaluate } from "./correlations.js";
 import { brent } from "../util/solve.js";
 import { findComponent } from "./system.js";
 import { steam, steamSat, STANDARD as IF97_NAME, VISCOSITY_STANDARD, CONDUCTIVITY_STANDARD } from "./iapws/steam.js";
-import { hIdealGas as hIdealGasIF97, psat as psatIF97, TC as TC_IF97 } from "./iapws/if97.js";
+import { hIdealGas as hIdealGasIF97, cpIdealGas as cpIdealGasIF97, psat as psatIF97, tsat as tsatIF97,
+  TC as TC_IF97 } from "./iapws/if97.js";
+import { viscosity as viscosityIAPWS, thermalConductivityParts as conductivityIAPWS } from "./iapws/transport.js";
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018 exact value
 
@@ -176,7 +178,7 @@ export function pure(key) {
     return out;
   }
 
-  return {
+  const base = {
     id, name: c.name, formula: c.formula, cas: c.cas,
     MW: c.MW, Tc_K: c.Tc_K, Pc_kPa: c.Pc_Pa / 1000, omega: c.omega, Tb_K: c.Tb_K,
     has, record, property, psat, tsat, hIdealGas, props,
@@ -188,11 +190,91 @@ export function pure(key) {
       return { have, none };
     },
   };
+  return id === "water" ? { ...base, ...waterMethods(c, base) } : base;
 }
 
 // ---------------------------------------------------------------------------------------
 // Water: IAPWS standards instead of correlations (proposal 0002, section 2).
 // ---------------------------------------------------------------------------------------
+
+const IF97_SOURCE = {
+  name: "IAPWS-IF97",
+  reference: "IAPWS R7-97(2012), Revised Release on the IAPWS Industrial Formulation 1997 for the " +
+    "Thermodynamic Properties of Water and Steam",
+  access: "free from IAPWS: https://iapws.org/technical-guidance/release/IF97-Rev",
+};
+const MU_SOURCE = {
+  name: "IAPWS R12-08 (industrial form: mu2 = 1, density from IAPWS-IF97)",
+  reference: "IAPWS R12-08, Release on the IAPWS Formulation 2008 for the Viscosity of Ordinary Water Substance",
+  access: "free from IAPWS: https://iapws.org/technical-guidance/release/viscosity",
+};
+const K_SOURCE = {
+  name: "IAPWS R15-11 (industrial form, with IAPWS-IF97)",
+  reference: "IAPWS R15-11, Release on the IAPWS Formulation 2011 for the Thermal Conductivity of Ordinary Water Substance",
+  access: "free from IAPWS: https://iapws.org/technical-guidance/release/ThCond",
+};
+
+/**
+ * Water's property methods from the IAPWS standards, replacing the correlation-based ones of
+ * pure(): psat and tsat from IF97 region 4, hIdealGas from the IF97 ideal-gas part, and every
+ * property in PROPERTIES that IAPWS covers (saturated-liquid values for the liquid
+ * properties; the dilute-gas limit, rho -> 0, for the "low pressure" vapour viscosity and
+ * conductivity). Properties IAPWS does not cover here (surface tension) fall back to the
+ * records in components.json. The top-level `vapourPressure` record of water in
+ * components.json, used by the VLE models, is not changed or used by these methods.
+ */
+function waterMethods(c, base) {
+  const M = c.MW; // g/mol
+  const TT = 273.16, TMIN = 273.15;
+  // name: [Tmin, Tmax, source, function of T in engine units]
+  const sat = T => steamSat({ T_K: T });
+  const IF97_PROPS = {
+    vapourPressure: [TMIN, TC_IF97, IF97_SOURCE, T => psatIF97(T)],
+    liquidDensity: [TMIN, TC_IF97, IF97_SOURCE, T => sat(T).liquid.rho_kg_m3],
+    idealGasHeatCapacity: [TMIN, 1073.15, IF97_SOURCE, T => M * cpIdealGasIF97(T)],
+    liquidHeatCapacity: [TMIN, 647.0, IF97_SOURCE, T => M * sat(T).liquid.cp_kJ_kgK],
+    heatOfVaporization: [TMIN, TC_IF97, IF97_SOURCE, T => M * sat(T).hfg_kJ_kg],
+    liquidViscosity: [TT, TC_IF97, MU_SOURCE, T => sat(T).liquid.mu_Pa_s],
+    vapourViscosity: [TT, 1173.15, MU_SOURCE, T => viscosityIAPWS(T, 0)],
+    liquidThermalConductivity: [TT, 647.0, K_SOURCE, T => sat(T).liquid.k_W_mK],
+    vapourThermalConductivity: [TT, 1173.15, K_SOURCE, T => conductivityIAPWS(T, 0, null).k_W_mK],
+  };
+  const units = name => name === "vapourPressure" ? "kPa" : PROPERTIES[name].units;
+  const record = name => {
+    const e = IF97_PROPS[name];
+    if (!e) return base.record(name);
+    return { equation: "IAPWS", units: units(name), Tmin_K: e[0], Tmax_K: e[1], tier: "standard", source: e[2] };
+  };
+  const has = name => record(name) !== null;
+  function property(name, T, opts) {
+    const e = IF97_PROPS[name];
+    if (!e) return base.property(name, T, opts);
+    if (!(T >= e[0] && T <= e[1])) {
+      throw new RangeError(`Water: ${PROPERTIES[name]?.label ?? "vapour pressure"} from IAPWS is ` +
+        `available from ${e[0]} K to ${e[1]} K; T = ${T} K.`);
+    }
+    return e[3](T);
+  }
+  return {
+    has, record, property,
+    /** Vapour pressure, kPa (IAPWS-IF97 region 4, Eq. 30), 273.15-647.096 K. */
+    psat: T => property("vapourPressure", T),
+    /** Saturation temperature at P (kPa), K (IAPWS-IF97 region 4, Eq. 31), 0.611213-22064 kPa. */
+    tsat: P => tsatIF97(P),
+    /** Ideal-gas enthalpy relative to the ideal gas at 298.15 K, J/mol (IF97 ideal-gas part), 273.15-1073.15 K. */
+    hIdealGas(T) {
+      if (!(T >= TMIN && T <= 1073.15)) {
+        throw new RangeError(`Water: IF97 ideal-gas enthalpy is available from 273.15 K to 1073.15 K; T = ${T} K.`);
+      }
+      return M * (hIdealGasIF97(T) - hIdealGasIF97(T_REF));
+    },
+    available() {
+      const have = ["vapourPressure", ...PROPERTY_NAMES.filter(has)];
+      const none = PROPERTY_NAMES.filter(n => !IF97_PROPS[n] && componentData.components.water.properties?.[n]?.available === false);
+      return { have, none };
+    },
+  };
+}
 
 /**
  * Water at T (K) and P (kPa) from IAPWS-IF97 (all phases) with the IAPWS viscosity

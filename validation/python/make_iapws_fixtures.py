@@ -85,6 +85,12 @@ def main():
     got = Region2_cp0(tau, 1)[3]
     h0 = {"IF97": R_IF97 * 298.15 * tau * got,
           "IAPWS95": PropsSI("H", "T", 298.15, "P", 1, "HEOS::Water") / 1000}
+    # Ideal-gas enthalpy and heat capacity of IAPWS-95 at 1 Pa (residual part negligible),
+    # to check pure("water").hIdealGas() and the idealGasHeatCapacity property.
+    ideal = [{"T_K": T,
+              "h_kJ_kg": PropsSI("H", "T", T, "P", 1, "HEOS::Water") / 1000,
+              "cp_kJ_kgK": PropsSI("C", "T", T, "P", 1, "HEOS::Water") / 1000}
+             for T in [275, 298.15, 350, 400, 500, 700, 900, 1070]]
     data = {
         "description": "Water and steam reference values for test/steam.test.js, from CoolProp: "
                        "IF97::Water (IAPWS-IF97 with IF97-based transport) and HEOS::Water "
@@ -103,6 +109,7 @@ def main():
         "points": points,
         "saturation": sat,
         "h_ideal_gas_298_kJ_kg": h0,
+        "ideal_gas_IAPWS95": ideal,
         "h_ideal_gas_298_note": "IF97: ideal-gas part of region 2 (R T tau dgamma0/dtau), iapws package "
                                 "%s (github.com/jjgomera/iapws, GPL-3.0; used only to generate this value); "
                                 "IAPWS95: HEOS::Water at 298.15 K and 1 Pa." % iapws_version(),

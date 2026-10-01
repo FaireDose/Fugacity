@@ -26,8 +26,9 @@
  *     negative zeta or cp, or one above 1e13, it is set to 1e13 (release safeguard).
  *
  * Range: both formulations are valid from 273.16 K to 1173.15 K at the pressures of
- * IAPWS-IF97 (the releases extend to higher pressures). Above 1173.15 K these functions
- * throw: the releases only say they extrapolate "reasonably" there.
+ * IAPWS-IF97 (the releases extend to higher pressures). Outside 273.16-1173.15 K these
+ * functions throw: the releases only say they extrapolate "reasonably" there. (IF97 itself
+ * starts at 273.15 K; between 273.15 and 273.16 K steam() gives no transport properties.)
  *
  * Units: T in K, rho in kg/m3, (d rho/d p)_T in kg/(m3 MPa), cp and cv in kJ/(kg K);
  * viscosity returned in Pa s, thermal conductivity in W/(m K).
@@ -38,7 +39,7 @@ const MU_STAR = 1e-6;      // Pa s
 const LAMBDA_STAR = 1e-3;  // W/(m K)
 const R_TC = 0.46151805;   // kJ/(kg K): the gas constant R15-11 uses in cp-bar = cp/R
 export const T_MAX_TRANSPORT = 1173.15;
-const T_MIN_TRANSPORT = 273.15;
+export const T_MIN_TRANSPORT = 273.16; // triple point: lower limit of both releases
 
 /** R12-08 Table 1: H_i, i = 0..3. */
 const H0 = [1.67752, 2.20462, 0.6366564, -0.241605];

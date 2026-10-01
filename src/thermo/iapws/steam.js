@@ -12,7 +12,7 @@
  * kJ/(kg K); speed of sound m/s; viscosity Pa s; thermal conductivity W/(m K).
  */
 import { stateTP, saturationT, psatMPa, tsatMPa, TC } from "./if97.js";
-import { viscosity, thermalConductivity, T_MAX_TRANSPORT } from "./transport.js";
+import { viscosity, thermalConductivity, T_MIN_TRANSPORT, T_MAX_TRANSPORT } from "./transport.js";
 
 export const STANDARD = "IAPWS-IF97";
 export const VISCOSITY_STANDARD = "IAPWS R12-08 (industrial form: mu2 = 1, density from IAPWS-IF97)";
@@ -40,11 +40,11 @@ function present(st) {
     transport: TRANSPORT_STANDARD,
     notes: [],
   };
-  if (st.T <= T_MAX_TRANSPORT) {
+  if (st.T >= T_MIN_TRANSPORT && st.T <= T_MAX_TRANSPORT) {
     out.mu_Pa_s = viscosity(st.T, st.rho);
     out.k_W_mK = thermalConductivity(st.T, st.rho, st);
   } else {
-    out.notes.push(`Viscosity and thermal conductivity: the IAPWS releases are valid up to ` +
+    out.notes.push(`Viscosity and thermal conductivity: the IAPWS releases are valid from ${T_MIN_TRANSPORT} K to ` +
       `${T_MAX_TRANSPORT} K; not computed at ${st.T} K.`);
   }
   return out;

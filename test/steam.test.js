@@ -357,3 +357,55 @@ test("steam-table excerpt (values quoted in the pull request)", () => {
   assert.equal(sh.h_kJ_kg.toFixed(1), "3051.7");
   assert.equal(sh.v_m3_kg.toFixed(5), "0.25798");
 });
+
+test("pure('water'): psat, tsat, hIdealGas, available() and property() come from IAPWS", () => {
+  const w = pure("water");
+  // Boiling point at 1 atm is IF97's (Eq. 31), not the DIPPR fit used by the VLE models.
+  assert.equal(w.tsat(101.325).toFixed(4), "373.1243");
+  rel(w.tsat(101.325), tsatMPa(0.101325), 1e-15, "tsat(1 atm)");
+  for (const [T, ps] of [[300, 0.353658941e-2], [500, 0.263889776e1], [600, 0.123443146e2]]) rel(w.psat(T), ps * 1000, 1e-8, `psat(${T})`);
+  rel(w.psat(w.tsat(101.325)), 101.325, 1e-9, "psat(tsat(1 atm))");
+  // props() and psat()/tsat() agree in the 2 mK band where IF97 and the DIPPR fit differ.
+  for (const T of [373.12, 373.124, 373.1245, 373.126]) {
+    const s = w.props(T, 101.325);
+    assert.equal(s.psat_kPa, w.psat(T));
+    assert.equal(s.phase, T < w.tsat(101.325) ? "liquid" : "vapour", `phase at ${T} K`);
+  }
+  // Ideal-gas enthalpy (J/mol, 0 at 298.15 K) and heat capacity against IAPWS-95 at 1 Pa.
+  const M = w.MW, ig = grid.ideal_gas_IAPWS95, h298 = ig.find(r => r.T_K === 298.15).h_kJ_kg;
+  assert.equal(w.hIdealGas(298.15), 0);
+  for (const r of ig) {
+    const want = M * (r.h_kJ_kg - h298);
+    assert.ok(Math.abs(w.hIdealGas(r.T_K) - want) <= 1e-4 * Math.abs(want) + 0.5, `hIdealGas(${r.T_K}): ${w.hIdealGas(r.T_K)} vs ${want}`);
+    rel(w.property("idealGasHeatCapacity", r.T_K), M * r.cp_kJ_kgK, 2e-4, `cp°(${r.T_K})`);
+  }
+  // The same value as props() for steam at low pressure (10 Pa).
+  assert.ok(Math.abs(w.props(400, 0.01).h_J_mol - w.hIdealGas(400)) < 0.1);
+  assert.throws(() => w.hIdealGas(1200), /1073.15 K/);
+  // Every property IAPWS covers is listed as available, with tier "standard".
+  const { have } = w.available();
+  for (const n of ["vapourPressure", "liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity",
+    "heatOfVaporization", "liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"]) {
+    assert.ok(have.includes(n), n);
+    assert.equal(w.record(n).tier, "standard");
+  }
+  // Saturated-liquid properties equal steamSat; low-pressure vapour transport is the dilute-gas limit.
+  const sat = steamSat({ T_K: 373.15 });
+  assert.equal(w.property("liquidDensity", 373.15), sat.liquid.rho_kg_m3);
+  assert.equal(w.property("heatOfVaporization", 373.15), M * sat.hfg_kJ_kg);
+  assert.equal(w.property("liquidViscosity", 373.15), sat.liquid.mu_Pa_s);
+  assert.equal(w.property("vapourViscosity", 373.15), viscosity(373.15, 0));
+  assert.ok(Math.abs(w.property("vapourViscosity", 373.15) / steam(373.15, 0.01).mu_Pa_s - 1) < 1e-6);
+  assert.ok(Math.abs(w.property("vapourThermalConductivity", 373.15) / steam(373.15, 0.01).k_W_mK - 1) < 1e-5);
+  assert.throws(() => w.property("liquidDensity", 700), /647.096 K/);
+  assert.equal(w.record("vapourPressure").equation, "IAPWS");
+});
+
+test("transport properties start at the triple point, 273.16 K, as in the releases", () => {
+  assert.throws(() => viscosity(273.155, 999.8), /273.16 K/);
+  assert.throws(() => thermalConductivityParts(273.155, 999.8, null), /273.16 K/);
+  const st = steam(273.155, 101.325);
+  assert.equal(st.mu_Pa_s, null);
+  assert.match(st.notes.join(" "), /273.16 K/);
+  assert.ok(steam(273.16, 101.325).mu_Pa_s > 0);
+});
