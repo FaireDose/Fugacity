@@ -4,7 +4,7 @@ import { vapourPressure } from "./psat.js";
 import { nrtl } from "./activity/nrtl.js";
 import { uniquac } from "./activity/uniquac.js";
 import { dimerK, monomerPressure } from "./vapour.js";
-import { createEosSystem, EOS_MODELS } from "./eos/system.js";
+import { createEosSystem, EOS_MODELS, RANGE_MARGIN_K } from "./eos/system.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
 export { EOS_MODELS };
@@ -86,7 +86,7 @@ export function createSystem(cfg) {
     const [aij, aji, bij, bji] = p.flipped ? [p.a_ji, p.a_ij, p.b_ji, p.b_ij] : [p.a_ij, p.a_ji, p.b_ij, p.b_ji];
     a[i][j] = aij; a[j][i] = aji; b[i][j] = bij; b[j][i] = bji;
     alpha[i][j] = alpha[j][i] = p.alpha ?? 0.3;
-    pairs.push({ pair: [comps[i].name, comps[j].name], source: p.source, tier: p.tier || "databank" });
+    pairs.push({ pair: [comps[i].name, comps[j].name], source: p.source, tier: p.tier || "databank", T_range_K: p.T_range_K ?? null });
   }
   if (missing.length && !cfg.allowMissingPairs) {
     const list = missing.map(m => m.join(" + ")).join("; ");
@@ -135,5 +135,19 @@ export function createSystem(cfg) {
     vapour: assoc.some(Boolean) ? "chemical theory (dimerization) for " + comps.filter((_, i) => assoc[i]).map(c => c.name).join(", ") : "ideal gas",
   };
 
-  return { ids, names: comps.map(c => c.name), n, model, gammas, psat, equilibrium, info };
+  /**
+   * Warnings that apply to a calculation at T (K): temperatures more than RANGE_MARGIN_K outside
+   * the data range of a pair whose parameters carry one (temperature-dependent fits).
+   */
+  function warnings(T) {
+    const w = [];
+    for (const p of pairs) {
+      if (p.T_range_K && Number.isFinite(T) && (T < p.T_range_K[0] - RANGE_MARGIN_K || T > p.T_range_K[1] + RANGE_MARGIN_K)) {
+        w.push(`${model} parameters of ${p.pair.join(" + ")} come from data at ${p.T_range_K[0]}-${p.T_range_K[1]} K; ${T.toFixed(2)} K is outside that range.`);
+      }
+    }
+    return w;
+  }
+
+  return { ids, names: comps.map(c => c.name), n, model, gammas, psat, equilibrium, info, warnings };
 }

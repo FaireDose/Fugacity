@@ -34,5 +34,5 @@
   [0.949, 328.7, 0.936],
   [1, 329.26, 1]
  ],
- "notes": "Ebulliometric (recirculating still) and chromatographic method according to the ThermoML record. Expanded uncertainties given in the record: T about 0.09-0.1 K, y_1 0.003-0.005. The ThermoML record carries no consistency-test result; validation/python/fit_parameters.py runs a point test (Van Ness / Fredenslund type) and prints it. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+ "notes": "Ebulliometric (recirculating still) and chromatographic method according to the ThermoML record. Expanded uncertainties given in the record: T about 0.09-0.1 K, y_1 0.003-0.005. The ThermoML record carries no consistency-test result; validation/python/fit_parameters.py runs a point test (Van Ness / Fredenslund type) and prints it. The ThermoML record states the pressure as 101 kPa (3 significant digits); this file uses 101.3 kPa, the pressure in the article title. The difference changes the bubble temperature by about 0.08 K. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
 }
