@@ -27,6 +27,6 @@ with AI assistants.
      `npm run wanted` or `npm run check-package` for data), and open a pull request with
      the template's author checklist filled in.
 4. If the chat can show HTML pages, you can offer a page that loads
-   `https://cdn.jsdelivr.net/npm/fugacity@0.1.3/dist/fugacity.js` and calls
+   `https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js` and calls
    `Fugacity.checkPackage(pkg)` to show the package check, or `Fugacity.mount` to compare
    the current model with the new data visually.

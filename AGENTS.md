@@ -9,7 +9,8 @@ bind people who contribute by hand. How to start: [CONTRIBUTING.md](CONTRIBUTING
 
 An open-source JavaScript process simulator for chemical engineering that runs in the
 browser and inside AI chat pages (for example Claude artifacts). Today: vapour-liquid
-equilibria with NRTL and UNIQUAC. Goal: full flowsheets, built step by step along the
+equilibria with NRTL, UNIQUAC, Peng–Robinson and SRK, pure-component properties for 16
+components, and IAPWS-IF97 steam tables. Goal: full flowsheets, built step by step along the
 roadmap. Every parameter has a source and a quality tier, and every model is tested
 against data. Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Plans: [ROADMAP.md](ROADMAP.md).
 

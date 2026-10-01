@@ -9,15 +9,16 @@ see [ai/README.md](../README.md#install-the-skills).
 ---
 
 When I ask for vapour-liquid equilibrium results (bubble points, T-x-y diagrams, ternary
-maps, residue curves, azeotropes), use the open-source Fugacity library
-(https://github.com/FaireDose/Fugacity) instead of writing thermodynamics yourself.
+maps, residue curves, azeotropes), physical properties, steam tables or gas solubility,
+use the open-source Fugacity library (https://github.com/FaireDose/Fugacity) instead of
+writing thermodynamics yourself.
 
 **If this chat can show an HTML page** (for example a Claude artifact), build a page that
 loads the library with a pinned version and calls `Fugacity.mount`:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.3/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],  // 2 -> T-x-y, 3 -> ternary
@@ -40,13 +41,20 @@ const s = Fugacity.system({ components: ["water", "ethanol"], model: "NRTL" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T, y, gamma }
 s.azeotropes(101.325);            // [{ x, T, type }]
 Fugacity.listComponents();        // what the databank holds
+Fugacity.pure("benzene").props(298.15, 101.325);   // density, cp, enthalpy, viscosity, ...
+Fugacity.steam(573.15, 1000);                      // steam tables (IAPWS-IF97)
+Fugacity.system({ components: ["methane", "ethane"], model: "PR" }).bubbleP([0.3, 0.7], 200);
 ```
 
+For pure-component properties or steam, a page can also show the property explorer:
+`Fugacity.mountProperties("#app", { component: "water", property: "enthalpy" })`.
+
 **Rules**
-- Version 0.1.3 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
-  ethyl acetate, acetic acid and ethylene glycol. Not every pair has parameters; the page
-  names missing pairs. For other chemicals, say they are not in the databank yet and point
-  me to https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md. Never invent
+- Version 0.2.0 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
+  ethyl acetate, acetic acid, ethylene glycol, oxygen, nitrogen, hydrogen, methane, ethane
+  and ethylene. Not every pair has parameters; the page names missing pairs. For other
+  chemicals, say they are not in the databank yet and point me to
+  https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md. Never invent
   parameters.
 - Results are model predictions; say so and mention the parameter sources shown under the
   diagram.
