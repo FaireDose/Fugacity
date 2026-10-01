@@ -28,7 +28,9 @@
         "r": 0.92,
         "q": 1.4,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.344292,
+      "omega_source": "CoolProp 8.0.0 (Water: equation of state Wagner-JPCRD-2002); open source, MIT."
     },
     "acetic-acid": {
       "name": "Acetic acid",
@@ -69,7 +71,9 @@
         },
         "K_unit": "1/mmHg",
         "source": "Marek & Standart chemical theory; as used by Schmid et al. (2007)"
-      }
+      },
+      "omega": 0.46,
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
     },
     "ethylene-glycol": {
       "name": "Ethylene glycol",
@@ -103,7 +107,9 @@
         "r": 2.41,
         "q": 2.25,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.506776,
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
     },
     "methanol": {
       "name": "Methanol",
@@ -134,7 +140,9 @@
         "r": 1.43,
         "q": 1.43,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.564937,
+      "omega_source": "CoolProp 8.0.0 (Methanol: equation of state deReuck-BOOK-1993); open source, MIT."
     },
     "ethanol": {
       "name": "Ethanol",
@@ -164,7 +172,9 @@
         "r": 2.11,
         "q": 1.97,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.644,
+      "omega_source": "CoolProp 8.0.0 (Ethanol: equation of state Schroeder-JPCRD-2014); open source, MIT."
     },
     "acetone": {
       "name": "Acetone",
@@ -195,7 +205,9 @@
         "r": 2.5735,
         "q": 2.336,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.3071,
+      "omega_source": "CoolProp 8.0.0 (Acetone: equation of state Lemmon-JCED-2006); open source, MIT."
     },
     "chloroform": {
       "name": "Chloroform",
@@ -225,7 +237,9 @@
         "r": 2.7,
         "q": 2.34,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.226,
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
     },
     "benzene": {
       "name": "Benzene",
@@ -254,7 +268,9 @@
         "r": 3.1878,
         "q": 2.4,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.210837,
+      "omega_source": "CoolProp 8.0.0 (Benzene: equation of state Thol-HTHP-2012); open source, MIT."
     },
     "toluene": {
       "name": "Toluene",
@@ -284,7 +300,9 @@
         "r": 3.9228,
         "q": 2.968,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.2657,
+      "omega_source": "CoolProp 8.0.0 (Toluene: equation of state Lemmon-JCED-2006); open source, MIT."
     },
     "ethyl-acetate": {
       "name": "Ethyl acetate",
@@ -315,7 +333,101 @@
         "r": 3.48,
         "q": 3.12,
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
-      }
+      },
+      "omega": 0.361,
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
+    },
+    "oxygen": {
+      "name": "Oxygen",
+      "formula": "O2",
+      "cas": "7782-44-7",
+      "aliases": [
+        "o2"
+      ],
+      "MW": 31.9988,
+      "Tc_K": 154.5994,
+      "Pc_Pa": 5046410.0,
+      "Tb_K": 90.1878,
+      "omega": 0.0222,
+      "constants_source": "CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985,Stewart-JPCRD-1991); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985,Stewart-JPCRD-1991); open source, MIT."
+    },
+    "nitrogen": {
+      "name": "Nitrogen",
+      "formula": "N2",
+      "cas": "7727-37-9",
+      "aliases": [
+        "n2"
+      ],
+      "MW": 28.01348,
+      "Tc_K": 126.192,
+      "Pc_Pa": 3395800.0,
+      "Tb_K": 77.355,
+      "omega": 0.0372,
+      "constants_source": "CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000); open source, MIT."
+    },
+    "hydrogen": {
+      "name": "Hydrogen",
+      "formula": "H2",
+      "cas": "1333-74-0",
+      "aliases": [
+        "h2",
+        "normal hydrogen"
+      ],
+      "MW": 2.01588,
+      "Tc_K": 33.1443,
+      "Pc_Pa": 1296360.0,
+      "Tb_K": 20.3689,
+      "omega": -0.219,
+      "constants_source": "CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009); open source, MIT."
+    },
+    "methane": {
+      "name": "Methane",
+      "formula": "CH4",
+      "cas": "74-82-8",
+      "aliases": [
+        "ch4"
+      ],
+      "MW": 16.0428,
+      "Tc_K": 190.564,
+      "Pc_Pa": 4599200.0,
+      "Tb_K": 111.6672,
+      "omega": 0.01142,
+      "constants_source": "CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991); open source, MIT."
+    },
+    "ethane": {
+      "name": "Ethane",
+      "formula": "C2H6",
+      "cas": "74-84-0",
+      "aliases": [
+        "c2h6"
+      ],
+      "MW": 30.06904,
+      "Tc_K": 305.322,
+      "Pc_Pa": 4872200.0,
+      "Tb_K": 184.5686,
+      "omega": 0.099,
+      "constants_source": "CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006); open source, MIT."
+    },
+    "ethylene": {
+      "name": "Ethylene",
+      "formula": "C2H4",
+      "cas": "74-85-1",
+      "aliases": [
+        "ethene",
+        "c2h4"
+      ],
+      "MW": 28.05376,
+      "Tc_K": 282.35,
+      "Pc_Pa": 5041690.0,
+      "Tb_K": 169.3786,
+      "omega": 0.0866,
+      "constants_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
+      "omega_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT."
     }
   }
 }

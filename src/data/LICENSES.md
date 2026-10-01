@@ -8,6 +8,8 @@ sources with their own terms, recorded in the `source` field of every entry.
 | Binary NRTL and UNIQUAC parameters marked "ChemSep ... databank" | ChemSep interaction parameter files, Copyright Harry Kooijman and Ross Taylor, distributed with the open-source thermo library | Artistic License 2.0 (text below) |
 | UNIQUAC r and q | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
 | Parameters marked "Fitted to ..." | Fitted for Fugacity with `validation/python/fit_parameters.py` from the data cited in each entry | MIT |
+| Critical constants, normal boiling points and acentric factors of the gases; acentric factors of water, methanol, ethanol, acetone, benzene and toluene | CoolProp 8.0.0 (open source), from the reference equations of state cited in each entry | MIT |
+| Acentric factors of acetic acid, ethylene glycol, chloroform and ethyl acetate | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
 | Vapour-pressure coefficients | Fitted for Fugacity to correlations in the open-source thermo library (MIT); the method used is named in each entry | MIT |
 
 Before adding data from a new source, check that its license allows redistribution,

@@ -1,6 +1,6 @@
 # 0002: Pure-component properties, gases and the Peng–Robinson equation of state
 
-- **Status:** Draft
+- **Status:** Accepted (merged in #8, 2026-10-01)
 - **Author(s):** Fugacity maintainers
 - **Discussion:** this pull request
 - **Roadmap item:** A1 (property package), D4 (heat capacity and heat of vaporization), Later: equations of state; v0.2
