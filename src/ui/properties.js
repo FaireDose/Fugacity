@@ -247,22 +247,22 @@ export function mountProperties(target, cfg = {}) {
 
   function stateSourceLines(p, def, samples) {
     const lines = [];
-    const fromRecords = new Set();
     for (const [cls, title] of [["liquid", "Liquid"], ["gas", "Vapour and gas"]]) {
       lines.push(h("div", { class: "k" }, title));
-      for (const n of def.depends[cls]) {
-        lines.push(...recordLines(p, n));
-        const r = p.record(n);
-        if (r) fromRecords.add(formatSource(r.source));
-      }
-      // sources the engine reported that are not one of these records (ideal-gas law, IAPWS, an equation of state)
+      const fromRecords = new Set(def.depends[cls].map(n => p.record(n)).filter(Boolean).map(r => formatSource(r.source)));
+      // sources the engine reported that are not one of the records (ideal-gas law, IAPWS, an equation of state)
       const other = new Map();
+      let points = 0, standard = 0;
       for (const sm of samples) for (const g of sm.segments) if (g.cls === cls) {
         for (const pt of g.points) {
           const src = statePointSource(p, def, pt, sm.P_kPa);
+          points++;
+          if (src?.tier === "standard") standard++;
           if (src && !fromRecords.has(formatSource(src.source))) other.set(formatSource(src.source), src);
         }
       }
+      // the records behind props(), unless every point drawn came from an official standard (e.g. IAPWS for water)
+      if (!(points > 0 && standard === points)) for (const n of def.depends[cls]) lines.push(...recordLines(p, n));
       for (const src of other.values()) lines.push(h("div", {}, `${def.label}: ${formatSource(src.source)} `, h("span", { class: "fug-tier" }, TIER_LABEL[src.tier] ?? src.tier ?? "")));
       if (!def.depends[cls].length && !other.size) lines.push(h("div", {}, "From the engine's model for this phase (see notes)."));
     }
@@ -285,7 +285,7 @@ export function mountProperties(target, cfg = {}) {
       lines.push(h("div", { class: "k" }, "Not drawn"),
         ...[...gapText].map(([k, ps]) => h("div", {}, `${ps.length === samples.length ? "All pressures" : ps.join(", ")}, ${k}.`)));
     }
-    const notes = [...new Set(samples.flatMap(sm => sm.notes))].filter(n => !/not in the databank|No open data/.test(n));
+    const notes = groupNotes(samples.flatMap(sm => sm.notes).filter(n => !/not in the databank|No open data/.test(n)));
     if (notes.length) lines.push(h("div", { class: "k" }, "Notes from the engine"), ...notes.map(n => h("div", {}, n)));
     return lines;
   }
@@ -407,6 +407,18 @@ function checkRange(r) {
 }
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+/** Merge notes that differ only in their numbers (one per sampled temperature): first one, with a count. */
+function groupNotes(notes) {
+  const groups = new Map();
+  for (const n of notes) {
+    const key = n.replace(/-?\d+(\.\d+)?(e-?\d+)?/g, "#");
+    const g = groups.get(key);
+    if (g) { if (g.text !== n) g.count++; } else groups.set(key, { text: n, count: 1 });
+  }
+  const tidy = s => s.replace(/\d+\.\d{5,}/g, m => String(+(+m).toFixed(2)));   // 1173.2536683 -> 1173.25
+  return [...groups.values()].map(g => tidy(g.count > 1 ? `${g.text} (and ${g.count - 1} other sampled temperatures)` : g.text));
+}
 
 function row(label, value) {
   return h("div", { class: "row" }, h("span", {}, label), h("b", {}, value));
