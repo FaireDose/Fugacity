@@ -1,0 +1,33 @@
+{
+ "_about": "Ethyl acetate (1) + ethanol (2): isobaric T-x-y at 101.3 kPa, binary data set without ionic liquid from Zhang et al. (2017). Used as an independent check, not in the fit. Rows as in the ThermoML Archive record: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate.",
+ "source": {
+  "citation": "Z. Zhang, K. Wu, Q. Zhang, T. Zhang, D. Zhang, R. Yang, W. Li, Separation of ethyl acetate and ethanol azeotrope mixture using dialkylphosphates-based ionic liquids as entrainers, Fluid Phase Equilibria 454 (2017) 91-98",
+  "doi": "10.1016/j.fluid.2017.09.016",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2017.09.016.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record: the binary ethyl acetate + ethanol data sets (boiling temperature and vapour mole fraction) without ionic liquid. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethyl-acetate", "ethanol"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [1, 350.26, 1],
+  [0.969, 349.17, 0.939],
+  [0.939, 348.36, 0.89],
+  [0.883, 347.23, 0.812],
+  [0.826, 346.26, 0.75],
+  [0.735, 345.45, 0.67],
+  [0.62, 344.95, 0.591],
+  [0.518, 345, 0.529],
+  [0.401, 345.35, 0.459],
+  [0.308, 345.83, 0.397],
+  [0.226, 346.69, 0.331],
+  [0.159, 347.42, 0.265],
+  [0.107, 348.45, 0.199],
+  [0.067, 349.4, 0.138],
+  [0.037, 350.15, 0.082],
+  [0, 351.5, 0]
+ ],
+ "notes": "Expanded uncertainties in the ThermoML record: T 0.13-0.14 K, y_1 0.004-0.005. Read twice from the ThermoML Archive (XML and JSON files); the second JSON read first mixed up the temperature list and was repeated; the repeated read and the XML read are identical."
+}

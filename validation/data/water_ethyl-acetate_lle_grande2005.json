@@ -1,0 +1,25 @@
+{
+ "_about": "Water (1) + ethyl acetate (2): mutual solubilities (liquid-liquid equilibrium) from 298.15 K to 333.15 K, binary data from Grande and Marschoff (2005). Phase I is the water-rich phase, phase II the ester-rich phase. Rows as in the ThermoML Archive record: T in K, mole fraction of water in phase I, mole fraction of water in phase II.",
+ "source": {
+  "citation": "M. del C. Grande, C. M. Marschoff, Liquid-Liquid Equilibria for Water + Benzonitrile + Ethyl Acetate or + Butyl Acetate, J. Chem. Eng. Data 50 (2005) 1324-1327",
+  "doi": "10.1021/je050051h",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je050051h.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1 (mole fraction of water in liquid mixture 1) and 2 (mole fraction of water in liquid mixture 2), compounds 1 ethyl acetate and 2 water. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "lle",
+ "P_kPa": 101.3,
+ "columns": ["T_K", "x_1_I", "x_1_II"],
+ "rows": [
+  [298.15, 0.9837, 0.1733],
+  [303.15, 0.9845, 0.1885],
+  [308.15, 0.9851, 0.1997],
+  [313.15, 0.9856, 0.2111],
+  [318.15, 0.986, 0.2179],
+  [323.15, 0.9863, 0.2259],
+  [328.15, 0.9866, 0.2333],
+  [333.15, 0.9867, 0.2414]
+ ],
+ "notes": "Pressure constraint 101.3 kPa in the record. No uncertainties given in the record for these two sets. The water content of the ester-rich phase (0.1733 at 298.15 K) is higher than Cehreli et al. (2006, 0.1323 at 298.2 K, water_ethyl-acetate_lle_cehreli2006.json); the two open sources disagree by about 30 % there. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}

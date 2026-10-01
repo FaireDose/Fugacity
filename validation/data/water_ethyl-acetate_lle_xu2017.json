@@ -1,0 +1,19 @@
+{
+ "_about": "Water (1) + ethyl acetate (2): solubility of ethyl acetate in the water-rich phase (phase I) at 298.15 K and 318.15 K, binary data from Xu et al. (2017). Used as an independent check, not in the fit. Rows as in the ThermoML Archive record: T in K, mole fraction of ethyl acetate in phase I.",
+ "source": {
+  "citation": "D. Xu, L. Zhang, J. Gao, D. Pratik, L. Zhao, Z. Cui, Liquid-liquid equilibrium for ternary systems of ethyl acetate/isopropyl acetate + 2,2,3,3-tetrafluoro-1-propanol + water at 298.15, 318.15 K, J. Chem. Thermodyn. 106 (2017) 218-227",
+  "doi": "10.1016/j.jct.2016.12.006",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2016.12.006.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 6 (mole fraction of ethyl acetate in liquid mixture 2), compounds 2 ethyl acetate and 4 water. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "lle",
+ "P_kPa": 101.3,
+ "columns": ["T_K", "x_2_I"],
+ "rows": [
+  [298.15, 0.0139],
+  [318.15, 0.0117]
+ ],
+ "notes": "The record labels this phase 'liquid mixture 2'; it is the water-rich phase (phase I here). Expanded uncertainty 0.0012 for both values. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}

@@ -1,0 +1,24 @@
+{
+ "_about": "Activity coefficient at infinite dilution of ethyl acetate (2) in water (1), 273 K to 313 K, from Fenclova et al. (2014). Rows as in the ThermoML Archive record: T in K, gamma_2 at x_2 = 0.",
+ "source": {
+  "citation": "D. Fenclova, A. Blahut, P. Vrbka, V. Dohnal, Temperature dependence of limiting activity coefficients, Henry's law constants, and related infinite dilution properties of C4-C6 isomeric n-alkyl ethanoates/ethyl n-alkanoates in water, Fluid Phase Equilibria 375 (2014) 347-359",
+  "doi": "10.1016/j.fluid.2014.05.023",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.05.023.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, data set of compounds 1 water + 2 ethyl acetate, property activity coefficient of compound 2, constraint mole fraction of compound 2 = 0. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "gamma-infinite-dilution",
+ "solute": "ethyl-acetate",
+ "columns": ["T_K", "gamma_2"],
+ "rows": [
+  [273.35, 44.5],
+  [283.15, 54.9],
+  [293.15, 64.8],
+  [293.15, 68],
+  [298.15, 69.2],
+  [303.15, 73.6],
+  [313.15, 80.1]
+ ],
+ "notes": "Pressure constraint 101 kPa in the record. Expanded uncertainties (95 %) in the record: 3, 3.8, 4.4, 4.7, 4.7, 5, 5.5 (about 7 %). Read twice from the ThermoML Archive (XML and JSON files); the reads disagreed on the first temperature (273.35 vs 273.15 K); a third and fourth read quoting the raw XML and JSON both give 273.35."
+}

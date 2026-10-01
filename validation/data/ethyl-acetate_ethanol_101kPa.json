@@ -1,0 +1,41 @@
+{
+ "_about": "Ethyl acetate (1) + ethanol (2): isobaric T-x-y at 101.3 kPa, binary data set from Calvar, Dominguez and Tojo (2005). Rows as in the ThermoML Archive record: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate.",
+ "source": {
+  "citation": "N. Calvar, A. Dominguez, J. Tojo, Vapor-liquid equilibria for the quaternary reactive system ethyl acetate + ethanol + water + acetic acid and some of the constituent binary systems at 101.3 kPa, Fluid Phase Equilibria 235 (2005) 215-222",
+  "doi": "10.1016/j.fluid.2005.07.010",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.07.010.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10 (boiling temperature) and 11 (vapour mole fraction): the binary ethyl acetate + ethanol set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethyl-acetate", "ethanol"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.0239, 350.77, 0.0602],
+  [0.0437, 350.08, 0.1024],
+  [0.0651, 349.52, 0.1367],
+  [0.1005, 348.76, 0.1936],
+  [0.1633, 347.53, 0.2778],
+  [0.1886, 347.16, 0.3066],
+  [0.222, 346.74, 0.3389],
+  [0.2905, 346.07, 0.3899],
+  [0.3406, 345.7, 0.4296],
+  [0.3697, 345.61, 0.4407],
+  [0.3916, 345.51, 0.4586],
+  [0.415, 345.41, 0.4729],
+  [0.4342, 345.35, 0.4844],
+  [0.4643, 345.27, 0.4981],
+  [0.499, 345.22, 0.5178],
+  [0.5369, 345.19, 0.541],
+  [0.5792, 345.21, 0.5657],
+  [0.6241, 345.29, 0.593],
+  [0.6594, 345.43, 0.6165],
+  [0.7002, 345.61, 0.6438],
+  [0.7447, 345.89, 0.6762],
+  [0.7919, 346.33, 0.7164],
+  [0.842, 346.99, 0.7699],
+  [0.8992, 347.91, 0.8357]
+ ],
+ "notes": "Expanded uncertainties in the ThermoML record: T 0.18 K, y_1 0.015-0.024. Pure-component normal boiling temperatures in the same record: ethyl acetate 350.27 K, ethanol 351.43 K (not rows of this set). In the ThermoML record the compounds are numbered 1 acetic acid, 2 ethyl acetate, 3 water, 4 ethanol; the mole fractions are of compound 2 (ethyl acetate), which is the only reading consistent with the temperatures (x_1 -> 0 approaches the ethanol boiling point). Read twice from the ThermoML Archive (XML and JSON files), both reads identical in the numbers."
+}
