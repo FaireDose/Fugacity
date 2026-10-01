@@ -266,7 +266,12 @@ export function mountProperties(target, cfg = {}) {
       for (const src of other.values()) lines.push(h("div", {}, `${def.label}: ${formatSource(src.source)} `, h("span", { class: "fug-tier" }, TIER_LABEL[src.tier] ?? src.tier ?? "")));
       if (!def.depends[cls].length && !other.size) lines.push(h("div", {}, "From the engine's model for this phase (see notes)."));
     }
-    lines.push(h("div", { class: "k" }, "Phase boundary"), ...recordLines(p, "vapourPressure"));
+    // the vapour pressure the engine used for the phase (e.g. IAPWS-IF97 for water), else the record
+    const psSrc = new Map();
+    for (const sm of samples) for (const x of sm.psatSources || []) psSrc.set(formatSource(x.source), x);
+    lines.push(h("div", { class: "k" }, "Phase boundary"), ...(psSrc.size
+      ? [...psSrc.values()].map(x => h("div", {}, `Vapour pressure: ${formatSource(x.source)} `, h("span", { class: "fug-tier" }, TIER_LABEL[x.tier] ?? x.tier ?? "")))
+      : recordLines(p, "vapourPressure")));
     // temperature runs where no curve is drawn, and why (merged across pressures when equal)
     const u = state.units, tU = unitLabel("temperature", u), gapText = new Map();
     for (const sm of samples) for (const g of sm.gaps || []) {
@@ -326,6 +331,7 @@ export function mountProperties(target, cfg = {}) {
       h("div", { class: "fug-scroll", tabindex: "0", role: "region", "aria-label": "Saturation table" }, table),
       h("div", { class: "fug-foot" },
         `Saturated liquid (just above Psat) and saturated vapour (just below Psat) from the engine. “–”: no data at that temperature.` +
+        (tab.psatSource ? ` Psat: ${formatSource(tab.psatSource.source)} (${TIER_LABEL[tab.psatSource.tier] ?? tab.psatSource.tier ?? "tier not stated"}).` : "") +
         (missing.length ? ` No data yet for: ${missing.join(", ")}.` : "")));
   }
 
@@ -351,12 +357,15 @@ export function mountProperties(target, cfg = {}) {
         h("div", { class: "v" }, v == null ? "–" : [fmtNum(v, 5), " ", h("small", {}, unit)]), f ? h("div", { class: "s" }, src(f)) : null);
       const list = [
         h("div", {}, h("div", { class: "fug-eyebrow" }, "Phase"), h("div", { class: "v" }, st.phase ?? "unknown"),
-          h("div", { class: "s" }, st.phase === "liquid" ? "P ≥ Psat" : st.phase === "vapour" ? "P < Psat" : st.phase === "supercritical" ? "T ≥ Tc" : "")),
+          h("div", { class: "s" }, [st.phase === "liquid" ? "P ≥ Psat" : st.phase === "vapour" ? "P < Psat" : st.phase === "supercritical" ? "T ≥ Tc" : "",
+            st.region != null ? `IF97 region ${st.region}` : ""].filter(Boolean).join(" · "))),
         cell("Psat", toDisplay("pressure", st.psat_kPa, u), u.P, "psat_kPa"),
         cell("Density ρ", toDisplay("density", st.rho_kg_m3, u), unitLabel("density", u), "rho_kg_m3"),
         cell("Enthalpy h", toDisplay("energy", st.h_J_mol, u, MW), unitLabel("energy", u), "h_J_mol"),
         cell("Heat capacity cp", toDisplay("heatCapacity", st.cp_J_molK, u, MW), unitLabel("heatCapacity", u), "cp_J_molK"),
-        st.phase === "liquid" ? cell("ΔHvap", toDisplay("energy", st.dHvap_J_mol, u, MW), unitLabel("energy", u), "dHvap_J_mol") : null,
+        "cv_J_molK" in st ? cell("Heat capacity cv", toDisplay("heatCapacity", st.cv_J_molK, u, MW), unitLabel("heatCapacity", u), "cv_J_molK") : null,
+        "s_J_molK" in st ? cell("Entropy s", toDisplay("heatCapacity", st.s_J_molK, u, MW), unitLabel("heatCapacity", u), "s_J_molK") : null,
+        st.phase === "liquid" || st.dHvap_J_mol != null ? cell("ΔHvap at T", toDisplay("energy", st.dHvap_J_mol, u, MW), unitLabel("energy", u), "dHvap_J_mol") : null,
         cell("Viscosity μ", toDisplay("viscosity", st.mu_Pa_s, u), unitLabel("viscosity", u), "mu_Pa_s"),
         cell("Conductivity k", toDisplay("conductivity", st.k_W_mK, u), unitLabel("conductivity", u), "k_W_mK"),
       ];

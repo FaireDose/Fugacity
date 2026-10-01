@@ -317,14 +317,16 @@ export function sampleStateProperty(p, key, P, { Tmin, Tmax, n = 200 } = {}) {
     if (!gap || gap.reason !== reason || gap.cls !== q.cls) { gap = { T0: q.T, T1: q.T, reason, cls: q.cls }; gaps.push(gap); } else gap.T1 = q.T;
   }
 
-  const sources = new Map(), notes = new Set();
+  const sources = new Map(), psatSources = new Map(), notes = new Set();
   for (const q of pts) {
     if (!q.state) continue;
     const src = q.state.sources?.[def.field];
     if (src && q.v != null) sources.set(sourceKey(src), src);
+    const ps = q.state.sources?.psat_kPa;
+    if (ps) psatSources.set(sourceKey(ps), ps);
     for (const note of q.state.notes || []) if (!/outside the (vapour-pressure )?range/i.test(note)) notes.add(note);
   }
-  return { key, P_kPa: P, segments, transitions, gaps, sources: [...sources.values()], notes: [...notes],
+  return { key, P_kPa: P, segments, transitions, gaps, sources: [...sources.values()], psatSources: [...psatSources.values()], notes: [...notes],
     count: segments.reduce((s, g) => s + g.points.length, 0) };
 }
 
@@ -359,24 +361,35 @@ export function niceValues(lo, hi, target = 10) {
 }
 
 /**
- * Saturation ("steam table") rows: temperatures at round values of the display unit inside
- * the vapour-pressure range and below Tc, each with Psat and the saturated liquid and
- * vapour states from props() (liquid just above Psat, vapour just below it). Values are in
- * engine units; null where the engine has no valid value.
- * @returns {{rows:{T:number, psat:number, [col:string]:number|null}[], columns:string[], range:[number,number]|null, message?:string}}
+ * Saturation ("steam table") rows: temperatures at round values of the display unit from
+ * the start of the vapour-pressure record up to Tc (or the end of the record, if the engine
+ * gives no vapour pressure beyond it), each with the engine's own Psat at that T (from
+ * props(), e.g. IAPWS-IF97 for water, or the vapour-pressure record) and the saturated
+ * liquid and vapour states from props() (liquid just above Psat, vapour just below it).
+ * Values are in engine units; null where the engine has no valid value.
+ * @returns {{rows:{T:number, psat:number, [col:string]:number|null}[], columns:string[],
+ *   range:[number,number]|null, psatSource:object|null, message?:string}}
  */
 export function saturationTable(p, units, { rows = 11, Tmin, Tmax } = {}) {
   const vp = p.record("vapourPressure");
-  if (!vp) return { rows: [], columns: [], range: null, message: missingMessage(p, "vapourPressure") };
-  let lo = Math.max(vp.Tmin_K, Tmin ?? -Infinity);
-  let hi = Math.min(vp.Tmax_K, Tmax ?? Infinity, p.Tc_K > 0 ? p.Tc_K * (1 - 1e-6) : Infinity);
-  if (!(hi > lo)) { lo = vp.Tmin_K; hi = Math.min(vp.Tmax_K, p.Tc_K > 0 ? p.Tc_K * (1 - 1e-6) : Infinity); }
+  if (!vp) return { rows: [], columns: [], range: null, psatSource: null, message: missingMessage(p, "vapourPressure") };
+  const engine = T => {
+    const st = statePointAll(p, T, 101.325);
+    if (st && Number.isFinite(st.psat_kPa)) return { ps: st.psat_kPa, src: st.sources?.psat_kPa ?? null };
+    try { return { ps: p.psat(T), src: { tier: vp.tier, source: vp.source } }; } catch { return null; }
+  };
+  const top = p.Tc_K > 0 && engine(p.Tc_K * 0.999) ? p.Tc_K * (1 - 1e-6) : Math.min(vp.Tmax_K, p.Tc_K > 0 ? p.Tc_K * (1 - 1e-6) : Infinity);
+  let lo = Math.max(vp.Tmin_K, Tmin ?? -Infinity), hi = Math.min(top, Tmax ?? Infinity);
+  if (!(hi > lo)) { lo = vp.Tmin_K; hi = top; }
   const Ts = niceValues(tToDisplay(lo, units), tToDisplay(hi, units), rows - 1).map(v => tFromDisplay(v, units))
     .filter(T => T >= lo - 1e-9 && T <= hi + 1e-9);
   const out = [];
+  let psatSource = null;
   for (const T of Ts) {
-    let ps;
-    try { ps = p.psat(T); } catch { continue; }
+    const e = engine(T);
+    if (!e) continue;
+    const ps = e.ps;
+    psatSource ??= e.src;
     const row = { T, psat: ps };
     const sides = { liquid: statePointAll(p, T, ps * (1 + 1e-9)), gas: statePointAll(p, T, ps * (1 - 1e-9)) };
     for (const [id, field, , cls] of SAT_COLUMNS) {
@@ -386,7 +399,7 @@ export function saturationTable(p, units, { rows = 11, Tmin, Tmax } = {}) {
     out.push(row);
   }
   const columns = SAT_COLUMNS.map(c => c[0]).filter(id => out.some(r => r[id] != null));
-  return { rows: out, columns, range: [lo, hi] };
+  return { rows: out, columns, range: [lo, hi], psatSource };
 }
 
 function statePointAll(p, T, P) { try { return p.props(T, P); } catch { return null; } }
