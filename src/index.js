@@ -13,6 +13,7 @@ import { isLiquidStable } from "./equilibrium/stability.js";
 import { checkPackage, validCas } from "./contrib/package-check.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "./thermo/pure.js";
 import { mount } from "./ui/mount.js";
+import { mountProperties } from "./ui/properties.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -45,4 +46,5 @@ export {
   bubbleT, bubbleP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
   binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
   pure, PROPERTIES, PROPERTY_NAMES,
+  mountProperties,
 };
