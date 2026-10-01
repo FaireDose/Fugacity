@@ -62,3 +62,54 @@ export function injectStyles(doc = document) {
   doc.head.appendChild(s);
   injected = true;
 }
+
+// ---------------------------------------------------------------------------------------
+// Property explorer (mountProperties). Series colours: the first six slots of a
+// categorical palette checked for colour-vision deficiency (adjacent pairs) in both themes;
+// every curve also carries a direct label, so colour is never the only key.
+const PROPS_LIGHT = `--fug-s1:#2a78d6; --fug-s2:#eb6834; --fug-s3:#1baf7a; --fug-s4:#eda100; --fug-s5:#e87ba4; --fug-s6:#4a3aa7;`;
+const PROPS_DARK = `--fug-s1:#3987e5; --fug-s2:#d95926; --fug-s3:#199e70; --fug-s4:#c98500; --fug-s5:#d55181; --fug-s6:#9085e9;`;
+
+export const PROPERTIES_CSS = `
+.fug.fug-props{${PROPS_LIGHT}}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fug.fug-props{${PROPS_DARK}} }
+:root[data-theme="dark"] .fug.fug-props{${PROPS_DARK}}
+.fug.fug-props{grid-template-columns:minmax(0,1fr)}
+.fug-props .fug-controls>label{flex-wrap:wrap; max-width:100%; min-width:0}
+.fug-props .fug-calc .v small{font-size:.75rem; font-weight:500; color:var(--fug-fg2)}
+.fug-props input[type=text]{width:9em; font:inherit; font-variant-numeric:tabular-nums; padding:4px 6px; border:1px solid var(--fug-rule); border-radius:6px; background:var(--fug-bg); color:var(--fug-fg)}
+.fug-props select{max-width:100%; min-width:0}
+.fug-props .fug-seg button{padding:5px 10px}
+.fug-props .fug-side{align-content:start}
+.fug-props .fug-plot svg{touch-action:pan-y}
+.fug-props .fug-read{display:grid; gap:6px}
+.fug-props .fug-read .row{display:flex; justify-content:space-between; gap:8px; align-items:baseline; font-size:.85rem}
+.fug-props .fug-read .row b{font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
+.fug-props .sw{display:inline-block; width:16px; border-top:2px solid; margin-right:6px; vertical-align:middle}
+.fug-props .fug-srcs{display:grid; gap:4px; font-size:.78rem; color:var(--fug-fg2); background:var(--fug-panel); border-radius:8px; padding:10px 12px; overflow-wrap:anywhere}
+.fug-props .fug-srcs .k{color:var(--fug-muted); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; margin-top:4px}
+.fug-props .fug-srcs .k:first-child{margin-top:0}
+.fug-props .miss{color:var(--fug-err-fg)}
+.fug-props .fug-tier{display:inline-block; font-size:.7rem; padding:0 6px; border-radius:999px; border:1px solid var(--fug-rule); color:var(--fug-fg2); white-space:nowrap}
+.fug-props .fug-nodata{border:1px dashed var(--fug-rule); border-radius:8px; padding:18px; display:grid; gap:6px; color:var(--fug-fg2)}
+.fug-props .fug-nodata strong{color:var(--fug-fg); font-size:1rem}
+.fug-props .fug-sec{display:grid; gap:8px; min-width:0}
+.fug-props .fug-sec h4{margin:0; font-size:.95rem; font-weight:600}
+.fug-props .fug-scroll{overflow-x:auto; max-width:100%; -webkit-overflow-scrolling:touch}
+.fug-props .fug-scroll th,.fug-props .fug-scroll td{padding:4px 8px; white-space:nowrap}
+.fug-props th .u{display:block; font-weight:400; font-size:.7rem}
+.fug-props .fug-calc{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:8px}
+.fug-props .fug-calc>div{background:var(--fug-panel); border-radius:8px; padding:8px 10px; min-width:0}
+.fug-props .fug-calc .v{font-size:1.05rem; font-weight:600; font-variant-numeric:tabular-nums}
+.fug-props .fug-calc .s{font-size:.7rem; color:var(--fug-muted); overflow-wrap:anywhere}
+`;
+
+/** Inject the base styles and the property-explorer section (once per document). */
+export function injectPropertiesStyles(doc = document) {
+  injectStyles(doc);
+  if (doc.getElementById("fugacity-styles-properties")) return;
+  const el = doc.createElement("style");
+  el.id = "fugacity-styles-properties";
+  el.textContent = PROPERTIES_CSS;
+  doc.head.appendChild(el);
+}
