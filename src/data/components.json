@@ -273,14 +273,14 @@
             "D": 0.22566
           },
           "units": "kg/m3",
-          "Tmin_K": 273.15,
+          "Tmin_K": 289.81,
           "Tmax_K": 594.45,
           "tier": "databank",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 594.45 K (ChemSep: 594.75 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0520 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 273.15-594.45 K",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 594.45 K (ChemSep: 594.75 K). Tmin raised to the triple point 289.81 K (ChemSep: 273.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0520 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 289.81-594.45 K",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
           }
         },
@@ -310,20 +310,21 @@
         "liquidHeatCapacity": {
           "equation": "DIPPR100",
           "coefficients": {
-            "A": 72.02588413,
-            "B": 0.1010661977,
-            "C": 0.0002446564515
+            "A": 71.86639811,
+            "B": 0.1019661353,
+            "C": 0.0002433967799
           },
           "units": "J/mol/K",
-          "Tmin_K": 289.69,
+          "Tmin_K": 289.81,
           "Tmax_K": 400.0,
           "tier": "fitted",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 289.69-400.00 K (ChemSep range), max deviation 0.21 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 289.81-400.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.21 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "+0.7 % vs the mean (123.10 J/mol/K) of 1 measured value at 298.15 K, 1970 or later, range 123.10-123.10 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -345,7 +346,9 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 289.81-591.95 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "-1.0 % vs 23.70 kJ/mol at 391.1 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=4)",
+            "notes": "Enthalpy of vaporization to the real, largely dimerized vapour (as measured), not to the ideal-gas monomer of the idealGasHeatCapacity record: h(liquid) = h°(T) - dHvap(T) is not consistent for acetic acid until the vapour association is included in the enthalpy."
           }
         },
         "liquidViscosity": {
@@ -358,14 +361,14 @@
             "E": 2.0
           },
           "units": "Pa s",
-          "Tmin_K": 288.15,
+          "Tmin_K": 289.81,
           "Tmax_K": 474.0,
           "tier": "databank",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 288.15-474.00 K",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 289.81 K (ChemSep: 288.15 K).; reproduces ChemSep within 0.0001 % at 200 points 289.81-474.00 K",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
           }
         },
@@ -392,18 +395,18 @@
         "liquidThermalConductivity": {
           "equation": "DIPPR100",
           "coefficients": {
-            "A": 0.2207512781,
-            "B": -0.0002007766788
+            "A": 0.2230078907,
+            "B": -0.0002072843604
           },
           "units": "W/m/K",
-          "Tmin_K": 274.09,
+          "Tmin_K": 289.81,
           "Tmax_K": 391.05,
           "tier": "fitted",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 274.09-391.05 K (ChemSep range), max deviation 0.25 %",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 289.81-391.05 K (ChemSep range, Tmin raised to the triple point), max deviation 0.11 %",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
           }
         },
@@ -430,12 +433,12 @@
         "surfaceTension": {
           "equation": "DIPPR106",
           "coefficients": {
-            "A": 0.05864842977,
-            "B": 1.143513751,
-            "C": -0.06806111503
+            "A": 0.05868268253,
+            "B": 1.144836922,
+            "C": -0.06925092128
           },
           "units": "N/m",
-          "Tmin_K": 288.15,
+          "Tmin_K": 289.81,
           "Tmax_K": 564.72,
           "Tc_K": 594.45,
           "tier": "fitted",
@@ -443,7 +446,7 @@
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 288.15-564.72 K (ChemSep range, limited to 0.95 Tc), max deviation 0.20 %",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 289.81-564.72 K (ChemSep range, Tmin raised to the triple point, limited to 0.95 Tc), max deviation 0.19 %",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
           }
         }
@@ -543,7 +546,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 260.15-493.15 K (ChemSep range), max deviation 0.22 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "-0.1 % vs the mean (149.57 J/mol/K) of 3 measured values at 298.15 K, 1970 or later, range 149.30-149.80 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -565,7 +569,7 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 260.15-695.80 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`"
           }
         },
         "liquidViscosity": {
@@ -762,7 +766,8 @@
             "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 175.61-456.50 K, max deviation 0.61 %; range narrowed from 175.61-487.71 K (max deviation there 3.7 %) to meet the 1 % target"
+            "fit": "200 points 175.61-456.50 K, max deviation 0.61 %; range narrowed from 175.61-487.71 K (max deviation there 3.7 %) to meet the 1 % target",
+            "measured": "+0.6 % vs the mean (81.06 J/mol/K) of 13 measured values at 298.15 K, 1970 or later, range 79.50-83.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -784,7 +789,8 @@
             "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
             "access": "MIT (open source)",
             "quantity": "h(saturated vapour) - h(saturated liquid)",
-            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.58 %"
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.58 %",
+            "measured": "+0.6 % vs 35.21 kJ/mol at 337.7 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4)"
           }
         },
         "liquidViscosity": {
@@ -1023,7 +1029,7 @@
             "reference": "Kiselev et al., Ind. Eng. Chem. Res. 44 (2005) 6916-6927, doi:10.1021/ie050010e",
             "access": "MIT (open source)",
             "quantity": "saturated liquid",
-            "fit": "200 points 175.61-488.97 K, max deviation 1.3 %; range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target"
+            "fit": "200 points 175.61-488.97 K, max deviation 1.3 %; range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (159.11 K)"
           }
         },
         "vapourViscosity": {
@@ -1202,7 +1208,8 @@
             "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 178.50-467.48 K, max deviation 0.72 %; range narrowed from 178.50-482.69 K (max deviation there 2.0 %) to meet the 1 % target"
+            "fit": "200 points 178.50-467.48 K, max deviation 0.72 %; range narrowed from 178.50-482.69 K (max deviation there 2.0 %) to meet the 1 % target",
+            "measured": "-0.3 % vs the mean (125.71 J/mol/K) of 8 measured values at 298.15 K, 1970 or later, range 123.80-129.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -1223,7 +1230,8 @@
             "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
             "access": "MIT (open source)",
             "quantity": "h(saturated vapour) - h(saturated liquid)",
-            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.12 %"
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.12 %",
+            "measured": "+0.0 % vs 29.10 kJ/mol at 329.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=4)"
           }
         },
         "liquidViscosity": {
@@ -1270,18 +1278,18 @@
         "liquidThermalConductivity": {
           "equation": "DIPPR100",
           "coefficients": {
-            "A": 0.2848117638,
-            "B": -0.0004147876836
+            "A": 0.284823245,
+            "B": -0.0004148303165
           },
           "units": "W/m/K",
-          "Tmin_K": 178.45,
+          "Tmin_K": 178.5,
           "Tmax_K": 343.15,
           "tier": "fitted",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 178.45-343.15 K (ChemSep range), max deviation 0.49 %",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 178.50-343.15 K (ChemSep range, Tmin raised to the triple point), max deviation 0.49 %",
             "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: acetone is not a WebBook fluid"
           }
         },
@@ -1367,14 +1375,14 @@
             "D": 0.18541
           },
           "units": "kg/m3",
-          "Tmin_K": 209.0,
+          "Tmin_K": 209.63,
           "Tmax_K": 535.95,
           "tier": "databank",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 119.3776 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 209.00-535.95 K",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 209.63 K (ChemSep: 209.00 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 119.3776 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 209.63-535.95 K",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
           }
         },
@@ -1417,7 +1425,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 233.15-366.48 K (ChemSep range), max deviation 0.075 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "-0.1 % vs the mean (114.33 J/mol/K) of 9 measured values at 298.15 K, 1970 or later, range 113.20-115.50 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -1439,7 +1448,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 209.63-536.40 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "+0.3 % vs 29.24 kJ/mol at 334.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=4)"
           }
         },
         "liquidViscosity": {
@@ -1853,7 +1863,8 @@
             "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 178.00-542.95 K, max deviation 0.54 %; range narrowed from 178.00-562.16 K (max deviation there 1.8 %) to meet the 1 % target"
+            "fit": "200 points 178.00-542.95 K, max deviation 0.54 %; range narrowed from 178.00-562.16 K (max deviation there 1.8 %) to meet the 1 % target",
+            "measured": "+0.1 % vs the mean (157.23 J/mol/K) of 15 measured values at 298.15 K, 1970 or later, range 155.96-158.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -1874,7 +1885,8 @@
             "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
             "access": "MIT (open source)",
             "quantity": "h(saturated vapour) - h(saturated liquid)",
-            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.17 %"
+            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.17 %",
+            "measured": "-0.0 % vs 33.18 kJ/mol at 383.8 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4)"
           }
         },
         "liquidViscosity": {
@@ -1895,7 +1907,7 @@
             "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 44 (2015) 033101, doi:10.1063/1.4926955",
             "access": "MIT (open source)",
             "quantity": "saturated liquid",
-            "fit": "200 points 197.21-562.16 K, max deviation 2.8 %; range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target"
+            "fit": "200 points 197.21-562.16 K, max deviation 2.8 %; range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (178.00 K)"
           }
         },
         "vapourViscosity": {
@@ -2058,21 +2070,22 @@
         "liquidHeatCapacity": {
           "equation": "DIPPR100",
           "coefficients": {
-            "A": 290.7845755,
-            "B": -1.41773621,
-            "C": 0.004747277211,
-            "D": -4.433144396e-06
+            "A": 290.46453,
+            "B": -1.414360382,
+            "C": 0.004735726596,
+            "D": -4.420309793e-06
           },
           "units": "J/mol/K",
-          "Tmin_K": 189.3,
+          "Tmin_K": 189.6,
           "Tmax_K": 391.65,
           "tier": "fitted",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 189.30-391.65 K (ChemSep range), max deviation 0.076 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 189.60-391.65 K (ChemSep range, Tmin raised to the triple point), max deviation 0.075 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "+2.0 % vs the mean (169.25 J/mol/K) of 8 measured values at 298.15 K, 1970 or later, range 167.40-170.59 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=2)"
           }
         },
         "heatOfVaporization": {
@@ -2094,7 +2107,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 189.60-505.74 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+            "measured": "+0.7 % vs 31.94 kJ/mol at 350.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=4)"
           }
         },
         "liquidViscosity": {
@@ -3394,14 +3408,14 @@
             "E": 2.0
           },
           "units": "Pa s",
-          "Tmin_K": 103.1,
+          "Tmin_K": 104.0,
           "Tmax_K": 282.34,
           "tier": "databank",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 282.34 K (ChemSep: 283.00 K).; reproduces ChemSep within 0.0001 % at 200 points 103.10-282.34 K",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 282.34 K (ChemSep: 283.00 K). Tmin raised to the triple point 104.00 K (ChemSep: 103.10 K).; reproduces ChemSep within 0.0001 % at 200 points 104.00-282.34 K",
             "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
           }
         },
@@ -3428,19 +3442,19 @@
         "liquidThermalConductivity": {
           "equation": "DIPPR100",
           "coefficients": {
-            "A": 0.4030635383,
-            "B": -0.001422677288,
-            "C": 9.193351072e-07
+            "A": 0.4050215335,
+            "B": -0.001442125254,
+            "C": 9.654246409e-07
           },
           "units": "W/m/K",
-          "Tmin_K": 100.0,
+          "Tmin_K": 104.0,
           "Tmax_K": 268.22,
           "tier": "fitted",
           "source": {
             "name": "ChemSep v8.3 pure-component database",
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 100.00-268.22 K (ChemSep range, limited to 0.95 Tc), max deviation 0.47 %",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 104.00-268.22 K (ChemSep range, Tmin raised to the triple point, limited to 0.95 Tc), max deviation 0.40 %",
             "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
           }
         },

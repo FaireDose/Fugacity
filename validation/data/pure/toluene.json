@@ -202,7 +202,8 @@
     "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 178.00-542.95 K, max deviation 0.54 %; range narrowed from 178.00-562.16 K (max deviation there 1.8 %) to meet the 1 % target"
+    "fit": "200 points 178.00-542.95 K, max deviation 0.54 %; range narrowed from 178.00-562.16 K (max deviation there 1.8 %) to meet the 1 % target",
+    "measured": "+0.1 % vs the mean (157.23 J/mol/K) of 15 measured values at 298.15 K, 1970 or later, range 155.96-158.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=2)"
    },
    "T_K": [
     178.0,
@@ -298,7 +299,8 @@
     "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
     "access": "MIT (open source)",
     "quantity": "h(saturated vapour) - h(saturated liquid)",
-    "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.17 %"
+    "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.17 %",
+    "measured": "-0.0 % vs 33.18 kJ/mol at 383.8 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4)"
    },
    "T_K": [
     178.0,
@@ -394,7 +396,7 @@
     "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 44 (2015) 033101, doi:10.1063/1.4926955",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 197.21-562.16 K, max deviation 2.8 %; range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target"
+    "fit": "200 points 197.21-562.16 K, max deviation 2.8 %; range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (178.00 K)"
    },
    "T_K": [
     197.21,

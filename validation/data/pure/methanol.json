@@ -202,7 +202,8 @@
     "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 175.61-456.50 K, max deviation 0.61 %; range narrowed from 175.61-487.71 K (max deviation there 3.7 %) to meet the 1 % target"
+    "fit": "200 points 175.61-456.50 K, max deviation 0.61 %; range narrowed from 175.61-487.71 K (max deviation there 3.7 %) to meet the 1 % target",
+    "measured": "+0.6 % vs the mean (81.06 J/mol/K) of 13 measured values at 298.15 K, 1970 or later, range 79.50-83.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=2)"
    },
    "T_K": [
     175.61,
@@ -298,7 +299,8 @@
     "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
     "access": "MIT (open source)",
     "quantity": "h(saturated vapour) - h(saturated liquid)",
-    "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.58 %"
+    "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.58 %",
+    "measured": "+0.6 % vs 35.21 kJ/mol at 337.7 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4)"
    },
    "T_K": [
     175.61,

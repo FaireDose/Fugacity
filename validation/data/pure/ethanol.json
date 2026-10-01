@@ -394,7 +394,7 @@
     "reference": "Kiselev et al., Ind. Eng. Chem. Res. 44 (2005) 6916-6927, doi:10.1021/ie050010e",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 175.61-488.97 K, max deviation 1.3 %; range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target"
+    "fit": "200 points 175.61-488.97 K, max deviation 1.3 %; range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (159.11 K)"
    },
    "T_K": [
     175.61,

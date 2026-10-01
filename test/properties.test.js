@@ -122,22 +122,61 @@ test("the gases' vapour pressures give their normal boiling points within 0.1 K"
   }
 });
 
+// Enthalpy: h(liquid) = h°(T) - ΔHvap(T) in pure.js is not asserted for acetic acid. Its ideal-gas cp
+// is the monomer's and its ΔHvap is to the real, largely dimerized vapour, so that h is not consistent
+// (review of #12, finding 1; the fix needs the vapour association / equation of state, #13).
+const ENTHALPY_NOT_CONSISTENT = new Set(["acetic-acid"]);
+
 test("props() returns liquid and vapour properties for every component at a typical state", () => {
   for (const { id, name } of listComponents()) {
     const p = pure(id);
     const isGas = GASES.includes(id);
     // liquid: 25 °C for the liquids (acetic acid: 30 °C, above its melting point), Tb - 5 K for the gases
     const TL = isGas ? p.Tb_K - 5 : id === "acetic-acid" ? 303.15 : 298.15;
-    const L = p.props(TL, isGas ? 101.325 : 101.325);
+    const L = p.props(TL, 101.325);
     assert.equal(L.phase, "liquid", name);
-    for (const k of ["rho_kg_m3", "cp_J_molK", "dHvap_J_mol", "h_J_mol", "mu_Pa_s", "k_W_mK"]) {
+    const hKeys = ENTHALPY_NOT_CONSISTENT.has(id) ? [] : ["h_J_mol"];
+    for (const k of ["rho_kg_m3", "cp_J_molK", "dHvap_J_mol", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       assert.ok(Number.isFinite(L[k]), `${name} liquid ${k}: ${L.notes.join(" ")}`);
     }
     // vapour: 10 K above the normal boiling point at 1 kPa
     const V = p.props(p.Tb_K + 10, 1);
     assert.equal(V.phase, "vapour", name);
-    for (const k of ["cp_J_molK", "h_J_mol", "mu_Pa_s", "k_W_mK"]) {
+    for (const k of ["cp_J_molK", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       assert.ok(Number.isFinite(V[k]), `${name} vapour ${k}: ${V.notes.join(" ")}`);
     }
   }
+});
+
+test("the acetic-acid records carry the enthalpy-consistency warning", () => {
+  const props = components["acetic-acid"].properties;
+  assert.match(props.idealGasHeatCapacity.source.notes, /[Mm]onomer/);
+  assert.match(props.heatOfVaporization.source.notes, /dimerized/);
+});
+
+// Measured data, independent of the sources the records were fitted to: NIST WebBook liquid heat
+// capacities at 25 °C and heats of vaporization at the normal boiling point
+// (validation/data/pure/measured/webbook.json, with the rules and references). Tolerance 2 %, the
+// heat-capacity and heat-of-vaporization tolerances of the engineering report in proposal 0002.
+test("records agree with measured data from the NIST WebBook within 2 %", () => {
+  const M = JSON.parse(readFileSync(new URL("measured/webbook.json", POINTS_DIR)));
+  let n = 0;
+  for (const [id, e] of Object.entries(M.liquidHeatCapacity)) {
+    const used = e.values.filter(v => v.year >= 1970 && Math.abs(v.T_K - 298.15) <= 0.5);
+    assert.ok(used.length > 0, id);
+    const mean = used.reduce((s, v) => s + v.cp_J_molK, 0) / used.length;
+    const got = pure(id).property("liquidHeatCapacity", 298.15);
+    const dev = got / mean - 1;
+    assert.ok(Math.abs(dev) <= M.tolerance.liquidHeatCapacity,
+      `${id} cpL(298.15 K) ${got.toFixed(2)} vs measured mean ${mean.toFixed(2)} J/(mol K): ${(dev * 100).toFixed(2)} %`);
+    n++;
+  }
+  for (const [id, e] of Object.entries(M.heatOfVaporization)) {
+    const got = pure(id).property("heatOfVaporization", e.T_K) / 1000;
+    const dev = got / e.dHvap_kJ_mol - 1;
+    assert.ok(Math.abs(dev) <= M.tolerance.heatOfVaporization,
+      `${id} ΔHvap(${e.T_K} K) ${got.toFixed(3)} vs ${e.dHvap_kJ_mol} kJ/mol: ${(dev * 100).toFixed(2)} %`);
+    n++;
+  }
+  assert.ok(n >= 12, `only ${n} comparisons`);
 });

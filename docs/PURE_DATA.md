@@ -7,7 +7,7 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Component | Psat | ρL | cp° | cpL | ΔHvap | μL | μV | kL | kV | σ |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Water | existing | CoolProp 0.19 (f) | CoolProp 0.014 (f) | CoolProp 0.49 (f) | CoolProp 0.048 (f) | CoolProp 1.2 (f) | CoolProp 0.65 (f) | CoolProp 0.61 (f) | CoolProp 0.080 (f) | CoolProp 0.41 (f) |
-| Acetic acid | existing | ChemSep 0.0001 (d) | WebBook 0.89 (f) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) |
+| Acetic acid | existing | ChemSep 0.0001 (d) | WebBook 0.89 (f) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.11 (f) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) |
 | Ethylene glycol | existing | ChemSep 0.0001 (d) | WebBook 0.054 (f) | ChemSep 0.22 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) | ChemSep 0.0001 (d) | ChemSep 0.095 (f) |
 | Methanol | existing | CoolProp 0.73 (f) | CoolProp 0.081 (f) | CoolProp 0.61 (f) | CoolProp 0.58 (f) | CoolProp 1.9 (f) | CoolProp 0.088 (f) | CoolProp 0.55 (f) | CoolProp 0.62 (f) | CoolProp 0.19 (f) |
 | Ethanol | existing | CoolProp 0.98 (f) | CoolProp 0.16 (f) | CoolProp 0.80 (f) | CoolProp 0.36 (f) | CoolProp 1.3 (f) | CoolProp 0.038 (f) | CoolProp 0.12 (f) | CoolProp 0.62 (f) | CoolProp 0.13 (f) |
@@ -15,13 +15,13 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Chloroform | existing | ChemSep 0.0001 (d) | WebBook 0.095 (f) | ChemSep 0.075 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.0001 (d) | ChemSep 0.095 (f) |
 | Benzene | existing | CoolProp 0.14 (f) | CoolProp 0.019 (f) | CoolProp 0.54 (f) | CoolProp 0.063 (f) | CoolProp 0.52 (f) | CoolProp 0.0086 (f) | CoolProp 0.30 (f) | CoolProp 0.28 (f) | CoolProp 0.100 (f) |
 | Toluene | existing | CoolProp 0.46 (f) | CoolProp 0.13 (f) | CoolProp 0.54 (f) | CoolProp 0.17 (f) | CoolProp 2.8 (f) | CoolProp 0.064 (f) | CoolProp 0.29 (f) | CoolProp 1.6 (f) | CoolProp 0.00057 (f) |
-| Ethyl acetate | existing | ChemSep 0.0001 (d) | WebBook 0.015 (f) | ChemSep 0.076 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.55 (f) | ChemSep 0.0001 (d) | ChemSep 0.39 (f) |
+| Ethyl acetate | existing | ChemSep 0.0001 (d) | WebBook 0.015 (f) | ChemSep 0.075 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.55 (f) | ChemSep 0.0001 (d) | ChemSep 0.39 (f) |
 | Oxygen | CoolProp 0.12 (f) | CoolProp 0.22 (f) | CoolProp 0.026 (f) | CoolProp 0.73 (f) | CoolProp 0.059 (f) | CoolProp 0.55 (f) | CoolProp 0.097 (f) | CoolProp 0.22 (f) | CoolProp 0.047 (f) | CoolProp 0.040 (f) |
 | Nitrogen | CoolProp 0.082 (f) | CoolProp 0.059 (f) | CoolProp 0.0085 (f) | CoolProp 0.56 (f) | CoolProp 0.0088 (f) | CoolProp 0.36 (f) | CoolProp 0.044 (f) | CoolProp 0.19 (f) | CoolProp 0.099 (f) | CoolProp 0.0001 (f) |
 | Hydrogen | CoolProp 0.068 (f) | CoolProp 0.15 (f) | CoolProp 0.21 (f) | CoolProp 0.57 (f) | CoolProp 0.34 (f) | CoolProp 0.28 (f) | CoolProp 0.63 (f) | CoolProp 0.33 (f) | CoolProp 2.9 (f) | CoolProp 0.24 (f) |
 | Methane | CoolProp 0.091 (f) | CoolProp 0.047 (f) | CoolProp 0.024 (f) | CoolProp 0.56 (f) | CoolProp 0.039 (f) | CoolProp 0.29 (f) | CoolProp 0.069 (f) | CoolProp 0.62 (f) | CoolProp 1.3 (f) | CoolProp 0.16 (f) |
 | Ethane | CoolProp 0.21 (f) | CoolProp 0.22 (f) | CoolProp 0.62 (f) | CoolProp 0.46 (f) | CoolProp 0.071 (f) | CoolProp 0.69 (f) | CoolProp 0.38 (f) | CoolProp 0.42 (f) | CoolProp 1.3 (f) | CoolProp 0.23 (f) |
-| Ethylene | CoolProp 0.12 (f) | CoolProp 0.24 (f) | CoolProp 0.019 (f) | CoolProp 0.61 (f) | CoolProp 0.069 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.47 (f) | ChemSep 0.0001 (d) | CoolProp 0.0001 (f) |
+| Ethylene | CoolProp 0.12 (f) | CoolProp 0.24 (f) | CoolProp 0.019 (f) | CoolProp 0.61 (f) | CoolProp 0.069 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.40 (f) | ChemSep 0.0001 (d) | CoolProp 0.0001 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -30,21 +30,21 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Component | ρL | cp° | cpL | ΔHvap | μL | μV | kL | kV | σ |
 |---|---|---|---|---|---|---|---|---|---|
 | Water | 273.17–614.74 | 273.17–1500 | 273.17–580.58 | 273.17–614.74 | 273.17–614.74 | 273.17–1000 | 273.17–614.74 | 273.17–1000 | 273.17–614.74 |
-| Acetic acid | 273.15–594.45 | 50–1500 | 289.69–400 | 289.81–591.95 | 288.15–474 | 289.81–1000 | 274.09–391.05 | 289.81–468.55 | 288.15–564.72 |
+| Acetic acid | 289.81–594.45 | 50–1500 | 289.81–400 | 289.81–591.95 | 289.81–474 | 289.81–1000 | 289.81–391.05 | 289.81–468.55 | 289.81–564.72 |
 | Ethylene glycol | 260.15–695.8 | 200–1000 | 260.15–493.15 | 260.15–695.8 | 260.15–576 | 260.15–1000 | 260.15–470.45 | 260.15–1000 | 260.15–470.45 |
 | Methanol | 175.61–487.71 | 175.61–620 | 175.61–456.5 | 175.61–487.71 | 175.61–487.71 | 175.61–620 | 175.61–487.71 | 175.61–620 | 175.61–487.71 |
 | Ethanol | 159.11–488.97 | 159.11–650 | 175.61–472.47 | 159.11–488.97 | 175.61–488.97 | 159.11–650 | 159.11–488.97 | 159.11–650 | 159.11–488.97 |
-| Acetone | 178.5–482.69 | 178.5–550 | 178.5–467.48 | 178.5–482.69 | 190–408 | 178.45–1000 | 178.45–343.15 | 178.45–1000 | 178.5–482.69 |
-| Chloroform | 209–535.95 | 298–1200 | 233.15–366.48 | 209.63–536.4 | 209.63–436 | 209.63–1000 | 209.63–400 | 209.63–1000 | 209.63–509.67 |
+| Acetone | 178.5–482.69 | 178.5–550 | 178.5–467.48 | 178.5–482.69 | 190–408 | 178.45–1000 | 178.5–343.15 | 178.45–1000 | 178.5–482.69 |
+| Chloroform | 209.63–535.95 | 298–1200 | 233.15–366.48 | 209.63–536.4 | 209.63–436 | 209.63–1000 | 209.63–400 | 209.63–1000 | 209.63–509.67 |
 | Benzene | 278.68–533.91 | 278.68–725 | 278.68–521.14 | 278.68–533.91 | 278.68–533.91 | 278.68–725 | 278.68–533.91 | 278.68–725 | 278.68–533.91 |
 | Toluene | 178–562.16 | 178–700 | 178–542.95 | 178–562.16 | 197.21–562.16 | 178–700 | 178–562.16 | 178–700 | 178–562.16 |
-| Ethyl acetate | 189.6–523.2 | 298.15–1000 | 189.3–391.65 | 189.6–505.74 | 220–473.15 | 189.6–1000 | 189.6–350.21 | 189.6–990.21 | 189.6–497.04 |
+| Ethyl acetate | 189.6–523.2 | 298.15–1000 | 189.6–391.65 | 189.6–505.74 | 220–473.15 | 189.6–1000 | 189.6–350.21 | 189.6–990.21 | 189.6–497.04 |
 | Oxygen | 54.37–146.86 | 54.37–1500 | 54.37–137.61 | 54.37–146.86 | 54.37–146.86 | 54.37–1000 | 54.37–146.86 | 54.37–1000 | 54.37–146.86 |
 | Nitrogen | 63.16–119.88 | 63.16–1500 | 63.16–114.2 | 63.16–119.88 | 63.16–119.88 | 63.16–1000 | 63.16–119.88 | 63.16–1000 | 63.16–119.88 |
 | Hydrogen | 13.96–31.48 | 13.96–1000 | 13.96–28.85 | 13.96–31.48 | 13.96–31.48 | 13.96–1000 | 13.96–31.48 | 13.96–1000 | 13.96–31.48 |
 | Methane | 90.7–181.03 | 90.7–625 | 90.7–171.99 | 90.7–181.03 | 90.7–181.03 | 90.7–625 | 90.7–181.03 | 90.7–625 | 90.7–181.03 |
 | Ethane | 90.37–290.05 | 90.37–675 | 90.37–270.08 | 90.37–290.05 | 90.37–290.05 | 90.37–675 | 90.37–290.05 | 90.37–675 | 90.37–290.05 |
-| Ethylene | 103.99–268.23 | 103.99–450 | 103.99–251.8 | 103.99–268.23 | 103.1–282.34 | 169.41–1000 | 100–268.22 | 170–590.92 | 103.99–268.23 |
+| Ethylene | 103.99–268.23 | 103.99–450 | 103.99–251.8 | 103.99–268.23 | 104–282.34 | 169.41–1000 | 104–268.22 | 170–590.92 | 103.99–268.23 |
 
 Temperatures in K.
 
@@ -72,13 +72,13 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 |---|---|---|---|---|---|
 | ρL | kg/m³ | 1042.8 | 1042.8 | -0.00 % | – |
 | cp° | J/(mol·K) | 63.657 | 63.44 | 0.34 % | 64.085 |
-| cpL | J/(mol·K) | 123.91 | 123.86 | 0.04 % | – |
+| cpL | J/(mol·K) | 123.9 | 123.86 | 0.03 % | – |
 | ΔHvap | kJ/mol | 22.827 | 22.827 | 0.00 % | – |
 | μL | mPa·s | 1.1188 | 1.1188 | 0.00 % | – |
 | μV | μPa·s | 7.3164 | 7.3164 | 0.00 % | – |
-| kL | mW/(m·K) | 160.89 | 161.23 | -0.21 % | – |
+| kL | mW/(m·K) | 161.21 | 161.23 | -0.02 % | – |
 | kV | mW/(m·K) | 16.225 | 16.225 | 0.00 % | – |
-| σ | mN/m | 27.089 | 27.054 | 0.13 % | – |
+| σ | mN/m | 27.091 | 27.054 | 0.14 % | – |
 
 ### Ethylene glycol, T = 298.15 K
 
@@ -278,9 +278,39 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | ΔHvap | kJ/mol | 13.534 | 13.533 | 0.01 % | 13.526 |
 | μL | mPa·s | 0.16775 | 0.16775 | 0.00 % | – |
 | μV | μPa·s | – | – | – | – |
-| kL | mW/(m·K) | 188.47 | 188.78 | -0.17 % | – |
+| kL | mW/(m·K) | 188.45 | 188.78 | -0.17 % | – |
 | kV | mW/(m·K) | – | – | – | – |
 | σ | mN/m | 16.333 | 16.333 | 0.00 % | 16.492 |
+
+## Comparison with measured data
+
+Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
+
+| Component | Property | Record | Deviation from measured |
+|---|---|---|---|
+| Acetic acid | cpL(298.15 K) 123.90 | +0.7 % vs the mean (123.10 J/mol/K) of 1 measured value at 298.15 K, 1970 or later, range 123.10-123.10 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=2) |
+| Ethylene glycol | cpL(298.15 K) 149.43 | -0.1 % vs the mean (149.57 J/mol/K) of 3 measured values at 298.15 K, 1970 or later, range 149.30-149.80 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2) |
+| Chloroform | cpL(298.15 K) 114.20 | -0.1 % vs the mean (114.33 J/mol/K) of 9 measured values at 298.15 K, 1970 or later, range 113.20-115.50 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=2) |
+| Ethyl acetate | cpL(298.15 K) 172.59 | +2.0 % vs the mean (169.25 J/mol/K) of 8 measured values at 298.15 K, 1970 or later, range 167.40-170.59 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=2) |
+| Methanol | cpL(298.15 K) 81.59 | +0.6 % vs the mean (81.06 J/mol/K) of 13 measured values at 298.15 K, 1970 or later, range 79.50-83.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=2) |
+| Acetone | cpL(298.15 K) 125.34 | -0.3 % vs the mean (125.71 J/mol/K) of 8 measured values at 298.15 K, 1970 or later, range 123.80-129.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=2) |
+| Toluene | cpL(298.15 K) 157.35 | +0.1 % vs the mean (157.23 J/mol/K) of 15 measured values at 298.15 K, 1970 or later, range 155.96-158.70 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=2) |
+| Acetic acid | dHvap(391.1 K) 23.469 kJ/mol | -1.0 % vs 23.70 kJ/mol at 391.1 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=4) |
+| Chloroform | dHvap(334.3 K) 29.328 kJ/mol | +0.3 % vs 29.24 kJ/mol at 334.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=4) |
+| Ethyl acetate | dHvap(350.3 K) 32.179 kJ/mol | +0.7 % vs 31.94 kJ/mol at 350.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=4) |
+| Methanol | dHvap(337.7 K) 35.436 kJ/mol | +0.6 % vs 35.21 kJ/mol at 337.7 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4) |
+| Acetone | dHvap(329.3 K) 29.101 kJ/mol | +0.0 % vs 29.10 kJ/mol at 329.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=4) |
+| Toluene | dHvap(383.8 K) 33.178 kJ/mol | -0.0 % vs 33.18 kJ/mol at 383.8 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4) |
+
+## Range limits to note
+
+Liquid records whose range was narrowed by the fit so that it starts above the other liquid properties of the component, and vapour records that start above the normal boiling point. (ChemSep records keep ChemSep's own ranges, raised to the triple point where ChemSep starts below it; see Ranges.) Outside its range a record throws; `props()` then returns null for that property, with a note.
+
+- Ethanol, cpL: starts at 175.61 K, above the other liquid properties (159.11 K): range narrowed from 159.11-488.97 K (max deviation there 3.6 %) to meet the 1 % target
+- Ethanol, μL: starts at 175.61 K, above the other liquid properties (159.11 K): range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (159.11 K)
+- Toluene, μL: starts at 197.21 K, above the other liquid properties (178 K): range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (178.00 K)
+- Ethylene, μV: starts at 169.41 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 169.41 K have no value.
+- Ethylene, kV: starts at 170 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 170 K have no value.
 
 ## Cross-checks
 

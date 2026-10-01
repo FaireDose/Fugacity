@@ -142,7 +142,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 260.15-493.15 K (ChemSep range), max deviation 0.22 %",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
+    "measured": "-0.1 % vs the mean (149.57 J/mol/K) of 3 measured values at 298.15 K, 1970 or later, range 149.30-149.80 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2)"
    },
    "T_K": [
     260.15,
@@ -238,7 +239,7 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 260.15-695.80 K",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`"
    },
    "T_K": [
     260.15,
