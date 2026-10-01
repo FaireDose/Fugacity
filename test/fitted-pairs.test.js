@@ -6,6 +6,10 @@ import { findAzeotrope } from "../src/equilibrium/azeotrope.js";
 
 // Pairs fitted to open isobaric T-x-y data (validation/python/fit_parameters.py, "txy-file").
 // Each data file is compared with both models; rows of pure components are left out, as in the fit.
+// These T-x-y tests compare each model with the same data it was fitted to: they guard the fit
+// quality against regressions, they are not independent validation. The independent checks are
+// the handbook binary azeotropes (azeotropes.test.js) and the ternary saddle azeotrope below,
+// which is not in the fit objective.
 const load = p => JSON.parse(readFileSync(new URL(p, import.meta.url)));
 const TXY_FILES = [
   "acetone_methanol_101kPa.json",
