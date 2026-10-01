@@ -3,7 +3,6 @@
  "type": "pair-data",
  "summary": "Acetic acid + ethylene glycol: isothermal P-x at 363.15 K and excess enthalpy at 323.15 K",
  "prepared_with": "Claude (example package)",
- "checked_by_human": true,
  "components": [
   {
    "name": "Acetic acid",

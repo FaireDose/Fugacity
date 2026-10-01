@@ -5,8 +5,8 @@ import { join } from "node:path";
 
 // Every page and instruction that loads Fugacity from the CDN must use the current version,
 // so assistants never build pages with an outdated or unpublished release.
-// Design documents (ARCHITECTURE, SECURITY, proposals) may mention other versions as examples.
-const EXEMPT = ["ARCHITECTURE.md", "SECURITY.md", "ROADMAP.md", "proposals"];
+// Design documents (ARCHITECTURE, ROADMAP, proposals) may mention other versions as examples.
+const EXEMPT = ["ARCHITECTURE.md", "ROADMAP.md", "proposals"];
 const root = new URL("..", import.meta.url).pathname;
 const version = JSON.parse(readFileSync(join(root, "package.json"))).version;
 

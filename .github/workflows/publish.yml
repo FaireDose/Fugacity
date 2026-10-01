@@ -1,38 +1,62 @@
-# Publishes the package to npm when a GitHub release is published.
-# Uses npm trusted publishing: npm checks that the request comes from this
-# workflow in FaireDose/Fugacity, so no npm token is stored anywhere.
+# Publishes the package to npm and attaches the skill zips when a GitHub release is published.
+# npm trusted publishing: npm accepts the upload only from this workflow file in
+# FaireDose/Fugacity, so no npm token is stored anywhere, and it adds a provenance record.
 # Configured on npmjs.com under Packages > fugacity > Settings > Trusted publishing.
+# Each job gets only the permissions it needs. Actions are pinned to commit SHAs.
 name: Publish to npm
 
 on:
   release:
     types: [published]
 
+permissions: {}
+
 jobs:
-  publish:
+  verify:
     runs-on: ubuntu-latest
     permissions:
-      contents: write    # to attach the skill files to the release
-      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
-      # trusted publishing needs npm 11.5.1 or newer
-      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm run build
       - run: npm test
+
+  npm:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read     # to check out the code
+      id-token: write    # for npm trusted publishing and provenance
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      # trusted publishing needs npm 11.5.1 or newer; npm 11 runs on Node 22
+      - run: npm install -g npm@11
+      - run: npm ci
       - run: npm publish --provenance --access public
+
+  skills:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write    # to attach the skill zips to the release
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Attach the skills to the release
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
         run: |
           mkdir -p skill-zips
           for d in ai/skills/*/; do
             n=$(basename "$d")
             (cd ai/skills && zip -qr "../../skill-zips/$n.zip" "$n")
           done
-          gh release upload "${{ github.event.release.tag_name }}" skill-zips/*.zip --clobber
+          gh release upload "$TAG" skill-zips/*.zip --clobber

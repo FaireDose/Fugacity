@@ -11,6 +11,9 @@ sources with their own terms, recorded in the `source` field of every entry.
 | Critical constants, normal boiling points and acentric factors of the gases; acentric factors of water, methanol, ethanol, acetone, benzene and toluene | CoolProp 8.0.0 (open source), from the reference equations of state cited in each entry | MIT |
 | Acentric factors of acetic acid, ethylene glycol, chloroform and ethyl acetate | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
 | Vapour-pressure coefficients | Fitted for Fugacity to correlations in the open-source thermo library (MIT); the method used is named in each entry | MIT |
+| Acetic acid + ethylene glycol P-x and excess enthalpy (`validation/data/schmid2007_acetic_acid_ethylene_glycol.json`, `ai/examples/acetic-acid_ethylene-glycol.json`) | B. Schmid, M. Döker, J. Gmehling, Fluid Phase Equilibria 258 (2007) 115–124, as published in the NIST TRC ThermoML Archive | The article is subscription-only; the data is public in the ThermoML Archive, recorded as "NIST open license" in the file's `source` |
+| Binary azeotropes at 1 atm (`validation/data/azeotropes_101kPa.json`) and water + ethylene glycol T-x-y at 760 mmHg (`validation/data/water_ethylene_glycol_760mmHg.json`) | Wikipedia, "Azeotrope tables" and "Ethylene glycol (data page)", compiling handbook and literature values | Wikipedia text under CC BY-SA, as recorded in each file's `source`; used as test references only, not part of the npm package |
+| Reference results (`validation/fixtures/`) | Computed with Fugacity's Python reference model (`validation/python/`) | MIT |
 
 Before adding data from a new source, check that its license allows redistribution,
 and record the source and license here.

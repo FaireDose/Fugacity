@@ -57,7 +57,8 @@ Fugacity.listComponents();        // what the databank holds
   water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
   acid and ethylene glycol. Not every pair has parameters: the widget names missing
   pairs. If the user asks for other chemicals or pairs, say they are not in the
-  databank yet and point to the issue forms; do not invent parameters.
+  databank yet and point to https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md;
+  do not invent parameters.
 - Missing binary parameters raise an error that names the pair. Do not switch on
   `allowMissingPairs` without telling the user that those pairs will be treated as ideal.
 - Results are model predictions. Say so, and point to the parameter sources the widget

@@ -10,18 +10,18 @@ passwords.
 
 ## Develop the simulator
 
-### Add a thermodynamic model (for example an equation of state)
+### Add a thermodynamic model
 
 > Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md,
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md and
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/proposals/0000-template.md.
-> I want to add the **Peng–Robinson equation of state with van der Waals mixing rules** to
-> Fugacity. Help me write the proposal: the equations with open references, which layer
-> and interface it extends, which new component data it needs and from which open
-> sources, and how we will validate it (independent implementation and open data).
+> I want to add the **Wilson activity model** to Fugacity. Help me write the proposal:
+> the equations with open references, which layer and interface it extends, which new
+> component data it needs and from which open sources, and how we will validate it
+> (independent implementation and open data).
 
-Other models: SRK, Wilson, modified UNIFAC (Dortmund), Peng–Robinson with Wong–Sandler
-mixing, liquid-liquid equilibria.
+Other models: modified UNIFAC (Dortmund), Peng–Robinson with Wong–Sandler mixing,
+liquid-liquid equilibria.
 
 ### Build an algorithm or a unit operation
 
@@ -35,7 +35,7 @@ mixing, liquid-liquid equilibria.
 Other items: dew points, PH flash, tangent-plane stability test, stream object, mixer,
 flash drum, recycle solver, shortcut column, McCabe–Thiele view.
 
-### Implement an accepted proposal (coding agents, level 3)
+### Implement an accepted proposal (coding agents)
 
 > Follow AGENTS.md. Implement **proposal 0001 (property package)** in this repository:
 > code in the right layer, tests against an independent calculation and open data, all
@@ -87,11 +87,11 @@ Pick your pair from the [data wanted list](../docs/DATA_WANTED.md).
 
 ## After the assistant answers
 
-- **Proposals and development ideas:** read the draft critically; you are the engineer.
-  Submit it with the
-  [model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
-  form, or let your coding agent open a pull request (see CONTRIBUTING.md, level 3).
-- **Data packages:** check every number against the source, set
-  `"checked_by_human": true`, and submit with the
-  [AI-prepared contribution](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml)
-  form.
+Read the result critically; you are the engineer. Check every number against its source,
+then submit:
+
+- proposals and development ideas: the
+  [Proposal, model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
+  form, or let your coding agent open a pull request ([CONTRIBUTING.md](../CONTRIBUTING.md));
+- data packages, components, corrections: the
+  [Data](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml) form.

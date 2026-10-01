@@ -56,7 +56,8 @@ the interface shows the label next to every result:
 | Tier | Meaning |
 |---|---|
 | `fitted` | Regressed for Fugacity from cited experimental data (`validation/python/fit_parameters.py`) |
-| `databank` | Taken from a published parameter set (ChemSep, DECHEMA-based) |
+| `standard` | Computed from an official standard (IAPWS for water) |
+| `databank` | Taken from an openly licensed parameter set (ChemSep, Artistic License 2.0) |
 | `predicted` | Group contribution (modified UNIFAC, Dortmund) where no fitted or databank pair exists. **Planned for v0.2** |
 | `user` | Supplied in the page's own setup, for example from a paper being discussed |
 
@@ -195,39 +196,19 @@ loop. An equation-oriented mode can come later.
 
 - Semantic versioning: `0.x` releases may change interfaces; from `1.0` on, breaking
   changes need a major version.
-- Pages load a pinned version (`fugacity@0.1.1`), so a new release never changes an
-  existing artifact.
+- Pages load an exact version from the CDN, so a new release never changes an existing
+  artifact.
 - The flowsheet file carries its format version (see above).
 
 ## Quality and review
 
 Anyone can propose a change; nothing reaches a release without an independent check.
-
-1. **Proposal.** Anyone, for example a professor using the tool in a course, prepares a
-   contribution with their AI assistant (following [AGENTS.md](AGENTS.md)) or by hand,
-   and submits it with a form: *AI-prepared contribution*, *New component*, *Data
-   correction*, *Validation case* or *Bug*. The interface links to these forms.
-2. **Pull request.** A contributor, their coding agent, or a maintainer (possibly with a
-   coding agent such as the Claude Code GitHub Action) turns it into a pull request with
-   the data, its source and a test.
-3. **Automatic checks.** Every pull request runs the full test suite: the engine against
-   the independent Python model, and all validation data.
-4. **Independent review.** A reviewer who did not write the change confirms the source,
-   the fit quality and the test, using the checklist in the pull request template.
-   Changes to `src/data/` and `validation/` need a reviewer listed in `CODEOWNERS`.
-5. **Release.** Merged changes are published as a new version.
-
-Roles, decision rules and how to become a reviewer are in [GOVERNANCE.md](GOVERNANCE.md);
-protections for the repository and releases in [SECURITY.md](SECURITY.md).
-
-### Letting a coding agent draft pull requests (optional)
-
-The repository can use the Claude Code GitHub Action: a maintainer writes
-`@claude please add this component as described` on an issue, and Claude opens a pull
-request, which still goes through review. Setup needs a maintainer with admin rights,
-the Claude GitHub App, and an `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN` secret;
-only people with write access can trigger it. See
-<https://code.claude.com/docs/en/github-actions>.
+Contributions arrive through a form or a pull request ([CONTRIBUTING.md](CONTRIBUTING.md));
+every pull request runs the full test suite (the engine against the independent Python
+model and all validation data); a reviewer who did not write the change checks the
+sources, the fit quality and the tests, and changes to `src/data/` and `validation/` need
+a data reviewer. Roles and decisions: [GOVERNANCE.md](GOVERNANCE.md); protections:
+[SECURITY.md](SECURITY.md).
 
 ## Next steps
 

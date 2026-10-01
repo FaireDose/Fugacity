@@ -4,10 +4,11 @@
 
 ## For AI assistants
 
-- [Instructions for AI assistants and agents](https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md): rules, what you can do, contribution package format
+- [Rules for AI assistants, coding agents and contributors](https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md): sources, citing, checking, the two ways to contribute, contribution package format
 - [Using Fugacity in a chat page](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md): load the library and build diagrams
 - [Data wanted](https://raw.githubusercontent.com/FaireDose/Fugacity/main/docs/DATA_WANTED.md): pairs that need open experimental data
 - [Example contribution package](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/examples/acetic-acid_ethylene-glycol.json)
+- [Starter prompts](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/START_PROMPTS.md)
 
 ## For people
 
