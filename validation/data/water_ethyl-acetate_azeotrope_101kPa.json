@@ -1,0 +1,19 @@
+{
+ "_about": "Water (1) + ethyl acetate (2): heterogeneous (two-liquid) azeotrope at 101.325 kPa, as tabulated in the Wikipedia 'Azeotrope tables' article. Row as printed: azeotrope boiling point in degC and composition in weight percent of ethyl acetate (the second component).",
+ "source": {
+  "citation": "Azeotrope tables, Wikipedia, table 'binary azeotropes of water', row ethyl acetate; values from Lange's Handbook of Chemistry (10th ed., 1961) and the CRC Handbook of Chemistry and Physics (44th ed., 1962)",
+  "doi": "",
+  "open_copy": "https://en.wikipedia.org/wiki/Azeotrope_tables",
+  "access": "Open (CC BY-SA text; handbook values). Secondary compilation, the same source as validation/data/azeotropes_101kPa.json.",
+  "tables": "Binary azeotropes of water, row 'ethyl acetate': b.p. of mixture 70.4 degC, % by weight 91.9 (U 96.7, L 8.7)"
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "azeotrope",
+ "heterogeneous": true,
+ "P_kPa": 101.325,
+ "columns": ["T_C", "wt_pct_2"],
+ "rows": [
+  [70.4, 91.9]
+ ],
+ "notes": "Old handbook values (1961/1962), no uncertainty given. 91.9 wt % ethyl acetate is the overall (vapour) azeotrope composition; the layers are 96.7 wt % ethyl acetate (upper, U) and 8.7 wt % (lower, L), at an unstated temperature, not used. validation/python/fit_parameters.py converts 91.9 wt % to the vapour mole fraction of water with the molar masses in src/data/components.json (y_water = 0.301). Used as a weighted fit target for water + ethyl acetate because no open finite-concentration VLE data for this pair was found. Read twice from the Wikipedia page, both reads identical."
+}
