@@ -1,0 +1,90 @@
+# Engineering report, step 1 of 2 (proposal 0002, section 8).
+#
+# On every pull request (also from forks) this builds the pull request and its base branch,
+# computes the fixed engineering cases of validation/report/cases.json with both, compares
+# them with the independent references, and uploads report.md, report.html and the pull
+# request number as an artifact.
+#
+# Security: this workflow runs the pull request's code, so it gets no secrets and a
+# read-only token (permissions: contents: read), and the checkouts keep no credentials.
+# It never writes to the repository or to the pull request. Step 2
+# (engineering-report-comment.yml, triggered by workflow_run) posts the comment; it never
+# runs code from the pull request.
+name: Engineering report
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: engineering-report-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+          persist-credentials: false
+
+      - name: Check out the base branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      - name: Build the pull request
+        working-directory: head
+        run: npm ci && npm run build
+
+      - name: Build the base branch
+        # If the base does not build, its results are reported as "not available".
+        continue-on-error: true
+        working-directory: base
+        run: npm ci && npm run build
+
+      - name: Compute the engineering results
+        run: |
+          node head/scripts/engineering-report.mjs run --bundle base/dist/fugacity.mjs --out out/base.json
+          node head/scripts/engineering-report.mjs run --bundle head/dist/fugacity.mjs --out out/head.json
+
+      - name: Write the report
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          node head/scripts/engineering-report.mjs compare \
+            --base out/base.json --head out/head.json --out-dir out \
+            --base-dir base --head-dir head \
+            --base-label "${BASE_REF} ${BASE_SHA:0:7}" --head-label "this PR ${HEAD_SHA:0:7}"
+          cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record the pull request number
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: printf '%s\n' "$PR_NUMBER" > out/pr_number.txt
+
+      - name: Upload the report
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: engineering-report
+          path: |
+            out/report.md
+            out/report.html
+            out/pr_number.txt
+          if-no-files-found: error
+          retention-days: 30

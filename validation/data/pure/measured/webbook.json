@@ -1,0 +1,118 @@
+{
+  "about": "Measured liquid heat capacities near 25 °C and heats of vaporization at the normal boiling point, transcribed from the NIST Chemistry WebBook (SRD 69) pages listed per component (opened 2026-10-01). Used by test/properties.test.js to compare the property records with measurements, independently of the sources the records were fitted to. Values exactly as printed on the WebBook pages; the person must compare each value with the page.",
+  "source": {
+    "citation": "NIST Chemistry WebBook, NIST Standard Reference Database 69, condensed phase thermochemistry data (Cp,liquid) and phase change data (enthalpy of vaporization); original references as listed per value",
+    "open_copy": "https://webbook.nist.gov/chemistry/",
+    "access": "Free to read online (NIST); an allowed source under AGENTS.md rule 1",
+    "tables": "Constant pressure heat capacity of liquid (Mask=2); Enthalpy of vaporization (Mask=4)"
+  },
+  "rules": {
+    "liquidHeatCapacity": "The record at 298.15 K is compared with the mean of the WebBook values measured in 1970 or later at 298.15 ± 0.5 K. Older values and values at other temperatures are not listed.",
+    "heatOfVaporization": "The record at the listed temperature is compared with the Majer and Svoboda (1985) value at the normal boiling point given on the WebBook page (Majer, V.; Svoboda, V., Enthalpies of Vaporization of Organic Compounds: A Critical Review and Data Compilation, Blackwell Scientific Publications, Oxford, 1985).",
+    "tolerance": "2 % for both, the tolerances for heat capacity and heat of vaporization in proposal 0002 (engineering report)."
+  },
+  "tolerance": { "liquidHeatCapacity": 0.02, "heatOfVaporization": 0.02 },
+  "liquidHeatCapacity": {
+    "acetic-acid": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=2",
+      "values": [
+        { "cp_J_molK": 123.1, "T_K": 298.15, "reference": "Martin and Andon, J. Chem. Thermodyn. 14 (1982) 679-688", "year": 1982 }
+      ]
+    },
+    "ethylene-glycol": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2",
+      "values": [
+        { "cp_J_molK": 149.8, "T_K": 298, "reference": "Zaripov, Teplomassoobmen Teplofiz (1982)", "year": 1982 },
+        { "cp_J_molK": 149.3, "T_K": 298, "reference": "Stephens and Tamplin, J. Chem. Eng. Data 24 (1979) 81-82", "year": 1979 },
+        { "cp_J_molK": 149.6, "T_K": 298.15, "reference": "Murthy and Subrahmanyam (1977)", "year": 1977 }
+      ]
+    },
+    "chloroform": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=2",
+      "values": [
+        { "cp_J_molK": 114.25, "T_K": 298.15, "reference": "Grolier, Roux-Desgranges, et al., J. Chem. Thermodyn. 25 (1993) 41-50", "year": 1993 },
+        { "cp_J_molK": 113.2, "T_K": 298.15, "reference": "Shehatta, Thermochim. Acta 213 (1993) 1-10", "year": 1993 },
+        { "cp_J_molK": 114.32, "T_K": 298.15, "reference": "Barta, Kooner, et al., Can. J. Chem. 67 (1989) 1225-1229", "year": 1989 },
+        { "cp_J_molK": 114.35, "T_K": 298.15, "reference": "Barta, Kooner, et al., J. Solution Chem. 18 (1989) 663-673", "year": 1989 },
+        { "cp_J_molK": 115.5, "T_K": 298.15, "reference": "Petrov, Peshekhodov, et al. (1989)", "year": 1989 },
+        { "cp_J_molK": 113.85, "T_K": 298.15, "reference": "Grolier, Roux-Desgranges, et al., J. Solution Chem. 16 (1987) 745-752", "year": 1987 },
+        { "cp_J_molK": 115.5, "T_K": 298.15, "reference": "Al'per, Peshekhodov, et al., Zhur. Obshchei Khim. 56 (1986) 1688-1691", "year": 1986 },
+        { "cp_J_molK": 113.73, "T_K": 298.15, "reference": "Hepler, Kooner, et al., J. Solution Chem. 14 (1985) 579-594", "year": 1985 },
+        { "cp_J_molK": 114.26, "T_K": 298.15, "reference": "Inglese, Castagnolo, et al., Thermochim. Acta (1981) 77-87", "year": 1981 }
+      ]
+    },
+    "ethyl-acetate": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=2",
+      "values": [
+        { "cp_J_molK": 168.94, "T_K": 298.15, "reference": "Pintos, Bravo, et al., Can. J. Chem. (1988) 1179", "year": 1988 },
+        { "cp_J_molK": 170.59, "T_K": 298.32, "reference": "Zabransky, Hynek, et al., Coll. Czech. Chem. Comm. 52 (1987) 251-256", "year": 1987 },
+        { "cp_J_molK": 169.30, "T_K": 298.15, "reference": "Jimenez, Romani, et al., J. Solution Chem. 15 (1986) 879-890", "year": 1986 },
+        { "cp_J_molK": 169.06, "T_K": 298.15, "reference": "Baluja, Bravo, et al., Calorim. Anal. Therm. 16 (1985) 138-144", "year": 1985 },
+        { "cp_J_molK": 169.6, "T_K": 298.15, "reference": "Costas and Patterson, J. Chem. Soc., Faraday Trans. 1 81 (1985) 2381-2398", "year": 1985 },
+        { "cp_J_molK": 169.6, "T_K": 298.15, "reference": "Costas and Patterson, J. Chem. Soc., Faraday Trans. 1 81 (1985) 635-654", "year": 1985 },
+        { "cp_J_molK": 167.4, "T_K": 298.15, "reference": "Fuchs, J. Chem. Thermodyn. 11 (1979) 959-961", "year": 1979 },
+        { "cp_J_molK": 169.5, "T_K": 298.1, "reference": "Roux, Perron, et al., Can. J. Chem. 56 (1978) 2808-2814", "year": 1978 }
+      ]
+    },
+    "methanol": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=2",
+      "values": [
+        { "cp_J_molK": 79.5, "T_K": 298.15, "reference": "Filatov and Afanas'ev (1992)", "year": 1992 },
+        { "cp_J_molK": 81.11, "T_K": 298.15, "reference": "Khasanshin and Zykova (1989)", "year": 1989 },
+        { "cp_J_molK": 80.24, "T_K": 298.15, "reference": "Andreoli-Ball, Patterson, et al. (1988)", "year": 1988 },
+        { "cp_J_molK": 80.35, "T_K": 298.15, "reference": "Okano, Ogawa, et al. (1988)", "year": 1988 },
+        { "cp_J_molK": 81.0, "T_K": 298.15, "reference": "Lankford and Criss (1987)", "year": 1987 },
+        { "cp_J_molK": 81.32, "T_K": 298, "reference": "Korolev, Kukharenko, et al. (1986)", "year": 1986 },
+        { "cp_J_molK": 80.28, "T_K": 298.15, "reference": "Ogawa and Murakami (1986)", "year": 1986 },
+        { "cp_J_molK": 81.56, "T_K": 298.15, "reference": "Tanaka, Toyama, et al. (1986)", "year": 1986 },
+        { "cp_J_molK": 80.22, "T_K": 298.15, "reference": "Costas and Patterson (1985)", "year": 1985 },
+        { "cp_J_molK": 81.47, "T_K": 298.15, "reference": "Zegers and Somsen (1984)", "year": 1984 },
+        { "cp_J_molK": 81.92, "T_K": 298.15, "reference": "Villamanan, Casanova, et al. (1982)", "year": 1982 },
+        { "cp_J_molK": 81.13, "T_K": 298.15, "reference": "Carlson and Westrum (1971)", "year": 1971 },
+        { "cp_J_molK": 83.7, "T_K": 298, "reference": "Deshpande and Bhatagadde (1971)", "year": 1971 }
+      ]
+    },
+    "acetone": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=2",
+      "values": [
+        { "cp_J_molK": 125.45, "T_K": 298.15, "reference": "Malhotra and Woolf (1991)", "year": 1991 },
+        { "cp_J_molK": 123.80, "T_K": 298.15, "reference": "Costas, Yao, et al. (1989)", "year": 1989 },
+        { "cp_J_molK": 126.6, "T_K": 298.15, "reference": "Petrov, Peshekhodov, et al. (1989)", "year": 1989 },
+        { "cp_J_molK": 126.6, "T_K": 298.15, "reference": "Al'per, Peshekhodov, et al. (1986)", "year": 1986 },
+        { "cp_J_molK": 123.8, "T_K": 298.15, "reference": "Costas and Patterson (1985)", "year": 1985 },
+        { "cp_J_molK": 123.8, "T_K": 298.15, "reference": "Costas and Patterson (1985), 2", "year": 1985 },
+        { "cp_J_molK": 125.9, "T_K": 298.15, "reference": "Saluja, Peacock, et al. (1979)", "year": 1979 },
+        { "cp_J_molK": 129.7, "T_K": 298, "reference": "Deshpande and Bhatagadde (1971)", "year": 1971 }
+      ]
+    },
+    "toluene": {
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=2",
+      "values": [
+        { "cp_J_molK": 157.09, "T_K": 298.15, "reference": "Grolier, Roux-Desgranges, et al. (1993)", "year": 1993 },
+        { "cp_J_molK": 155.96, "T_K": 298.15, "reference": "Shiohama, Ogawa, et al. (1988)", "year": 1988 },
+        { "cp_J_molK": 157.08, "T_K": 298.15, "reference": "Roux-Dexgranges, Grolier, et al. (1986)", "year": 1986 },
+        { "cp_J_molK": 158.70, "T_K": 298.15, "reference": "Tardajos, Aicart, et al. (1986)", "year": 1986 },
+        { "cp_J_molK": 158.7, "T_K": 298.15, "reference": "Stephens and Olson (1984)", "year": 1984 },
+        { "cp_J_molK": 157.0, "T_K": 298.15, "reference": "Grolier, Inglese, et al. (1982)", "year": 1982 },
+        { "cp_J_molK": 157.15, "T_K": 298.15, "reference": "Wilhelm, Faradjzadeh, et al. (1982)", "year": 1982 },
+        { "cp_J_molK": 157.057, "T_K": 298.15, "reference": "Fortier and Benson (1979)", "year": 1979 },
+        { "cp_J_molK": 157.081, "T_K": 298.15, "reference": "Fortier and Benson (1977)", "year": 1977 },
+        { "cp_J_molK": 156.94, "T_K": 298.15, "reference": "Wilhelm, Grolier, et al. (1977)", "year": 1977 },
+        { "cp_J_molK": 157.026, "T_K": 298.15, "reference": "Fortier and Benson (1976)", "year": 1976 },
+        { "cp_J_molK": 156.99, "T_K": 298.15, "reference": "Holzhauer and Ziegler (1975)", "year": 1975 },
+        { "cp_J_molK": 158.4, "T_K": 298.15, "reference": "Pedersen, Kay, et al. (1975)", "year": 1975 },
+        { "cp_J_molK": 156.8, "T_K": 298.15, "reference": "Rajagopal and Subrahmanyam (1974)", "year": 1974 },
+        { "cp_J_molK": 156.5, "T_K": 298, "reference": "Deshpande and Bhatagadde (1971)", "year": 1971 }
+      ]
+    }
+  },
+  "heatOfVaporization": {
+    "acetic-acid": { "dHvap_kJ_mol": 23.7, "T_K": 391.1, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Mask=4",
+      "notes": "To the real (largely dimerized) vapour, like the ChemSep record." },
+    "chloroform": { "dHvap_kJ_mol": 29.24, "T_K": 334.3, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=4" },
+    "ethyl-acetate": { "dHvap_kJ_mol": 31.94, "T_K": 350.3, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Mask=4" },
+    "methanol": { "dHvap_kJ_mol": 35.21, "T_K": 337.7, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4" },
+    "acetone": { "dHvap_kJ_mol": 29.1, "T_K": 329.3, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=4" },
+    "toluene": { "dHvap_kJ_mol": 33.18, "T_K": 383.8, "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4" }
+  }
+}

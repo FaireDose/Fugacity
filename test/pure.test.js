@@ -48,7 +48,9 @@ test("every component has critical constants and an acentric factor", () => {
 
 test("missing data is reported, not guessed", () => {
   const p = pure("oxygen");
-  assert.throws(() => p.property("liquidViscosity", 80), /not in the databank|No open data/);
+  // Since the v0.2 property data every property of oxygen has a record; asking for the liquid
+  // viscosity above the critical point (outside the record's range) must still throw, not extrapolate.
+  assert.throws(() => p.property("liquidViscosity", 300), /not in the databank|No open data|outside the range/);
   assert.throws(() => p.property("density", 80), /Unknown property/);
   const s = pure("water").props(300, 101.325);
   assert.equal(s.phase, "liquid");

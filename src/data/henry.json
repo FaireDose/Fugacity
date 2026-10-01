@@ -1,0 +1,56 @@
+{
+  "_about": "Henry's law constants of gases in water at infinite dilution, mole-fraction based: p_i = H x_i (strictly f_i = H x_i), H in kPa. Equations and units per entry; see src/thermo/henry.js.",
+  "solvents": {
+    "water": {
+      "vapourPressure": {
+        "equation": "IAPWS-G7-04 eq. 4",
+        "form": "ln(p1*/pc1) = (Tc1/T) sum_i a_i tau^b_i, tau = 1 - T/Tc1",
+        "Tc_K": 647.096,
+        "pc_MPa": 22.064,
+        "a": [-7.85951783, 1.84408259, -11.7866497, 22.6807411, -15.9618719, 1.80122502],
+        "b": [1, 1.5, 3, 3.5, 4, 7.5],
+        "source": "IAPWS G7-04 (2004), Guideline on the Henry's constant and vapor-liquid distribution constant for gases in H2O and D2O at high temperatures, eq. 4 and table 1 (the IAPWS saturation-pressure equation of Wagner and Pruss). Coefficients transcribed from the open-source iapws Python package 1.5.5 (iapws/_iapws.py, function _Henry), which implements the guideline and reproduces the guideline's check values (table 6) to all printed digits."
+      }
+    }
+  },
+  "pairs": [
+    {
+      "gas": "hydrogen", "solvent": "water", "equation": "IAPWS-G7-04",
+      "A": -4.73284, "B": 6.08954, "C": 6.06066, "Tmin_K": 273.15, "Tmax_K": 636.09,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (H2 in H2O)"
+    },
+    {
+      "gas": "nitrogen", "solvent": "water", "equation": "IAPWS-G7-04",
+      "A": -9.67578, "B": 4.72162, "C": 11.70585, "Tmin_K": 278.12, "Tmax_K": 636.46,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (N2 in H2O)"
+    },
+    {
+      "gas": "oxygen", "solvent": "water", "equation": "IAPWS-G7-04",
+      "A": -9.44833, "B": 4.43822, "C": 11.42005, "Tmin_K": 274.15, "Tmax_K": 616.52,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (O2 in H2O)"
+    },
+    {
+      "gas": "methane", "solvent": "water", "equation": "IAPWS-G7-04",
+      "A": -10.44708, "B": 4.66491, "C": 12.12986, "Tmin_K": 275.46, "Tmax_K": 633.11,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (CH4 in H2O)"
+    },
+    {
+      "gas": "ethane", "solvent": "water", "equation": "IAPWS-G7-04",
+      "A": -19.67563, "B": 4.51222, "C": 20.62567, "Tmin_K": 275.44, "Tmax_K": 473.46,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (C2H6 in H2O)"
+    },
+    {
+      "gas": "ethylene", "solvent": "water", "equation": "Sander-3",
+      "form": "Hcp = exp(A + B/T + C ln T), mol/(m3 Pa); converted to H (kPa) = rho_w / (M_w Hcp) / 1000 with rho_w = 997 kg/m3 (the conversion used by the compilation)",
+      "A": -175.14932, "B": 9028.23984, "C": 23.67665, "Tmin_K": 273.15, "Tmax_K": 353.15,
+      "tier": "databank",
+      "source": "R. Sander, Compilation of Henry's law constants (version 5.0.0) for water as solvent, Atmos. Chem. Phys. 23 (2023) 10901-12440, doi:10.5194/acp-23-10901-2023, open access CC BY 4.0, https://henrys-law.org/henry/casrn/74-85-1, note 309: three-parameter fit by Sander to the measurements of T. J. Morrison and F. Billett, J. Chem. Soc. (1952) 3819, doi:10.1039/JR9520003819.",
+      "validity": "The compilation does not state the temperature range of the fit. Fugacity accepts 273.15-353.15 K, the range over which this fit and the two other measured data sets in the compilation (Maassen 1995, note 307; Reichl 1995, note 308) agree within 7.5 % (test/henry.test.js; largest difference 7.2 % at 273.15 K, Maassen 1995). Ethylene is not covered by IAPWS G7-04."
+    }
+  ]
+}
