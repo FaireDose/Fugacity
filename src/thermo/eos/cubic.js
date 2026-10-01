@@ -31,9 +31,8 @@
  *   H^R = R T (Z - 1) + (T da/dT - a) / (b (d1 - d2)) L
  *   S^R = R ln(Z - B) + (da/dT) / (b (d1 - d2)) L
  *   Cv^R = T d2a/dT2 / (b (d1 - d2)) L,   Cp^R = Cv^R + T (dP/dT)_v^2 / (-(dP/dv)_T) - R
- * (the same expressions, written for PR, are in Smith, Van Ness & Abbott, ch. 13-14, and in
- * Michelsen & Mollerup, Thermodynamic Models, ch. 3; the generic d1/d2 form is that of the
- * thermo GCEOS class).
+ * (generic d1/d2 form as in the thermo GCEOS and GCEOSMIX classes; checked against thermo
+ * PRMIX/SRKMIX and an independent Python implementation in validation/python/reference_eos.py).
  *
  * Root selection: with three real roots above B, the smallest is the liquid and the largest
  * the vapour. With one real root, it is returned for either phase and labelled
@@ -71,14 +70,11 @@ export const CUBICS = {
     reference: "Soave, Chem. Eng. Sci. 27 (1972) 1197, doi:10.1016/0009-2509(72)80096-4",
   },
 };
-// critical compressibility of each equation: Zc = 1/3 for SRK; for PR from the cubic at the
-// critical point, Zc = 1 - ... ; computed numerically below as the triple root at Tc, Pc.
+// Critical compressibility of each equation: at Tc, Pc the cubic has a triple root, so
+// 3 Zc = -(coefficient of Z^2) = 1 - (d1 + d2 - 1) OmegaB  (PR 0.3074, SRK 1/3).
 for (const c of Object.values(CUBICS)) {
-  const B = c.OmegaB, A = c.OmegaA, s = c.d1 + c.d2, p = c.d1 * c.d2;
-  // at the critical point the cubic has a triple root Zc = (1 - (s - 1) B) / 3
-  c.Zc = (1 - (s - 1) * B) / 3;
-  c.vcOverB = c.Zc / B;
-  void A; void p;
+  c.Zc = (1 - (c.d1 + c.d2 - 1) * c.OmegaB) / 3;
+  c.vcOverB = c.Zc / c.OmegaB;
 }
 
 /**
@@ -231,7 +227,7 @@ export function cubicEos(model, comps, kij) {
       const L = state(T, P, x, "liquid"), V = state(T, P, x, "vapour");
       return { L, V, two: L.roots > 1 };
     };
-    let P = c.Pc_Pa / 1000 * Math.exp(5.373 * (1 + c.omega) * (1 - c.Tc_K / T)); // Wilson
+    let P = c.Pc_Pa / 1000 * Math.exp(5.37 * (1 + c.omega) * (1 - c.Tc_K / T)); // Wilson
     let st = both(P);
     for (let k = 0; !st.two && k < 200; k++) {
       // one root: liquid-like means P is too high, vapour-like means too low

@@ -11,6 +11,9 @@ sources with their own terms, recorded in the `source` field of every entry.
 | Critical constants, normal boiling points and acentric factors of the gases; acentric factors of water, methanol, ethanol, acetone, benzene and toluene | CoolProp 8.0.0 (open source), from the reference equations of state cited in each entry | MIT |
 | Acentric factors of acetic acid, ethylene glycol, chloroform and ethyl acetate | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
 | Vapour-pressure coefficients | Fitted for Fugacity to correlations in the open-source thermo library (MIT); the method used is named in each entry | MIT |
+| Peng-Robinson and SRK binary parameters k_ij (`kij.json`) | ChemSep interaction parameter files pr.ipd and srk.ipd (DECHEMA-based), Copyright Harry Kooijman and Ross Taylor, as redistributed with DWSIM | Artistic License 2.0 |
+| Henry's law constants of hydrogen, nitrogen, oxygen, methane and ethane in water, and the water vapour-pressure equation used with them (`henry.json`) | IAPWS G7-04 (2004), Guideline on the Henry's constant and vapor-liquid distribution constant for gases in H2O and D2O at high temperatures | IAPWS: publication in whole or in part allowed with attribution to IAPWS |
+| Henry's law constant of ethylene in water (`henry.json`) | R. Sander, Compilation of Henry's law constants v5.0.0, Atmos. Chem. Phys. 23 (2023) 10901 (fit to Morrison and Billett, 1952) | CC BY 4.0 |
 
 Before adding data from a new source, check that its license allows redistribution,
 and record the source and license here.

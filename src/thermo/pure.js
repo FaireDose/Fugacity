@@ -22,6 +22,7 @@ import componentData from "../data/components.json" with { type: "json" };
 import { evaluate } from "./correlations.js";
 import { brent } from "../util/solve.js";
 import { findComponent } from "./system.js";
+import { cubicEos, CUBICS } from "./eos/cubic.js";
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018 exact value
 
@@ -81,6 +82,9 @@ export function pure(key) {
     }
   }
   const vpRec = vapourPressureRecord(c);
+  let prCache = null;
+  /** Peng-Robinson for this component alone (vapour and supercritical states). */
+  const eosPR = () => prCache || (prCache = cubicEos("PR", [{ name: c.name, Tc_K: c.Tc_K, Pc_Pa: c.Pc_Pa, omega: c.omega }]));
 
   const record = name => {
     if (name === "vapourPressure") return vpRec;
@@ -131,8 +135,9 @@ export function pure(key) {
 
   /**
    * State properties at T (K) and P (kPa). Missing properties are null, with a note.
-   * Liquid properties are at saturation (pressure effect neglected); the vapour is an ideal
-   * gas here: equations of state replace this when they are added.
+   * Liquid properties are at saturation (pressure effect neglected). Vapour and
+   * supercritical states use Peng-Robinson (eos/cubic.js) for Z, density, residual
+   * enthalpy and residual cp, added to the ideal-gas correlations.
    */
   function props(T, P) {
     const out = { component: c.name, T_K: T, P_kPa: P, phase: null, notes: [], sources: {} };
@@ -147,6 +152,14 @@ export function pure(key) {
     out.psat_kPa = ps;
     if (ps !== null) out.sources.psat_kPa = { tier: vpRec.tier, source: vpRec.source };
     out.phase = T >= c.Tc_K ? "supercritical" : ps === null ? null : P >= ps ? "liquid" : "vapour";
+    if (out.phase === null && T < c.Tc_K) {
+      // No vapour-pressure record (or out of its range): decide the phase with Peng-Robinson.
+      try {
+        const pPR = eosPR().psat(0, T);
+        out.phase = P >= pPR ? "liquid" : "vapour";
+        out.notes.push(`Phase decided with the Peng-Robinson saturation pressure (${pPR.toPrecision(5)} kPa); no vapour-pressure correlation available at ${T} K.`);
+      } catch (e) { out.notes.push(e.message); }
+    }
     if (out.phase === null) {
       out.notes.push(`Phase unknown at ${T} K: no vapour pressure available.`);
       return out;
@@ -161,14 +174,21 @@ export function pure(key) {
       tryGet("k_W_mK", () => property("liquidThermalConductivity", T), "liquidThermalConductivity");
       out.notes.push("Liquid properties at saturation; the effect of pressure is neglected.");
     } else {
-      // Ideal gas. Replaced by the equation of state (Z and residual enthalpy) when available.
-      out.rho_kg_m3 = P * 1000 * MWkg / (R * T);
-      out.sources.rho_kg_m3 = { tier: "standard", source: "Ideal-gas law" };
-      tryGet("cp_J_molK", () => property("idealGasHeatCapacity", T), "idealGasHeatCapacity");
-      tryGet("h_J_mol", () => hIdealGas(T));
+      // Vapour or supercritical fluid: Peng-Robinson for density, residual enthalpy and
+      // residual heat capacity; ideal-gas parts from the cpIG correlation.
+      const st = eosPR().state(T, P, [1], "vapour");
+      const prSrc = { tier: "standard", source: `Peng-Robinson equation of state (${CUBICS.PR.reference}) with Tc, Pc and omega of ${c.name}` };
+      out.Z = st.Z;
+      out.rho_kg_m3 = MWkg / st.v_m3_mol;
+      out.sources.rho_kg_m3 = prSrc;
+      out.hResidual_J_mol = st.hR_J_mol;
+      out.sources.hResidual_J_mol = prSrc;
+      tryGet("cp_J_molK", () => property("idealGasHeatCapacity", T) + st.cpR_J_molK, "idealGasHeatCapacity");
+      tryGet("h_J_mol", () => hIdealGas(T) + st.hR_J_mol);
       tryGet("mu_Pa_s", () => property("vapourViscosity", T), "vapourViscosity");
       tryGet("k_W_mK", () => property("vapourThermalConductivity", T), "vapourThermalConductivity");
-      out.notes.push("Vapour treated as an ideal gas; viscosity and conductivity at low pressure.");
+      if (st.rootType === "liquid-like") out.notes.push("Dense (liquid-like) fluid: Peng-Robinson densities of dense fluids are typically 5-20 % off (no volume translation).");
+      out.notes.push("Density, enthalpy and cp from Peng-Robinson: h = h_ideal-gas + h_residual, cp = cp_ideal-gas + cp_residual. Viscosity and thermal conductivity at low pressure.");
     }
     return out;
   }
