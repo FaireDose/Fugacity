@@ -270,6 +270,72 @@
     "source": "azeotrope-tables",
     "detail": "converted from [23.0, 30.0, 47.0] wt% with M from src/data/components.json"
    }
+  },
+  "azeo/methanol+acetone+chloroform/UNIQUAC": {
+   "T_C": {
+    "value": 57.5,
+    "source": "azeotrope-tables",
+    "detail": "saddle, [23.0, 30.0, 47.0] wt%"
+   },
+   "x1": {
+    "value": 0.4409006,
+    "source": "azeotrope-tables",
+    "detail": "converted from [23.0, 30.0, 47.0] wt% with M from src/data/components.json"
+   },
+   "x2": {
+    "value": 0.317272,
+    "source": "azeotrope-tables",
+    "detail": "converted from [23.0, 30.0, 47.0] wt% with M from src/data/components.json"
+   },
+   "x3": {
+    "value": 0.2418274,
+    "source": "azeotrope-tables",
+    "detail": "converted from [23.0, 30.0, 47.0] wt% with M from src/data/components.json"
+   }
+  },
+  "azeo/ethanol+water+ethyl-acetate/NRTL": {
+   "T_C": {
+    "value": 70.3,
+    "source": "azeotrope-tables",
+    "detail": "minimum-boiling, [7.8, 9.0, 83.2] wt%"
+   },
+   "x1": {
+    "value": 0.1049539,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   },
+   "x2": {
+    "value": 0.3096771,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   },
+   "x3": {
+    "value": 0.585369,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   }
+  },
+  "azeo/ethanol+water+ethyl-acetate/UNIQUAC": {
+   "T_C": {
+    "value": 70.3,
+    "source": "azeotrope-tables",
+    "detail": "minimum-boiling, [7.8, 9.0, 83.2] wt%"
+   },
+   "x1": {
+    "value": 0.1049539,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   },
+   "x2": {
+    "value": 0.3096771,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   },
+   "x3": {
+    "value": 0.585369,
+    "source": "azeotrope-tables",
+    "detail": "converted from [7.8, 9.0, 83.2] wt% with M from src/data/components.json"
+   }
   }
  }
 }

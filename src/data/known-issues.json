@@ -1,0 +1,25 @@
+{
+  "_about": "Known deviations of the models from reference data that users should see in the interface. Each entry names the components (any order), the model, the deviation and its reference. The test suite runs the corresponding check as a 'todo', so it reports when an entry can be removed. Remove an entry as soon as a fix makes the check pass.",
+  "issues": [
+    {
+      "components": [
+        "ethanol",
+        "water",
+        "ethyl-acetate"
+      ],
+      "model": "NRTL",
+      "message": "The ternary azeotrope comes out at 71.4 °C and 21.4 / 5.4 / 73.2 wt % (ethanol / water / ethyl acetate); handbook value 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The water + ethyl acetate pair cannot match its solubilities, dilute activity coefficients and 1-atm azeotrope at the same time with these models; more open data is needed.",
+      "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)"
+    },
+    {
+      "components": [
+        "ethanol",
+        "water",
+        "ethyl-acetate"
+      ],
+      "model": "UNIQUAC",
+      "message": "The ternary azeotrope comes out at 71.4 °C and 20.0 / 6.0 / 74.1 wt % (ethanol / water / ethyl acetate); handbook value 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The water + ethyl acetate pair cannot match its solubilities, dilute activity coefficients and 1-atm azeotrope at the same time with these models; more open data is needed.",
+      "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)"
+    }
+  ]
+}

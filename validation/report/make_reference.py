@@ -237,7 +237,9 @@ def reference(case, key):
                 return val(a["x_first"], "azeotrope-tables", f"converted from {a['wt_pct_first']} wt% (validation/data/azeotropes_101kPa.json)")
         return none("Not in the azeotrope tables")
     if t == "ternaryAzeotrope":
-        a = azeo["ternary"][0]
+        a = next((t for t in azeo["ternary"] if t["components"] == case["components"]), None)
+        if a is None:
+            return none("Not in the azeotrope tables")
         if key == "T_C":
             return val(a["T_C"], "azeotrope-tables", f"{a['type']}, {a['wt_pct']} wt%")
         i = int(key[1:]) - 1
