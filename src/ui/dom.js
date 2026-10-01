@@ -54,6 +54,11 @@ export function rampColor(t, ramp = RAMP) {
 }
 
 export const C = T => T - 273.15;
+
+/** Temperature display: "C" (default) or "K". Returns the conversion from K and the unit label. */
+export function tempUnit(unit) {
+  return unit === "K" ? { conv: T => T, label: "K" } : { conv: C, label: "°C" };
+}
 export const fmt = (v, d = 3) => Number(v).toFixed(d);
 
 /**

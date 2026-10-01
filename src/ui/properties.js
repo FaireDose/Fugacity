@@ -8,13 +8,14 @@
  * validity range of the data behind it).
  */
 import { injectPropertiesStyles } from "./styles.js";
-import { h, s, text, ticks, svgPoint } from "./dom.js";
+import { h } from "./dom.js";
+import { drawPlot } from "./plot.js";
 import { pure, PROPERTIES } from "../thermo/pure.js";
 import { listComponents, findComponent } from "../thermo/system.js";
 import {
   normalizeUnits, UNIT_CHOICES, toDisplay, unitLabel, tToDisplay, tFromDisplay, pToDisplay, pFromDisplay,
   parsePressures, explorerProperties, findExplorerProperty, STATE_PROPERTIES, sampleTemperatureProperty,
-  sampleStateProperty, stateDomain, statePoint, saturationTable, SAT_COLUMNS, singleState, logTicks,
+  sampleStateProperty, stateDomain, statePoint, saturationTable, SAT_COLUMNS, singleState,
   fmtNum, fmtShort, fmtT, formatSource, TIER_LABEL, missingMessage,
 } from "./properties-logic.js";
 
@@ -36,6 +37,8 @@ const FEEDBACK = "https://github.com/FaireDose/Fugacity/issues/new/choose";
  * @param {[number, number]} [cfg.T_K]  temperature range of the plot, K (default: the data's range)
  * @param {boolean} [cfg.logScale]      logarithmic property axis (default: automatic)
  * @param {string} [cfg.title]
+ * @param {boolean} [cfg.controls=true]  false hides the title, the component and property
+ *   menus and the unit switches (for a page, like the workbench, that sets them through update())
  * @returns {{update:(patch:object)=>void, state:object}}
  *
  * @example
@@ -56,6 +59,7 @@ export function mountProperties(target, cfg = {}) {
     title: cfg.title,
     calc: { T_K: 298.15, P_kPa: 101.325 },
     feedbackUrl: cfg.feedbackUrl ?? FEEDBACK,
+    controls: cfg.controls !== false,
   };
   const uid = Math.random().toString(36).slice(2, 7);
   const components = listComponents();
@@ -106,7 +110,7 @@ export function mountProperties(target, cfg = {}) {
     const srcs = h("div", { class: "fug-srcs" });
     const curve = prop.kind === "state" ? stateCurves(p, prop, plot, side, srcs) : tCurve(p, prop, plot, side, srcs);
 
-    box.replaceChildren(head, controls, units, curve.controls, h("div", { class: "fug-main" }, plot, side), srcs,
+    box.replaceChildren(...(state.controls ? [head, controls, units] : []), curve.controls, h("div", { class: "fug-main" }, plot, side), srcs,
       satSection(p, prop), calcSection(p),
       h("div", { class: "fug-foot" },
         h("div", {}, "Calculated live in this page by Fugacity from the engine's SI values; units are converted for display only. Enthalpy reference: ideal gas at 25 °C (298.15 K) = 0."),
@@ -390,6 +394,7 @@ export function mountProperties(target, cfg = {}) {
       if ("T_K" in patch) state.T_K = patch.T_K ? checkRange(patch.T_K) : null;
       if ("logScale" in patch) state.logScale = patch.logScale;
       if ("title" in patch) state.title = patch.title;
+      if ("controls" in patch) state.controls = patch.controls !== false;
       render();
     },
   };
@@ -422,93 +427,4 @@ function groupNotes(notes) {
 
 function row(label, value) {
   return h("div", { class: "row" }, h("span", {}, label), h("b", {}, value));
-}
-
-/** Tick label with as many decimals as the step needs. */
-function tickLabel(v, step) {
-  if (v === 0) return "0";
-  if (step == null) return fmtShort(v, 3);
-  const a = Math.abs(v);
-  if (a >= 1e6 || a < 1e-3) return v.toExponential(step && Math.abs(step / v) < 0.1 ? 2 : 1).replace("e+", "e");
-  const d = step ? Math.max(0, -Math.floor(Math.log10(step) + 1e-9)) : 2;
-  return v.toFixed(Math.min(d + (step && String(step).includes("25") ? 1 : 0), 6));
-}
-
-/**
- * Draw curves (series of segments) against temperature, with phase-change markers,
- * direct labels at the end of each curve, and a hover crosshair that calls `show(x)`.
- */
-function drawPlot(plot, { compact, series, xLabel, yLabel, log, show, x0, x1, aria }) {
-  const W = compact ? 400 : 600, H = compact ? 320 : 360, L = 58, R = 60, T = 14, B = 42;
-  const all = series.flatMap(sr => sr.segments.flatMap(g => g.points.map(pt => pt.y)));
-  let y0 = Math.min(...all), y1 = Math.max(...all);
-  let yt;
-  if (log) {
-    y0 /= 1.25; y1 *= 1.25;
-    yt = { values: logTicks(y0, y1), step: null };
-  } else {
-    const pad = (y1 - y0) * 0.06 || Math.abs(y1) * 0.05 || 1;
-    yt = ticks(y0 - pad, y1 + pad, compact ? 5 : 6);
-    y0 = Math.min(y0 - pad, yt.values[0]); y1 = Math.max(y1 + pad, yt.values.at(-1));
-  }
-  const xt = ticks(x0, x1, compact ? 4 : 6);
-  const sx = v => L + (v - x0) / (x1 - x0 || 1) * (W - L - R);
-  const sy = log ? v => H - B - (Math.log(v) - Math.log(y0)) / (Math.log(y1) - Math.log(y0)) * (H - T - B)
-    : v => H - B - (v - y0) / (y1 - y0 || 1) * (H - T - B);
-
-  const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": aria });
-  for (const v of yt.values) {
-    if (v < y0 || v > y1) continue;
-    s("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--fug-rule)" }, svg);
-    text(svg, L - 6, sy(v) + 4, tickLabel(v, yt.step), { "text-anchor": "end", "font-size": 11 });
-  }
-  for (const v of xt.values) {
-    if (v < x0 - 1e-9 || v > x1 + 1e-9) continue;
-    s("line", { x1: sx(v), x2: sx(v), y1: H - B, y2: H - B + 4, stroke: "var(--fug-muted)" }, svg);
-    text(svg, sx(v), H - B + 17, tickLabel(v, xt.step), { "text-anchor": "middle", "font-size": 11 });
-  }
-  s("line", { x1: L, x2: W - R, y1: H - B, y2: H - B, stroke: "var(--fug-muted)" }, svg);
-  text(svg, (L + W - R) / 2, H - 6, xLabel, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12 });
-  text(svg, 13, (T + H - B) / 2, yLabel, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12, transform: `rotate(-90 13 ${(T + H - B) / 2})` });
-
-  const labels = [];
-  series.forEach(sr => {
-    for (const g of sr.segments) {
-      if (!g.points.length) continue;
-      const d = "M" + g.points.map(pt => `${sx(pt.x).toFixed(1)},${sy(pt.y).toFixed(1)}`).join("L");
-      s("path", { d, fill: "none", stroke: sr.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
-    }
-    for (const t of sr.transitions) {
-      const X = sx(t.x);
-      if (t.y0 != null && t.y1 != null) {
-        s("line", { x1: X, x2: X, y1: sy(t.y0), y2: sy(t.y1), stroke: sr.color, "stroke-width": 1.5, "stroke-dasharray": "2 3" }, svg);
-      }
-      for (const y of [t.y0, t.y1]) if (y != null) s("circle", { cx: X, cy: sy(y), r: 4, fill: "var(--fug-bg)", stroke: sr.color, "stroke-width": 2 }, svg);
-    }
-    const last = sr.segments.filter(g => g.points.length).at(-1);
-    if (sr.name && last) labels.push({ y: sy(last.points.at(-1).y), x: sx(last.points.at(-1).x), name: sr.name });
-  });
-  // direct labels, spread so they do not overlap
-  labels.sort((a, b) => a.y - b.y);
-  for (let i = 1; i < labels.length; i++) labels[i].y = Math.max(labels[i].y, labels[i - 1].y + 13);
-  const over = labels.length ? labels.at(-1).y - (H - B) : 0;
-  if (over > 0) for (const lb of labels) lb.y -= over;
-  for (const lb of labels) text(svg, Math.min(lb.x + 6, W - R + 6), lb.y + 4, lb.name, { fill: "var(--fug-fg2)", "font-size": 11 });
-
-  const hover = s("g", { "pointer-events": "none" }, svg);
-  const move = x => {
-    x = clamp(x, x0, x1);
-    const vals = show(x) || [];
-    hover.replaceChildren();
-    s("line", { x1: sx(x), x2: sx(x), y1: T, y2: H - B, stroke: "var(--fug-muted)", "stroke-dasharray": "3 3" }, hover);
-    vals.forEach((v, i) => {
-      if (v == null || (log && !(v > 0))) return;
-      s("circle", { cx: sx(x), cy: sy(v), r: 4.5, fill: series[i]?.color ?? "var(--fug-fg)", stroke: "var(--fug-halo)", "stroke-width": 2 }, hover);
-    });
-  };
-  const onPointer = ev => { const pt = svgPoint(svg, ev); move(x0 + (pt.x - L) / (W - L - R) * (x1 - x0)); };
-  svg.addEventListener("pointermove", onPointer);
-  svg.addEventListener("pointerdown", onPointer);
-  plot.replaceChildren(svg);
-  return move;
 }

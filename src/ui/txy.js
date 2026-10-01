@@ -1,4 +1,4 @@
-import { s, h, text, ticks, svgPoint, C, fmt, basisView } from "./dom.js";
+import { s, h, text, ticks, svgPoint, tempUnit, fmt, basisView } from "./dom.js";
 import { txy } from "../equilibrium/diagrams.js";
 import { bubbleT } from "../equilibrium/bubble.js";
 import { isLiquidStable } from "../equilibrium/stability.js";
@@ -6,9 +6,12 @@ import { isLiquidStable } from "../equilibrium/stability.js";
 /**
  * T-x-y diagram for a binary system at pressure P (kPa).
  * Draws the bubble (liquid) and dew (vapour) curves, a hover tie line, and a readout.
+ * view: { basis: "mole"|"mass", MW: number[], T: "C"|"K" (display unit, default °C) }.
+ * Grid lines and the two-liquid shading carry the class "fug-bg-layer" (background layers).
  */
 export function renderTxy(plot, side, sys, P, view = {}) {
   const bv = basisView(view.basis, view.MW);
+  const { conv: C, label: tl } = tempUnit(view.T);
   const data = txy(sys, P, 101);
   const W = 560, H = 380, L = 56, R = 16, T = 16, B = 44;
   const Tmin = Math.min(...data.map(d => d.T)), Tmax = Math.max(...data.map(d => d.T));
@@ -19,21 +22,22 @@ export function renderTxy(plot, side, sys, P, view = {}) {
   const sy = v => H - B - (v - y0) / (y1 - y0) * (H - T - B);
 
   const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `T-x-y diagram of ${sys.names.join(" and ")}` });
+  const bg = s("g", { class: "fug-bg-layer" }, svg);
   for (let v = y0; v <= y1 + 1e-9; v += yt.step) {
-    s("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--fug-rule)" }, svg);
+    s("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--fug-rule)" }, bg);
     text(svg, L - 8, sy(v) + 4, +v.toFixed(2), { "text-anchor": "end", "font-size": 12 });
   }
   for (const v of [0, 0.2, 0.4, 0.6, 0.8, 1]) text(svg, sx(v), H - B + 18, v.toFixed(1), { "text-anchor": "middle", "font-size": 12 });
   s("line", { x1: L, x2: W - R, y1: H - B, y2: H - B, stroke: "var(--fug-muted)" }, svg);
   text(svg, (L + W - R) / 2, H - 6, `x, y  ${sys.names[0]} (mole fraction)`, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12 });
-  text(svg, 14, (T + H - B) / 2, "T, °C", { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12, transform: `rotate(-90 14 ${(T + H - B) / 2})` });
+  text(svg, 14, (T + H - B) / 2, `T, ${tl}`, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12, transform: `rotate(-90 14 ${(T + H - B) / 2})` });
 
   // spinodal check: shade compositions where the liquid would split
   const unstable = data.filter(d => !isLiquidStable(sys, [d.x, 1 - d.x], d.T));
   if (unstable.length) {
     const x0 = Math.min(...unstable.map(d => d.x)), x1 = Math.max(...unstable.map(d => d.x));
-    s("rect", { x: sx(x0), y: T, width: Math.max(2, sx(x1) - sx(x0)), height: H - B - T, fill: "var(--fug-err-bg)", opacity: 0.9 }, svg);
-    text(svg, (sx(x0) + sx(x1)) / 2, T + 14, "two liquids", { "text-anchor": "middle", fill: "var(--fug-err-fg)", "font-size": 12 });
+    s("rect", { x: sx(x0), y: T, width: Math.max(2, sx(x1) - sx(x0)), height: H - B - T, fill: "var(--fug-err-bg)", opacity: 0.9 }, bg);
+    text(bg, (sx(x0) + sx(x1)) / 2, T + 14, "two liquids", { "text-anchor": "middle", fill: "var(--fug-err-fg)", "font-size": 12 });
   }
 
   const path = key => "M" + data.map(d => `${sx(d[key]).toFixed(1)},${sy(C(d.T)).toFixed(1)}`).join("L");
@@ -64,7 +68,7 @@ export function renderTxy(plot, side, sys, P, view = {}) {
     h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, bv.short), h("th", {}, "x"), h("th", {}, "y"), h("th", {}, "γ"))), tab),
     unstable.length ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two phases in the shaded range. The curves there assume a single liquid and are not reliable.") : null,
     h("div", { class: "fug-foot" }, azeo.length
-      ? azeo.map(z => `Azeotrope near ${sys.names[0]} ${bv.f(bv.conv([z.x, 1 - z.x])[0])}${view.basis === "mass" ? " wt %" : ""}, T = ${fmt(C(z.T), 1)} °C`)
+      ? azeo.map(z => `Azeotrope near ${sys.names[0]} ${bv.f(bv.conv([z.x, 1 - z.x])[0])}${view.basis === "mass" ? " wt %" : ""}, T = ${fmt(C(z.T), 1)} ${tl}`)
       : "No azeotrope at this pressure."),
   ].filter(Boolean));
 
@@ -73,7 +77,7 @@ export function renderTxy(plot, side, sys, P, view = {}) {
     const r = bubbleT(sys, [x1, 1 - x1], P);
     const x = [x1, 1 - x1], xb = bv.conv(x), yb = bv.conv(r.y);
     xOut.textContent = `${sys.names[0]} ${bv.f(xb[0])} · ${sys.names[1]} ${bv.f(xb[1])}${view.basis === "mass" ? " (wt %)" : ""}`;
-    tOut.textContent = `${fmt(C(r.T), 2)} °C`;
+    tOut.textContent = `${fmt(C(r.T), 2)} ${tl}`;
     tab.replaceChildren(...sys.names.map((n, i) => h("tr", {}, h("td", {}, n), h("td", {}, bv.f(xb[i])), h("td", {}, bv.f(yb[i])), h("td", {}, fmt(r.gamma[i])))));
     hover.replaceChildren();
     const yy = sy(C(r.T));

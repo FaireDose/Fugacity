@@ -1,0 +1,56 @@
+/**
+ * Icons for the workbench: small line drawings on a 24 x 24 grid, drawn for Fugacity
+ * (most are tiny phase diagrams). They use currentColor, so they follow the theme;
+ * an element with class "a" takes the accent colour.
+ */
+import { s } from "./dom.js";
+
+const P = {
+  // a T-x-y lens: bubble and dew curves between the two pure boiling points
+  logo: '<path d="M4 17 C8 16.5 14 13 20 7" /><path d="M4 17 C9 12 13 8.5 20 7" class="a"/><circle cx="4" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="20" cy="7" r="1.6" fill="currentColor" stroke="none"/>',
+  flask: '<path d="M9.5 3.5h5M10.5 3.5v5.2L5.2 18.2a1.6 1.6 0 0 0 1.4 2.3h10.8a1.6 1.6 0 0 0 1.4-2.3L13.5 8.7V3.5"/><path d="M7.4 14.5h9.2" class="a"/>',
+  txy: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 7 C10 7.5 15 12 19 17" class="a"/><path d="M5.5 7 C8 11 13 15.5 19 17"/>',
+  ternary: '<path d="M12 3.5 21 19.5H3z"/><path d="M7 15.5C10 13 13 12.5 17 15" class="a"/><path d="M9.5 11.5C12 10.5 14 11 15.5 12.5" class="a"/>',
+  azeo: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 9 C8 13 10 14.5 12 14.5 S16 12 19 8" class="a"/><path d="M5.5 9 C8 11.5 10 14.3 12 14.5 S17 10 19 8"/><circle cx="12" cy="14.5" r="1.7" fill="currentColor" stroke="none"/>',
+  residue: '<path d="M12 3.5 21 19.5H3z"/><path d="M6.5 17.5C9 11 13 9.5 15.5 9.8" class="a"/><path d="m13.6 8.4 2.2 1.4-1.6 2" class="a"/>',
+  isotherm: '<path d="M12 3.5 21 19.5H3z"/><path d="M6.2 14c2-1.2 3.6-.2 5.4-1s3.6-.9 6 .6M8.4 10c1.5-.8 2.6-.1 3.8-.6s2.4-.6 3.6.3" class="a"/>',
+  layers: '<path d="m12 4 8.5 4.5L12 13 3.5 8.5z"/><path d="m3.5 12.5 8.5 4.5 8.5-4.5" class="a"/><path d="m3.5 16.3 8.5 4.5 8.5-4.5"/>',
+  gauge: '<path d="M4.2 16.5a8.2 8.2 0 1 1 15.6 0"/><path d="m12 13.5 4-4.5" class="a"/><circle cx="12" cy="13.5" r="1.4"/><path d="M7 19.5h10"/>',
+  thermo: '<path d="M10 14.2V5a2 2 0 1 1 4 0v9.2a3.6 3.6 0 1 1-4 0z"/><path d="M12 9v7" class="a"/>',
+  // a van der Waals-type isotherm of a cubic equation of state
+  cubic: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 5 C6.5 13 7.5 14.5 9 14.5 S11.5 9.5 13 9.5 S15 13 20 15.5" class="a"/><path d="M8 12.6h10" stroke-dasharray="1.6 1.8"/>',
+  envelope: '<path d="M4 3.5v16.5h16.5"/><path d="M6 18 C9 17 11 13 13 8.5 C14.5 6 16.5 6.5 17.5 9 C18.5 12 18 15 15 18" class="a"/><circle cx="14.6" cy="7.2" r="1.5" fill="currentColor" stroke="none"/>',
+  pxy: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 16.5 C10 15.5 15 11 19 6" class="a"/><path d="M5.5 16.5 C8 11 13 7.5 19 6"/>',
+  henry: '<path d="M5.5 8.5v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-10"/><path d="M5.5 12.5c2.2-1 4.2 1 6.5 0s4.3-1 6.5 0" class="a"/><circle cx="10" cy="16.5" r="1.2"/><circle cx="14.2" cy="17.6" r=".9"/><circle cx="12.8" cy="4.8" r="1.3"/><circle cx="9.6" cy="7" r=".9"/>',
+  curves: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 17C10 16 14 12 19.5 5.5" class="a"/><path d="M5.5 13C10 12.5 14 10 19.5 9"/>',
+  table: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9h17M3.5 13.5h17M9.5 4.5v15" /><path d="M3.5 9h17" class="a"/>',
+  calc: '<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8 7.5h8" class="a"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01" stroke-width="2.2" stroke-linecap="round"/>',
+  // water T-s diagram: saturation dome with an isobar
+  dome: '<path d="M4 3.5v16.5h16.5"/><path d="M6 18.5C7.5 10 10 5.5 12 5.5s4.5 4.5 6 13"/><path d="M5.5 16C7 15 7.5 13 8.2 11.5h7.6C17 9 18 6.5 20 4.5" class="a"/>',
+  units: '<path d="m4 15.5 11.5-11.5 4.5 4.5L8.5 20z"/><path d="m8 11.5 1.8 1.8M10.5 9l1.8 1.8M13 6.5l1.8 1.8" class="a"/>',
+  panelL: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M9 4.5v15"/><path d="M5.5 8h1.5M5.5 11h1.5" class="a"/>',
+  panelR: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M15 4.5v15"/><path d="M17 8h1.5M17 11h1.5" class="a"/>',
+  status: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 16h17"/><path d="M6 18h4" class="a"/>',
+  rotate: '<path d="M18.5 12a6.5 6.5 0 1 1-2-4.7"/><path d="M17.5 3.8v4h-4" class="a"/>',
+  swap: '<path d="M5 8.5h13m-3-3 3 3-3 3"/><path d="M19 15.5H6m3 3-3-3 3-3" class="a"/>',
+  clear: '<circle cx="12" cy="12" r="8.5"/><path d="m9 9 6 6m0-6-6 6" class="a"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5" class="a"/>',
+  chevronUp: '<path d="m6 14.5 6-6 6 6"/>',
+  chevronDown: '<path d="m6 9.5 6 6 6-6"/>',
+  menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+  close: '<path d="m6.5 6.5 11 11m0-11-11 11"/>',
+  info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5" class="a"/><path d="M12 7.8h.01" stroke-width="2.4" stroke-linecap="round"/>',
+  theme: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>',
+  grid: '<path d="M12 3.5 21 19.5H3z"/><path d="M7.5 11.5h9M5.2 15.5h13.6M9.8 7.5l5.4 12M14.2 7.5l-5.4 12" stroke-width="1"/>',
+  check: '<path d="m5.5 12.5 4 4 9-9"/>',
+};
+
+/** An icon as an SVG element (24 x 24 grid, drawn at `size` px). */
+export function icon(name, size = 20) {
+  const svg = s("svg", { viewBox: "0 0 24 24", width: size, height: size, fill: "none", stroke: "currentColor",
+    "stroke-width": 1.5, "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "fug-ico", focusable: "false" });
+  svg.innerHTML = P[name] ?? P.info;
+  return svg;
+}
+
+export const ICON_NAMES = Object.keys(P);
