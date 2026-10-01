@@ -7,9 +7,15 @@ import { dimerK, monomerPressure } from "./vapour.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
 
-/** All components in the databank, as { id, name, formula, cas }. */
+/**
+ * All components in the databank, as { id, name, formula, cas, activity }.
+ * `activity` is true when the component has the data for activity-coefficient (NRTL,
+ * UNIQUAC) vapour-liquid equilibria; light gases are described by equations of state.
+ */
 export function listComponents() {
-  return Object.entries(componentData.components).map(([id, c]) => ({ id, name: c.name, formula: c.formula, cas: c.cas }));
+  return Object.entries(componentData.components).map(([id, c]) => ({
+    id, name: c.name, formula: c.formula, cas: c.cas, activity: Boolean(c.uniquac && c.vapourPressure),
+  }));
 }
 
 const norm = s => String(s).trim().toLowerCase().replace(/[\s_]+/g, " ");
@@ -56,6 +62,12 @@ export function createSystem(cfg) {
   const ids = cfg.components.map(findComponent);
   if (new Set(ids).size !== ids.length) throw new Error("A component appears twice.");
   const comps = ids.map(id => componentData.components[id]);
+  for (const c of comps) {
+    if (!c.vapourPressure && !cfg.psat) {
+      throw new Error(`${c.name} has no vapour-pressure record, so it cannot be used with activity-coefficient models. Use an equation of state for gases.`);
+    }
+    if (model === "UNIQUAC" && !c.uniquac) throw new Error(`${c.name} has no UNIQUAC r and q.`);
+  }
   const n = ids.length;
   const useAssoc = cfg.association !== false;
 

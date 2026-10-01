@@ -5,7 +5,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const comps = JSON.parse(readFileSync(new URL("../src/data/components.json", import.meta.url))).components;
 const pairs = JSON.parse(readFileSync(new URL("../src/data/binaries.json", import.meta.url))).pairs;
-const ids = Object.keys(comps);
+// Activity-model (NRTL/UNIQUAC) pairs only: light gases are described by equations of state.
+const ids = Object.keys(comps).filter(id => comps[id].uniquac);
 const name = id => comps[id].name;
 
 const have = new Map();

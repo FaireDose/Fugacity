@@ -44,7 +44,7 @@ export function mount(target, cfg = {}) {
     feedbackUrl: cfg.feedbackUrl ?? "https://github.com/FaireDose/Fugacity/issues/new/choose",
   };
   const uid = Math.random().toString(36).slice(2, 7);
-  const all = listComponents();
+  const all = listComponents().filter(c => c.activity);
 
   const box = h("div", { class: "fug" });
   root.replaceChildren(box);
