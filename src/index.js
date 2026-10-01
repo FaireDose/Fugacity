@@ -12,6 +12,7 @@ import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
 import { isLiquidStable } from "./equilibrium/stability.js";
 import { checkPackage, validCas } from "./contrib/package-check.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "./thermo/pure.js";
+import { steam, steamSat } from "./thermo/iapws/steam.js";
 import { mount } from "./ui/mount.js";
 import pkg from "../package.json" with { type: "json" };
 
@@ -45,4 +46,5 @@ export {
   bubbleT, bubbleP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
   binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
   pure, PROPERTIES, PROPERTY_NAMES,
+  steam, steamSat,
 };
