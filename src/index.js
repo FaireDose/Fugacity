@@ -12,8 +12,13 @@ import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
 import { isLiquidStable } from "./equilibrium/stability.js";
 import { checkPackage, validCas } from "./contrib/package-check.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "./thermo/pure.js";
+import { steam, steamSat } from "./thermo/iapws/steam.js";
 import { mount } from "./ui/mount.js";
 import { mountProperties } from "./ui/properties.js";
+import { EOS_MODELS } from "./thermo/system.js";
+import { eosMethods, eosBubbleP, eosBubbleT, eosDewP, eosDewT } from "./equilibrium/phi-phi.js";
+import { cubicEos } from "./thermo/eos/cubic.js";
+import { henry, henryInfo, gasSolubility, HENRY_GASES } from "./thermo/henry.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -27,6 +32,7 @@ export const version = pkg.version;
  */
 export function system(cfg) {
   const sys = createSystem(cfg);
+  if (sys.kind === "eos") return Object.assign(sys, eosMethods(sys)); // model "PR" or "SRK"
   return Object.assign(sys, {
     bubbleT: (x, P) => bubbleT(sys, x, P),
     bubbleP: (x, T) => bubbleP(sys, x, T),
@@ -47,4 +53,7 @@ export {
   binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
   pure, PROPERTIES, PROPERTY_NAMES,
   mountProperties,
+  EOS_MODELS, cubicEos, eosBubbleP, eosBubbleT, eosDewP, eosDewT,
+  henry, henryInfo, gasSolubility, HENRY_GASES,
+  steam, steamSat,
 };

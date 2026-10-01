@@ -4,8 +4,10 @@ import { vapourPressure } from "./psat.js";
 import { nrtl } from "./activity/nrtl.js";
 import { uniquac } from "./activity/uniquac.js";
 import { dimerK, monomerPressure } from "./vapour.js";
+import { createEosSystem, EOS_MODELS } from "./eos/system.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
+export { EOS_MODELS };
 
 /**
  * All components in the databank, as { id, name, formula, cas, activity }.
@@ -57,10 +59,12 @@ function findPair(model, a, b) {
  */
 export function createSystem(cfg) {
   const model = (cfg.model || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : (cfg.model || "NRTL").toUpperCase();
-  if (!MODELS.includes(model)) throw new Error(`Unknown model "${cfg.model}". Use one of: ${MODELS.join(", ")}.`);
-  if (!Array.isArray(cfg.components) || cfg.components.length < 2) throw new Error("Give at least two components.");
+  const isEos = EOS_MODELS.includes(model);
+  if (!MODELS.includes(model) && !isEos) throw new Error(`Unknown model "${cfg.model}". Use one of: ${MODELS.join(", ")}, or an equation of state: ${EOS_MODELS.join(", ")}.`);
+  if (!Array.isArray(cfg.components) || cfg.components.length < (isEos ? 1 : 2)) throw new Error(isEos ? "Give at least one component." : "Give at least two components.");
   const ids = cfg.components.map(findComponent);
   if (new Set(ids).size !== ids.length) throw new Error("A component appears twice.");
+  if (isEos) return createEosSystem(ids, { ...cfg, model }); // Peng-Robinson / SRK: see eos/system.js
   const comps = ids.map(id => componentData.components[id]);
   for (const c of comps) {
     if (!c.vapourPressure && !cfg.psat) {

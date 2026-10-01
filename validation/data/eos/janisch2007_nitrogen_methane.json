@@ -1,0 +1,33 @@
+{
+  "system": ["nitrogen", "methane"],
+  "kind": "isothermal-pxy (several isotherms)",
+  "source": {
+    "citation": "J. Janisch, G. Raabe, J. Koehler, Vapor-Liquid Equilibria and Saturated Liquid Densities in Binary Mixtures of Nitrogen, Methane, and Ethane, J. Chem. Eng. Data 52 (2007) 1897-1903",
+    "doi": "10.1021/je700210n",
+    "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je700210n.xml (NIST TRC ThermoML Archive)",
+    "access": "NIST TRC ThermoML Archive, free access to the data of J. Chem. Eng. Data",
+    "tables": "ThermoML file: 2nd PureOrMixtureData block (vapour or sublimation pressure, kPa, of methane + nitrogen as a function of liquid mole fraction of nitrogen and temperature) and 4th block (mole fraction of nitrogen in the gas phase, same states). Expanded uncertainties (95 %) from nCombExpandUncertValue.",
+    "transcription": "Read from the ThermoML XML with a web-reading tool (two independent readings agreed on every value); the reviewer should compare each row with the XML.",
+    "checked_by_human": false
+  },
+  "columns": ["T_K", "x_N2", "P_kPa", "y_N2", "U_P_kPa", "U_y"],
+  "rows": [
+    [159.972, 0.0224, 1789.2, 0.0908, 80.0, 0.0195],
+    [130.029, 0.0425, 583.6, 0.3299, 80.8, 0.0554],
+    [130.079, 0.0461, 613.7, 0.3468, 80.9, 0.0555],
+    [169.983, 0.17, 3973.9, 0.3316, 92.3, 0.0145],
+    [179.976, 0.1898, 5061.5, 0.193, 83.8, 0.011],
+    [169.941, 0.2351, 4505.8, 0.3746, 89.3, 0.0154],
+    [159.989, 0.2659, 3682.5, 0.4978, 86.5, 0.0252],
+    [149.989, 0.2774, 2908.4, 0.5981, 60.4, 0.0203],
+    [170.018, 0.2845, 4840.6, 0.3906, 81.8, 0.0154],
+    [170.009, 0.3013, 4933.4, 0.3919, 62.1, 0.0152],
+    [169.935, 0.3248, 4973.5, 0.3866, 55.6, 0.0152],
+    [159.906, 0.3553, 4302.7, 0.539, 78.9, 0.0208],
+    [160.0, 0.4156, 4645.8, 0.5441, 87.9, 0.0206],
+    [159.962, 0.4275, 4729.1, 0.5465, 88.4, 0.0206],
+    [150.001, 0.5608, 4387.1, 0.699, 64.1, 0.0184],
+    [149.928, 0.5938, 4527.3, 0.6897, 64.9, 0.0186]
+  ],
+  "notes": "x_N2 and y_N2 are mole fractions of nitrogen. Values copied as given in the ThermoML file. The point at 179.976 K (y close to x) lies near the mixture critical point."
+}
