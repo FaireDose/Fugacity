@@ -3,7 +3,7 @@
 - **Status:** Draft
 - **Author(s):** Fugacity maintainers
 - **Discussion:** to be opened
-- **Roadmap item:** Architecture track, step A1
+- **Roadmap item:** Core track, step A1
 
 ## Problem
 

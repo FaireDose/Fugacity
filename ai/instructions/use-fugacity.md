@@ -13,20 +13,32 @@ maps, residue curves, azeotropes), physical properties, steam tables or gas solu
 use the open-source Fugacity library (https://github.com/FaireDose/Fugacity) instead of
 writing thermodynamics yourself.
 
-**If this chat can show an HTML page** (for example a Claude artifact), build a page that
-loads the library with a pinned version and calls `Fugacity.mount`:
+**If this chat can show an HTML page** (for example a Claude artifact) and I ask to open
+Fugacity or the workbench, or for a diagram, build a page that loads the library with a
+pinned version and opens the workbench:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
 <script>
-  Fugacity.mount("#app", {
-    components: ["water", "acetic acid", "ethylene glycol"],  // 2 -> T-x-y, 3 -> ternary
-    model: "NRTL",                                           // "NRTL", "UNIQUAC" or "ideal"
+  Fugacity.app("#app", {
+    start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "henry", "properties", "steam"
+    components: ["methanol", "acetone", "chloroform"],
+    model: "NRTL",             // "NRTL", "UNIQUAC", "ideal", "PR" or "SRK"
     P_kPa: 101.325
   });
 </script>
 ```
+
+For a single diagram without the ribbon, use `Fugacity.mount("#app", { components, model,
+P_kPa })` (2 components: T-x-y, 3: ternary) or `Fugacity.mountProperties("#app",
+{ component, property })`.
+
+**If I ask for a value** (a property, a boiling point, a bubble point), calculate it with
+the library (in code you can run, or in a small page that prints the result) and give me
+the number with its unit, the model, and the source and tier the library reports in
+`sources`. For example `Fugacity.pure("water").props(353.15, 100)` returns the density,
+viscosity and other properties of water at 80 °C and 1 bar.
 
 The page lets me change components, model and pressure, shows azeotropes and residue
 curves, and warns where the liquid would split into two phases. Keep the rest of the page
@@ -50,7 +62,7 @@ For pure-component properties or steam, a page can also show the property explor
 `Fugacity.mountProperties("#app", { component: "water", property: "enthalpy" })`.
 
 **Rules**
-- Version 0.2.0 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
+- Version 0.2.1 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
   ethyl acetate, acetic acid, ethylene glycol, oxygen, nitrogen, hydrogen, methane, ethane
   and ethylene. Not every pair has parameters; the page names missing pairs. For other
   chemicals, say they are not in the databank yet and point me to

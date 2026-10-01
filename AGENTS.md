@@ -12,7 +12,9 @@ browser and inside AI chat pages (for example Claude artifacts). Today: vapour-l
 equilibria with NRTL, UNIQUAC, Peng–Robinson and SRK, pure-component properties for 16
 components, and IAPWS-IF97 steam tables. Goal: full flowsheets, built step by step along the
 roadmap. Every parameter has a source and a quality tier, and every model is tested
-against data. Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Plans: [ROADMAP.md](ROADMAP.md).
+against data. Beyond flowsheets, the roadmap aims at cost engineering and at AI agents that
+compare process routes from the literature, with engineers checking and deciding.
+Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Plans: [ROADMAP.md](ROADMAP.md).
 
 ## Security first
 
@@ -77,7 +79,12 @@ Something broken in the interface: the [Bug form](https://github.com/FaireDose/F
   layers, interfaces and file formats need an accepted proposal first
   ([proposals/](proposals/README.md)); small items (a view, a fix) can go straight to a
   pull request.
-- **Shape the roadmap**: draft a proposal for an architecture step or a new roadmap item,
+- **Cost engineering and agentic design** (the long-term tracks E and G of the
+  [roadmap](ROADMAP.md)): equipment sizing and cost correlations from open sources,
+  operating cost and cost of production, a tool interface for agents, extracting process
+  routes from open literature, and benchmark case studies with known answers. These need
+  proposals first; the cost correlations follow the same open-source rules as data.
+- **Shape the roadmap**: draft a proposal for a core step or a new roadmap item,
   or review a proposal with engineering arguments.
 - **Data for a pair**: open vapour-liquid equilibrium data for a pair in
   [docs/DATA_WANTED.md](docs/DATA_WANTED.md). Prefer isobaric T-x-y near 101.3 kPa with a

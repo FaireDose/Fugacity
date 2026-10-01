@@ -30,7 +30,8 @@ Peng–Robinson does not break the flash drum.
 | 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | Not started |
 | 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | Not started |
 | 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |
-| 6 | Interface | Diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | T-x-y and ternary views with component picker; pure-component property explorer |
+| 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench with a ribbon (`app`); T-x-y and ternary views; property explorer; EOS, Henry and steam views |
+| 7 | Design studio | Cost engineering (sizing, capital and operating cost, cost of product) and agent-run studies that compare process routes from the literature; every result reproducible and sourced | `src/design/` | Not started; roadmap tracks E and G |
 
 Units inside the engine: temperature in K, pressure in kPa, amounts in mol or kmol,
 energy in J or kW. The interface converts for display (°C, for example).
@@ -212,7 +213,7 @@ a data reviewer. Roles and decisions: [GOVERNANCE.md](GOVERNANCE.md); protection
 
 ## Next steps
 
-The design work ahead is laid out as the **architecture track** in
+The design work ahead is laid out as the **core track** in
 [ROADMAP.md](ROADMAP.md) (steps A1–A12). Each step is settled by a proposal before it is
 built; the first, the property package interface, is
 [proposal 0001](proposals/0001-property-package.md).

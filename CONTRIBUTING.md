@@ -55,6 +55,22 @@ view, a fix) can go straight to a pull request.
 Your assistant or agent runs on your own account. The project never asks for your keys or
 passwords.
 
+## The ambitious part
+
+Besides the simulator core, the [roadmap](ROADMAP.md) has two long-term tracks where
+engineering experience matters more than code:
+
+- **Cost engineering (E):** equipment sizing, capital and operating cost, cost of
+  production per kg, with correlations from open sources. If you have estimated plants,
+  you know which correlations are sensible and what accuracy to claim.
+- **Agentic design (G):** AI agents that read open papers and patents, build flowsheets
+  for several process routes, simulate and cost them, and recommend one, with every
+  number traced. Engineers define how such a study should be done, write benchmark case
+  studies with known answers, and review what the agents produce.
+
+Start with a proposal (path 1 above), for example with the prompt *"Work on the ambitious
+tracks"* in [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
+
 ## What happens next
 
 Every pull request runs the automatic tests and is reviewed by someone other than its

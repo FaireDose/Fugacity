@@ -8,6 +8,19 @@ instead. Replace the parts in **bold** with your own choice.
 Your own assistant account does the work; the project never asks for your keys or
 passwords.
 
+## Use Fugacity
+
+### Open the workbench
+
+> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
+> and follow it. Open the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
+
+### Ask for a property value
+
+> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
+> and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
+> Give the source of each value.
+
 ## Develop the simulator
 
 ### Add a thermodynamic model
@@ -58,6 +71,19 @@ flash drum, recycle solver, shortcut column, McCabe–Thiele view.
 > check the equations against their references, the validation plan, and whether it fits
 > the architecture. List concrete objections and what would resolve them. I will post the
 > review myself.
+
+### Work on the ambitious tracks: cost engineering and agentic design
+
+> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md and
+> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md (cost engineering
+> and agentic design tracks). Help me with item **E2: equipment cost correlations**. Find
+> correlations in open sources only (open-access articles, open government or university
+> reports, free books), with the year of their cost basis, and draft a proposal: which
+> equipment, which correlations, how we validate them against open published examples.
+
+Other items: E1 equipment sizing, E3 utilities and operating cost, G2 extracting process
+routes from open papers into a route file, G5 an open benchmark case study with a known
+answer.
 
 ## Add data
 
