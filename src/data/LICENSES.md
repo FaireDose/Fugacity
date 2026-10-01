@@ -11,6 +11,7 @@ sources with their own terms, recorded in the `source` field of every entry.
 | Critical constants, normal boiling points and acentric factors of the gases; acentric factors of water, methanol, ethanol, acetone, benzene and toluene | CoolProp 8.0.0 (open source), from the reference equations of state cited in each entry | MIT |
 | Acentric factors of acetic acid, ethylene glycol, chloroform and ethyl acetate | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
 | Vapour-pressure coefficients | Fitted for Fugacity to correlations in the open-source thermo library (MIT); the method used is named in each entry | MIT |
+| Reference values of the engineering report (`validation/report/reference/`) | CoolProp 8.0.0 (open source), and spot values from the NIST Chemistry WebBook (SRD 69, free public access), each cited with its page | MIT (CoolProp); NIST WebBook values cited, not redistributed as a database |
 
 Before adding data from a new source, check that its license allows redistribution,
 and record the source and license here.
