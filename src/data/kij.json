@@ -17,7 +17,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".711e-1",
     "conditions": "Hydrogen/Nitrogen T=90-113K p210",
-    "entries_in_file": 3
+    "entries_in_file": 3,
+    "T_range_K": [
+     90.0,
+     113.0
+    ]
    },
    "alternatives": [
     ".1196 (Hydrogen/Nitrogen T=90-94.99K p212)",
@@ -34,7 +38,11 @@
     "file": "ChemSep pr.ipd",
     "printed": "-.44e-2",
     "conditions": "Hydrogen/Methane T=103.15-173.65K p225",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     103.15,
+     173.65
+    ]
    },
    "alternatives": [
     ".263e-1 (Hydrogen/Methane T=90.3-127K p219)",
@@ -53,7 +61,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".633e-1",
     "conditions": "Hydrogen/Ethylene T=123.15-248.15K p229",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     123.15,
+     248.15
+    ]
    },
    "alternatives": [
     "-.122e-1 (Hydrogen/Ethylene T=158.15-255.35K p231)"
@@ -69,7 +81,11 @@
     "file": "ChemSep pr.ipd",
     "printed": "-.781e-1",
     "conditions": "Hydrogen/Ethane T=144.25-283.15K p235",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     144.25,
+     283.15
+    ]
    },
    "alternatives": [
     "-.756e-1 (Hydrogen/Ethane T=149.61-189.57K p233)",
@@ -82,15 +98,32 @@
    "model": "PR",
    "i": "hydrogen",
    "j": "toluene",
-   "kij": -0.51,
-   "tier": "databank",
+   "kij": 0.3989,
+   "tier": "fitted",
    "source": {
-    "file": "ChemSep pr.ipd",
-    "printed": "-.5100",
-    "conditions": "Hydrogen/Toluene p255",
-    "entries_in_file": 1
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to 29 bubble pressures: AAD 6.54 %, deviations -9.2 to 12.2 %",
+    "data": [
+     "validation/data/eos/tsuji2005_hydrogen_toluene.json",
+     "validation/data/eos/aslam2016_hydrogen_toluene.json"
+    ],
+    "conditions": "T = 293-333 K, P = 510-4413 kPa, x_H2 <= 0.014586",
+    "T_range_K": [
+     293,
+     333
+    ]
    },
-   "alternatives": []
+   "replaced": {
+    "kij": -0.51,
+    "tier": "databank",
+    "source": {
+     "file": "ChemSep pr.ipd",
+     "printed": "-.5100",
+     "conditions": "Hydrogen/Toluene p255",
+     "entries_in_file": 1
+    },
+    "alternatives": [],
+    "reason": "The ChemSep PR value (-0.51) under-predicts the bubble pressure of the open data sets of Tsuji et al. (2005) and Aslam et al. (2016) by 66-78 % (k_ij = 0: 38-51 %), i.e. it predicts 3-4 times too much hydrogen solubility; the SRK value from the same DECHEMA page is +0.39. Found by the independent review of pull request #13."
+   }
   },
   {
    "model": "PR",
@@ -102,7 +135,11 @@
     "file": "ChemSep pr.ipd",
     "printed": "-.159e-1",
     "conditions": "Nitrogen/Oxygen T=90.53-124.96K P=1.189-29.72bar p277",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     90.53,
+     124.96
+    ]
    },
    "alternatives": [
     "-.93e-2 (Nitrogen/Oxygen T=81.07-91.00K P=1.218-1.350bar p278)",
@@ -121,7 +158,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".289e-1",
     "conditions": "Nitrogen/Methane T=88.71-188.71K p285",
-    "entries_in_file": 6
+    "entries_in_file": 6,
+    "T_range_K": [
+     88.71,
+     188.71
+    ]
    },
    "alternatives": [
     ".330e-1 (Nitrogen/Methane T=95-120K p287)",
@@ -155,7 +196,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".533e-1",
     "conditions": "Nitrogen/Ethane T=138.71-194.26K p302",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     138.71,
+     194.26
+    ]
    },
    "alternatives": [
     ".344e-1 (Nitrogen/Ethane T=200-290K p300)"
@@ -199,7 +244,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".244e-1",
     "conditions": "Methane/Ethylene T=150-190K p383",
-    "entries_in_file": 3
+    "entries_in_file": 3,
+    "T_range_K": [
+     150.0,
+     190.0
+    ]
    },
    "alternatives": [
     ".378e-1 (Methane/Ethylene T=198.15-248.15K p378)",
@@ -216,7 +265,11 @@
     "file": "ChemSep pr.ipd",
     "printed": "-.59e-2",
     "conditions": "Methane/Ethane T=144.26-283.15 p390",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     144.26,
+     283.15
+    ]
    },
    "alternatives": [
     "-.33e-2 (Methane/Ethane T=130.37-199.93K p385)",
@@ -235,7 +288,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".807e-1",
     "conditions": "Methane/Benzene T=421-501K p463",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     421.0,
+     501.0
+    ]
    },
    "alternatives": [
     ".304e-1 (Methane/Benzene T=338.71K p465)"
@@ -265,7 +322,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".78e-2",
     "conditions": "Ethylene/Ethane T=169-273K P=0.4-41.1bar p507",
-    "entries_in_file": 4
+    "entries_in_file": 4,
+    "T_range_K": [
+     169.0,
+     273.0
+    ]
    },
    "alternatives": [
     ".119e-1 (Ethylene/Ethane T=200-255K P=2.2-26.7bar p503)",
@@ -325,7 +386,11 @@
     "file": "ChemSep pr.ipd",
     "printed": ".322e-1",
     "conditions": "Ethane/Benzene T=273-553K p561",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     273.0,
+     553.0
+    ]
    },
    "alternatives": [
     ".493e-1 (Ethane/Benzene T=298.15K p563)"
@@ -355,7 +420,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".563e-1",
     "conditions": "Hydrogen/Nitrogen T=90-113K p210",
-    "entries_in_file": 3
+    "entries_in_file": 3,
+    "T_range_K": [
+     90.0,
+     113.0
+    ]
    },
    "alternatives": [
     ".1141 (Hydrogen/Nitrogen T=90-94.99K p212)",
@@ -372,7 +441,11 @@
     "file": "ChemSep srk.ipd",
     "printed": "-.459e-1",
     "conditions": "Hydrogen/Methane T=103.15-173.65K p225",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     103.15,
+     173.65
+    ]
    },
    "alternatives": [
     "-.133e-1 (Hydrogen/Methane T=90.3-127K p219)",
@@ -391,7 +464,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".33e-2",
     "conditions": "Hydrogen/Ethylene T=123.15-248.15K p229",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     123.15,
+     248.15
+    ]
    },
    "alternatives": [
     "-.681e-1 (Hydrogen/Ethylene T=158.15-255.35K p231)"
@@ -407,7 +484,11 @@
     "file": "ChemSep srk.ipd",
     "printed": "-.1867",
     "conditions": "Hydrogen/Ethane T=144.25-283.15K p235",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     144.25,
+     283.15
+    ]
    },
    "alternatives": [
     "-.1822 (Hydrogen/Ethane T=149.61-189.57K p233)",
@@ -440,7 +521,11 @@
     "file": "ChemSep srk.ipd",
     "printed": "-.156e-1",
     "conditions": "Nitrogen/Oxygen T=90.53-124.96K P=1.189-29.72bar p277",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     90.53,
+     124.96
+    ]
    },
    "alternatives": [
     "-.56e-2 (Nitrogen/Oxygen T=81.07-91.00K P=1.218-1.350bar p278)",
@@ -459,7 +544,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".267e-1",
     "conditions": "Nitrogen/Methane T=88.71-188.71K p285",
-    "entries_in_file": 6
+    "entries_in_file": 6,
+    "T_range_K": [
+     88.71,
+     188.71
+    ]
    },
    "alternatives": [
     ".293e-1 (Nitrogen/Methane T=95-120K p287)",
@@ -493,7 +582,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".433e-1",
     "conditions": "Nitrogen/Ethane T=138.71-194.26K p302",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     138.71,
+     194.26
+    ]
    },
    "alternatives": [
     ".174e-1 (Nitrogen/Ethane T=200-290K p300)"
@@ -537,7 +630,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".211e-1",
     "conditions": "Methane/Ethylene T=150-190K p383",
-    "entries_in_file": 3
+    "entries_in_file": 3,
+    "T_range_K": [
+     150.0,
+     190.0
+    ]
    },
    "alternatives": [
     ".344e-1 (Methane/Ethylene T=198.15-248.15K p378)",
@@ -554,7 +651,11 @@
     "file": "ChemSep srk.ipd",
     "printed": "-.100e-1",
     "conditions": "Methane/Ethane T=144.26-283.15 p390",
-    "entries_in_file": 5
+    "entries_in_file": 5,
+    "T_range_K": [
+     144.26,
+     283.15
+    ]
    },
    "alternatives": [
     "-.89e-2 (Methane/Ethane T=130.37-199.93K p385)",
@@ -573,7 +674,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".800e-1",
     "conditions": "Methane/Benzene T=421-501K p463",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     421.0,
+     501.0
+    ]
    },
    "alternatives": [
     ".185e-1 (Methane/Benzene T=338.71K p465)"
@@ -603,7 +708,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".100e-1",
     "conditions": "Ethylene/Ethane T=169-273K P=0.4-41.1bar p507",
-    "entries_in_file": 4
+    "entries_in_file": 4,
+    "T_range_K": [
+     169.0,
+     273.0
+    ]
    },
    "alternatives": [
     ".81e-2 (Ethylene/Ethane T=200-255K P=2.2-26.7bar p503)",
@@ -663,7 +772,11 @@
     "file": "ChemSep srk.ipd",
     "printed": ".278e-1",
     "conditions": "Ethane/Benzene T=273-553K p561",
-    "entries_in_file": 2
+    "entries_in_file": 2,
+    "T_range_K": [
+     273.0,
+     553.0
+    ]
    },
    "alternatives": [
     ".438e-1 (Ethane/Benzene T=298.15K p563)"

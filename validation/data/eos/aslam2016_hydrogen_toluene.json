@@ -1,0 +1,37 @@
+{
+  "system": ["hydrogen", "toluene"],
+  "kind": "gas solubility: liquid mole fraction of hydrogen at T and P",
+  "source": {
+    "citation": "R. Aslam, K. Mueller, M. Mueller, M. Koch, P. Wasserscheid, W. Arlt, Measurement of Hydrogen Solubility in Potential Liquid Organic Hydrogen Carriers, J. Chem. Eng. Data 61 (2016) 643-649",
+    "doi": "10.1021/acs.jced.5b00789",
+    "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00789.xml (NIST TRC ThermoML Archive)",
+    "access": "NIST TRC ThermoML Archive, free access to the data of J. Chem. Eng. Data",
+    "tables": "ThermoML file: 4th PureOrMixtureData block (toluene + hydrogen; mole fraction of hydrogen in the liquid as a function of temperature, K, and pressure, kPa). Expanded uncertainty of x_H2 from nCombExpandUncertValue.",
+    "transcription": "Read from the ThermoML XML with a web-reading tool; two independent readings agreed on every value. The reviewer should compare each row with the XML.",
+    "checked_by_human": false
+  },
+  "columns": ["T_K", "P_kPa", "x_H2", "U_x_H2"],
+  "rows": [
+    [293, 510, 0.00131, 0.00016],
+    [303, 510, 0.00144, 0.00016],
+    [313, 510, 0.00156, 0.00019],
+    [323, 510, 0.00172, 0.00019],
+    [333, 510, 0.0019, 0.0002],
+    [293, 671, 0.00171, 0.00019],
+    [303, 671, 0.00188, 0.00019],
+    [313, 671, 0.00207, 0.00022],
+    [323, 671, 0.00229, 0.00025],
+    [333, 671, 0.00253, 0.00029],
+    [293, 752, 0.00195, 0.00022],
+    [303, 752, 0.00213, 0.00022],
+    [313, 752, 0.00234, 0.00025],
+    [323, 752, 0.00257, 0.00029],
+    [333, 752, 0.00286, 0.00032],
+    [293, 891, 0.00232, 0.00025],
+    [303, 891, 0.00253, 0.00025],
+    [313, 891, 0.00277, 0.00029],
+    [323, 891, 0.00306, 0.00032],
+    [333, 891, 0.0034, 0.00032]
+  ],
+  "notes": "x_H2 is the mole fraction of hydrogen in the liquid at the stated T and P (total pressure). The expanded uncertainty of x_H2 is about 10 %."
+}

@@ -31,6 +31,13 @@ FLUIDS = {"oxygen": "Oxygen", "nitrogen": "Nitrogen", "hydrogen": "Hydrogen", "m
 GASES = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene"]
 TRS = [0.6, 0.7, 0.8, 0.9]
 PRESSURES_BAR = [1, 10, 50, 100]
+# vapour and supercritical states for the residual enthalpy and cp comparison (T K, P kPa)
+RESIDUAL_STATES = [
+    ("nitrogen", 300.0, 10000.0), ("methane", 300.0, 5000.0), ("hydrogen", 300.0, 10000.0),
+    ("ethane", 350.0, 3000.0), ("ethylene", 300.0, 3000.0), ("oxygen", 300.0, 5000.0),
+    ("benzene", 450.0, 500.0), ("toluene", 480.0, 500.0),
+    ("methanol", 450.0, 1000.0), ("ethanol", 450.0, 500.0), ("acetone", 400.0, 500.0), ("water", 500.0, 1000.0),
+]
 
 
 def eos_psat(model, cid, T):
@@ -89,6 +96,20 @@ def main():
             print(f"{cid:10s} {pb:6d} {ph:>8s} {rho:15.4f} {100 * (vals['PR'] / rho - 1):7.2f} {100 * (vals['SRK'] / rho - 1):7.2f} {100 * (ig / rho - 1):11.2f}")
             out["density"].append({"component": cid, "T_K": T, "P_kPa": P / 1000, "phase": phase, "coolprop_phase": ph,
                                    "rho_kg_m3": rho, "PR_kg_m3": vals["PR"], "SRK_kg_m3": vals["SRK"]})
+    print("\nResidual enthalpy and cp of vapours: PR and SRK vs CoolProp")
+    print("(CoolProp residual = h(T, P) - h(T, 1 Pa); the 1 Pa state is the ideal-gas limit)")
+    out["residual"] = []
+    for cid, T, P in RESIDUAL_STATES:
+        fl = FLUIDS[cid]
+        AS = CP.AbstractState("HEOS", fl)
+        AS.update(CP.PT_INPUTS, P * 1000, T)
+        h, cp = AS.hmolar(), AS.cpmolar()
+        AS.update(CP.PT_INPUTS, 1.0, T)
+        h0, cp0 = AS.hmolar(), AS.cpmolar()
+        row = {"component": cid, "T_K": T, "P_kPa": P, "phase": CP.PhaseSI("T", T, "P", P * 1000, fl),
+               "hR_J_mol": h - h0, "cpR_J_molK": cp - cp0}
+        print(f"  {cid:9s} {T:6.1f} K {P:7.1f} kPa {row['phase']:18s} hR {row['hR_J_mol']:9.1f} J/mol  cpR {row['cpR_J_molK']:7.2f} J/mol/K")
+        out["residual"].append(row)
     print("\nMixture bubble pressure: GERG-2008 (CoolProp HEOS) vs PR and SRK with ChemSep k_ij")
     for pair, T, xs in ((("methane", "ethane"), 200.0, [0.2, 0.4, 0.6, 0.8]), (("nitrogen", "methane"), 150.0, [0.1, 0.2, 0.3, 0.4])):
         AS = CP.AbstractState("HEOS", "&".join(FLUIDS[c] for c in pair))

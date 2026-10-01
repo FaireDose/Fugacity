@@ -40,6 +40,13 @@
  * 3.95 for PR, 3.85 for SRK) and "vapour-like" otherwise.
  *
  * Units: T in K, P in kPa at the interface (Pa inside), v in m3/mol, energies in J/mol.
+ *
+ * Known limits (test/eos-reference.test.js, against CoolProp's reference equations of
+ * state): saturation pressures within a few % from Tr = 0.7 up (methanol -6.8 % with PR at
+ * Tr = 0.6); no volume translation, so dense-liquid densities are 5-20 % off; residual
+ * enthalpy of vapours within 7-20 % for light gases and hydrocarbons, but 27-45 % too small
+ * in magnitude for polar vapours (methanol, ethanol, acetone, water), whose residual cp is
+ * 3-4 times too small.
  */
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018

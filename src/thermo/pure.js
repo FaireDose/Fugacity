@@ -10,19 +10,31 @@
  * Engine units: K, kPa, mol, J, kg/m3, Pa s, W/(m K). Records store the units listed in
  * PROPERTIES[name].recordUnits; the loader refuses any other units.
  *
- * Enthalpy reference: ideal gas at 298.15 K and the given pressure-independent state, so
- *   h_vapour(T) = integral of cpIG from 298.15 K to T   (+ residual enthalpy, from an
- *                 equation of state when one is used)
- *   h_liquid(T) = h_vapour,ideal(T) - dHvap(T)          (pressure effect on the liquid
- *                 neglected; valid well below the critical point)
- * Smith, Van Ness & Abbott, Introduction to Chemical Engineering Thermodynamics, ch. 6
- * (the same reference-state construction; any edition).
+ * Enthalpy reference: ideal gas at 298.15 K, so
+ *   h_vapour(T, P) = integral of cpIG from 298.15 K to T + h_R(T, P)
+ *   h_liquid(T)    = integral of cpIG from 298.15 K to T + h_R(T, psat(T)) - dHvap(T)
+ * with h_R the Peng-Robinson residual enthalpy of the vapour (eos/cubic.js), so that
+ * h_vapour - h_liquid = dHvap at saturation. The pressure effect on the liquid is
+ * neglected (valid well below the critical point). This is the usual path construction
+ * of a departure function (ideal gas -> real saturated vapour -> saturated liquid).
+ * Limits: dimerizing components (acetic acid) get no enthalpy (null, with a note); the
+ * residual enthalpy of polar vapours is approximate (see POLAR_NOTE).
  */
 import componentData from "../data/components.json" with { type: "json" };
 import { evaluate } from "./correlations.js";
 import { brent } from "../util/solve.js";
 import { findComponent } from "./system.js";
 import { cubicEos, CUBICS } from "./eos/cubic.js";
+import { dimerK, monomerPressure } from "./vapour.js";
+
+// Accuracy of the Peng-Robinson residual enthalpy and cp of vapours, against CoolProp's
+// reference equations of state (test/eos-reference.test.js, 12 states): light gases and
+// hydrocarbons within 7-20 % in h_R (at most 270 J/mol), polar vapours 27-45 % too small
+// in magnitude (methanol at 450 K, 1 MPa: -959 J/mol against -1450 J/mol; acetone at
+// 400 K, 0.5 MPa: -861 against -1548), and their residual cp 3-4 times too small
+// (classical alpha function, no association term).
+const POLAR_RESIDUAL_NOTE = new Set(["water", "methanol", "ethanol", "acetone", "ethylene-glycol", "ethyl-acetate", "chloroform"]);
+const POLAR_NOTE = "Polar vapour: the Peng-Robinson residual enthalpy is 27-45 % too small in magnitude and the residual cp 3-4 times too small (for example methanol at 450 K and 1 MPa: h_R = -959 J/mol against -1450 J/mol from CoolProp). The ideal-gas part dominates at low pressure.";
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018 exact value
 
@@ -69,13 +81,16 @@ function vapourPressureRecord(c) {
 /**
  * A pure component with its properties.
  * @param {string} key  name, id, alias, formula or CAS number
+ * @param {object} [opts]
+ * @param {object} [opts.properties]  property records that replace or add to the databank's
+ *        (same format as components.json; e.g. the user's own data, or test records)
  */
-export function pure(key) {
+export function pure(key, opts = {}) {
   const id = findComponent(key);
   const c = componentData.components[id];
-  const data = c.properties || {};
+  const data = { ...(c.properties || {}), ...(opts.properties || {}) };
   for (const [name, rec] of Object.entries(data)) {
-    if (!PROPERTIES[name]) throw new Error(`${c.name}: unknown property "${name}" in components.json.`);
+    if (!PROPERTIES[name]) throw new Error(`${c.name}: unknown property "${name}"${opts.properties?.[name] ? "" : " in components.json"}.`);
     if (rec.available === false) continue;
     if (rec.units !== PROPERTIES[name].recordUnits) {
       throw new Error(`${c.name}: ${name} must be stored in ${PROPERTIES[name].recordUnits}, found "${rec.units}".`);
@@ -165,14 +180,33 @@ export function pure(key) {
       return out;
     }
     const MWkg = c.MW / 1000;
+    const assocNote = `${c.name} dimerizes in the vapour; enthalpy and vapour heat capacity are not given (null) until the association model is used for enthalpy: the ideal-gas (monomer) cp and the heat of vaporization to the dimerized vapour do not share a reference (about 28 kJ/mol apart for acetic acid).`;
     if (out.phase === "liquid") {
       tryGet("rho_kg_m3", () => property("liquidDensity", T), "liquidDensity");
       tryGet("cp_J_molK", () => property("liquidHeatCapacity", T), "liquidHeatCapacity");
       tryGet("dHvap_J_mol", () => property("heatOfVaporization", T), "heatOfVaporization");
-      tryGet("h_J_mol", () => hIdealGas(T) - property("heatOfVaporization", T));
+      if (c.association) {
+        out.h_J_mol = null;
+        out.notes.push(assocNote);
+      } else {
+        tryGet("h_J_mol", () => liquidEnthalpy(T, ps));
+        out.notes.push("Liquid enthalpy h = h_ideal-gas + h_residual(saturated vapour, Peng-Robinson) - dHvap, so that h_vapour - h_liquid = dHvap at saturation.");
+      }
       tryGet("mu_Pa_s", () => property("liquidViscosity", T), "liquidViscosity");
       tryGet("k_W_mK", () => property("liquidThermalConductivity", T), "liquidThermalConductivity");
       out.notes.push("Liquid properties at saturation; the effect of pressure is neglected.");
+    } else if (c.association && c.association.type === "dimer") {
+      // Dimerizing vapour (chemical theory, as in the VLE models): ideal gas of monomers
+      // and dimers, p_dimer = K p_monomer^2 (vapour.js). Peng-Robinson is not used.
+      const K = dimerK(c.association, T), pm = monomerPressure(P, K), pd = K * pm * pm;
+      out.rho_kg_m3 = MWkg * (pm + 2 * pd) * 1000 / (R * T);
+      out.sources.rho_kg_m3 = { tier: "databank", source: `Chemical theory (ideal monomer + dimer gas): ${c.association.source}` };
+      out.dimerFraction = pd / P;
+      out.h_J_mol = null;
+      out.cp_J_molK = null;
+      out.notes.push(assocNote);
+      tryGet("mu_Pa_s", () => property("vapourViscosity", T), "vapourViscosity");
+      tryGet("k_W_mK", () => property("vapourThermalConductivity", T), "vapourThermalConductivity");
     } else {
       // Vapour or supercritical fluid: Peng-Robinson for density, residual enthalpy and
       // residual heat capacity; ideal-gas parts from the cpIG correlation.
@@ -189,14 +223,39 @@ export function pure(key) {
       tryGet("k_W_mK", () => property("vapourThermalConductivity", T), "vapourThermalConductivity");
       if (st.rootType === "liquid-like") out.notes.push("Dense (liquid-like) fluid: Peng-Robinson densities of dense fluids are typically 5-20 % off (no volume translation).");
       out.notes.push("Density, enthalpy and cp from Peng-Robinson: h = h_ideal-gas + h_residual, cp = cp_ideal-gas + cp_residual. Viscosity and thermal conductivity at low pressure.");
+      if (POLAR_RESIDUAL_NOTE.has(id)) out.notes.push(POLAR_NOTE);
     }
+    out.notes = [...new Set(out.notes)];
     return out;
+  }
+
+  /**
+   * Liquid enthalpy at saturation, J/mol (reference: ideal gas at 298.15 K):
+   *   h_L(T) = h_IG(T) + h_R,V(T, psat) - dHvap(T)
+   * with h_R,V the Peng-Robinson residual enthalpy of the saturated vapour, so that the
+   * vapour (h_IG + h_R from Peng-Robinson) and the liquid join at saturation:
+   * h_V - h_L = dHvap. psat from the vapour-pressure correlation, or from Peng-Robinson
+   * when there is none. Not available for dimerizing components (see props()).
+   */
+  function liquidEnthalpy(T, ps = null) {
+    if (c.association) throw new Error(`${c.name} dimerizes in the vapour: liquid enthalpy is not available yet.`);
+    const pS = ps ?? (vpRec ? psat(T) : eosPR().psat(0, T));
+    return hIdealGas(T) + eosPR().state(T, pS, [1], "vapour").hR_J_mol - property("heatOfVaporization", T);
+  }
+
+  /** Enthalpies of the saturated vapour and liquid at T (J/mol) and the pressure (kPa). */
+  function saturation(T) {
+    if (!(T < c.Tc_K)) throw new RangeError(`${c.name}: no saturation state at ${T} K (critical temperature ${c.Tc_K} K).`);
+    const pS = vpRec ? psat(T) : eosPR().psat(0, T);
+    const hV = c.association ? null : hIdealGas(T) + eosPR().state(T, pS, [1], "vapour").hR_J_mol;
+    const hL = c.association ? null : liquidEnthalpy(T, pS);
+    return { T_K: T, P_kPa: pS, hV_J_mol: hV, hL_J_mol: hL, dHvap_J_mol: property("heatOfVaporization", T) };
   }
 
   return {
     id, name: c.name, formula: c.formula, cas: c.cas,
     MW: c.MW, Tc_K: c.Tc_K, Pc_kPa: c.Pc_Pa / 1000, omega: c.omega, Tb_K: c.Tb_K,
-    has, record, property, psat, tsat, hIdealGas, props,
+    has, record, property, psat, tsat, hIdealGas, props, liquidEnthalpy, saturation,
     /** Names of the properties with data, and those marked "no open data". */
     available() {
       const have = PROPERTY_NAMES.filter(has);

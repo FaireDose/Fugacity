@@ -661,5 +661,103 @@
    "P_kPa": 3529.877729482562,
    "y1": 0.6572839208490716
   }
+ ],
+ "residual": [
+  {
+   "component": "nitrogen",
+   "T_K": 300.0,
+   "P_kPa": 10000.0,
+   "phase": "supercritical",
+   "hR_J_mol": -545.8268616808873,
+   "cpR_J_molK": 4.348115869708689
+  },
+  {
+   "component": "methane",
+   "T_K": 300.0,
+   "P_kPa": 5000.0,
+   "phase": "supercritical",
+   "hR_J_mol": -796.1820656355376,
+   "cpR_J_molK": 5.456696619961576
+  },
+  {
+   "component": "hydrogen",
+   "T_K": 300.0,
+   "P_kPa": 10000.0,
+   "phase": "supercritical",
+   "hR_J_mol": 95.54521967233995,
+   "cpR_J_molK": 0.4795700507425309
+  },
+  {
+   "component": "ethane",
+   "T_K": 350.0,
+   "P_kPa": 3000.0,
+   "phase": "supercritical_gas",
+   "hR_J_mol": -1423.9316885870285,
+   "cpR_J_molK": 9.925820648011744
+  },
+  {
+   "component": "ethylene",
+   "T_K": 300.0,
+   "P_kPa": 3000.0,
+   "phase": "supercritical_gas",
+   "hR_J_mol": -1523.1998857795588,
+   "cpR_J_molK": 13.891008877304493
+  },
+  {
+   "component": "oxygen",
+   "T_K": 300.0,
+   "P_kPa": 5000.0,
+   "phase": "supercritical_gas",
+   "hR_J_mol": -386.35114384082226,
+   "cpR_J_molK": 2.618196020867959
+  },
+  {
+   "component": "benzene",
+   "T_K": 450.0,
+   "P_kPa": 500.0,
+   "phase": "gas",
+   "hR_J_mol": -969.9257330639448,
+   "cpR_J_molK": 5.874902334478293
+  },
+  {
+   "component": "toluene",
+   "T_K": 480.0,
+   "P_kPa": 500.0,
+   "phase": "gas",
+   "hR_J_mol": -1311.7243234373964,
+   "cpR_J_molK": 8.173002711432531
+  },
+  {
+   "component": "methanol",
+   "T_K": 450.0,
+   "P_kPa": 1000.0,
+   "phase": "gas",
+   "hR_J_mol": -1449.5563851462575,
+   "cpR_J_molK": 18.92123832976676
+  },
+  {
+   "component": "ethanol",
+   "T_K": 450.0,
+   "P_kPa": 500.0,
+   "phase": "gas",
+   "hR_J_mol": -883.1484576243602,
+   "cpR_J_molK": 8.388141687406417
+  },
+  {
+   "component": "acetone",
+   "T_K": 400.0,
+   "P_kPa": 500.0,
+   "phase": "gas",
+   "hR_J_mol": -1548.0228472574527,
+   "cpR_J_molK": 17.779327046461844
+  },
+  {
+   "component": "water",
+   "T_K": 500.0,
+   "P_kPa": 1000.0,
+   "phase": "gas",
+   "hR_J_mol": -740.9671025259595,
+   "cpR_J_molK": 5.839120498418232
+  }
  ]
 }

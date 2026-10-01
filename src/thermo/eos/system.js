@@ -1,7 +1,9 @@
 /**
  * Systems described by a cubic equation of state (model "PR" or "SRK"), with binary k_ij
- * from src/data/kij.json (ChemSep, Artistic License 2.0). Pairs without a k_ij use 0 and
- * are reported in info.pairs (tier "none") and info.missingPairs.
+ * from src/data/kij.json (ChemSep, Artistic License 2.0, or fitted to open data). Pairs
+ * without a k_ij use 0 and are reported in info.pairs (tier "none") and info.missingPairs;
+ * bubble and dew points also return them in `warnings`, with temperatures outside the
+ * data range of a stored k_ij.
  *
  * Equations: see cubic.js. Units: T in K, P in kPa, mole fractions.
  */
@@ -10,6 +12,9 @@ import kijData from "../../data/kij.json" with { type: "json" };
 import { cubicEos, CUBICS } from "./cubic.js";
 
 export const EOS_MODELS = Object.keys(CUBICS);
+
+/** A k_ij is used without a warning up to this far (K) outside its data range. */
+export const RANGE_MARGIN_K = 10;
 
 function findKij(model, a, b) {
   for (const p of kijData.pairs) {
@@ -50,7 +55,10 @@ export function createEosSystem(ids, cfg) {
     const p = findKij(model, ids[i], ids[j]);
     if (p) {
       K[i][j] = K[j][i] = p.kij;
-      pairs.push({ pair, kij: p.kij, tier: p.tier, source: `${p.source.file} (ChemSep, Artistic License 2.0): ${p.source.conditions}` });
+      const src = p.tier === "fitted"
+        ? `${p.source.fit}; data: ${p.source.data.join(", ")}; ${p.source.conditions}`
+        : `${p.source.file} (ChemSep, Artistic License 2.0): ${p.source.conditions}`;
+      pairs.push({ pair, kij: p.kij, tier: p.tier, source: src, T_range_K: p.source.T_range_K ?? null });
     } else {
       missing.push(pair);
       pairs.push({ pair, kij: 0, tier: "none", source: `no ${model} k_ij in the databank; k_ij = 0 used` });
@@ -82,9 +90,24 @@ export function createEosSystem(ids, cfg) {
     ],
   };
 
+  /**
+   * Warnings that apply to a calculation at T (K): pairs with k_ij = 0 (no data), and
+   * temperatures more than RANGE_MARGIN_K outside the data range of a stored k_ij.
+   */
+  function warnings(T) {
+    const w = [];
+    for (const p of pairs) {
+      if (p.tier === "none") w.push(`No ${model} k_ij for ${p.pair.join(" + ")}: k_ij = 0 used; results for this pair are a prediction without binary data.`);
+      else if (p.T_range_K && Number.isFinite(T) && (T < p.T_range_K[0] - RANGE_MARGIN_K || T > p.T_range_K[1] + RANGE_MARGIN_K)) {
+        w.push(`k_ij of ${p.pair.join(" + ")} (${p.kij}) comes from data at ${p.T_range_K[0]}-${p.T_range_K[1]} K; ${T.toFixed(2)} K is outside that range.`);
+      }
+    }
+    return w;
+  }
+
   return {
     ids, names: comps.map(c => c.name), n, model, kind: "eos", eos, kij: K, info,
-    state,
+    state, warnings,
     /** Compressibility factor Z. Arguments (T, P, x, phase) or (x, T, P, phase); phase defaults to "vapour". */
     Z: (a, b, c, d) => state(a, b, c, d).Z,
     /** ln phi_i. Arguments (T, P, x, phase) or (x, T, P, phase). */

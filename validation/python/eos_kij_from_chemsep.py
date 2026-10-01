@@ -10,12 +10,18 @@ DECHEMA page and the temperature range). Fugacity keeps one entry per pair: the 
 the copy of pr.ipd distributed with the open-source thermo library (thermo 0.6.1,
 thermo/Interaction Parameters/ChemSep/pr.ipd, which lists one data set per pair), and for
 SRK the line from the same DECHEMA page. The other entries are recorded in `alternatives`.
+The temperature range of the chosen data set, when the file states one, is stored as
+`source.T_range_K`; the engine warns outside it.
+
+Databank values contradicted by open data are then replaced by fitted values: run
+validation/python/eos_fit_kij.py --write after this script.
 
 Usage:
   python validation/python/eos_kij_from_chemsep.py DWSIM_pr.ipd DWSIM_srk.ipd [--write]
 """
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -26,6 +32,16 @@ try:
     THERMO_PR = os.path.join(os.path.dirname(thermo.__file__), "Interaction Parameters", "ChemSep", "pr.ipd")
 except ImportError:
     pass
+
+
+def t_range(comment):
+    """Temperature range [Tmin, Tmax] in K stated in a ChemSep comment ("T=90-113K", "T=250K")."""
+    m = re.search(r"T=([\d.]+)(?:-([\d.]+))?", comment)
+    if not m:
+        return None
+    lo = float(m.group(1))
+    hi = float(m.group(2)) if m.group(2) else lo
+    return [lo, hi]
 
 
 def parse(path, cas):
@@ -67,6 +83,7 @@ def main():
                     "printed": c["printed"],
                     "conditions": c["comment"],
                     "entries_in_file": len(entries),
+                    **({"T_range_K": t_range(c["comment"])} if t_range(c["comment"]) else {}),
                 },
                 "alternatives": [f"{r['printed']} ({r['comment']})" for r in entries if r is not c],
             })

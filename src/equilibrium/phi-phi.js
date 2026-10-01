@@ -24,6 +24,7 @@
  * Units: T in K, P in kPa.
  */
 import { brent } from "../util/solve.js";
+import { tpdStability } from "./eos-stability.js";
 
 const MAX_IT = 300;
 
@@ -58,7 +59,7 @@ function wilsonTemperature(comps, z, P, bubble) {
 
 const LABEL = { bubbleP: "bubble pressure", bubbleT: "bubble temperature", dewP: "dew pressure", dewT: "dew temperature" };
 
-function solve(sys, z, given, kind) {
+function solve(sys, z, given, kind, opts = {}) {
   const eos = sys.eos, comps = eos.comps, n = eos.n;
   if (!Array.isArray(z) || z.length !== n) throw new Error(`Give ${n} mole fractions.`);
   z = clean(z);
@@ -87,6 +88,23 @@ function solve(sys, z, given, kind) {
     const out = { iterations, method, K: r.lnK.map(Math.exp), Z_L: r.L.Z, Z_V: r.V.Z, rootTypes: { liquid: r.L.rootType, vapour: r.V.rootType } };
     if (varP) out.P = P; else out.T = T;
     if (bubble) out.y = r.wNew; else out.x = r.wNew;
+    // Liquid stability (Michelsen tangent plane): the given liquid at a bubble point, the
+    // incipient liquid at a dew point.
+    if (n > 1 && opts.stability !== false) {
+      const liq = bubble ? z : r.wNew;
+      const st = tpdStability(eos, T, P, liq, "liquid");
+      out.stability = { stable: st.stable, tm: st.tm };
+      if (!st.stable) {
+        const where = varP ? `${P.toFixed(1)} kPa` : `${T.toFixed(2)} K`;
+        const trial = st.trial.map(v => v.toPrecision(3)).join(", ");
+        const err = new Error(st.trialRoot === "liquid" || st.trialRoot === "liquid-like"
+          ? `${what}: the ${bubble ? "" : "incipient "}liquid splits into two liquid phases (tangent-plane distance ${st.tm.toFixed(3)} at the computed ${LABEL[kind]} ${where}; second liquid about [${trial}]); three-phase equilibrium is not supported yet.`
+          : `${what}: the ${bubble ? "" : "incipient "}liquid is not stable at the computed ${LABEL[kind]} ${where} (tangent-plane distance ${st.tm.toFixed(3)}, trial phase [${trial}]); this point is metastable, and a flash with phase splitting is not supported yet.`);
+        err.stability = st;
+        throw err;
+      }
+    }
+    out.warnings = sys.warnings ? sys.warnings(T) : [];
     return out;
   };
 
@@ -158,7 +176,7 @@ function solve(sys, z, given, kind) {
   for (let k = 0; k < N; k++) {
     const a = grid[k], b = grid[k + 1];
     if (a.r && b.r && Math.sign(a.r.f) !== Math.sign(b.r.f)) {
-      try { warm = a.w; return solveBracket(a, b); } catch (e) { /* try the next bracket */ }
+      try { warm = a.w; return solveBracket(a, b); } catch (e) { if (e.stability) throw e; /* else try the next bracket */ }
     }
   }
   // a sign change hidden next to the edge of the region with a non-trivial solution
@@ -173,14 +191,32 @@ function solve(sys, z, given, kind) {
       const r = inner(m);
       if (!r) { Bu = m; continue; }
       if (Math.sign(r.f) !== Math.sign(A.r.f)) {
-        try { warm = A.w; return solveBracket(A, { u: m }); } catch (e) { break; }
+        try { warm = A.w; return solveBracket(A, { u: m }); } catch (e) { if (e.stability) throw e; break; }
       }
       A = { u: m, r, w: warm };
     }
   }
+  const searched = varP ? `${Math.exp(lo).toPrecision(3)} and ${Math.exp(hi).toPrecision(3)} kPa` : `${lo.toFixed(1)} and ${hi.toFixed(1)} K`;
+  // Diagnose: a bubble-point liquid that splits into two liquids at the Wilson estimate
+  const gases = comps.filter((c, i) => z[i] >= 0.05 && c.Tc_K < 298.15);
+  const gasHint = bubble && gases.length
+    ? ` ${gases.map(c => `${c.name} (Tc = ${c.Tc_K} K)`).join(", ")} is a gas at ambient conditions: for a gas dissolved in a liquid use a small mole fraction, or Henry's law (Fugacity.gasSolubility) for gases in water.`
+    : "";
+  if (bubble && n > 1 && opts.stability !== false) {
+    // test the liquid at a few states on the liquid side of the Wilson estimate
+    const states = varP ? [1, 2, 5, 10].map(f => [given, Math.exp(u0) * f]) : [1, 0.95, 0.9, 0.85, 0.8, 0.7].map(f => [u0 * f, given]);
+    for (const [Tt, Pt] of states) {
+      let st = null;
+      try { st = tpdStability(eos, Tt, Pt, z, "liquid"); } catch (e) { st = null; }
+      if (st && !st.stable && (st.trialRoot === "liquid" || st.trialRoot === "liquid-like")) {
+        const err = new Error(`${what}: no single-liquid bubble point found (searched between ${searched}); the liquid splits into two liquid phases (tangent-plane distance ${st.tm.toFixed(3)} at ${Tt.toFixed(1)} K, ${Pt.toFixed(1)} kPa); three-phase equilibrium is not supported yet.${gasHint}`);
+        err.stability = st;
+        throw err;
+      }
+    }
+  }
   throw new Error(`${what}: no two-phase solution found (${note || "no convergence"} from Wilson's K-values, and no sign change found between ` +
-    `${varP ? `${Math.exp(lo).toPrecision(3)} and ${Math.exp(hi).toPrecision(3)} kPa` : `${lo.toFixed(1)} and ${hi.toFixed(1)} K`}). ` +
-    "The state is probably at or above the mixture's critical region, where only the trivial solution (vapour = liquid) exists.");
+    `${searched}).${gasHint || " The state is probably at or above the mixture's critical region, where only the trivial solution (vapour = liquid) exists."}`);
 }
 
 function normalize(v) {
@@ -192,13 +228,13 @@ function normalize(v) {
  * Bubble pressure at T (K) for liquid x. Returns { P (kPa), y, K, Z_L, Z_V, iterations }.
  * @param {object} sys  an equation-of-state system (model "PR" or "SRK")
  */
-export const eosBubbleP = (sys, x, T) => solve(sys, x, T, "bubbleP");
+export const eosBubbleP = (sys, x, T, opts) => solve(sys, x, T, "bubbleP", opts);
 /** Bubble temperature at P (kPa) for liquid x. Returns { T (K), y, K, Z_L, Z_V, iterations }. */
-export const eosBubbleT = (sys, x, P) => solve(sys, x, P, "bubbleT");
+export const eosBubbleT = (sys, x, P, opts) => solve(sys, x, P, "bubbleT", opts);
 /** Dew pressure at T (K) for vapour y. Returns { P (kPa), x, K, Z_L, Z_V, iterations }. */
-export const eosDewP = (sys, y, T) => solve(sys, y, T, "dewP");
+export const eosDewP = (sys, y, T, opts) => solve(sys, y, T, "dewP", opts);
 /** Dew temperature at P (kPa) for vapour y. Returns { T (K), x, K, Z_L, Z_V, iterations }. */
-export const eosDewT = (sys, y, P) => solve(sys, y, P, "dewT");
+export const eosDewT = (sys, y, P, opts) => solve(sys, y, P, "dewT", opts);
 
 /** Methods attached by Fugacity.system() to an equation-of-state system. */
 export function eosMethods(sys) {
@@ -206,10 +242,10 @@ export function eosMethods(sys) {
     throw new Error(`${what} is not available for ${sys.model} (equation-of-state) systems yet; it needs an activity-coefficient model (NRTL, UNIQUAC, ideal). Available: bubbleT, bubbleP, dewT, dewP, Z, lnPhi, density.`);
   };
   return {
-    bubbleT: (x, P) => eosBubbleT(sys, x, P),
-    bubbleP: (x, T) => eosBubbleP(sys, x, T),
-    dewT: (y, P) => eosDewT(sys, y, P),
-    dewP: (y, T) => eosDewP(sys, y, T),
+    bubbleT: (x, P, opts) => eosBubbleT(sys, x, P, opts),
+    bubbleP: (x, T, opts) => eosBubbleP(sys, x, T, opts),
+    dewT: (y, P, opts) => eosDewT(sys, y, P, opts),
+    dewP: (y, T, opts) => eosDewP(sys, y, T, opts),
     boilingPoints: no("boilingPoints"),
     /** Saturation pressure (kPa) of each pure component at T from the equation of state (null at or above Tc). */
     psatEos: T => sys.eos.comps.map((c, i) => (T < c.Tc_K ? sys.eos.psat(i, T) : null)),
