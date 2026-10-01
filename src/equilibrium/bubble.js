@@ -30,7 +30,7 @@ function boilingRange(sys, P) {
  * @param {object} sys  from createSystem
  * @param {number[]} x  liquid mole fractions (normalized automatically)
  * @param {number} P    kPa
- * @returns {{T:number, y:number[], gamma:number[]}}  T in K
+ * @returns {{T:number, y:number[], gamma:number[], warnings:string[]}}  T in K; warnings: temperatures outside the data range of a temperature-dependent pair
  */
 export function bubbleT(sys, x, P) {
   x = clean(x);
@@ -40,15 +40,15 @@ export function bubbleT(sys, x, P) {
   const [a, b] = scanBracket(f, lo, hi, 40);
   const T = brent(f, a, b, { xtol: 1e-7 });
   const e = sys.equilibrium(x, T);
-  return { T, y: e.y, gamma: e.gamma };
+  return { T, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T) : [] };
 }
 
 /**
  * Bubble-point pressure at fixed temperature.
- * @returns {{P:number, y:number[], gamma:number[]}}  P in kPa
+ * @returns {{P:number, y:number[], gamma:number[], warnings:string[]}}  P in kPa
  */
 export function bubbleP(sys, x, T) {
   x = clean(x);
   const e = sys.equilibrium(x, T);
-  return { P: e.P, y: e.y, gamma: e.gamma };
+  return { P: e.P, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T) : [] };
 }

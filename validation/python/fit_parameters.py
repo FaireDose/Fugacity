@@ -9,7 +9,10 @@ file, and which parameters are free.
 Objective: bubble temperature (weight 1/0.5 K) and vapour composition (1/0.01) for
 isobaric T-x-y data; relative pressure (1/0.5 %) for isothermal P-x data; excess
 enthalpy (1/20 J/mol) when given; equal activities of both components in the two
-liquids of liquid-liquid data (ln a, 1/0.05); ln gamma at infinite dilution (1/0.05).
+liquids of liquid-liquid data (ln a, 1/0.05); ln gamma at infinite dilution (1/0.05);
+heterogeneous azeotrope: bubble pressure of the two liquids (1/0.5 kPa) and vapour mole
+fraction (1/0.01). Temperature-dependent fits of data files store the temperature range
+of their data as "T_range_K" and state it in "source".
 
 Data kinds a FITS entry can use:
   "txy"            water + ethylene glycol compilation (water_ethylene_glycol_760mmHg.json)
@@ -25,6 +28,11 @@ Data kinds a FITS entry can use:
                                           one liquid are only compared.
                      kind "gamma-infinite-dilution"  columns T_K and gamma_1 or gamma_2
                                           (activity coefficient of that component at x -> 0).
+                     kind "azeotrope" with "heterogeneous": true  columns T_C (or T_K) and
+                                          wt_pct_1 or wt_pct_2 (overall = vapour composition)
+                                          and "P_kPa": the two liquids in equilibrium at T
+                                          must boil at P with that vapour. Fitted in a second
+                                          stage, started from the fit without it.
                    Files under "check" are compared with the result but not fitted.
 For "txy-file" fits a spec may also set "alpha" (NRTL non-randomness, default 0.3).
 """
@@ -114,6 +122,25 @@ def gamma_inf_file(name, pair):
     return [(r[col["T_K"]], k, r[col[f"gamma_{k_file + 1}"]]) for r in d["rows"]]
 
 
+def het_azeotrope_file(name, pair):
+    """Heterogeneous azeotrope file as [(T_K, P_kPa, y1)] with y1 the vapour mole fraction of
+    pair[0], converted from weight percent with the molar masses in components.json."""
+    d = load(name)
+    if not d.get("heterogeneous"):
+        raise ValueError(f"{name}: only heterogeneous azeotropes are supported")
+    flip = _orient(d, name, pair)
+    col = {c: k for k, c in enumerate(d["columns"])}
+    M = [COMPONENTS[c]["MW"] for c in d["components"]]
+    out = []
+    for r in d["rows"]:
+        T = r[col["T_K"]] if "T_K" in col else r[col["T_C"]] + 273.15
+        w1 = r[col["wt_pct_1"]] if "wt_pct_1" in col else 100 - r[col["wt_pct_2"]]
+        n1, n2 = w1 / M[0], (100 - w1) / M[1]
+        y1 = n1 / (n1 + n2)
+        out.append((T, d["P_kPa"], 1 - y1 if flip else y1))
+    return out
+
+
 def file_sets(spec, key="files"):
     """Data sets of a "txy-file" fit: list of (kind, name, content)."""
     names = spec.get(key, [spec["file"]] if key == "files" and "file" in spec else [])
@@ -126,6 +153,8 @@ def file_sets(spec, key="files"):
             out.append(("lle", name, lle_file(name, spec["pair"])))
         elif kind == "gamma-infinite-dilution":
             out.append(("ginf", name, gamma_inf_file(name, spec["pair"])))
+        elif kind == "azeotrope":
+            out.append(("haz", name, het_azeotrope_file(name, spec["pair"])))
         else:
             raise ValueError(f"{name}: unknown kind {kind!r}")
     return out
@@ -175,13 +204,18 @@ FITS = [
     dict(pair=("ethanol", "ethyl-acetate"), data="txy-file", file="ethyl-acetate_ethanol_101kPa.json",
          check=["ethyl-acetate_ethanol_101kPa_zhang2017.json"], temperature_dependent=False,
          describe=f"Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 ({MAC}; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91."),
-    # Partially miscible: liquid-liquid data and activity coefficients at infinite dilution
-    # together (no open isobaric T-x-y set could be read), temperature-dependent (273-343 K).
+    # Partially miscible: liquid-liquid data, activity coefficients at infinite dilution and the
+    # heterogeneous azeotrope at 1 atm together, temperature-dependent. No open finite-
+    # concentration VLE data for this pair was found, so the handbook azeotrope is the only VLE
+    # target away from infinite dilution; without it the fit puts the 1-atm azeotrope about 2 K
+    # too high (pull request #19).
     dict(pair=("water", "ethyl-acetate"), data="txy-file", temperature_dependent=True,
          files=["water_ethyl-acetate_lle_grande2005.json", "water_ethyl-acetate_lle_cehreli2006.json",
-                "water_ethyl-acetate_gamma_inf_fenclova2014.json", "water_ethyl-acetate_gamma_inf_atik2004.json"],
+                "water_ethyl-acetate_gamma_inf_fenclova2014.json", "water_ethyl-acetate_gamma_inf_atik2004.json",
+                "water_ethyl-acetate_azeotrope_101kPa.json"],
          check=["water_ethyl-acetate_lle_xu2017.json"],
-         describe=f"Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156) and activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), {MAC}; files validation/data/water_ethyl-acetate_*.json. Predicts the heterogeneous azeotrope at 101.325 kPa about 2 K above the handbook value (see the pull request)."),
+         wanted="open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.",
+         describe=f"Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156), activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), both {MAC}, and the heterogeneous azeotrope at 101.325 kPa, 70.4 degC and 91.9 wt % ethyl acetate (handbook value, Wikipedia 'Azeotrope tables', from Lange's 10th ed. and CRC 44th ed.); files validation/data/water_ethyl-acetate_*.json. No open finite-concentration VLE data was found for this pair."),
 ]
 
 
@@ -206,10 +240,18 @@ def file_residuals(s, sets):
             for T, a, b in c:
                 if a is not None and b is not None:
                     r += list(s.isoactivity_residual([a, 1 - a], [b, 1 - b], T) / 0.05)
-        else:
+        elif kind == "ginf":
             for T, k, g in c:
                 x = [1e-9, 1 - 1e-9] if k == 0 else [1 - 1e-9, 1e-9]
                 r.append((np.log(max(s.gamma(x, T)[k], 1e-300)) - np.log(g)) / 0.05)
+        else:  # heterogeneous azeotrope: the two liquids at T boil at P with vapour y1
+            for T, P, y1 in c:
+                z = lle_from_data(s, T, None, None)
+                if z is None:
+                    r += [100.0, 100.0]
+                    continue
+                Pc, y = s.equilibrium([z[0], 1 - z[0]], T)
+                r += [(Pc - P) / 0.5, (y[0] - y1) / 0.01]
     return r
 
 
@@ -217,7 +259,8 @@ def fit(spec, model):
     i, j = spec["pair"]
     alpha = spec.get("alpha", 0.3)
     if spec["data"] == "txy-file":
-        sets = file_sets(spec)
+        all_sets = file_sets(spec)
+        sets = [st for st in all_sets if st[0] != "haz"]   # first stage: without azeotrope targets
 
         def residuals(p):
             return np.array(file_residuals(System([i, j], model, params=[make_params(model, i, j, p, alpha)]), sets))
@@ -251,6 +294,11 @@ def fit(spec, model):
             continue
         if best is None or res.cost < best.cost:
             best = res
+    if spec["data"] == "txy-file" and len(sets) < len(all_sets):
+        # second stage: all targets, started from the first-stage optimum (where the
+        # liquid-liquid split needed by the azeotrope target exists)
+        sets = all_sets
+        best = least_squares(residuals, best.x, method="lm")
     return make_params(model, i, j, best.x, alpha), best
 
 
@@ -271,6 +319,8 @@ def lle_from_data(s, T, a, b):
     split is kept."""
     if a is not None and b is not None:
         return s.lle_binary(T, (a, b))
+    if a is None and b is None:
+        a = 0.985   # no data: start the first liquid rich in the first component of the pair
     best = None
     for g in (0.02, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9, 0.98):
         z = s.lle_binary(T, (a, g) if a is not None else (g, b))
@@ -312,7 +362,51 @@ def describe_fit(sets, model, i, j, params):
             x = [1e-9, 1 - 1e-9] if k == 0 else [1 - 1e-9, 1e-9]
             dev.append(abs(s.gamma(x, T)[k] / g - 1) * 100)
         out.append(f"gamma at infinite dilution: AARD {np.mean(dev):.1f} % (max {np.max(dev):.1f} %)")
+    for T, P, y1 in [p for kind, _, c in sets if kind == "haz" for p in c]:
+        az = heterogeneous_azeotrope(s, P, T)
+        out.append(f"heterogeneous azeotrope at {P} kPa: {az[0] - 273.15:.2f} degC, vapour x of {i} {az[3]:.3f}, liquids {az[1]:.3f} / {az[2]:.3f} (target {T - 273.15:.2f} degC, {y1:.3f})"
+                   if az else f"heterogeneous azeotrope at {P} kPa: none found (target {T - 273.15:.2f} degC)")
     return "; ".join(out)
+
+
+def heterogeneous_azeotrope(s, P, T_guess, span=15.0):
+    """Binary heterogeneous azeotrope: the temperature at which the two liquids in equilibrium
+    boil at P. Follows the liquid-liquid split from T_guess - span upwards and bisects.
+    Returns (T, x1 in liquid a, x1 in liquid b, y1) or None."""
+    T0 = T_guess - span
+    z0 = lle_from_data(s, T0, None, None)
+    if z0 is None:
+        return None
+    P0 = s.equilibrium([z0[0], 1 - z0[0]], T0)[0]
+    while T0 < T_guess + span:
+        T1 = T0 + 0.5
+        z1 = s.lle_binary(T1, z0)
+        if z1 is None:
+            return None
+        P1 = s.equilibrium([z1[0], 1 - z1[0]], T1)[0]
+        if (P0 - P) * (P1 - P) <= 0:
+            a, b, za = T0, T1, z0
+            for _ in range(50):
+                m = (a + b) / 2
+                zm = s.lle_binary(m, za)
+                if zm is None:
+                    return None
+                if (s.equilibrium([zm[0], 1 - zm[0]], m)[0] - P) * (P0 - P) > 0:
+                    a, za = m, zm
+                else:
+                    b = m
+            y = s.equilibrium([zm[0], 1 - zm[0]], m)[1]
+            return m, zm[0], zm[1], y[0]
+        T0, P0, z0 = T1, P1, z1
+    return None
+
+
+def data_T_range(sets):
+    """Lowest and highest temperature (K) in the data sets of a "txy-file" fit."""
+    Ts = []
+    for kind, _, c in sets:
+        Ts += [T for _, T, _ in c[1]] if kind == "txy" else [q[0] for q in c]
+    return [round(min(Ts), 2), round(max(Ts), 2)]
 
 
 def quality(spec, model, params):
@@ -382,6 +476,12 @@ def main(write):
             q = quality(spec, model, params) + test
             params["source"] = f"{spec['describe']} {q}"
             params["tier"] = "databank" if spec["data"] == "uniquac-curve" else "fitted"
+            if spec.get("wanted"):
+                params["data_wanted"] = spec["wanted"]
+            if spec["data"] == "txy-file" and spec["temperature_dependent"]:
+                # temperature-dependent sets are trusted only inside the range of their data
+                params["T_range_K"] = data_T_range(file_sets(spec))
+                params["source"] += f" Temperature range of the data: {params['T_range_K'][0]}-{params['T_range_K'][1]} K; outside it the parameters are extrapolated."
             if spec["data"] == "txy-file":
                 # the databank set this fit replaced (kept under "replaced"), on the same data
                 i, j = spec["pair"]

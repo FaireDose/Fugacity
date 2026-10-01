@@ -56,6 +56,10 @@ chloroform); liquid-liquid data for them is welcome too.
 - Chloroform + Toluene (NRTL, UNIQUAC)
 - Benzene + Toluene (NRTL, UNIQUAC)
 
+## Fitted, but the fit still lacks data (1)
+
+- Water + Ethyl acetate: open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.
+
 ## Fitted to experimental data (8)
 
 - Water + Ethylene glycol
