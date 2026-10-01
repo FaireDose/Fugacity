@@ -144,6 +144,8 @@ export const ADAPTERS = {
     for (const f of [s?.saturation, s?.sat, s?.saturationT, s?.satT, F.steamSaturation]) {
       if (typeof f === "function") return f;
     }
+    // Fugacity.steamSat({ T_K }) | ({ P_kPa }) (v0.2)
+    if (typeof F.steamSat === "function") return T => F.steamSat({ T_K: T });
     return null;
   },
   /** Mixture density with an equation of state: s.density(z, T_K, P_kPa) or s.Z(z, T_K, P_kPa). */
