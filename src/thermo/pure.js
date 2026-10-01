@@ -180,7 +180,7 @@ export function pure(key, opts = {}) {
       return out;
     }
     const MWkg = c.MW / 1000;
-    const assocNote = `${c.name} dimerizes in the vapour; enthalpy and vapour heat capacity are not given (null) until the association model is used for enthalpy: the ideal-gas (monomer) cp and the heat of vaporization to the dimerized vapour do not share a reference (about 28 kJ/mol apart for acetic acid).`;
+    const assocNote = `${c.name} dimerizes in the vapour; enthalpy is not given (null) until the association model is used for enthalpy: the ideal-gas (monomer) cp and the heat of vaporization to the dimerized vapour do not share a reference (about 28 kJ/mol apart for acetic acid).`;
     if (out.phase === "liquid") {
       tryGet("rho_kg_m3", () => property("liquidDensity", T), "liquidDensity");
       tryGet("cp_J_molK", () => property("liquidHeatCapacity", T), "liquidHeatCapacity");
@@ -203,8 +203,9 @@ export function pure(key, opts = {}) {
       out.sources.rho_kg_m3 = { tier: "databank", source: `Chemical theory (ideal monomer + dimer gas): ${c.association.source}` };
       out.dimerFraction = pd / P;
       out.h_J_mol = null;
-      out.cp_J_molK = null;
+      tryGet("cp_J_molK", () => property("idealGasHeatCapacity", T), "idealGasHeatCapacity");
       out.notes.push(assocNote);
+      if (out.cp_J_molK !== null) out.notes.push(`cp_J_molK is the ideal-gas heat capacity of the ${c.name} monomer; it excludes the heat of dissociating the dimers (${(100 * 2 * pd / (pm + 2 * pd)).toFixed(0)} % of the molecules are dimerized here), so the real vapour's cp is higher.`);
       tryGet("mu_Pa_s", () => property("vapourViscosity", T), "vapourViscosity");
       tryGet("k_W_mK", () => property("vapourThermalConductivity", T), "vapourThermalConductivity");
     } else {
