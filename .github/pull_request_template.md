@@ -14,6 +14,7 @@
 ## Checklist for the reviewer (not the author)
 
 - [ ] I checked the cited sources against the numbers in the change
+- [ ] The engineering report comment shows no unexplained deviation
 - [ ] The fit quality stated in `source` matches what the test shows
 - [ ] The results are physically sensible (boiling points, azeotropes, no unexpected phase split)
 - [ ] I would be comfortable teaching or designing with these results

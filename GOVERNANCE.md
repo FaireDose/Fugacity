@@ -53,8 +53,8 @@ agents open through the lead maintainer's account therefore cannot get his appro
 there is no second reviewer yet. Until there is:
 
 - The lead maintainer merges such a pull request with the ruleset bypass, and only after
-  the `test` check is green, the engineering report (once it runs on pull requests) shows
-  no unexplained deviation, and he has checked the engineering results against their
+  the `test` check is green, the engineering report comment on the pull request shows no
+  unexplained deviation, and he has checked the engineering results against their
   sources himself. He says so in a comment on the pull request.
 - Agents can instead work through a separate bot account; their pull requests then have
   another author, and the maintainer approves them normally.
