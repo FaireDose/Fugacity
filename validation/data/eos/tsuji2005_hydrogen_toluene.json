@@ -1,0 +1,27 @@
+{
+  "system": ["hydrogen", "toluene"],
+  "kind": "isothermal-px (gas solubility: total pressure over the liquid)",
+  "source": {
+    "citation": "T. Tsuji, Y. Shinya, T. Hiaki, N. Itoh, Hydrogen solubility in a chemical hydrogen storage medium, aromatic hydrocarbon, cyclic hydrocarbon, and their mixture for fuel cell systems, Fluid Phase Equilib. 228-229 (2005) 499-503",
+    "doi": "10.1016/j.fluid.2004.07.013",
+    "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2004.07.013.xml (NIST TRC ThermoML Archive)",
+    "access": "NIST TRC ThermoML Archive, free access to the data of Fluid Phase Equilibria",
+    "tables": "ThermoML file: 4th PureOrMixtureData block (hydrogen + toluene; vapour or sublimation pressure, kPa, of the liquid as a function of the liquid mole fraction of hydrogen; constraint T = 303.15 K). Expanded uncertainty of P from nCombExpandUncertValue.",
+    "transcription": "Read from the ThermoML XML with a web-reading tool; two independent readings agreed on every value. The reviewer should compare each row with the XML.",
+    "checked_by_human": false
+  },
+  "conditions": { "T_K": 303.15 },
+  "columns": ["x_H2", "P_kPa", "U_P_kPa"],
+  "rows": [
+    [0.004006, 1222, 30],
+    [0.005467, 1685, 42],
+    [0.007268, 2196, 55],
+    [0.009555, 2893, 72],
+    [0.009956, 3018, 75],
+    [0.010803, 3271, 81],
+    [0.012066, 3638, 90],
+    [0.013164, 3991, 99],
+    [0.014586, 4413, 110]
+  ],
+  "notes": "x_H2 is the mole fraction of hydrogen in the liquid; P is the equilibrium (bubble) pressure."
+}
