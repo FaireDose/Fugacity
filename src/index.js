@@ -12,6 +12,7 @@ import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
 import { isLiquidStable } from "./equilibrium/stability.js";
 import { checkPackage, validCas } from "./contrib/package-check.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "./thermo/pure.js";
+import { steam, steamSat } from "./thermo/iapws/steam.js";
 import { mount } from "./ui/mount.js";
 import { EOS_MODELS } from "./thermo/system.js";
 import { eosMethods, eosBubbleP, eosBubbleT, eosDewP, eosDewT } from "./equilibrium/phi-phi.js";
@@ -52,4 +53,5 @@ export {
   pure, PROPERTIES, PROPERTY_NAMES,
   EOS_MODELS, cubicEos, eosBubbleP, eosBubbleT, eosDewP, eosDewT,
   henry, henryInfo, gasSolubility, HENRY_GASES,
+  steam, steamSat,
 };
