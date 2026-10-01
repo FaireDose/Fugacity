@@ -22,12 +22,12 @@ for (const model of ["NRTL", "UNIQUAC"]) {
 }
 
 // Ternary azeotropes vs the handbook values (±1 K, ±0.05 mole fraction), both models.
-// Deviations listed in src/data/known-issues.json (shown to users in the interface) run as
-// "todo": they are reported, and the report says when an entry can be removed.
+// Deviations of kind "ternary-azeotrope" in src/data/known-issues.json (shown to users in the
+// interface) run as "todo": they are reported, and the report says when an entry can be removed.
 const known = JSON.parse(readFileSync(new URL("../src/data/known-issues.json", import.meta.url))).issues;
 const sameSet = (a, b) => a.length === b.length && a.every(c => b.includes(c));
 for (const t of lit.ternary) for (const model of ["NRTL", "UNIQUAC"]) {
-  const issue = known.find(k => k.model === model && sameSet(k.components, t.components));
+  const issue = known.find(k => k.kind === "ternary-azeotrope" && k.model === model && sameSet(k.components, t.components));
   test(`${model}: ${t.components.join(" + ")} ternary azeotrope near ${t.T_C} °C`, issue ? { todo: issue.message } : {}, () => {
     const mol = t.wt_pct.map((w, i) => w / pure(t.components[i]).MW);
     const x0 = mol.map(v => v / mol.reduce((a, b) => a + b));
@@ -43,6 +43,7 @@ test("known-issues.json names real components and models", () => {
   for (const k of known) {
     assert.ok(["NRTL", "UNIQUAC", "ideal", "PR", "SRK"].includes(k.model), k.model);
     for (const c of k.components) assert.ok(pure(c), c);
+    assert.ok(["ternary-azeotrope", "phase-split"].includes(k.kind), k.kind);
     assert.ok(k.message && k.reference);
   }
 });
