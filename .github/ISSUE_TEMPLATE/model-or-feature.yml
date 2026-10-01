@@ -1,12 +1,12 @@
-name: Model or feature
-description: Propose or claim development work - an equation of state, activity model, algorithm, unit operation, view - or a new roadmap item.
+name: Proposal, model or feature
+description: Propose or claim development work (an equation of state, activity model, algorithm, unit operation, view) or a new roadmap item.
 title: "[Develop] "
-labels: ["development", "roadmap"]
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this to claim a roadmap item or to propose something new. You can draft the text with your AI assistant (see ai/START_PROMPTS.md). Larger items become a proposal in the proposals/ folder before code is merged; see CONTRIBUTING.md.
+        Use this to claim a roadmap item or to propose something new; you can draft the text with your AI assistant (prompts in [ai/START_PROMPTS.md](https://github.com/FaireDose/Fugacity/blob/main/ai/START_PROMPTS.md)). New models, algorithms, layers, interfaces and file formats become a proposal in [proposals/](https://github.com/FaireDose/Fugacity/blob/main/proposals/README.md) before code is merged.
   - type: dropdown
     id: area
     attributes:
@@ -28,7 +28,7 @@ body:
     attributes:
       label: Roadmap item
       description: The step in ROADMAP.md this belongs to (for example A4, v0.3, Later), or "new".
-      placeholder: "Later: Equations of state (Peng-Robinson, SRK)"
+      placeholder: "v0.2: Dew points; P-x-y view"
   - type: textarea
     id: proposal
     attributes:

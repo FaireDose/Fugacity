@@ -1,7 +1,8 @@
 // Checks a Fugacity contribution package (the JSON an AI assistant prepares for a
 // contributor). Used by `npm run check-package <file>` and by the tests.
 // It checks structure and plausibility only; a reviewer still checks the numbers
-// against the source.
+// against the source. The person confirms they checked every number with a required
+// checkbox in the Data issue form; the old "checked_by_human" field is accepted and ignored.
 
 export const COLUMN_UNITS = {
   T_K: "K", T_C: "°C", P_kPa: "kPa",
@@ -32,7 +33,6 @@ export function checkPackage(pkg, known = {}) {
   if (pkg.fugacity_package !== 1) err('"fugacity_package" must be 1.');
   if (!TYPES.includes(pkg.type)) err(`"type" must be one of: ${TYPES.join(", ")}.`);
   if (!pkg.summary) err('"summary" is missing: one line describing the contribution.');
-  if (pkg.checked_by_human !== true) err('"checked_by_human" must be true: a person must check every number against the source before submitting.');
   if (!pkg.prepared_with) warn('"prepared_with" is empty: say which assistant helped (ChatGPT, Claude, Gemini, other, or none).');
 
   // components

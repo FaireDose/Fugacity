@@ -14,8 +14,8 @@ interface or file format, the steps of the architecture track in the
    Polls are advisory.
 5. The status in the file is set to **Accepted** or **Declined**, and the pull request is merged
    either way, so the reasoning stays on record.
-6. Accepted proposals are implemented through normal pull requests, by contributors or by
-   Claude on a maintainer's request.
+6. Accepted proposals are implemented through normal pull requests, by contributors or
+   their coding agents.
 
 ## Index
 

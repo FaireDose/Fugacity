@@ -1,5 +1,5 @@
 name: Bug or interface problem
-description: Something does not work or displays wrongly.
+description: Something does not work or displays wrongly. A wrong number goes in the Data form as a correction.
 title: "[Bug] "
 labels: ["bug"]
 body:
@@ -14,4 +14,4 @@ body:
     id: where
     attributes:
       label: Where
-      placeholder: "Claude artifact in Chrome / course web page / Node.js"
+      placeholder: "Claude artifact in Chrome / ChatGPT canvas / course web page / Node.js"
