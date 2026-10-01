@@ -7,7 +7,8 @@ grows through volunteer contributions, one tested layer at a time, toward full f
 
 ![Ternary map for methanol, acetone and chloroform with four azeotropes and residue curves](docs/images/ternary.png)
 
-> **Status: early (v0.1.3).** Ten components, two activity models, two diagram types.
+> **Status: early (v0.2.0).** 16 components, activity models and cubic equations of state,
+> pure-component properties, steam tables, three views.
 > Results are model predictions. Check them against data before using them for design.
 
 ## Try it in your chat (30 seconds)
@@ -25,11 +26,13 @@ To use it often, install the Fugacity skill: [one table for every assistant](ai/
 
 | | |
 |---|---|
-| **Components** | water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic acid, ethylene glycol |
-| **Binary parameters** | 27 pairs (NRTL and/or UNIQUAC), each labelled *fitted to data* or *databank* |
-| **Models** | NRTL, UNIQUAC, ideal; ideal-gas vapour with dimerization for acetic acid |
-| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, binary and ternary azeotropes, liquid phase-split check |
-| **Interface** | T-x-y diagram (2 components) or ternary map with isotherms, residue curves and azeotropes (3 components); hover readout with tie lines and activity coefficients; warning where the liquid would split |
+| **Components** | liquids: water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic acid, ethylene glycol; gases: oxygen, nitrogen, hydrogen, methane, ethane, ethylene |
+| **Pure-component properties** | vapour pressure, liquid density, heat capacity (liquid and ideal gas), heat of vaporization, viscosity and thermal conductivity (liquid and vapour), surface tension, enthalpy; each with its source, range and fit deviation |
+| **Water and steam** | IAPWS-IF97 (all regions), IAPWS viscosity (2008) and thermal conductivity (2011) |
+| **Binary parameters** | NRTL/UNIQUAC for 27 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 21 pairs; Henry constants for the 6 gases in water |
+| **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
+| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check; with PR/SRK bubble and dew points with a stability test; gas solubility in water |
+| **Interface** | T-x-y diagram or ternary map (`mount`); property explorer with curves at several pressures, saturation table and unit switches (`mountProperties`) |
 
 A full ternary map (861 bubble points plus ten residue curves) takes well under a second
 in the browser. If a pair has no parameters yet, the interface says which one.
@@ -38,7 +41,7 @@ In any web page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.1.3/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"], model: "NRTL", P_kPa: 101.325 });
 </script>
@@ -50,6 +53,22 @@ From code (K, kPa, mole fractions):
 const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T: 376.36, y: [0.645, 0.355], gamma: [1.306, 1.164] }
 s.azeotropes(101.325);            // [{ x, T, type }]
+
+Fugacity.pure("water").tsat(101.325);         // 373.1243 K (IAPWS-IF97)
+Fugacity.pure("benzene").props(298.15, 101.325); // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }
+Fugacity.steam(573.15, 1000);                 // { region: 2, h_kJ_kg: 3051.7, v_m3_kg: 0.25798, ... }
+
+const g = Fugacity.system({ components: ["methane", "ethane"], model: "PR" });
+g.bubbleP([0.3, 0.7], 200);                   // { P: 1618.1, y: [0.862, 0.138], stability, warnings }
+Fugacity.gasSolubility("oxygen", 298.15, 21.2); // mole fraction in water, 4.86e-6
+```
+
+Property explorer in a page:
+
+```html
+<script>
+  Fugacity.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
+</script>
 ```
 
 More in [`examples/`](examples) and [ai/instructions/use-fugacity.md](ai/instructions/use-fugacity.md).
@@ -66,6 +85,15 @@ Every model is checked automatically on each change (`npm test`):
 | Acetic acid + ethylene glycol vs. Schmid et al. (2007), P-x at 363.15 K | AAD 1.2 % (NRTL), 0.9 % (UNIQUAC) |
 | Water + ethylene glycol vs. T-x-y data at 760 mmHg | AAD 3.0 K (NRTL), 2.6 K (UNIQUAC), within the data scatter |
 | Pure-component boiling points at 1 atm | within 0.2 K |
+| Steam tables vs. the IAPWS verification tables (IF97, viscosity, thermal conductivity) | all values within 1e-8 relative or to the printed digits |
+| Property correlations vs. their sources (CoolProp, ChemSep, NIST WebBook) | within 1 % (thermodynamic) and 3 % (transport); liquid cp and heats of vaporization vs. measured NIST data within about 2 % (worst: ethyl acetate liquid cp, +2.0 %) |
+| Peng–Robinson and SRK vs. the `thermo` library and an independent Python implementation | Z, ln φ, bubble and dew points to about 1e-9 |
+| Peng–Robinson vs. nitrogen + methane data (Janisch 2007, ThermoML Archive) | average deviation 1.9 % in P |
+| Henry constants vs. the IAPWS G7-04 check table | 18 of 18 values reproduced |
+
+On every pull request an **engineering report** compares about 320 results with
+independent references (CoolProp, NIST, handbook azeotropes) and posts the table as a
+comment, so reviewers judge engineering results, not code.
 
 The source of every parameter is recorded next to it in
 [`src/data/`](src/data) and shown under every diagram; licenses in
@@ -75,7 +103,11 @@ The source of every parameter is recorded next to it in
 region is wider than the shaded one; the UNIQUAC databank set is less accurate than NRTL
 for some systems (acetone + chloroform + methanol); no ternary VLE data exist yet to check
 water + acetic acid + ethylene glycol; acetic acid and alcohols or glycols slowly
-esterify, which the model does not include.
+esterify, which the model does not include. Cubic equations of state give poor liquid
+densities and underestimate the residual enthalpy of polar vapours (methanol, acetone) by
+27–45 %; 99 of the 120 pairs have no k_ij yet (treated as 0, with a warning); no flash yet.
+Liquid properties are at saturation (pressure effect neglected); acetic acid liquid
+enthalpy is not given until association is included.
 
 ## Contribute
 
