@@ -22,6 +22,8 @@ import componentData from "../data/components.json" with { type: "json" };
 import { evaluate } from "./correlations.js";
 import { brent } from "../util/solve.js";
 import { findComponent } from "./system.js";
+import { steam, steamSat, STANDARD as IF97_NAME, VISCOSITY_STANDARD, CONDUCTIVITY_STANDARD } from "./iapws/steam.js";
+import { hIdealGas as hIdealGasIF97, psat as psatIF97, TC as TC_IF97 } from "./iapws/if97.js";
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018 exact value
 
@@ -135,6 +137,7 @@ export function pure(key) {
    * gas here: equations of state replace this when they are added.
    */
   function props(T, P) {
+    if (id === "water") return waterProps(c, T, P);
     const out = { component: c.name, T_K: T, P_kPa: P, phase: null, notes: [], sources: {} };
     const tryGet = (key, fn, srcName) => {
       try {
@@ -185,4 +188,51 @@ export function pure(key) {
       return { have, none };
     },
   };
+}
+
+// ---------------------------------------------------------------------------------------
+// Water: IAPWS standards instead of correlations (proposal 0002, section 2).
+// ---------------------------------------------------------------------------------------
+
+/**
+ * Water at T (K) and P (kPa) from IAPWS-IF97 (all phases) with the IAPWS viscosity
+ * (R12-08) and thermal conductivity (R15-11) in their industrial forms; see src/thermo/iapws/.
+ * Converted to the engine's molar units with the component's molar mass M (g/mol, so
+ * kJ/kg x g/mol = J/mol), and to the engine's enthalpy reference (ideal gas at 298.15 K):
+ *   h_J_mol = M * (h_IF97(T, P) - h°_IF97(298.15 K)),
+ * where h° is the ideal-gas part of IF97 region 2 (R T tau dgamma°/dtau). Throws outside the
+ * range of IF97 (273.15-1073.15 K up to 100 MPa; to 2273.15 K up to 50 MPa).
+ */
+function waterProps(c, T, P) {
+  const M = c.MW;
+  const st = steam(T, P);
+  const src = { tier: "standard", source: IF97_NAME + " (IAPWS R7-97(2012))" };
+  const msrc = { tier: "standard", source: VISCOSITY_STANDARD };
+  const ksrc = { tier: "standard", source: CONDUCTIVITY_STANDARD };
+  const below = T <= TC_IF97;
+  const out = {
+    component: c.name, T_K: T, P_kPa: P, phase: st.phase, region: st.region,
+    psat_kPa: below ? psatIF97(T) : null,
+    rho_kg_m3: st.rho_kg_m3,
+    cp_J_molK: st.cp_kJ_kgK * M,
+    cv_J_molK: st.cv_kJ_kgK * M,
+    h_J_mol: M * (st.h_kJ_kg - hIdealGasIF97(T_REF)),
+    s_J_molK: st.s_kJ_kgK * M,
+    dHvap_J_mol: below ? steamSat({ T_K: T }).hfg_kJ_kg * M : null,
+    mu_Pa_s: st.mu_Pa_s,
+    k_W_mK: st.k_W_mK,
+    sources: {
+      psat_kPa: src, rho_kg_m3: src, cp_J_molK: src, cv_J_molK: src, h_J_mol: src, s_J_molK: src,
+      dHvap_J_mol: src, mu_Pa_s: msrc, k_W_mK: ksrc,
+    },
+    notes: [
+      "Water: IAPWS-IF97 at the given T and P (all phases); viscosity and thermal conductivity " +
+      "from the IAPWS releases (industrial forms).",
+      "h_J_mol is relative to the ideal gas at 298.15 K; s_J_molK keeps the IF97 reference " +
+      "(saturated liquid at the triple point).",
+      ...st.notes,
+    ],
+  };
+  if (!below) out.notes.push("Above the critical temperature: no vapour pressure or heat of vaporization.");
+  return out;
 }

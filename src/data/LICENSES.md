@@ -10,6 +10,7 @@ sources with their own terms, recorded in the `source` field of every entry.
 | Parameters marked "Fitted to ..." | Fitted for Fugacity with `validation/python/fit_parameters.py` from the data cited in each entry | MIT |
 | Critical constants, normal boiling points and acentric factors of the gases; acentric factors of water, methanol, ethanol, acetone, benzene and toluene | CoolProp 8.0.0 (open source), from the reference equations of state cited in each entry | MIT |
 | Acentric factors of acetic acid, ethylene glycol, chloroform and ethyl acetate | ChemSep pure-component database v8.3, Copyright (c) Harry Kooijman and Ross Taylor | Artistic License 2.0 |
+| Water and steam: IAPWS-IF97 coefficients (`src/thermo/iapws/if97.js`), viscosity and thermal-conductivity coefficients (`src/thermo/iapws/transport.js`) | IAPWS R7-97(2012), R12-08 and R15-11, International Association for the Properties of Water and Steam, published free of charge at https://iapws.org/technical-guidance/release.html | Published international standards, free to read and intended for implementation; equations and coefficients reproduced with citation |
 | Vapour-pressure coefficients | Fitted for Fugacity to correlations in the open-source thermo library (MIT); the method used is named in each entry | MIT |
 
 Before adding data from a new source, check that its license allows redistribution,

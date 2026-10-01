@@ -370,7 +370,7 @@ function rho3(T, p, side) {
   // Start points: every region-3 state lies between 20 and 800 kg/m3 (the densest is about
   // 760 kg/m3 at 623.15 K and 100 MPa). Above about 820 kg/m3 the region-3 polynomial has a
   // spurious pressure maximum, so the liquid-side scan must not start higher than 800 kg/m3.
-  const STEP = 1.01, RHO_HI = 800, RHO_LO = 20;
+  const STEP = 1.02, RHO_HI = 800, RHO_LO = 20;
   let a, b, fa, fb;
   if (side === "liquid") {
     a = RHO_HI; fa = f(a);
@@ -392,9 +392,9 @@ function rho3(T, p, side) {
     }
   }
   // Near the critical point the bracket may hold more than one root: refine it from the
-  // same side with 200 sub-steps, so that the first sign change is the wanted root.
+  // same side with 50 sub-steps, so that the first sign change is the wanted root.
   // (f(a) is never zero here: the scan only moves past points where f has the start sign.)
-  const n = 200, h = (b - a) / n;
+  const n = 50, h = (b - a) / n;
   let x0 = a, f0 = fa, lo = a, hi = b;
   for (let k = 1; k <= n; k++) {
     const x1 = k === n ? b : a + k * h, f1 = k === n ? fb : f(x1);
@@ -473,10 +473,10 @@ export function stateTP(T, P_kPa) {
 
 /**
  * Saturated liquid and vapour at T (K) from region 4 (psat) and the single-phase regions
- * (1 and 2 up to 623.15 K, region 3 above).
+ * (1 and 2 up to 623.15 K, region 3 above). p (MPa) may be given when T came from tsatMPa(p),
+ * so that the states are evaluated at exactly that pressure.
  */
-export function saturationT(T) {
-  const p = psatMPa(T);
+export function saturationT(T, p = psatMPa(T)) {
   let liquid, vapour;
   if (T <= T_13) {
     liquid = region1(T, p);
