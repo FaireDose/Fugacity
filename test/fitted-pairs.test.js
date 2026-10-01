@@ -11,6 +11,9 @@ const TXY_FILES = [
   "acetone_methanol_101kPa.json",
   "chloroform_methanol_101kPa.json",
   "acetone_chloroform_101kPa.json",
+  "ethanol_water_101kPa.json",
+  "ethyl-acetate_ethanol_101kPa.json",
+  "ethyl-acetate_ethanol_101kPa_zhang2017.json", // independent check, not fitted
 ];
 
 for (const file of TXY_FILES) {
@@ -31,6 +34,63 @@ for (const file of TXY_FILES) {
     }
   });
 }
+
+// Water + ethyl acetate (partially miscible): fitted to mutual solubilities and to activity
+// coefficients at infinite dilution. The liquid-liquid split is solved here independently of
+// the Python fit (Newton on the two isoactivity equations, numerical Jacobian).
+function lleBinary(s, T, guess) {
+  const lnA = x => s.gammas(x, T).map((g, i) => Math.log(x[i] * g));
+  const F = ([a, b]) => { const p = lnA([a, 1 - a]), q = lnA([b, 1 - b]); return [p[0] - q[0], p[1] - q[1]]; };
+  let u = guess.slice();
+  for (let it = 0; it < 100; it++) {
+    const f = F(u);
+    if (Math.hypot(...f) < 1e-11) break;
+    const h = 1e-7, J = [0, 1].map(k => { const v = u.slice(); v[k] += h; const g = F(v); return [(g[0] - f[0]) / h, (g[1] - f[1]) / h]; });
+    const det = J[0][0] * J[1][1] - J[1][0] * J[0][1];
+    let d = [-(f[0] * J[1][1] - f[1] * J[1][0]) / det, -(J[0][0] * f[1] - J[0][1] * f[0]) / det];
+    let lam = 1;
+    while (u.some((v, k) => v + lam * d[k] <= 0 || v + lam * d[k] >= 1)) lam /= 2;
+    u = u.map((v, k) => v + lam * d[k]);
+  }
+  assert.ok(Math.hypot(...F(u)) < 1e-9 && Math.abs(u[0] - u[1]) > 1e-3, `no liquid-liquid split at ${T} K`);
+  return u;
+}
+
+test("water + ethyl acetate: both models follow the mutual solubilities (298-333 K)", () => {
+  for (const model of ["NRTL", "UNIQUAC"]) {
+    const s = system({ components: ["water", "ethyl acetate"], model });
+    assert.equal(s.info.pairs[0].tier, "fitted");
+    const dI = [], dII = [];
+    for (const f of ["water_ethyl-acetate_lle_grande2005.json", "water_ethyl-acetate_lle_cehreli2006.json"]) {
+      const d = load(`../validation/data/${f}`);
+      assert.deepEqual(d.components, ["water", "ethyl-acetate"]);
+      for (const [T, a, b] of d.rows) {
+        const [za, zb] = lleBinary(s, T, [a, b]);
+        dI.push(Math.abs(za - a)); dII.push(Math.abs(zb - b));
+      }
+    }
+    const mean = v => v.reduce((p, q) => p + q, 0) / v.length;
+    assert.ok(mean(dI) < 0.003, `${model}: water-rich liquid AAD ${mean(dI).toFixed(4)}`);
+    assert.ok(mean(dII) < 0.03, `${model}: ester-rich liquid AAD ${mean(dII).toFixed(4)}`);
+    // independent check (not fitted): ethyl acetate in the water-rich liquid, Xu et al. (2017)
+    for (const [T, x2] of load("../validation/data/water_ethyl-acetate_lle_xu2017.json").rows) {
+      const [za] = lleBinary(s, T, [1 - x2, 0.2]);
+      assert.ok(Math.abs(1 - za - x2) < 0.005, `${model}: ${T} K ethyl acetate ${(1 - za).toFixed(4)} vs ${x2}`);
+    }
+  }
+});
+
+test("water + ethyl acetate: activity coefficient of ethyl acetate at infinite dilution in water (273-343 K)", () => {
+  for (const model of ["NRTL", "UNIQUAC"]) {
+    const s = system({ components: ["water", "ethyl acetate"], model });
+    const dev = [];
+    for (const f of ["water_ethyl-acetate_gamma_inf_fenclova2014.json", "water_ethyl-acetate_gamma_inf_atik2004.json"]) {
+      for (const [T, g] of load(`../validation/data/${f}`).rows) dev.push(Math.abs(s.gammas([1 - 1e-9, 1e-9], T)[1] / g - 1));
+    }
+    const aard = dev.reduce((p, q) => p + q, 0) / dev.length;
+    assert.ok(aard < 0.06, `${model}: AARD ${(aard * 100).toFixed(1)} %`);
+  }
+});
 
 test("UNIQUAC: methanol + acetone + chloroform saddle azeotrope near 57.5 °C", () => {
   const t = load("../validation/data/azeotropes_101kPa.json").ternary[0];
