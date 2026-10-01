@@ -30,7 +30,196 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.344292,
-      "omega_source": "CoolProp 8.0.0 (Water: equation of state Wagner-JPCRD-2002); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Water: equation of state Wagner-JPCRD-2002); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -572.1526656,
+            "B": 15.6732974,
+            "C": -0.05610947506,
+            "D": 8.64030614e-05,
+            "E": -5.129021401e-08
+          },
+          "units": "kg/m3",
+          "Tmin_K": 273.17,
+          "Tmax_K": 614.74,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Wagner-JPCRD-2002) = IAPWS-95",
+            "reference": "Wagner and Pruß, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 273.17-614.74 K, max deviation 0.19 %; DIPPR100 used because DIPPR105 does not meet the 1 % target over 273.17-614.74 K (density maximum near 277 K)"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.36453379,
+            "B": 26.34191416,
+            "C": 2565.703887,
+            "D": 8.565660395,
+            "E": 1154.50419
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.17,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Wagner-JPCRD-2002) = IAPWS-95",
+            "reference": "Wagner and Pruß, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 273.17-1500.00 K (triple point to 1500 K), max deviation 0.014 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 443.0260246,
+            "B": -3.829902865,
+            "C": 0.01480634708,
+            "D": -2.531474222e-05,
+            "E": 1.629272421e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.17,
+          "Tmax_K": 580.58,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Wagner-JPCRD-2002) = IAPWS-95",
+            "reference": "Wagner and Pruß, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 273.17-580.58 K, max deviation 0.49 %; range narrowed from 273.17-614.74 K (max deviation there 3.1 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 58826.71163,
+            "B": 0.7706522872,
+            "C": -0.8902337528,
+            "D": 0.5182418388
+          },
+          "units": "J/mol",
+          "Tmin_K": 273.17,
+          "Tmax_K": 614.74,
+          "Tc_K": 647.096,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Wagner-JPCRD-2002) = IAPWS-95",
+            "reference": "Wagner and Pruß, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 273.17-614.74 K (triple point to 0.95 Tc), max deviation 0.048 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -289.8444018,
+            "B": 9628.652146,
+            "C": 53.72219053,
+            "D": -3.039017363,
+            "E": 0.51
+          },
+          "units": "Pa s",
+          "Tmin_K": 273.17,
+          "Tmax_K": 614.74,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Huber-JPCRD-2009) = IAPWS 2008 viscosity formulation",
+            "reference": "Huber et al., J. Phys. Chem. Ref. Data 38 (2009) 101-125, doi:10.1063/1.3088050",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 273.17-614.74 K (triple point to 0.95 Tc), max deviation 1.2 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.674099245e-07,
+            "B": 0.7439681615,
+            "C": 729.2242328,
+            "D": -73567.91791
+          },
+          "units": "Pa s",
+          "Tmin_K": 273.17,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Huber-JPCRD-2009) = IAPWS 2008 viscosity formulation",
+            "reference": "Huber et al., J. Phys. Chem. Ref. Data 38 (2009) 101-125, doi:10.1063/1.3088050",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 273.17-1000.00 K (triple point to 1000 K), max deviation 0.65 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -0.7301466743,
+            "B": 0.00789933294,
+            "C": -1.324184385e-05,
+            "D": 5.852942729e-09
+          },
+          "units": "W/m/K",
+          "Tmin_K": 273.17,
+          "Tmax_K": 614.74,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Huber-JPCRD-2012) = IAPWS 2011 thermal conductivity formulation",
+            "reference": "Huber et al., J. Phys. Chem. Ref. Data 41 (2012) 033102-1:23, doi:10.1063/1.4738955",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 273.17-614.74 K (triple point to 0.95 Tc), max deviation 0.61 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0002184234521,
+            "B": 0.9842763385,
+            "C": 1204.190588,
+            "D": -160603.8362
+          },
+          "units": "W/m/K",
+          "Tmin_K": 273.17,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Huber-JPCRD-2012) = IAPWS 2011 thermal conductivity formulation",
+            "reference": "Huber et al., J. Phys. Chem. Ref. Data 41 (2012) 033102-1:23, doi:10.1063/1.4738955",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 273.17-1000.00 K (triple point to 1000 K), max deviation 0.080 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.1068669387,
+            "B": 0.3941429446,
+            "C": 0.7543807706,
+            "D": -0.8272288511,
+            "E": 0.745215654
+          },
+          "units": "N/m",
+          "Tmin_K": 273.17,
+          "Tmax_K": 614.74,
+          "Tc_K": 647.096,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Water: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 273.17-614.74 K (triple point to 0.95 Tc), max deviation 0.41 %"
+          }
+        }
+      }
     },
     "acetic-acid": {
       "name": "Acetic acid",
@@ -73,7 +262,192 @@
         "source": "Marek & Standart chemical theory; as used by Schmid et al. (2007)"
       },
       "omega": 0.46,
-      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 63.81721789,
+            "B": 0.22174,
+            "C": 594.76,
+            "D": 0.22566
+          },
+          "units": "kg/m3",
+          "Tmin_K": 273.15,
+          "Tmax_K": 594.45,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 594.45 K (ChemSep: 594.75 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0520 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 273.15-594.45 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 39.86891422,
+            "B": 134.0218784,
+            "C": 1150.552857,
+            "D": 57.60338631,
+            "E": 518.6113629
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 50.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook",
+            "reference": "Chao J., Thermodynamic properties of key organic oxygen compounds in the carbon range C1 to C4. Part 2. Ideal gas properties, J. Phys. Chem. Ref. Data 15 (1986) 1369-1436, as tabulated in the NIST Chemistry WebBook (SRD 69), gas phase thermochemistry data, Cp,gas",
+            "url": "https://webbook.nist.gov/cgi/inchi?ID=C64197&Mask=1",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "19 tabulated points, 50.00-1500.00 K, max deviation 0.89 %",
+            "notes": "Monomer (ideal gas of single CH3COOH molecules): the real vapour is largely dimerized (see the association record). Statistically calculated; the WebBook notes that values differ from other statistical calculations by 3.1-5.4 J/mol/K.",
+            "chain": "CoolProp 8.0.0: fluid not included"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 72.02588413,
+            "B": 0.1010661977,
+            "C": 0.0002446564515
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 289.69,
+          "Tmax_K": 400.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 289.69-400.00 K (ChemSep range), max deviation 0.21 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 66203.0,
+            "B": 6.7121,
+            "C": -17.45,
+            "D": 17.2,
+            "E": -6.0038
+          },
+          "units": "J/mol",
+          "Tmin_K": 289.81,
+          "Tmax_K": 591.95,
+          "Tc_K": 594.45,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 289.81-591.95 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -58.528,
+            "B": 2990.9,
+            "C": 7.4911,
+            "D": -1.1028e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 288.15,
+          "Tmax_K": 474.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 288.15-474.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 4.3395e-09,
+            "B": 1.24,
+            "C": -175.09,
+            "D": 25013.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 289.81,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 289.81-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2207512781,
+            "B": -0.0002007766788
+          },
+          "units": "W/m/K",
+          "Tmin_K": 274.09,
+          "Tmax_K": 391.05,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 274.09-391.05 K (ChemSep range), max deviation 0.25 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.34137,
+            "B": -0.80579,
+            "C": -824.3,
+            "D": 175840.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 289.81,
+          "Tmax_K": 468.55,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 289.81-468.55 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.05864842977,
+            "B": 1.143513751,
+            "C": -0.06806111503
+          },
+          "units": "N/m",
+          "Tmin_K": 288.15,
+          "Tmax_K": 564.72,
+          "Tc_K": 594.45,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 288.15-564.72 K (ChemSep range, limited to 0.95 Tc), max deviation 0.20 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        }
+      }
     },
     "ethylene-glycol": {
       "name": "Ethylene glycol",
@@ -109,7 +483,192 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.506776,
-      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 81.3461111,
+            "B": 0.25084,
+            "C": 720.0,
+            "D": 0.21838
+          },
+          "units": "kg/m3",
+          "Tmin_K": 260.15,
+          "Tmax_K": 695.8,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 62.0678 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 260.15-695.80 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 54.12695649,
+            "B": 104.0113556,
+            "C": 671.6522794,
+            "D": 55.02472848,
+            "E": 2219.568509
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 200.0,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook",
+            "reference": "Yeh T.-S., Global conformational analysis of 1,2-ethanediol, J. Phys. Chem. 98 (1994) 8921-8929, as tabulated in the NIST Chemistry WebBook (SRD 69), gas phase thermochemistry data, Cp,gas",
+            "url": "https://webbook.nist.gov/cgi/inchi?ID=C107211&Mask=1",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "10 tabulated points, 200.00-1000.00 K, max deviation 0.054 %",
+            "notes": "Statistically calculated values.",
+            "chain": "CoolProp 8.0.0: fluid not included"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 62.87981022,
+            "B": 0.290293944
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 260.15,
+          "Tmax_K": 493.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 260.15-493.15 K (ChemSep range), max deviation 0.22 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 74140.0,
+            "B": 0.16807,
+            "C": -0.19694,
+            "D": 1.0417,
+            "E": -0.61488
+          },
+          "units": "J/mol",
+          "Tmin_K": 260.15,
+          "Tmax_K": 695.8,
+          "Tc_K": 719.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 260.15-695.80 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -309.38,
+            "B": 14928.0,
+            "C": 45.49,
+            "D": -4.4405e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 260.15,
+          "Tmax_K": 576.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 260.15-576.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.2284e-07,
+            "B": 0.79557,
+            "C": 132.87,
+            "D": -5540.3
+          },
+          "units": "Pa s",
+          "Tmin_K": 260.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 260.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1388686639,
+            "B": 0.0006591910019,
+            "C": -8.931146709e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 260.15,
+          "Tmax_K": 470.45,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 260.15-470.45 K (ChemSep range), max deviation 0.19 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -8962900.0,
+            "B": -0.31257,
+            "C": 2531300000.0,
+            "D": -12955000000000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 260.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 260.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.07560779767,
+            "B": 0.9655481156,
+            "C": -0.2673200119
+          },
+          "units": "N/m",
+          "Tmin_K": 260.15,
+          "Tmax_K": 470.45,
+          "Tc_K": 719.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 260.15-470.45 K (ChemSep range), max deviation 0.095 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        }
+      }
     },
     "methanol": {
       "name": "Methanol",
@@ -142,7 +701,193 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.564937,
-      "omega_source": "CoolProp 8.0.0 (Methanol: equation of state deReuck-BOOK-1993); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Methanol: equation of state deReuck-BOOK-1993); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 178.2204757,
+            "B": 0.4151506122,
+            "C": 494.1825416,
+            "D": 0.3979589027
+          },
+          "units": "kg/m3",
+          "Tmin_K": 175.61,
+          "Tmax_K": 487.71,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: deReuck-BOOK-1993)",
+            "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.73 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 38.80597319,
+            "B": 65.1096236,
+            "C": 572.9554378,
+            "D": -50.37936297,
+            "E": 550.828175
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 175.61,
+          "Tmax_K": 620.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: deReuck-BOOK-1993)",
+            "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 175.61-620.00 K (triple point to the upper limit of the equation of state), max deviation 0.081 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 178.9894146,
+            "B": -1.557018499,
+            "C": 0.007970483049,
+            "D": -1.77144035e-05,
+            "E": 1.617240979e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 175.61,
+          "Tmax_K": 456.5,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: deReuck-BOOK-1993)",
+            "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 175.61-456.50 K, max deviation 0.61 %; range narrowed from 175.61-487.71 K (max deviation there 3.7 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 80547.37589,
+            "B": 3.994540883,
+            "C": -10.62538055,
+            "D": 11.72666969,
+            "E": -4.615069293
+          },
+          "units": "J/mol",
+          "Tmin_K": 175.61,
+          "Tmax_K": 487.71,
+          "Tc_K": 513.37951,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: deReuck-BOOK-1993)",
+            "reference": "Reuck and Craven, Blackwell Scientific Publications, Oxford, United Kingdom (1993)",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.58 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -65.26764852,
+            "B": 2810.431756,
+            "C": 8.855509514,
+            "D": -0.0001482628593,
+            "E": 1.68
+          },
+          "units": "Pa s",
+          "Tmin_K": 175.61,
+          "Tmax_K": 487.71,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: Xiang-JPCRD-2006)",
+            "reference": "Xiang et al., J. Phys. Chem. Ref. Data 35 (2006) 1597-1:24, doi:10.1063/1.2360605",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 1.9 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 4.05793922e-05,
+            "B": 0.2178332377,
+            "C": 4662.603899,
+            "D": -187536.9103
+          },
+          "units": "Pa s",
+          "Tmin_K": 175.61,
+          "Tmax_K": 620.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: Xiang-JPCRD-2006)",
+            "reference": "Xiang et al., J. Phys. Chem. Ref. Data 35 (2006) 1597-1:24, doi:10.1063/1.2360605",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 175.61-620.00 K (triple point to the upper limit of the equation of state), max deviation 0.088 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2532273259,
+            "B": -0.0001800756523
+          },
+          "units": "W/m/K",
+          "Tmin_K": 175.61,
+          "Tmax_K": 487.71,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: Sykioti-JPCRD-2013-Methanol)",
+            "reference": "Sykioti et al., J. Phys. Chem. Ref. Data 42 (2013) 043101, doi:10.1063/1.4829449",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.55 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0001658392747,
+            "B": 1.153205522,
+            "C": 2801.309439,
+            "D": -230411.3514
+          },
+          "units": "W/m/K",
+          "Tmin_K": 175.61,
+          "Tmax_K": 620.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: Sykioti-JPCRD-2013-Methanol)",
+            "reference": "Sykioti et al., J. Phys. Chem. Ref. Data 42 (2013) 043101, doi:10.1063/1.4829449",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 175.61-620.00 K (triple point to the upper limit of the equation of state), max deviation 0.62 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.09720599281,
+            "B": 4.05797003,
+            "C": -5.697906686,
+            "D": 2.82781824
+          },
+          "units": "N/m",
+          "Tmin_K": 175.61,
+          "Tmax_K": 487.71,
+          "Tc_K": 513.37951,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methanol: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 175.61-487.71 K (triple point to 0.95 Tc), max deviation 0.19 %"
+          }
+        }
+      }
     },
     "ethanol": {
       "name": "Ethanol",
@@ -174,7 +919,196 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.644,
-      "omega_source": "CoolProp 8.0.0 (Ethanol: equation of state Schroeder-JPCRD-2014); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Ethanol: equation of state Schroeder-JPCRD-2014); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 136.8010747,
+            "B": 0.3684762127,
+            "C": 501.6965431,
+            "D": 0.3145421679
+          },
+          "units": "kg/m3",
+          "Tmin_K": 159.11,
+          "Tmax_K": 488.97,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Schroeder-JPCRD-2014)",
+            "reference": "Schroeder et al., J. Phys. Chem. Ref. Data 43 (2014) 043102, doi:10.1063/1.4895394",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 159.11-488.97 K (triple point to 0.95 Tc), max deviation 0.98 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 44.73319145,
+            "B": 117.2498634,
+            "C": 494.5055861,
+            "D": -81.62912557,
+            "E": 501.3017896
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 159.11,
+          "Tmax_K": 650.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Schroeder-JPCRD-2014)",
+            "reference": "Schroeder et al., J. Phys. Chem. Ref. Data 43 (2014) 043102, doi:10.1063/1.4895394",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 159.11-650.00 K (triple point to the upper limit of the equation of state), max deviation 0.16 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 215.7240242,
+            "B": -1.769352317,
+            "C": 0.008245488893,
+            "D": -1.517685649e-05,
+            "E": 1.191134625e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 175.61,
+          "Tmax_K": 472.47,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Schroeder-JPCRD-2014)",
+            "reference": "Schroeder et al., J. Phys. Chem. Ref. Data 43 (2014) 043102, doi:10.1063/1.4895394",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 175.61-472.47 K, max deviation 0.80 %; range narrowed from 159.11-488.97 K (max deviation there 3.6 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 79792.65679,
+            "B": 3.181575375,
+            "C": -8.40075019,
+            "D": 9.28491871,
+            "E": -3.626704994
+          },
+          "units": "J/mol",
+          "Tmin_K": 159.11,
+          "Tmax_K": 488.97,
+          "Tc_K": 514.70928,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Schroeder-JPCRD-2014)",
+            "reference": "Schroeder et al., J. Phys. Chem. Ref. Data 43 (2014) 043102, doi:10.1063/1.4895394",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 159.11-488.97 K (triple point to 0.95 Tc), max deviation 0.36 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -5.450170349,
+            "B": 1308.90421,
+            "C": -1.001165986,
+            "D": -6.082347088e-13,
+            "E": 4.44
+          },
+          "units": "Pa s",
+          "Tmin_K": 175.61,
+          "Tmax_K": 488.97,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Kiselev-IECR-2005)",
+            "reference": "Kiselev et al., Ind. Eng. Chem. Res. 44 (2005) 6916-6927, doi:10.1021/ie050010e",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 175.61-488.97 K, max deviation 1.3 %; range narrowed from 159.11-488.97 K (max deviation there 4.6 %) to meet the 3 % target"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0009200799044,
+            "B": -0.1397565938,
+            "C": 10789.2483,
+            "D": 895216.5746
+          },
+          "units": "Pa s",
+          "Tmin_K": 159.11,
+          "Tmax_K": 650.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Kiselev-IECR-2005)",
+            "reference": "Kiselev et al., Ind. Eng. Chem. Res. 44 (2005) 6916-6927, doi:10.1021/ie050010e",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 159.11-650.00 K (triple point to the upper limit of the equation of state), max deviation 0.038 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.5108907835,
+            "B": -0.003281085249,
+            "C": 1.214233432e-05,
+            "D": -2.094377386e-08,
+            "E": 1.350250983e-11
+          },
+          "units": "W/m/K",
+          "Tmin_K": 159.11,
+          "Tmax_K": 488.97,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Assael-JPCRD-2013-Ethanol)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 42 (2013) 023102-1:10, doi:10.1063/1.4797368",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 159.11-488.97 K (triple point to 0.95 Tc), max deviation 0.12 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.870694103,
+            "B": -0.6733028067,
+            "C": -1294.588987,
+            "D": 785049.9716
+          },
+          "units": "W/m/K",
+          "Tmin_K": 159.11,
+          "Tmax_K": 650.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Assael-JPCRD-2013-Ethanol)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 42 (2013) 023102-1:10, doi:10.1063/1.4797368",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 159.11-650.00 K (triple point to the upper limit of the equation of state), max deviation 0.62 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.05132780052,
+            "B": 1.088681311,
+            "C": -0.2624063281,
+            "D": 0.144710936
+          },
+          "units": "N/m",
+          "Tmin_K": 159.11,
+          "Tmax_K": 488.97,
+          "Tc_K": 514.70928,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethanol: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 159.11-488.97 K (triple point to 0.95 Tc), max deviation 0.13 %"
+          }
+        }
+      }
     },
     "acetone": {
       "name": "Acetone",
@@ -207,7 +1141,190 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.3071,
-      "omega_source": "CoolProp 8.0.0 (Acetone: equation of state Lemmon-JCED-2006); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Acetone: equation of state Lemmon-JCED-2006); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 116.4271518,
+            "B": 0.3292855346,
+            "C": 498.7591855,
+            "D": 0.3631882889
+          },
+          "units": "kg/m3",
+          "Tmin_K": 178.5,
+          "Tmax_K": 482.69,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Acetone: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.31 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 54.22338588,
+            "B": 126.5749254,
+            "C": 1006.370197,
+            "D": 38.08804877,
+            "E": 511.26896
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 178.5,
+          "Tmax_K": 550.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Acetone: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 178.50-550.00 K (triple point to the upper limit of the equation of state), max deviation 0.079 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 337.5573584,
+            "B": -3.260956274,
+            "C": 0.01725787897,
+            "D": -3.92794484e-05,
+            "E": 3.378439665e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 178.5,
+          "Tmax_K": 467.48,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Acetone: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 178.50-467.48 K, max deviation 0.72 %; range narrowed from 178.50-482.69 K (max deviation there 2.0 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 48626.19714,
+            "B": 0.7673372205,
+            "C": -0.5941601192,
+            "D": 0.2601762496
+          },
+          "units": "J/mol",
+          "Tmin_K": 178.5,
+          "Tmax_K": 482.69,
+          "Tc_K": 508.10001,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Acetone: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.12 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -14.064,
+            "B": 1000.7,
+            "C": 0.45349,
+            "D": 3.9456e-07,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 190.0,
+          "Tmax_K": 408.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 190.00-408.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.1012e-08,
+            "B": 0.97616,
+            "C": 23.042,
+            "D": 14.834
+          },
+          "units": "Pa s",
+          "Tmin_K": 178.45,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 178.45-1000.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2848117638,
+            "B": -0.0004147876836
+          },
+          "units": "W/m/K",
+          "Tmin_K": 178.45,
+          "Tmax_K": 343.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 178.45-343.15 K (ChemSep range), max deviation 0.49 %",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: acetone is not a WebBook fluid"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -26.882,
+            "B": 0.9036,
+            "C": -120950000.0,
+            "D": -608790000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 178.45,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 178.45-1000.00 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: acetone is not a WebBook fluid"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.06330000764,
+            "B": 1.160000164
+          },
+          "units": "N/m",
+          "Tmin_K": 178.5,
+          "Tmax_K": 482.69,
+          "Tc_K": 508.10001,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Acetone: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+          }
+        }
+      }
     },
     "chloroform": {
       "name": "Chloroform",
@@ -239,7 +1356,194 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.226,
-      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 63.93386746,
+            "B": 0.18404,
+            "C": 536.5,
+            "D": 0.18541
+          },
+          "units": "kg/m3",
+          "Tmin_K": 209.0,
+          "Tmax_K": 535.95,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 119.3776 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 209.00-535.95 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 51.13350095,
+            "B": 55.46129511,
+            "C": 609.4511415,
+            "D": -13.13058016,
+            "E": 792.1288078
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 298.0,
+          "Tmax_K": 1200.0,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook",
+            "reference": "Chase M.W., Jr., NIST-JANAF Thermochemical Tables, Fourth Edition, J. Phys. Chem. Ref. Data, Monograph 9 (1998) 1-1951, Shomate equation as given in the NIST Chemistry WebBook (SRD 69), gas phase thermochemistry data",
+            "url": "https://webbook.nist.gov/cgi/inchi?ID=C67663&Mask=1",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "200 points sampled from the Shomate equation, 298.00-1200.00 K, max deviation 0.095 %",
+            "notes": "Shomate equation Cp = A + B t + C t^2 + D t^3 + E/t^2, t = T/1000, range 298-1200 K (JANAF data last reviewed in December 1968).",
+            "chain": "CoolProp 8.0.0: fluid not included"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 111.7474347,
+            "B": -0.0770495645,
+            "C": 0.0002859886256
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 233.15,
+          "Tmax_K": 366.48,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 233.15-366.48 K (ChemSep range), max deviation 0.075 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 51382.0,
+            "B": 0.7027,
+            "C": 0.36748,
+            "D": -1.351,
+            "E": 0.69236
+          },
+          "units": "J/mol",
+          "Tmin_K": 209.63,
+          "Tmax_K": 536.4,
+          "Tc_K": 536.5,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 209.63-536.40 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -20.923,
+            "B": 1248.9,
+            "C": 1.655,
+            "D": -2.4787e-06,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 209.63,
+          "Tmax_K": 436.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 209.63-436.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.8024e-07,
+            "B": 0.76204,
+            "C": 109.36,
+            "D": -1373.9
+          },
+          "units": "Pa s",
+          "Tmin_K": 209.63,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 209.63-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1785264648,
+            "B": -0.0002048104089
+          },
+          "units": "W/m/K",
+          "Tmin_K": 209.63,
+          "Tmax_K": 400.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 209.63-400.00 K (ChemSep range), max deviation 0.31 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.00041167,
+            "B": 0.84476,
+            "C": 1870.6,
+            "D": -7829.5
+          },
+          "units": "W/m/K",
+          "Tmin_K": 209.63,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 209.63-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.1001533757,
+            "B": 3.667612207,
+            "C": -7.134880649,
+            "D": 8.163917301,
+            "E": -3.468933632
+          },
+          "units": "N/m",
+          "Tmin_K": 209.63,
+          "Tmax_K": 509.67,
+          "Tc_K": 536.5,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 209.63-509.67 K (ChemSep range, limited to 0.95 Tc), max deviation 0.095 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        }
+      }
     },
     "benzene": {
       "name": "Benzene",
@@ -270,7 +1574,193 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.210837,
-      "omega_source": "CoolProp 8.0.0 (Benzene: equation of state Thol-HTHP-2012); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Benzene: equation of state Thol-HTHP-2012); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 147.919719,
+            "B": 0.358703548,
+            "C": 549.650408,
+            "D": 0.3994541364
+          },
+          "units": "kg/m3",
+          "Tmin_K": 278.68,
+          "Tmax_K": 533.91,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Thol-HTHP-2012)",
+            "reference": "Thol et al., High Temperatures-High Pressures 41 (2012) 81-97",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 278.68-533.91 K (triple point to 0.95 Tc), max deviation 0.14 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 47.24581056,
+            "B": 219.0324262,
+            "C": 721.9009088,
+            "D": -59.34283586,
+            "E": 833.3773187
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 278.68,
+          "Tmax_K": 725.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Thol-HTHP-2012)",
+            "reference": "Thol et al., High Temperatures-High Pressures 41 (2012) 81-97",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 278.68-725.00 K (triple point to the upper limit of the equation of state), max deviation 0.019 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 1603.475368,
+            "B": -16.53514791,
+            "C": 0.06797520228,
+            "D": -0.0001216305005,
+            "E": 8.130763276e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 278.68,
+          "Tmax_K": 521.14,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Thol-HTHP-2012)",
+            "reference": "Thol et al., High Temperatures-High Pressures 41 (2012) 81-97",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 278.68-521.14 K, max deviation 0.54 %; range narrowed from 278.68-533.91 K (max deviation there 1.4 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 53624.62163,
+            "B": 0.9484721606,
+            "C": -0.7900971325,
+            "D": 0.2773840161
+          },
+          "units": "J/mol",
+          "Tmin_K": 278.68,
+          "Tmax_K": 533.91,
+          "Tc_K": 562.01969,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Thol-HTHP-2012)",
+            "reference": "Thol et al., High Temperatures-High Pressures 41 (2012) 81-97",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 278.68-533.91 K (triple point to 0.95 Tc), max deviation 0.063 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -22.74716051,
+            "B": 1706.941519,
+            "C": 1.690396823,
+            "D": -2.889362658e-17,
+            "E": 6.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 278.68,
+          "Tmax_K": 533.91,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Avgeri-JPCRD-2014-Benzene)",
+            "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 43 (2014) 033103, doi:10.1063/1.4892935",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 278.68-533.91 K (triple point to 0.95 Tc), max deviation 0.52 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.927100554e-08,
+            "B": 1.031646125,
+            "C": -41.41601028,
+            "D": 4162.429378
+          },
+          "units": "Pa s",
+          "Tmin_K": 278.68,
+          "Tmax_K": 725.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Avgeri-JPCRD-2014-Benzene)",
+            "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 43 (2014) 033103, doi:10.1063/1.4892935",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 278.68-725.00 K (triple point to the upper limit of the equation of state), max deviation 0.0086 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2477672124,
+            "B": -0.0003917078055,
+            "C": 1.156100705e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 278.68,
+          "Tmax_K": 533.91,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Assael-JPCRD-2012-Benzene)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 41 (2012) 043102-1:9, doi:10.1063/1.4755781",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 278.68-533.91 K (triple point to 0.95 Tc), max deviation 0.30 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.008725318636,
+            "B": 0.3539919065,
+            "C": -289.6390451,
+            "D": 549810.1209
+          },
+          "units": "W/m/K",
+          "Tmin_K": 278.68,
+          "Tmax_K": 725.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Assael-JPCRD-2012-Benzene)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 41 (2012) 043102-1:9, doi:10.1063/1.4755781",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 278.68-725.00 K (triple point to the upper limit of the equation of state), max deviation 0.28 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.07939114176,
+            "B": 1.623825095,
+            "C": -0.6364179974,
+            "D": 0.2936685981
+          },
+          "units": "N/m",
+          "Tmin_K": 278.68,
+          "Tmax_K": 533.91,
+          "Tc_K": 562.01969,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Benzene: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 278.68-533.91 K (triple point to 0.95 Tc), max deviation 0.100 %"
+          }
+        }
+      }
     },
     "toluene": {
       "name": "Toluene",
@@ -302,7 +1792,192 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.2657,
-      "omega_source": "CoolProp 8.0.0 (Toluene: equation of state Lemmon-JCED-2006); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Toluene: equation of state Lemmon-JCED-2006); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 159.3743844,
+            "B": 0.3778714127,
+            "C": 573.7579843,
+            "D": 0.4172401258
+          },
+          "units": "kg/m3",
+          "Tmin_K": 178.0,
+          "Tmax_K": 562.16,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.46 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 50.14091735,
+            "B": 259.6564019,
+            "C": 521.4260914,
+            "D": -144.4898421,
+            "E": 536.3400675
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 178.0,
+          "Tmax_K": 700.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 178.00-700.00 K (triple point to the upper limit of the equation of state), max deviation 0.13 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 375.3680226,
+            "B": -3.295334196,
+            "C": 0.01562813272,
+            "D": -3.001710242e-05,
+            "E": 2.161530297e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 178.0,
+          "Tmax_K": 542.95,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 178.00-542.95 K, max deviation 0.54 %; range narrowed from 178.00-562.16 K (max deviation there 1.8 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 61495.24221,
+            "B": 1.19719015,
+            "C": -1.302303582,
+            "D": 0.5646154894
+          },
+          "units": "J/mol",
+          "Tmin_K": 178.0,
+          "Tmax_K": 562.16,
+          "Tc_K": 591.74908,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.17 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -192.8249967,
+            "B": 5447.504948,
+            "C": 35.16921458,
+            "D": -1.032033612,
+            "E": 0.61
+          },
+          "units": "Pa s",
+          "Tmin_K": 197.21,
+          "Tmax_K": 562.16,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Avgeri-JPCRD-2015-Toluene)",
+            "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 44 (2015) 033101, doi:10.1063/1.4926955",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 197.21-562.16 K, max deviation 2.8 %; range narrowed from 178.00-562.16 K (max deviation there 25 %) to meet the 3 % target"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.106387384e-05,
+            "B": 0.2687912734,
+            "C": 2317.11182,
+            "D": -128591.2047
+          },
+          "units": "Pa s",
+          "Tmin_K": 178.0,
+          "Tmax_K": 700.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Avgeri-JPCRD-2015-Toluene)",
+            "reference": "Avgeri et al., J. Phys. Chem. Ref. Data 44 (2015) 033101, doi:10.1063/1.4926955",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 178.00-700.00 K (triple point to the upper limit of the equation of state), max deviation 0.064 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1726090936,
+            "B": 9.19116997e-05,
+            "C": -1.142020626e-06,
+            "D": 1.200421068e-09
+          },
+          "units": "W/m/K",
+          "Tmin_K": 178.0,
+          "Tmax_K": 562.16,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Assael-JPCRD-2012-Toluene)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 41 (2012) 023101-1:12, doi:10.1063/1.3700155",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.29 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.100851407,
+            "B": -0.542443461,
+            "C": -1299.476558,
+            "D": 715359.1699
+          },
+          "units": "W/m/K",
+          "Tmin_K": 178.0,
+          "Tmax_K": 700.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Assael-JPCRD-2012-Toluene)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 41 (2012) 023101-1:12, doi:10.1063/1.3700155",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 178.00-700.00 K (triple point to the upper limit of the equation of state), max deviation 1.6 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.0689693243,
+            "B": 1.290985874
+          },
+          "units": "N/m",
+          "Tmin_K": 178.0,
+          "Tmax_K": 562.16,
+          "Tc_K": 591.74908,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Toluene: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 178.00-562.16 K (triple point to 0.95 Tc), max deviation 0.00057 %"
+          }
+        }
+      }
     },
     "ethyl-acetate": {
       "name": "Ethyl acetate",
@@ -335,7 +2010,195 @@
         "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0."
       },
       "omega": 0.361,
-      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0."
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 69.5378549,
+            "B": 0.24295,
+            "C": 523.26,
+            "D": 0.25762
+          },
+          "units": "kg/m3",
+          "Tmin_K": 189.6,
+          "Tmax_K": 523.2,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 523.20 K (ChemSep: 523.25 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 88.1051 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 189.60-523.20 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 235.1654514,
+            "B": 62.51440185,
+            "C": 1773.61876,
+            "D": -285.203252,
+            "E": 308.4728053
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 298.15,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook",
+            "reference": "Stull D.R., The Chemical Thermodynamics of Organic Compounds, Wiley, New York (1969), selected values as tabulated in the NIST Chemistry WebBook (SRD 69), gas phase thermochemistry data, Cp,gas",
+            "url": "https://webbook.nist.gov/cgi/inchi?ID=C141786&Mask=1",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "9 tabulated points, 298.15-1000.00 K, max deviation 0.015 %",
+            "notes": "Selected values based on extrapolation of heat-capacity data to high temperatures (WebBook comment). Cross-check: measured vapour heat capacities of Connett et al., J. Chem. Thermodyn. 8 (1976) 1199 (360-450 K), on the same WebBook page.",
+            "chain": "CoolProp 8.0.0: fluid not included"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 290.7845755,
+            "B": -1.41773621,
+            "C": 0.004747277211,
+            "D": -4.433144396e-06
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 189.3,
+          "Tmax_K": 391.65,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 189.30-391.65 K (ChemSep range), max deviation 0.076 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 49527.0,
+            "B": 0.37029,
+            "C": 0.072685,
+            "D": -0.077493,
+            "E": 0.017381
+          },
+          "units": "J/mol",
+          "Tmin_K": 189.6,
+          "Tmax_K": 505.74,
+          "Tc_K": 523.2,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 189.60-505.74 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: isolated values only (used as cross-checks)"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": 16.428,
+            "B": -219.29,
+            "C": -4.124,
+            "D": 6.0568e-07,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 220.0,
+          "Tmax_K": 473.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 220.00-473.15 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.4514e-06,
+            "B": 0.35236,
+            "C": 732.29,
+            "D": -3982.4
+          },
+          "units": "Pa s",
+          "Tmin_K": 189.6,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 189.60-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2482994307,
+            "B": -0.0003482448795
+          },
+          "units": "W/m/K",
+          "Tmin_K": 189.6,
+          "Tmax_K": 350.21,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 189.60-350.21 K (ChemSep range), max deviation 0.55 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.3264e-07,
+            "B": 1.902,
+            "C": 102.58,
+            "D": -17015.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 189.6,
+          "Tmax_K": 990.21,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 189.60-990.21 K",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.06327245091,
+            "B": 1.304933853,
+            "C": -0.1315945298,
+            "D": -0.2320595544,
+            "E": 0.1990903418
+          },
+          "units": "N/m",
+          "Tmin_K": 189.6,
+          "Tmax_K": 497.04,
+          "Tc_K": 523.2,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 189.60-497.04 K (ChemSep range, limited to 0.95 Tc), max deviation 0.39 %",
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+          }
+        }
+      }
     },
     "oxygen": {
       "name": "Oxygen",
@@ -348,9 +2211,206 @@
       "Tc_K": 154.5994,
       "Pc_Pa": 5046410.0,
       "Tb_K": 90.1878,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 41.90727484,
+        "B": -1138.103217,
+        "C": -4.039785176,
+        "D": 5.235562058e-05,
+        "E": 2.0,
+        "Tmin_K": 54.362,
+        "Tmax_K": 154.599,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985, Stewart-JPCRD-1991; Schmidt and Wagner, Fluid Phase Equilib. 19 (1985) 175-200, doi:10.1016/0378-3812(85)87016-3; Stewart et al., J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897); 200 points 54.362-154.599 K (triple point to critical point), max deviation 0.12 %."
+      },
       "omega": 0.0222,
       "constants_source": "CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985,Stewart-JPCRD-1991); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985,Stewart-JPCRD-1991); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Oxygen: equation of state Schmidt-FPE-1985,Stewart-JPCRD-1991); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 120.8664875,
+            "B": 0.2828452745,
+            "C": 154.59939,
+            "D": 0.2858784677
+          },
+          "units": "kg/m3",
+          "Tmin_K": 54.37,
+          "Tmax_K": 146.86,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Schmidt-FPE-1985, Stewart-JPCRD-1991)",
+            "reference": "Schmidt and Wagner, Fluid Phase Equilib. 19 (1985) 175-200, doi:10.1016/0378-3812(85)87016-3; Stewart et al., J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 54.37-146.86 K (triple point to 0.95 Tc), max deviation 0.22 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 29.11883337,
+            "B": 8.594694236,
+            "C": 1126.088955,
+            "D": 3.830358231,
+            "E": 4647.509921
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 54.37,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Schmidt-FPE-1985, Stewart-JPCRD-1991)",
+            "reference": "Schmidt and Wagner, Fluid Phase Equilib. 19 (1985) 175-200, doi:10.1016/0378-3812(85)87016-3; Stewart et al., J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 54.37-1500.00 K (triple point to 1500 K), max deviation 0.026 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 162.3841124,
+            "B": -5.411186303,
+            "C": 0.09897841663,
+            "D": -0.000795041565,
+            "E": 2.396318987e-06
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 54.37,
+          "Tmax_K": 137.61,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Schmidt-FPE-1985, Stewart-JPCRD-1991)",
+            "reference": "Schmidt and Wagner, Fluid Phase Equilib. 19 (1985) 175-200, doi:10.1016/0378-3812(85)87016-3; Stewart et al., J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 54.37-137.61 K, max deviation 0.73 %; range narrowed from 54.37-146.86 K (max deviation there 4.4 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 9308.979681,
+            "B": 0.6179379499,
+            "C": -0.7406369448,
+            "D": 0.5002029118
+          },
+          "units": "J/mol",
+          "Tmin_K": 54.37,
+          "Tmax_K": 146.86,
+          "Tc_K": 154.59939,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Schmidt-FPE-1985, Stewart-JPCRD-1991)",
+            "reference": "Schmidt and Wagner, Fluid Phase Equilib. 19 (1985) 175-200, doi:10.1016/0378-3812(85)87016-3; Stewart et al., J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 54.37-146.86 K (triple point to 0.95 Tc), max deviation 0.059 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -3.192792525,
+            "B": 90.58575321,
+            "C": -1.411182401,
+            "D": -6.826943118e-23,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 54.37,
+          "Tmax_K": 146.86,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 54.37-146.86 K (triple point to 0.95 Tc), max deviation 0.55 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 9.93679205e-07,
+            "B": 0.5773800205,
+            "C": 91.75246981,
+            "D": -749.0996131
+          },
+          "units": "Pa s",
+          "Tmin_K": 54.37,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 54.37-1000.00 K (triple point to 1000 K), max deviation 0.097 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.281079368,
+            "B": -0.001448116661
+          },
+          "units": "W/m/K",
+          "Tmin_K": 54.37,
+          "Tmax_K": 146.86,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 54.37-146.86 K (triple point to 0.95 Tc), max deviation 0.22 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0005400571717,
+            "B": 0.7164922433,
+            "C": 65.69225916,
+            "D": -206.3781721
+          },
+          "units": "W/m/K",
+          "Tmin_K": 54.37,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 54.37-1000.00 K (triple point to 1000 K), max deviation 0.047 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.03845964304,
+            "B": 1.226049433
+          },
+          "units": "N/m",
+          "Tmin_K": 54.37,
+          "Tmax_K": 146.86,
+          "Tc_K": 154.59939,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Oxygen: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 54.37-146.86 K (triple point to 0.95 Tc), max deviation 0.040 %"
+          }
+        }
+      }
     },
     "nitrogen": {
       "name": "Nitrogen",
@@ -363,9 +2423,206 @@
       "Tc_K": 126.192,
       "Pc_Pa": 3395800.0,
       "Tb_K": 77.355,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 36.81910767,
+        "B": -916.0004997,
+        "C": -3.124840638,
+        "D": 2.957436875e-07,
+        "E": 3.0,
+        "Tmin_K": 63.151,
+        "Tmax_K": 126.191,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000; Span et al., J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047); 200 points 63.151-126.191 K (triple point to critical point), max deviation 0.082 %."
+      },
       "omega": 0.0372,
       "constants_source": "CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Nitrogen: equation of state Span-JPCRD-2000); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 81.30465419,
+            "B": 0.273790698,
+            "C": 126.192,
+            "D": 0.2739164418
+          },
+          "units": "kg/m3",
+          "Tmin_K": 63.16,
+          "Tmax_K": 119.88,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Span-JPCRD-2000)",
+            "reference": "Span et al., J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 63.16-119.88 K (triple point to 0.95 Tc), max deviation 0.059 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 29.10501809,
+            "B": 8.620870978,
+            "C": 852.0954891,
+            "D": -8.499482591,
+            "E": 850.5744719
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 63.16,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Span-JPCRD-2000)",
+            "reference": "Span et al., J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 63.16-1500.00 K (triple point to 1500 K), max deviation 0.0085 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 782.2083812,
+            "B": -36.33506409,
+            "C": 0.676809061,
+            "D": -0.005578897244,
+            "E": 1.726685228e-05
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 63.16,
+          "Tmax_K": 114.2,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Span-JPCRD-2000)",
+            "reference": "Span et al., J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 63.16-114.20 K, max deviation 0.56 %; range narrowed from 63.16-119.88 K (max deviation there 2.9 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 7867.386412,
+            "B": 0.6008735018,
+            "C": -0.6561409275,
+            "D": 0.4347097689
+          },
+          "units": "J/mol",
+          "Tmin_K": 63.16,
+          "Tmax_K": 119.88,
+          "Tc_K": 126.192,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Span-JPCRD-2000)",
+            "reference": "Span et al., J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 63.16-119.88 K (triple point to 0.95 Tc), max deviation 0.0088 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -8.904085709,
+            "B": 191.9325369,
+            "C": -0.5319001789,
+            "D": -5.032733768e-22,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 63.16,
+          "Tmax_K": 119.88,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 63.16-119.88 K (triple point to 0.95 Tc), max deviation 0.36 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 8.706237459e-07,
+            "B": 0.5706548349,
+            "C": 80.84844525,
+            "D": -623.1289487
+          },
+          "units": "Pa s",
+          "Tmin_K": 63.16,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 63.16-1000.00 K (triple point to 1000 K), max deviation 0.044 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2973772403,
+            "B": -0.001970820428
+          },
+          "units": "W/m/K",
+          "Tmin_K": 63.16,
+          "Tmax_K": 119.88,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 63.16-119.88 K (triple point to 0.95 Tc), max deviation 0.19 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0007536751154,
+            "B": 0.6551987541,
+            "C": 66.50901525,
+            "D": -66.0113175
+          },
+          "units": "W/m/K",
+          "Tmin_K": 63.16,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Lemmon-IJT-2004)",
+            "reference": "Lemmon and Jacobsen, Int. J. Thermophys. 25 (2004) 21-69, doi:10.1023/B:IJOT.0000022327.04529.f3",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 63.16-1000.00 K (triple point to 1000 K), max deviation 0.099 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.02898,
+            "B": 1.246
+          },
+          "units": "N/m",
+          "Tmin_K": 63.16,
+          "Tmax_K": 119.88,
+          "Tc_K": 126.192,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Nitrogen: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 63.16-119.88 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+          }
+        }
+      }
     },
     "hydrogen": {
       "name": "Hydrogen",
@@ -379,9 +2636,210 @@
       "Tc_K": 33.1443,
       "Pc_Pa": 1296360.0,
       "Tb_K": 20.3689,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 11.13025602,
+        "B": -89.40404862,
+        "C": 1.58513531,
+        "D": 2.309907198e-09,
+        "E": 5.0,
+        "Tmin_K": 13.957,
+        "Tmax_K": 33.144,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009; Leachman et al., J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306); 200 points 13.957-33.144 K (triple point to critical point), max deviation 0.068 %."
+      },
       "omega": -0.219,
       "constants_source": "CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Hydrogen: equation of state Leachman-JPCRD-2009); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 1.785493217e-15,
+            "B": 4.539703069e-09,
+            "C": 34.21146308,
+            "D": 0.01165683739
+          },
+          "units": "kg/m3",
+          "Tmin_K": 13.96,
+          "Tmax_K": 31.48,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Leachman-JPCRD-2009)",
+            "reference": "Leachman et al., J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 13.96-31.48 K (triple point to 0.95 Tc), max deviation 0.15 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 20.82401822,
+            "B": 11.17536783,
+            "C": 257.6394891,
+            "D": -4.653260942,
+            "E": 765.2483335
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 13.96,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Leachman-JPCRD-2009)",
+            "reference": "Leachman et al., J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 13.96-1000.00 K (triple point to the upper limit of the equation of state), max deviation 0.21 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 141.1691722,
+            "B": -28.39306766,
+            "C": 2.296839059,
+            "D": -0.08031720199,
+            "E": 0.001061818346
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 13.96,
+          "Tmax_K": 28.85,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Leachman-JPCRD-2009)",
+            "reference": "Leachman et al., J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 13.96-28.85 K, max deviation 0.57 %; range narrowed from 13.96-31.48 K (max deviation there 6.3 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 902.4632307,
+            "B": 0.09186972602,
+            "C": -0.5539456282,
+            "D": 0.551360556,
+            "E": 0.1724320592
+          },
+          "units": "J/mol",
+          "Tmin_K": 13.96,
+          "Tmax_K": 31.48,
+          "Tc_K": 33.144333,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Leachman-JPCRD-2009)",
+            "reference": "Leachman et al., J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 13.96-31.48 K (triple point to 0.95 Tc), max deviation 0.34 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -7.234151078,
+            "B": 4.986681044,
+            "C": -1.401499875,
+            "D": -2.20678336e-16,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 13.96,
+          "Tmax_K": 31.48,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Muzny-JCED-2013)",
+            "reference": "Muzny et al., J. Chem. Eng. Data  (2013) , doi:10.1021/je301273j",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 13.96-31.48 K (triple point to 0.95 Tc), max deviation 0.28 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.923766006e-07,
+            "B": 0.6773777209,
+            "C": 5.704713458,
+            "D": 67.07596668
+          },
+          "units": "Pa s",
+          "Tmin_K": 13.96,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Muzny-JCED-2013)",
+            "reference": "Muzny et al., J. Chem. Eng. Data  (2013) , doi:10.1021/je301273j",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 13.96-1000.00 K (triple point to the upper limit of the equation of state), max deviation 0.63 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.04665783033,
+            "B": 0.00538577637,
+            "C": -0.0001263332184
+          },
+          "units": "W/m/K",
+          "Tmin_K": 13.96,
+          "Tmax_K": 31.48,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Assael-JPCRD-2011-Hydrogen)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 40 (2011) 033101-1:13, doi:10.1063/1.3606499",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 13.96-31.48 K (triple point to 0.95 Tc), max deviation 0.33 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.314671322,
+            "B": -0.05962861596,
+            "C": 2392.76162,
+            "D": 2303.494548
+          },
+          "units": "W/m/K",
+          "Tmin_K": 13.96,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Assael-JPCRD-2011-Hydrogen)",
+            "reference": "Assael et al., J. Phys. Chem. Ref. Data 40 (2011) 033101-1:13, doi:10.1063/1.3606499",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 13.96-1000.00 K (triple point to the upper limit of the equation of state), max deviation 2.9 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.005861528096,
+            "B": 1.443953173,
+            "C": -0.806338848,
+            "D": 0.5958407068
+          },
+          "units": "N/m",
+          "Tmin_K": 13.96,
+          "Tmax_K": 31.48,
+          "Tc_K": 33.144333,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Hydrogen: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 13.96-31.48 K (triple point to 0.95 Tc), max deviation 0.24 %"
+          }
+        }
+      }
     },
     "methane": {
       "name": "Methane",
@@ -394,9 +2852,208 @@
       "Tc_K": 190.564,
       "Pc_Pa": 4599200.0,
       "Tb_K": 111.6672,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 33.93238539,
+        "B": -1258.338977,
+        "C": -2.38446272,
+        "D": 7.655059191e-08,
+        "E": 3.0,
+        "Tmin_K": 90.695,
+        "Tmax_K": 190.564,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991; Setzmann and Wagner, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898); 200 points 90.695-190.564 K (triple point to critical point), max deviation 0.091 %."
+      },
       "omega": 0.01142,
       "constants_source": "CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Methane: equation of state Setzmann-JPCRD-1991); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 40.56097132,
+            "B": 0.2708085001,
+            "C": 190.564,
+            "D": 0.2620032935
+          },
+          "units": "kg/m3",
+          "Tmin_K": 90.7,
+          "Tmax_K": 181.03,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Setzmann-JPCRD-1991)",
+            "reference": "Setzmann and Wagner, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 90.70-181.03 K (triple point to 0.95 Tc), max deviation 0.047 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.28207349,
+            "B": 64.20845089,
+            "C": 1851.961617,
+            "D": 36.64716529,
+            "E": 962.2209863
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 90.7,
+          "Tmax_K": 625.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Setzmann-JPCRD-1991)",
+            "reference": "Setzmann and Wagner, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 90.70-625.00 K (triple point to the upper limit of the equation of state), max deviation 0.024 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 582.7795495,
+            "B": -18.09515908,
+            "C": 0.2294161854,
+            "D": -0.001281636859,
+            "E": 2.685897918e-06
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 90.7,
+          "Tmax_K": 171.99,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Setzmann-JPCRD-1991)",
+            "reference": "Setzmann and Wagner, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 90.70-171.99 K, max deviation 0.56 %; range narrowed from 90.70-181.03 K (max deviation there 3.1 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 10866.79524,
+            "B": 0.5566290264,
+            "C": -0.7024963106,
+            "D": 0.5108799718
+          },
+          "units": "J/mol",
+          "Tmin_K": 90.7,
+          "Tmax_K": 181.03,
+          "Tc_K": 190.564,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Setzmann-JPCRD-1991)",
+            "reference": "Setzmann and Wagner, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 90.70-181.03 K (triple point to 0.95 Tc), max deviation 0.039 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -7.675182533,
+            "B": 202.4912376,
+            "C": -0.6762176528,
+            "D": -8.928082826e-24,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 90.7,
+          "Tmax_K": 181.03,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: QuinonesCisneros-JPCB-2006)",
+            "reference": "Quiñones-Cisneros and Deiters, J. Phys. Chem. B 110 (2006) 12820-12834, doi:10.1021/jp0618577",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 90.70-181.03 K (triple point to 0.95 Tc), max deviation 0.29 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.809230433e-07,
+            "B": 0.6752047281,
+            "C": 46.33828906,
+            "D": 1917.946558
+          },
+          "units": "Pa s",
+          "Tmin_K": 90.7,
+          "Tmax_K": 625.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: QuinonesCisneros-JPCB-2006)",
+            "reference": "Quiñones-Cisneros and Deiters, J. Phys. Chem. B 110 (2006) 12820-12834, doi:10.1021/jp0618577",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 90.70-625.00 K (triple point to the upper limit of the equation of state), max deviation 0.069 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.3409182404,
+            "B": -0.001416061401
+          },
+          "units": "W/m/K",
+          "Tmin_K": 90.7,
+          "Tmax_K": 181.03,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Friend-JPCRD-1989)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 18 (1989) , doi:10.1063/1.555828",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 90.70-181.03 K (triple point to 0.95 Tc), max deviation 0.62 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.098521691e-06,
+            "B": 1.576833951,
+            "C": -98.58808002,
+            "D": 4316.874138
+          },
+          "units": "W/m/K",
+          "Tmin_K": 90.7,
+          "Tmax_K": 625.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Friend-JPCRD-1989)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 18 (1989) , doi:10.1063/1.555828",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 90.70-625.00 K (triple point to the upper limit of the equation of state), max deviation 1.3 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.0392541301,
+            "B": 1.48709712,
+            "C": -0.5765599312,
+            "D": 0.3281820381
+          },
+          "units": "N/m",
+          "Tmin_K": 90.7,
+          "Tmax_K": 181.03,
+          "Tc_K": 190.564,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Methane: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 90.70-181.03 K (triple point to 0.95 Tc), max deviation 0.16 %"
+          }
+        }
+      }
     },
     "ethane": {
       "name": "Ethane",
@@ -409,9 +3066,210 @@
       "Tc_K": 305.322,
       "Pc_Pa": 4872200.0,
       "Tb_K": 184.5686,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 51.71319372,
+        "B": -2594.55457,
+        "C": -5.105178135,
+        "D": 1.491254862e-05,
+        "E": 2.0,
+        "Tmin_K": 90.368,
+        "Tmax_K": 305.322,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006; Buecker and Wagner, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286); 200 points 90.368-305.322 K (triple point to critical point), max deviation 0.21 %."
+      },
       "omega": 0.099,
       "constants_source": "CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Ethane: equation of state Buecker-JPCRD-2006); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 88.61196809,
+            "B": 0.3464116061,
+            "C": 299.9333862,
+            "D": 0.3559381239
+          },
+          "units": "kg/m3",
+          "Tmin_K": 90.37,
+          "Tmax_K": 290.05,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Buecker-JPCRD-2006)",
+            "reference": "Buecker and Wagner, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 90.37-290.05 K (triple point to 0.95 Tc), max deviation 0.22 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 34.89909491,
+            "B": 100.9800855,
+            "C": 911.2986696,
+            "D": 20.23397015,
+            "E": 361.5416916
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 90.37,
+          "Tmax_K": 675.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Buecker-JPCRD-2006)",
+            "reference": "Buecker and Wagner, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 90.37-675.00 K (triple point to the upper limit of the equation of state), max deviation 0.62 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 175.8399802,
+            "B": -2.766921981,
+            "C": 0.02579491035,
+            "D": -0.000104155678,
+            "E": 1.590761034e-07
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 90.37,
+          "Tmax_K": 270.08,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Buecker-JPCRD-2006)",
+            "reference": "Buecker and Wagner, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 90.37-270.08 K, max deviation 0.46 %; range narrowed from 90.37-290.05 K (max deviation there 3.7 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 21387.38734,
+            "B": 0.6949436725,
+            "C": -0.7509512514,
+            "D": 0.4453573719
+          },
+          "units": "J/mol",
+          "Tmin_K": 90.37,
+          "Tmax_K": 290.05,
+          "Tc_K": 305.322,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Buecker-JPCRD-2006)",
+            "reference": "Buecker and Wagner, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 90.37-290.05 K (triple point to 0.95 Tc), max deviation 0.071 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -10.12163776,
+            "B": 341.3113606,
+            "C": -0.07141083101,
+            "D": -6.594138092e-14,
+            "E": 5.28
+          },
+          "units": "Pa s",
+          "Tmin_K": 90.37,
+          "Tmax_K": 290.05,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Friend-JPCRD-1991)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 90.37-290.05 K (triple point to 0.95 Tc), max deviation 0.69 %"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.682473468e-06,
+            "B": 0.4403169076,
+            "C": 403.879762,
+            "D": -11737.35414
+          },
+          "units": "Pa s",
+          "Tmin_K": 90.37,
+          "Tmax_K": 675.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Friend-JPCRD-1991)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 90.37-675.00 K (triple point to the upper limit of the equation of state), max deviation 0.38 %"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.3315969063,
+            "B": -0.0007086668838,
+            "C": -1.681142869e-06,
+            "D": 3.821266585e-09
+          },
+          "units": "W/m/K",
+          "Tmin_K": 90.37,
+          "Tmax_K": 290.05,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Friend-JPCRD-1991)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 90.37-290.05 K (triple point to 0.95 Tc), max deviation 0.42 %"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 4.852894112,
+            "B": -0.5494266798,
+            "C": -1529.33572,
+            "D": 1264082.373
+          },
+          "units": "W/m/K",
+          "Tmin_K": 90.37,
+          "Tmax_K": 675.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Friend-JPCRD-1991)",
+            "reference": "Friend et al., J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 90.37-675.00 K (triple point to the upper limit of the equation of state), max deviation 1.3 %"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.04936303065,
+            "B": 1.382299177,
+            "C": -0.5286552169,
+            "D": 0.3792320572
+          },
+          "units": "N/m",
+          "Tmin_K": 90.37,
+          "Tmax_K": 290.05,
+          "Tc_K": 305.322,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethane: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 90.37-290.05 K (triple point to 0.95 Tc), max deviation 0.23 %"
+          }
+        }
+      }
     },
     "ethylene": {
       "name": "Ethylene",
@@ -425,9 +3283,207 @@
       "Tc_K": 282.35,
       "Pc_Pa": 5041690.0,
       "Tb_K": 169.3786,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 54.86059401,
+        "B": -2468.214173,
+        "C": -5.712987353,
+        "D": 1.947304545e-05,
+        "E": 2.0,
+        "Tmin_K": 103.989,
+        "Tmax_K": 282.35,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000; Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318); 200 points 103.989-282.350 K (triple point to critical point), max deviation 0.12 %."
+      },
       "omega": 0.0866,
       "constants_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
-      "omega_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT."
+      "omega_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT.",
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 61.09154398,
+            "B": 0.2822208032,
+            "C": 282.35,
+            "D": 0.2955316751
+          },
+          "units": "kg/m3",
+          "Tmin_K": 103.99,
+          "Tmax_K": 268.23,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethylene: Smukala-JPCRD-2000)",
+            "reference": "Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 103.99-268.23 K (triple point to 0.95 Tc), max deviation 0.24 %"
+          }
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.26747743,
+            "B": 65.43749002,
+            "C": 1178.071405,
+            "D": 36.48068959,
+            "E": 669.454167
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 103.99,
+          "Tmax_K": 450.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethylene: Smukala-JPCRD-2000)",
+            "reference": "Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 103.99-450.00 K (triple point to the upper limit of the equation of state), max deviation 0.019 %"
+          }
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 184.4599077,
+            "B": -3.079823709,
+            "C": 0.03041210232,
+            "D": -0.0001339047448,
+            "E": 2.230249005e-07
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 103.99,
+          "Tmax_K": 251.8,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethylene: Smukala-JPCRD-2000)",
+            "reference": "Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 103.99-251.80 K, max deviation 0.61 %; range narrowed from 103.99-268.23 K (max deviation there 3.7 %) to meet the 1 % target"
+          }
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 20056.70769,
+            "B": 0.7083186389,
+            "C": -0.6960057528,
+            "D": 0.3851305447
+          },
+          "units": "J/mol",
+          "Tmin_K": 103.99,
+          "Tmax_K": 268.23,
+          "Tc_K": 282.35,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethylene: Smukala-JPCRD-2000)",
+            "reference": "Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 103.99-268.23 K (triple point to 0.95 Tc), max deviation 0.069 %"
+          }
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -8.9556,
+            "B": 288.21,
+            "C": -0.21985,
+            "D": -1.0831e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 103.1,
+          "Tmax_K": 282.34,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 282.34 K (ChemSep: 283.00 K).; reproduces ChemSep within 0.0001 % at 200 points 103.10-282.34 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
+          }
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.1134e-06,
+            "B": 0.41436,
+            "C": 359.51,
+            "D": -2291.7
+          },
+          "units": "Pa s",
+          "Tmin_K": 169.41,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 169.41-1000.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
+          }
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.4030635383,
+            "B": -0.001422677288,
+            "C": 9.193351072e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 100.0,
+          "Tmax_K": 268.22,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 100.00-268.22 K (ChemSep range, limited to 0.95 Tc), max deviation 0.47 %",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
+          }
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 9.3247e-06,
+            "B": 1.4607,
+            "C": 410.48,
+            "D": -44405.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 170.0,
+          "Tmax_K": 590.92,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 170.00-590.92 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook fluid tables (ethene): could not be opened in this session"
+          }
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.0477,
+            "B": 1.17
+          },
+          "units": "N/m",
+          "Tmin_K": 103.99,
+          "Tmax_K": 268.23,
+          "Tc_K": 282.35,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Ethylene: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 103.99-268.23 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+          }
+        }
+      }
     }
   }
 }

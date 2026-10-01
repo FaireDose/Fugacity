@@ -114,19 +114,16 @@ def chain_note(cid, prop):
     if cid in NOT_IN_COOLPROP:
         notes.append("CoolProp 8.0.0: fluid not included")
     else:
-        notes.append("CoolProp 8.0.0: no %s model for this fluid" % (
-            "viscosity" if "Viscosity" in prop else "thermal conductivity"))
+        notes.append("CoolProp 8.0.0: no %s model" % ("viscosity" if "Viscosity" in prop else "thermal conductivity"))
     if src == "chemsep":
         if cid == "ethylene":
-            notes.append("NIST WebBook fluid tables for ethene could not be opened with the tools of "
-                         "this session (pages returned as binary data)")
+            notes.append("NIST WebBook fluid tables (ethene): could not be opened in this session")
         elif cid == "acetone":
-            notes.append("NIST WebBook: acetone is not among the WebBook fluids (no transport properties)")
+            notes.append("NIST WebBook: acetone is not a WebBook fluid")
         elif prop in ("liquidHeatCapacity", "heatOfVaporization"):
-            notes.append("NIST WebBook: isolated values or a Majer-Svoboda equation below the normal "
-                         "boiling point only, not the liquid range; used as cross-checks")
+            notes.append("NIST WebBook: isolated values only (used as cross-checks)")
         else:
-            notes.append("NIST WebBook: no data for this property")
+            notes.append("NIST WebBook: no data")
     return "; ".join(notes)
 
 
@@ -169,7 +166,7 @@ WEBBOOK_CP0 = {
     },
     "ethyl-acetate": {
         "url": "https://webbook.nist.gov/cgi/inchi?ID=C141786&Mask=1",
-        "reference": "Stull D.R., Westrum E.F., Sinke G.C., The Chemical Thermodynamics of Organic Compounds, "
+        "reference": "Stull D.R., The Chemical Thermodynamics of Organic Compounds, "
                      "Wiley, New York (1969), selected values as tabulated in the NIST Chemistry WebBook "
                      "(SRD 69), gas phase thermochemistry data, Cp,gas",
         "notes": "Selected values based on extrapolation of heat-capacity data to high temperatures (WebBook "
@@ -262,46 +259,87 @@ def fit_100(T, y, target):
 
 
 def fit_101(T, y, target, Es=(1, 2, 3, 4, 6, 10)):
-    best = None
+    """ln y = A + B/T + C ln T + D T^E: linear in A-D for a given E; E from a grid, then refined."""
+    from scipy.optimize import minimize_scalar
     ly = np.log(y)
-    for E in (None,) + tuple(Es):
-        def once(w, E=E):
+
+    def for_E(E):
+        def once(w):
             cols = [np.ones_like(T), 1 / T, np.log(T)] + ([T ** E] if E else [])
             x = _lstsq(np.vstack(cols).T, ly, w)
             c = {"A": x[0], "B": x[1], "C": x[2], "D": x[3] if E else 0.0, "E": float(E) if E else 0.0}
             return (lambda t, c=c: ev("DIPPR101", c, t), c)
         f, c = _minimax(once, T, y)
-        m = rel_dev(f(T), y)
-        if best is None or m < best[0] - 1e-12:
-            best = (m, c)
+        return rel_dev(f(T), y), c
+
+    best = min((for_E(E) for E in (None,) + tuple(Es)), key=lambda b: b[0])
+    if best[0] > target / 4:
+        # refine E continuously (rounded to 0.01 so the record stays readable)
+        r = minimize_scalar(lambda E: for_E(round(E, 2))[0], bounds=(0.5, 12), method="bounded",
+                            options={"xatol": 0.01})
+        cand = for_E(round(r.x, 2))
+        if cand[0] < best[0]:
+            best = cand
     return {k: float(v) for k, v in best[1].items()}, {}
+
+
+def _polish(model, p0, T, y, bounds=(-np.inf, np.inf), iters=15):
+    """Reweighted nonlinear least squares on relative residuals, keeping the lowest maximum deviation."""
+    best = None
+    w = np.ones_like(T)
+    p = np.array(p0, dtype=float)
+    for _ in range(iters):
+        def res(q, w=w):
+            v = model(q)
+            return w * (v / y - 1) if v is not None else np.full_like(T, 10.0)
+        try:
+            r = least_squares(res, p, bounds=bounds, max_nfev=3000)
+        except Exception:
+            break
+        v = model(r.x)
+        if v is None:
+            break
+        d = np.abs(v / y - 1)
+        if best is None or d.max() < best[0]:
+            best = (d.max(), r.x.copy())
+        w = w * (d / d.max() + 1e-3) ** 0.5
+        w /= w.mean()
+        p = r.x
+    return best
 
 
 def fit_102(T, y, target):
     ly = np.log(y)
     x0 = _lstsq(np.vstack([np.ones_like(T), np.log(T)]).T, ly)
-    best = None
     Tm = T.mean()
+
+    def model(p):
+        den = 1 + p[2] / T + p[3] / T ** 2
+        if np.any(den <= 0):
+            return None
+        return math.exp(p[0]) * T ** p[1] / den
+
+    starts = []
     for C0 in (0.0, 0.3 * Tm, Tm, 3 * Tm, -0.3 * T.min()):
         for D0 in (0.0, 0.1 * Tm ** 2, -0.1 * T.min() ** 2, Tm ** 2):
             def res(p):
-                den = 1 + p[2] / T + p[3] / T ** 2
-                if np.any(den <= 0):
-                    return np.full_like(T, 10.0)
-                return p[0] + p[1] * np.log(T) - np.log(den) - ly
+                v = model(p)
+                return np.log(v) - ly if v is not None else np.full_like(T, 10.0)
             try:
-                r = least_squares(res, [x0[0], x0[1], C0, D0], x_scale=[1, 0.1, Tm, Tm ** 2],
-                                  method="lm" if False else "trf", max_nfev=20000)
+                r = least_squares(res, [x0[0], x0[1], C0, D0], x_scale=[1, 0.1, Tm, Tm ** 2], max_nfev=20000)
             except Exception:
                 continue
-            c = {"A": math.exp(r.x[0]), "B": r.x[1], "C": r.x[2], "D": r.x[3]}
-            den = 1 + c["C"] / T + c["D"] / T ** 2
-            if np.any(den <= 0):
-                continue
-            m = rel_dev(ev("DIPPR102", c, T), y)
-            if best is None or m < best[0]:
-                best = (m, c)
-    return {k: float(v) for k, v in best[1].items()}, {}
+            v = model(r.x)
+            if v is not None:
+                starts.append((rel_dev(v, y), r.x))
+    starts.sort(key=lambda s: s[0])
+    best = starts[0]
+    for m, p in starts[:4]:
+        b = _polish(model, p, T, y)
+        if b and b[0] < best[0]:
+            best = b
+    p = best[1]
+    return {"A": float(math.exp(p[0])), "B": float(p[1]), "C": float(p[2]), "D": float(p[3])}, {}
 
 
 def fit_105(T, y, target, Tc):
@@ -385,6 +423,44 @@ def fit_107(T, y, target):
     return {k: float(v) for k, v in best[1].items()}, {}
 
 
+def fit_range(form, sample, Tmin, Tmax, target, Tc=None, step=0.05, max_trim=0.6, keep=()):
+    """Fit over [Tmin, Tmax]; if the target is missed, trim the range from either end in steps of
+    5 % of its span and keep the widest range that meets the target (lowest deviation among equals),
+    preferring ranges that still contain the temperatures in `keep` (25 °C, normal boiling point).
+    Returns T, y, coefficients, extra fields, max deviation, Tmin, Tmax and a note (or None)."""
+    keep = [t for t in keep if Tmin <= t <= Tmax]
+    span = Tmax - Tmin
+    tried = {}
+
+    def attempt(lo_k, hi_k):
+        lo = math.ceil((Tmin + lo_k * step * span) * 100) / 100 if lo_k else Tmin
+        hi = math.floor((Tmax - hi_k * step * span) * 100) / 100 if hi_k else Tmax
+        T = grid(lo, hi)
+        y = sample(T)
+        c, extra = fit(form, T, y, target, Tc)
+        m = rel_dev(ev(form, c, T, Tc), y)
+        tried[(lo_k, hi_k)] = (T, y, c, extra, m, lo, hi)
+        return tried[(lo_k, hi_k)]
+
+    first = attempt(0, 0)
+    if first[4] <= target:
+        return first + (None,)
+    nmax = int(round(max_trim / step))
+    for strict in ((True, False) if keep else (False,)):
+        for k in range(1, nmax + 1):
+            ok = [tried.get((b, k - b)) or attempt(b, k - b) for b in range(k + 1)]
+            ok = [o for o in ok if o[4] <= target and (not strict or all(o[5] <= t <= o[6] for t in keep))]
+            if ok:
+                best = min(ok, key=lambda o: o[4])
+                note = ("range narrowed from %.2f-%.2f K (max deviation there %s %%) to meet the %g %% target"
+                        % (Tmin, Tmax, pct(first[4]), target * 100))
+                if keep and not strict:
+                    note += "; the narrowed range no longer contains %s" % " and ".join("%.2f K" % t for t in keep)
+                return best + (note,)
+    return first + ("target of %g %% not met" % (target * 100),)
+
+
+
 def fit(form, T, y, target, Tc=None):
     if form == "DIPPR100":
         return fit_100(T, y, target)
@@ -466,8 +542,18 @@ class Bib:
         import re
         self.re = re
         self.txt = Path(path).read_text(encoding="utf-8", errors="replace") if path else ""
+        self.used = set()
 
-    def cite(self, key):
+    def surname(self, a):
+        a = a.strip()
+        return a.split(",")[0].strip() if "," in a else a.split()[-1]
+
+    def short(self, key):
+        """Short citation for a record: first author, journal, volume, year, pages, DOI."""
+        self.used.add(key)
+        return self.cite(key, short=True)
+
+    def cite(self, key, short=False):
         re = self.re
         m = re.search(r"@\w+\{" + re.escape(key) + r",(.*?)\n\}", self.txt, re.S)
         if not m:
@@ -481,8 +567,10 @@ class Bib:
             s = " ".join(mm.group(1).split()).replace("{", "").replace("}", "")
             return s.replace("\\v s", "š").replace("\\~n", "ñ").replace("\\ss", "ß").replace("\\", "")
         authors = [a.strip() for a in f("author").split(" and ")]
+        if short:
+            authors = [self.surname(a) for a in authors]
         au = authors[0] + (" et al." if len(authors) > 2 else (" and " + authors[1] if len(authors) == 2 else ""))
-        parts = [au + ",", f("title") + ","]
+        parts = [au + ","] + ([] if short else [f("title") + ","])
         if f("journal"):
             parts.append("%s %s (%s) %s" % (f("journal"), f("volume"), f("year"), f("pages").replace("--", "-")))
         else:
@@ -544,13 +632,15 @@ def unit_factor(units, prop, MW):
     return table[(units, prop)]
 
 
-CHEMSEP_NAME = "ChemSep pure-component database v8.3 (chemsep1.xml), Kooijman & Taylor"
-CHEMSEP_REF = ("H. Kooijman, R. Taylor, ChemSep pure-component database v8.3, file chemsep1.xml "
-               "(2021), as redistributed in DWSIM, https://github.com/DanWBR/dwsim "
-               "(DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml)")
-CHEMSEP_ACCESS = "Artistic License 2.0 (openly licensed databank)"
-COOLPROP_ACCESS = "open source, MIT; reference equations from the cited literature"
-WEBBOOK_ACCESS = "NIST Chemistry WebBook, SRD 69, free to read online"
+CHEMSEP_NAME = "ChemSep v8.3 pure-component database"
+CHEMSEP_REF = ("Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), "
+               "via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)")
+CHEMSEP_REF_FULL = ("H. Kooijman, R. Taylor, ChemSep pure-component database v8.3, file chemsep1.xml (2021), "
+                    "Artistic License 2.0, as redistributed in DWSIM, https://github.com/DanWBR/dwsim, "
+                    "DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml")
+CHEMSEP_ACCESS = "Artistic License 2.0"
+COOLPROP_ACCESS = "MIT (open source)"
+WEBBOOK_ACCESS = "free to read (NIST SRD 69)"
 
 # ---------------------------------------------------------------------------------------------
 # Building the records
@@ -610,38 +700,31 @@ class Builder:
         target = 0.03 if prop in TRANSPORT else 0.01
         form = FORM[prop]
         Tc = rnd(F.Tc, 8)
-        narrowed = None
-        while True:
-            T = grid(Tmin, Tmax)
-            y = np.array([F.value(prop, t) for t in T])
-            if prop == "liquidDensity":
-                pass
-            c, extra = fit(form, T, y, target, Tc)
-            m = rel_dev(ev(form, c, T, Tc), y)
-            if m <= target or Tmax - Tmin < 0.2 * F.Tc:
-                break
-            # narrow the range from the top (the critical region is the hard part)
-            if prop in LIQUID_SIDE:
-                Tmax = math.floor((Tmax - 0.05 * F.Tc) * 100) / 100
-                narrowed = "range narrowed to %.2f K (%.2f Tc) to meet the %g %% target" % (Tmax, Tmax / F.Tc, target * 100)
-            else:
-                Tmin = math.ceil((Tmin + 0.1 * (Tmax - Tmin)) * 100) / 100
-                narrowed = "range narrowed to start at %.2f K to meet the %g %% target" % (Tmin, target * 100)
+        sample = lambda T: np.array([F.value(prop, t) for t in T])  # noqa: E731
+        keep = (298.15, self.comps[cid]["Tb_K"])
+        T0, T1 = Tmin, Tmax
+        T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(form, sample, T0, T1, target, Tc, keep=keep)
+        if narrowed and prop == "liquidDensity":
+            # DIPPR105 cannot follow a density maximum (water at 4 °C): try the DIPPR100 polynomial
+            alt = fit_range("DIPPR100", sample, T0, T1, target, Tc, keep=keep)
+            if not alt[-1]:
+                T, y, c, extra, m, Tmin, Tmax, _ = alt
+                form = "DIPPR100"
+                narrowed = ("DIPPR100 used because DIPPR105 does not meet the 1 %% target over %.2f-%.2f K "
+                            "(density maximum near 277 K)" % (T0, T1))
         keys = F.keys(F.what(prop))
         eos = F.keys("EOS")
-        ref = "; ".join(self.bib.cite(k) for k in keys)
-        if F.what(prop) != "EOS":
-            ref += " (equation of state: " + "; ".join(self.bib.cite(k) for k in eos) + ")"
+        ref = "; ".join(self.bib.short(k) for k in keys)
         how = {
             "liquidDensity": "saturated liquid density",
-            "liquidHeatCapacity": "isobaric heat capacity of the saturated liquid",
+            "liquidHeatCapacity": "cp of the saturated liquid",
             "heatOfVaporization": "h(saturated vapour) - h(saturated liquid)",
-            "liquidViscosity": "viscosity of the saturated liquid",
-            "liquidThermalConductivity": "thermal conductivity of the saturated liquid",
+            "liquidViscosity": "saturated liquid",
+            "liquidThermalConductivity": "saturated liquid",
             "surfaceTension": "surface tension",
-            "idealGasHeatCapacity": "ideal-gas isobaric heat capacity (cp0molar)",
-            "vapourViscosity": "dilute-gas viscosity, at 1 kPa or 1 % of the vapour pressure if lower",
-            "vapourThermalConductivity": "dilute-gas thermal conductivity, at 1 kPa or 1 % of the vapour pressure if lower",
+            "idealGasHeatCapacity": "cp0molar",
+            "vapourViscosity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "vapourThermalConductivity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
             "vapourPressure": "saturation pressure",
         }[prop]
         name = "CoolProp 8.0.0 (%s: %s)" % (F.name, ", ".join(keys))
@@ -649,7 +732,8 @@ class Builder:
             name += {"EOS": " = IAPWS-95", "VISCOSITY": " = IAPWS 2008 viscosity formulation",
                      "CONDUCTIVITY": " = IAPWS 2011 thermal conductivity formulation",
                      "SURFACE_TENSION": ""}[F.what(prop)]
-        fit_text = "%d points %.2f-%.2f K (%s), max deviation %s %%" % (len(T), Tmin, Tmax, why, pct(m))
+        fit_text = "%d points %.2f-%.2f K%s, max deviation %s %%" % (
+            len(T), Tmin, Tmax, "" if narrowed else " (%s)" % why, pct(m))
         if narrowed:
             fit_text += "; " + narrowed
         source = {"name": name, "reference": ref, "access": COOLPROP_ACCESS,
@@ -734,16 +818,9 @@ class Builder:
         if prop in LIQUID_SIDE and Tmax > 0.95 * Tc:
             Tmax = math.floor(0.95 * Tc * 100) / 100
             why = "ChemSep range, limited to 0.95 Tc"
-        narrowed = None
-        while True:
-            T = grid(Tmin, Tmax)
-            y = self.cs.value_si(cas, prop, T)
-            c, extra = fit(form, T, y, target, Tc)
-            m = rel_dev(ev(form, c, T, Tc), y)
-            if m <= target or Tmax - Tmin < 0.2 * Tc:
-                break
-            Tmax = math.floor((Tmax - 0.05 * Tc) * 100) / 100
-            narrowed = "range narrowed to %.2f K to meet the %g %% target" % (Tmax, target * 100)
+        T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(
+            form, lambda T: self.cs.value_si(cas, prop, T), Tmin, Tmax, target, Tc,
+            keep=(298.15, self.comps[cid]["Tb_K"]))
         source = {"name": CHEMSEP_NAME, "reference": CHEMSEP_REF, "access": CHEMSEP_ACCESS,
                   "fit": ("refitted in the %s form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), "
                           "%s, converted to the mol basis): %d points %.2f-%.2f K (%s), max deviation %s %%%s"
@@ -800,7 +877,7 @@ class Builder:
         tb = self.comps[cid]["Tb_K"]
         source = ("Fitted to the saturation pressure of CoolProp 8.0.0 (%s: equation of state %s; %s); "
                   "%d points %.3f-%.3f K (%s), max deviation %s %%." % (
-                      F.name, ", ".join(keys), "; ".join(self.bib.cite(k) for k in keys), len(T), Tmin, Tmax, why,
+                      F.name, ", ".join(keys), "; ".join(self.bib.short(k) for k in keys), len(T), Tmin, Tmax, why,
                       pct(max(m, m2))))
         rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
                "A": coeffs["A"], "B": coeffs["B"], "C": coeffs["C"], "D": coeffs["D"], "E": coeffs["E"],
@@ -859,6 +936,15 @@ def max_dev_text(rec):
 
 def spot_T(cid, comps):
     return 298.15 if cid not in GASES else comps[cid]["Tb_K"]
+
+
+def webbook_value(cid, T):
+    """WebBook ideal-gas cp at T: Shomate equation, or a tabulated value at exactly T; else None."""
+    W = WEBBOOK_CP0[cid]
+    if "shomate" in W:
+        s, t = W["shomate"], T / 1000
+        return s["A"] + s["B"] * t + s["C"] * t ** 2 + s["D"] * t ** 3 + s["E"] / t ** 2
+    return next((v for (t, v) in W["table"] if abs(t - T) < 1e-9), None)
 
 
 def write_doc(comps, records, builder, vp_gas):
@@ -929,7 +1015,7 @@ def write_doc(comps, records, builder, vp_gas):
                 elif s == "chemsep":
                     src = builder.chemsep_check(cid, p, T)
                 else:
-                    src = None
+                    src = webbook_value(cid, T)
                 cs = builder.chemsep_check(cid, p, T) if s != "chemsep" else None
             dev = "%.2f %%" % (100 * (ours / src - 1)) if src else "–"
             L.append("| %s | %s | %.5g | %s | %s | %s |" % (
@@ -949,6 +1035,15 @@ def write_doc(comps, records, builder, vp_gas):
              "are dilute-gas (low-pressure) values.")
     L.append("- Water: the correlations are fitted to IAPWS-95 and the IAPWS transport formulations as "
              "implemented in CoolProp; `props()` will use IAPWS-IF97 directly for water.")
+    L.append("")
+    L.append("## References\n")
+    L.append("- CoolProp 8.0.0: %s; https://github.com/CoolProp/CoolProp (MIT). The equations it "
+             "implements for these fluids:" % builder.bib.cite("Bell-IECR-2014"))
+    for k in sorted(builder.bib.used):
+        L.append("  - %s: %s" % (k, builder.bib.cite(k)))
+    L.append("- " + CHEMSEP_REF_FULL + ".")
+    for cid, W in WEBBOOK_CP0.items():
+        L.append("- %s, ideal-gas heat capacity: %s; %s" % (comps[cid]["name"], W["reference"], W["url"]))
     DOC_FILE.write_text("\n".join(L) + "\n")
 
 
