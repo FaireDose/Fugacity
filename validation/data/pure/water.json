@@ -10,7 +10,7 @@
     "reference": "Wagner and Pruß, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 273.17-614.74 K, max deviation 0.19 %; DIPPR100 used because DIPPR105 does not meet the 1 % target over 273.17-614.74 K (density maximum near 277 K)"
+    "fit": "200 points 273.17-614.74 K, max deviation 0.19 %; DIPPR100 used because DIPPR105 does not meet the 1 % target over 273.17-614.74 K (it cannot follow the density maximum of water)"
    },
    "T_K": [
     273.17,

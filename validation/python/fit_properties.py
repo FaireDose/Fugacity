@@ -711,7 +711,7 @@ class Builder:
                 T, y, c, extra, m, Tmin, Tmax, _ = alt
                 form = "DIPPR100"
                 narrowed = ("DIPPR100 used because DIPPR105 does not meet the 1 %% target over %.2f-%.2f K "
-                            "(density maximum near 277 K)" % (T0, T1))
+                            "(it cannot follow the density maximum of water)" % (T0, T1))
         keys = F.keys(F.what(prop))
         eos = F.keys("EOS")
         ref = "; ".join(self.bib.short(k) for k in keys)
