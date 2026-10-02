@@ -39,7 +39,10 @@ Paste one of these into an assistant that can open web links.
 release.) For the first, the assistant writes a few lines that load Fugacity, and the
 workbench opens live in the
 chat (tested in Claude artifacts; other chats: [compatibility](ai/README.md#which-chats-can-show-fugacity-pages)).
-To use it often, install the Fugacity skill: [one table for every assistant](ai/README.md#install-the-skills).
+To have it always at hand, install the Fugacity skill once:
+**<https://fairedose.github.io/Fugacity/install>** (download and steps for Claude, ChatGPT,
+Claude Code, Codex; for other assistants one line for their custom instructions). Then
+just ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 
 ## What it does today
 

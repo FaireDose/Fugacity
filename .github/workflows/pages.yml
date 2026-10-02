@@ -3,6 +3,8 @@
 #   https://fairedose.github.io/Fugacity/          live workbench
 #   https://fairedose.github.io/Fugacity/use.md    instructions for using Fugacity in a chat
 #   https://fairedose.github.io/Fugacity/agents.md the rules for assistants and agents
+#   https://fairedose.github.io/Fugacity/install   how to install the skill
+#   https://fairedose.github.io/Fugacity/skill.zip the skill (contributor-skill.zip too)
 # One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
 # Actions are pinned to commit SHAs; each job gets only the permissions it needs.
 name: Website
@@ -34,7 +36,8 @@ jobs:
       - name: Assemble the site
         run: |
           mkdir -p _site
-          cp site/index.html _site/index.html
+          cp site/index.html site/install.html _site/
+          (cd ai/skills && zip -qr ../../_site/skill.zip fugacity && zip -qr ../../_site/contributor-skill.zip fugacity-contributor)
           cp dist/fugacity.js _site/fugacity.js
           cp ai/instructions/use-fugacity.md _site/use.md
           cp AGENTS.md _site/agents.md

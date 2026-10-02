@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install the Fugacity skill</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0 auto; padding: 24px 16px; max-width: 760px; background: Canvas; color: CanvasText;
+         font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size: 1.4rem; } h2 { font-size: 1.05rem; margin-top: 1.6em; }
+  code { font-size: .92em; padding: 1px 4px; border-radius: 4px; background: color-mix(in srgb, CanvasText 8%, Canvas); }
+  pre { padding: 10px 12px; border-radius: 6px; background: color-mix(in srgb, CanvasText 8%, Canvas); overflow-x: auto; }
+  a { color: inherit; }
+  .dl { display: inline-block; margin: 4px 8px 4px 0; padding: 8px 14px; border-radius: 6px; text-decoration: none;
+        border: 1px solid color-mix(in srgb, CanvasText 25%, Canvas); }
+</style>
+</head>
+<body>
+<h1>Install the Fugacity skill</h1>
+<p>The skill teaches your AI assistant to open the Fugacity workbench, draw phase diagrams and
+answer property questions with their sources. Install it once; afterwards just ask, for
+example <em>"Open the Fugacity workbench with ethanol and water"</em>.</p>
+<p>
+  <a class="dl" href="skill.zip">Download skill.zip</a>
+  <a class="dl" href="contributor-skill.zip">Download contributor-skill.zip</a> (for contributing to the project)
+</p>
+
+<h2>Claude (claude.ai and the desktop app)</h2>
+<p>Turn on <b>Settings → Capabilities → Code execution and file creation</b>. Then
+<b>Customize → Skills → + → Create skill → Upload a skill</b> and choose <code>skill.zip</code>.
+On Team and Enterprise plans an owner first allows skills for the organization.</p>
+
+<h2>ChatGPT (Business, Enterprise, Edu and Healthcare workspaces)</h2>
+<p><b>Skills → Create → Upload from your computer</b>, choose <code>skill.zip</code>.</p>
+
+<h2>Claude Code</h2>
+<pre>/plugin marketplace add FaireDose/Fugacity
+/plugin install fugacity@fugacity</pre>
+
+<h2>Codex</h2>
+<pre>$skill-installer install https://github.com/FaireDose/Fugacity/tree/main/ai/skills/fugacity</pre>
+
+<h2>Any other assistant (no skills)</h2>
+<p>Put this line in its custom instructions, project instructions, custom GPT or Gem, so it
+applies to every chat:</p>
+<pre>For chemical-engineering calculations, read https://fairedose.github.io/Fugacity/use.md and follow it.</pre>
+
+<p>Menu names change between app versions; if you can't find them, search your assistant's help
+pages for "skills". More: <a href="https://github.com/FaireDose/Fugacity/blob/main/ai/README.md">ai/README.md</a> ·
+<a href="./">Live workbench</a> · <a href="https://github.com/FaireDose/Fugacity">Source</a></p>
+</body>
+</html>
