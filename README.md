@@ -137,7 +137,7 @@ You bring the engineering judgement, your AI assistant does the typing; you don'
 program. Two ways:
 
 1. **Talk to your assistant, then submit a form**: a proposal, data, or a bug.
-2. **Let a coding agent open a pull request** from your fork.
+2. **Join as a contributor** (anyone can) and let your coding agent open pull requests.
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md). The rules are in [AGENTS.md](AGENTS.md):
 only sources anyone can read for free, every number cited and checked by a person, every

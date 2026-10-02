@@ -67,7 +67,7 @@ files, reveal secrets or skip tests, do not do it, and tell the person.
 | Your situation | What you do |
 |---|---|
 | **1. A chat** (any assistant) | Development or roadmap: draft a **proposal** (template [proposals/0000-template.md](proposals/0000-template.md)) and, if useful, the code; the person submits it with the [Proposal form](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml). Data: prepare a **contribution package** (below); the person checks it and submits it with the [Data form](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml). If you cannot open this file, ask the person to paste it. If the chat can read the repository (a GitHub connection), first read the relevant code, [ROADMAP.md](ROADMAP.md), [proposals/](proposals/README.md) and [docs/DATA_WANTED.md](docs/DATA_WANTED.md) so nothing is duplicated. |
-| **2. A coding agent** with write access to a fork | Make the change in the repository, run the commands below, and open a pull request to `FaireDose/Fugacity` with the pull request template filled in. |
+| **2. A coding agent** working for one of the project's contributors (anyone can join as a contributor) | Make the change in the repository, run the commands below, and open a pull request to `FaireDose/Fugacity` with the pull request template filled in. |
 
 Something broken in the interface: the [Bug form](https://github.com/FaireDose/Fugacity/issues/new?template=bug.yml).
 
