@@ -5,757 +5,1123 @@
       "model": "NRTL",
       "i": "water",
       "j": "acetic-acid",
+      "set": "chemsep-uniquac-curve",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 546.6173945877769,
       "b_ji": -108.64648610844553,
       "alpha": 0.3,
       "source": "Fitted to reproduce the ChemSep UNIQUAC T-x-y curve at 101.325 kPa (no open experimental set yet). AAD 0.1 K, 0.002 in y.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "acetic-acid",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 126.65371408379717,
       "b_ji": -204.81402363659222,
       "source": "ChemSep UNIQUAC databank (via thermo library), DECHEMA-based.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "water",
       "j": "ethylene-glycol",
+      "set": "fitted-wikipedia",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -474.8421797252627,
       "b_ji": 684.7935543141364,
       "alpha": 0.3,
       "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 3.0 K, 0.010 in y.",
+      "source_ids": [
+        "wikipedia-ethylene-glycol-data"
+      ],
       "tier": "fitted"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "ethylene-glycol",
+      "set": "fitted-wikipedia",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -518.5008905873552,
       "b_ji": 427.81623806117994,
       "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 2.6 K, 0.011 in y.",
+      "source_ids": [
+        "wikipedia-ethylene-glycol-data"
+      ],
       "tier": "fitted"
     },
     {
       "model": "NRTL",
       "i": "acetic-acid",
       "j": "ethylene-glycol",
+      "set": "fitted-schmid2007",
+      "default": true,
       "a_ij": 0.4125715649983336,
       "a_ji": -0.5332367773250929,
       "b_ij": 382.2484749860536,
       "b_ji": -149.92751645504197,
       "alpha": 0.3,
       "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 1.2 % in P, 30 J/mol in HE.",
+      "source_ids": [
+        "schmid2007-acetic-acid-ethylene-glycol"
+      ],
       "tier": "fitted"
     },
     {
       "model": "UNIQUAC",
       "i": "acetic-acid",
       "j": "ethylene-glycol",
+      "set": "fitted-schmid2007",
+      "default": true,
       "a_ij": -0.19908132300185527,
       "a_ji": 0.341596584260477,
       "b_ij": -296.7713912079953,
       "b_ji": 106.72554144664836,
       "source": "Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K. AAD 0.9 % in P, 24 J/mol in HE.",
+      "source_ids": [
+        "schmid2007-acetic-acid-ethylene-glycol"
+      ],
       "tier": "fitted"
     },
     {
       "model": "NRTL",
       "i": "water",
       "j": "methanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 398.95345259688855,
       "b_ji": -95.13209282738782,
       "alpha": 0.2999,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "water",
       "j": "ethanol",
+      "set": "fitted-kamihama2012",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 686.2956326903964,
       "b_ji": -48.37819016171115,
       "alpha": 0.3,
       "source": "Fitted to 21 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_water_101kPa.json). AAD 0.12 K in T, 0.0037 in y (max 0.32 K, 0.0102). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 624.8676222389441,
-        "b_ji": -29.166654483541816,
-        "alpha": 0.2937,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "water",
-        "j": "ethanol"
-      }
+      "source_ids": [
+        "kamihama2012-ethanol-water"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 624.8676222389441,
+      "b_ji": -29.166654483541816,
+      "alpha": 0.2937,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "water",
       "j": "acetone",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 666.7541568707342,
       "b_ji": 409.6929122710524,
       "alpha": 0.5663,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "water",
       "j": "ethyl-acetate",
+      "set": "fitted-grande2005-etal",
+      "default": true,
       "a_ij": 7.123812138150454,
       "a_ji": -0.09431279121796615,
       "b_ij": -1106.436339780053,
       "b_ji": 370.04943044435475,
       "alpha": 0.3,
       "source": "Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156), activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), both data public in the NIST TRC ThermoML Archive, and the heterogeneous azeotrope at 101.325 kPa, 70.4 degC and 91.9 wt % ethyl acetate (handbook value, Wikipedia 'Azeotrope tables', from Lange's 10th ed. and CRC 44th ed.); files validation/data/water_ethyl-acetate_*.json. No open finite-concentration VLE data was found for this pair. liquid-liquid: AAD 0.0009 in x of water in the water-rich liquid, 0.0292 in the ethyl-acetate-rich liquid; gamma at infinite dilution: AARD 4.3 % (max 15.5 %); heterogeneous azeotrope at 101.325 kPa: 70.61 degC, vapour x of water 0.313, liquids 0.989 / 0.203 (target 70.40 degC, 0.301). Check against water_ethyl-acetate_lle_xu2017.json: liquid-liquid: AAD 0.0034 in x of water in the water-rich liquid. Temperature range of the data: 273.35-343.55 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "grande2005-water-ethyl-acetate",
+        "cehreli2006-water-ethyl-acetate",
+        "fenclova2014-water-ethyl-acetate",
+        "atik2004-water-ethyl-acetate",
+        "wikipedia-azeotrope-tables",
+        "xu2017-water-ethyl-acetate"
+      ],
       "tier": "fitted",
       "data_wanted": "open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.",
       "T_range_K": [
         273.35,
         343.55
       ],
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 808.2118348007648,
-        "b_ji": 647.1342814450109,
-        "alpha": 0.4393,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "water",
-        "j": "ethyl-acetate"
+      "valid": {
+        "T_K": [
+          273.35,
+          343.55
+        ]
       }
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 808.2118348007648,
+      "b_ji": 647.1342814450109,
+      "alpha": 0.4393,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "acetic-acid",
       "j": "methanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -109.26209475240638,
       "b_ji": 8.376843964387204,
       "alpha": 0.3051,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "acetic-acid",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -96.00236068862058,
       "b_ji": -17.208648709010642,
       "alpha": 0.305,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethylene-glycol",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -102.54059144346337,
       "b_ji": 827.3172688973923,
       "alpha": 0.3704,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 33.86174305303865,
       "b_ji": -35.48160673137118,
       "alpha": 0.3009,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "acetone",
+      "set": "fitted-li2018",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 87.5333785057155,
       "b_ji": 127.598484808331,
       "alpha": 0.3,
       "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Du, Chen, Li, Guo, Zhang, Fluid Phase Equilib. 459 (2018) 10 (data public in the NIST TRC ThermoML Archive; validation/data/acetone_methanol_101kPa.json). AAD 0.12 K in T, 0.0020 in y (max 0.24 K, 0.0040). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 149.0753649061816,
-        "b_ji": 59.42031348139431,
-        "alpha": 0.3003,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "methanol",
-        "j": "acetone"
-      }
+      "source_ids": [
+        "li2018-acetone-methanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "acetone",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 149.0753649061816,
+      "b_ji": 59.42031348139431,
+      "alpha": 0.3003,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "chloroform",
+      "set": "fitted-li2014",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -47.00390088301528,
       "b_ji": 658.250831255862,
       "alpha": 0.3,
       "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Cao, Zhang, Liu, Wang, J. Chem. Eng. Data 59 (2014) 234 (data public in the NIST TRC ThermoML Archive; validation/data/chloroform_methanol_101kPa.json). AAD 0.11 K in T, 0.0067 in y (max 0.29 K, 0.0173). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.006 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": -53.07240035412078,
-        "b_ji": 671.9699770134955,
-        "alpha": 0.2873,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "methanol",
-        "j": "chloroform"
-      }
+      "source_ids": [
+        "li2014-chloroform-methanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "chloroform",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -53.07240035412078,
+      "b_ji": 671.9699770134955,
+      "alpha": 0.2873,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 383.3301467062124,
       "b_ji": 550.9527242805113,
       "alpha": 0.4893,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 444.85764166217945,
       "b_ji": 507.24715167902986,
       "alpha": 0.4064,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "methanol",
       "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 173.88328275641715,
       "b_ji": 211.72232203636997,
       "alpha": 0.2962,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethanol",
       "j": "acetone",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 188.88330093290168,
       "b_ji": 22.831372166559106,
       "alpha": 0.3006,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethanol",
       "j": "chloroform",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -143.61286654809913,
       "b_ji": 648.7605863333722,
       "alpha": 0.2909,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethanol",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 128.5016871766647,
       "b_ji": 526.9694322798201,
       "alpha": 0.297,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethanol",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 272.9527161797593,
       "b_ji": 388.70659452406653,
       "alpha": 0.2937,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "ethanol",
       "j": "ethyl-acetate",
+      "set": "fitted-calvar2005",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 197.15137904244344,
       "b_ji": 119.92694493909929,
       "alpha": 0.3,
       "source": "Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91. AAD 0.09 K in T, 0.0032 in y (max 0.30 K, 0.0085). Check against ethyl-acetate_ethanol_101kPa_zhang2017.json: AAD 0.12 K in T, 0.0014 in y (max 0.26 K, 0.0030). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 166.31933962644382,
-        "b_ji": 153.78595263731017,
-        "alpha": 0.2988,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "ethanol",
-        "j": "ethyl-acetate"
-      }
+      "source_ids": [
+        "calvar2005-ethyl-acetate-ethanol",
+        "zhang2017-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 166.31933962644382,
+      "b_ji": 153.78595263731017,
+      "alpha": 0.2988,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "acetone",
       "j": "chloroform",
+      "set": "fitted-gao2018",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -601.1148990313168,
       "b_ji": 787.6916964671267,
       "alpha": 0.3,
       "source": "Fitted to 9 T-x-y points at 101.3 kPa from Gao, Zhao, Jia, Zhang, Appl. Sci. 8 (2018) 1519 (open access, CC BY 3.0; validation/data/acetone_chloroform_101kPa.json). AAD 0.16 K in T, 0.0029 in y (max 0.42 K, 0.0072). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": -327.69198091664146,
-        "b_ji": 151.89123044978064,
-        "alpha": 0.3054,
-        "source": "ChemSep NRTL databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "acetone",
-        "j": "chloroform"
-      }
+      "source_ids": [
+        "gao2018-acetone-chloroform"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "acetone",
+      "j": "chloroform",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -327.69198091664146,
+      "b_ji": 151.89123044978064,
+      "alpha": 0.3054,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "acetone",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -199.5232741052929,
       "b_ji": 446.13949277986086,
       "alpha": 0.2971,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "acetone",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -124.77288075539218,
       "b_ji": 366.09734345959384,
       "alpha": 0.295,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "chloroform",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 89.00901818768155,
       "b_ji": -145.03471333999988,
       "alpha": 0.3061,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "chloroform",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 316.63649937544034,
       "b_ji": -293.6874241599958,
       "alpha": 0.2974,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "NRTL",
       "i": "benzene",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 55.91559071838881,
       "b_ji": -61.012198153664315,
       "alpha": 0.3033,
       "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "methanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -276.4163762288314,
       "b_ji": 169.6503006845322,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "ethanol",
+      "set": "fitted-kamihama2012",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -146.09248760592394,
       "b_ji": -9.737914851010673,
       "source": "Fitted to 21 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_water_101kPa.json). AAD 0.09 K in T, 0.0033 in y (max 0.26 K, 0.0084). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": -55.288075960115854,
-        "b_ji": -87.46005814161899,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "water",
-        "j": "ethanol"
-      }
+      "source_ids": [
+        "kamihama2012-ethanol-water"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -55.288075960115854,
+      "b_ji": -87.46005814161899,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "acetone",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 55.54683144424092,
       "b_ji": -351.6492564674507,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "water",
       "j": "ethyl-acetate",
+      "set": "fitted-grande2005-etal",
+      "default": true,
       "a_ij": -1.919624587086023,
       "a_ji": 0.9432443185034248,
       "b_ij": 490.17681194419475,
       "b_ji": -642.1170700959939,
       "source": "Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156), activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), both data public in the NIST TRC ThermoML Archive, and the heterogeneous azeotrope at 101.325 kPa, 70.4 degC and 91.9 wt % ethyl acetate (handbook value, Wikipedia 'Azeotrope tables', from Lange's 10th ed. and CRC 44th ed.); files validation/data/water_ethyl-acetate_*.json. No open finite-concentration VLE data was found for this pair. liquid-liquid: AAD 0.0007 in x of water in the water-rich liquid, 0.0321 in the ethyl-acetate-rich liquid; gamma at infinite dilution: AARD 4.3 % (max 13.5 %); heterogeneous azeotrope at 101.325 kPa: 70.76 degC, vapour x of water 0.315, liquids 0.989 / 0.195 (target 70.40 degC, 0.301). Check against water_ethyl-acetate_lle_xu2017.json: liquid-liquid: AAD 0.0031 in x of water in the water-rich liquid. Temperature range of the data: 273.35-343.55 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "grande2005-water-ethyl-acetate",
+        "cehreli2006-water-ethyl-acetate",
+        "fenclova2014-water-ethyl-acetate",
+        "atik2004-water-ethyl-acetate",
+        "wikipedia-azeotrope-tables",
+        "xu2017-water-ethyl-acetate"
+      ],
       "tier": "fitted",
       "data_wanted": "open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.",
       "T_range_K": [
         273.35,
         343.55
       ],
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 103.52916621702168,
-        "b_ji": -725.4221068275945,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "water",
-        "j": "ethyl-acetate"
+      "valid": {
+        "T_K": [
+          273.35,
+          343.55
+        ]
       }
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 103.52916621702168,
+      "b_ji": -725.4221068275945,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "acetic-acid",
       "j": "methanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 25.688904287531848,
       "b_ji": 20.493816789550635,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "acetic-acid",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 43.74703789104175,
       "b_ji": 12.726472324137136,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethylene-glycol",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 100.72276120065241,
       "b_ji": -411.6803778186058,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 101.71963909651348,
       "b_ji": -130.1792701354895,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "acetone",
+      "set": "fitted-li2018",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 62.82680264697891,
       "b_ji": -240.04867122853707,
       "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Du, Chen, Li, Guo, Zhang, Fluid Phase Equilib. 459 (2018) 10 (data public in the NIST TRC ThermoML Archive; validation/data/acetone_methanol_101kPa.json). AAD 0.12 K in T, 0.0020 in y (max 0.25 K, 0.0040). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 42.38940191161544,
-        "b_ji": -203.22641633035695,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "methanol",
-        "j": "acetone"
-      }
+      "source_ids": [
+        "li2018-acetone-methanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "acetone",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 42.38940191161544,
+      "b_ji": -203.22641633035695,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "chloroform",
+      "set": "fitted-li2014",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 124.61466956343675,
       "b_ji": -617.913383473519,
       "source": "Fitted to 19 T-x-y points at 101.3 kPa from Li, Cao, Zhang, Liu, Wang, J. Chem. Eng. Data 59 (2014) 234 (data public in the NIST TRC ThermoML Archive; validation/data/chloroform_methanol_101kPa.json). AAD 0.13 K in T, 0.0067 in y (max 0.37 K, 0.0193). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.006 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 136.60447778310848,
-        "b_ji": -651.884774485146,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "methanol",
-        "j": "chloroform"
-      }
+      "source_ids": [
+        "li2014-chloroform-methanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "chloroform",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 136.60447778310848,
+      "b_ji": -651.884774485146,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 38.55783806160248,
       "b_ji": -587.2207624988343,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 32.84695054178504,
       "b_ji": -604.5237648703761,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "methanol",
       "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 69.93891010230561,
       "b_ji": -387.63237178590674,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethanol",
       "j": "acetone",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -59.31297675489903,
       "b_ji": -47.581218482628906,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethanol",
       "j": "chloroform",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 168.80519379997438,
       "b_ji": -494.0437278810426,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethanol",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 53.003660565844854,
       "b_ji": -385.69583205514346,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethanol",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 74.02882686081684,
       "b_ji": -441.8838658289685,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "ethanol",
       "j": "ethyl-acetate",
+      "set": "fitted-calvar2005",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 45.0379324697679,
       "b_ji": -210.46339972588402,
       "source": "Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91. AAD 0.08 K in T, 0.0031 in y (max 0.30 K, 0.0084). Check against ethyl-acetate_ethanol_101kPa_zhang2017.json: AAD 0.12 K in T, 0.0014 in y (max 0.26 K, 0.0031). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": 49.598323660705354,
-        "b_ji": -219.42465053805546,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "ethanol",
-        "j": "ethyl-acetate"
-      }
+      "source_ids": [
+        "calvar2005-ethyl-acetate-ethanol",
+        "zhang2017-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "ethyl-acetate",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 49.598323660705354,
+      "b_ji": -219.42465053805546,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "acetone",
       "j": "chloroform",
+      "set": "fitted-gao2018",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 104.66495584649239,
       "b_ji": -10.08028816409249,
       "source": "Fitted to 9 T-x-y points at 101.3 kPa from Gao, Zhao, Jia, Zhang, Appl. Sci. 8 (2018) 1519 (open access, CC BY 3.0; validation/data/acetone_chloroform_101kPa.json). AAD 0.14 K in T, 0.0030 in y (max 0.44 K, 0.0083). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
-      "tier": "fitted",
-      "replaced": {
-        "a_ij": 0.0,
-        "a_ji": 0.0,
-        "b_ij": -788.0452616738485,
-        "b_ji": 393.31019778237334,
-        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-        "tier": "databank",
-        "i": "acetone",
-        "j": "chloroform"
-      }
+      "source_ids": [
+        "gao2018-acetone-chloroform"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetone",
+      "j": "chloroform",
+      "set": "chemsep",
+      "default": false,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -788.0452616738485,
+      "b_ji": 393.31019778237334,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "acetone",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 180.61686333416412,
       "b_ji": -304.0854997026342,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "acetone",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 158.65455130195738,
       "b_ji": -279.6601293417644,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "chloroform",
       "j": "benzene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 14.819764939585303,
       "b_ji": 60.246650277352636,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "chloroform",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 279.22987664062293,
       "b_ji": -433.18174075812766,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     },
     {
       "model": "UNIQUAC",
       "i": "benzene",
       "j": "toluene",
+      "set": "chemsep",
+      "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -35.58889313591311,
       "b_ji": 29.338554276184993,
       "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
       "tier": "databank"
     }
   ]

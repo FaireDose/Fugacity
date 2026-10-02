@@ -11,6 +11,8 @@
    "model": "PR",
    "i": "hydrogen",
    "j": "nitrogen",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0711,
    "tier": "databank",
    "source": {
@@ -23,15 +25,26 @@
      113.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".1196 (Hydrogen/Nitrogen T=90-94.99K p212)",
     ".1200 (Hydrogen/Nitrogen T=77.35K p213)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     90.0,
+     113.0
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "hydrogen",
    "j": "methane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0044,
    "tier": "databank",
    "source": {
@@ -44,17 +57,28 @@
      173.65
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".263e-1 (Hydrogen/Methane T=90.3-127K p219)",
     ".151e-1 (Hydrogen/Methane  T=116.48-172.04K p221)",
     ".596e-1 (Hydrogen/Methane T=90.65K p223)",
     "-.144e-1 (Hydrogen/Methane T=103.15-163.15K p227)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     103.15,
+     173.65
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "hydrogen",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0633,
    "tier": "databank",
    "source": {
@@ -67,14 +91,25 @@
      248.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.122e-1 (Hydrogen/Ethylene T=158.15-255.35K p231)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     123.15,
+     248.15
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "hydrogen",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0781,
    "tier": "databank",
    "source": {
@@ -87,17 +122,28 @@
      283.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.756e-1 (Hydrogen/Ethane T=149.61-189.57K p233)",
     ".1896 (Hydrogen/Ethane T=158.15-188.15K p237)",
     "-.1104 (Hydrogen/Ethane T=144.21-199.65K p239)",
     "-.22e-2 (Hydrogen/Ethane T=148.15-223.15K p240)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     144.25,
+     283.15
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "hydrogen",
    "j": "toluene",
+   "set": "fitted-tsuji2005",
+   "default": true,
    "kij": 0.3989,
    "tier": "fitted",
    "source": {
@@ -112,7 +158,13 @@
      333
     ]
    },
+   "source_ids": [
+    "tsuji2005-hydrogen-toluene",
+    "aslam2016-hydrogen-toluene"
+   ],
    "replaced": {
+    "set": "chemsep",
+    "default": false,
     "kij": -0.51,
     "tier": "databank",
     "source": {
@@ -121,14 +173,25 @@
      "conditions": "Hydrogen/Toluene p255",
      "entries_in_file": 1
     },
+    "source_ids": [
+     "chemsep-eos-ipd"
+    ],
     "alternatives": [],
     "reason": "The ChemSep PR value (-0.51) under-predicts the bubble pressure of the open data sets of Tsuji et al. (2005) and Aslam et al. (2016) by 66-78 % (k_ij = 0: 38-51 %), i.e. it predicts 3-4 times too much hydrogen solubility; the SRK value from the same DECHEMA page is +0.39. Found by the independent review of pull request #13."
+   },
+   "valid": {
+    "T_K": [
+     293,
+     333
+    ]
    }
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "oxygen",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0159,
    "tier": "databank",
    "source": {
@@ -141,17 +204,28 @@
      124.96
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.93e-2 (Nitrogen/Oxygen T=81.07-91.00K P=1.218-1.350bar p278)",
     "-.144e-1 (Nitrogen/Oxygen T=79-116K P=1.141-8.967bar p279)",
     "-.133e-1 (Nitrogen/Oxygen T=75-125K p281)",
     "-.100e-1 (Nitrogen/Oxygen T=64.83-77.94K P=0.029-0.966bar p284)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     90.53,
+     124.96
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "methane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0289,
    "tier": "databank",
    "source": {
@@ -164,18 +238,29 @@
      188.71
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".330e-1 (Nitrogen/Methane T=95-120K p287)",
     ".300e-1 (Nitrogen/Methane T=112-180K p289)",
     ".363e-1 (Nitrogen/Methane T=90.68K p292)",
     ".263e-1 (Nitrogen/Methane T=113.71-183.15K p294)",
     ".316e-1 (Nitrogen/Methane T=112K p296)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     88.71,
+     188.71
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0856,
    "tier": "databank",
    "source": {
@@ -184,12 +269,17 @@
     "conditions": "Nitrogen/Ethylene p298",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0533,
    "tier": "databank",
    "source": {
@@ -202,14 +292,25 @@
      194.26
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".344e-1 (Nitrogen/Ethane T=200-290K p300)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     138.71,
+     194.26
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "methanol",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.2141,
    "tier": "databank",
    "source": {
@@ -218,12 +319,17 @@
     "conditions": "Nitrogen/Methanol p340",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "nitrogen",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.1641,
    "tier": "databank",
    "source": {
@@ -232,12 +338,17 @@
     "conditions": "Nitrogen/Benzene p343",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "methane",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0244,
    "tier": "databank",
    "source": {
@@ -250,15 +361,26 @@
      190.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".378e-1 (Methane/Ethylene T=198.15-248.15K p378)",
     ".204e-1 (Methane/Ethylene T=148-169K p380)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     150.0,
+     190.0
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "methane",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0059,
    "tier": "databank",
    "source": {
@@ -271,17 +393,28 @@
      283.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.33e-2 (Methane/Ethane T=130.37-199.93K p385)",
     "-.37e-2 (Methane/Ethane T=158.15-213.7K p388)",
     "-.4e-3 (Methane/Ethane T=160-180K p392)",
     ".70e-2 (Methane/Ethane T=250K p394)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     144.26,
+     283.15
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "methane",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0807,
    "tier": "databank",
    "source": {
@@ -294,14 +427,25 @@
      501.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".304e-1 (Methane/Benzene T=338.71K p465)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     421.0,
+     501.0
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "methane",
    "j": "toluene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.097,
    "tier": "databank",
    "source": {
@@ -310,12 +454,17 @@
     "conditions": "Methane/Toluene p474",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "ethylene",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0078,
    "tier": "databank",
    "source": {
@@ -328,16 +477,27 @@
      273.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".119e-1 (Ethylene/Ethane T=200-255K P=2.2-26.7bar p503)",
     ".278e-1 (Ethylene/Ethane T=277-288K P=32-49bar p505)",
     ".89e-2 (Ethylene/Ethane T=263-293K P=18.5-48.5bar p510)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     169.0,
+     273.0
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "ethylene",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0311,
    "tier": "databank",
    "source": {
@@ -346,12 +506,17 @@
     "conditions": "Ethylene/Benzene p520",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "ethane",
    "j": "acetone",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.1307,
    "tier": "databank",
    "source": {
@@ -360,12 +525,17 @@
     "conditions": "Ethane/Acetone p552",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "ethane",
    "j": "methanol",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.027,
    "tier": "databank",
    "source": {
@@ -374,12 +544,17 @@
     "conditions": "Ethane/Methanol p555",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "PR",
    "i": "ethane",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0322,
    "tier": "databank",
    "source": {
@@ -392,14 +567,25 @@
      553.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".493e-1 (Ethane/Benzene T=298.15K p563)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     273.0,
+     553.0
+    ]
+   }
   },
   {
    "model": "PR",
    "i": "methanol",
    "j": "water",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0778,
    "tier": "databank",
    "source": {
@@ -408,12 +594,17 @@
     "conditions": "Methanol/Water p730",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "hydrogen",
    "j": "nitrogen",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0563,
    "tier": "databank",
    "source": {
@@ -426,15 +617,26 @@
      113.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".1141 (Hydrogen/Nitrogen T=90-94.99K p212)",
     ".1133 (Hydrogen/Nitrogen T=77.35K p213)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     90.0,
+     113.0
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "hydrogen",
    "j": "methane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0459,
    "tier": "databank",
    "source": {
@@ -447,17 +649,28 @@
      173.65
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.133e-1 (Hydrogen/Methane T=90.3-127K p219)",
     "-.260e-1 (Hydrogen/Methane  T=116.48-172.04K p221)",
     ".274e-1 (Hydrogen/Methane T=90.65K p223)",
     "-.593e-1 (Hydrogen/Methane T=103.15-163.15K p227)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     103.15,
+     173.65
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "hydrogen",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0033,
    "tier": "databank",
    "source": {
@@ -470,14 +683,25 @@
      248.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.681e-1 (Hydrogen/Ethylene T=158.15-255.35K p231)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     123.15,
+     248.15
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "hydrogen",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.1867,
    "tier": "databank",
    "source": {
@@ -490,17 +714,28 @@
      283.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.1822 (Hydrogen/Ethane T=149.61-189.57K p233)",
     ".1574 (Hydrogen/Ethane T=158.15-188.15K p237)",
     "-.2244 (Hydrogen/Ethane T=144.21-199.65K p239)",
     "-.911e-1 (Hydrogen/Ethane T=148.15-223.15K p240)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     144.25,
+     283.15
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "hydrogen",
    "j": "toluene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.39,
    "tier": "databank",
    "source": {
@@ -509,12 +744,17 @@
     "conditions": "Hydrogen/Toluene p255",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "oxygen",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0156,
    "tier": "databank",
    "source": {
@@ -527,17 +767,28 @@
      124.96
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.56e-2 (Nitrogen/Oxygen T=81.07-91.00K P=1.218-1.350bar p278)",
     "-.137e-1 (Nitrogen/Oxygen T=79-116K P=1.141-8.967bar p279)",
     "-.104e-1 (Nitrogen/Oxygen T=75-125K p281)",
     ".7e-3 (Nitrogen/Oxygen T=64.83-77.94K P=0.029-0.966bar p284)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     90.53,
+     124.96
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "methane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0267,
    "tier": "databank",
    "source": {
@@ -550,18 +801,29 @@
      188.71
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".293e-1 (Nitrogen/Methane T=95-120K p287)",
     ".267e-1 (Nitrogen/Methane T=112-180K p289)",
     ".346e-1 (Nitrogen/Methane T=90.68K p292)",
     ".244e-1 (Nitrogen/Methane T=113.71-183.15K p294)",
     ".281e-1 (Nitrogen/Methane T=112K p296)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     88.71,
+     188.71
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0798,
    "tier": "databank",
    "source": {
@@ -570,12 +832,17 @@
     "conditions": "Nitrogen/Ethylene p298",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0433,
    "tier": "databank",
    "source": {
@@ -588,14 +855,25 @@
      194.26
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".174e-1 (Nitrogen/Ethane T=200-290K p300)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     138.71,
+     194.26
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "methanol",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.2881,
    "tier": "databank",
    "source": {
@@ -604,12 +882,17 @@
     "conditions": "Nitrogen/Methanol p340",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "nitrogen",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.153,
    "tier": "databank",
    "source": {
@@ -618,12 +901,17 @@
     "conditions": "Nitrogen/Benzene p343",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "methane",
    "j": "ethylene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0211,
    "tier": "databank",
    "source": {
@@ -636,15 +924,26 @@
      190.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".344e-1 (Methane/Ethylene T=198.15-248.15K p378)",
     ".174e-1 (Methane/Ethylene T=148-169K p380)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     150.0,
+     190.0
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "methane",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.01,
    "tier": "databank",
    "source": {
@@ -657,17 +956,28 @@
      283.15
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     "-.89e-2 (Methane/Ethane T=130.37-199.93K p385)",
     "-.93e-2 (Methane/Ethane T=158.15-213.7K p388)",
     "-.44e-2 (Methane/Ethane T=160-180K p392)",
     ".41e-2 (Methane/Ethane T=250K p394)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     144.26,
+     283.15
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "methane",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.08,
    "tier": "databank",
    "source": {
@@ -680,14 +990,25 @@
      501.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".185e-1 (Methane/Benzene T=338.71K p465)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     421.0,
+     501.0
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "methane",
    "j": "toluene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0978,
    "tier": "databank",
    "source": {
@@ -696,12 +1017,17 @@
     "conditions": "Methane/Toluene p474",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "ethylene",
    "j": "ethane",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.01,
    "tier": "databank",
    "source": {
@@ -714,16 +1040,27 @@
      273.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".81e-2 (Ethylene/Ethane T=200-255K P=2.2-26.7bar p503)",
     ".270e-1 (Ethylene/Ethane T=277-288K P=32-49bar p505)",
     ".26e-2 (Ethylene/Ethane T=263-293K P=18.5-48.5bar p510)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     169.0,
+     273.0
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "ethylene",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0241,
    "tier": "databank",
    "source": {
@@ -732,12 +1069,17 @@
     "conditions": "Ethylene/Benzene p520",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "ethane",
    "j": "acetone",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.1301,
    "tier": "databank",
    "source": {
@@ -746,12 +1088,17 @@
     "conditions": "Ethane/Acetone p552",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "ethane",
    "j": "methanol",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0275,
    "tier": "databank",
    "source": {
@@ -760,12 +1107,17 @@
     "conditions": "Ethane/Methanol p555",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   },
   {
    "model": "SRK",
    "i": "ethane",
    "j": "benzene",
+   "set": "chemsep",
+   "default": true,
    "kij": 0.0278,
    "tier": "databank",
    "source": {
@@ -778,14 +1130,25 @@
      553.0
     ]
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": [
     ".438e-1 (Ethane/Benzene T=298.15K p563)"
-   ]
+   ],
+   "valid": {
+    "T_K": [
+     273.0,
+     553.0
+    ]
+   }
   },
   {
    "model": "SRK",
    "i": "methanol",
    "j": "water",
+   "set": "chemsep",
+   "default": true,
    "kij": -0.0789,
    "tier": "databank",
    "source": {
@@ -794,6 +1157,9 @@
     "conditions": "Methanol/Water p730",
     "entries_in_file": 1
    },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
    "alternatives": []
   }
  ]

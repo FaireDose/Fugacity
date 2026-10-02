@@ -9,6 +9,8 @@ from the source over the fit range.
     python validation/python/fit_properties.py --chemsep path/to/chemsep1.xml           # fit, print
     python validation/python/fit_properties.py --chemsep path/to/chemsep1.xml --write   # and write
 
+After --write, run make_sources.py: it adds the source_ids of the records (proposal 0003).
+
 --write updates:
   src/data/components.json        `properties` of every component; top-level `vapourPressure`
                                   of the six gases (the ten liquids' records are not touched)

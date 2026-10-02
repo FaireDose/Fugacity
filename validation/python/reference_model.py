@@ -14,7 +14,10 @@ from scipy.optimize import brentq
 
 DATA = Path(__file__).resolve().parents[2] / "src" / "data"
 COMPONENTS = json.loads((DATA / "components.json").read_text())["components"]
-BINARIES = json.loads((DATA / "binaries.json").read_text())["pairs"]
+# every parameter set; a pair may have several per model (proposal 0003), the engine and this
+# model use the one marked "default" unless told otherwise
+ALL_BINARIES = json.loads((DATA / "binaries.json").read_text())["pairs"]
+BINARIES = [p for p in ALL_BINARIES if p.get("default", True)]
 
 
 def psat_kpa(c, T):

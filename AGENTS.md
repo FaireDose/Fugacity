@@ -173,6 +173,9 @@ python validation/python/make_fixtures.py       # after changing parameters
 
 - New experimental data: `validation/data/<system>.json` with a `source` block (citation,
   doi, open_copy, access, tables).
+- Sources: cite each source once in `src/data/sources.json` and refer to it by id
+  (`source_ids`); `python validation/python/make_sources.py` adds the sources of new data
+  files and regenerates the table in `src/data/LICENSES.md`.
 - Parameters: add an entry to `FITS` in `validation/python/fit_parameters.py`, run it with
   `--write`; label the pair `tier: "fitted"` with the fit quality in `source`.
 - Add a test in `test/` comparing the model with the new data.

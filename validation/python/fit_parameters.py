@@ -43,7 +43,7 @@ from pathlib import Path
 import numpy as np
 from scipy.optimize import brentq, least_squares
 
-from reference_model import System, DATA, COMPONENTS, BINARIES, psat_kpa
+from reference_model import System, DATA, COMPONENTS, ALL_BINARIES, psat_kpa
 
 ROOT = Path(__file__).resolve().parents[2]
 VAL = ROOT / "validation" / "data"
@@ -483,21 +483,29 @@ def main(write):
                 params["T_range_K"] = data_T_range(file_sets(spec))
                 params["source"] += f" Temperature range of the data: {params['T_range_K'][0]}-{params['T_range_K'][1]} K; outside it the parameters are extrapolated."
             if spec["data"] == "txy-file":
-                # the databank set this fit replaced (kept under "replaced"), on the same data
+                # the databank set this fit replaced (kept as a non-default set), on the same data
                 i, j = spec["pair"]
-                old = [p.get("replaced", p) for p in BINARIES if p["model"] == model and {p["i"], p["j"]} == {i, j}]
+                old = [p for p in ALL_BINARIES if p["model"] == model and {p["i"], p["j"]} == {i, j} and p.get("tier") != "fitted"]
                 if old:
                     old_q = describe_fit(file_sets(spec) + file_sets(spec, "check"), model, i, j, [dict(old[0], model=model)])
                     print(f"  {model} replaced databank parameters on the same data: {old_q}")
             print(model, spec["pair"], {k: round(v, 4) for k, v in params.items() if isinstance(v, float)}, q)
-            for k, old in enumerate(binaries["pairs"]):
-                if old["model"] == model and {old["i"], old["j"]} == set(spec["pair"]):
+            # A pair can have several parameter sets per model (proposal 0003); the fit replaces
+            # the default set. A databank default replaced by a fit to data stays as a
+            # non-default set. Run make_sources.py afterwards: it names new sets and adds their
+            # source_ids.
+            recs = binaries["pairs"]
+            for k, old in enumerate(recs):
+                if old["model"] == model and {old["i"], old["j"]} == set(spec["pair"]) and old.get("default", True):
+                    params = {"model": params.pop("model"), "i": params.pop("i"), "j": params.pop("j"), "default": True, **params}
                     if spec["data"] == "txy-file" and old.get("tier") != "fitted":
-                        params["replaced"] = {key: old[key] for key in ("a_ij", "a_ji", "b_ij", "b_ji", "alpha", "source", "tier") if key in old}
-                        params["replaced"]["i"], params["replaced"]["j"] = old["i"], old["j"]
-                    elif "replaced" in old:
-                        params["replaced"] = old["replaced"]
-                    binaries["pairs"][k] = params
+                        recs[k] = dict(old, default=False)
+                        recs.insert(k, params)
+                    else:
+                        if old.get("set") and old.get("tier") == params["tier"]:
+                            params = {"model": params["model"], "i": params["i"], "j": params["j"], "set": old["set"], **params}
+                        recs[k] = params
+                    break
     if write:
         BIN_FILE.write_text(json.dumps(binaries, indent=2) + "\n")
         print(f"updated {BIN_FILE}")

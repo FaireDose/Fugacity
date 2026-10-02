@@ -13,6 +13,7 @@ SRK the line from the same DECHEMA page. The other entries are recorded in `alte
 The temperature range of the chosen data set, when the file states one, is stored as
 `source.T_range_K`; the engine warns outside it.
 
+After writing, run make_sources.py (set names and source_ids, proposal 0003).
 Databank values contradicted by open data are then replaced by fitted values: run
 validation/python/eos_fit_kij.py --write after this script.
 

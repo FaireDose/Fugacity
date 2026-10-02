@@ -11,6 +11,7 @@ const name = id => comps[id].name;
 
 const have = new Map(), stillWanted = new Map();
 for (const p of pairs) {
+  if (p.default === false) continue; // alternative parameter sets (proposal 0003): the default one counts
   const key = [p.i, p.j].sort().join("|");
   if (!have.has(key)) have.set(key, {});
   have.get(key)[p.model] = p.tier || "databank";
