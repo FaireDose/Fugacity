@@ -77,7 +77,47 @@ proposal 0002:
 the same unit at significant concentrations). Roughly 100 to 150 pairs instead of 1,225;
 the exact list is the first step below.
 
-### 3. Known difficult cases, flagged up front
+### 3. When a pair is missing: how we search, and what happens if nothing is found
+
+For each missing pair the contributor (or their assistant) searches these places in
+order, and writes down every place searched, also when nothing is found:
+
+1. the **NIST TRC ThermoML Archive**: the measured data of J. Chem. Eng. Data, Fluid
+   Phase Equilib., J. Chem. Thermodyn., Thermochim. Acta and Int. J. Thermophys., about
+   2003–2019, free even when the article itself is paywalled;
+2. **open-access articles**, and open repositories (Zenodo, figshare, university
+   repositories, open theses);
+3. **free books** in the public domain or openly licensed (older data, labelled with
+   their year);
+4. the **ChemSep** databank parameters, as the databank fallback.
+
+How a data set is chosen is **not by the number of citations** but by its quality and
+fit to the process:
+
+- the right kind of data: isobaric T-x-y near the pressure of the benchmark, or
+  isothermal P-x(-y) from a static apparatus; azeotrope, infinite-dilution and
+  liquid-liquid data as extra checks;
+- a thermodynamic consistency test passed (reported with the data, or run by our
+  scripts);
+- where possible two independent data sets, one for the fit and one as a check;
+- a person compares every transcribed number with the source (AGENTS.md rule 4).
+
+If nothing open exists, the pair is reported as **missing** with the list of places
+searched ("no open data"):
+
+- the calculation stops with an error that names the pair, unless the user allows
+  ideal behaviour for it, which then shows as a warning on every result;
+- users can enter their own parameters for their own work (tier `user`,
+  `Fugacity.library.add`, proposal 0003), clearly marked and never mixed into the
+  shared data;
+- the pair goes onto [DATA_WANTED.md](../docs/DATA_WANTED.md), so contributors with
+  access to a laboratory or to new open publications can fill it;
+- later, the predicted tier (UNIFAC, roadmap A3) can fill it, always labelled as a
+  prediction.
+
+Commercial databases (DDB, DIPPR, DECHEMA) are never used, as in AGENTS.md rule 1.
+
+### 4. Known difficult cases, flagged up front
 
 - **Ammonia + water, carbon dioxide + water, hydrogen sulfide + water** at high
   concentrations involve ions (electrolytes). Fugacity covers them only as dilute gases
@@ -88,7 +128,7 @@ the exact list is the first step below.
 - **Light gases in activity models**: not possible (no vapour pressure above the critical
   point); use an equation of state or Henry's law, as today.
 
-### 4. Size
+### 5. Size
 
 The component data are about 7 KB per component today, so 34 new components add roughly
 240 KB to the uncompressed bundle (about 400 KB now). That is acceptable for a chat page.
