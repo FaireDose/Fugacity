@@ -194,7 +194,8 @@ export function pairWarnings(pairs, T, P, says) {
 // ---------------------------------------------------------------------------------------
 // sources
 
-function sourceEntry(id) {
+/** A source by id (a copy, without usedBy), or null. */
+export function sourceEntry(id) {
   const s = sourcesData.sources[id] ?? userSources.get(id);
   return s ? { id, ...JSON.parse(JSON.stringify(s)) } : null;
 }
@@ -203,6 +204,21 @@ function labelProperty(key) {
   return { vapourPressure: "vapour pressure", uniquac: "UNIQUAC r and q", association: "vapour association",
     constants_source: "critical constants and normal boiling point", omega_source: "acentric factor" }[key]
     ?? key.replace(/[A-Z]/g, m => " " + m.toLowerCase());
+}
+
+/**
+ * The sources of a component's records: [{ key, label, source_ids }] for the critical
+ * constants, acentric factor, vapour pressure, UNIQUAC r and q, association and property records.
+ */
+export function componentSources(id) {
+  const c = comp(findComponent(id));
+  const out = [];
+  const rec = (key, ids) => { if (ids?.length) out.push({ key, label: labelProperty(key), source_ids: ids.slice() }); };
+  rec("constants_source", c.constants_source_ids);
+  rec("omega_source", c.omega_source_ids);
+  for (const key of ["vapourPressure", "uniquac", "association"]) if (c[key]) rec(key, c[key].source_ids);
+  for (const [key, r] of Object.entries(c.properties ?? {})) rec(key, r.source_ids);
+  return out;
 }
 
 function computeUsedBy() {

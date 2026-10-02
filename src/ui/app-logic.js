@@ -3,11 +3,13 @@
  * can run for which component selection, component search, and display formatting.
  *
  * No thermodynamics here: this file only reads the component list (listComponents), the
- * list of gases with a Henry's law constant (HENRY_GASES) and the known-deviation list
- * (src/data/known-issues.json), and converts units with the exact definitions in
- * properties-logic.js (0 °C = 273.15 K, 1 bar = 100 kPa).
+ * list of gases with a Henry's law constant (HENRY_GASES), the known-deviation list
+ * (src/data/known-issues.json) and the parameter sets of the library (library.sets), and
+ * converts units with the exact definitions in properties-logic.js (0 °C = 273.15 K,
+ * 1 bar = 100 kPa).
  */
 import { listComponents, findComponent, MODELS, EOS_MODELS } from "../thermo/system.js";
+import { library, selection } from "../thermo/library.js";
 import { HENRY_GASES } from "../thermo/henry.js";
 import { pure } from "../thermo/pure.js";
 import knownIssues from "../data/known-issues.json" with { type: "json" };
@@ -20,6 +22,7 @@ export const TABS = [
   { id: "eos", label: "Gases & EOS" },
   { id: "properties", label: "Properties" },
   { id: "steam", label: "Steam" },
+  { id: "library", label: "Library" },
   { id: "view", label: "View" },
 ];
 
@@ -33,6 +36,7 @@ export const VIEWS = {
   henry: { tab: "eos", label: "Gas solubility in water" },
   properties: { tab: "properties", label: "Property curves" },
   steam: { tab: "steam", label: "Steam tables" },
+  sources: { tab: "library", label: "Sources" },
 };
 
 /** Ready-made component sets (Components tab). */
@@ -47,7 +51,7 @@ export const PRESETS = [
 ];
 
 export const MAX_COMPONENTS = 6;
-const START_ALIASES = { eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties" };
+const START_ALIASES = { eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties", library: "sources" };
 
 const normModel = m => (String(m ?? "NRTL").toUpperCase() === "IDEAL" ? "ideal" : String(m ?? "NRTL").toUpperCase());
 const normEos = m => String(m ?? "PR").toUpperCase();
@@ -111,6 +115,8 @@ export function viewAvailability(view, ids) {
       return { enabled: true, use: ids.length ? [ids[0]] : ["water"] };
     case "steam":
       return { enabled: true, use: ["water"] };
+    case "sources":
+      return { enabled: true, use: ids.slice() };
     default:
       throw new Error(`Unknown view "${view}". Known: ${Object.keys(VIEWS).join(", ")}.`);
   }
@@ -164,6 +170,8 @@ export function initialState(cfg = {}) {
     henryP_kPa: positive(cfg.henryP_kPa ?? DEFAULTS.henryP_kPa, "henryP_kPa"),
     steamP_kPa: cleanList(cfg.steamP_kPa ?? DEFAULTS.steamP_kPa),
     title: cfg.title,
+    sets: normalizeSets(cfg.sets),
+    prefer: normalizePrefer(cfg.prefer),
   };
   state.view = resolveView(cfg.start ?? (EOS_MODELS.includes(normModel(cfg.model)) ? "eos" : null), components);
   state.tab = VIEWS[state.view].tab;
@@ -195,7 +203,7 @@ function cleanList(list) {
  * `z` (EOS feed composition) and `start` (same as `view`).
  */
 export function applyPatch(state, patch = {}) {
-  const next = { ...state, panels: { ...state.panels }, units: { ...state.units } };
+  const next = { ...state, panels: { ...state.panels }, units: { ...state.units }, sets: { ...state.sets } };
   if (patch.components != null) {
     next.components = normalizeComponents(patch.components);
     next.z = null;
@@ -219,6 +227,8 @@ export function applyPatch(state, patch = {}) {
   if (patch.henryP_kPa != null) next.henryP_kPa = positive(patch.henryP_kPa, "henryP_kPa");
   if (patch.steamP_kPa != null) next.steamP_kPa = cleanList(patch.steamP_kPa);
   if ("title" in patch) next.title = patch.title;
+  if ("sets" in patch) next.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);
+  if ("prefer" in patch) next.prefer = normalizePrefer(patch.prefer);
   const wanted = patch.view ?? patch.start;
   if (wanted != null || patch.components != null) {
     next.view = resolveView(wanted ?? state.view, next.components);
@@ -332,4 +342,95 @@ export function interpolate(points, x) {
     }
   }
   return null;
+}
+
+// ---------------------------------------------------------------------------------------
+// Parameter sets (the Library tab and the pair selectors): proposal 0003
+
+/** The global rules of the Library tab: `prefer` as the engine takes it (null: default sets). */
+export const RULES = [
+  { id: "best", label: "Best available", prefer: null,
+    hint: "Each pair's default set: fitted to open data where there is some, otherwise the databank." },
+  { id: "fitted", label: "Fitted to data first", prefer: ["fitted", "databank"],
+    hint: "Sets fitted to open experimental data first, then databank sets." },
+  { id: "databank", label: "Databank only (ChemSep)", prefer: ["databank"],
+    hint: "Databank sets where a pair has one; a pair without one keeps its default, with a note." },
+];
+
+/** The rule id of a `prefer` setting ("custom" when it is none of RULES). */
+export function ruleOf(prefer) {
+  const key = JSON.stringify(prefer ?? null);
+  return RULES.find(r => JSON.stringify(r.prefer) === key)?.id ?? "custom";
+}
+
+/** Canonical key of a pair in `sets`: the two component ids, sorted, joined by "+". */
+export const pairKeyOf = (a, b) => [findComponent(a), findComponent(b)].sort().join("+");
+
+/**
+ * Normalize a `sets` setting ({ "pair": "set name" }, pair in any order and any component
+ * name) and merge it into `prev`; an empty or null set name removes the choice for that pair.
+ */
+export function normalizeSets(sets, prev = {}) {
+  const out = { ...prev };
+  if (sets == null) return out;
+  if (typeof sets !== "object" || Array.isArray(sets)) throw new Error('sets must be an object such as { "acetone+chloroform": "chemsep" }.');
+  for (const [key, name] of Object.entries(sets)) {
+    const parts = String(key).split("+").map(s => s.trim()).filter(Boolean);
+    if (parts.length !== 2) throw new Error(`sets: "${key}" is not a pair; write it as "component+component".`);
+    const k = pairKeyOf(parts[0], parts[1]);
+    if (name == null || name === "") delete out[k];
+    else if (typeof name !== "string") throw new Error(`sets: the set for "${key}" must be a set name (a string).`);
+    else out[k] = name;
+  }
+  return out;
+}
+
+/** Normalize a `prefer` setting: null (default sets), a rule id of RULES, or a list of tiers. */
+export function normalizePrefer(prefer) {
+  if (prefer == null || prefer === "best") return null;
+  const rule = typeof prefer === "string" ? RULES.find(r => r.id === prefer) : null;
+  if (rule) return rule.prefer ? rule.prefer.slice() : null;
+  return selection({ prefer }).prefer;
+}
+
+/**
+ * Settings for system() with `model`: the global rule, and the per-pair choices that exist
+ * for this model (a choice made for NRTL is kept in the state but not passed to UNIQUAC
+ * when that pair has no set of that name there).
+ */
+export function setsFor(state, model) {
+  const sets = {};
+  if (model !== "ideal") {
+    for (const [key, name] of Object.entries(state.sets ?? {})) {
+      const [a, b] = key.split("+");
+      if (library.sets(a, b, model).some(s => s.set === name)) sets[key] = name;
+    }
+  }
+  return { sets, prefer: state.prefer ?? null };
+}
+
+/**
+ * The sets offered for a pair in the project panel: the default first, then the others,
+ * each with a short label and `current` for the one in use. Empty when the pair has only one set.
+ * @param {object} info  an info.pairs entry of a system
+ */
+export function setChoices(info) {
+  if (!info?.alternatives?.length) return [];
+  const all = [{ set: info.set, tier: info.tier, default: info.default, current: true }, ...info.alternatives.map(a => ({ ...a, current: false }))];
+  all.sort((a, b) => b.default - a.default); // default first, then the others in the library's order
+  return all.map(s => ({ ...s, label: `${s.set}${s.default ? " (default)" : ""}` }));
+}
+
+/** Search the sources (from library.sources()) by any text field and by kind. */
+export function filterSources(list, query, kind = "all") {
+  const q = String(query ?? "").trim().toLowerCase();
+  return list.filter(s => (kind === "all" || s.kind === kind) && (!q ||
+    [s.id, s.title, s.authors, s.year, s.published, s.kind, s.doi, s.access, s.via, s.note, ...(s.usedBy ?? []).map(u => u.label)]
+      .some(v => v != null && String(v).toLowerCase().includes(q))));
+}
+
+/** Do the sources' users involve any of these components (ids)? */
+export function sourceUsedFor(source, ids, names) {
+  return (source.usedBy ?? []).some(u => (u.component && ids.includes(u.component)) || (u.gas && ids.includes(u.gas))
+    || (u.pair && u.pair.every(n => names.includes(n))));
 }

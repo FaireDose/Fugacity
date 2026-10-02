@@ -1,11 +1,11 @@
 /**
  * Workbench: Fugacity.app(target, config). A ribbon of tabs and buttons, a project panel
- * (components, pairs and their data), a canvas with the current diagram, an inspector
- * (readouts, calculators, sources) and a status bar.
+ * (components, pairs and their parameter sets), a canvas with the current diagram, an
+ * inspector (readouts, calculators, sources) and a status bar.
  *
  * A view (layer 6): it calls only the layers below, through the same functions as the
  * public interface (system(), pure(), steam(), steamSat(), henry(), gasSolubility(),
- * listComponents(), PROPERTIES), and reuses the existing renderers (renderTxy,
+ * listComponents(), PROPERTIES, library), and reuses the existing renderers (renderTxy,
  * renderTernary, the property explorer). State changes and the rules for which views can
  * run live in app-logic.js (tested without a DOM).
  */
@@ -18,6 +18,7 @@ import { system } from "../system.js";
 import {
   TABS, VIEWS, PRESETS, MAX_COMPONENTS, initialState, applyPatch, viewAvailability, toggleComponent, rotate,
   filterComponents, liquids, TIER_SHORT, fmtP, parseP, parseT, fmtTemp, pxyTemperature,
+  RULES, ruleOf, setsFor, setChoices, pairKeyOf,
 } from "./app-logic.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView } from "./app-views.js";
@@ -27,14 +28,14 @@ const PROPERTY_GLYPHS = [
   ["density", () => "ρ", "Density"], ["enthalpy", () => "h", "Enthalpy"], ["cp", () => ["c", h("sub", {}, "p")], "Heat capacity"],
   ["viscosity", () => "μ", "Viscosity"], ["conductivity", () => "k", "Conductivity"], ["vapourPressure", () => ["P", h("sup", {}, "sat")], "Vapour pressure"],
 ];
-const VIEW_ICON = { txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", properties: "curves", steam: "dome" };
+const VIEW_ICON = { txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", properties: "curves", steam: "dome", sources: "book" };
 
 /**
  * Put the Fugacity workbench into a page element.
  *
  * @param {string|HTMLElement} target  element or CSS selector
  * @param {object} [cfg]
- * @param {"ternary"|"txy"|"azeotropes"|"eos"|"pxy"|"envelope"|"henry"|"properties"|"steam"} [cfg.start]
+ * @param {"ternary"|"txy"|"azeotropes"|"eos"|"pxy"|"envelope"|"henry"|"properties"|"steam"|"sources"} [cfg.start]
  *   first view (default: ternary for three liquids, T-x-y for two)
  * @param {string[]} [cfg.components]   up to six names, ids, formulas or CAS numbers
  *   (default methanol, acetone, chloroform)
@@ -47,6 +48,9 @@ const VIEW_ICON = { txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "px
  * @param {string} [cfg.property="density"]   property of the property view
  * @param {boolean} [cfg.background=true]     show the background layers (colour map, isotherms, grid lines, two-liquid shading)
  * @param {{left?:boolean, right?:boolean}} [cfg.panels]  show the project panel and the inspector
+ * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" }
+ *   (update({ sets }) merges; a null set name, or sets: null, goes back to the default)
+ * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  global rule (Library tab) or a list of tiers
  * @returns {{state:object, update:(patch:object)=>void}}
  *
  * @example
@@ -217,6 +221,23 @@ export function app(target, cfg = {}) {
           h("div", {}, "IAPWS-IF97 water and steam"),
           h("div", { class: "fa-hint" }, "Viscosity IAPWS R12-08, conductivity R15-11"))),
       ];
+      case "library": {
+        const rule = ruleOf(state.prefer);
+        const chosen = Object.keys(state.sets).length;
+        return [
+          group("Parameter sets for every pair", h("div", { class: "fa-stack" },
+            ...RULES.map(r => smallButton({ ico: r.id === "best" ? "star" : r.id === "fitted" ? "txy" : "book", label: r.label, pressed: rule === r.id, title: r.hint,
+              onClick: () => set({ prefer: r.id }) })))),
+          group("Per pair", h("div", { class: "fa-stack fa-about" },
+            h("div", {}, chosen ? `${chosen} pair${chosen === 1 ? "" : "s"} set by hand` : "Each pair: its selector in the project panel"),
+            smallButton({ ico: "clear", label: "Back to defaults", disabled: !chosen && rule === "best", title: "Clear the per-pair choices and the rule",
+              onClick: () => set({ sets: null, prefer: null }) }))),
+          group("Sources", viewButton("sources", "Browse sources")),
+          group("About", h("div", { class: "fa-stack fa-about" },
+            h("div", {}, "Every source once: what it is, why it is open, what uses it"),
+            h("div", { class: "fa-hint" }, "Sets from a paper: Fugacity.library.add() (this page only)"))),
+        ];
+      }
       case "view": return [
         group("Units", h("div", { class: "fa-units" },
           h("span", {}, "Temperature"), seg("Temperature unit", UNIT_CHOICES.T, u.T, v => set({ units: { T: v } })),
@@ -312,10 +333,24 @@ export function app(target, cfg = {}) {
     const model = eosView ? state.eos : state.model;
     if (model === "ideal") return h("div", { class: "fa-pairs" }, h("div", { class: "fa-panel-sub" }, "Pairs: ideal solution, no parameters"));
     let info;
-    try { info = system({ components: ids, model, allowMissingPairs: true }).info; } catch (e) {
+    try { info = system({ components: ids, model, allowMissingPairs: true, ...setsFor(state, model) }).info; } catch (e) {
       return h("div", { class: "fa-pairs" }, h("div", { class: "fa-panel-sub" }, `Pairs (${model})`), h("div", { class: "fa-empty" }, e.message));
     }
-    const rows = info.pairs.filter(p => p.tier !== "none").map(p => h("li", { title: p.source }, h("span", {}, p.pair.join(" + ")), badge(p.tier)));
+    const nameToId = new Map(all.map(c => [c.name, c.id]));
+    const rows = info.pairs.filter(p => p.tier !== "none").map(p => {
+      const choices = setChoices(p);
+      const key = pairKeyOf(nameToId.get(p.pair[0]) ?? p.pair[0], nameToId.get(p.pair[1]) ?? p.pair[1]);
+      const sel = choices.length ? h("select", { class: "fa-set-sel", id: `fa-set-${key.replace(/[^a-z0-9]+/g, "-")}-${uid}`,
+        "aria-label": `Parameter set for ${p.pair.join(" + ")}`, title: "Parameter set: switching recalculates the diagram",
+        on: { change: ev => {
+          const v = ev.target.value, pick = choices.find(c => c.set === v);
+          set({ sets: { [key]: pick?.default && !state.prefer ? null : v } });
+        } } },
+      ...choices.map(c => h("option", { value: c.set, selected: c.current }, `${c.label} · ${TIER_SHORT[c.tier] ?? c.tier}`))) : null;
+      return h("li", { title: p.source, class: sel ? "has-sets" : undefined },
+        h("span", { class: "fa-pair-name" }, p.pair.join(" + ")), badge(p.tier),
+        sel, p.note ? h("div", { class: "fa-pair-note" }, p.note) : null);
+    });
     for (const mp of info.missingPairs) rows.push(h("li", { title: eosView ? "No k_ij in the databank: k_ij = 0 is used" : "No parameters: these pairs cannot be calculated" }, h("span", {}, mp.join(" + ")), badge("none")));
     return h("div", { class: "fa-pairs" }, h("div", { class: "fa-panel-sub" }, `Pairs, ${eosView ? `${model} k_ij` : model}`), h("ul", {}, ...rows));
   }
@@ -324,14 +359,18 @@ export function app(target, cfg = {}) {
     const st = ui.status, u = state.units;
     const tab = VIEWS[state.view].tab;
     const model = state.view === "steam" ? "IAPWS-IF97" : state.view === "henry" ? "Henry's law" : state.view === "properties" ? "Pure-component data"
+      : state.view === "sources" ? "Library"
       : tab === "eos" ? (state.eos === "PR" ? "Peng–Robinson" : "SRK") : state.model === "ideal" ? "Ideal" : state.model;
     const cond = state.view === "pxy" ? `T ${fmtTemp(pxyTemperature(state), u)}` : state.view === "henry" ? `p gas ${fmtP(state.henryP_kPa, u)}`
       : ["txy", "ternary", "azeotropes"].includes(state.view) ? `P ${fmtP(state.P_kPa, u)}` : state.view === "envelope" ? "Feed in the inspector" : null;
     const cell = (cls, ...c) => h("span", { class: `fa-cell ${cls}` }, ...c);
+    const rule = ruleOf(state.prefer), hand = Object.keys(state.sets).length;
+    const setsCell = rule !== "best" || hand
+      ? [cell("fa-sets-cell", `Sets: ${rule === "best" ? "defaults" : RULES.find(r => r.id === rule)?.label ?? state.prefer.join(", ")}${hand ? `, ${hand} by hand` : ""}`)] : [];
     statusBar.replaceChildren(
       cell("fa-state" + (st.error ? " is-err" : st.busy ? " is-busy" : ""), h("i", { "aria-hidden": "true" }),
         st.busy ? "Calculating" : st.error ? "Error" : st.ms != null ? `Ready, ${st.ms < 1000 ? `${Math.max(1, Math.round(st.ms))} ms` : `${(st.ms / 1000).toFixed(1)} s`}` : "Ready"),
-      cell("", model),
+      cell("", model), ...setsCell,
       ...(cond ? [cell("", cond)] : []),
       st.info?.data ? cell("fa-grow", st.info.data) : h("span", { class: "fa-grow" }),
       cell("fa-hide-narrow", `${u.T === "K" ? "K" : "°C"}, ${u.P}, ${state.basis === "mass" ? "wt %" : "mol frac"}`),
@@ -342,7 +381,7 @@ export function app(target, cfg = {}) {
   function renderCanvasBar() {
     const av = viewAvailability(state.view, state.components);
     const names = av.use.map(id => all.find(c => c.id === id)?.name ?? id);
-    const title = state.title || (state.view === "steam" ? "Water and steam" : state.view === "henry" ? "Gases in water"
+    const title = state.title || (state.view === "steam" ? "Water and steam" : state.view === "henry" ? "Gases in water" : state.view === "sources" ? "Sources"
       : names.length ? names.map((n, i) => (i ? n.toLowerCase() : n)).join(", ").replace(/, ([^,]*)$/, " and $1") : VIEWS[state.view].label);
     const u = state.units;
     const sub = {
@@ -354,6 +393,7 @@ export function app(target, cfg = {}) {
       henry: `Solubility at a gas partial pressure of ${fmtP(state.henryP_kPa, u)}, Henry's law`,
       properties: "Pure-component properties against temperature",
       steam: "Temperature–entropy chart with isobars, IAPWS-IF97",
+      sources: "Every source behind Fugacity's data, why it is open and what uses it",
     }[state.view];
     const tog = (ico, label, pressed, onClick) => h("button", { type: "button", class: "fa-icon-btn", "aria-pressed": String(pressed), title: label, "aria-label": label, on: { click: onClick } }, icon(ico, 18));
     canvasBar.replaceChildren(
@@ -382,7 +422,8 @@ export function app(target, cfg = {}) {
 
   // ---- canvas
   const canvasKey = () => JSON.stringify([state.view, viewAvailability(state.view, state.components).use, state.model, state.eos, state.P_kPa, state.T_K,
-    state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.propComponent, state.z, state.henryP_kPa, state.steamP_kPa]);
+    state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.propComponent, state.z, state.henryP_kPa, state.steamP_kPa,
+    state.sets, state.prefer]);
   let canvasRendered = false, token = 0;
   function renderCanvas(now = false) {
     const my = ++token;
@@ -395,7 +436,7 @@ export function app(target, cfg = {}) {
       let info = null, error = null;
       notes.replaceChildren(); below.replaceChildren(); inspectorExtra.replaceChildren(); side.hidden = false;
       try {
-        info = renderView(state.view, { state, set, plot, side, notes, below, extra: inspectorExtra, compact: ui.size === "narrow", uid, badge });
+        info = renderView(state.view, { state, set, plot, side, notes, below, extra: inspectorExtra, compact: ui.size === "narrow", uid, badge, ui });
       } catch (e) {
         error = e.message;
         plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, e.message));
@@ -415,7 +456,7 @@ export function app(target, cfg = {}) {
 
   const api = {
     state,
-    /** Change the workbench: any configuration key, plus view, tab, panels, ribbon, z. */
+    /** Change the workbench: any configuration key (including sets and prefer), plus view, tab, panels, ribbon, z. */
     update(patch = {}) { set(patch); },
   };
   renderChrome();

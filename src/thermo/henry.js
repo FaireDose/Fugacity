@@ -74,7 +74,8 @@ export function henry(gas, solvent, T_K) {
 /** Source, tier and validity range of a Henry's law constant. */
 export function henryInfo(gas, solvent = "water") {
   const p = entry(gas, solvent);
-  return { gas: p.gas, solvent: p.solvent, Tmin_K: p.Tmin_K, Tmax_K: p.Tmax_K, tier: p.tier, source: p.source, validity: p.validity };
+  return { gas: p.gas, solvent: p.solvent, Tmin_K: p.Tmin_K, Tmax_K: p.Tmax_K, tier: p.tier, source: p.source, validity: p.validity,
+    source_ids: (p.source_ids ?? []).slice() };
 }
 
 /**
