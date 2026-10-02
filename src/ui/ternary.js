@@ -1,4 +1,4 @@
-import { s, h, text, svgPoint, rampColor, RAMP, C, fmt, basisView } from "./dom.js";
+import { s, h, text, svgPoint, rampColor, RAMP, tempUnit, fmt, basisView } from "./dom.js";
 import { ternaryGrid } from "../equilibrium/diagrams.js";
 import { residueCurve } from "../equilibrium/residue.js";
 import { isLiquidStable } from "../equilibrium/stability.js";
@@ -13,9 +13,12 @@ const START = [[0.1, 0.1, 0.8], [0.2, 0.6, 0.2], [0.6, 0.2, 0.2], [0.3, 0.3, 0.4
 /**
  * Ternary diagram at pressure P (kPa): bubble-temperature map, isotherms,
  * residue curves, and a hover readout with the liquid-vapour tie line.
+ * opts.T: "C" (default) or "K", the temperature display unit. The colour map, the
+ * two-liquid hatching and the isotherms carry the class "fug-bg-layer" (background layers).
  */
 export function renderTernary(plot, side, sys, P, opts) {
   const bv = basisView(opts.basis, opts.MW);
+  const { conv: C, label: tl } = tempUnit(opts.T);
   const n = opts.grid ?? 40;
   const grid = ternaryGrid(sys, P, n);
   const node = new Map(grid.nodes.map(d => [d.i + "," + d.j, d]));
@@ -32,7 +35,7 @@ export function renderTernary(plot, side, sys, P, opts) {
   }
 
   const svg = s("svg", { viewBox: "0 0 600 540", role: "img", "aria-label": `Ternary diagram of ${sys.names.join(", ")}` });
-  const gFill = s("g", {}, svg);
+  const gFill = s("g", { class: "fug-bg-layer" }, svg);
   for (const t of tris) {
     const nd = t.map(([i, j]) => get(i, j));
     const v = nd.reduce((a, d) => a + C(d.T), 0) / 3;
@@ -52,6 +55,7 @@ export function renderTernary(plot, side, sys, P, opts) {
   }
 
   if (opts.isotherms) {
+    const gIso = s("g", { class: "fug-bg-layer" }, svg);
     const step = (Thi - Tlo) > 60 ? 10 : 5;
     for (let L = Math.ceil(Tlo / step) * step; L < Thi; L += step) {
       let d = "";
@@ -67,7 +71,7 @@ export function renderTernary(plot, side, sys, P, opts) {
         }
         if (cuts.length === 2) d += `M${cuts[0][0].toFixed(1)},${cuts[0][1].toFixed(1)}L${cuts[1][0].toFixed(1)},${cuts[1][1].toFixed(1)}`;
       }
-      if (d) s("path", { d, fill: "none", stroke: "var(--fug-iso)", "stroke-width": 0.9 }, svg);
+      if (d) s("path", { d, fill: "none", stroke: "var(--fug-iso)", "stroke-width": 0.9 }, gIso);
     }
   }
 
@@ -101,14 +105,14 @@ export function renderTernary(plot, side, sys, P, opts) {
   const tb = [C(get(n, 0).T), C(get(0, n).T), C(get(0, 0).T)]; // pure-component corners
   const vl = (i, dx, dy, anchor) => {
     text(svg, V[i][0] + dx, V[i][1] + dy, sys.names[i], { "text-anchor": anchor, "font-size": 15, "font-weight": 600, fill: "var(--fug-fg)", style: "font-family:inherit" });
-    text(svg, V[i][0] + dx, V[i][1] + dy + 16, `Tb ${fmt(tb[i], 1)} °C`, { "text-anchor": anchor, fill: "var(--fug-fg2)", "font-size": 11 });
+    text(svg, V[i][0] + dx, V[i][1] + dy + 16, `Tb ${fmt(tb[i], 1)} ${tl}`, { "text-anchor": anchor, fill: "var(--fug-fg2)", "font-size": 11 });
   };
   vl(0, 0, -32, "middle"); vl(1, -44, 38, "start"); vl(2, 44, 38, "end");
   text(svg, 300, 512, `mole fraction ${sys.names[2]} →`, { "text-anchor": "middle" });
 
   const hover = s("g", {}, svg);
-  const ramp = h("div", { class: "fug-ramp" },
-    h("div", { class: "fug-sub" }, "Bubble temperature, °C"),
+  const ramp = h("div", { class: "fug-ramp fug-bg-layer" },
+    h("div", { class: "fug-sub" }, `Bubble temperature, ${tl}`),
     h("div", { class: "bar", style: `background:linear-gradient(90deg,${RAMP.join(",")})` }),
     h("div", { class: "ticks" }, ...[0, 0.25, 0.5, 0.75, 1].map(f => h("span", {}, (Tlo + f * (Thi - Tlo)).toFixed(0)))));
   plot.replaceChildren(svg, h("div", { class: "fug-legend" }, ramp,
@@ -121,7 +125,7 @@ export function renderTernary(plot, side, sys, P, opts) {
     h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, bv.short), h("th", {}, "x"), h("th", {}, "y"))), tab),
     anyUnstable ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two liquid phases in the hatched region. Results there assume a single liquid and are not reliable.") : null,
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Azeotropes at this pressure"),
-      azeo.length ? h("div", { class: "fug-num" }, ...azeo.map(z => { const w = bv.conv(z.x); return h("div", {}, `${fmt(C(z.T), 1)} °C  ${z.x.map((v, k) => v > 1e-6 ? `${sys.names[k]} ${opts.basis === "mass" ? bv.f(w[k]) : fmt(v, 2)}` : null).filter(Boolean).join(", ")}${opts.basis === "mass" ? " wt %" : ""}${z.kind === "ternary" ? " (ternary)" : ""}`); }))
+      azeo.length ? h("div", { class: "fug-num" }, ...azeo.map(z => { const w = bv.conv(z.x); return h("div", {}, `${fmt(C(z.T), 1)} ${tl}  ${z.x.map((v, k) => v > 1e-6 ? `${sys.names[k]} ${opts.basis === "mass" ? bv.f(w[k]) : fmt(v, 2)}` : null).filter(Boolean).join(", ")}${opts.basis === "mass" ? " wt %" : ""}${z.kind === "ternary" ? " (ternary)" : ""}`); }))
         : h("div", { class: "fug-sub" }, "None found.")),
     h("div", { class: "fug-foot" }, "Hover or tap the diagram. ○ liquid, ● equilibrium vapour. Grid step " + (1 / n).toFixed(3) + "." + (opts.basis === "mass" ? " The triangle is drawn in mole fractions; readouts are in wt %." : "")),
   ].filter(Boolean));
@@ -130,7 +134,7 @@ export function renderTernary(plot, side, sys, P, opts) {
     const d = get(i, j); if (!d) return;
     const xb = bv.conv(d.x), yb = bv.conv(d.y);
     xOut.textContent = xb.map((v, k) => `${sys.names[k]} ${bv.f(v)}`).join(" · ") + (opts.basis === "mass" ? " (wt %)" : "");
-    tOut.textContent = `${fmt(C(d.T), 1)} °C` + (d.stable ? "" : "  (two liquids)");
+    tOut.textContent = `${fmt(C(d.T), 1)} ${tl}` + (d.stable ? "" : "  (two liquids)");
     tab.replaceChildren(...sys.names.map((nm, k) => h("tr", {}, h("td", {}, nm), h("td", {}, bv.f(xb[k])), h("td", {}, bv.f(yb[k])))));
     hover.replaceChildren();
     const a = toXY(d.x), b = toXY(d.y);
