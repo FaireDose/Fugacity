@@ -8,29 +8,23 @@
  * Equations: see cubic.js. Units: T in K, P in kPa, mole fractions.
  */
 import componentData from "../../data/components.json" with { type: "json" };
-import kijData from "../../data/kij.json" with { type: "json" };
 import { cubicEos, CUBICS } from "./cubic.js";
+import { RANGE_MARGIN_K, selection, choosePair, describePair, pairWarnings } from "../library.js";
 
 export const EOS_MODELS = Object.keys(CUBICS);
 
 /** A k_ij is used without a warning up to this far (K) outside its data range. */
-export const RANGE_MARGIN_K = 10;
-
-function findKij(model, a, b) {
-  for (const p of kijData.pairs) {
-    if (p.model !== model) continue;
-    if ((p.i === a && p.j === b) || (p.i === b && p.j === a)) return p;
-  }
-  return null;
-}
+export { RANGE_MARGIN_K };
 
 /**
  * @param {string[]} ids        component ids (already resolved)
  * @param {object} cfg
  * @param {"PR"|"SRK"} cfg.model
  * @param {number[][]} [cfg.kij] user k_ij matrix (n x n, symmetric); overrides the databank
+ * @param {object} [cfg.sets]    k_ij set per pair, and [cfg.prefer] tiers in order (see library.js)
+ * @param {object} [sel]  cfg.sets and cfg.prefer as checked by library.selection()
  */
-export function createEosSystem(ids, cfg) {
+export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   const model = String(cfg.model).toUpperCase();
   const comps = ids.map(id => componentData.components[id]);
   const n = ids.length;
@@ -52,13 +46,11 @@ export function createEosSystem(ids, cfg) {
       pairs.push({ pair, kij: cfg.kij[i][j], tier: "user", source: "given in the system's setup" });
       continue;
     }
-    const p = findKij(model, ids[i], ids[j]);
-    if (p) {
-      K[i][j] = K[j][i] = p.kij;
-      const src = p.tier === "fitted"
-        ? `${p.source.fit}; data: ${p.source.data.join(", ")}; ${p.source.conditions}`
-        : `${p.source.file} (ChemSep, Artistic License 2.0): ${p.source.conditions}`;
-      pairs.push({ pair, kij: p.kij, tier: p.tier, source: src, T_range_K: p.source.T_range_K ?? null });
+    const choice = choosePair(model, ids[i], ids[j], sel);
+    if (choice) {
+      const k = choice.chosen.params.kij;
+      K[i][j] = K[j][i] = k;
+      pairs.push({ kij: k, ...describePair(choice, pair) });
     } else {
       missing.push(pair);
       pairs.push({ pair, kij: 0, tier: "none", source: `no ${model} k_ij in the databank; k_ij = 0 used` });
@@ -91,16 +83,15 @@ export function createEosSystem(ids, cfg) {
   };
 
   /**
-   * Warnings that apply to a calculation at T (K): pairs with k_ij = 0 (no data), and
-   * temperatures more than RANGE_MARGIN_K outside the data range of a stored k_ij.
+   * Warnings that apply to a calculation at T (K) and P (kPa): pairs with k_ij = 0 (no data),
+   * temperatures more than RANGE_MARGIN_K outside the data range of a stored k_ij, pressures
+   * outside a set's pressure range, and notes on the choice of sets.
    */
-  function warnings(T) {
+  function warnings(T, P) {
     const w = [];
     for (const p of pairs) {
       if (p.tier === "none") w.push(`No ${model} k_ij for ${p.pair.join(" + ")}: k_ij = 0 used; results for this pair are a prediction without binary data.`);
-      else if (p.T_range_K && Number.isFinite(T) && (T < p.T_range_K[0] - RANGE_MARGIN_K || T > p.T_range_K[1] + RANGE_MARGIN_K)) {
-        w.push(`k_ij of ${p.pair.join(" + ")} (${p.kij}) comes from data at ${p.T_range_K[0]}-${p.T_range_K[1]} K; ${T.toFixed(2)} K is outside that range.`);
-      }
+      else w.push(...pairWarnings([p], T, P, q => `k_ij of ${q.pair.join(" + ")} (${q.kij}) comes`));
     }
     return w;
   }

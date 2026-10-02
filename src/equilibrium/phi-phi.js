@@ -113,7 +113,7 @@ function solve(sys, z, given, kind, opts = {}) {
         throw err;
       }
     }
-    out.warnings = sys.warnings ? sys.warnings(T) : [];
+    out.warnings = sys.warnings ? sys.warnings(T, P) : [];
     return out;
   };
 
