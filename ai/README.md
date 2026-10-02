@@ -12,6 +12,10 @@
 
 ## Install the skills
 
+Short version for sharing: **https://fairedose.github.io/Fugacity/install** (download
+links and the steps for each assistant; the zip is at
+https://fairedose.github.io/Fugacity/skill.zip).
+
 Two skills in the open `SKILL.md` format: **fugacity** (build diagrams) and
 **fugacity-contributor** (contribute by the rules). Every release attaches them as zips:
 [fugacity.zip](https://github.com/FaireDose/Fugacity/releases/latest/download/fugacity.zip)

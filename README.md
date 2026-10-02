@@ -5,22 +5,44 @@ Gemini or another) for a phase diagram, and it opens a live interface that calcu
 right in the chat, in your browser. Fugacity starts with vapour-liquid equilibria and
 grows through volunteer contributions, one tested layer at a time, toward full flowsheets.
 
-![Ternary map for methanol, acetone and chloroform with four azeotropes and residue curves](docs/images/ternary.png)
+![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
-> **Status: early (v0.2.0).** 16 components, activity models and cubic equations of state,
-> pure-component properties, steam tables, three views.
+> **Status: early (v0.2.1).** 16 components, activity models and cubic equations of state,
+> pure-component properties, steam tables, and a workbench with a ribbon.
 > Results are model predictions. Check them against data before using them for design.
+
+**Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria and properties →
+next flash, streams, unit operations, reaction engineering, distillation and flowsheets,
+growing towards models of all the common units, with **bridges** to spreadsheets, reports
+and other simulators → then **cost
+engineering** (equipment sizing, capital and operating cost, cost per kg of product) →
+and the big ambition, **agentic process design**: AI agents read the open literature,
+build flowsheets for several process routes, simulate and cost them, and tell you which
+route is best and why, with every number traced to its source for an engineer to check.
+
+**Live demo, no chat needed:** <https://fairedose.github.io/Fugacity/>
 
 ## Try it in your chat (30 seconds)
 
-Paste this into an assistant that can open web links:
+Paste one of these into an assistant that can open web links.
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
-> and follow it. Show me the T-x-y diagram of ethanol and water at 1 atm.
+**Open the workbench:**
 
-The assistant writes about ten lines that load Fugacity, and the diagram opens live in the
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
+
+**Ask for a property value:**
+
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
+> Give the source of each value.
+
+(Fugacity answers 971.8 kg/m³ and 0.354 mPa·s, from IAPWS-IF97 and the IAPWS viscosity
+release.) For the first, the assistant writes a few lines that load Fugacity, and the
+workbench opens live in the
 chat (tested in Claude artifacts; other chats: [compatibility](ai/README.md#which-chats-can-show-fugacity-pages)).
-To use it often, install the Fugacity skill: [one table for every assistant](ai/README.md#install-the-skills).
+To have it always at hand, install the Fugacity skill once:
+**<https://fairedose.github.io/Fugacity/install>** (download and steps for Claude, ChatGPT,
+Claude Code, Codex; for other assistants one line for their custom instructions). Then
+just ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 
 ## What it does today
 
@@ -32,7 +54,7 @@ To use it often, install the Fugacity skill: [one table for every assistant](ai/
 | **Binary parameters** | NRTL/UNIQUAC for 27 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 21 pairs; Henry constants for the 6 gases in water |
 | **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
 | **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check; with PR/SRK bubble and dew points with a stability test; gas solubility in water |
-| **Interface** | T-x-y diagram or ternary map (`mount`); property explorer with curves at several pressures, saturation table and unit switches (`mountProperties`) |
+| **Interface** | Workbench with a ribbon (`app`): components, T-x-y, ternary map, azeotropes, Peng–Robinson/SRK P-x-y and phase envelope, gas solubility, property curves, steam tables, units, mol/wt %; a button hides the background layers. Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
 
 A full ternary map (861 bubble points plus ten residue curves) takes well under a second
 in the browser. If a pair has no parameters yet, the interface says which one.
@@ -41,9 +63,10 @@ In any web page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
 <script>
-  Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"], model: "NRTL", P_kPa: 101.325 });
+  Fugacity.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
+  // or a single view: Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
 </script>
 ```
 

@@ -1,7 +1,7 @@
 # Proposals
 
 Larger changes to Fugacity start as a short written proposal: new layers, changes to an
-interface or file format, the steps of the architecture track in the
+interface or file format, the steps of the core track in the
 [roadmap](../ROADMAP.md), and changes to the project's rules.
 
 ## How it works

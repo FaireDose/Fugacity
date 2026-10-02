@@ -12,11 +12,28 @@ only needs a few lines.
 
 ## Build the artifact
 
-Load the library from jsdelivr with a pinned version, then call `Fugacity.mount`:
+Load the library from jsdelivr with a pinned version. To open the whole workbench (ribbon
+with components, phase equilibrium, gases and equations of state, properties, steam,
+units):
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
+<script>
+  Fugacity.app("#app", {
+    start: "ternary",   // "txy", "ternary", "azeotropes", "pxy", "envelope", "henry", "properties", "steam"
+    components: ["methanol", "acetone", "chloroform"],
+    model: "NRTL",      // "NRTL", "UNIQUAC", "ideal", "PR", "SRK"
+    P_kPa: 101.325
+  });
+</script>
+```
+
+For one diagram without the ribbon, call `Fugacity.mount`:
+
+```html
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -74,7 +91,7 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.2.0 holds
+- Only use components that `Fugacity.listComponents()` returns. Version 0.2.1 holds
   water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
   acid, ethylene glycol (activity models and properties) and oxygen, nitrogen, hydrogen,
   methane, ethane, ethylene (equations of state, properties, Henry's law). Not every pair
