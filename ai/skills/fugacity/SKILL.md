@@ -18,7 +18,7 @@ units):
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", {
     start: "ternary",   // "txy", "ternary", "azeotropes", "pxy", "envelope", "henry", "properties", "steam"
@@ -33,7 +33,7 @@ For one diagram without the ribbon, call `Fugacity.mount`:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -91,7 +91,7 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.2.1 holds
+- Only use components that `Fugacity.listComponents()` returns. Version 0.2.2 holds
   water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
   acid, ethylene glycol (activity models and properties) and oxygen, nitrogen, hydrogen,
   methane, ethane, ethylene (equations of state, properties, Henry's law). Not every pair
