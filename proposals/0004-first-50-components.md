@@ -1,6 +1,6 @@
 # 0004: The first 50 components, chosen by process
 
-- **Status:** Draft
+- **Status:** Accepted (by the lead maintainer, 2026-10-02)
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** data track D5 (about 50 components), with D2 (pairs fitted to open data)
