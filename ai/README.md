@@ -13,9 +13,9 @@
 ## Install the skills
 
 Two skills in the open `SKILL.md` format: **fugacity** (build diagrams) and
-**fugacity-contributor** (contribute by the rules). Every release attaches them as zips:
-[fugacity.zip](https://github.com/FaireDose/Fugacity/releases/latest/download/fugacity.zip)
-and [fugacity-contributor.zip](https://github.com/FaireDose/Fugacity/releases/latest/download/fugacity-contributor.zip).
+**fugacity-contributor** (contribute by the rules). Download them as zips:
+[fugacity.zip](https://fairedose.github.io/Fugacity/skill.zip)
+and [fugacity-contributor.zip](https://fairedose.github.io/Fugacity/contributor-skill.zip).
 
 | Where | How |
 |---|---|
@@ -24,7 +24,7 @@ and [fugacity-contributor.zip](https://github.com/FaireDose/Fugacity/releases/la
 | **ChatGPT** (Business, Enterprise, Edu and Healthcare workspaces) | **Skills → Create → Upload from your computer**, choose a zip |
 | **Codex** | `$skill-installer install https://github.com/FaireDose/Fugacity/tree/main/ai/skills/fugacity` (same for `fugacity-contributor`), then restart Codex if it doesn't show up |
 | **Coding agents in a clone of this repository** | Nothing to install: they read [AGENTS.md](../AGENTS.md) |
-| **Any other assistant** | Put this line in its custom instructions, project, custom GPT or Gem: *"For chemical-engineering calculations, read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it."* Or paste [instructions/use-fugacity.md](instructions/use-fugacity.md), or a prompt from [START_PROMPTS.md](START_PROMPTS.md), into the chat or its custom instructions, project, custom GPT or Gem |
+| **Any other assistant** | Put this line in its custom instructions, project, custom GPT or Gem: *"For chemical-engineering calculations, read https://fairedose.github.io/Fugacity/use.md and follow it."* Or paste [instructions/use-fugacity.md](instructions/use-fugacity.md), or a prompt from [START_PROMPTS.md](START_PROMPTS.md), into the chat or its custom instructions, project, custom GPT or Gem |
 
 Menu names change between app versions; if you can't find them, search your assistant's
 help pages for "skills".

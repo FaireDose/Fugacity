@@ -5,6 +5,9 @@ Gemini or another) for a phase diagram, and it opens a live interface that calcu
 right in the chat, in your browser. Fugacity starts with vapour-liquid equilibria and
 grows through volunteer contributions, one tested layer at a time, toward full flowsheets.
 
+**Try the workbench now: <https://fairedose.github.io/Fugacity/>** (runs in your browser,
+nothing to install).
+
 ![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
 > **Status: early (v0.2.2).** 16 components, activity models and cubic equations of state,
@@ -26,11 +29,11 @@ Paste one of these into an assistant that can open web links.
 
 **Open the workbench:**
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
 
 **Ask for a property value:**
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
 > Give the source of each value.
 
 (Fugacity answers 971.8 kg/m³ and 0.354 mPa·s, from IAPWS-IF97 and the IAPWS viscosity
@@ -39,8 +42,8 @@ workbench opens live in the
 chat (tested in Claude artifacts; other chats: [compatibility](ai/README.md#which-chats-can-show-fugacity-pages)).
 To have it always at hand, install the Fugacity skill once: the steps for Claude, ChatGPT,
 Claude Code and Codex, and one line for the custom instructions of other assistants, are at
-**<https://github.com/FaireDose/Fugacity/blob/main/ai/README.md#install-the-skills>**. The skill itself is
-<https://github.com/FaireDose/Fugacity/releases/latest/download/fugacity.zip>. Then just
+**<https://fairedose.github.io/Fugacity/install>**. The skill itself is
+<https://fairedose.github.io/Fugacity/skill.zip>. Then just
 ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 
 ## What it does today

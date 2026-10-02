@@ -10,7 +10,7 @@ chemical engineering, built step by step along its roadmap, mostly by engineers 
 with AI assistants.
 
 1. Read the project's rules first:
-   https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md
+   https://fairedose.github.io/Fugacity/agents.md
    In a clone of the repository, read `AGENTS.md` there. It overrides this skill.
 2. Follow them exactly. In short: open sources only, tried in the order AGENTS.md gives
    (standards, CoolProp, NIST WebBook, open libraries and databanks, ThermoML Archive and
