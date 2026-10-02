@@ -1,3 +1,5 @@
+import { fail, failRange } from "./errors.js";
+
 /**
  * Brent's method: find a root of f on [a, b], where f(a) and f(b) have opposite signs.
  * @param {(x:number)=>number} f
@@ -13,7 +15,7 @@ export function brent(f, a, b, opts = {}) {
   if (fa === 0) return a;
   if (fb === 0) return b;
   if (fa * fb > 0) {
-    throw new RangeError(`brent: no sign change on [${a}, ${b}] (f = ${fa}, ${fb})`);
+    throw failRange("NO_CONVERGENCE", `brent: no sign change on [${a}, ${b}] (f = ${fa}, ${fb})`);
   }
   let c = a, fc = fa, d = b - a, e = d;
   for (let i = 0; i < maxIter; i++) {
@@ -39,7 +41,7 @@ export function brent(f, a, b, opts = {}) {
     b += Math.abs(d) > tol ? d : (m > 0 ? tol : -tol);
     fb = f(b);
   }
-  throw new Error("brent: did not converge");
+  throw fail("NO_CONVERGENCE", "brent: did not converge");
 }
 
 /**
@@ -57,5 +59,5 @@ export function scanBracket(f, lo, hi, n = 24) {
     if (f0 * f1 <= 0) return [x0, x1];
     x0 = x1; f0 = f1;
   }
-  throw new RangeError(`No solution between ${lo} and ${hi}.`);
+  throw failRange("NO_CONVERGENCE", `No solution between ${lo} and ${hi}.`);
 }

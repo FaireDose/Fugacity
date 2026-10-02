@@ -24,6 +24,7 @@
 import henryData from "../data/henry.json" with { type: "json" };
 import componentData from "../data/components.json" with { type: "json" };
 import { findComponent } from "./system.js";
+import { fail, failRange } from "../util/errors.js";
 
 const W = henryData.solvents.water.vapourPressure;
 const RHO_W = 997;                                          // kg/m3, as in Sander (2023)
@@ -44,7 +45,7 @@ function entry(gas, solvent) {
   const g = findComponent(gas), s = findComponent(solvent);
   const p = henryData.pairs.find(e => e.gas === g && e.solvent === s);
   if (!p) {
-    throw new Error(`No Henry's law constant for ${gas} in ${solvent}. Available in water: ${HENRY_GASES.join(", ")}.`);
+    throw fail("MISSING_DATA", `No Henry's law constant for ${gas} in ${solvent}. Available in water: ${HENRY_GASES.join(", ")}.`);
   }
   return p;
 }
@@ -58,7 +59,7 @@ function entry(gas, solvent) {
 export function henry(gas, solvent, T_K) {
   const p = entry(gas, solvent);
   if (!(T_K >= p.Tmin_K && T_K <= p.Tmax_K)) {
-    throw new RangeError(`Henry's law constant of ${p.gas} in ${p.solvent}: ${T_K} K is outside the range of its equation (${p.Tmin_K}-${p.Tmax_K} K).`);
+    throw failRange("OUT_OF_RANGE", `Henry's law constant of ${p.gas} in ${p.solvent}: ${T_K} K is outside the range of its equation (${p.Tmin_K}-${p.Tmax_K} K).`);
   }
   if (p.equation === "IAPWS-G7-04") {
     const Tr = T_K / W.Tc_K, tau = 1 - Tr;
@@ -68,7 +69,7 @@ export function henry(gas, solvent, T_K) {
     const Hcp = Math.exp(p.A + p.B / T_K + p.C * Math.log(T_K)); // mol/(m3 Pa)
     return RHO_W / (M_W * Hcp) / 1000;
   }
-  throw new Error(`Unknown Henry's law equation "${p.equation}".`);
+  throw fail("MISSING_DATA", `Unknown Henry's law equation "${p.equation}".`);
 }
 
 /** Source, tier and validity range of a Henry's law constant. */
@@ -84,6 +85,6 @@ export function henryInfo(gas, solvent = "water") {
  * gas fugacity equals its partial pressure and the pressure effect on H is negligible.
  */
 export function gasSolubility(gas, T_K, p_gas_kPa, solvent = "water") {
-  if (!(p_gas_kPa >= 0)) throw new RangeError(`Partial pressure must be non-negative (got ${p_gas_kPa} kPa).`);
+  if (!(p_gas_kPa >= 0)) throw failRange("BAD_INPUT", `Partial pressure must be non-negative (got ${p_gas_kPa} kPa).`);
   return p_gas_kPa / henry(gas, solvent, T_K);
 }

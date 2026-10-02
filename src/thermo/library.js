@@ -28,6 +28,7 @@ import henryData from "../data/henry.json" with { type: "json" };
 import componentData from "../data/components.json" with { type: "json" };
 import knownIssues from "../data/known-issues.json" with { type: "json" };
 import { findComponent } from "./components.js";
+import { fail } from "../util/errors.js";
 
 /** Quality tiers, best first (ARCHITECTURE.md). */
 export const TIERS = ["fitted", "standard", "databank", "predicted", "user"];
@@ -105,21 +106,21 @@ function candidates(model, a, b) {
 export function selection(cfg = {}) {
   const sets = new Map();
   if (cfg.sets != null) {
-    if (typeof cfg.sets !== "object" || Array.isArray(cfg.sets)) throw new Error('sets must be an object such as { "acetone+chloroform": "chemsep" }.');
+    if (typeof cfg.sets !== "object" || Array.isArray(cfg.sets)) throw fail("BAD_INPUT", 'sets must be an object such as { "acetone+chloroform": "chemsep" }.');
     for (const [key, name] of Object.entries(cfg.sets)) {
       const parts = String(key).split("+").map(s => s.trim()).filter(Boolean);
-      if (parts.length !== 2) throw new Error(`sets: "${key}" is not a pair; write it as "component+component", e.g. "acetone+chloroform".`);
+      if (parts.length !== 2) throw fail("BAD_INPUT", `sets: "${key}" is not a pair; write it as "component+component", e.g. "acetone+chloroform".`);
       const [a, b] = parts.map(findComponent);
-      if (a === b) throw new Error(`sets: "${key}" names the same component twice.`);
+      if (a === b) throw fail("BAD_INPUT", `sets: "${key}" names the same component twice.`);
       if (name == null || name === "") continue; // no choice: the default set
-      if (typeof name !== "string") throw new Error(`sets: the set for "${key}" must be a set name (a string), got ${JSON.stringify(name)}.`);
+      if (typeof name !== "string") throw fail("BAD_INPUT", `sets: the set for "${key}" must be a set name (a string), got ${JSON.stringify(name)}.`);
       sets.set(pairKey(a, b), name);
     }
   }
   let prefer = cfg.prefer ?? null;
   if (prefer != null) {
     prefer = (Array.isArray(prefer) ? prefer : [prefer]).map(t => String(t).toLowerCase());
-    for (const t of prefer) if (!TIERS.includes(t)) throw new Error(`prefer: unknown tier "${t}". Use tiers from: ${TIERS.join(", ")}.`);
+    for (const t of prefer) if (!TIERS.includes(t)) throw fail("BAD_INPUT", `prefer: unknown tier "${t}". Use tiers from: ${TIERS.join(", ")}.`);
     if (!prefer.length) prefer = null;
   }
   return { sets, prefer };
@@ -139,7 +140,7 @@ export function choosePair(model, a, b, sel = { sets: new Map(), prefer: null })
   if (named != null) {
     chosen = cands.find(c => c.set === named);
     if (!chosen) {
-      throw new Error(`No ${model} parameter set "${named}" for ${nameOf(a)} + ${nameOf(b)}. Sets: ${cands.map(c => `"${c.set}" (${c.tier}${c.default ? ", default" : ""})`).join(", ")}.`);
+      throw fail("BAD_INPUT", `No ${model} parameter set "${named}" for ${nameOf(a)} + ${nameOf(b)}. Sets: ${cands.map(c => `"${c.set}" (${c.tier}${c.default ? ", default" : ""})`).join(", ")}.`);
     }
     by = "sets";
   } else if (sel.prefer) {
@@ -250,7 +251,7 @@ function computeUsedBy() {
 
 /** What uses a source: parameter sets, Henry's law constants, pure-component records, files. */
 function usedBy(id) {
-  if (!sourcesData.sources[id] && !userSources.has(id)) throw new Error(`Unknown source "${id}". See Fugacity.library.sources().`);
+  if (!sourcesData.sources[id] && !userSources.has(id)) throw fail("BAD_INPUT", `Unknown source "${id}". See Fugacity.library.sources().`);
   if (!usedByCache) usedByCache = computeUsedBy();
   return (usedByCache.get(id) ?? []).map(x => ({ ...x }));
 }
@@ -263,7 +264,7 @@ function sources() {
 /** One source by id, with what uses it. */
 function source(id) {
   const s = sourceEntry(String(id));
-  if (!s) throw new Error(`Unknown source "${id}". See Fugacity.library.sources() for the ${Object.keys(sourcesData.sources).length} sources.`);
+  if (!s) throw fail("BAD_INPUT", `Unknown source "${id}". See Fugacity.library.sources() for the ${Object.keys(sourcesData.sources).length} sources.`);
   return { ...s, usedBy: usedBy(s.id) };
 }
 
@@ -282,7 +283,7 @@ function publicSet(c) {
  */
 function sets(a, b, model) {
   const i = findComponent(a), j = findComponent(b);
-  if (i === j) throw new Error("Give two different components.");
+  if (i === j) throw fail("BAD_INPUT", "Give two different components.");
   const models = model == null ? [...ACTIVITY_MODELS, ...EOS_MODELS] : [checkModel(model)];
   return models.flatMap(m => candidates(m, i, j).map(publicSet));
 }
@@ -290,20 +291,20 @@ function sets(a, b, model) {
 function checkModel(model) {
   const m = String(model ?? "").toUpperCase();
   if (![...ACTIVITY_MODELS, ...EOS_MODELS].includes(m)) {
-    throw new Error(`Unknown model "${model}". Parameter sets exist for ${[...ACTIVITY_MODELS, ...EOS_MODELS].join(", ")}.`);
+    throw fail("BAD_INPUT", `Unknown model "${model}". Parameter sets exist for ${[...ACTIVITY_MODELS, ...EOS_MODELS].join(", ")}.`);
   }
   return m;
 }
 
 const finite = (v, what) => {
-  if (typeof v !== "number" || !Number.isFinite(v)) throw new Error(`library.add: ${what} must be a finite number (got ${JSON.stringify(v)}).`);
+  if (typeof v !== "number" || !Number.isFinite(v)) throw fail("BAD_INPUT", `library.add: ${what} must be a finite number (got ${JSON.stringify(v)}).`);
   return v;
 };
 
 function range(v, what) {
-  if (!Array.isArray(v) || v.length !== 2) throw new Error(`library.add: valid.${what} must be [low, high].`);
+  if (!Array.isArray(v) || v.length !== 2) throw fail("BAD_INPUT", `library.add: valid.${what} must be [low, high].`);
   const [lo, hi] = v.map(x => finite(x, `valid.${what}`));
-  if (!(lo > 0 && hi >= lo)) throw new Error(`library.add: valid.${what} must be positive with low <= high (got [${lo}, ${hi}]).`);
+  if (!(lo > 0 && hi >= lo)) throw fail("BAD_INPUT", `library.add: valid.${what} must be positive with low <= high (got [${lo}, ${hi}]).`);
   return [lo, hi];
 }
 
@@ -327,35 +328,35 @@ function range(v, what) {
  *   params: { b_ij: 670, b_ji: -40, alpha: 0.3 }, source: { title: "My measurements", url: "https://..." } });
  */
 function add(spec) {
-  if (!spec || typeof spec !== "object") throw new Error("library.add needs an object: { model, i, j, set, params, source }.");
+  if (!spec || typeof spec !== "object") throw fail("BAD_INPUT", "library.add needs an object: { model, i, j, set, params, source }.");
   const model = checkModel(spec.model);
   const i = findComponent(spec.i ?? ""), j = findComponent(spec.j ?? "");
-  if (i === j) throw new Error("library.add: i and j must be two different components.");
+  if (i === j) throw fail("BAD_INPUT", "library.add: i and j must be two different components.");
   const set = typeof spec.set === "string" ? spec.set.trim() : "";
-  if (!set) throw new Error('library.add: give the set a name, e.g. set: "my-paper".');
+  if (!set) throw fail("BAD_INPUT", 'library.add: give the set a name, e.g. set: "my-paper".');
   const taken = candidates(model, i, j).map(c => c.set);
-  if (taken.includes(set)) throw new Error(`library.add: ${model} ${nameOf(i)} + ${nameOf(j)} already has a set "${set}". Sets: ${taken.join(", ")}.`);
+  if (taken.includes(set)) throw fail("BAD_INPUT", `library.add: ${model} ${nameOf(i)} + ${nameOf(j)} already has a set "${set}". Sets: ${taken.join(", ")}.`);
 
   const given = spec.params;
-  if (!given || typeof given !== "object") throw new Error(`library.add: params is required (${model}: ${PARAM_KEYS[model].join(", ")}).`);
-  for (const k of Object.keys(given)) if (!PARAM_KEYS[model].includes(k)) throw new Error(`library.add: unknown ${model} parameter "${k}". Use: ${PARAM_KEYS[model].join(", ")}.`);
+  if (!given || typeof given !== "object") throw fail("BAD_INPUT", `library.add: params is required (${model}: ${PARAM_KEYS[model].join(", ")}).`);
+  for (const k of Object.keys(given)) if (!PARAM_KEYS[model].includes(k)) throw fail("BAD_INPUT", `library.add: unknown ${model} parameter "${k}". Use: ${PARAM_KEYS[model].join(", ")}.`);
   let params;
   if (EOS_MODELS.includes(model)) {
     const k = finite(given.kij, "params.kij");
-    if (Math.abs(k) >= 1) throw new Error(`library.add: k_ij = ${k} is outside -1 < k_ij < 1.`);
+    if (Math.abs(k) >= 1) throw fail("BAD_INPUT", `library.add: k_ij = ${k} is outside -1 < k_ij < 1.`);
     params = { kij: k };
   } else {
-    if (given.b_ij == null || given.b_ji == null) throw new Error("library.add: params needs b_ij and b_ji (K); a_ij and a_ji are optional (default 0).");
+    if (given.b_ij == null || given.b_ji == null) throw fail("BAD_INPUT", "library.add: params needs b_ij and b_ji (K); a_ij and a_ji are optional (default 0).");
     params = { a_ij: finite(given.a_ij ?? 0, "params.a_ij"), a_ji: finite(given.a_ji ?? 0, "params.a_ji"), b_ij: finite(given.b_ij, "params.b_ij"), b_ji: finite(given.b_ji, "params.b_ji") };
     if (model === "NRTL") {
       params.alpha = finite(given.alpha ?? 0.3, "params.alpha");
-      if (!(params.alpha > 0 && params.alpha < 1)) throw new Error(`library.add: NRTL alpha must be between 0 and 1 (got ${params.alpha}).`);
+      if (!(params.alpha > 0 && params.alpha < 1)) throw fail("BAD_INPUT", `library.add: NRTL alpha must be between 0 and 1 (got ${params.alpha}).`);
     }
   }
 
   let valid = null;
   if (spec.valid != null) {
-    if (typeof spec.valid !== "object") throw new Error("library.add: valid must be { T_K: [low, high], P_kPa: [low, high] }.");
+    if (typeof spec.valid !== "object") throw fail("BAD_INPUT", "library.add: valid must be { T_K: [low, high], P_kPa: [low, high] }.");
     valid = {};
     if (spec.valid.T_K != null) valid.T_K = range(spec.valid.T_K, "T_K");
     if (spec.valid.P_kPa != null) valid.P_kPa = range(spec.valid.P_kPa, "P_kPa");
@@ -364,14 +365,14 @@ function add(spec) {
   // the source last: nothing is registered when the input is wrong
   let ids;
   if (spec.source_ids != null) {
-    if (!Array.isArray(spec.source_ids) || !spec.source_ids.length) throw new Error("library.add: source_ids must be a non-empty list of source ids.");
-    for (const id of spec.source_ids) if (!sourceEntry(id)) throw new Error(`library.add: unknown source "${id}". Give source: { title, url } instead.`);
+    if (!Array.isArray(spec.source_ids) || !spec.source_ids.length) throw fail("BAD_INPUT", "library.add: source_ids must be a non-empty list of source ids.");
+    for (const id of spec.source_ids) if (!sourceEntry(id)) throw fail("BAD_INPUT", `library.add: unknown source "${id}". Give source: { title, url } instead.`);
     ids = spec.source_ids.slice();
   } else if (spec.source && typeof spec.source === "object") {
     const s = spec.source;
-    if (!s.title || typeof s.title !== "string") throw new Error("library.add: source needs a title.");
-    if (s.url != null && !/^https?:\/\//.test(String(s.url))) throw new Error(`library.add: source.url must start with http:// or https:// (got ${JSON.stringify(s.url)}).`);
-    if (!s.url && !s.doi) throw new Error("library.add: source needs a url or a doi, so that others can check it.");
+    if (!s.title || typeof s.title !== "string") throw fail("BAD_INPUT", "library.add: source needs a title.");
+    if (s.url != null && !/^https?:\/\//.test(String(s.url))) throw fail("BAD_INPUT", `library.add: source.url must start with http:// or https:// (got ${JSON.stringify(s.url)}).`);
+    if (!s.url && !s.doi) throw fail("BAD_INPUT", "library.add: source needs a url or a doi, so that others can check it.");
     let id = "user-" + (s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "source");
     for (let n = 2; userSources.has(id) || sourcesData.sources[id]; n++) id = id.replace(/-\d+$/, "") + "-" + n;
     const entry = { title: s.title, kind: "user", access: s.access ? String(s.access) : "Supplied in this page; not checked by Fugacity's reviewers" };
@@ -379,7 +380,7 @@ function add(spec) {
     userSources.set(id, entry);
     ids = [id];
   } else {
-    throw new Error("library.add: give source: { title, url } (or source_ids of sources in the library), so that the set can be traced.");
+    throw fail("BAD_INPUT", "library.add: give source: { title, url } (or source_ids of sources in the library), so that the set can be traced.");
   }
 
   const title = ids.map(id => sourceEntry(id).title).join("; ");

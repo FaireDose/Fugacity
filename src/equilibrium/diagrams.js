@@ -1,11 +1,12 @@
 import { bubbleT, bubbleP } from "./bubble.js";
+import { fail } from "../util/errors.js";
 
 /**
  * Isobaric T-x-y data for a binary system.
  * @returns {{x:number, T:number, y:number}[]}  x, y of the first component; T in K
  */
 export function txy(sys, P, points = 51) {
-  if (sys.n !== 2) throw new Error("T-x-y needs exactly two components.");
+  if (sys.n !== 2) throw fail("BAD_INPUT", "T-x-y needs exactly two components.");
   const out = [];
   for (let k = 0; k < points; k++) {
     const x1 = k / (points - 1);
@@ -20,7 +21,7 @@ export function txy(sys, P, points = 51) {
  * @returns {{x:number, P:number, y:number}[]}  P in kPa
  */
 export function pxy(sys, T, points = 51) {
-  if (sys.n !== 2) throw new Error("P-x-y needs exactly two components.");
+  if (sys.n !== 2) throw fail("BAD_INPUT", "P-x-y needs exactly two components.");
   const out = [];
   for (let k = 0; k < points; k++) {
     const x1 = k / (points - 1);
@@ -36,7 +37,7 @@ export function pxy(sys, T, points = 51) {
  * @returns {{n:number, nodes:{i:number,j:number,x:number[],T:number,y:number[]}[]}}
  */
 export function ternaryGrid(sys, P, n = 40) {
-  if (sys.n !== 3) throw new Error("A ternary grid needs exactly three components.");
+  if (sys.n !== 3) throw fail("BAD_INPUT", "A ternary grid needs exactly three components.");
   const nodes = [];
   for (let i = 0; i <= n; i++) for (let j = 0; j <= n - i; j++) {
     const x = [i / n, j / n, (n - i - j) / n];

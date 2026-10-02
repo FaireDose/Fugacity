@@ -6,6 +6,7 @@ import { dimerK, monomerPressure } from "./vapour.js";
 import { createEosSystem, EOS_MODELS } from "./eos/system.js";
 import { listComponents, findComponent } from "./components.js";
 import { selection, choosePair, describePair, pairWarnings } from "./library.js";
+import { fail } from "../util/errors.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
 export { EOS_MODELS, listComponents, findComponent };
@@ -28,18 +29,18 @@ export { EOS_MODELS, listComponents, findComponent };
 export function createSystem(cfg) {
   const model = (cfg.model || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : (cfg.model || "NRTL").toUpperCase();
   const isEos = EOS_MODELS.includes(model);
-  if (!MODELS.includes(model) && !isEos) throw new Error(`Unknown model "${cfg.model}". Use one of: ${MODELS.join(", ")}, or an equation of state: ${EOS_MODELS.join(", ")}.`);
-  if (!Array.isArray(cfg.components) || cfg.components.length < (isEos ? 1 : 2)) throw new Error(isEos ? "Give at least one component." : "Give at least two components.");
+  if (!MODELS.includes(model) && !isEos) throw fail("BAD_INPUT", `Unknown model "${cfg.model}". Use one of: ${MODELS.join(", ")}, or an equation of state: ${EOS_MODELS.join(", ")}.`);
+  if (!Array.isArray(cfg.components) || cfg.components.length < (isEos ? 1 : 2)) throw fail("BAD_INPUT", isEos ? "Give at least one component." : "Give at least two components.");
   const ids = cfg.components.map(findComponent);
-  if (new Set(ids).size !== ids.length) throw new Error("A component appears twice.");
+  if (new Set(ids).size !== ids.length) throw fail("BAD_INPUT", "A component appears twice.");
   const sel = selection(cfg); // checked for every model, so that a typo never passes silently
   if (isEos) return createEosSystem(ids, { ...cfg, model }, sel); // Peng-Robinson / SRK: see eos/system.js
   const comps = ids.map(id => componentData.components[id]);
   for (const c of comps) {
     if (!c.vapourPressure && !cfg.psat) {
-      throw new Error(`${c.name} has no vapour-pressure record, so it cannot be used with activity-coefficient models. Use an equation of state for gases.`);
+      throw fail("MISSING_DATA", `${c.name} has no vapour-pressure record, so it cannot be used with activity-coefficient models. Use an equation of state for gases.`);
     }
-    if (model === "UNIQUAC" && !c.uniquac) throw new Error(`${c.name} has no UNIQUAC r and q.`);
+    if (model === "UNIQUAC" && !c.uniquac) throw fail("MISSING_DATA", `${c.name} has no UNIQUAC r and q.`);
   }
   const n = ids.length;
   const useAssoc = cfg.association !== false;
@@ -60,7 +61,7 @@ export function createSystem(cfg) {
   }
   if (missing.length && !cfg.allowMissingPairs) {
     const list = missing.map(m => m.join(" + ")).join("; ");
-    throw new Error(`No ${model} parameters for: ${list}. Pass allowMissingPairs: true to treat them as ideal, or add parameters to data/binaries.json.`);
+    throw fail("MISSING_DATA", `No ${model} parameters for: ${list}. Pass allowMissingPairs: true to treat them as ideal, or add parameters to data/binaries.json.`);
   }
   // missing pairs: NRTL with zero tau is ideal; UNIQUAC with tau = 1 keeps only the combinatorial term
   let gammas;

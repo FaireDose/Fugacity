@@ -7,6 +7,8 @@
  */
 import { createSystem, listComponents, findComponent, MODELS } from "./thermo/system.js";
 import { bubbleT, bubbleP, pureBoilingPoints } from "./equilibrium/bubble.js";
+import { dewT, dewP } from "./equilibrium/dew.js";
+import { FugacityError, ERROR_CODES, isFugacityError } from "./util/errors.js";
 import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
 import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
@@ -30,7 +32,7 @@ export const version = pkg.version;
 export {
   system, app,
   mount, createSystem, listComponents, findComponent, MODELS,
-  bubbleT, bubbleP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
+  bubbleT, bubbleP, dewT, dewP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
   binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
   pure, PROPERTIES, PROPERTY_NAMES,
   mountProperties,
@@ -38,4 +40,5 @@ export {
   henry, henryInfo, gasSolubility, HENRY_GASES,
   steam, steamSat,
   library,
+  FugacityError, ERROR_CODES, isFugacityError,
 };

@@ -1,9 +1,11 @@
 import { brent, scanBracket } from "../util/solve.js";
+import { checkComposition, checkPressure, checkTemperature } from "./inputs.js";
+import { fail } from "../util/errors.js";
 
 const clean = x => {
   const v = x.map(u => Math.max(0, +u));
   const s = v.reduce((a, b) => a + b, 0);
-  if (!(s > 0)) throw new Error("Composition must have a positive sum.");
+  if (!(s > 0)) throw fail("BAD_INPUT", "Composition must have a positive sum.");
   return v.map(u => Math.max(u / s, 1e-12));
 };
 
@@ -28,11 +30,20 @@ function boilingRange(sys, P) {
 /**
  * Bubble-point temperature at fixed pressure.
  * @param {object} sys  from createSystem
- * @param {number[]} x  liquid mole fractions (normalized automatically)
+ * @param {number[]} x  liquid mole fractions (normalized automatically; checked: one per
+ *                      component, none negative)
  * @param {number} P    kPa
  * @returns {{T:number, y:number[], gamma:number[], warnings:string[]}}  T in K; warnings: temperatures outside the data range of a temperature-dependent pair
  */
 export function bubbleT(sys, x, P) {
+  return bubbleTCore(sys, checkComposition(x, sys.n, "Liquid composition"), checkPressure(P));
+}
+
+/**
+ * bubbleT without the input checks, for solvers inside the engine whose iterates may
+ * step a little outside the composition simplex (negative values are taken as zero).
+ */
+export function bubbleTCore(sys, x, P) {
   x = clean(x);
   const f = T => sys.equilibrium(x, T).P - P;
   const tb = boilingRange(sys, P);
@@ -48,6 +59,11 @@ export function bubbleT(sys, x, P) {
  * @returns {{P:number, y:number[], gamma:number[], warnings:string[]}}  P in kPa
  */
 export function bubbleP(sys, x, T) {
+  return bubblePCore(sys, checkComposition(x, sys.n, "Liquid composition"), checkTemperature(T));
+}
+
+/** bubbleP without the input checks (see bubbleTCore). */
+export function bubblePCore(sys, x, T) {
   x = clean(x);
   const e = sys.equilibrium(x, T);
   return { P: e.P, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T, e.P) : [] };

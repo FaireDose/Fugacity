@@ -6,6 +6,7 @@
  * dimers A2 in equilibrium, p_A2 = K p_A^2. Cross-dimers between different
  * acids are not modelled.
  */
+import { fail } from "../util/errors.js";
 
 const MMHG_PER_KPA = 7.50062;
 
@@ -16,7 +17,7 @@ const MMHG_PER_KPA = 7.50062;
  */
 export function dimerK(assoc, T) {
   const K = Math.pow(10, assoc.log10K.A + assoc.log10K.B / T); // 1/mmHg
-  if (assoc.K_unit !== "1/mmHg") throw new Error(`Unsupported K unit ${assoc.K_unit}`);
+  if (assoc.K_unit !== "1/mmHg") throw fail("MISSING_DATA", `Unsupported K unit ${assoc.K_unit}`);
   return K * MMHG_PER_KPA;
 }
 

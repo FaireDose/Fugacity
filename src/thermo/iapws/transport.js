@@ -33,6 +33,7 @@
  * Units: T in K, rho in kg/m3, (d rho/d p)_T in kg/(m3 MPa), cp and cv in kJ/(kg K);
  * viscosity returned in Pa s, thermal conductivity in W/(m K).
  */
+import { failRange } from "../../util/errors.js";
 
 const T_STAR = 647.096, RHO_STAR = 322.0, P_STAR = 22.064; // K, kg/m3, MPa
 const MU_STAR = 1e-6;      // Pa s
@@ -84,7 +85,7 @@ const A_LIMITS = [0.310559006, 0.776397516, 1.242236025, 1.863354037];
 
 function checkT(T, what) {
   if (!(T >= T_MIN_TRANSPORT && T <= T_MAX_TRANSPORT)) {
-    throw new RangeError(`${what} (IAPWS) is valid from 273.16 K to 1173.15 K; T = ${T} K.`);
+    throw failRange("OUT_OF_RANGE", `${what} (IAPWS) is valid from 273.16 K to 1173.15 K; T = ${T} K.`);
   }
 }
 

@@ -84,7 +84,13 @@ for comps, xs in [(["ethanol", "water"], [0.1, 0.5]), (["methanol", "water"], [0
         cases.append({"id": f"txy/{'+'.join(comps)}/NRTL/x={x}", "type": "bubbleT", "components": comps,
                       "model": "NRTL", "P_kPa": 101.325, "x1": x,
                       "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]})
-groups.append({"id": "txy", "title": "Bubble points (T-x-y and P-x spot points)", "cases": cases})
+# dew points against the measured vapour of the ethanol + water T-x-y set (Kamihama et al. 2012)
+for model in ["NRTL", "UNIQUAC"]:
+    for y in [0.418, 0.567, 0.736]:  # x1 = 0.079, 0.244, 0.670 in the data
+        cases.append({"id": f"dew/ethanol+water/{model}/y={y}", "type": "dewT", "components": ["ethanol", "water"],
+                      "model": model, "P_kPa": 101.3, "y1": y,
+                      "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]})
+groups.append({"id": "txy", "title": "Bubble and dew points (T-x-y and P-x spot points)", "cases": cases})
 
 # (d) pure-component properties
 cases = []
@@ -190,6 +196,7 @@ TOL = {
     "bubbleT": {"abs": 1.0, "unit": "K", "basis": "Chosen for this report, as for azeotrope temperatures (not in proposal 0002)"},
     "bubbleT_scatter": {"abs": 3.5, "unit": "K", "basis": "Secondary compilation with visible scatter; same bound as test/vle.test.js"},
     "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
+    "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
     "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
     "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
     "gasDensity": {"rel": 0.05, "informational": True, "basis": "Report only: equation of state against the reference equation of state (team brief)"},

@@ -13,6 +13,7 @@
  * Coefficients that are not given are 0. DIPPR106 also needs `Tc_K` in the record.
  * The value is returned in the record's `units`; pure.js converts to engine units.
  */
+import { fail, failRange } from "../util/errors.js";
 
 const EQUATIONS = {
   // Y = A + B T + C T^2 + D T^3 + E T^4
@@ -50,14 +51,14 @@ export const CORRELATION_EQUATIONS = Object.keys(EQUATIONS);
  */
 export function evaluate(rec, T, opts = {}) {
   const f = EQUATIONS[rec.equation];
-  if (!f) throw new Error(`Unknown correlation "${rec.equation}". Known: ${CORRELATION_EQUATIONS.join(", ")}.`);
-  if (!(T > 0)) throw new RangeError(`Temperature must be positive (got ${T} K).`);
+  if (!f) throw fail("MISSING_DATA", `Unknown correlation "${rec.equation}". Known: ${CORRELATION_EQUATIONS.join(", ")}.`);
+  if (!(T > 0)) throw failRange("BAD_INPUT", `Temperature must be positive (got ${T} K).`);
   if (!opts.extrapolate && ((rec.Tmin_K != null && T < rec.Tmin_K - 1e-9) || (rec.Tmax_K != null && T > rec.Tmax_K + 1e-9))) {
-    throw new RangeError(`T = ${T.toFixed(2)} K is outside the range of this correlation (${rec.Tmin_K}-${rec.Tmax_K} K).`);
+    throw failRange("OUT_OF_RANGE", `T = ${T.toFixed(2)} K is outside the range of this correlation (${rec.Tmin_K}-${rec.Tmax_K} K).`);
   }
   const c = { A: 0, B: 0, C: 0, D: 0, E: 0, ...rec.coefficients };
-  if (rec.equation === "DIPPR106" && !(rec.Tc_K > 0)) throw new Error("DIPPR106 needs Tc_K in the record.");
+  if (rec.equation === "DIPPR106" && !(rec.Tc_K > 0)) throw fail("MISSING_DATA", "DIPPR106 needs Tc_K in the record.");
   const y = f(T, c, rec.Tc_K);
-  if (!Number.isFinite(y)) throw new RangeError(`Correlation ${rec.equation} gave a non-finite value at ${T} K.`);
+  if (!Number.isFinite(y)) throw failRange("OUT_OF_RANGE", `Correlation ${rec.equation} gave a non-finite value at ${T} K.`);
   return y;
 }

@@ -1,3 +1,5 @@
+import { fail } from "../util/errors.js";
+
 /**
  * Pure-component vapour pressure.
  * DIPPR equation 101: ln(P/Pa) = A + B/T + C ln T + D T^E
@@ -6,6 +8,6 @@
  * @returns {number}   vapour pressure, Pa
  */
 export function vapourPressure(vp, T) {
-  if (vp.equation !== "DIPPR101") throw new Error(`Unknown vapour pressure equation ${vp.equation}`);
+  if (vp.equation !== "DIPPR101") throw fail("MISSING_DATA", `Unknown vapour pressure equation ${vp.equation}`);
   return Math.exp(vp.A + vp.B / T + vp.C * Math.log(T) + vp.D * Math.pow(T, vp.E));
 }

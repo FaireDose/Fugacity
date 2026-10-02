@@ -5,6 +5,7 @@
  */
 import { createSystem } from "./thermo/system.js";
 import { bubbleT, bubbleP, pureBoilingPoints } from "./equilibrium/bubble.js";
+import { dewT, dewP } from "./equilibrium/dew.js";
 import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
 import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
@@ -24,6 +25,8 @@ export function system(cfg) {
   return Object.assign(sys, {
     bubbleT: (x, P) => bubbleT(sys, x, P),
     bubbleP: (x, T) => bubbleP(sys, x, T),
+    dewT: (y, P) => dewT(sys, y, P),
+    dewP: (y, T) => dewP(sys, y, T),
     boilingPoints: P => pureBoilingPoints(sys, P),
     txy: (P, points) => txy(sys, P, points),
     pxy: (T, points) => pxy(sys, T, points),

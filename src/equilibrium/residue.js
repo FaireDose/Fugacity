@@ -1,4 +1,4 @@
-import { bubbleT } from "./bubble.js";
+import { bubbleTCore as bubbleT } from "./bubble.js";
 
 /**
  * Residue curve through x0 at pressure P: dx/dxi = x - y.
