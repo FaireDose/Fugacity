@@ -30,7 +30,7 @@ Peng–Robinson does not break the flash drum.
 | 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | Not started |
 | 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | Not started |
 | 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |
-| 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench with a ribbon (`app`); T-x-y and ternary views; property explorer; EOS, Henry and steam views |
+| 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench (`app`) with task workspaces (phase equilibrium, gas solubility, properties, steam), per-workspace inputs and Library, Sources and Settings panels; T-x-y and ternary views; property explorer; EOS, Henry and steam views |
 | 7 | Design studio | Cost engineering (sizing, capital and operating cost, cost of product) and agent-run studies that compare process routes from the literature; every result reproducible and sourced | `src/design/` | Not started; roadmap tracks E and G |
 
 Units inside the engine: temperature in K, pressure in kPa, amounts in mol or kmol,

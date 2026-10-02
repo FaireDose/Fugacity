@@ -1,4 +1,5 @@
-// Styles for the workbench (Fugacity.app). Scoped under .fug-app; the base tokens and the
+// Styles for the workbench (Fugacity.app): navigation bar, toolbar, Inputs / canvas / Results,
+// drawer, status bar. Scoped under .fug-app; the base tokens and the
 // view styles come from styles.js. Light and dark follow the host page, as in styles.js:
 // prefers-color-scheme, overridden by data-theme="light|dark" on <html>.
 import { injectPropertiesStyles } from "./styles.js";
@@ -23,7 +24,7 @@ const DARK = `
   --fug-s1:#3987e5; --fug-s2:#d95926; --fug-s3:#199e70; --fug-s4:#c98500; --fug-s5:#d55181; --fug-s6:#9085e9;`;
 
 export const APP_CSS = `
-.fug.fug-app{${LIGHT} padding:0; gap:0; max-width:none; width:100%; display:flex; flex-direction:column; overflow:hidden;
+.fug.fug-app{${LIGHT} padding:0; gap:0; max-width:none; width:100%; display:flex; flex-direction:column; overflow:hidden; overflow:clip;
   font-size:13px; line-height:1.45; background:var(--fa-canvas); border-radius:10px; min-width:0}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fug.fug-app{${DARK}} }
 :root[data-theme="dark"] .fug.fug-app{${DARK}}
@@ -34,25 +35,32 @@ export const APP_CSS = `
 .fug-app input[type=text]{font-variant-numeric:tabular-nums}
 .fug-app input:focus-visible,.fug-app select:focus-visible,.fug-app button:focus-visible{outline:2px solid var(--fug-accent); outline-offset:1px}
 
-/* title bar and tabs */
-.fa-titlebar{display:flex; align-items:stretch; gap:18px; background:var(--fa-bar); color:var(--fa-bar-fg); padding:0 6px 0 14px; min-height:40px}
+/* navigation bar: workspaces (tasks), then the supporting utilities */
+.fa-titlebar{display:flex; align-items:stretch; gap:18px; background:var(--fa-bar); color:var(--fa-bar-fg); padding:0 6px 0 14px; min-height:44px}
 .fa-brand{display:flex; align-items:center; gap:8px; color:var(--fa-bar-strong); font-weight:600; font-size:14px; letter-spacing:.01em}
 .fa-brand .fug-ico .a{stroke:var(--fa-bar-accent)}
-.fa-tabs{display:flex; align-items:flex-end; gap:2px; min-width:0; overflow-x:auto; scrollbar-width:none}
-.fa-tab{border:0; background:transparent; color:inherit; font-size:12.5px; font-weight:500; padding:8px 13px 9px; border-radius:6px 6px 0 0; cursor:pointer; white-space:nowrap}
-.fa-tab:hover{color:var(--fa-bar-strong); background:rgba(255,255,255,.06)}
-.fa-tab[aria-selected="true"]{background:var(--fa-ribbon); color:var(--fug-fg)}
-.fa-ribbon-closed .fa-tab[aria-selected="true"]{background:rgba(255,255,255,.1); color:var(--fa-bar-strong)}
-.fa-titlebar .fa-icon-btn{color:var(--fa-bar-fg); margin-left:auto; align-self:center}
+.fa-nav{display:flex; align-items:flex-end; gap:2px; min-width:0}
+.fa-nav-btn{display:flex; align-items:center; gap:7px; border:0; background:transparent; color:inherit; font-size:13px; font-weight:500;
+  padding:9px 14px 10px; border-radius:7px 7px 0 0; cursor:pointer; white-space:nowrap; position:relative}
+.fa-nav-btn .fug-ico .a{stroke:currentColor}
+.fa-nav-btn:hover{color:var(--fa-bar-strong); background:rgba(255,255,255,.07)}
+.fa-nav-btn[aria-current="page"]{background:var(--fa-ribbon); color:var(--fug-fg); font-weight:600}
+.fa-nav-btn[aria-current="page"] .fug-ico{color:var(--fug-accent)}
+.fa-nav-btn[aria-current="page"] .fug-ico .a{stroke:var(--fug-accent)}
+.fa-nav-btn[aria-current="page"]::before{content:""; position:absolute; left:10px; right:10px; top:0; height:2px; border-radius:0 0 2px 2px; background:var(--fug-accent)}
+.fa-ribbon-closed .fa-nav-btn[aria-current="page"]{background:var(--fa-canvas)}
+.fa-nav-short{display:none}
+.fa-utils{display:flex; align-items:center; gap:2px; margin-left:auto; padding-left:12px; border-left:1px solid rgba(255,255,255,.12); align-self:center; min-height:28px}
+.fa-util-btn{display:flex; align-items:center; gap:6px; border:1px solid transparent; background:transparent; color:var(--fa-bar-fg); font-size:12.5px;
+  padding:4px 9px; border-radius:6px; cursor:pointer; white-space:nowrap}
+.fa-util-btn .fug-ico .a{stroke:var(--fa-bar-accent)}
+.fa-util-btn:hover{color:var(--fa-bar-strong); background:rgba(255,255,255,.08)}
+.fa-util-btn[aria-expanded="true"]{color:var(--fa-bar-strong); background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.18)}
+.fa-titlebar .fa-icon-btn{color:var(--fa-bar-fg); align-self:center}
 .fa-titlebar .fa-icon-btn:hover{color:var(--fa-bar-strong); background:rgba(255,255,255,.08)}
-.fa-menu-wrap{position:relative; display:flex; align-items:center; min-width:0}
-.fa-menu-btn{display:flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:var(--fa-bar-strong);
-  border-radius:6px; padding:4px 10px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap}
-.fa-menu{position:absolute; top:calc(100% + 2px); left:0; z-index:30; display:grid; min-width:210px; padding:4px; background:var(--fug-bg);
-  border:1px solid var(--fug-rule); border-radius:8px; box-shadow:0 10px 28px rgba(8,16,24,.22)}
-.fa-menu button{border:0; background:transparent; color:var(--fug-fg); text-align:left; padding:8px 10px; border-radius:5px; font-size:13px; cursor:pointer}
-.fa-menu button:hover{background:var(--fa-hover)}
-.fa-menu button[aria-checked="true"]{background:var(--fa-pressed); color:var(--fa-pressed-fg); font-weight:600}
+.fug-app .fa-titlebar button:focus-visible{outline:2px solid var(--fa-bar-accent); outline-offset:-2px}
+.fug-app .fa-titlebar .fa-nav-btn[aria-current="page"]:focus-visible{outline-color:var(--fug-accent)}
+.fa-visually-hidden{position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
 /* ribbon */
 .fa-ribbon{display:flex; align-items:stretch; background:var(--fa-ribbon); border-bottom:1px solid var(--fa-edge); padding:6px 4px 0; overflow-x:auto; min-height:104px}
@@ -83,7 +91,7 @@ export const APP_CSS = `
 
 /* body */
 .fa-body{display:flex; align-items:stretch; min-height:560px; flex:1}
-.fa-left{flex:0 0 236px; background:var(--fa-panel); border-right:1px solid var(--fug-rule); padding-bottom:12px; min-width:0}
+.fa-left{flex:0 0 252px; background:var(--fa-panel); border-right:1px solid var(--fug-rule); padding-bottom:12px; min-width:0}
 .fa-right{flex:0 0 312px; background:var(--fa-panel); border-left:1px solid var(--fug-rule); min-width:0}
 .fa-canvas{flex:1 1 auto; min-width:0; padding:14px 20px 20px; display:flex; flex-direction:column; gap:12px; background:var(--fa-canvas)}
 .fa-panel-head{display:flex; justify-content:space-between; align-items:center; padding:11px 12px 6px; font-size:12px; font-weight:600; color:var(--fug-fg)}
@@ -236,6 +244,93 @@ export const APP_CSS = `
 .fa-phase{font-size:15px; font-weight:600}
 .fa-phase small{font-weight:400; color:var(--fug-muted); font-size:12px}
 
+/* panel headings */
+.fa-panel-head h2{font-size:12.5px; font-weight:600; margin:0; color:var(--fug-fg)}
+.fa-left .fa-panel-head .fa-count{font-size:11.5px}
+
+/* Inputs panel: the components of the current view, each with its role; conditions; pairs */
+.fa-in-sec{padding:4px 12px 10px}
+.fa-in-sec + .fa-in-sec{border-top:1px solid var(--fug-rule); padding-top:10px}
+.fa-in-sec h3{font-size:12px; font-weight:600; margin:0 0 6px; color:var(--fug-fg)}
+.fa-in-hint{font-size:11.5px; color:var(--fug-fg2); margin:0 0 8px; line-height:1.4}
+.fa-in-sec .fa-in-hint:last-child{margin-bottom:0}
+.fa-slots{display:grid; gap:8px}
+.fa-slot{display:grid; gap:3px; background:var(--fug-bg); border:1px solid var(--fug-rule); border-radius:7px; padding:6px 7px 7px}
+.fa-slot label{display:flex; align-items:center; gap:7px; font-size:12px; color:var(--fug-fg); font-weight:500}
+.fa-slot-role{margin-left:auto; font-weight:400; font-size:11px; color:var(--fug-muted); text-align:right}
+.fug-app .fa-slot select{width:100%; font-size:13px; padding:4px 6px}
+.fa-slot.is-bad{border-color:var(--fa-bad)}
+.fa-slot.is-bad label{color:var(--fa-bad)}
+.fug-app .fa-slot.is-bad select{border-color:var(--fa-bad)}
+.fa-problems ul{margin:8px 0 0; padding:7px 10px 7px 24px; background:var(--fug-warn-bg); color:var(--fug-warn-fg); border-radius:6px; font-size:11.5px; display:grid; gap:3px; line-height:1.4}
+.fa-in-actions{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; align-items:center}
+.fug-app .fa-examples{flex:1 1 120px; font-size:12px}
+.fa-mini{display:inline-flex; align-items:center; gap:5px; border:1px solid var(--fug-rule); background:var(--fug-bg); color:var(--fug-fg); border-radius:6px;
+  padding:3px 9px 3px 7px; font-size:12px; cursor:pointer}
+.fa-mini:hover:not(:disabled){border-color:var(--fug-accent); color:var(--fug-accent)}
+.fa-mini:disabled{opacity:.45; cursor:default}
+.fa-mini .fug-ico{flex:none}
+.fa-list .fa-chips{padding:0}
+.fa-add{display:block; margin-top:6px}
+.fug-app .fa-add select{width:100%}
+.fa-left .fa-field{display:grid; grid-template-columns:minmax(0,1fr) auto; margin-bottom:6px}
+.fa-left .fa-field small{display:block; color:var(--fug-muted)}
+.fa-fixed{display:flex; align-items:baseline; gap:8px; font-size:13px; margin-bottom:4px}
+.fa-pairs ul{padding:0; margin-top:6px}
+.fa-pairs summary{font-size:12px; font-weight:600; cursor:pointer; color:var(--fug-fg)}
+.fa-pairs summary .fa-count{font-weight:400}
+.fa-pairs .fa-in-hint{margin-top:6px}
+
+/* canvas title */
+.fa-crumb{font-size:11.5px; color:var(--fug-muted); margin-bottom:1px}
+.fa-role-tag{display:inline-block; vertical-align:3px; font-size:11px; font-weight:500; color:var(--fa-pressed-fg); background:var(--fa-pressed);
+  border:1px solid var(--fa-pressed-edge); border-radius:999px; padding:0 8px; margin-right:8px}
+.fa-need{max-width:520px; margin:32px auto; border:1px dashed var(--fug-rule); border-radius:10px; padding:18px 20px; background:var(--fa-panel); font-size:13px}
+.fa-need h3{margin:0 0 8px; font-size:14px; font-weight:600}
+.fa-need ul{margin:0 0 10px; padding-left:18px; display:grid; gap:4px; color:var(--fug-fg)}
+.fa-need p{margin:0 0 10px; color:var(--fug-fg2); font-size:12.5px}
+
+/* results */
+.fa-result-card{display:grid; gap:6px; padding-bottom:10px; border-bottom:1px solid var(--fug-rule)}
+.fa-result-main{display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:12.5px; color:var(--fug-fg2)}
+.fa-provenance .fa-mini{font-size:11.5px; padding:2px 8px 2px 6px}
+.fa-slot-name{white-space:nowrap}
+
+/* drawer: Library, Sources, Settings over the workspace; the navigation bar stays live */
+.fa-stage{position:relative; display:flex; flex-direction:column; flex:1; min-height:0}
+.fa-layer{position:absolute; inset:0; z-index:40}
+.fa-scrim{position:absolute; inset:0; background:rgba(14,22,31,.36)}
+.fa-drawer{position:sticky; top:0; margin-left:auto; width:min(640px, 100%); height:min(100%, 100vh); display:flex; flex-direction:column;
+  background:var(--fug-bg); border-left:1px solid var(--fug-rule); box-shadow:-14px 0 36px rgba(8,16,24,.22); outline:none}
+.fa-drawer-head{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:14px 16px 12px; border-bottom:1px solid var(--fug-rule); background:var(--fa-panel)}
+.fa-drawer-head h2{display:flex; align-items:center; gap:8px; margin:0; font-size:16px; font-weight:600}
+.fa-drawer-head h2 .fug-ico{color:var(--fug-accent)}
+.fa-drawer-head p{margin:3px 0 0; font-size:12.5px; color:var(--fug-fg2)}
+.fa-drawer-head .fa-back-note{font-size:11.5px; color:var(--fug-muted)}
+.fa-close{display:inline-flex; align-items:center; gap:6px; flex:none; border:1px solid var(--fug-rule); background:var(--fug-bg); color:var(--fug-fg);
+  border-radius:7px; padding:5px 12px 5px 9px; font-size:12.5px; font-weight:500; cursor:pointer}
+.fa-close:hover{border-color:var(--fug-accent); color:var(--fug-accent)}
+.fa-drawer-body{flex:1; overflow:auto; padding:14px 16px 20px; overscroll-behavior:contain}
+.fa-drawer .fa-srcs{grid-template-columns:minmax(0,1fr)}
+.fa-src-summary{margin:0 0 12px; font-size:12.5px; color:var(--fug-fg2)}
+.fa-dev{margin-top:14px; font-size:12px}
+.fa-dev summary{cursor:pointer; font-weight:500}
+.fa-dgrid{display:grid; gap:18px}
+.fa-dsec h3{font-size:12.5px; font-weight:600; margin:0 0 8px}
+.fa-dsec p{margin:0 0 8px; font-size:12.5px; color:var(--fug-fg2)}
+.fa-rules{display:grid; gap:6px}
+.fa-rule{display:grid; gap:1px; text-align:left; border:1px solid var(--fug-rule); background:var(--fug-bg); color:var(--fug-fg); border-radius:7px; padding:8px 11px; cursor:pointer; font-size:12.5px}
+.fa-rule span{font-size:11.5px; color:var(--fug-fg2)}
+.fa-rule:hover{border-color:var(--fug-accent)}
+.fa-rule[aria-pressed="true"]{background:var(--fa-pressed); border-color:var(--fa-pressed-edge); color:var(--fa-pressed-fg)}
+.fa-rule[aria-pressed="true"] span{color:var(--fa-pressed-fg)}
+@media (prefers-reduced-motion: no-preference){
+  .fa-layer:not([hidden]) .fa-drawer{animation:fa-in .16s ease-out}
+  .fa-layer:not([hidden]) .fa-scrim{animation:fa-fade .16s ease-out}
+}
+@keyframes fa-in{from{transform:translateX(24px); opacity:.6}}
+@keyframes fa-fade{from{opacity:0}}
+
 /* status bar */
 .fa-status{display:flex; align-items:stretch; background:var(--fa-status); border-top:1px solid var(--fug-rule); font-size:11.5px; color:var(--fug-fg2); min-height:26px}
 .fa-cell{padding:4px 11px; border-right:1px solid var(--fug-rule); white-space:nowrap; display:flex; align-items:center; gap:6px}
@@ -244,10 +339,15 @@ export const APP_CSS = `
 .fa-state i{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--fa-ok)}
 .fa-state.is-busy i{background:var(--fa-busy)}
 .fa-state.is-err i{background:var(--fa-bad)}
+.fa-state.is-wait i{background:transparent; border:1.5px solid var(--fa-busy)}
 
-/* mid width: the inspector moves under the canvas */
+/* mid width: short workspace names, icon-only utilities, the results move under the canvas */
+.fug-app[data-size="mid"] .fa-nav-long,.fug-app[data-size="narrow"] .fa-nav-long{display:none}
+.fug-app[data-size="mid"] .fa-nav-short,.fug-app[data-size="narrow"] .fa-nav-short{display:inline}
+.fug-app[data-size="mid"] .fa-util-label,.fug-app[data-size="narrow"] .fa-util-label{display:none}
+.fug-app[data-size="mid"] .fa-titlebar{gap:12px}
 .fug-app[data-size="mid"] .fa-body{flex-wrap:wrap}
-.fug-app[data-size="mid"] .fa-canvas{flex-basis:calc(100% - 237px)}
+.fug-app[data-size="mid"] .fa-canvas{flex-basis:calc(100% - 253px)}
 .fug-app[data-size="mid"].fa-no-left .fa-canvas{flex-basis:100%}
 .fug-app[data-size="mid"] .fa-right{flex:1 1 100%; border-left:0; border-top:1px solid var(--fug-rule); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start}
 .fug-app[data-size="mid"] .fa-right>.fa-panel-head{grid-column:1/-1}
@@ -256,10 +356,17 @@ export const APP_CSS = `
 .fug-app[data-size="mid"] .fa-ribbon{flex-wrap:wrap; row-gap:6px; overflow-x:visible}
 .fug-app[data-size="mid"] .fa-group{border-right:0; border-left:1px solid var(--fa-edge); margin-left:-1px}
 
-/* narrow (phones): menu instead of tabs, ribbon groups stack, panels stack */
+/* narrow (phones): the workspaces get their own row of four, toolbar groups and panels stack */
 .fug-app[data-size="narrow"]{border-radius:0; border-left:0; border-right:0}
-.fug-app[data-size="narrow"] .fa-titlebar{gap:10px; padding-left:10px}
-.fug-app[data-size="narrow"] .fa-ribbon{flex-direction:column; overflow:visible; min-height:0; padding:4px 8px}
+.fug-app[data-size="narrow"] .fa-titlebar{flex-wrap:wrap; gap:0 6px; padding:0}
+.fug-app[data-size="narrow"] .fa-brand{padding:8px 0 6px 12px}
+.fug-app[data-size="narrow"] .fa-utils{border-left:0; padding-left:0}
+.fug-app[data-size="narrow"] .fa-util-btn{padding:6px 8px}
+.fug-app[data-size="narrow"] .fa-collapse{margin-right:4px}
+.fug-app[data-size="narrow"] .fa-nav{order:3; flex:1 1 100%; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:2px; padding:0 4px}
+.fug-app[data-size="narrow"] .fa-nav-btn{flex-direction:column; gap:2px; padding:6px 2px 7px; font-size:11.5px; justify-content:center; min-width:0}
+.fug-app[data-size="narrow"] .fa-nav-short{overflow:hidden; text-overflow:ellipsis; max-width:100%}
+.fug-app[data-size="narrow"] .fa-ribbon{flex-direction:column; overflow:visible; min-height:0; padding:4px 10px}
 .fug-app[data-size="narrow"] .fa-group{border-right:0; border-bottom:1px solid var(--fa-edge); padding:6px 0; flex-direction:column-reverse}
 .fug-app[data-size="narrow"] .fa-group:last-child{border-bottom:0}
 .fug-app[data-size="narrow"] .fa-group-label{text-align:left; padding:0 2px 4px; font-weight:600; color:var(--fug-fg2)}
@@ -273,12 +380,15 @@ export const APP_CSS = `
 .fug-app[data-size="narrow"] .fa-left,.fug-app[data-size="narrow"] .fa-right{flex:none; border:0; border-top:1px solid var(--fug-rule)}
 .fug-app[data-size="narrow"] .fa-left{order:0; border-top:0}
 .fug-app[data-size="narrow"] .fa-canvas{order:1; padding:12px}
+.fug-app[data-size="narrow"] .fa-canvas-bar{flex-wrap:wrap}
 .fug-app[data-size="narrow"] .fa-right{order:2}
-.fug-app[data-size="narrow"] .fa-lib{max-height:220px}
 .fug-app[data-size="narrow"] .fa-status{flex-wrap:wrap}
 .fug-app[data-size="narrow"] .fa-hide-narrow,.fug-app[data-size="narrow"] .fa-grow{display:none}
 .fug-app[data-size="narrow"] .fa-units{grid-template-columns:auto auto}
 .fug-app[data-size="narrow"] .fa-field{justify-content:flex-start}
+.fug-app[data-size="narrow"] .fa-drawer{width:100%; border-left:0}
+.fug-app[data-size="narrow"] .fa-drawer-head{flex-direction:column-reverse; gap:8px}
+.fug-app[data-size="narrow"] .fa-close{align-self:flex-end}
 @media (prefers-reduced-motion: reduce){ .fa-plot{transition:none} }
 `;
 
