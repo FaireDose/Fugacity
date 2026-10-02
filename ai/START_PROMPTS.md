@@ -12,18 +12,18 @@ passwords.
 
 ### Open the workbench
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. Open the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
 
 ### Ask for a property value
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
 > Give the source of each value.
 
 ## Develop the simulator
 
 ### Add a thermodynamic model
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md,
+> Read https://fairedose.github.io/Fugacity/agents.md,
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md and
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/proposals/0000-template.md.
 > I want to add the **Wilson activity model** to Fugacity. Help me write the proposal:
@@ -36,7 +36,7 @@ liquid-liquid equilibria.
 
 ### Build an algorithm or a unit operation
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md,
+> Read https://fairedose.github.io/Fugacity/agents.md,
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md and
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md.
 > I want to work on **the isothermal (PT) flash**. Explain which roadmap and architecture
@@ -64,7 +64,7 @@ flash drum, recycle solver, shortcut column, McCabe–Thiele view.
 
 ### Review a proposal
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md. Review
+> Read https://fairedose.github.io/Fugacity/agents.md. Review
 > **https://github.com/FaireDose/Fugacity/pull/NN** as an experienced process engineer:
 > check the equations against their references, the validation plan, and whether it fits
 > the architecture. List concrete objections and what would resolve them. I will post the
@@ -72,7 +72,7 @@ flash drum, recycle solver, shortcut column, McCabe–Thiele view.
 
 ### Work on the ambitious tracks: cost engineering and agentic design
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md and
+> Read https://fairedose.github.io/Fugacity/agents.md and
 > https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md (cost engineering
 > and agentic design tracks). Help me with item **E2: equipment cost correlations**. Find
 > correlations in open sources only (open-access articles, open government or university
@@ -87,7 +87,7 @@ answer.
 
 ### Find open data for a pair
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md and follow it.
+> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
 > I want to contribute open experimental vapour-liquid equilibrium data for
 > **water + 1-propanol**. Search open sources (open-access articles, the NIST ThermoML
 > Archive, open repositories), tell me what you find with links, and prepare a Fugacity
@@ -98,14 +98,14 @@ Pick your pair from the [data wanted list](../docs/DATA_WANTED.md).
 
 ### Add a component
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md and follow it.
+> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
 > Help me add **1-propanol** to Fugacity: constants from the NIST Chemistry WebBook,
 > vapour-pressure coefficients from an open source, UNIQUAC r and q. Prepare a
 > contribution package of type "component" and list every source.
 
 ### Report a wrong result
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md and follow it.
+> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
 > Fugacity gives **[what you saw]** for **[system and conditions]**, but **[open source]**
 > reports **[value]**. Help me prepare a contribution package of type "correction".
 
