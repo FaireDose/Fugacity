@@ -40,7 +40,7 @@ export function bubbleT(sys, x, P) {
   const [a, b] = scanBracket(f, lo, hi, 40);
   const T = brent(f, a, b, { xtol: 1e-7 });
   const e = sys.equilibrium(x, T);
-  return { T, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T) : [] };
+  return { T, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T, P) : [] };
 }
 
 /**
@@ -50,5 +50,5 @@ export function bubbleT(sys, x, P) {
 export function bubbleP(sys, x, T) {
   x = clean(x);
   const e = sys.equilibrium(x, T);
-  return { P: e.P, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T) : [] };
+  return { P: e.P, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T, e.P) : [] };
 }

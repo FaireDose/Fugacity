@@ -5,8 +5,9 @@ import { renderTxy } from "./txy.js";
 import { renderTernary } from "./ternary.js";
 import { pure } from "../thermo/pure.js";
 import knownIssues from "../data/known-issues.json" with { type: "json" };
+import { normalizeSets, normalizePrefer, setsFor, setChoices, pairKeyOf } from "./app-logic.js";
 
-const TIER = { fitted: "fitted to experimental data", databank: "databank", predicted: "predicted" };
+const TIER = { fitted: "fitted to experimental data", databank: "databank", predicted: "predicted", user: "given in this page" };
 
 /**
  * Put an interactive phase-equilibrium view into a page element.
@@ -23,6 +24,9 @@ const TIER = { fitted: "fitted to experimental data", databank: "databank", pred
  * @param {number} [cfg.grid=40]              ternary grid divisions
  * @param {boolean} [cfg.allowMissingPairs=false]
  * @param {"mole"|"mass"} [cfg.basis="mole"]  compositions in the readouts: mole fractions or wt %
+ * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" };
+ *   pairs with more than one set also get a selector under "Parameter sources"
+ * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  rule for every pair (see Fugacity.library)
  * @returns {{update:(patch:object)=>void, state:object}}
  *
  * @example
@@ -46,6 +50,8 @@ export function mount(target, cfg = {}) {
     allowMissingPairs: !!cfg.allowMissingPairs,
     title: cfg.title,
     feedbackUrl: cfg.feedbackUrl ?? "https://github.com/FaireDose/Fugacity/issues/new/choose",
+    sets: normalizeSets(cfg.sets),
+    prefer: normalizePrefer(cfg.prefer),
   };
   const uid = Math.random().toString(36).slice(2, 7);
   const all = listComponents().filter(c => c.activity);
@@ -94,14 +100,14 @@ export function mount(target, cfg = {}) {
 
     let sys, error = null;
     try {
-      sys = createSystem({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs });
+      sys = createSystem({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) });
     } catch (e) {
       error = e.message.startsWith("No ") && e.message.includes("parameters for")
         ? e.message.split(". Pass")[0] + ". Pick other components, or suggest these pairs for the databank."
         : e.message;
     }
     const n = sys ? sys.n : state.components.length;
-    const issues = sys ? knownIssues.issues.filter(k => k.model === sys.model && k.components.length === sys.ids.length &&
+    const issues = sys && sys.info.pairs.every(p => p.default !== false) ? knownIssues.issues.filter(k => k.model === sys.model && k.components.length === sys.ids.length &&
       k.components.every(c => sys.ids.includes(c))) : [];
     const view = { basis: state.basis, MW: sys ? sys.ids.map(id => pure(id).MW) : [] };
     const checks = n === 3 ? [
@@ -111,7 +117,18 @@ export function mount(target, cfg = {}) {
 
     const plot = h("div", { class: "fug-plot" }), side = h("div", { class: "fug-side", "aria-live": "polite" });
     const title = state.title || (sys ? sys.names.join(" + ") : "Phase equilibrium");
-    const sources = sys ? sys.info.pairs.map(p => h("div", {}, `${p.pair.join(" + ")} (${TIER[p.tier] || p.tier}): ${p.source}`)) : [];
+    const sources = sys ? sys.info.pairs.map((p, k) => {
+      const choices = setChoices(p);
+      if (!choices.length) return h("div", {}, `${p.pair.join(" + ")} (${TIER[p.tier] || p.tier}): ${p.source}`);
+      const idOf = new Map(sys.info.components.map(c => [c.name, c.id]));
+      const key = pairKeyOf(idOf.get(p.pair[0]), idOf.get(p.pair[1]));
+      const sel = h("select", { id: `fug-set${k}-${uid}`, "aria-label": `Parameter set for ${p.pair.join(" + ")}`, on: { change: ev => {
+        const v = ev.target.value, pick = choices.find(c => c.set === v);
+        state.sets = normalizeSets({ [key]: pick?.default && !state.prefer ? null : v }, state.sets);
+        render();
+      } } }, ...choices.map(c => h("option", { value: c.set, selected: c.current }, c.label)));
+      return h("div", {}, `${p.pair.join(" + ")} (${TIER[p.tier] || p.tier}), set `, sel, `: ${p.source}`);
+    }) : [];
     if (sys && sys.info.missingPairs.length) sources.push(h("div", {}, `Treated as ideal (no parameters): ${sys.info.missingPairs.map(m => m.join(" + ")).join("; ")}.`));
 
     box.replaceChildren(
@@ -130,7 +147,7 @@ export function mount(target, cfg = {}) {
     try {
       if (n === 2) renderTxy(plot, side, sys, state.P, view);
       else if (n === 3) renderTernary(plot, side, sys, state.P, {
-        ...state, ...view, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs }),
+        ...state, ...view, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) }),
       });
       else throw new Error("The interface shows 2 or 3 components so far. Use the calculation functions for more.");
     } catch (e) {
@@ -145,7 +162,9 @@ export function mount(target, cfg = {}) {
     update(patch) {
       if (patch.P_kPa != null) state.P = patch.P_kPa;
       if (patch.model) state.model = norm(patch.model);
-      Object.assign(state, Object.fromEntries(Object.entries(patch).filter(([k]) => !["P_kPa", "model"].includes(k))));
+      if ("sets" in patch) state.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);
+      if ("prefer" in patch) state.prefer = normalizePrefer(patch.prefer);
+      Object.assign(state, Object.fromEntries(Object.entries(patch).filter(([k]) => !["P_kPa", "model", "sets", "prefer"].includes(k))));
       render();
     },
   };

@@ -1,50 +1,14 @@
 import componentData from "../data/components.json" with { type: "json" };
-import binaryData from "../data/binaries.json" with { type: "json" };
 import { vapourPressure } from "./psat.js";
 import { nrtl } from "./activity/nrtl.js";
 import { uniquac } from "./activity/uniquac.js";
 import { dimerK, monomerPressure } from "./vapour.js";
-import { createEosSystem, EOS_MODELS, RANGE_MARGIN_K } from "./eos/system.js";
+import { createEosSystem, EOS_MODELS } from "./eos/system.js";
+import { listComponents, findComponent } from "./components.js";
+import { selection, choosePair, describePair, pairWarnings } from "./library.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
-export { EOS_MODELS };
-
-/**
- * All components in the databank, as { id, name, formula, cas, activity }.
- * `activity` is true when the component has the data for activity-coefficient (NRTL,
- * UNIQUAC) vapour-liquid equilibria; light gases are described by equations of state.
- */
-export function listComponents() {
-  return Object.entries(componentData.components).map(([id, c]) => ({
-    id, name: c.name, formula: c.formula, cas: c.cas, activity: Boolean(c.uniquac && c.vapourPressure),
-  }));
-}
-
-const norm = s => String(s).trim().toLowerCase().replace(/[\s_]+/g, " ");
-
-/**
- * Find a component by id, name, alias or CAS number (case-insensitive).
- * @param {string} key
- * @returns {string} component id
- */
-export function findComponent(key) {
-  const k = norm(key);
-  for (const [id, c] of Object.entries(componentData.components)) {
-    const names = [id, c.name, c.cas, c.formula, ...(c.aliases || [])].map(norm);
-    if (names.includes(k) || names.includes(k.replace(/ /g, "-"))) return id;
-  }
-  const known = listComponents().map(c => c.name).join(", ");
-  throw new Error(`Unknown component "${key}". Available: ${known}.`);
-}
-
-function findPair(model, a, b) {
-  for (const p of binaryData.pairs) {
-    if (p.model !== model) continue;
-    if (p.i === a && p.j === b) return { ...p, flipped: false };
-    if (p.i === b && p.j === a) return { ...p, flipped: true };
-  }
-  return null;
-}
+export { EOS_MODELS, listComponents, findComponent };
 
 /**
  * Build a thermodynamic system: components + liquid activity model + vapour model.
@@ -56,6 +20,10 @@ function findPair(model, a, b) {
  * @param {boolean} [cfg.association=true]         use the chemical theory for dimerizing acids
  * @param {number[]|((T:number)=>number[])} [cfg.psat]  override pure vapour pressures (kPa),
  *        e.g. with the pure-component values measured alongside an isothermal data set
+ * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" }
+ *        (pair in any order, any component name); see Fugacity.library.sets()
+ * @param {string[]} [cfg.prefer]  tiers in order of preference for every pair, e.g. ["fitted", "databank"];
+ *        without sets or prefer each pair uses its default set
  */
 export function createSystem(cfg) {
   const model = (cfg.model || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : (cfg.model || "NRTL").toUpperCase();
@@ -64,7 +32,8 @@ export function createSystem(cfg) {
   if (!Array.isArray(cfg.components) || cfg.components.length < (isEos ? 1 : 2)) throw new Error(isEos ? "Give at least one component." : "Give at least two components.");
   const ids = cfg.components.map(findComponent);
   if (new Set(ids).size !== ids.length) throw new Error("A component appears twice.");
-  if (isEos) return createEosSystem(ids, { ...cfg, model }); // Peng-Robinson / SRK: see eos/system.js
+  const sel = selection(cfg); // checked for every model, so that a typo never passes silently
+  if (isEos) return createEosSystem(ids, { ...cfg, model }, sel); // Peng-Robinson / SRK: see eos/system.js
   const comps = ids.map(id => componentData.components[id]);
   for (const c of comps) {
     if (!c.vapourPressure && !cfg.psat) {
@@ -81,12 +50,13 @@ export function createSystem(cfg) {
   const pairs = [], missing = [];
   for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
     if (model === "ideal") continue;
-    const p = findPair(model, ids[i], ids[j]);
-    if (!p) { missing.push([comps[i].name, comps[j].name]); continue; }
-    const [aij, aji, bij, bji] = p.flipped ? [p.a_ji, p.a_ij, p.b_ji, p.b_ij] : [p.a_ij, p.a_ji, p.b_ij, p.b_ji];
+    const choice = choosePair(model, ids[i], ids[j], sel);
+    if (!choice) { missing.push([comps[i].name, comps[j].name]); continue; }
+    const p = choice.chosen.params;
+    const [aij, aji, bij, bji] = choice.flipped ? [p.a_ji, p.a_ij, p.b_ji, p.b_ij] : [p.a_ij, p.a_ji, p.b_ij, p.b_ji];
     a[i][j] = aij; a[j][i] = aji; b[i][j] = bij; b[j][i] = bji;
     alpha[i][j] = alpha[j][i] = p.alpha ?? 0.3;
-    pairs.push({ pair: [comps[i].name, comps[j].name], source: p.source, tier: p.tier || "databank", T_range_K: p.T_range_K ?? null });
+    pairs.push(describePair(choice, [comps[i].name, comps[j].name]));
   }
   if (missing.length && !cfg.allowMissingPairs) {
     const list = missing.map(m => m.join(" + ")).join("; ");
@@ -136,17 +106,12 @@ export function createSystem(cfg) {
   };
 
   /**
-   * Warnings that apply to a calculation at T (K): temperatures more than RANGE_MARGIN_K outside
-   * the data range of a pair whose parameters carry one (temperature-dependent fits).
+   * Warnings that apply to a calculation at T (K) and P (kPa): temperatures more than
+   * RANGE_MARGIN_K (10 K) outside the data range of a set that carries one (temperature-dependent
+   * fits), pressures outside a set's pressure range, and notes on the choice of sets.
    */
-  function warnings(T) {
-    const w = [];
-    for (const p of pairs) {
-      if (p.T_range_K && Number.isFinite(T) && (T < p.T_range_K[0] - RANGE_MARGIN_K || T > p.T_range_K[1] + RANGE_MARGIN_K)) {
-        w.push(`${model} parameters of ${p.pair.join(" + ")} come from data at ${p.T_range_K[0]}-${p.T_range_K[1]} K; ${T.toFixed(2)} K is outside that range.`);
-      }
-    }
-    return w;
+  function warnings(T, P) {
+    return pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
   }
 
   return { ids, names: comps.map(c => c.name), n, model, gammas, psat, equilibrium, info, warnings };

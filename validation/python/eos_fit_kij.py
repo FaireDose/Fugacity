@@ -2,7 +2,7 @@
 
 Used where the databank value is contradicted by open data. The fitted entry replaces the
 databank entry in src/data/kij.json (tier "fitted"); the databank value is kept in
-`replaced` with the reason.
+`replaced` with the reason. Then run make_sources.py (it adds set names and source_ids).
 
 Fits (objective: sum of squared ln(P_bubble,calc / P_exp) at the measured T and liquid x,
 bubble pressure from the independent Python implementation in reference_eos.py):

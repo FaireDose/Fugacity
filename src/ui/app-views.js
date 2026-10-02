@@ -5,9 +5,11 @@
  * Views only: every number comes from the public calculation functions (system(), pure(),
  * steam(), steamSat(), henry(), henryInfo(), gasSolubility()) or from the existing
  * renderers (renderTxy, renderTernary, mountProperties). Where the engine has no value or
- * throws, the view says so and draws nothing there; nothing is estimated.
+ * throws, the view says so and draws nothing there; nothing is estimated. Sources come from
+ * the library (Fugacity.library, src/thermo/library.js).
  */
 import { h, s, text, ticks, basisView } from "./dom.js";
+import { icon } from "./icons.js";
 import { renderTxy } from "./txy.js";
 import { renderTernary } from "./ternary.js";
 import { mountProperties } from "./properties.js";
@@ -18,8 +20,10 @@ import { pure, PROPERTIES, PROPERTY_NAMES } from "../thermo/pure.js";
 import { steam, steamSat } from "../thermo/iapws/steam.js";
 import { henry, henryInfo, gasSolubility } from "../thermo/henry.js";
 import { ternaryAzeotropes } from "../equilibrium/azeotrope.js";
+import { library, sourceEntry, componentSources } from "../thermo/library.js";
 import {
   viewAvailability, knownIssuesFor, pxyTemperature, tierCounts, tierSummary, normalizeComposition, interpolate, fmtP, fmtTemp, parseP, parseT,
+  setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
@@ -40,6 +44,7 @@ export function renderView(view, ctx) {
     case "henry": return henryView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
+    case "sources": return sourcesView(ctx);
     default: throw new Error(`Unknown view "${view}".`);
   }
 }
@@ -57,6 +62,58 @@ function sourceList(ctx, items) {
     it.text ? h("div", { class: "fa-src-text" + (it.text.length > 150 ? " is-clamped" : ""), title: it.text.length > 150 ? "Click to show all" : undefined,
       on: { click: ev => ev.currentTarget.classList.remove("is-clamped") } }, it.text) : null)));
 }
+
+const KIND_LABEL = {
+  "standard": "Standard", "open-source library": "Open-source library", "databank": "Databank", "thermoml": "ThermoML Archive",
+  "open-access article": "Open-access article", "free book": "Free book", "handbook via open compilation": "Handbook, open compilation", "user": "Given in this page",
+};
+const linkOf = s => s.url || (s.doi ? `https://doi.org/${s.doi}` : null);
+const byline = s => [s.authors, s.published ?? s.year].filter(Boolean).join(", ");
+
+/** Sources from the library, as short linked entries: title, authors and year, kind, why it is open. */
+function sourceLinks(ids, { access = true } = {}) {
+  const items = [...new Set(ids)].map(sourceEntry).filter(Boolean);
+  if (!items.length) return null;
+  return h("ul", { class: "fa-libsrc" }, ...items.map(s => {
+    const href = linkOf(s);
+    return h("li", {},
+      href ? h("a", { href, target: "_blank", rel: "noopener", title: s.id }, s.title) : h("span", { title: s.id }, s.title),
+      h("div", { class: "fa-libsrc-meta" }, [byline(s), KIND_LABEL[s.kind] ?? s.kind, s.via ? `via ${s.via}` : null].filter(Boolean).join(" · ")),
+      access ? h("div", { class: "fa-libsrc-why" }, s.access) : null);
+  }));
+}
+
+/** The pair parameter sets in use, each with its set name, tier, fit text and library sources. */
+function pairSources(ctx, pairs, { kij = false } = {}) {
+  return h("ul", { class: "fa-sources" }, ...pairs.map(p => h("li", {},
+    h("div", { class: "fa-src-head" }, h("span", {}, p.pair.join(" + "), kij && p.tier !== "none" ? h("small", { class: "fa-kij" }, ` k_ij = ${fmtShort(p.kij, 4)}`) : null), ctx.badge(p.tier)),
+    p.set ? h("div", { class: "fa-src-set" }, `Set “${p.set}”${p.default ? ", default" : ""}${p.alternatives?.length ? ` · ${p.alternatives.length} other${p.alternatives.length > 1 ? "s" : ""} in the project panel` : ""}`) : null,
+    p.note ? h("div", { class: "fa-src-note" }, p.note) : null,
+    sourceLinks(p.source_ids ?? []),
+    p.source ? h("div", { class: "fa-src-text" + (p.source.length > 150 ? " is-clamped" : ""), title: p.source.length > 150 ? "Click to show all" : undefined,
+      on: { click: ev => ev.currentTarget.classList.remove("is-clamped") } }, p.source) : null)));
+}
+
+/** Library sources of the pure-component records of `ids` (only `keys`), grouped by source. */
+function componentSourceList(ids, keys) {
+  const bySource = new Map();
+  for (const id of ids) for (const r of componentSources(id)) {
+    if (keys && !keys.includes(r.key)) continue;
+    for (const sid of r.source_ids) {
+      if (!bySource.has(sid)) bySource.set(sid, new Map());
+      const m = bySource.get(sid);
+      if (!m.has(r.label)) m.set(r.label, []);
+      m.get(r.label).push(nameOf(id));
+    }
+  }
+  if (!bySource.size) return null;
+  return h("ul", { class: "fa-sources" }, ...[...bySource].map(([sid, m]) => h("li", {},
+    sourceLinks([sid], { access: false }),
+    h("div", { class: "fa-src-text" }, [...m].map(([label, names]) => `${label[0].toUpperCase()}${label.slice(1)}: ${names.join(", ")}`).join("; ")))));
+}
+
+/** Known deviations apply to the default sets only (they were found with them). */
+const onDefaults = sys => sys.info.pairs.every(p => p.default !== false);
 
 function friendly(e) {
   const m = e.message;
@@ -93,9 +150,10 @@ function kv(rows) {
 function vleView(view, ctx) {
   const { state, plot, side, notes, extra } = ctx;
   const av = viewAvailability(view, state.components);
+  const opts = setsFor(state, state.model);
   let sys;
-  try { sys = system({ components: av.use, model: state.model }); } catch (e) { throw new Error(friendly(e)); }
-  for (const k of knownIssuesFor(sys.ids, sys.model)) {
+  try { sys = system({ components: av.use, model: state.model, ...opts }); } catch (e) { throw new Error(friendly(e)); }
+  for (const k of onDefaults(sys) ? knownIssuesFor(sys.ids, sys.model) : []) {
     notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
   }
   const look = { basis: state.basis, MW: sys.ids.map(id => pure(id).MW), T: state.units.T };
@@ -103,15 +161,17 @@ function vleView(view, ctx) {
   else {
     renderTernary(plot, side, sys, state.P_kPa, {
       ...look, residueCurves: state.residueCurves, isotherms: state.isotherms, grid: state.grid,
-      makePairSystem: ids => system({ components: ids, model: state.model }),
+      makePairSystem: ids => system({ components: ids, model: state.model, ...opts }),
     });
   }
   const counts = tierCounts(sys.info.pairs, sys.info.missingPairs);
   extra.append(section("Parameter sources", sys.info.pairs.length
-    ? sourceList(ctx, sys.info.pairs.map(p => ({ label: p.pair.join(" + "), tier: p.tier, text: p.source })))
+    ? pairSources(ctx, sys.info.pairs)
     : h("div", { class: "fa-empty" }, "Ideal solution: no binary parameters (activity coefficients equal 1)."),
-  h("div", { class: "fug-foot" }, `Vapour: ${sys.info.vapour}. Pure vapour pressures from the component records. Predictions, not measurements.`)));
-  return { data: sys.model === "ideal" ? "Ideal solution, no pair parameters" : tierSummary(counts) };
+  h("div", { class: "fug-foot" }, `Vapour: ${sys.info.vapour}. Predictions, not measurements.`)),
+  section("Pure-component data", componentSourceList(sys.ids, ["vapourPressure", "uniquac", "association"]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
+  const alt = sys.info.pairs.filter(p => p.default === false).length;
+  return { data: sys.model === "ideal" ? "Ideal solution, no pair parameters" : tierSummary(counts) + (alt ? `; ${alt} on a non-default set` : "") };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -144,6 +204,7 @@ function azeotropeView(ctx) {
   const u = state.units, P = state.P_kPa;
   const ids = viewAvailability("azeotropes", state.components).use;
   const MW = Object.fromEntries(ids.map(id => [id, pure(id).MW]));
+  const opts = setsFor(state, state.model);
   const comp = (x, pairIds) => {
     const bv = basisView(state.basis, pairIds.map(id => MW[id]));
     const w = bv.conv(x);
@@ -153,7 +214,7 @@ function azeotropeView(ctx) {
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
     const pair = [ids[i], ids[j]];
     let sys;
-    try { sys = system({ components: pair, model: state.model }); } catch (e) {
+    try { sys = system({ components: pair, model: state.model, ...opts }); } catch (e) {
       errors.push(friendly(e));
       cards.push(h("div", { class: "fa-card is-missing" }, h("div", { class: "fa-card-head" }, h("strong", {}, `${nameOf(pair[0])} + ${nameOf(pair[1])}`), ctx.badge("none")),
         h("div", { class: "fa-empty" }, friendly(e))));
@@ -174,11 +235,11 @@ function azeotropeView(ctx) {
   if (ids.length >= 3) {
     try {
       const tri = ids.slice(0, 3);
-      const sys3 = system({ components: tri, model: state.model });
-      for (const z of ternaryAzeotropes(sys3, P, pids => system({ components: pids, model: state.model })).filter(z => z.kind === "ternary")) {
+      const sys3 = system({ components: tri, model: state.model, ...opts });
+      for (const z of ternaryAzeotropes(sys3, P, pids => system({ components: pids, model: state.model, ...opts })).filter(z => z.kind === "ternary")) {
         points.push({ T: z.T, kind: "Ternary azeotrope", what: comp(z.x, tri) });
       }
-      for (const k of knownIssuesFor(sys3.ids, sys3.model)) ctx.notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
+      for (const k of onDefaults(sys3) ? knownIssuesFor(sys3.ids, sys3.model) : []) ctx.notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
     } catch (e) { errors.push(`Ternary search (${ids.slice(0, 3).map(nameOf).join(", ")}): ${friendly(e)}`); }
   }
   // pure-component boiling points do not depend on the mixture model
@@ -204,8 +265,9 @@ function azeotropeView(ctx) {
     h("div", { class: "fug-sub" }, `${ids.length} components, ${ids.length * (ids.length - 1) / 2} pairs, at ${fmtP(P, u)}.`),
     ...(errors.length ? [h("div", { class: "fug-err" }, ...errors.map(e => h("div", {}, e)))] : []));
   extra.append(section("Parameter sources", sources.size
-    ? sourceList(ctx, [...sources.values()].map(p => ({ label: p.pair.join(" + "), tier: p.tier, text: p.source })))
-    : h("div", { class: "fa-empty" }, state.model === "ideal" ? "Ideal solution: no binary parameters." : "No pair has parameters.")));
+    ? pairSources(ctx, [...sources.values()])
+    : h("div", { class: "fa-empty" }, state.model === "ideal" ? "Ideal solution: no binary parameters." : "No pair has parameters.")),
+  section("Pure-component data", componentSourceList(ids, ["vapourPressure", "uniquac", "association"]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
   return { data: tierSummary(tierCounts([...sources.values()])) || (state.model === "ideal" ? "Ideal solution" : ""), error: errors.length ? errors[0] : null };
 }
 
@@ -213,16 +275,18 @@ function azeotropeView(ctx) {
 // Equation of state: P-x-y, phase envelope, calculator
 
 function eosSystem(state, ids) {
-  return system({ components: ids, model: state.eos });
+  return system({ components: ids, model: state.eos, ...setsFor(state, state.eos) });
 }
 
 function eosSources(ctx, sys) {
-  const items = sys.info.pairs.map(p => ({ label: `${p.pair.join(" + ")}: k_ij = ${p.tier === "none" ? "0" : fmtShort(p.kij, 4)}`, tier: p.tier,
-    text: p.tier === "none" ? "No k_ij in the databank; 0 is used." : `${p.source}${p.T_range_K ? `; data range ${p.T_range_K[0]}–${p.T_range_K[1]} K` : ""}` }));
-  return section("Model and sources",
-    h("div", { class: "fa-src-text" }, `${sys.info.equation}, both phases. Critical constants and acentric factors from the component records.`),
-    items.length ? sourceList(ctx, items) : null,
-    ...(sys.info.notes || []).map(n => h("div", { class: "fug-foot" }, n)));
+  const pairs = sys.info.pairs.map(p => (p.tier === "none" ? { ...p, source: "No k_ij in the databank; 0 is used.", kij: 0 }
+    : { ...p, source: `${p.source}${p.T_range_K ? `; data range ${p.T_range_K[0]}–${p.T_range_K[1]} K` : ""}` }));
+  return [section("Model and sources",
+    h("div", { class: "fa-src-text" }, `${sys.info.equation}, both phases.`),
+    pairs.length ? pairSources(ctx, pairs, { kij: true }) : null,
+    ...(sys.info.notes || []).map(n => h("div", { class: "fug-foot" }, n))),
+  section("Critical constants and acentric factors", componentSourceList(sys.ids, ["constants_source", "omega_source"])
+    ?? h("div", { class: "fa-empty" }, "From the component records (no source recorded for the critical constants of these liquids yet)."))];
 }
 
 function eosCalculator(ctx, sys, ids) {
@@ -320,7 +384,7 @@ function pxyView(ctx) {
   gapNote(reasons, "two-phase solution") ?? "");
   side.replaceChildren(read);
   move(0.5);
-  extra.append(eosCalculator(ctx, sys, ids), eosSources(ctx, sys));
+  extra.append(eosCalculator(ctx, sys, ids), ...eosSources(ctx, sys));
   return { data: tierSummary(tierCounts(sys.info.pairs), "k_ij pair") };
 }
 
@@ -374,7 +438,7 @@ function envelopeView(ctx) {
   gapNote(reasons, "bubble or dew point") ?? "");
   side.replaceChildren(read);
   move((xLo + xHi) / 2);
-  extra.append(eosCalculator(ctx, sys, ids), eosSources(ctx, sys));
+  extra.append(eosCalculator(ctx, sys, ids), ...eosSources(ctx, sys));
   return { data: ids.length > 1 ? tierSummary(tierCounts(sys.info.pairs), "k_ij pair") : "Critical constants from the component record" };
 }
 
@@ -428,7 +492,8 @@ function henryView(ctx) {
       h("label", { for: gasSel.id }, h("span", {}, "Gas"), gasSel), h("label", { for: tIn.id }, h("span", {}, `T, ${tU(u)}`), tIn),
       h("label", { for: pIn.id }, h("span", {}, `Gas pressure, ${u.P}`), pIn)), out),
     section("Sources", sourceList(ctx, gases.map(g => ({ label: nameOf(g.id), tier: g.info.tier,
-      text: `${g.info.source}; valid ${fmtTemp(g.info.Tmin_K, u, 1)} to ${fmtTemp(g.info.Tmax_K, u, 1)}` })))));
+      text: `${g.info.source}; valid ${fmtTemp(g.info.Tmin_K, u, 1)} to ${fmtTemp(g.info.Tmax_K, u, 1)}` }))),
+    sourceLinks(gases.flatMap(g => g.info.source_ids ?? []))));
   return { data: tierSummary(tierCounts(gases.map(g => ({ tier: g.info.tier }))), "gas", "gases") };
 }
 
@@ -453,7 +518,8 @@ function propertiesView(ctx) {
     return r ? { label, tier: r.tier ?? "databank", text: `${formatSource(r.source)}${Number.isFinite(r.Tmin_K) ? `; valid ${fmtTemp(r.Tmin_K, u, 1)} to ${fmtTemp(r.Tmax_K, u, 1)}` : ""}` }
       : { label, tier: "none", text: "No open data in the databank yet." };
   });
-  extra.append(section(`Correlations for ${p.name}`, sourceList(ctx, rows)));
+  extra.append(section(`Correlations for ${p.name}`, sourceList(ctx, rows)),
+    section("Sources in the library", componentSourceList([id]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
   return { data: `${have} of ${names.length} correlations with open data` };
 }
 
@@ -550,6 +616,76 @@ function steamView(ctx) {
     section("Sources", sourceList(ctx, [
       { label: "Thermodynamic properties", tier: "standard", text: "IAPWS-IF97, IAPWS R7-97(2012), www.iapws.org" },
       { label: "Viscosity", tier: "standard", text: "IAPWS R12-08, industrial form" },
-      { label: "Thermal conductivity", tier: "standard", text: "IAPWS R15-11, industrial form" }])));
+      { label: "Thermal conductivity", tier: "standard", text: "IAPWS R15-11, industrial form" }]),
+    sourceLinks(["iapws-r7-97", "iapws-r12-08", "iapws-r15-11"])));
   return { data: `IAPWS-IF97 (${TIER_LABEL.standard})` };
+}
+
+// ---------------------------------------------------------------------------------------
+// Sources: the library browser (Library tab)
+
+function sourcesView(ctx) {
+  const { state, plot, side, extra, uid, ui } = ctx;
+  const all = library.sources();
+  const ids = state.components;
+  const names = ids.map(nameOf);
+  const kinds = [...new Set(all.map(s => s.kind))];
+  const look = ui.sources ?? (ui.sources = { query: "", kind: "all", mine: false });
+  const list = h("div", { class: "fa-srcs", role: "list" });
+  const count = h("div", { class: "fa-hint", "aria-live": "polite" });
+  const draw = () => {
+    const shown = filterSources(all, look.query, look.kind).filter(s => !look.mine || sourceUsedFor(s, ids, names));
+    count.textContent = `${shown.length} of ${all.length} sources`;
+    list.replaceChildren(...shown.map(sourceCard), ...(shown.length ? [] : [h("div", { class: "fa-empty" }, "No source matches. Clear the search or the filters.")]));
+  };
+  const search = h("input", { type: "search", id: `fa-sq-${uid}`, placeholder: "Title, author, DOI, component, pair…", value: look.query, "aria-label": "Search the sources",
+    on: { input: ev => { look.query = ev.target.value; draw(); } } });
+  const kindSel = h("select", { id: `fa-sk-${uid}`, "aria-label": "Kind of source", on: { change: ev => { look.kind = ev.target.value; draw(); } } },
+    h("option", { value: "all" }, "All kinds"), ...kinds.map(k => h("option", { value: k, selected: look.kind === k }, KIND_LABEL[k] ?? k)));
+  const mine = h("input", { type: "checkbox", id: `fa-sm-${uid}`, checked: look.mine, disabled: !ids.length, on: { change: ev => { look.mine = ev.target.checked; draw(); } } });
+  plot.replaceChildren(
+    h("div", { class: "fa-src-tools" },
+      h("div", { class: "fa-search fa-src-search" }, icon("search", 16), search), kindSel,
+      h("label", { class: "fa-check-label", for: mine.id }, mine, ids.length ? `Used by ${names.length > 3 ? "the selected components" : names.join(", ")}` : "Used by the selection (none selected)"), count),
+    list);
+  draw();
+
+  const byKind = kinds.map(k => [KIND_LABEL[k] ?? k, all.filter(s => s.kind === k).length]).sort((a, b) => b[1] - a[1]);
+  side.replaceChildren(
+    h("div", {}, h("div", { class: "fug-eyebrow" }, "Open sources"), h("div", { class: "fug-big" }, String(all.length))),
+    kv(byKind.map(([k, n]) => [k, String(n)])),
+    h("div", { class: "fug-sub" }, "Every number in Fugacity comes from one of these sources, each free to read. Each pair can use another parameter set: pick it in the project panel, or set a rule on the Library tab."));
+  extra.append(section("In code",
+    h("div", { class: "fa-src-text" }, "Fugacity.library.sources(), .source(id), .sets(i, j, model), .usedBy(id); Fugacity.system({ …, sets: { \"acetone+chloroform\": \"chemsep\" }, prefer: [\"databank\"] })."),
+    h("div", { class: "fa-src-text" }, "Fugacity.library.add({ model, i, j, set, params, source }) adds a set from a paper for this page only (tier “user”); nothing is saved.")),
+  section("Contribute", h("div", { class: "fa-src-text" }, "A new source is cited once in src/data/sources.json and referred to by id (AGENTS.md).")));
+  return { data: `${all.length} sources` };
+}
+
+function sourceCard(s) {
+  const href = linkOf(s);
+  const uses = s.usedBy ?? [];
+  const records = uses.filter(u => u.type !== "file"), files = uses.filter(u => u.type === "file");
+  const groups = new Map();
+  for (const u of records) {
+    const g = u.type === "component" ? `Pure-component data: ${u.label.split(": ")[1]}` : u.type === "kij" ? "Equation-of-state k_ij"
+      : u.type === "pair-set" ? `${u.model} parameter sets` : u.type === "henry" ? "Henry's law" : "Known-deviation notes";
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(u.type === "component" ? nameOf(u.component) : u.type === "pair-set" || u.type === "kij" ? `${u.pair.join(" + ")}${u.default ? "" : ` (${u.set}, alternative)`}` : u.label);
+  }
+  const usedRows = [...groups].map(([g, items]) => h("li", {}, h("b", {}, `${g}: `), [...new Set(items)].join("; ")));
+  if (files.length) usedRows.push(h("li", {}, h("b", {}, "Files: "), files.map(f => f.file).join(", ")));
+  return h("article", { class: "fa-src-card", role: "listitem" },
+    h("div", { class: "fa-src-card-head" },
+      href ? h("a", { href, target: "_blank", rel: "noopener", class: "fa-src-title" }, s.title) : h("span", { class: "fa-src-title" }, s.title),
+      h("span", { class: `fa-kind fa-kind-${s.kind.replace(/[^a-z]+/g, "-")}` }, KIND_LABEL[s.kind] ?? s.kind)),
+    byline(s) ? h("div", { class: "fa-libsrc-meta" }, byline(s)) : null,
+    h("dl", { class: "fa-src-dl" },
+      h("dt", {}, "Why it is open"), h("dd", {}, s.access),
+      s.via ? h("dt", {}, "Taken via") : null, s.via ? h("dd", {}, s.via) : null,
+      s.doi ? h("dt", {}, "DOI") : null, s.doi ? h("dd", {}, h("a", { href: `https://doi.org/${s.doi}`, target: "_blank", rel: "noopener" }, s.doi)) : null,
+      s.note ? h("dt", {}, "Note") : null, s.note ? h("dd", {}, s.note) : null),
+    usedRows.length ? h("details", { class: "fa-src-uses" }, h("summary", {}, `Used for: ${records.length ? `${records.length} record${records.length === 1 ? "" : "s"}` : ""}${records.length && files.length ? ", " : ""}${files.length ? `${files.length} file${files.length === 1 ? "" : "s"}` : ""}`),
+      h("ul", {}, ...usedRows)) : h("div", { class: "fa-hint" }, "Not used yet."),
+    h("div", { class: "fa-src-id" }, h("code", {}, s.id)));
 }
