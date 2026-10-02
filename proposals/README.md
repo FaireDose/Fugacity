@@ -24,3 +24,4 @@ interface or file format, the steps of the core track in the
 | 0001 | [Property package interface](0001-property-package.md) | Draft |
 | 0002 | [Pure-component properties, gases and Peng–Robinson](0002-pure-component-properties.md) | Accepted |
 | 0003 | [The Fugacity Library: sources you can see and choose](0003-fugacity-library.md) | Draft |
+| 0004 | [The first 50 components, chosen by process](0004-first-50-components.md) | Draft |

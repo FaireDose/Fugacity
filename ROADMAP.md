@@ -99,7 +99,7 @@ one-line setup, document what works, and fix or report what doesn't.
 | **D2** | Fit the *databank only* and *missing* pairs in [DATA_WANTED.md](docs/DATA_WANTED.md) to open experimental data | Open, many items |
 | **D3** | One common format for all files in `validation/data/` | Open |
 | **D4** | Ideal-gas heat capacity and heat of vaporization for all components (needed by A1) | Done (0.2.0) |
-| **D5** | Grow to about 50 components: common solvents, alcohols, acids, esters, hydrocarbons, with pairs | Open |
+| **D5** | Grow to about 50 components: common solvents, alcohols, acids, esters, hydrocarbons, with pairs, chosen by benchmark processes ([proposal 0004](proposals/0004-first-50-components.md)) | Draft proposal |
 | **D6** | Liquid-liquid data for partly miscible pairs (water with benzene, toluene, chloroform, ethyl acetate) | Started: water + ethyl acetate |
 | **D7** | Ternary VLE data to check ternary predictions, starting with the systems whose ternary azeotropes are tested (methanol + acetone + chloroform, ethanol + water + ethyl acetate) | Open |
 | **D8** | Reaction data from open sources: heats of formation, equilibrium constants, kinetics for common reactions (esterification, hydrogenation, reforming), needed by reactors and route comparison | Open |
