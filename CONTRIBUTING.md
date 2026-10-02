@@ -57,7 +57,8 @@ passwords.
 
 ## The ambitious part
 
-Besides the simulator core, the [roadmap](ROADMAP.md) has two long-term tracks where
+Besides the simulator core and the **bridges** to spreadsheets, data files and other
+simulators (track B), the [roadmap](ROADMAP.md) has two long-term tracks where
 engineering experience matters more than code:
 
 - **Cost engineering (E):** equipment sizing, capital and operating cost, cost of

@@ -79,6 +79,9 @@ Something broken in the interface: the [Bug form](https://github.com/FaireDose/F
   layers, interfaces and file formats need an accepted proposal first
   ([proposals/](proposals/README.md)); small items (a view, a fix) can go straight to a
   pull request.
+- **Bridges** (track B of the [roadmap](ROADMAP.md)): exports (CSV, SVG, PNG), share by
+  link, ThermoML file import, project files, use from notebooks and spreadsheets,
+  exchange with other simulators through open formats and standards.
 - **Cost engineering and agentic design** (the long-term tracks E and G of the
   [roadmap](ROADMAP.md)): equipment sizing and cost correlations from open sources,
   operating cost and cost of production, a tool interface for agents, extracting process

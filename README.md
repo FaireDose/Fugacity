@@ -13,7 +13,8 @@ grows through volunteer contributions, one tested layer at a time, toward full f
 
 **Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria and properties →
 next flash, streams, unit operations, reaction engineering, distillation and flowsheets,
-growing towards models of all the common units → then **cost
+growing towards models of all the common units, with **bridges** to spreadsheets, reports
+and other simulators → then **cost
 engineering** (equipment sizing, capital and operating cost, cost per kg of product) →
 and the big ambition, **agentic process design**: AI agents read the open literature,
 build flowsheets for several process routes, simulate and cost them, and tell you which

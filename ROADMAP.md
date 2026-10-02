@@ -26,6 +26,8 @@ it, and follow [CONTRIBUTING.md](CONTRIBUTING.md). The tracks and the release pl
 - **Core track (A):** the design steps that fix the simulator's interfaces, layer by
   layer, from the property package to the flowsheet solver. Each step is a
   [proposal](proposals/README.md) first, then code.
+- **Bridges track (B):** getting data and results in and out: exports, imports, sharing,
+  and links to other tools and simulators.
 - **Assistant compatibility track (C):** Fugacity working in every AI chat.
 - **Data track (D):** more components and better parameters from open sources.
 - **Cost engineering track (E):** equipment sizing, capital and operating cost, cost of
@@ -59,6 +61,21 @@ an implementation, and tests. A step can start when the steps it depends on are 
 | **A11** Views | Flowsheet drawing, stream tables, column profiles, results export; views only call the layers below. | A7, A9 | Open |
 | **A12** Stability policy for 1.0 | Which interfaces are frozen, deprecation rules, long-term support of old versions. | A1–A11 | Open |
 | **A13** Reactions | How reactions are described: stoichiometry, heats of reaction from the property package, equilibrium constants from Gibbs energies, rate laws and their parameters with sources, so that reactor models (conversion, equilibrium, CSTR, plug flow, batch) share one description. | A1, A6 | Open |
+
+## Bridges track
+
+Engineers adopt a tool when their data gets in and their results get out. These items
+connect Fugacity to spreadsheets, reports, data sources and other simulators, using open
+formats and open standards only.
+
+| Item | What | Depends on | Status |
+|---|---|---|---|
+| **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Open |
+| **B2** | Share by link: the workbench state (components, model, conditions, view) in the page address, so a colleague opens exactly the same diagram | A9 | Open |
+| **B3** | Import open data files: read NIST ThermoML XML files and turn them into validation data and contribution packages with the source block filled in, which speeds up the data track | D3 | Open |
+| **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Open |
+| **B5** | Use from notebooks and spreadsheets: call the engine from Python notebooks and from spreadsheet functions, with the same numbers as in the browser | A1, A9 | Open |
+| **B6** | Other simulators: exchange flowsheets with open-source simulators where the file format is openly documented, and study the CAPE-OPEN interface standard so Fugacity's thermodynamics can be used by other simulators and the other way round | A1, A7 | Open |
 
 ## Assistant compatibility track
 
@@ -166,9 +183,10 @@ sources, assumptions) that anyone can re-run and check.
 
 ### v0.3 – Flash and streams
 
-Needs A4, A5 and D6.
+Needs A4, A5 and D6; B1, B2.
 
 - [ ] PT, PH and PQ flash; stream object
+- [ ] Export (CSV, SVG, PNG) and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria
 
 ### v0.4 – Flowsheets
@@ -178,6 +196,7 @@ Needs A6, A7, A8, A10, A11.
 - [ ] Mixer, splitter, heater/cooler, pump, valve, flash drum
 - [ ] Flowsheet solver with recycles; flowsheet drawing and stream tables
 - [ ] Assistants can write and edit flowsheet files
+- [ ] Project files (B4)
 
 ### v0.5 – Distillation
 
