@@ -12,11 +12,11 @@ passwords.
 
 ### Open the workbench
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
+> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. Open the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
 
 ### Ask for a property value
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
+> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
 > Give the source of each value.
 
 ## Develop the simulator

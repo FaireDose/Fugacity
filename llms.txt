@@ -5,9 +5,8 @@
 ## For AI assistants
 
 - [Rules for AI assistants, coding agents and contributors](https://raw.githubusercontent.com/FaireDose/Fugacity/main/AGENTS.md): sources, citing, checking, the two ways to contribute, contribution package format
-- [Using Fugacity in a chat page](https://fairedose.github.io/Fugacity/use.md): open the workbench, build diagrams, answer property questions with sources
-- [Live workbench](https://fairedose.github.io/Fugacity/)
-- [Install the skill](https://fairedose.github.io/Fugacity/install)
+- [Using Fugacity in a chat page](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md): open the workbench, build diagrams, answer property questions with sources
+- [Install the skill](https://github.com/FaireDose/Fugacity/blob/main/ai/README.md#install-the-skills)
 - [Data wanted](https://raw.githubusercontent.com/FaireDose/Fugacity/main/docs/DATA_WANTED.md): pairs that need open experimental data
 - [Example contribution package](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/examples/acetic-acid_ethylene-glycol.json)
 - [Starter prompts](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/START_PROMPTS.md)
