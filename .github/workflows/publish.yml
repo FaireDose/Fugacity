@@ -2,6 +2,9 @@
 # npm trusted publishing: npm accepts the upload only from this workflow file in
 # FaireDose/Fugacity, so no npm token is stored anywhere, and it adds a provenance record.
 # Configured on npmjs.com under Packages > fugacity > Settings > Trusted publishing.
+# Staged publishing: the workflow only *stages* the new version; it goes live when the
+# maintainer approves it with two-factor authentication on npmjs.com (fugacity > Staged
+# Packages > Approve). See https://docs.npmjs.com/staged-publishing
 # Each job gets only the permissions it needs. Actions are pinned to commit SHAs.
 name: Publish to npm
 
@@ -40,13 +43,12 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      # trusted publishing needs npm 11.5.1 or newer; npm 11 runs on Node 22
+      # staged publishing needs npm 11.15.0 or newer; npm 11 runs on Node 22
       - run: npm install -g npm@11
       - run: npm ci
-      # Normally npm trusted publishing (no token). The NPM_TOKEN secret is only for a first
-      # upload of a package that doesn't exist on npm yet (a trusted publisher can only be
-      # added to an existing package); delete the secret right after that upload.
-      - run: npm publish --provenance --access public
+      # Trusted publishing (no token). The optional NPM_TOKEN secret was only for the first
+      # upload of the package; it is no longer needed and should not exist.
+      - run: npm stage publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
