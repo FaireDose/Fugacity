@@ -75,7 +75,7 @@ Something broken in the interface: the [Bug form](https://github.com/FaireDose/F
 
 - **Develop the simulator** (roadmap items): equations of state, activity models (Wilson,
   modified UNIFAC), enthalpy, dew points and flash algorithms, phase stability, streams,
-  unit operations, the flowsheet solver, distillation, views. New models, algorithms,
+  unit operations, reactions and reactors, the flowsheet solver, distillation, views. New models, algorithms,
   layers, interfaces and file formats need an accepted proposal first
   ([proposals/](proposals/README.md)); small items (a view, a fix) can go straight to a
   pull request.

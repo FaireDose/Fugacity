@@ -35,7 +35,7 @@ A maintainer or a coding agent turns it into a pull request, and a reviewer chec
 
 ### 2. Let a coding agent open the pull request
 
-The natural way for development work (equations of state, algorithms, unit operations,
+The natural way for development work (equations of state, algorithms, unit operations, reactors,
 views), with Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor or another
 agent. They read AGENTS.md automatically.
 

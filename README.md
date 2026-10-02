@@ -12,11 +12,14 @@ grows through volunteer contributions, one tested layer at a time, toward full f
 > Results are model predictions. Check them against data before using them for design.
 
 **Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria and properties →
-next flash, streams, unit operations, flowsheets and distillation → then **cost
+next flash, streams, unit operations, reaction engineering, distillation and flowsheets,
+growing towards models of all the common units → then **cost
 engineering** (equipment sizing, capital and operating cost, cost per kg of product) →
 and the big ambition, **agentic process design**: AI agents read the open literature,
 build flowsheets for several process routes, simulate and cost them, and tell you which
 route is best and why, with every number traced to its source for an engineer to check.
+
+**Live demo, no chat needed:** <https://fairedose.github.io/Fugacity/>
 
 ## Try it in your chat (30 seconds)
 
@@ -24,13 +27,11 @@ Paste one of these into an assistant that can open web links.
 
 **Open the workbench:**
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
-> and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
 
 **Ask for a property value:**
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
-> and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
 > Give the source of each value.
 
 (Fugacity answers 971.8 kg/m³ and 0.354 mPa·s, from IAPWS-IF97 and the IAPWS viscosity

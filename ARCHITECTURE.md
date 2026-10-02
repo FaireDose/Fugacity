@@ -150,7 +150,9 @@ balance, validates its specs with clear messages, and ships with a test against 
 published example or an independent calculation.
 
 First units (v0.4): mixer, splitter, heater/cooler, pump, valve, flash drum.
-Then shortcut and rigorous distillation (v0.5).
+Then shortcut and rigorous distillation (v0.5), then reactors (conversion, equilibrium,
+CSTR, plug flow) with a common description of reactions, heat exchangers and compressors
+(v0.6), growing towards models of all the common unit operations.
 
 ## Layer 5: flowsheet
 

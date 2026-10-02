@@ -3,11 +3,12 @@
 ## Where Fugacity is going
 
 **Today:** phase equilibria, pure-component properties, steam tables and cubic equations
-of state, running in a browser page or an AI chat, every number traceable to an open
-source.
+of state, running in an AI chat, every number traceable to an open source.
 
-**Next:** flash calculations, streams, unit operations and flowsheets with recycles,
-then distillation. The core of a process simulator.
+**Next:** flash calculations, streams, unit operations, reaction engineering,
+distillation, and flowsheets with recycles: the core of a process simulator, growing
+towards models of all the common units (reactors, columns, heat exchangers,
+compressors, separators).
 
 **The ambition:** an open process-design studio where AI agents do the legwork and
 engineers make the decisions. You ask *"what is the best way to make this product, and
@@ -17,10 +18,10 @@ capital and operating cost and the cost per kilogram of product, and compare the
 side by side. Every assumption, number and source is shown, so an engineer can check
 the recommendation, change it and sign it off.
 
-Each item below is small enough for one person (or one person with an AI assistant) to
-finish, and each ends with tests. Pick an item, open an issue saying you are taking it,
-and follow [CONTRIBUTING.md](CONTRIBUTING.md). The roadmap has five tracks and a release
-plan:
+Below is a proposed roadmap to make this happen, starting with track A and building
+towards track G. Each item is small enough for one person working with AI tools to pick
+up and finish, and each ends with tests. Pick an item, open an issue saying you are taking
+it, and follow [CONTRIBUTING.md](CONTRIBUTING.md). The tracks and the release plan:
 
 - **Core track (A):** the design steps that fix the simulator's interfaces, layer by
   layer, from the property package to the flowsheet solver. Each step is a
@@ -50,13 +51,14 @@ an implementation, and tests. A step can start when the steps it depends on are 
 | **A3** Quality tiers and prediction | When the engine may use a predicted (UNIFAC) pair, and how every result shows the tier of the data behind it. | A1, A2 | Open |
 | **A4** Equilibrium solver contract | Common rules for bubble, dew and flash solvers: inputs, convergence criteria, and how failures are reported (never a silent wrong answer). | A1 | Open |
 | **A5** Streams and units | The stream object, internal SI units, and conversion only at the edges (interface, files). | A1, A4 | Open |
-| **A6** Unit operation interface | `registerUnit`: ports, specifications with validation, material and energy balance checks, required tests. | A5 | Open |
+| **A6** Unit operation interface | `registerUnit`: ports, specifications with validation, material and energy balance checks, required tests. One interface for every unit, from a mixer to a reactor or a column. | A5 | Open |
 | **A7** Flowsheet file format | JSON schema, format versions, and how older files keep working. | A5, A6 | Open |
 | **A8** Flowsheet solver | Calculation order, tear streams, recycle convergence, design specifications, error messages an engineer understands. | A6, A7 | Open |
 | **A9** Artifact contract | What a page may rely on: one pinned script, the `mount` configuration, no network access, theming, size and speed budgets (ternary map under 0.5 s, 50-stage column under 5 s), background workers. | A1 | Open |
 | **A10** AI authoring contract | How an assistant writes configurations and flowsheet files: the skill, a schema it can check against, and error messages that tell it what to fix. | A7, A9 | Open |
 | **A11** Views | Flowsheet drawing, stream tables, column profiles, results export; views only call the layers below. | A7, A9 | Open |
 | **A12** Stability policy for 1.0 | Which interfaces are frozen, deprecation rules, long-term support of old versions. | A1–A11 | Open |
+| **A13** Reactions | How reactions are described: stoichiometry, heats of reaction from the property package, equilibrium constants from Gibbs energies, rate laws and their parameters with sources, so that reactor models (conversion, equilibrium, CSTR, plug flow, batch) share one description. | A1, A6 | Open |
 
 ## Assistant compatibility track
 
@@ -182,14 +184,23 @@ Needs A6, A7, A8, A10, A11.
 - [ ] Shortcut column (Fenske–Underwood–Gilliland); McCabe–Thiele view
 - [ ] Rigorous equilibrium-stage column (MESH equations)
 
-### v0.6 – Cost engineering
+### v0.6 – Reactors and more units
+
+Needs A13 and D8.
+
+- [ ] Reactors: conversion, equilibrium (Gibbs energy minimization), CSTR, plug flow
+- [ ] Heat exchangers, compressors and expanders, and further units towards models of all
+      the common unit operations
+- [ ] Reactive systems in flowsheets, with heat of reaction in the energy balance
+
+### v0.7 – Cost engineering
 
 Needs E1–E4, E6.
 
-- [ ] Equipment sizing and cost for the units of v0.4 and v0.5
+- [ ] Equipment sizing and cost for the units of v0.4 to v0.6
 - [ ] Operating cost and cost of production of a flowsheet; cost view
 
-### v0.7 – Agentic process design
+### v0.8 – Agentic process design
 
 Needs G1–G4, E5.
 
@@ -198,7 +209,7 @@ Needs G1–G4, E5.
 
 ### Later
 
-- Reactors (conversion, equilibrium, kinetic), heat exchangers, compressors
+- Reactive distillation, batch reactors and catalyst deactivation
 - Sensitivity studies and optimization: the agent varies the design and finds the best
   operating point, with the engineer setting the limits
 - Electrolytes, solids and polymers; dynamic simulation
