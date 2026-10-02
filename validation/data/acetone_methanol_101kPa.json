@@ -1,0 +1,38 @@
+{
+ "_about": "Acetone (1) + methanol (2): isobaric T-x-y at 101.3 kPa, binary data set without ionic liquid from Li et al. (2018). Rows as in the ThermoML Archive record: liquid mole fraction of acetone, boiling temperature in K, vapour mole fraction of acetone.",
+ "source": {
+  "citation": "W. Li, Y. Du, X. Chen, J. Li, S. Guo, T. Zhang, Isobaric vapor-liquid equilibrium for acetone + methanol system containing different ionic liquids at 101.3 kPa, Fluid Phase Equilibria 459 (2018) 10-17",
+  "doi": "10.1016/j.fluid.2017.11.035",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2017.11.035.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3 (boiling temperature) and 4 (vapour mole fraction): the binary acetone + methanol set without ionic liquid. The table number in the article was not checked (article not open)."
+ },
+ "components": ["acetone", "methanol"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0, 337.65, 0],
+  [0.051, 336.1, 0.109],
+  [0.098, 334.83, 0.191],
+  [0.151, 333.59, 0.267],
+  [0.198, 332.65, 0.326],
+  [0.253, 331.78, 0.387],
+  [0.302, 331.13, 0.433],
+  [0.349, 330.6, 0.471],
+  [0.401, 330.1, 0.513],
+  [0.449, 329.61, 0.548],
+  [0.498, 329.1, 0.582],
+  [0.551, 328.71, 0.616],
+  [0.599, 328.46, 0.651],
+  [0.651, 328.33, 0.684],
+  [0.702, 328.25, 0.721],
+  [0.748, 328.21, 0.753],
+  [0.801, 328.2, 0.795],
+  [0.85, 328.28, 0.838],
+  [0.901, 328.45, 0.885],
+  [0.949, 328.7, 0.936],
+  [1, 329.26, 1]
+ ],
+ "notes": "Ebulliometric (recirculating still) and chromatographic method according to the ThermoML record. Expanded uncertainties given in the record: T about 0.09-0.1 K, y_1 0.003-0.005. The ThermoML record carries no consistency-test result; validation/python/fit_parameters.py runs a point test (Van Ness / Fredenslund type) and prints it. The ThermoML record states the pressure as 101 kPa (3 significant digits); this file uses 101.3 kPa, the pressure in the article title. The difference changes the bubble temperature by about 0.08 K. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}
