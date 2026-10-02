@@ -3,11 +3,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import * as Fugacity from "../src/index.js";
 import {
-  TABS, VIEWS, PRESETS, MAX_COMPONENTS, initialState, applyPatch, viewAvailability, resolveView, toggleComponent, rotate,
+  LEGACY_TABS, VIEWS, PRESETS, MAX_COMPONENTS, initialState, applyPatch, viewAvailability, resolveView, toggleComponent, rotate,
   filterComponents, normalizeComposition, knownIssuesFor, tierCounts, tierSummary, fmtP, fmtTemp, parseP, parseT, interpolate,
   normalizeComponents, liquids, henryGases, autoTemperature, pxyTemperature,
 } from "../src/ui/app-logic.js";
 import { pure, listComponents, findComponent, HENRY_GASES } from "../src/index.js";
+import { WORKSPACES } from "../src/ui/workspaces.js";
 
 const MAC = ["methanol", "acetone", "chloroform"];
 
@@ -25,7 +26,7 @@ test("initial state: defaults, normalization and errors for typos", () => {
   const s = initialState();
   assert.deepEqual(s.components, MAC);
   assert.equal(s.view, "ternary");
-  assert.equal(s.tab, "vle");
+  assert.equal(s.workspace, "equilibrium");
   assert.equal(s.model, "NRTL");
   assert.equal(s.eos, "PR");
   assert.equal(s.P_kPa, 101.325);
@@ -51,12 +52,13 @@ test("initial state: defaults, normalization and errors for typos", () => {
   assert.throws(() => initialState({ P_kPa: -1 }), /positive/);
   // duplicates dropped, at most MAX_COMPONENTS kept
   assert.deepEqual(initialState({ components: ["water", "H2O", "methanol"] }).components, ["water", "methanol"]);
-  assert.equal(initialState({ components: listComponents().map(c => c.id) }).components.length, MAX_COMPONENTS);
+  // (state.components is what the current view uses; the phase envelope takes the whole list)
+  assert.equal(initialState({ components: listComponents().map(c => c.id) }).inputs.envelope.length, MAX_COMPONENTS);
 });
 
 test("start view and the equation-of-state model in the configuration", () => {
   assert.equal(initialState({ start: "steam" }).view, "steam");
-  assert.equal(initialState({ start: "properties" }).tab, "properties");
+  assert.equal(initialState({ start: "properties" }).workspace, "properties");
   assert.equal(initialState({ start: "eos", components: ["methane", "ethane"] }).view, "pxy");
   assert.equal(initialState({ start: "eos", components: ["methane", "ethane", "nitrogen"] }).view, "envelope");
   const pr = initialState({ model: "SRK", components: ["methane", "ethane"] });
@@ -103,7 +105,7 @@ test("which views are enabled for which selection", () => {
   assert.throws(() => viewAvailability("flowsheet", MAC), /Unknown view/);
 
   // every view and preset is consistent
-  for (const v of Object.keys(VIEWS)) assert.ok(TABS.some(t => t.id === VIEWS[v].tab), v);
+  for (const v of Object.keys(VIEWS)) assert.ok(WORKSPACES.some(w => w.id === VIEWS[v].workspace && w.views.includes(v)), v);
   for (const p of PRESETS) {
     assert.deepEqual(normalizeComponents(p.components), p.components);
     assert.equal(viewAvailability(p.view, p.components).enabled, true, p.label);
@@ -122,10 +124,11 @@ test("state changes return a new state and keep the view valid", () => {
   // removing a component turns the ternary map into a T-x-y diagram
   const s2 = applyPatch(s1, { components: ["methanol", "acetone"] });
   assert.equal(s2.view, "txy");
-  assert.equal(s2.tab, "vle");
-  // a tab change does not change the view
+  assert.equal(s2.workspace, "equilibrium");
+  // the ribbon tabs of earlier versions: "view" now opens the Settings panel, the view stays
+  assert.ok(LEGACY_TABS.includes("view"));
   const s3 = applyPatch(s2, { tab: "view" });
-  assert.equal(s3.tab, "view");
+  assert.equal(s3.utility, "settings");
   assert.equal(s3.view, "txy");
   assert.throws(() => applyPatch(s2, { tab: "macros" }), /Unknown tab/);
 
@@ -143,16 +146,22 @@ test("state changes return a new state and keep the view valid", () => {
   assert.equal(applyPatch(s5, { grid: 33 }).grid, s5.grid, "only the offered resolutions");
   assert.equal(applyPatch(s5, { grid: 60 }).grid, 60);
 
-  // feed composition is normalized and dropped when the components change
-  const s6 = applyPatch(s5, { z: [1, 3] });
-  assert.deepEqual(s6.z, [0.25, 0.75]);
-  assert.equal(applyPatch(s6, { components: ["water", "ethanol"] }).z, null);
-  assert.throws(() => applyPatch(s5, { z: [-1, 2] }), /non-negative/);
+  // feed composition (P-x-y and phase envelope, each its own) is normalized and dropped when the components change
+  const s5p = applyPatch(s5, { view: "pxy" });
+  const s6 = applyPatch(s5p, { z: [1, 3] });
+  assert.deepEqual(s6.z.pxy, [0.25, 0.75]);
+  assert.equal(s6.z.envelope, null, "the envelope keeps its own feed");
+  assert.equal(applyPatch(s6, { components: ["water", "ethanol"] }).z.pxy, null);
+  assert.equal(applyPatch(s6, { inputs: { pxy: ["methane", "ethane"] } }).z.pxy, null);
+  assert.throws(() => applyPatch(s5p, { z: [-1, 2] }), /non-negative/);
+  assert.throws(() => applyPatch(s5, { z: [1, 3] }), /feed of the P-x-y and phase-envelope views/, "the T-x-y diagram has no feed");
 
-  // property component is cleared when it leaves the selection
+  // the property component: one, kept per workspace; `components` re-seeds it when it leaves the list
   const s7 = applyPatch(initialState({ components: ["water", "ethanol"] }), { propComponent: "ethanol", view: "properties" });
   assert.equal(s7.propComponent, "ethanol");
-  assert.equal(applyPatch(s7, { components: ["water"] }).propComponent, null);
+  assert.deepEqual(s7.components, ["ethanol"]);
+  assert.equal(applyPatch(s7, { components: ["water"] }).propComponent, "water");
+  assert.equal(applyPatch(s7, { components: ["water", "ethanol"] }).propComponent, "ethanol", "kept while it is in the list");
   assert.equal(applyPatch(s7, { components: ["water"] }).view, "properties");
 
   // temperature: set, then back to automatic

@@ -1,6 +1,8 @@
 /**
  * Workbench canvases (Fugacity.app): each function draws one view into the canvas, writes
- * the readout into the inspector and returns { data } for the status bar.
+ * the readout into the Results panel and returns { data } for the status bar. The source
+ * browser (sourcesPanel) fills the Sources drawer. A view receives the state with
+ * `components` set to the checked inputs of that view (and `z` to its own feed).
  *
  * Views only: every number comes from the public calculation functions (system(), pure(),
  * steam(), steamSat(), henry(), henryInfo(), gasSolubility()) or from the existing
@@ -22,9 +24,10 @@ import { henry, henryInfo, gasSolubility } from "../thermo/henry.js";
 import { ternaryAzeotropes } from "../equilibrium/azeotrope.js";
 import { library, sourceEntry, componentSources } from "../thermo/library.js";
 import {
-  viewAvailability, knownIssuesFor, pxyTemperature, tierCounts, tierSummary, normalizeComposition, interpolate, fmtP, fmtTemp, parseP, parseT,
+  knownIssuesFor, pxyTemperature, tierCounts, tierSummary, normalizeComposition, interpolate, fmtP, fmtTemp, parseP, parseT,
   setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
+import { HENRY_PAIRS } from "./workspaces.js";
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
 } from "./properties-logic.js";
@@ -44,7 +47,6 @@ export function renderView(view, ctx) {
     case "henry": return henryView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
-    case "sources": return sourcesView(ctx);
     default: throw new Error(`Unknown view "${view}".`);
   }
 }
@@ -87,7 +89,7 @@ function sourceLinks(ids, { access = true } = {}) {
 function pairSources(ctx, pairs, { kij = false } = {}) {
   return h("ul", { class: "fa-sources" }, ...pairs.map(p => h("li", {},
     h("div", { class: "fa-src-head" }, h("span", {}, p.pair.join(" + "), kij && p.tier !== "none" ? h("small", { class: "fa-kij" }, ` k_ij = ${fmtShort(p.kij, 4)}`) : null), ctx.badge(p.tier)),
-    p.set ? h("div", { class: "fa-src-set" }, `Set “${p.set}”${p.default ? ", default" : ""}${p.alternatives?.length ? ` · ${p.alternatives.length} other${p.alternatives.length > 1 ? "s" : ""} in the project panel` : ""}`) : null,
+    p.set ? h("div", { class: "fa-src-set" }, `Set “${p.set}”${p.default ? ", default" : ""}${p.alternatives?.length ? ` · ${p.alternatives.length} other${p.alternatives.length > 1 ? "s" : ""} in the Inputs panel` : ""}`) : null,
     p.note ? h("div", { class: "fa-src-note" }, p.note) : null,
     sourceLinks(p.source_ids ?? []),
     p.source ? h("div", { class: "fa-src-text" + (p.source.length > 150 ? " is-clamped" : ""), title: p.source.length > 150 ? "Click to show all" : undefined,
@@ -149,7 +151,7 @@ function kv(rows) {
 
 function vleView(view, ctx) {
   const { state, plot, side, notes, extra } = ctx;
-  const av = viewAvailability(view, state.components);
+  const av = { use: state.components };
   const opts = setsFor(state, state.model);
   let sys;
   try { sys = system({ components: av.use, model: state.model, ...opts }); } catch (e) { throw new Error(friendly(e)); }
@@ -202,7 +204,7 @@ function miniTxy(sys, data, azeo, P, u) {
 function azeotropeView(ctx) {
   const { state, plot, side, below, extra, set } = ctx;
   const u = state.units, P = state.P_kPa;
-  const ids = viewAvailability("azeotropes", state.components).use;
+  const ids = state.components;
   const MW = Object.fromEntries(ids.map(id => [id, pure(id).MW]));
   const opts = setsFor(state, state.model);
   const comp = (x, pairIds) => {
@@ -230,7 +232,7 @@ function azeotropeView(ctx) {
       h("div", { class: "fa-card-text" }, az.length
         ? az.map(z => h("div", {}, `${z.type === "minimum-boiling" ? "Minimum" : "Maximum"}-boiling azeotrope at ${fmtTemp(z.T, u, 1)}: ${comp([z.x, 1 - z.x], pair)}`))
         : "No azeotrope at this pressure."),
-      h("button", { type: "button", class: "fa-link-btn", on: { click: () => set({ components: [...pair, ...state.components.filter(c => !pair.includes(c))], view: "txy" }) } }, "Open as T-x-y diagram")));
+      h("button", { type: "button", class: "fa-link-btn", on: { click: () => set({ inputs: { txy: pair }, view: "txy" }) } }, "Open as T-x-y diagram")));
   }
   if (ids.length >= 3) {
     try {
@@ -348,7 +350,7 @@ const interpSegs = (segs, x) => { for (const g of segs) { const v = interpolate(
 
 function pxyView(ctx) {
   const { state, plot, side, notes, extra, compact } = ctx;
-  const u = state.units, ids = viewAvailability("pxy", state.components).use;
+  const u = state.units, ids = state.components;
   const sys = eosSystem(state, ids), T = pxyTemperature(state);
   const N = 51, bub = [], dew = [], reasons = new Map(), warnings = new Set();
   for (let i = 0; i < N; i++) {
@@ -390,7 +392,7 @@ function pxyView(ctx) {
 
 function envelopeView(ctx) {
   const { state, plot, side, extra, compact } = ctx;
-  const u = state.units, ids = viewAvailability("envelope", state.components).use;
+  const u = state.units, ids = state.components;
   const sys = eosSystem(state, ids);
   const z = normalizeComposition(state.z, ids.length);
   const reasons = new Map();
@@ -443,66 +445,66 @@ function envelopeView(ctx) {
 }
 
 // ---------------------------------------------------------------------------------------
-// Henry's law: gas solubility in water
+// Gas solubility: Henry's law for the chosen gas and solvent
 
 function henryView(ctx) {
-  const { state, plot, side, extra, compact, uid } = ctx;
-  const u = state.units, av = viewAvailability("henry", state.components), p = state.henryP_kPa;
-  const gases = av.use.map(id => ({ id, info: henryInfo(id) }));
+  const { state, plot, side, extra, compact } = ctx;
+  const u = state.units, p = state.henryP_kPa, Tset = state.henryT_K;
+  const { gas, solvent } = state.inputs.henry;
+  const solventName = nameOf(solvent);
+  const others = state.compareGases ? HENRY_PAIRS.filter(q => q.solvent === solvent && q.gas !== gas).map(q => q.gas) : [];
+  const gases = [gas, ...others].map(id => ({ id, info: henryInfo(id, solvent) }));
   const series = gases.map((g, i) => {
-    const pts = linspace(g.info.Tmin_K, g.info.Tmax_K, 90).map(T => ({ x: tToDisplay(T, u), y: gasSolubility(g.id, T, p) }));
-    return { name: nameOf(g.id), color: SERIES(i), segments: [{ points: pts }] };
+    const pts = linspace(g.info.Tmin_K, g.info.Tmax_K, 90).map(T => ({ x: tToDisplay(T, u), y: gasSolubility(g.id, T, p, solvent) }));
+    return { name: nameOf(g.id), color: SERIES(i), width: i === 0 && gases.length > 1 ? 2.6 : undefined, segments: [{ points: pts }] };
   });
   const x0 = tToDisplay(Math.min(...gases.map(g => g.info.Tmin_K)), u), x1 = tToDisplay(Math.max(...gases.map(g => g.info.Tmax_K)), u);
+
+  // the result at the chosen conditions
+  const result = h("div", { class: "fa-result-card" });
+  try {
+    const H = henry(gas, solvent, Tset), x = gasSolubility(gas, Tset, p, solvent);
+    const ratio = x / (1 - x) * pure(gas).MW / pure(solvent).MW * 1e6; // mg of gas per kg of solvent
+    result.append(
+      h("div", { class: "fug-eyebrow" }, `${nameOf(gas)} in ${solventName.toLowerCase()} at ${fmtTemp(Tset, u)}, ${fmtP(p, u)}`),
+      h("div", { class: "fa-result-main" }, h("span", {}, "Mole fraction x"), h("b", { class: "fug-big" }, fmtNum(x, 4))),
+      kv([["Henry's constant H", fmtNum(pToDisplay(H, u), 4), u.P], ["Mass ratio", fmtNum(ratio, 4), `mg per kg ${solventName.toLowerCase()}`]]),
+      h("div", { class: "fug-foot" }, `x = p / H, valid for dilute solutions. Mass ratio = x / (1 − x) × M gas / M ${solventName.toLowerCase()}.`));
+  } catch (e) {
+    result.append(h("div", { class: "fug-eyebrow" }, `${nameOf(gas)} in ${solventName.toLowerCase()}`),
+      h("div", { class: "fug-err", role: "alert" }, e.message),
+      h("div", { class: "fug-foot" }, `Change the temperature in the inputs: the equation is valid from ${fmtTemp(info0(gases).Tmin_K, u, 1)} to ${fmtTemp(info0(gases).Tmax_K, u, 1)}.`));
+  }
+
   const read = h("div", { class: "fa-read" });
   const show = Tx => {
     const T = tFromDisplay(Tx, u);
-    const vals = gases.map(g => (T >= g.info.Tmin_K && T <= g.info.Tmax_K ? gasSolubility(g.id, T, p) : null));
-    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `Mole fraction in water at ${fmtShort(+Tx.toFixed(2))} ${tU(u)}`),
+    const vals = gases.map(g => (T >= g.info.Tmin_K && T <= g.info.Tmax_K ? gasSolubility(g.id, T, p, solvent) : null));
+    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `On the curve${gases.length > 1 ? "s" : ""}: mole fraction at ${fmtShort(+Tx.toFixed(2))} ${tU(u)}`),
       ...gases.map((g, i) => h("div", { class: "fa-row" }, h("span", {}, h("span", { class: "sw", style: `border-color:${SERIES(i)}` }), nameOf(g.id)),
         h("b", { class: "fug-num" }, vals[i] == null ? "outside range" : fmtNum(vals[i], 3)))));
     return vals;
   };
   const move = drawPlot(plot, { compact, series, x0, x1, log: true, xLabel: `T, ${tU(u)}`, yLabel: "x gas (mole fraction)", show,
-    aria: `Solubility of ${gases.map(g => nameOf(g.id)).join(", ")} in water against temperature` });
+    aria: `Solubility of ${gases.map(g => nameOf(g.id)).join(", ")} in ${solventName.toLowerCase()} against temperature` });
   plot.append(h("div", { class: "fug-legend" }, `Each curve spans the validity range of its equation. Gas partial pressure ${fmtP(p, u)}; x = p / H, valid for dilute solutions.`));
-  side.replaceChildren(read);
-  move(tToDisplay(298.15, u));
+  side.replaceChildren(result, read);
+  move(Math.min(x1, Math.max(x0, tToDisplay(Tset, u))));
 
-  // calculator
-  const gasSel = h("select", { id: `fa-hg-${uid}` }, ...gases.map(g => h("option", { value: g.id }, nameOf(g.id))));
-  const calc = { T: 298.15, p };
-  const tIn = h("input", { type: "text", inputmode: "decimal", id: `fa-ht-${uid}`, value: String(+tToDisplay(calc.T, u).toFixed(2)) });
-  const pIn = h("input", { type: "text", inputmode: "decimal", id: `fa-hp-${uid}`, value: fmtShort(pToDisplay(calc.p, u), 6) });
-  const out = h("div", { class: "fa-calc-out", "aria-live": "polite" });
-  const run = () => {
-    const T = parseT(tIn.value, u), pp = parseP(pIn.value, u), gas = gasSel.value;
-    if (!T || pp == null) { out.replaceChildren(h("div", { class: "fug-err" }, "Enter a temperature and a positive pressure.")); return; }
-    try {
-      const H = henry(gas, "water", T), x = gasSolubility(gas, T, pp);
-      const ratio = x / (1 - x) * pure(gas).MW / pure("water").MW * 1e6; // mg of gas per kg of water
-      out.replaceChildren(kv([["Henry's constant H", fmtNum(pToDisplay(H, u), 4), u.P], ["Mole fraction x", fmtNum(x, 4)], ["Mass ratio", fmtNum(ratio, 4), "mg per kg water"]]),
-        h("div", { class: "fug-foot" }, "Mass ratio = x / (1 − x) × M gas / M water."));
-    } catch (e) { out.replaceChildren(h("div", { class: "fug-err" }, e.message)); }
-  };
-  for (const el of [gasSel, tIn, pIn]) el.addEventListener("change", run);
-  run();
   extra.append(
-    section("Solubility calculator", h("div", { class: "fa-form" },
-      h("label", { for: gasSel.id }, h("span", {}, "Gas"), gasSel), h("label", { for: tIn.id }, h("span", {}, `T, ${tU(u)}`), tIn),
-      h("label", { for: pIn.id }, h("span", {}, `Gas pressure, ${u.P}`), pIn)), out),
-    section("Sources", sourceList(ctx, gases.map(g => ({ label: nameOf(g.id), tier: g.info.tier,
+    section("Sources", sourceList(ctx, gases.map(g => ({ label: `${nameOf(g.id)} in ${solventName.toLowerCase()}`, tier: g.info.tier,
       text: `${g.info.source}; valid ${fmtTemp(g.info.Tmin_K, u, 1)} to ${fmtTemp(g.info.Tmax_K, u, 1)}` }))),
     sourceLinks(gases.flatMap(g => g.info.source_ids ?? []))));
   return { data: tierSummary(tierCounts(gases.map(g => ({ tier: g.info.tier }))), "gas", "gases") };
 }
+const info0 = gases => gases[0].info;
 
 // ---------------------------------------------------------------------------------------
 // Property explorer
 
 function propertiesView(ctx) {
   const { state, plot, side, extra } = ctx;
-  const id = state.propComponent ?? state.components[0] ?? "water";
+  const id = state.components[0];
   const p = pure(id), u = state.units;
   mountProperties(plot, { component: id, property: state.property, units: u, controls: false });
   side.replaceChildren(
@@ -622,15 +624,18 @@ function steamView(ctx) {
 }
 
 // ---------------------------------------------------------------------------------------
-// Sources: the library browser (Library tab)
+// Sources: the library browser (the Sources panel, a drawer over the workspace)
 
-function sourcesView(ctx) {
-  const { state, plot, side, extra, uid, ui } = ctx;
+/**
+ * The source browser: search, kind filter, "used by this calculation", one card per source.
+ * @param {{ids:string[], what:string, uid:string, look:{query:string, kind:string, mine:boolean}}} o
+ *   ids: the components of the calculation on the canvas; what: how to name it ("Methanol,
+ *   acetone and chloroform"); look: the filters, kept by the caller so they survive closing.
+ */
+export function sourcesPanel({ ids, what, uid, look }) {
   const all = library.sources();
-  const ids = state.components;
   const names = ids.map(nameOf);
   const kinds = [...new Set(all.map(s => s.kind))];
-  const look = ui.sources ?? (ui.sources = { query: "", kind: "all", mine: false });
   const list = h("div", { class: "fa-srcs", role: "list" });
   const count = h("div", { class: "fa-hint", "aria-live": "polite" });
   const draw = () => {
@@ -639,27 +644,22 @@ function sourcesView(ctx) {
     list.replaceChildren(...shown.map(sourceCard), ...(shown.length ? [] : [h("div", { class: "fa-empty" }, "No source matches. Clear the search or the filters.")]));
   };
   const search = h("input", { type: "search", id: `fa-sq-${uid}`, placeholder: "Title, author, DOI, component, pair…", value: look.query, "aria-label": "Search the sources",
-    on: { input: ev => { look.query = ev.target.value; draw(); } } });
+    "data-fk": "src-search", on: { input: ev => { look.query = ev.target.value; draw(); } } });
   const kindSel = h("select", { id: `fa-sk-${uid}`, "aria-label": "Kind of source", on: { change: ev => { look.kind = ev.target.value; draw(); } } },
     h("option", { value: "all" }, "All kinds"), ...kinds.map(k => h("option", { value: k, selected: look.kind === k }, KIND_LABEL[k] ?? k)));
-  const mine = h("input", { type: "checkbox", id: `fa-sm-${uid}`, checked: look.mine, disabled: !ids.length, on: { change: ev => { look.mine = ev.target.checked; draw(); } } });
-  plot.replaceChildren(
+  const mine = h("input", { type: "checkbox", id: `fa-sm-${uid}`, checked: look.mine && ids.length > 0, disabled: !ids.length, on: { change: ev => { look.mine = ev.target.checked; draw(); } } });
+  const byKind = kinds.map(k => [KIND_LABEL[k] ?? k, all.filter(s => s.kind === k).length]).sort((a, b) => b[1] - a[1]);
+  draw();
+  return h("div", { class: "fa-src-panel" },
+    h("p", { class: "fa-src-summary" }, `${all.length} open sources (${byKind.map(([k, n]) => `${k}: ${n}`).join(", ")}). Every number in Fugacity comes from one of them, each free to read.`),
     h("div", { class: "fa-src-tools" },
       h("div", { class: "fa-search fa-src-search" }, icon("search", 16), search), kindSel,
-      h("label", { class: "fa-check-label", for: mine.id }, mine, ids.length ? `Used by ${names.length > 3 ? "the selected components" : names.join(", ")}` : "Used by the selection (none selected)"), count),
-    list);
-  draw();
-
-  const byKind = kinds.map(k => [KIND_LABEL[k] ?? k, all.filter(s => s.kind === k).length]).sort((a, b) => b[1] - a[1]);
-  side.replaceChildren(
-    h("div", {}, h("div", { class: "fug-eyebrow" }, "Open sources"), h("div", { class: "fug-big" }, String(all.length))),
-    kv(byKind.map(([k, n]) => [k, String(n)])),
-    h("div", { class: "fug-sub" }, "Every number in Fugacity comes from one of these sources, each free to read. Each pair can use another parameter set: pick it in the project panel, or set a rule on the Library tab."));
-  extra.append(section("In code",
-    h("div", { class: "fa-src-text" }, "Fugacity.library.sources(), .source(id), .sets(i, j, model), .usedBy(id); Fugacity.system({ …, sets: { \"acetone+chloroform\": \"chemsep\" }, prefer: [\"databank\"] })."),
-    h("div", { class: "fa-src-text" }, "Fugacity.library.add({ model, i, j, set, params, source }) adds a set from a paper for this page only (tier “user”); nothing is saved.")),
-  section("Contribute", h("div", { class: "fa-src-text" }, "A new source is cited once in src/data/sources.json and referred to by id (AGENTS.md).")));
-  return { data: `${all.length} sources` };
+      h("label", { class: "fa-check-label", for: mine.id }, mine, ids.length ? `Only those used by the current calculation (${what})` : "Only those used by the current calculation (no inputs chosen)"), count),
+    list,
+    h("details", { class: "fa-dev" }, h("summary", {}, "In code"),
+      h("div", { class: "fa-src-text" }, "Fugacity.library.sources(), .source(id), .sets(i, j, model), .usedBy(id); Fugacity.system({ …, sets: { \"acetone+chloroform\": \"chemsep\" }, prefer: [\"databank\"] })."),
+      h("div", { class: "fa-src-text" }, "Fugacity.library.add({ model, i, j, set, params, source }) adds a set from a paper for this page only (tier “user”); nothing is saved."),
+      h("div", { class: "fa-src-text" }, "A new source is cited once in src/data/sources.json and referred to by id (AGENTS.md).")));
 }
 
 function sourceCard(s) {

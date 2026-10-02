@@ -4,15 +4,21 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { system, library } from "../src/index.js";
 import {
-  TABS, VIEWS, initialState, applyPatch, viewAvailability, resolveView, RULES, ruleOf, normalizeSets, normalizePrefer, setsFor,
+  LEGACY_TABS, VIEWS, initialState, applyPatch, viewAvailability, resolveView, RULES, ruleOf, normalizeSets, normalizePrefer, setsFor,
   setChoices, pairKeyOf, filterSources, sourceUsedFor,
 } from "../src/ui/app-logic.js";
 
 test("Library tab and sources view; the defaults leave sets and prefer empty", () => {
-  assert.ok(TABS.some(t => t.id === "library"));
-  assert.equal(VIEWS.sources.tab, "library");
-  assert.equal(viewAvailability("sources", []).enabled, true);
-  assert.equal(resolveView("library", ["water"]), "sources");
+  // the Library and the sources are supporting panels over a workspace, not views
+  assert.ok(LEGACY_TABS.includes("library"));
+  assert.equal(VIEWS.sources, undefined);
+  assert.equal(applyPatch(initialState(), { tab: "library" }).utility, "library");
+  for (const start of ["sources", "library"]) {
+    const s = initialState({ start, components: ["water", "ethanol"] });
+    assert.equal(s.utility, "sources", start);
+    assert.equal(s.view, resolveView(null, ["water", "ethanol"]), "over the first workspace");
+  }
+  assert.equal(viewAvailability("txy", ["water", "ethanol"]).enabled, true);
   const s = initialState();
   assert.deepEqual(s.sets, {});
   assert.equal(s.prefer, null);
