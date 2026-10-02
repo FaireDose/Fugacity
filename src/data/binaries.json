@@ -88,11 +88,22 @@
       "j": "ethanol",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 624.8676222389441,
-      "b_ji": -29.166654483541816,
-      "alpha": 0.2937,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 686.2956326903964,
+      "b_ji": -48.37819016171115,
+      "alpha": 0.3,
+      "source": "Fitted to 21 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_water_101kPa.json). AAD 0.12 K in T, 0.0037 in y (max 0.32 K, 0.0102). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 624.8676222389441,
+        "b_ji": -29.166654483541816,
+        "alpha": 0.2937,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "water",
+        "j": "ethanol"
+      }
     },
     {
       "model": "NRTL",
@@ -110,13 +121,29 @@
       "model": "NRTL",
       "i": "water",
       "j": "ethyl-acetate",
-      "a_ij": 0.0,
-      "a_ji": 0.0,
-      "b_ij": 808.2118348007648,
-      "b_ji": 647.1342814450109,
-      "alpha": 0.4393,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "a_ij": 7.123812138150454,
+      "a_ji": -0.09431279121796615,
+      "b_ij": -1106.436339780053,
+      "b_ji": 370.04943044435475,
+      "alpha": 0.3,
+      "source": "Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156), activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), both data public in the NIST TRC ThermoML Archive, and the heterogeneous azeotrope at 101.325 kPa, 70.4 degC and 91.9 wt % ethyl acetate (handbook value, Wikipedia 'Azeotrope tables', from Lange's 10th ed. and CRC 44th ed.); files validation/data/water_ethyl-acetate_*.json. No open finite-concentration VLE data was found for this pair. liquid-liquid: AAD 0.0009 in x of water in the water-rich liquid, 0.0292 in the ethyl-acetate-rich liquid; gamma at infinite dilution: AARD 4.3 % (max 15.5 %); heterogeneous azeotrope at 101.325 kPa: 70.61 degC, vapour x of water 0.313, liquids 0.989 / 0.203 (target 70.40 degC, 0.301). Check against water_ethyl-acetate_lle_xu2017.json: liquid-liquid: AAD 0.0034 in x of water in the water-rich liquid. Temperature range of the data: 273.35-343.55 K; outside it the parameters are extrapolated.",
+      "tier": "fitted",
+      "data_wanted": "open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.",
+      "T_range_K": [
+        273.35,
+        343.55
+      ],
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 808.2118348007648,
+        "b_ji": 647.1342814450109,
+        "alpha": 0.4393,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "water",
+        "j": "ethyl-acetate"
+      }
     },
     {
       "model": "NRTL",
@@ -302,11 +329,22 @@
       "j": "ethyl-acetate",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 166.31933962644382,
-      "b_ji": 153.78595263731017,
-      "alpha": 0.2988,
-      "source": "ChemSep NRTL databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 197.15137904244344,
+      "b_ji": 119.92694493909929,
+      "alpha": 0.3,
+      "source": "Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91. AAD 0.09 K in T, 0.0032 in y (max 0.30 K, 0.0085). Check against ethyl-acetate_ethanol_101kPa_zhang2017.json: AAD 0.12 K in T, 0.0014 in y (max 0.26 K, 0.0030). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 166.31933962644382,
+        "b_ji": 153.78595263731017,
+        "alpha": 0.2988,
+        "source": "ChemSep NRTL databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "ethanol",
+        "j": "ethyl-acetate"
+      }
     },
     {
       "model": "NRTL",
@@ -408,10 +446,20 @@
       "j": "ethanol",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -55.288075960115854,
-      "b_ji": -87.46005814161899,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": -146.09248760592394,
+      "b_ji": -9.737914851010673,
+      "source": "Fitted to 21 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_water_101kPa.json). AAD 0.09 K in T, 0.0033 in y (max 0.26 K, 0.0084). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": -55.288075960115854,
+        "b_ji": -87.46005814161899,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "water",
+        "j": "ethanol"
+      }
     },
     {
       "model": "UNIQUAC",
@@ -428,12 +476,27 @@
       "model": "UNIQUAC",
       "i": "water",
       "j": "ethyl-acetate",
-      "a_ij": 0.0,
-      "a_ji": 0.0,
-      "b_ij": 103.52916621702168,
-      "b_ji": -725.4221068275945,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "a_ij": -1.919624587086023,
+      "a_ji": 0.9432443185034248,
+      "b_ij": 490.17681194419475,
+      "b_ji": -642.1170700959939,
+      "source": "Fitted to mutual solubilities at 298-333 K (Grande, Marschoff, J. Chem. Eng. Data 50 (2005) 1324; Cehreli, Ozmen, Dramur, Fluid Phase Equilib. 239 (2006) 156), activity coefficients of ethyl acetate at infinite dilution in water at 273-343 K (Fenclova et al., Fluid Phase Equilib. 375 (2014) 347; Atik et al., J. Chem. Eng. Data 49 (2004) 1429), both data public in the NIST TRC ThermoML Archive, and the heterogeneous azeotrope at 101.325 kPa, 70.4 degC and 91.9 wt % ethyl acetate (handbook value, Wikipedia 'Azeotrope tables', from Lange's 10th ed. and CRC 44th ed.); files validation/data/water_ethyl-acetate_*.json. No open finite-concentration VLE data was found for this pair. liquid-liquid: AAD 0.0007 in x of water in the water-rich liquid, 0.0321 in the ethyl-acetate-rich liquid; gamma at infinite dilution: AARD 4.3 % (max 13.5 %); heterogeneous azeotrope at 101.325 kPa: 70.76 degC, vapour x of water 0.315, liquids 0.989 / 0.195 (target 70.40 degC, 0.301). Check against water_ethyl-acetate_lle_xu2017.json: liquid-liquid: AAD 0.0031 in x of water in the water-rich liquid. Temperature range of the data: 273.35-343.55 K; outside it the parameters are extrapolated.",
+      "tier": "fitted",
+      "data_wanted": "open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.",
+      "T_range_K": [
+        273.35,
+        343.55
+      ],
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 103.52916621702168,
+        "b_ji": -725.4221068275945,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "water",
+        "j": "ethyl-acetate"
+      }
     },
     {
       "model": "UNIQUAC",
@@ -604,10 +667,20 @@
       "j": "ethyl-acetate",
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": 49.598323660705354,
-      "b_ji": -219.42465053805546,
-      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
-      "tier": "databank"
+      "b_ij": 45.0379324697679,
+      "b_ji": -210.46339972588402,
+      "source": "Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91. AAD 0.08 K in T, 0.0031 in y (max 0.30 K, 0.0084). Check against ethyl-acetate_ethanol_101kPa_zhang2017.json: AAD 0.12 K in T, 0.0014 in y (max 0.26 K, 0.0031). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "tier": "fitted",
+      "replaced": {
+        "a_ij": 0.0,
+        "a_ji": 0.0,
+        "b_ij": 49.598323660705354,
+        "b_ji": -219.42465053805546,
+        "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+        "tier": "databank",
+        "i": "ethanol",
+        "j": "ethyl-acetate"
+      }
     },
     {
       "model": "UNIQUAC",

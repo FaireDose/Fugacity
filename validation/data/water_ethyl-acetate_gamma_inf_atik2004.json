@@ -1,0 +1,22 @@
+{
+ "_about": "Activity coefficient at infinite dilution of ethyl acetate (2) in water (1), 303 K to 343 K, from Atik et al. (2004), dilutor technique. Rows as in the ThermoML Archive record: T in K, gamma_2 at x_2 = 0.",
+ "source": {
+  "citation": "Z. Atik, D. Gruber, M. Krummen, J. Gmehling, Measurement of Activity Coefficients at Infinite Dilution of Benzene, Toluene, Ethanol, Esters, Ketones, and Ethers at Various Temperatures in Water Using the Dilutor Technique, J. Chem. Eng. Data 49 (2004) 1429-1432",
+  "doi": "10.1021/je049875+",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je049875+.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, data set 11: compounds 12 ethyl acetate + 2 water, property activity coefficient of compound 12, constraint mole fraction of compound 12 = 0. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "gamma-infinite-dilution",
+ "solute": "ethyl-acetate",
+ "columns": ["T_K", "gamma_2"],
+ "rows": [
+  [303.25, 76.5],
+  [313.25, 85],
+  [323.25, 90.1],
+  [333.25, 94.7],
+  [343.25, 96.2]
+ ],
+ "notes": "Pressure constraint 101.325 kPa in the record. Expanded uncertainties (95 %) in the record: 4.6, 5, 5.4, 5.7, 5.8 (about 6 %). Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}

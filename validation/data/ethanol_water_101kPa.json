@@ -1,0 +1,38 @@
+{
+ "_about": "Ethanol (1) + water (2): isobaric T-x-y at 101.3 kPa, binary data set from Kamihama et al. (2012). Rows as in the ThermoML Archive record: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol.",
+ "source": {
+  "citation": "N. Kamihama, H. Matsuda, K. Kurihara, K. Tochigi, S. Oba, Isobaric Vapor-Liquid Equilibria for Ethanol + Water + Ethylene Glycol and Its Constituent Three Binary Systems, J. Chem. Eng. Data 57 (2012) 339-344",
+  "doi": "10.1021/je2008704",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je2008704.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 4 (boiling temperature) and 5 (vapour mole fraction): the binary ethanol + water set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethanol", "water"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.018, 368.18, 0.18],
+  [0.079, 360.5, 0.418],
+  [0.09, 359.7, 0.441],
+  [0.147, 357.27, 0.51],
+  [0.244, 355.38, 0.567],
+  [0.311, 354.55, 0.589],
+  [0.353, 354.11, 0.604],
+  [0.425, 353.45, 0.627],
+  [0.488, 352.96, 0.652],
+  [0.57, 352.39, 0.688],
+  [0.616, 352.11, 0.713],
+  [0.67, 351.82, 0.736],
+  [0.711, 351.64, 0.76],
+  [0.802, 351.37, 0.819],
+  [0.835, 351.3, 0.844],
+  [0.869, 351.27, 0.873],
+  [0.901, 351.26, 0.9],
+  [0.914, 351.26, 0.912],
+  [0.922, 351.27, 0.92],
+  [0.94, 351.29, 0.937],
+  [0.972, 351.35, 0.969]
+ ],
+ "notes": "Expanded uncertainties per point in the ThermoML record: T from 1.76 K (x_1 = 0.018) to 0.09 K (x_1 >= 0.8), y_1 from 0.056 to 0.015. No pure-component rows in the set; the record also gives vapour pressures of ethanol and water (not used). The ThermoML record carries no consistency-test result; validation/python/fit_parameters.py runs a point test and prints it. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}

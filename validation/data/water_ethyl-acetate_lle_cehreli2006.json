@@ -1,0 +1,18 @@
+{
+ "_about": "Water (1) + ethyl acetate (2): mutual solubilities (liquid-liquid equilibrium) at 298.2 K, binary data from Cehreli, Ozmen and Dramur (2006). Phase I is the water-rich phase, phase II the ester-rich phase. Rows as in the ThermoML Archive record: T in K, mole fraction of water in phase I, mole fraction of water in phase II.",
+ "source": {
+  "citation": "S. Cehreli, D. Ozmen, U. Dramur, (Liquid + liquid) equilibria of (water + 1-propanol + solvent) at T = 298.2 K, Fluid Phase Equilibria 239 (2006) 156-160",
+  "doi": "10.1016/j.fluid.2005.11.024",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.11.024.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 4 (mole fraction of water in liquid mixture 1) and 5 (mole fraction of water in liquid mixture 2), compounds 2 ethyl acetate and 3 water. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethyl-acetate"],
+ "kind": "lle",
+ "P_kPa": 101.32,
+ "columns": ["T_K", "x_1_I", "x_1_II"],
+ "rows": [
+  [298.2, 0.9824, 0.1323]
+ ],
+ "notes": "Pressure 101.32 kPa in the record. No uncertainty given in the record. Read twice from the ThermoML Archive (XML and JSON files), both reads identical."
+}

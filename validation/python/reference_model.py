@@ -82,6 +82,27 @@ class System:
         T = brentq(lambda T: self.equilibrium(x, T)[0] - P, 250.0, 600.0, xtol=1e-10)
         return T, self.equilibrium(x, T)[1]
 
+    def isoactivity_residual(self, x_a, x_b, T):
+        """ln(x_i gamma_i) in liquid a minus the same in liquid b, for every component.
+        All zero at liquid-liquid equilibrium (equal activities in both liquids)."""
+        x_a = np.clip(np.asarray(x_a, float), 1e-12, None); x_a = x_a / x_a.sum()
+        x_b = np.clip(np.asarray(x_b, float), 1e-12, None); x_b = x_b / x_b.sum()
+        return np.log(x_a * self.gamma(x_a, T)) - np.log(x_b * self.gamma(x_b, T))
+
+    def lle_binary(self, T, guess):
+        """Binary liquid-liquid equilibrium at T, solved from guess = (x1 in liquid a, x1 in
+        liquid b). Returns (x1_a, x1_b), or None when the solution is a single liquid
+        (x1_a = x1_b) or the isoactivity equations are not solved."""
+        from scipy.optimize import least_squares
+        logit = lambda v: np.log(v / (1 - v))
+        expit = lambda u: 1 / (1 + np.exp(-u))
+        f = lambda u: self.isoactivity_residual([expit(u[0]), 1 - expit(u[0])], [expit(u[1]), 1 - expit(u[1])], T)
+        res = least_squares(f, [logit(guess[0]), logit(guess[1])], xtol=1e-14, ftol=1e-14, gtol=1e-14)
+        a, b = expit(res.x[0]), expit(res.x[1])
+        if np.max(np.abs(res.fun)) > 1e-8 or abs(a - b) < 1e-3:
+            return None
+        return a, b
+
     def excess_enthalpy(self, x, T, h=0.05):
         """H^E in J/mol from the temperature derivative of G^E/RT."""
         x = np.clip(np.asarray(x, float), 1e-12, None); x = x / x.sum()

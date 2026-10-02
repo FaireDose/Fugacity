@@ -9,11 +9,13 @@ const pairs = JSON.parse(readFileSync(new URL("../src/data/binaries.json", impor
 const ids = Object.keys(comps).filter(id => comps[id].uniquac);
 const name = id => comps[id].name;
 
-const have = new Map();
+const have = new Map(), stillWanted = new Map();
 for (const p of pairs) {
   const key = [p.i, p.j].sort().join("|");
   if (!have.has(key)) have.set(key, {});
   have.get(key)[p.model] = p.tier || "databank";
+  // a fitted entry can name the data its fit still lacks ("data_wanted")
+  if (p.data_wanted) stillWanted.set(key, `${name(p.i)} + ${name(p.j)}: ${p.data_wanted}`);
 }
 
 const missing = [], databankOnly = [], fitted = [];
@@ -49,6 +51,10 @@ ${missing.map(m => `- ${m}`).join("\n") || "- none"}
 ## Databank only, would benefit from a fit to open data (${databankOnly.length})
 
 ${databankOnly.map(m => `- ${m}`).join("\n") || "- none"}
+
+## Fitted, but the fit still lacks data (${stillWanted.size})
+
+${[...stillWanted.values()].map(m => `- ${m}`).join("\n") || "- none"}
 
 ## Fitted to experimental data (${fitted.length})
 
