@@ -48,10 +48,10 @@ an implementation, and tests. A step can start when the steps it depends on are 
 
 | Step | Design question | Depends on | Status |
 |---|---|---|---|
-| **A1** Property package | One interface for every thermodynamic model: activity coefficients, K-values, enthalpy. Pure-component properties and enthalpy are in place ([proposal 0002](proposals/0002-pure-component-properties.md)); mixture enthalpy and the common interface are not. [Proposal 0001](proposals/0001-property-package.md) covers them together with the flash. | – | Draft proposal |
+| **A1** Property package | One interface for every thermodynamic model: activity coefficients, K-values, enthalpy. Pure-component properties and enthalpy are in place ([proposal 0002](proposals/0002-pure-component-properties.md)); mixture enthalpy and the common interface are not. [Proposal 0001](proposals/0001-property-package.md) covers them together with the flash. | – | Accepted proposal |
 | **A2** Data registry and packs | How chemicals are stored, versioned and loaded in pieces (data packs as scripts), and the size budget per pack. | A1 | Open |
 | **A3** Quality tiers and prediction | When the engine may use a predicted (UNIFAC) pair, and how every result shows the tier of the data behind it. | A1, A2 | Open |
-| **A4** Equilibrium solver contract | Common rules for bubble, dew and flash solvers: inputs, convergence criteria, and how failures are reported (never a silent wrong answer). | A1 | Draft proposal ([0001](proposals/0001-property-package.md)) |
+| **A4** Equilibrium solver contract | Common rules for bubble, dew and flash solvers: inputs, convergence criteria, and how failures are reported (never a silent wrong answer). | A1 | Accepted proposal ([0001](proposals/0001-property-package.md)) |
 | **A5** Streams and units | The stream object, internal SI units, and conversion only at the edges (interface, files). | A1, A4 | Open |
 | **A6** Unit operation interface | `registerUnit`: ports, specifications with validation, material and energy balance checks, required tests. One interface for every unit, from a mixer to a reactor or a column. | A5 | Open |
 | **A7** Flowsheet file format | JSON schema, format versions, and how older files keep working. | A5, A6 | Open |

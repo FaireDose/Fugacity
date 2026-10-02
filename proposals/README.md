@@ -21,6 +21,6 @@ interface or file format, the steps of the core track in the
 
 | # | Title | Status |
 |---|---|---|
-| 0001 | [Property package and flash](0001-property-package.md) | Draft |
+| 0001 | [Property package and flash](0001-property-package.md) | Accepted |
 | 0002 | [Pure-component properties, gases and Peng–Robinson](0002-pure-component-properties.md) | Accepted |
 | 0003 | [The Fugacity Library: sources you can see and choose](0003-fugacity-library.md) | Draft |

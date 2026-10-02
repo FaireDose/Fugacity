@@ -1,6 +1,6 @@
 # 0001: Property package and flash
 
-- **Status:** Draft
+- **Status:** Accepted (by the lead maintainer, 2026-10-02)
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A1 (property package) and A4 (equilibrium solver contract);
