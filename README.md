@@ -7,7 +7,7 @@ grows through volunteer contributions, one tested layer at a time, toward full f
 
 ![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
-> **Status: early (v0.2.1).** 16 components, activity models and cubic equations of state,
+> **Status: early (v0.2.2).** 16 components, activity models and cubic equations of state,
 > pure-component properties, steam tables, and a workbench with a ribbon.
 > Results are model predictions. Check them against data before using them for design.
 
@@ -62,7 +62,7 @@ In any web page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
   // or a single view: Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });

@@ -19,7 +19,7 @@ pinned version and opens the workbench:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.1/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", {
     start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "henry", "properties", "steam"
@@ -62,7 +62,7 @@ For pure-component properties or steam, a page can also show the property explor
 `Fugacity.mountProperties("#app", { component: "water", property: "enthalpy" })`.
 
 **Rules**
-- Version 0.2.1 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
+- Version 0.2.2 holds water, methanol, ethanol, acetone, chloroform, benzene, toluene,
   ethyl acetate, acetic acid, ethylene glycol, oxygen, nitrogen, hydrogen, methane, ethane
   and ethylene. Not every pair has parameters; the page names missing pairs. For other
   chemicals, say they are not in the databank yet and point me to
