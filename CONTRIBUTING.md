@@ -33,19 +33,18 @@ You need an AI assistant and a free [GitHub account](https://github.com/signup).
 
 A maintainer or a coding agent turns it into a pull request, and a reviewer checks it.
 
-### 2. Let a coding agent open the pull request
+### 2. Join as a contributor and let a coding agent open pull requests
 
-The natural way for development work (equations of state, algorithms, unit operations, reactors,
-views), with Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor or another
-agent. They read AGENTS.md automatically.
+Anyone can join the project as a contributor. Contributors open pull requests directly:
+the natural way for development work (equations of state, algorithms, unit operations,
+reactors, views), with Claude Code, OpenAI Codex, GitHub Copilot's coding agent, Cursor or
+another agent. They read AGENTS.md automatically.
 
-1. On the [repository page](https://github.com/FaireDose/Fugacity) click **Fork** →
-   **Create fork**.
-2. Connect the agent to your GitHub account and give it access to your fork only.
-3. Ask it, for example: *"Follow AGENTS.md. Implement proposal NNNN (or roadmap item
+1. Connect the agent to your GitHub account.
+2. Ask it, for example: *"Follow AGENTS.md. Implement proposal NNNN (or roadmap item
    ...), validate it against an independent implementation and open data, run the tests,
    and open a pull request to FaireDose/Fugacity."*
-4. Read what it changed before the pull request goes out: the equations, the references
+3. Read what it changed before the pull request goes out: the equations, the references
    and the validation results.
 
 New models, algorithms, layers, interfaces and file formats start as a short
