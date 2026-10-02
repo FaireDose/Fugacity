@@ -180,7 +180,7 @@ CASES = [  # model, vapour, components, compositions, pressures (kPa) for bubble
     ("UNIQUAC", "SRK", ["ethanol", "water"], [[0.5, 0.5]], [101.325, 1000.0], 400.0),
     ("UNIQUAC", "SRK", ["methanol", "acetone", "chloroform"], [[0.3, 0.3, 0.4], [0.6, 0.2, 0.2]], [101.325, 1000.0], 380.0),
     ("NRTL", "PR", ["toluene", "chloroform"], [[0.3, 0.7], [0.7, 0.3]], [101.325, 1000.0], 420.0),
-    ("NRTL", "PR", ["methanol", "water"], [[0.5, 0.5]], [101.325, 2000.0], 450.0),
+    ("NRTL", "PR", ["methanol", "water"], [[0.5, 0.5], [0.2, 0.8]], [101.325, 2000.0, 3000.0], 450.0),
 ]
 
 

@@ -1,4 +1,4 @@
-import { brent, scanBracket } from "../util/solve.js";
+import { brent, scanBracket, scanBracketInRange } from "../util/solve.js";
 import { checkComposition, checkPressure, checkTemperature } from "./inputs.js";
 import { fail } from "../util/errors.js";
 
@@ -11,6 +11,16 @@ const clean = x => {
 
 /** Boiling point of each pure component at P (kPa), in K. */
 export function pureBoilingPoints(sys, P) {
+  if (sys.vapour && sys.vapour !== "ideal") {
+    // With a cubic vapour, phi_sat is taken at the vapour pressure, so a pure component boils
+    // exactly where P_sat(T) = P (gamma-phi-vapour.js); solving that directly avoids
+    // evaluating the other components above their critical temperatures.
+    return sys.ids.map((_, i) => {
+      const f = T => Math.log(sys.psat(T)[i] / P);
+      const [a, b] = scanBracket(f, 150, 900, 30);
+      return brent(f, a, b, { xtol: 1e-7 });
+    });
+  }
   return sys.ids.map((_, i) => {
     const x = new Array(sys.n).fill(1e-12); x[i] = 1;
     const f = T => sys.equilibrium(x, T).P - P;
@@ -48,7 +58,7 @@ export function bubbleTCore(sys, x, P) {
   const f = T => sys.equilibrium(x, T).P - P;
   const tb = boilingRange(sys, P);
   const lo = Math.min(...tb) - 80, hi = Math.max(...tb) + 20;
-  const [a, b] = scanBracket(f, lo, hi, 40);
+  const [a, b] = scanBracketInRange(f, lo, hi, 40);
   const T = brent(f, a, b, { xtol: 1e-7 });
   const e = sys.equilibrium(x, T);
   return { T, y: e.y, gamma: e.gamma, warnings: sys.warnings ? sys.warnings(T, P) : [] };

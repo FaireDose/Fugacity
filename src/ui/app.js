@@ -612,7 +612,7 @@ export function app(target, cfg = {}) {
   // ---- canvas
   const canvasKey = () => {
     const v = state.view, check = checkInputs(v, state.inputs[v]);
-    return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.P_kPa, state.T_K,
+    return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.vapour, state.P_kPa, state.T_K,
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
       v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer]);
   };

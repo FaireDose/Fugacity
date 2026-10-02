@@ -134,7 +134,8 @@ export function createSystem(cfg) {
    * fits), pressures outside a set's pressure range, and notes on the choice of sets.
    */
   function warnings(T, P) {
-    return pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
+    const w = pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
+    return cubicVapour ? [...w, ...cubicVapour.warnings(T)] : w;
   }
 
   return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings };

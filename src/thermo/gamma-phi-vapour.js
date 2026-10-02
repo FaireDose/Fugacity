@@ -13,18 +13,28 @@
  *              vapour pressure of the databank), from the same equation of state;
  *   v_i^L      the molar volume of pure liquid i at T (liquid-density record of pure(); the
  *              Poynting factor). Outside the record's temperature range the nearest end of
- *              the range is used: the Poynting factor is a small correction and the liquid
- *              volume changes slowly.
+ *              the range is used, and results carry a warning: the records end near 0.95 Tc,
+ *              and closer to the critical point the liquid volume grows quickly, so there the
+ *              Poynting factor comes out too small (by about 1 % for methanol at 500-510 K).
+ * Every component present in the liquid must be below its critical temperature (there is no
+ * saturated vapour above it): otherwise an OUT_OF_RANGE error says so. A component absent
+ * from the liquid (mole fraction below 1e-10) does not need phi_sat.
  * With an ideal-gas vapour all three corrections are 1 and the equation is the modified
  * Raoult's law of src/thermo/system.js.
  *
  * Open references: the gamma-phi formulation with the Poynting and saturation fugacity
  * corrections as documented for the `thermo` library (MIT), thermo.phases.GibbsExcessLiquid,
  * equilibrium_basis "Poynting&PhiSat" (https://thermo.readthedocs.io/thermo.phases.html);
- * the cubic equations as cited in eos/cubic.js. Note: thermo evaluates phi_i^sat at the
- * equation of state's own saturation pressure; here it is evaluated at the databank vapour
- * pressure P_i^sat, the pressure that appears in the same term. The two differ slightly;
- * validation/python/reference_gamma_phi.py reports by how much.
+ * the cubic equations as cited in eos/cubic.js.
+ *
+ * Where phi_i^sat is evaluated: at the databank vapour pressure P_i^sat, the pressure that
+ * appears in the same term. Then a pure component boils exactly at its vapour-pressure
+ * record (at P = P_i^sat, phi_i^V = phi_i^sat and the Poynting factor is 1), whatever the
+ * vapour model. thermo instead evaluates phi_i^sat at the equation of state's own saturation
+ * pressure, so there a pure component boils slightly off its vapour-pressure record (about
+ * 0.45 K for benzene at 30 bar). The two conventions differ by up to 0.23 K in the cases of
+ * validation/python/reference_gamma_phi.py (up to 30 bar), and by up to about 0.7 K at 30 bar
+ * in other systems checked in the review of pull request #33.
  *
  * Units: T in K, P in kPa, molar volume in m3/mol.
  */
@@ -50,19 +60,26 @@ export function createCubicVapour(ids, comps, model, cfg) {
   const pures = ids.map(id => pure(id));
   const unit = i => { const e = new Array(n).fill(0); e[i] = 1; return e; };
 
+  const densityRecords = pures.map(p => p.record("liquidDensity"));
+
   /** Molar volume of pure liquid i at T, m3/mol (clamped to the record's range). */
   function vLiquid(i, T) {
-    const p = pures[i], rec = p.record("liquidDensity");
+    const rec = densityRecords[i];
     if (!rec) throw fail("MISSING_DATA", `${comps[i].name}: no liquid density in the databank, so the Poynting correction of a ${model} vapour cannot be calculated.`);
-    const Tc = Math.min(Math.max(T, rec.Tmin_K), rec.Tmax_K);
-    return comps[i].MW / 1000 / p.property("liquidDensity", Tc);
+    const Tq = Math.min(Math.max(T, rec.Tmin_K), rec.Tmax_K);
+    return comps[i].MW / 1000 / pures[i].property("liquidDensity", Tq);
   }
 
   let cacheT = NaN, cache = null;
-  /** ln phi_i^sat at T for the given vapour pressures (kPa), and v_i^L; cached for the last T. */
+  /**
+   * ln phi_i^sat at T for the given vapour pressures (kPa), and v_i^L; cached for the last T.
+   * NaN for a component at or above its critical temperature.
+   */
   function pureTerms(T, psat) {
     if (T === cacheT && cache.psat.every((p, i) => p === psat[i])) return cache;
+    const above = comps.map(c => !(T < c.Tc_K));
     const lnPhiSat = psat.map((ps, i) => {
+      if (above[i]) return NaN;
       const st = eos.state(T, ps, unit(i), "vapour");
       if (st.rootType === "liquid-like") {
         throw failRange("OUT_OF_RANGE", `${comps[i].name}: the ${model} equation has no vapour root at ${T.toFixed(2)} K and the vapour pressure ${ps.toPrecision(5)} kPa, so phi_sat cannot be calculated (too close to the critical point).`);
@@ -70,7 +87,7 @@ export function createCubicVapour(ids, comps, model, cfg) {
       return st.lnPhi[i];
     });
     cacheT = T;
-    cache = { psat: psat.slice(), lnPhiSat, vL: ids.map((_, i) => vLiquid(i, T)) };
+    cache = { psat: psat.slice(), lnPhiSat, vL: ids.map((_, i) => (above[i] ? NaN : vLiquid(i, T))) };
     return cache;
   }
 
@@ -89,7 +106,15 @@ export function createCubicVapour(ids, comps, model, cfg) {
    * @returns {{P:number, y:number[], phi:number[], phiSat:number[], poynting:number[]}}
    */
   function equilibrium(x, T, gamma, psat) {
-    const { lnPhiSat, vL } = pureTerms(T, psat);
+    const t = pureTerms(T, psat);
+    const lnPhiSat = t.lnPhiSat.slice(), vL = t.vL.slice();
+    for (let i = 0; i < n; i++) {
+      if (!Number.isNaN(lnPhiSat[i])) continue;
+      if (x[i] > 1e-10) {
+        throw failRange("OUT_OF_RANGE", `${comps[i].name} is above its critical temperature (${comps[i].Tc_K} K) at ${T.toFixed(2)} K, so it has no saturated vapour: an activity model with a ${model} vapour needs every component of the liquid below its critical temperature. Use model "${model}" for both phases.`);
+      }
+      lnPhiSat[i] = 0; vL[i] = 0; // absent from the liquid: its term is zero anyway
+    }
     const base = x.map((xi, i) => xi * gamma[i] * psat[i] * Math.exp(lnPhiSat[i]));
     let P = base.reduce((a, b) => a + b, 0);
     let y = base.map(v => v / P);
@@ -111,6 +136,17 @@ export function createCubicVapour(ids, comps, model, cfg) {
     throw fail("NO_CONVERGENCE", `Bubble pressure with a ${model} vapour at ${T.toFixed(2)} K did not converge in 200 steps (last ${P.toPrecision(6)} kPa).`, { x, T, P, y });
   }
 
+  /** Warnings at T: liquid volumes taken at the end of their record (Poynting factor). */
+  function warnings(T) {
+    const w = [];
+    densityRecords.forEach((rec, i) => {
+      if (rec && T > rec.Tmax_K && T < comps[i].Tc_K) {
+        w.push(`${comps[i].name}: the Poynting correction uses the liquid density at ${rec.Tmax_K} K, where its record ends (T = ${T.toFixed(1)} K, critical temperature ${comps[i].Tc_K} K); this close to the critical point the liquid volume is larger, so the correction is underestimated.`);
+      }
+    });
+    return w;
+  }
+
   const describe = `${eos.name} vapour (fugacity coefficients with k_ij${missing.length ? `; k_ij = 0 for ${missing.map(m => m.join(" + ")).join(", ")}` : ""}), with phi_sat and the Poynting correction in the liquid`;
-  return { model, eos, kij: K, pairs, missing, equilibrium, describe };
+  return { model, eos, kij: K, pairs, missing, equilibrium, warnings, describe };
 }

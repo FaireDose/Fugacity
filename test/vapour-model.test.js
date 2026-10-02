@@ -87,3 +87,20 @@ test("the workbench keeps the vapour model in its state and passes it to activit
   assert.equal(setsFor(s1, "NRTL").vapour, "SRK");
   assert.equal("vapour" in setsFor(s1, "PR"), false);
 });
+
+test("high pressure: a pure component boils at its vapour pressure; above a critical temperature it fails loudly", () => {
+  const s = system({ components: ["methanol", "water"], model: "NRTL", vapour: "PR" });
+  const tb = s.boilingPoints(3000);
+  tb.forEach((T, i) => assert.ok(Math.abs(s.psat(T)[i] / 3000 - 1) < 1e-9, `component ${i}: Psat(Tb) = ${s.psat(T)[i]}`));
+  assert.ok(Math.abs(s.dewT([1, 0], 3000).T - tb[0]) < 1e-5);
+  assert.ok(Math.abs(s.dewT([0, 1], 3000).T - tb[1]) < 1e-5);
+  // 30 bar works although the wide bracket scan passes methanol's critical temperature
+  assert.ok(s.bubbleT([0.2, 0.8], 3000).T > 480);
+  // close to methanol's critical point the Poynting correction warns
+  assert.ok(s.bubbleT([0.5, 0.5], 5000).warnings.some(w => /Poynting correction uses the liquid density/.test(w)));
+  // above it: an error with a code, not a number
+  const e = system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" });
+  assert.throws(() => e.bubbleP([0.5, 0.5], 520), err => err instanceof FugacityError && err.code === "OUT_OF_RANGE" && /above its critical temperature/.test(err.message));
+  // the ideal-gas vapour keeps its earlier behaviour there
+  assert.ok(Number.isFinite(system({ components: ["ethanol", "water"], model: "NRTL" }).bubbleP([0.5, 0.5], 520).P));
+});

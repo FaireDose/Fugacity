@@ -1,5 +1,5 @@
 {
- "_about": "Bubble and dew points of activity-coefficient systems with a Peng-Robinson or SRK vapour, from validation/python/reference_gamma_phi.py (independent implementation; scipy root on all equations), checked against thermo's FlashVL (Poynting&PhiSat) with phi_sat at the databank vapour pressure: largest differences 1.4e-08 K and 3.4e-11 relative in P. 'thermo_own_phi_sat' is thermo with phi_sat at the equation of state's own saturation pressure (a different convention): up to 0.21 K and 3.5e-03 relative in P.",
+ "_about": "Bubble and dew points of activity-coefficient systems with a Peng-Robinson or SRK vapour, from validation/python/reference_gamma_phi.py (independent implementation; scipy root on all equations), checked against thermo's FlashVL (Poynting&PhiSat) with phi_sat at the databank vapour pressure: largest differences 2.2e-04 K and 3.4e-11 relative in P. 'thermo_own_phi_sat' is thermo with phi_sat at the equation of state's own saturation pressure (a different convention): up to 0.23 K and 3.5e-03 relative in P.",
  "cases": [
   {
    "model": "NRTL",
@@ -977,6 +977,41 @@
     0.5,
     0.5
    ],
+   "P_kPa": 3000.0,
+   "bubbleT": {
+    "T_K": 471.9644273095938,
+    "y": [
+     0.6766371266659637,
+     0.3233628733340363
+    ]
+   },
+   "dewT": {
+    "T_K": 481.6500423278519,
+    "x": [
+     0.28115688265956257,
+     0.7188431173404374
+    ]
+   },
+   "thermo": {
+    "bubbleT_K": 471.9644273088993,
+    "dewT_K": 481.6500423290023
+   },
+   "thermo_own_phi_sat": {
+    "bubbleT_K": 472.19665906060266,
+    "dewT_K": 481.76289446818396
+   }
+  },
+  {
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "methanol",
+    "water"
+   ],
+   "z": [
+    0.5,
+    0.5
+   ],
    "T_K": 450.0,
    "bubbleP": {
     "P_kPa": 1930.9468300213628,
@@ -990,6 +1025,137 @@
    },
    "thermo_own_phi_sat": {
     "bubbleP_kPa": 1924.202785181067
+   }
+  },
+  {
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "methanol",
+    "water"
+   ],
+   "z": [
+    0.2,
+    0.8
+   ],
+   "P_kPa": 101.325,
+   "bubbleT": {
+    "T_K": 354.8812904059588,
+    "y": [
+     0.5791425048945947,
+     0.4208574951054056
+    ]
+   },
+   "dewT": {
+    "T_K": 367.83996645570926,
+    "x": [
+     0.03380681362377007,
+     0.9661931863762298
+    ]
+   },
+   "thermo": {
+    "bubbleT_K": 354.8812904065784,
+    "dewT_K": 367.83996645056476
+   },
+   "thermo_own_phi_sat": {
+    "bubbleT_K": 354.8810579435235,
+    "dewT_K": 367.82970844076067
+   }
+  },
+  {
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "methanol",
+    "water"
+   ],
+   "z": [
+    0.2,
+    0.8
+   ],
+   "P_kPa": 2000.0,
+   "bubbleT": {
+    "T_K": 465.2920331234932,
+    "y": [
+     0.4351180121697372,
+     0.5648819878302629
+    ]
+   },
+   "dewT": {
+    "T_K": 476.84896283507504,
+    "x": [
+     0.0664006784960902,
+     0.9335993215039098
+    ]
+   },
+   "thermo": {
+    "bubbleT_K": 465.29203312233864,
+    "dewT_K": 476.84896283353413
+   },
+   "thermo_own_phi_sat": {
+    "bubbleT_K": 465.4145994790998,
+    "dewT_K": 476.8855898545943
+   }
+  },
+  {
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "methanol",
+    "water"
+   ],
+   "z": [
+    0.2,
+    0.8
+   ],
+   "P_kPa": 3000.0,
+   "bubbleT": {
+    "T_K": 486.7325196775886,
+    "y": [
+     0.4082292822879423,
+     0.5917707177120577
+    ]
+   },
+   "dewT": {
+    "T_K": 497.6151463320374,
+    "x": [
+     0.07498440579398184,
+     0.925015594206018
+    ]
+   },
+   "thermo": {
+    "bubbleT_K": 486.7327444705222,
+    "dewT_K": 497.61514633048773
+   },
+   "thermo_own_phi_sat": {
+    "bubbleT_K": 486.9079064816054,
+    "dewT_K": 497.6969949028956
+   }
+  },
+  {
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "methanol",
+    "water"
+   ],
+   "z": [
+    0.2,
+    0.8
+   ],
+   "T_K": 450.0,
+   "bubbleP": {
+    "P_kPa": 1457.7107969445788,
+    "y": [
+     0.45385356855296777,
+     0.5461464314470322
+    ]
+   },
+   "thermo": {
+    "bubbleP_kPa": 1457.7107969701187
+   },
+   "thermo_own_phi_sat": {
+    "bubbleP_kPa": 1454.6965349677928
    }
   }
  ]
