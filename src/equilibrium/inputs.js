@@ -15,10 +15,11 @@ const NEG_TOL = 1e-9;
  * @returns {number[]}
  */
 export function checkComposition(z, n, what = "Composition") {
+  if (ArrayBuffer.isView(z)) z = Array.from(z); // Float64Array and the like
   if (!Array.isArray(z) || z.length !== n) {
     throw fail("BAD_INPUT", `${what}: give ${n} mole fractions${Array.isArray(z) ? ` (got ${z.length})` : ""}.`);
   }
-  const v = z.map(Number);
+  const v = z.map(toNumber);
   v.forEach((u, i) => {
     if (!Number.isFinite(u)) throw fail("BAD_INPUT", `${what}: mole fraction ${i + 1} is not a number (got ${JSON.stringify(z[i])}).`);
     if (u < -NEG_TOL) throw fail("BAD_INPUT", `${what}: mole fractions must not be negative (got ${u} for component ${i + 1}).`);
@@ -29,18 +30,30 @@ export function checkComposition(z, n, what = "Composition") {
   return c.map(u => u / s);
 }
 
-/** Check a temperature in K. */
-export function checkTemperature(T, what = "Temperature") {
-  if (!(typeof T === "number" && Number.isFinite(T) && T > 0)) {
-    throw failRange("BAD_INPUT", `${what} must be a positive number of kelvin (got ${JSON.stringify(T)}).`);
-  }
-  return T;
+/**
+ * Numbers, and numeric strings such as the value of an input field ("101.325"), as before
+ * these checks existed; anything else (empty string, "abc", null, an object) gives NaN.
+ */
+function toNumber(v) {
+  if (typeof v === "number") return v;
+  if (typeof v === "string" && v.trim() !== "") return Number(v);
+  return NaN;
 }
 
-/** Check a pressure in kPa. */
+/** Check a temperature in K; returns it as a number. */
+export function checkTemperature(T, what = "Temperature") {
+  const v = toNumber(T);
+  if (!(Number.isFinite(v) && v > 0)) {
+    throw failRange("BAD_INPUT", `${what} must be a positive number of kelvin (got ${JSON.stringify(T)}).`);
+  }
+  return v;
+}
+
+/** Check a pressure in kPa; returns it as a number. */
 export function checkPressure(P, what = "Pressure") {
-  if (!(typeof P === "number" && Number.isFinite(P) && P > 0)) {
+  const v = toNumber(P);
+  if (!(Number.isFinite(v) && v > 0)) {
     throw failRange("BAD_INPUT", `${what} must be a positive number of kPa (got ${JSON.stringify(P)}).`);
   }
-  return P;
+  return v;
 }

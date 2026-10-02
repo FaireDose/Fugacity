@@ -17,8 +17,10 @@
  *     at the previous x. At convergence y(x, T) = y and the dew pressure is the bubble
  *     pressure of x. The step is halved (in ln x) when the error grows.
  *     Start: the ideal-solution liquid x_i ~ y_i / P_i^sat.
- *   - dew temperature at fixed P: Brent's method on f(T) = ln(P_dew(T) / P), bracketed by
- *     scanning between the pure boiling points (minus 80 K, plus 20 K, as for bubbleT).
+ *   - dew temperature at fixed P: Brent's method on f(T) = ln(P_dew(T) / P), which rises with
+ *     T. The bracket is found by stepping out from the Raoult's-law dew temperature (2 K,
+ *     doubling), or else by scanning between the pure boiling points (minus 80 K, plus 20 K,
+ *     as for bubbleT).
  * Open descriptions of the method: the dew-point procedures of the `thermo` library
  * (thermo.flash, FlashVL dew_T and dew_P with a Gibbs-excess liquid, MIT licence), which is
  * also the independent check in validation/python/reference_dew.py.
@@ -30,8 +32,9 @@
  * rest the one with the lowest pressure is the dew point (compressing the vapour, the first
  * liquid appears there; at fixed P this is the highest dew temperature). If only unstable
  * liquids are found, the solver throws a PHASE_SPLIT error, as the equation-of-state solvers
- * do. Like isLiquidStable, this detects the spinodal only; a metastable liquid between
- * spinodal and binodal is not detected until the three-phase flash (proposal 0001, step 5).
+ * do. The lowest-pressure rule also excludes a metastable first drop (between spinodal and
+ * binodal): if the drop were metastable, a liquid below the vapour's tangent plane would
+ * exist and give a dew point at a lower pressure, which the other starting liquids find.
  *
  * Units: T in K, P in kPa, mole fractions.
  */
@@ -43,7 +46,9 @@ import { isLiquidStable } from "./stability.js";
 
 const TOL = 1e-12;      // max |y(x, T) - y| at convergence
 const MAX_IT = 1000;
-const X_MIN = 1e-12;
+// Floor for liquid mole fractions. It must stay far below TOL, so that a component absent
+// from the vapour (y_i = 0) can satisfy the convergence test.
+const X_MIN = 1e-20;
 
 const normalize = v => {
   const s = v.reduce((a, b) => a + b, 0);
@@ -52,15 +57,15 @@ const normalize = v => {
 const maxDiff = (a, b) => a.reduce((m, v, i) => Math.max(m, Math.abs(v - b[i])), 0);
 
 /**
- * Dew pressure without input checks. Returns null when the iteration does not converge
- * (the caller decides what to report).
+ * Dew pressure without input checks. Returns { converged: false, x } (the last iterate) when
+ * the iteration does not converge; the caller decides what to report.
  */
 function dewPInner(sys, y, T, x0) {
   let x = x0 ? normalize(x0) : normalize(sys.psat(T).map((p, i) => y[i] / p));
   let e = sys.equilibrium(x, T);
   let err = maxDiff(e.y, y), step = 1;
   for (let it = 1; it <= MAX_IT; it++) {
-    if (err < TOL) return { P: e.P, x, gamma: e.gamma, iterations: it - 1 };
+    if (err < TOL) return { converged: true, P: e.P, x, gamma: e.gamma, iterations: it - 1 };
     const target = x.map((v, i) => v * y[i] / Math.max(e.y[i], 1e-300));
     let xn, en, errn;
     for (;;) {
@@ -71,11 +76,11 @@ function dewPInner(sys, y, T, x0) {
       if (Number.isFinite(errn) && (errn < err || step < 1 / 64)) break;
       step /= 2;
     }
-    if (!Number.isFinite(errn)) return null;
+    if (!Number.isFinite(errn)) return { converged: false, x };
     if (errn < err) step = Math.min(1, step * 2);
     x = xn; e = en; err = errn;
   }
-  return null;
+  return { converged: false, x };
 }
 
 /**
@@ -86,7 +91,7 @@ function dewPInner(sys, y, T, x0) {
  * point; solutions whose liquid is not stable (inside the spinodal) are discarded.
  * Starts: the ideal-solution liquid, the previous solution (warm), and, for each
  * component, a liquid rich in that component.
- * @returns {{best:object|null, unstable:object|null}}
+ * @returns {{best:object|null, unstable:object|null, lastX:number[]|null}}
  */
 function dewPSolutions(sys, y, T, warm) {
   const n = sys.n;
@@ -94,15 +99,17 @@ function dewPSolutions(sys, y, T, warm) {
   if (warm) starts.push(warm);
   if (n > 1) for (let k = 0; k < n; k++) starts.push(y.map((v, i) => (i === k ? 0.98 : 0.02 * Math.max(v, 1e-6))));
   const found = [];
-  let unstable = null;
+  let unstable = null, lastX = null;
   for (const x0 of starts) {
     const r = dewPInner(sys, y, T, x0);
-    if (!r || found.some(f => maxDiff(f.x, r.x) < 1e-7)) continue;
-    if (n > 1 && !isLiquidStable(sys, r.x, T)) { if (!unstable || r.P < unstable.P) unstable = r; continue; }
-    found.push(r);
+    if (!r.converged) { lastX = r.x; continue; }
+    const { converged, ...sol } = r;
+    if (found.some(f => maxDiff(f.x, sol.x) < 1e-7)) continue;
+    if (n > 1 && !isLiquidStable(sys, sol.x, T)) { if (!unstable || sol.P < unstable.P) unstable = sol; continue; }
+    found.push(sol);
   }
   const best = found.reduce((m, r) => (!m || r.P < m.P ? r : m), null);
-  return { best, unstable };
+  return { best, unstable, lastX };
 }
 
 function splitError(what, r, where) {
@@ -119,11 +126,11 @@ function splitError(what, r, where) {
  */
 export function dewP(sys, y, T) {
   y = checkComposition(y, sys.n, "Vapour composition");
-  checkTemperature(T);
+  T = checkTemperature(T);
   const what = `${sys.model} dew pressure at T = ${T} K`;
-  const { best, unstable } = dewPSolutions(sys, y, T);
+  const { best, unstable, lastX } = dewPSolutions(sys, y, T);
   if (!best && unstable) throw splitError(what, unstable, `${unstable.P.toFixed(2)} kPa`);
-  if (!best) throw fail("NO_CONVERGENCE", `${what}: the liquid composition did not converge in ${MAX_IT} substitution steps from any starting liquid.`, { y, T });
+  if (!best) throw fail("NO_CONVERGENCE", `${what}: the liquid composition did not converge in ${MAX_IT} substitution steps from any starting liquid.`, { y, T, lastX });
   return { ...best, warnings: sys.warnings ? sys.warnings(T, best.P) : [] };
 }
 
@@ -136,7 +143,7 @@ export function dewP(sys, y, T) {
  */
 export function dewT(sys, y, P) {
   y = checkComposition(y, sys.n, "Vapour composition");
-  checkPressure(P);
+  P = checkPressure(P);
   const what = `${sys.model} dew temperature at P = ${P} kPa`;
   const tb = pureBoilingPoints(sys, P);
   const lo = Math.min(...tb) - 80, hi = Math.max(...tb) + 20;
@@ -148,21 +155,44 @@ export function dewT(sys, y, P) {
     warm = best.x;
     return Math.log(best.P / P);
   };
-  // scan for a sign change; temperatures where no stable liquid is found are skipped
-  const N = 40;
-  let a = null, fa = NaN, bracket = null;
-  for (let k = 0; k <= N && !bracket; k++) {
-    const T = lo + (hi - lo) * k / N, fT = f(T);
-    if (!Number.isFinite(fT)) continue;
-    if (a !== null && fa * fT <= 0) bracket = [a, T];
-    a = T; fa = fT;
+  let bracket = null;
+  // 1. step out from the Raoult's-law dew temperature (f rises with T)
+  const raoult = T => Math.log(P * sys.psat(T).reduce((a, p, i) => a + y[i] / p, 0)); // falls with T
+  let T0 = null;
+  try { T0 = brent(raoult, lo, hi, { xtol: 1e-3 }); } catch { /* no Raoult estimate in range */ }
+  if (T0 !== null) {
+    const f0 = f(T0);
+    if (Number.isFinite(f0)) {
+      const dir = f0 < 0 ? 1 : -1;
+      let a = T0, fa = f0;
+      for (let step = 2; !bracket; step *= 2) {
+        const T = Math.min(hi, Math.max(lo, a + dir * step));
+        const fT = f(T);
+        if (Number.isFinite(fT)) {
+          if (fa * fT <= 0) bracket = dir > 0 ? [a, T] : [T, a];
+          else { a = T; fa = fT; }
+        }
+        if (T === lo || T === hi) break;
+      }
+    }
+  }
+  // 2. otherwise scan the whole range; temperatures where no stable liquid is found are skipped
+  if (!bracket) {
+    const N = 40;
+    let a = null, fa = NaN;
+    for (let k = 0; k <= N && !bracket; k++) {
+      const T = lo + (hi - lo) * k / N, fT = f(T);
+      if (!Number.isFinite(fT)) continue;
+      if (a !== null && fa * fT <= 0) bracket = [a, T];
+      a = T; fa = fT;
+    }
   }
   if (!bracket) {
     if (lastUnstable) throw splitError(what, lastUnstable, `${lastUnstable.T.toFixed(2)} K`);
     throw fail("NO_CONVERGENCE", `${what}: no dew point found between ${lo.toFixed(1)} K and ${hi.toFixed(1)} K (pure boiling points ${tb.map(t => t.toFixed(1)).join(", ")} K).`, { y, P });
   }
   const T = brent(f, bracket[0], bracket[1], { xtol: 1e-7 });
-  const { best } = dewPSolutions(sys, y, T, warm);
-  if (!best) throw fail("NO_CONVERGENCE", `${what}: the liquid composition did not converge at ${T.toFixed(3)} K.`, { y, P, T });
+  const { best, lastX } = dewPSolutions(sys, y, T, warm);
+  if (!best) throw fail("NO_CONVERGENCE", `${what}: the liquid composition did not converge at ${T.toFixed(3)} K.`, { y, P, T, lastX });
   return { T, x: best.x, gamma: best.gamma, iterations: best.iterations, warnings: sys.warnings ? sys.warnings(T, P) : [] };
 }

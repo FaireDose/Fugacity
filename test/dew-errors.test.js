@@ -54,6 +54,22 @@ test("partly miscible pair: the dew point takes the stable first drop (water + e
   }
 });
 
+test("vapours with a missing component: pure vapours dew at the boiling point", () => {
+  const s = system({ components: ["ethanol", "water"], model: "NRTL" });
+  const tb = s.boilingPoints(101.325);
+  assert.ok(Math.abs(s.dewT([1, 0], 101.325).T - tb[0]) < 1e-5);
+  assert.ok(Math.abs(s.dewT([0, 1], 101.325).T - tb[1]) < 1e-5);
+  const t = system({ components: ["methanol", "acetone", "chloroform"], model: "UNIQUAC" });
+  for (const y of [[0.5, 0.5, 0], [0, 0.3, 0.7], [0.2, 0, 0.8]]) {
+    const d = t.dewT(y, 101.325);
+    const b = t.bubbleT(d.x, 101.325);
+    assert.ok(Math.abs(b.T - d.T) < 1e-5, `y=${y}`);
+    y.forEach((v, i) => { if (v === 0) assert.ok(d.x[i] < 1e-15, `y=${y}: x ${d.x}`); });
+    const p = t.dewP(y, 330);
+    assert.ok(p.P > 0, `y=${y}`);
+  }
+});
+
 test("equation-of-state systems keep their dew points", () => {
   const s = system({ components: ["methane", "ethane"], model: "PR" });
   const d = s.dewT([0.5, 0.5], 2000);
@@ -68,6 +84,10 @@ test("inputs are checked before any solver runs", () => {
   bad(() => s.bubbleT([1.2, -0.2], 101.325), /must not be negative/);
   bad(() => s.dewP([0, 0], 350), /positive sum/);
   bad(() => s.bubbleT([0.5, "x"], 101.325), /not a number/);
+  bad(() => s.bubbleT([0.5, 0.5], ""), /Pressure must be/);
+  // numeric strings (an input field's value) and typed arrays are accepted, as before
+  assert.equal(s.bubbleT(["0.5", "0.5"], "101.325").T, s.bubbleT([0.5, 0.5], 101.325).T);
+  assert.equal(s.dewT(new Float64Array([0.5, 0.5]), 101.325).T, s.dewT([0.5, 0.5], 101.325).T);
   bad(() => s.bubbleT([0.5, 0.5], -5), /Pressure must be a positive number of kPa/);
   bad(() => s.dewP([0.5, 0.5], NaN), /Temperature must be a positive number of kelvin/);
   // rounding below zero is accepted and the composition is normalized, as before
