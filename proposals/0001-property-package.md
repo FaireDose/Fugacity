@@ -150,15 +150,18 @@ deviation, so nobody mistakes it for a validated number.
 The same rules for bubble, dew and every flash:
 
 - **Converge or throw.** A solver that does not converge throws a `FugacityError` with a
-  `code` (`NO_CONVERGENCE`, `OUT_OF_RANGE`, `MISSING_DATA`, `BAD_INPUT`), a message an
+  `code` (`NO_CONVERGENCE`, `OUT_OF_RANGE`, `MISSING_DATA`, `BAD_INPUT`, `PHASE_SPLIT` for
+  more phases than the calculation handles, `NOT_AVAILABLE` for a calculation a model
+  does not have yet), a message an
   engineer understands (for example "PH flash: the enthalpy given needs a temperature
   above the range of the heat-capacity data of ethyl acetate"), and the last iterate.
 - **Warnings, not errors,** for results that are computed correctly but rest on weaker
   ground: parameters used outside their data range, a predicted liquid split, a missing
   pair treated as ideal.
 - **Tolerances:** phase equilibrium |ln f_i^α − ln f_i^β| < 1e-9; mass balance 1e-10;
-  temperature in an enthalpy flash 1e-6 K. Inputs are checked first (compositions sum
-  to 1 within 1e-9, positive T and P, the spec pair is one of those above).
+  temperature in an enthalpy flash 1e-6 K. Inputs are checked first (one mole fraction per component, none negative, a positive
+  sum; compositions are normalized to a sum of 1, as the existing functions always did;
+  positive T and P; the spec pair is one of those above).
 - **Speed budget:** under 5 ms for a two-phase flash of up to 5 components in a browser,
   so that flowsheets with recycles stay interactive.
 
