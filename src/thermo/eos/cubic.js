@@ -48,6 +48,7 @@
  * in magnitude for polar vapours (methanol, ethanol, acetone, water), whose residual cp is
  * 3-4 times too small.
  */
+import { fail, failRange } from "../../util/errors.js";
 
 export const R = 8.314462618; // J/(mol K), CODATA 2018
 
@@ -120,7 +121,7 @@ const normPhase = phase => {
   const p = String(phase || "").toLowerCase();
   if (["liquid", "l", "liq"].includes(p)) return "liquid";
   if (["vapour", "vapor", "v", "gas", "g"].includes(p)) return "vapour";
-  throw new Error(`Unknown phase "${phase}": use "liquid" or "vapour".`);
+  throw fail("BAD_INPUT", `Unknown phase "${phase}": use "liquid" or "vapour".`);
 };
 
 /**
@@ -132,11 +133,11 @@ const normPhase = phase => {
  */
 export function cubicEos(model, comps, kij) {
   const eq = CUBICS[String(model).toUpperCase()];
-  if (!eq) throw new Error(`Unknown equation of state "${model}". Use PR or SRK.`);
+  if (!eq) throw fail("BAD_INPUT", `Unknown equation of state "${model}". Use PR or SRK.`);
   const n = comps.length;
   for (const c of comps) {
     for (const k of ["Tc_K", "Pc_Pa", "omega"]) {
-      if (!Number.isFinite(c[k])) throw new Error(`${c.name}: ${k} is missing; it is needed by the ${model} equation of state.`);
+      if (!Number.isFinite(c[k])) throw fail("MISSING_DATA", `${c.name}: ${k} is missing; it is needed by the ${model} equation of state.`);
     }
   }
   const K = kij || Array.from({ length: n }, () => new Array(n).fill(0));
@@ -177,11 +178,11 @@ export function cubicEos(model, comps, kij) {
   }
 
   const check = (T, P, x) => {
-    if (!(T > 0)) throw new RangeError(`Temperature must be positive (got ${T} K).`);
-    if (!(P > 0)) throw new RangeError(`Pressure must be positive (got ${P} kPa).`);
-    if (!Array.isArray(x) || x.length !== n) throw new Error(`Give ${n} mole fractions.`);
+    if (!(T > 0)) throw failRange("BAD_INPUT", `Temperature must be positive (got ${T} K).`);
+    if (!(P > 0)) throw failRange("BAD_INPUT", `Pressure must be positive (got ${P} kPa).`);
+    if (!Array.isArray(x) || x.length !== n) throw fail("BAD_INPUT", `Give ${n} mole fractions.`);
     const sum = x.reduce((u, v) => u + v, 0);
-    if (!(sum > 0) || x.some(v => !(v >= 0))) throw new Error("Mole fractions must be non-negative with a positive sum.");
+    if (!(sum > 0) || x.some(v => !(v >= 0))) throw fail("BAD_INPUT", "Mole fractions must be non-negative with a positive sum.");
     return x.map(v => v / sum);
   };
 
@@ -199,7 +200,7 @@ export function cubicEos(model, comps, kij) {
     const s = d1 + d2, p = d1 * d2;
     const all = cubicRoots((s - 1) * B - 1, A + p * B * B - s * B * (B + 1), -(A * B + p * B * B * (B + 1)));
     const roots = all.filter(z => z > B);
-    if (!roots.length) throw new Error(`${model}: no physical root at ${T} K, ${P_kPa} kPa.`);
+    if (!roots.length) throw fail("NO_CONVERGENCE", `${model}: no physical root at ${T} K, ${P_kPa} kPa.`);
     const Z = ph === "liquid" ? roots[0] : roots[roots.length - 1];
     const v = Z * RT / P;
     const rootType = roots.length > 1 ? (ph === "liquid" ? "liquid" : "vapour")
@@ -228,7 +229,7 @@ export function cubicEos(model, comps, kij) {
    */
   function psat(i, T) {
     const c = comps[i];
-    if (!(T < c.Tc_K)) throw new RangeError(`${c.name}: no saturation pressure at ${T} K (critical temperature ${c.Tc_K} K).`);
+    if (!(T < c.Tc_K)) throw failRange("OUT_OF_RANGE", `${c.name}: no saturation pressure at ${T} K (critical temperature ${c.Tc_K} K).`);
     const x = new Array(n).fill(0); x[i] = 1;
     const both = P => {
       const L = state(T, P, x, "liquid"), V = state(T, P, x, "vapour");
@@ -241,7 +242,7 @@ export function cubicEos(model, comps, kij) {
       P = st.L.rootType === "liquid-like" ? P / 1.3 : P * 1.3;
       st = both(P);
     }
-    if (!st.two) throw new Error(`${c.name}: could not find a pressure with liquid and vapour roots at ${T} K.`);
+    if (!st.two) throw fail("NO_CONVERGENCE", `${c.name}: could not find a pressure with liquid and vapour roots at ${T} K.`);
     for (let it = 0; it < 100; it++) {
       const g = st.L.lnPhi[i] - st.V.lnPhi[i];
       const dg = st.L.Z - st.V.Z;
@@ -252,7 +253,7 @@ export function cubicEos(model, comps, kij) {
       P = Pn; st = sn;
       if (Math.abs(step) < 1e-13) return P;
     }
-    throw new Error(`${c.name}: saturation pressure from ${model} did not converge at ${T} K.`);
+    throw fail("NO_CONVERGENCE", `${c.name}: saturation pressure from ${model} did not converge at ${T} K.`);
   }
 
   return {

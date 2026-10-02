@@ -43,6 +43,7 @@
  * kJ/(kg K), density in kg/m3. The exported functions take and return pressure in kPa
  * (the engine's unit); mass-specific properties stay in steam-table units (kJ/kg).
  */
+import { fail, failRange } from "../../util/errors.js";
 
 /** Specific gas constant of IF97, kJ/(kg K) (Eq. 1). */
 export const R = 0.461526;
@@ -157,7 +158,7 @@ export function tB23(p) {
 /** Region 4, Eq. 30: saturation pressure (MPa) at T (K), 273.15 K <= T <= 647.096 K. */
 export function psatMPa(T) {
   if (!(T >= T_MIN && T <= TC)) {
-    throw new RangeError(`IAPWS-IF97 saturation pressure: T = ${T} K is outside 273.15-647.096 K.`);
+    throw failRange("OUT_OF_RANGE", `IAPWS-IF97 saturation pressure: T = ${T} K is outside 273.15-647.096 K.`);
   }
   const th = T + N4[8] / (T - N4[9]);
   const A = th * th + N4[0] * th + N4[1];
@@ -171,7 +172,7 @@ const P_SAT_MIN = psatMPa(T_MIN); // 611.213 Pa
 /** Region 4, Eq. 31: saturation temperature (K) at p (MPa), psat(273.15 K) <= p <= 22.064 MPa. */
 export function tsatMPa(p) {
   if (!(p >= P_SAT_MIN && p <= PC)) {
-    throw new RangeError(`IAPWS-IF97 saturation temperature: p = ${p * 1000} kPa is outside ` +
+    throw failRange("OUT_OF_RANGE", `IAPWS-IF97 saturation temperature: p = ${p * 1000} kPa is outside ` +
       `${(P_SAT_MIN * 1000).toPrecision(6)}-22064 kPa.`);
   }
   const b = Math.pow(p, 0.25);
@@ -184,16 +185,16 @@ export function tsatMPa(p) {
 
 /** Throws unless (T, p MPa) is inside the range of validity of IF97. */
 function checkRange(T, p) {
-  if (!Number.isFinite(T) || !Number.isFinite(p)) throw new RangeError("IAPWS-IF97: T and P must be numbers.");
+  if (!Number.isFinite(T) || !Number.isFinite(p)) throw failRange("BAD_INPUT", "IAPWS-IF97: T and P must be numbers.");
   if (T < T_MIN || T > T_MAX) {
-    throw new RangeError(`IAPWS-IF97 is valid from 273.15 K to 2273.15 K; T = ${T} K.`);
+    throw failRange("OUT_OF_RANGE", `IAPWS-IF97 is valid from 273.15 K to 2273.15 K; T = ${T} K.`);
   }
-  if (!(p > 0)) throw new RangeError(`IAPWS-IF97 needs a positive pressure; P = ${p * 1000} kPa.`);
+  if (!(p > 0)) throw failRange("BAD_INPUT", `IAPWS-IF97 needs a positive pressure; P = ${p * 1000} kPa.`);
   if (T <= T_25 && p > P_MAX) {
-    throw new RangeError(`IAPWS-IF97 is valid up to 100 MPa below 1073.15 K; P = ${p * 1000} kPa.`);
+    throw failRange("OUT_OF_RANGE", `IAPWS-IF97 is valid up to 100 MPa below 1073.15 K; P = ${p * 1000} kPa.`);
   }
   if (T > T_25 && p > P_MAX_5) {
-    throw new RangeError(`IAPWS-IF97 is valid up to 50 MPa above 1073.15 K (region 5); P = ${p * 1000} kPa.`);
+    throw failRange("OUT_OF_RANGE", `IAPWS-IF97 is valid up to 50 MPa above 1073.15 K (region 5); P = ${p * 1000} kPa.`);
   }
 }
 
@@ -380,21 +381,21 @@ function rho3(T, p, side) {
   let a, b, fa, fb;
   if (side === "liquid") {
     a = RHO_HI; fa = f(a);
-    if (!(fa > 0)) throw new Error(`IAPWS-IF97 region 3: no liquid-side density found at ${T} K, ${p * 1000} kPa.`);
+    if (!(fa > 0)) throw fail("NO_CONVERGENCE", `IAPWS-IF97 region 3: no liquid-side density found at ${T} K, ${p * 1000} kPa.`);
     for (;;) {
       b = a / STEP; fb = f(b);
       if (fb <= 0) break;
       a = b; fa = fb;
-      if (b < RHO_LO) throw new Error(`IAPWS-IF97 region 3: density search failed at ${T} K, ${p * 1000} kPa.`);
+      if (b < RHO_LO) throw fail("NO_CONVERGENCE", `IAPWS-IF97 region 3: density search failed at ${T} K, ${p * 1000} kPa.`);
     }
   } else {
     a = RHO_LO; fa = f(a);
-    if (!(fa < 0)) throw new Error(`IAPWS-IF97 region 3: no vapour-side density found at ${T} K, ${p * 1000} kPa.`);
+    if (!(fa < 0)) throw fail("NO_CONVERGENCE", `IAPWS-IF97 region 3: no vapour-side density found at ${T} K, ${p * 1000} kPa.`);
     for (;;) {
       b = a * STEP; fb = f(b);
       if (fb >= 0) break;
       a = b; fa = fb;
-      if (b > RHO_HI) throw new Error(`IAPWS-IF97 region 3: density search failed at ${T} K, ${p * 1000} kPa.`);
+      if (b > RHO_HI) throw fail("NO_CONVERGENCE", `IAPWS-IF97 region 3: density search failed at ${T} K, ${p * 1000} kPa.`);
     }
   }
   // Near the critical point the bracket may hold more than one root: refine it from the
@@ -413,7 +414,7 @@ function rho3(T, p, side) {
   const delta = rho / RHOC, d = phi3(delta, TC / T);
   const dpdrho = 1e-3 * R * T * (2 * delta * d.fd + delta * delta * d.fdd);  // MPa/(kg/m3)
   if (dpdrho < -1e-9) {
-    throw new Error(`IAPWS-IF97 region 3: unstable density root (dp/drho < 0) at ${T} K, ${p * 1000} kPa.`);
+    throw fail("NO_CONVERGENCE", `IAPWS-IF97 region 3: unstable density root (dp/drho < 0) at ${T} K, ${p * 1000} kPa.`);
   }
   return rho;
 }
@@ -423,7 +424,7 @@ function brentRoot(f, lo, hi) {
   let a = lo, b = hi, fa = f(a), fb = f(b);
   if (fa === 0) return a;
   if (fb === 0) return b;
-  if ((fa > 0) === (fb > 0)) throw new Error("IAPWS-IF97: root not bracketed.");
+  if ((fa > 0) === (fb > 0)) throw fail("NO_CONVERGENCE", "IAPWS-IF97: root not bracketed.");
   let c = a, fc = fa, d = b - a, e = d;
   for (let i = 0; i < 200; i++) {
     if ((fb > 0) === (fc > 0)) { c = a; fc = fa; d = b - a; e = d; }
@@ -443,7 +444,7 @@ function brentRoot(f, lo, hi) {
     b += Math.abs(d) > tol ? d : (m > 0 ? tol : -tol);
     fb = f(b);
   }
-  throw new Error("IAPWS-IF97 region 3: density iteration did not converge.");
+  throw fail("NO_CONVERGENCE", "IAPWS-IF97 region 3: density iteration did not converge.");
 }
 
 // ---------------------------------------------------------------------------------------

@@ -30,6 +30,7 @@ import { hIdealGas as hIdealGasIF97, cpIdealGas as cpIdealGasIF97, psat as psatI
 import { viscosity as viscosityIAPWS, thermalConductivityParts as conductivityIAPWS } from "./iapws/transport.js";
 import { cubicEos, CUBICS } from "./eos/cubic.js";
 import { dimerK, monomerPressure } from "./vapour.js";
+import { fail, failRange } from "../util/errors.js";
 
 // Accuracy of the Peng-Robinson residual enthalpy and cp of vapours, against CoolProp's
 // reference equations of state (test/eos-reference.test.js, 12 states): light gases and
@@ -94,10 +95,10 @@ export function pure(key, opts = {}) {
   const c = componentData.components[id];
   const data = { ...(c.properties || {}), ...(opts.properties || {}) };
   for (const [name, rec] of Object.entries(data)) {
-    if (!PROPERTIES[name]) throw new Error(`${c.name}: unknown property "${name}"${opts.properties?.[name] ? "" : " in components.json"}.`);
+    if (!PROPERTIES[name]) throw fail("BAD_INPUT", `${c.name}: unknown property "${name}"${opts.properties?.[name] ? "" : " in components.json"}.`);
     if (rec.available === false) continue;
     if (rec.units !== PROPERTIES[name].recordUnits) {
-      throw new Error(`${c.name}: ${name} must be stored in ${PROPERTIES[name].recordUnits}, found "${rec.units}".`);
+      throw fail("MISSING_DATA", `${c.name}: ${name} must be stored in ${PROPERTIES[name].recordUnits}, found "${rec.units}".`);
     }
   }
   const vpRec = vapourPressureRecord(c);
@@ -122,10 +123,10 @@ export function pure(key, opts = {}) {
   /** Property value at T (K), in engine units (see PROPERTIES). Throws if missing or out of range. */
   function property(name, T, opts) {
     if (name !== "vapourPressure" && !PROPERTIES[name]) {
-      throw new Error(`Unknown property "${name}". Known: vapourPressure, ${PROPERTY_NAMES.join(", ")}.`);
+      throw fail("BAD_INPUT", `Unknown property "${name}". Known: vapourPressure, ${PROPERTY_NAMES.join(", ")}.`);
     }
     const r = record(name);
-    if (!r) throw new Error(missingMessage(name));
+    if (!r) throw fail("MISSING_DATA", missingMessage(name));
     const v = evaluate(r, T, opts);
     return name === "vapourPressure" ? v / 1000 : v;
   }
@@ -135,11 +136,11 @@ export function pure(key, opts = {}) {
 
   /** Saturation (boiling) temperature at P (kPa), K. */
   function tsat(P) {
-    if (!vpRec) throw new Error(missingMessage("vapourPressure"));
+    if (!vpRec) throw fail("MISSING_DATA", missingMessage("vapourPressure"));
     const lo = vpRec.Tmin_K, hi = vpRec.Tmax_K;
     const flo = psat(lo) - P, fhi = psat(hi) - P;
     if (flo > 0 || fhi < 0) {
-      throw new RangeError(`${c.name}: ${P} kPa is outside the vapour-pressure range ` +
+      throw failRange("OUT_OF_RANGE", `${c.name}: ${P} kPa is outside the vapour-pressure range ` +
         `(${psat(lo).toPrecision(4)}-${psat(hi).toPrecision(4)} kPa, ${lo}-${hi} K).`);
     }
     return brent(T => psat(T) - P, lo, hi, { xtol: 1e-9 });
@@ -148,7 +149,7 @@ export function pure(key, opts = {}) {
   /** Ideal-gas enthalpy relative to the ideal gas at 298.15 K, J/mol. */
   function hIdealGas(T) {
     const r = record("idealGasHeatCapacity");
-    if (!r) throw new Error(missingMessage("idealGasHeatCapacity"));
+    if (!r) throw fail("MISSING_DATA", missingMessage("idealGasHeatCapacity"));
     return integrate(t => evaluate(r, t, { extrapolate: true }), T_REF, T);
   }
 
@@ -244,14 +245,14 @@ export function pure(key, opts = {}) {
    * when there is none. Not available for dimerizing components (see props()).
    */
   function liquidEnthalpy(T, ps = null) {
-    if (c.association) throw new Error(`${c.name} dimerizes in the vapour: liquid enthalpy is not available yet.`);
+    if (c.association) throw fail("NOT_AVAILABLE", `${c.name} dimerizes in the vapour: liquid enthalpy is not available yet.`);
     const pS = ps ?? (vpRec ? psat(T) : eosPR().psat(0, T));
     return hIdealGas(T) + eosPR().state(T, pS, [1], "vapour").hR_J_mol - property("heatOfVaporization", T);
   }
 
   /** Enthalpies of the saturated vapour and liquid at T (J/mol) and the pressure (kPa). */
   function saturation(T) {
-    if (!(T < c.Tc_K)) throw new RangeError(`${c.name}: no saturation state at ${T} K (critical temperature ${c.Tc_K} K).`);
+    if (!(T < c.Tc_K)) throw failRange("OUT_OF_RANGE", `${c.name}: no saturation state at ${T} K (critical temperature ${c.Tc_K} K).`);
     const pS = vpRec ? psat(T) : eosPR().psat(0, T);
     const hV = c.association ? null : hIdealGas(T) + eosPR().state(T, pS, [1], "vapour").hR_J_mol;
     const hL = c.association ? null : liquidEnthalpy(T, pS);
@@ -338,7 +339,7 @@ function waterMethods(c, base) {
     const e = IF97_PROPS[name];
     if (!e) return base.property(name, T, opts);
     if (!(T >= e[0] && T <= e[1])) {
-      throw new RangeError(`Water: ${PROPERTIES[name]?.label ?? "vapour pressure"} from IAPWS is ` +
+      throw failRange("OUT_OF_RANGE", `Water: ${PROPERTIES[name]?.label ?? "vapour pressure"} from IAPWS is ` +
         `available from ${e[0]} K to ${e[1]} K; T = ${T} K.`);
     }
     return e[3](T);
@@ -352,7 +353,7 @@ function waterMethods(c, base) {
     /** Ideal-gas enthalpy relative to the ideal gas at 298.15 K, J/mol (IF97 ideal-gas part), 273.15-1073.15 K. */
     hIdealGas(T) {
       if (!(T >= TMIN && T <= 1073.15)) {
-        throw new RangeError(`Water: IF97 ideal-gas enthalpy is available from 273.15 K to 1073.15 K; T = ${T} K.`);
+        throw failRange("OUT_OF_RANGE", `Water: IF97 ideal-gas enthalpy is available from 273.15 K to 1073.15 K; T = ${T} K.`);
       }
       return M * (hIdealGasIF97(T) - hIdealGasIF97(T_REF));
     },

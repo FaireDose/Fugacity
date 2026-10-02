@@ -342,6 +342,11 @@ function evaluateQuantity(ctx, cs, key) {
       const r = fn(s, "bubbleT", "system.bubbleT()")([cs.x1, 1 - cs.x1], cs.P_kPa);
       return { value: key === "T_C" ? r.T - 273.15 : r.y[0], method: "system.bubbleT()" };
     }
+    case "dewT": {
+      const s = ctx.system(cs.components, cs.model);
+      const r = fn(s, "dewT", "system.dewT()")([cs.y1, 1 - cs.y1], cs.P_kPa);
+      return { value: key === "T_C" ? r.T - 273.15 : r.x[0], method: "system.dewT()" };
+    }
     case "bubbleP": {
       const s = ctx.system(cs.components, cs.model);
       const r = fn(s, "bubbleP", "system.bubbleP()")([cs.x1, 1 - cs.x1], cs.T_K);
@@ -478,6 +483,8 @@ function describe(cs, key) {
     }
     case "bubbleT":
       return { property: `${c1} + ${c2}: bubble ${key === "T_C" ? "T" : `y(${c1.toLowerCase()})`}`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${bar(cs.P_kPa)} bar, ${cs.model}` };
+    case "dewT":
+      return { property: `${c1} + ${c2}: dew ${key === "T_C" ? "T" : `x(${c1.toLowerCase()})`}`, conditions: `y(${c1.toLowerCase()}) = ${cs.y1}, ${bar(cs.P_kPa)} bar, ${cs.model}` };
     case "bubbleP":
       return { property: `${c1} + ${c2}: bubble ${key.startsWith("P") ? "P" : `y(${c1.toLowerCase()})`}`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${tC(cs.T_K)} °C, ${cs.model}` };
     case "pureProperty": {

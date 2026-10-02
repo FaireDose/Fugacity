@@ -1,5 +1,6 @@
-import { bubbleT } from "./bubble.js";
+import { bubbleTCore as bubbleT } from "./bubble.js";
 import { brent } from "../util/solve.js";
+import { fail } from "../util/errors.js";
 
 /**
  * Azeotrope near a starting composition (any number of components): solves y = x
@@ -43,7 +44,7 @@ export function findAzeotrope(sys, x0, P, opts = {}) {
  * @returns {{x:number, T:number, type:"minimum-boiling"|"maximum-boiling"}[]}  x of the first component, T in K
  */
 export function binaryAzeotropes(sys, P, scan = 200) {
-  if (sys.n !== 2) throw new Error("binaryAzeotropes needs exactly two components.");
+  if (sys.n !== 2) throw fail("BAD_INPUT", "binaryAzeotropes needs exactly two components.");
   const f = x1 => bubbleT(sys, [x1, 1 - x1], P).y[0] - x1;
   const out = [];
   let x0 = 1e-4, f0 = f(x0);

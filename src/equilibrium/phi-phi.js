@@ -34,14 +34,15 @@
  */
 import { brent } from "../util/solve.js";
 import { tpdStability } from "./eos-stability.js";
+import { fail, failRange } from "../util/errors.js";
 
 const MAX_IT = 300;
 
 const clean = z => {
   const v = z.map(u => +u);
-  if (v.some(u => !(u >= 0))) throw new Error("Mole fractions must be non-negative numbers.");
+  if (v.some(u => !(u >= 0))) throw fail("BAD_INPUT", "Mole fractions must be non-negative numbers.");
   const s = v.reduce((a, b) => a + b, 0);
-  if (!(s > 0)) throw new Error("Composition must have a positive sum.");
+  if (!(s > 0)) throw fail("BAD_INPUT", "Composition must have a positive sum.");
   return v.map(u => u / s);
 };
 
@@ -70,10 +71,10 @@ const LABEL = { bubbleP: "bubble pressure", bubbleT: "bubble temperature", dewP:
 
 function solve(sys, z, given, kind, opts = {}) {
   const eos = sys.eos, comps = eos.comps, n = eos.n;
-  if (!Array.isArray(z) || z.length !== n) throw new Error(`Give ${n} mole fractions.`);
+  if (!Array.isArray(z) || z.length !== n) throw fail("BAD_INPUT", `Give ${n} mole fractions.`);
   z = clean(z);
   const bubble = kind.startsWith("bubble"), varP = kind.endsWith("P");
-  if (!(given > 0)) throw new RangeError(`${varP ? "Temperature" : "Pressure"} must be positive (got ${given}).`);
+  if (!(given > 0)) throw failRange("BAD_INPUT", `${varP ? "Temperature" : "Pressure"} must be positive (got ${given}).`);
   const what = `${sys.model} ${LABEL[kind]} at ${varP ? `T = ${given} K` : `P = ${given} kPa`}`;
   // the unknown u is ln P (bubble/dew pressure) or T (bubble/dew temperature)
   const TP = u => (varP ? [given, Math.exp(u)] : [u, given]);
@@ -106,7 +107,7 @@ function solve(sys, z, given, kind, opts = {}) {
       if (!st.stable) {
         const where = varP ? `${P.toFixed(1)} kPa` : `${T.toFixed(2)} K`;
         const trial = st.trial.map(v => v.toPrecision(3)).join(", ");
-        const err = new Error(st.trialRoot === "liquid" || st.trialRoot === "liquid-like"
+        const err = fail("PHASE_SPLIT", st.trialRoot === "liquid" || st.trialRoot === "liquid-like"
           ? `${what}: the ${bubble ? "" : "incipient "}liquid splits into two liquid phases (tangent-plane distance ${st.tm.toFixed(3)} at the computed ${LABEL[kind]} ${where}; second liquid about [${trial}]); three-phase equilibrium is not supported yet.`
           : `${what}: the ${bubble ? "" : "incipient "}liquid is not stable at the computed ${LABEL[kind]} ${where} (tangent-plane distance ${st.tm.toFixed(3)}, trial phase [${trial}]); this point is metastable, and a flash with phase splitting is not supported yet.`);
         err.stability = st;
@@ -218,13 +219,13 @@ function solve(sys, z, given, kind, opts = {}) {
       let st = null;
       try { st = tpdStability(eos, Tt, Pt, z, "liquid"); } catch (e) { st = null; }
       if (st && !st.stable && (st.trialRoot === "liquid" || st.trialRoot === "liquid-like")) {
-        const err = new Error(`${what}: no single-liquid bubble point found (searched between ${searched}); the liquid splits into two liquid phases (tangent-plane distance ${st.tm.toFixed(3)} at ${Tt.toFixed(1)} K, ${Pt.toFixed(1)} kPa); three-phase equilibrium is not supported yet.${gasHint}`);
+        const err = fail("PHASE_SPLIT", `${what}: no single-liquid bubble point found (searched between ${searched}); the liquid splits into two liquid phases (tangent-plane distance ${st.tm.toFixed(3)} at ${Tt.toFixed(1)} K, ${Pt.toFixed(1)} kPa); three-phase equilibrium is not supported yet.${gasHint}`);
         err.stability = st;
         throw err;
       }
     }
   }
-  throw new Error(`${what}: no two-phase solution found (${note || "no convergence"} from Wilson's K-values, and no sign change found between ` +
+  throw fail("NO_CONVERGENCE", `${what}: no two-phase solution found (${note || "no convergence"} from Wilson's K-values, and no sign change found between ` +
     `${searched}).${gasHint || " The state is probably at or above the mixture's critical region, where only the trivial solution (vapour = liquid) exists."}`);
 }
 
@@ -249,7 +250,7 @@ export const eosDewT = (sys, y, P, opts) => solve(sys, y, P, "dewT", opts);
 /** Methods attached by Fugacity.system() to an equation-of-state system. */
 export function eosMethods(sys) {
   const no = what => () => {
-    throw new Error(`${what} is not available for ${sys.model} (equation-of-state) systems yet; it needs an activity-coefficient model (NRTL, UNIQUAC, ideal). Available: bubbleT, bubbleP, dewT, dewP, Z, lnPhi, density.`);
+    throw fail("NOT_AVAILABLE", `${what} is not available for ${sys.model} (equation-of-state) systems yet; it needs an activity-coefficient model (NRTL, UNIQUAC, ideal). Available: bubbleT, bubbleP, dewT, dewP, Z, lnPhi, density.`);
   };
   return {
     bubbleT: (x, P, opts) => eosBubbleT(sys, x, P, opts),

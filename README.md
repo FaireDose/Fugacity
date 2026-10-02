@@ -77,7 +77,10 @@ From code (K, kPa, mole fractions):
 ```js
 const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T: 376.36, y: [0.645, 0.355], gamma: [1.306, 1.164] }
+s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... }  (next release)
 s.azeotropes(101.325);            // [{ x, T, type }]
+// errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
+try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT" (next release)
 
 Fugacity.pure("water").tsat(101.325);         // 373.1243 K (IAPWS-IF97)
 Fugacity.pure("benzene").props(298.15, 101.325); // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }

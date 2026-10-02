@@ -14,6 +14,7 @@
   "bubbleT": {"abs": 1.0, "unit": "K", "basis": "Chosen for this report, as for azeotrope temperatures (not in proposal 0002)"},
   "bubbleT_scatter": {"abs": 3.5, "unit": "K", "basis": "Secondary compilation with visible scatter; same bound as test/vle.test.js"},
   "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
+  "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
   "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
   "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
   "gasDensity": {"rel": 0.05, "informational": true, "basis": "Report only: equation of state against the reference equation of state (team brief)"},
@@ -65,7 +66,7 @@
    {"id": "azeo/ethanol+water+ethyl-acetate/NRTL", "type": "ternaryAzeotrope", "components": ["ethanol", "water", "ethyl-acetate"], "model": "NRTL", "P_kPa": 101.325, "x0": [0.105, 0.3097, 0.5854], "quantities": [{"key": "T_C", "tol": "azeotropeT"}, {"key": "x1", "tol": "azeotropeX"}, {"key": "x2", "tol": "azeotropeX"}, {"key": "x3", "tol": "azeotropeX"}]},
    {"id": "azeo/ethanol+water+ethyl-acetate/UNIQUAC", "type": "ternaryAzeotrope", "components": ["ethanol", "water", "ethyl-acetate"], "model": "UNIQUAC", "P_kPa": 101.325, "x0": [0.105, 0.3097, 0.5854], "quantities": [{"key": "T_C", "tol": "azeotropeT"}, {"key": "x1", "tol": "azeotropeX"}, {"key": "x2", "tol": "azeotropeX"}, {"key": "x3", "tol": "azeotropeX"}]}
   ]},
-  {"id": "txy", "title": "Bubble points (T-x-y and P-x spot points)", "cases": [
+  {"id": "txy", "title": "Bubble and dew points (T-x-y and P-x spot points)", "cases": [
    {"id": "txy/water+ethylene-glycol/NRTL/x=0.482", "type": "bubbleT", "components": ["water", "ethylene-glycol"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.482, "quantities": [{"key": "T_C", "tol": "bubbleT_scatter"}, {"key": "y1", "tol": "bubbleY"}]},
    {"id": "txy/water+ethylene-glycol/NRTL/x=0.178", "type": "bubbleT", "components": ["water", "ethylene-glycol"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.178, "quantities": [{"key": "T_C", "tol": "bubbleT_scatter"}, {"key": "y1", "tol": "bubbleY"}]},
    {"id": "txy/water+ethylene-glycol/NRTL/x=0.065", "type": "bubbleT", "components": ["water", "ethylene-glycol"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.065, "quantities": [{"key": "T_C", "tol": "bubbleT_scatter"}, {"key": "y1", "tol": "bubbleY"}]},
@@ -83,7 +84,13 @@
    {"id": "txy/methanol+water/NRTL/x=0.5", "type": "bubbleT", "components": ["methanol", "water"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.5, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]},
    {"id": "txy/benzene+toluene/NRTL/x=0.5", "type": "bubbleT", "components": ["benzene", "toluene"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.5, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]},
    {"id": "txy/acetone+chloroform/NRTL/x=0.5", "type": "bubbleT", "components": ["acetone", "chloroform"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.5, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]},
-   {"id": "txy/ethanol+ethyl-acetate/NRTL/x=0.5", "type": "bubbleT", "components": ["ethanol", "ethyl-acetate"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.5, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]}
+   {"id": "txy/ethanol+ethyl-acetate/NRTL/x=0.5", "type": "bubbleT", "components": ["ethanol", "ethyl-acetate"], "model": "NRTL", "P_kPa": 101.325, "x1": 0.5, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "y1", "tol": "bubbleY"}]},
+   {"id": "dew/ethanol+water/NRTL/y=0.418", "type": "dewT", "components": ["ethanol", "water"], "model": "NRTL", "P_kPa": 101.3, "y1": 0.418, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]},
+   {"id": "dew/ethanol+water/NRTL/y=0.567", "type": "dewT", "components": ["ethanol", "water"], "model": "NRTL", "P_kPa": 101.3, "y1": 0.567, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]},
+   {"id": "dew/ethanol+water/NRTL/y=0.736", "type": "dewT", "components": ["ethanol", "water"], "model": "NRTL", "P_kPa": 101.3, "y1": 0.736, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]},
+   {"id": "dew/ethanol+water/UNIQUAC/y=0.418", "type": "dewT", "components": ["ethanol", "water"], "model": "UNIQUAC", "P_kPa": 101.3, "y1": 0.418, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]},
+   {"id": "dew/ethanol+water/UNIQUAC/y=0.567", "type": "dewT", "components": ["ethanol", "water"], "model": "UNIQUAC", "P_kPa": 101.3, "y1": 0.567, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]},
+   {"id": "dew/ethanol+water/UNIQUAC/y=0.736", "type": "dewT", "components": ["ethanol", "water"], "model": "UNIQUAC", "P_kPa": 101.3, "y1": 0.736, "quantities": [{"key": "T_C", "tol": "bubbleT"}, {"key": "x1", "tol": "dewX"}]}
   ]},
   {"id": "pure", "title": "Pure-component properties at standard points", "cases": [
    {"id": "pure/water/psat/25C", "type": "pureProperty", "component": "water", "property": "vapourPressure", "T_K": 298.15, "quantities": [{"key": "psat_kPa", "tol": "vapourPressure"}]},

@@ -42,6 +42,7 @@ components = json.loads((ROOT / "src/data/components.json").read_text())["compon
 azeo = json.loads((ROOT / "validation/data/azeotropes_101kPa.json").read_text())
 weg = json.loads((ROOT / "validation/data/water_ethylene_glycol_760mmHg.json").read_text())
 sch = json.loads((ROOT / "validation/data/schmid2007_acetic_acid_ethylene_glycol.json").read_text())
+etw = json.loads((ROOT / "validation/data/ethanol_water_101kPa.json").read_text())
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -85,6 +86,7 @@ SOURCES = {
     "azeotrope-tables": azeo["source"],
     "water-eg-760mmHg": weg["source"],
     "schmid2007": sch["source"],
+    "kamihama2012": etw["source"],
 }
 
 
@@ -260,6 +262,13 @@ def reference(case, key):
         if case["components"] == ["methane", "ethane"]:
             return mixture_bubble(case["components"], case["x1"], case["T_K"], key)
         return none("No open data transcribed")
+    if t == "dewT":
+        if case["components"] == ["ethanol", "water"]:
+            for x1, T, y1 in etw["rows"]:
+                if abs(y1 - case["y1"]) < 1e-9:
+                    return val(T - 273.15 if key == "T_C" else x1, "kamihama2012",
+                               f"measured point x1 = {x1}, T = {T} K, y1 = {y1} at {etw['P_kPa']} kPa: the dew point of y1 is T, its liquid x1")
+        return none("No open T-x-y data transcribed for this pair yet")
     if t == "pureProperty":
         return pure_ref(case["component"], case["property"], case["T_K"], case.get("P_kPa"), case.get("state"))
     if t == "steamSaturation":

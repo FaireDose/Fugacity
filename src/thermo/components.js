@@ -4,6 +4,7 @@
  * systems can both use it.
  */
 import componentData from "../data/components.json" with { type: "json" };
+import { fail } from "../util/errors.js";
 
 /**
  * All components in the databank, as { id, name, formula, cas, activity }.
@@ -30,5 +31,5 @@ export function findComponent(key) {
     if (names.includes(k) || names.includes(k.replace(/ /g, "-"))) return id;
   }
   const known = listComponents().map(c => c.name).join(", ");
-  throw new Error(`Unknown component "${key}". Available: ${known}.`);
+  throw fail("BAD_INPUT", `Unknown component "${key}". Available: ${known}.`);
 }

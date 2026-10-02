@@ -10,6 +10,7 @@
 import componentData from "../../data/components.json" with { type: "json" };
 import { cubicEos, CUBICS } from "./cubic.js";
 import { RANGE_MARGIN_K, selection, choosePair, describePair, pairWarnings } from "../library.js";
+import { fail } from "../../util/errors.js";
 
 export const EOS_MODELS = Object.keys(CUBICS);
 
@@ -33,10 +34,10 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   if (cfg.kij !== undefined) {
     const u = cfg.kij;
     if (!Array.isArray(u) || u.length !== n || u.some(r => !Array.isArray(r) || r.length !== n || r.some(v => !Number.isFinite(v)))) {
-      throw new Error(`kij must be an ${n} x ${n} matrix of numbers.`);
+      throw fail("BAD_INPUT", `kij must be an ${n} x ${n} matrix of numbers.`);
     }
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
-      if (u[i][j] !== u[j][i]) throw new Error(`kij must be symmetric (k_${i}${j} = ${u[i][j]}, k_${j}${i} = ${u[j][i]}).`);
+      if (u[i][j] !== u[j][i]) throw fail("BAD_INPUT", `kij must be symmetric (k_${i}${j} = ${u[i][j]}, k_${j}${i} = ${u[j][i]}).`);
     }
   }
   for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
@@ -60,7 +61,7 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   const MW = comps.map(c => c.MW);
 
   const gammaPhiOnly = what => () => {
-    throw new Error(`${what} belongs to activity-coefficient (gamma-phi) systems; this is a ${model} equation-of-state system. Use bubbleT, bubbleP, dewT, dewP, Z, lnPhi or density.`);
+    throw fail("NOT_AVAILABLE", `${what} belongs to activity-coefficient (gamma-phi) systems; this is a ${model} equation-of-state system. Use bubbleT, bubbleP, dewT, dewP, Z, lnPhi or density.`);
   };
 
   // Accept (x, T, P, phase) as well as (T, P, x, phase).

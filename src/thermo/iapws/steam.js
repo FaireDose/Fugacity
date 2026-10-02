@@ -13,6 +13,7 @@
  */
 import { stateTP, saturationT, psatMPa, tsatMPa, TC } from "./if97.js";
 import { viscosity, thermalConductivity, T_MIN_TRANSPORT, T_MAX_TRANSPORT } from "./transport.js";
+import { fail } from "../../util/errors.js";
 
 export const STANDARD = "IAPWS-IF97";
 export const VISCOSITY_STANDARD = "IAPWS R12-08 (industrial form: mu2 = 1, density from IAPWS-IF97)";
@@ -77,7 +78,7 @@ export function steam(T_K, P_kPa) {
  */
 export function steamSat(spec = {}) {
   const hasT = spec.T_K !== undefined, hasP = spec.P_kPa !== undefined;
-  if (hasT === hasP) throw new Error("steamSat: give exactly one of { T_K } or { P_kPa }.");
+  if (hasT === hasP) throw fail("BAD_INPUT", "steamSat: give exactly one of { T_K } or { P_kPa }.");
   const T = hasT ? spec.T_K : tsatMPa(spec.P_kPa / 1000);
   if (hasT) psatMPa(T); // range check with a clear message
   const sat = hasT ? saturationT(T) : saturationT(T, spec.P_kPa / 1000);
