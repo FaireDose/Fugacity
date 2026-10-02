@@ -144,7 +144,7 @@ export function resolveView(wanted, ids) {
 
 const DEFAULTS = {
   components: ["methanol", "acetone", "chloroform"],
-  model: "NRTL", eos: "PR", P_kPa: 101.325, basis: "mole",
+  model: "NRTL", eos: "PR", vapour: "ideal", P_kPa: 101.325, basis: "mole",
   background: true, residueCurves: true, isotherms: true, grid: 40,
   property: "density", henryP_kPa: 101.325, henryT_K: 298.15, steamP_kPa: [10, 100, 1000, 10000],
 };
@@ -173,6 +173,7 @@ export function initialState(cfg = {}) {
     components: [],
     model: EOS_MODELS.includes(normModel(cfg.model)) ? DEFAULTS.model : checkModel(normModel(cfg.model ?? DEFAULTS.model)),
     eos: checkEos(normEos(cfg.eos ?? (EOS_MODELS.includes(normEos(cfg.model)) ? cfg.model : DEFAULTS.eos))),
+    vapour: checkVapour(cfg.vapour ?? DEFAULTS.vapour),
     P_kPa: positive(cfg.P_kPa ?? DEFAULTS.P_kPa, "P_kPa"),
     T_K: cfg.T_K == null ? null : positive(cfg.T_K, "T_K"),
     units: normalizeUnits(cfg.units ?? {}, { T: "C", P: "kPa", basis: "mass", viscosity: "mPa s" }),
@@ -214,6 +215,12 @@ function derive(state, view) {
 
 function checkModel(m) {
   if (!MODELS.includes(m)) throw new Error(`Unknown activity model "${m}". Use one of: ${MODELS.join(", ")} (or eos: ${EOS_MODELS.join(", ")}).`);
+  return m;
+}
+/** Vapour model of the activity-coefficient views: "ideal", "PR" or "SRK". */
+function checkVapour(v) {
+  const m = String(v).toUpperCase() === "IDEAL" ? "ideal" : String(v).toUpperCase();
+  if (m !== "ideal" && !EOS_MODELS.includes(m)) throw new Error(`Unknown vapour model "${v}". Use "ideal" or one of: ${EOS_MODELS.join(", ")}.`);
   return m;
 }
 function checkEos(m) {
@@ -288,6 +295,7 @@ export function applyPatch(state, patch = {}) {
     if (EOS_MODELS.includes(m)) next.eos = m; else next.model = checkModel(m);
   }
   if (patch.eos != null) next.eos = checkEos(normEos(patch.eos));
+  if (patch.vapour != null) next.vapour = checkVapour(patch.vapour);
   if (patch.P_kPa != null) next.P_kPa = positive(patch.P_kPa, "P_kPa");
   if ("T_K" in patch) next.T_K = patch.T_K == null ? null : positive(patch.T_K, "T_K");
   if (patch.units != null) next.units = normalizeUnits(patch.units, state.units);
@@ -513,7 +521,8 @@ export function setsFor(state, model) {
       if (library.sets(a, b, model).some(s => s.set === name)) sets[key] = name;
     }
   }
-  return { sets, prefer: state.prefer ?? null };
+  // activity-coefficient models also take the vapour model; equations of state describe both phases
+  return MODELS.includes(model) ? { sets, prefer: state.prefer ?? null, vapour: state.vapour ?? "ideal" } : { sets, prefer: state.prefer ?? null };
 }
 
 /**

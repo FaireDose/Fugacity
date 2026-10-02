@@ -18,21 +18,18 @@ export const EOS_MODELS = Object.keys(CUBICS);
 export { RANGE_MARGIN_K };
 
 /**
- * @param {string[]} ids        component ids (already resolved)
- * @param {object} cfg
- * @param {"PR"|"SRK"} cfg.model
- * @param {number[][]} [cfg.kij] user k_ij matrix (n x n, symmetric); overrides the databank
- * @param {object} [cfg.sets]    k_ij set per pair, and [cfg.prefer] tiers in order (see library.js)
- * @param {object} [sel]  cfg.sets and cfg.prefer as checked by library.selection()
+ * The binary k_ij matrix of a cubic equation of state for components `ids`: the user's
+ * matrix if given, else the databank sets chosen by `sel` (library.js), else 0.
+ * Also used for the vapour of activity-coefficient systems with vapour "PR" or "SRK".
+ * @returns {{K:number[][], pairs:object[], missing:string[][]}}
  */
-export function createEosSystem(ids, cfg, sel = selection(cfg)) {
-  const model = String(cfg.model).toUpperCase();
+export function kijMatrix(ids, model, kij, sel = selection({})) {
   const comps = ids.map(id => componentData.components[id]);
   const n = ids.length;
   const K = Array.from({ length: n }, () => new Array(n).fill(0));
   const pairs = [], missing = [];
-  if (cfg.kij !== undefined) {
-    const u = cfg.kij;
+  if (kij !== undefined) {
+    const u = kij;
     if (!Array.isArray(u) || u.length !== n || u.some(r => !Array.isArray(r) || r.length !== n || r.some(v => !Number.isFinite(v)))) {
       throw fail("BAD_INPUT", `kij must be an ${n} x ${n} matrix of numbers.`);
     }
@@ -42,9 +39,9 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   }
   for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
     const pair = [comps[i].name, comps[j].name];
-    if (cfg.kij !== undefined) {
-      K[i][j] = K[j][i] = cfg.kij[i][j];
-      pairs.push({ pair, kij: cfg.kij[i][j], tier: "user", source: "given in the system's setup" });
+    if (kij !== undefined) {
+      K[i][j] = K[j][i] = kij[i][j];
+      pairs.push({ pair, kij: kij[i][j], tier: "user", source: "given in the system's setup" });
       continue;
     }
     const choice = choosePair(model, ids[i], ids[j], sel);
@@ -57,6 +54,22 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
       pairs.push({ pair, kij: 0, tier: "none", source: `no ${model} k_ij in the databank; k_ij = 0 used` });
     }
   }
+  return { K, pairs, missing };
+}
+
+/**
+ * @param {string[]} ids        component ids (already resolved)
+ * @param {object} cfg
+ * @param {"PR"|"SRK"} cfg.model
+ * @param {number[][]} [cfg.kij] user k_ij matrix (n x n, symmetric); overrides the databank
+ * @param {object} [cfg.sets]    k_ij set per pair, and [cfg.prefer] tiers in order (see library.js)
+ * @param {object} [sel]  cfg.sets and cfg.prefer as checked by library.selection()
+ */
+export function createEosSystem(ids, cfg, sel = selection(cfg)) {
+  const model = String(cfg.model).toUpperCase();
+  const comps = ids.map(id => componentData.components[id]);
+  const n = ids.length;
+  const { K, pairs, missing } = kijMatrix(ids, model, cfg.kij, sel);
   const eos = cubicEos(model, comps.map(c => ({ name: c.name, Tc_K: c.Tc_K, Pc_Pa: c.Pc_Pa, omega: c.omega })), K);
   const MW = comps.map(c => c.MW);
 

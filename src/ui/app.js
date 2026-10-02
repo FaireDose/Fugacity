@@ -247,7 +247,8 @@ export function app(target, cfg = {}) {
         group("Equation of state", diagramButton("pxy", "P-x-y"), diagramButton("envelope", "Phase envelope")),
         fam === "activity"
           ? group("Activity model", stack(seg("Activity model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], state.model, m => set({ model: m })),
-            h("div", { class: "fa-hint" }, state.model === "ideal" ? "Raoult's law, γ = 1" : "Liquid γ; vapour ideal gas")))
+            seg("Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], state.vapour, m => set({ vapour: m })),
+            h("div", { class: "fa-hint" }, `${state.model === "ideal" ? "Liquid γ = 1" : "Liquid γ"}; ${state.vapour === "ideal" ? "vapour ideal gas" : `${state.vapour} vapour with φsat and Poynting`}`)))
           : group("Equation of state", stack(seg("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], state.eos, m => set({ eos: m })),
             h("div", { class: "fa-hint" }, "Both phases; k_ij from the databank"))),
         group("Display", stack(
@@ -501,10 +502,11 @@ export function app(target, cfg = {}) {
     const v = state.view, u = state.units, check = checkInputs(v, state.inputs[v]);
     const title = check.ok ? state.title || calculationName() : VIEWS[v].label;
     const prop = v === "properties" ? explorerProperties().find(p => p.key === state.property) : null;
+    const vap = state.vapour && state.vapour !== "ideal" ? ` with a ${state.vapour} vapour` : "";
     const sub = !check.ok ? `${NEEDS[v]} needed: choose them in Inputs` : {
-      txy: `T-x-y diagram at ${fmtP(state.P_kPa, u)}, ${state.model}`,
-      ternary: `Bubble-temperature map and residue curves at ${fmtP(state.P_kPa, u)}, ${state.model}`,
-      azeotropes: `Binary and ternary azeotropes at ${fmtP(state.P_kPa, u)}, ${state.model}`,
+      txy: `T-x-y diagram at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
+      ternary: `Bubble-temperature map and residue curves at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
+      azeotropes: `Binary and ternary azeotropes at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
       pxy: `P-x-y diagram at ${fmtTemp(pxyTemperature(state), u)}, ${state.eos === "PR" ? "Peng–Robinson" : "SRK"}`,
       envelope: `Bubble and dew points of the feed, ${state.eos === "PR" ? "Peng–Robinson" : "SRK"}`,
       henry: `Solubility at ${fmtTemp(state.henryT_K, u)} and a gas partial pressure of ${fmtP(state.henryP_kPa, u)}, Henry's law`,
