@@ -1,4 +1,4 @@
-import { s, h, text, ticks, svgPoint, C, fmt } from "./dom.js";
+import { s, h, text, ticks, svgPoint, C, fmt, basisView } from "./dom.js";
 import { txy } from "../equilibrium/diagrams.js";
 import { bubbleT } from "../equilibrium/bubble.js";
 import { isLiquidStable } from "../equilibrium/stability.js";
@@ -7,7 +7,8 @@ import { isLiquidStable } from "../equilibrium/stability.js";
  * T-x-y diagram for a binary system at pressure P (kPa).
  * Draws the bubble (liquid) and dew (vapour) curves, a hover tie line, and a readout.
  */
-export function renderTxy(plot, side, sys, P) {
+export function renderTxy(plot, side, sys, P, view = {}) {
+  const bv = basisView(view.basis, view.MW);
   const data = txy(sys, P, 101);
   const W = 560, H = 380, L = 56, R = 16, T = 16, B = 44;
   const Tmin = Math.min(...data.map(d => d.T)), Tmax = Math.max(...data.map(d => d.T));
@@ -60,20 +61,20 @@ export function renderTxy(plot, side, sys, P) {
   side.replaceChildren(...[
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Liquid composition"), xOut),
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Bubble temperature"), tOut),
-    h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, ""), h("th", {}, "x"), h("th", {}, "y"), h("th", {}, "γ"))), tab),
+    h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, bv.short), h("th", {}, "x"), h("th", {}, "y"), h("th", {}, "γ"))), tab),
     unstable.length ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two phases in the shaded range. The curves there assume a single liquid and are not reliable.") : null,
     h("div", { class: "fug-foot" }, azeo.length
-      ? azeo.map(z => `Azeotrope near x = ${fmt(z.x)}, T = ${fmt(C(z.T), 1)} °C`)
+      ? azeo.map(z => `Azeotrope near ${sys.names[0]} ${bv.f(bv.conv([z.x, 1 - z.x])[0])}${view.basis === "mass" ? " wt %" : ""}, T = ${fmt(C(z.T), 1)} °C`)
       : "No azeotrope at this pressure."),
   ].filter(Boolean));
 
   function show(x1) {
     x1 = Math.max(0, Math.min(1, x1));
     const r = bubbleT(sys, [x1, 1 - x1], P);
-    xOut.textContent = `${sys.names[0]} ${fmt(x1)} · ${sys.names[1]} ${fmt(1 - x1)}`;
+    const x = [x1, 1 - x1], xb = bv.conv(x), yb = bv.conv(r.y);
+    xOut.textContent = `${sys.names[0]} ${bv.f(xb[0])} · ${sys.names[1]} ${bv.f(xb[1])}${view.basis === "mass" ? " (wt %)" : ""}`;
     tOut.textContent = `${fmt(C(r.T), 2)} °C`;
-    const x = [x1, 1 - x1];
-    tab.replaceChildren(...sys.names.map((n, i) => h("tr", {}, h("td", {}, n), h("td", {}, fmt(x[i])), h("td", {}, fmt(r.y[i])), h("td", {}, fmt(r.gamma[i])))));
+    tab.replaceChildren(...sys.names.map((n, i) => h("tr", {}, h("td", {}, n), h("td", {}, bv.f(xb[i])), h("td", {}, bv.f(yb[i])), h("td", {}, fmt(r.gamma[i])))));
     hover.replaceChildren();
     const yy = sy(C(r.T));
     s("line", { x1: sx(x1), x2: sx(r.y[0]), y1: yy, y2: yy, stroke: "var(--fug-fg)", "stroke-width": 1.5, "stroke-dasharray": "3 3" }, hover);

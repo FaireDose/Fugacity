@@ -323,9 +323,19 @@ function evaluateQuantity(ctx, cs, key) {
     }
     case "ternaryAzeotrope": {
       const s = ctx.system(cs.components, cs.model);
-      const z = fn(s, "findAzeotrope", "system.findAzeotrope()")(cs.x0, cs.P_kPa);
-      if (!z) throw new Error("no azeotrope found");
-      return { value: key === "T_C" ? z.T - 273.15 : z.x[Number(key.slice(1)) - 1], method: "system.findAzeotrope()" };
+      // Start at the reference composition; if that fails, try the starting points the
+      // ternary view uses and take the interior azeotrope closest to the reference.
+      const find = fn(s, "findAzeotrope", "system.findAzeotrope()");
+      const tryFind = x0 => { try { return find(x0, cs.P_kPa); } catch { return null; } };
+      let z = tryFind(cs.x0), method = "system.findAzeotrope() from the reference composition";
+      if (!z) {
+        const starts = [[1 / 3, 1 / 3, 1 / 3], [0.6, 0.2, 0.2], [0.2, 0.6, 0.2], [0.2, 0.2, 0.6], [0.45, 0.45, 0.1], [0.45, 0.1, 0.45], [0.1, 0.45, 0.45]];
+        const dist = a => Math.hypot(...a.x.map((v, k) => v - cs.x0[k]));
+        z = starts.map(tryFind).filter(a => a && Math.min(...a.x) > 1e-3).sort((a, b) => dist(a) - dist(b))[0] ?? null;
+        method = "system.findAzeotrope() from the view's starting points (none found from the reference composition)";
+      }
+      if (!z) throw new Error("no ternary azeotrope found");
+      return { value: key === "T_C" ? z.T - 273.15 : z.x[Number(key.slice(1)) - 1], method };
     }
     case "bubbleT": {
       const s = ctx.system(cs.components, cs.model);

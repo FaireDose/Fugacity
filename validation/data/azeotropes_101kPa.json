@@ -20,6 +20,21 @@
     47.0
    ],
    "type": "saddle"
+  },
+  {
+   "components": [
+    "ethanol",
+    "water",
+    "ethyl-acetate"
+   ],
+   "T_C": 70.3,
+   "wt_pct": [
+    7.8,
+    9.0,
+    83.2
+   ],
+   "type": "minimum-boiling",
+   "notes": "Wikipedia azeotrope tables (ternary section): b.p. 70.3 °C, 7.8 / 9.0 / 83.2 wt %, specific gravity 0.901, no heterogeneous mark. Type inferred: lowest boiling point listed for this system."
   }
  ],
  "binary": [

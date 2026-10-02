@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, listComponents } from "../src/index.js";
+import { system, listComponents, pure } from "../src/index.js";
 import { binaryAzeotropes, findAzeotrope } from "../src/equilibrium/azeotrope.js";
 import { isLiquidStable } from "../src/equilibrium/stability.js";
 
@@ -21,16 +21,31 @@ for (const model of ["NRTL", "UNIQUAC"]) {
   });
 }
 
-test("NRTL: methanol + acetone + chloroform saddle azeotrope near 57.5 °C", () => {
-  const t = lit.ternary[0];
-  const M = [32.042, 58.08, 119.378];
-  const mol = t.wt_pct.map((w, i) => w / M[i]);
-  const x0 = mol.map(v => v / mol.reduce((a, b) => a + b));
-  const s = system({ components: t.components, model: "NRTL" });
-  const z = findAzeotrope(s, x0, lit.P_kPa);
-  assert.ok(z, "not found");
-  assert.ok(Math.abs(z.T - 273.15 - t.T_C) < 1.0, `T ${(z.T - 273.15).toFixed(2)}`);
-  z.x.forEach((v, i) => assert.ok(Math.abs(v - x0[i]) < 0.05, `x ${z.x.map(u => u.toFixed(3))}`));
+// Ternary azeotropes vs the handbook values (±1 K, ±0.05 mole fraction), both models.
+// Deviations of kind "ternary-azeotrope" in src/data/known-issues.json (shown to users in the
+// interface) run as "todo": they are reported, and the report says when an entry can be removed.
+const known = JSON.parse(readFileSync(new URL("../src/data/known-issues.json", import.meta.url))).issues;
+const sameSet = (a, b) => a.length === b.length && a.every(c => b.includes(c));
+for (const t of lit.ternary) for (const model of ["NRTL", "UNIQUAC"]) {
+  const issue = known.find(k => k.kind === "ternary-azeotrope" && k.model === model && sameSet(k.components, t.components));
+  test(`${model}: ${t.components.join(" + ")} ternary azeotrope near ${t.T_C} °C`, issue ? { todo: issue.message } : {}, () => {
+    const mol = t.wt_pct.map((w, i) => w / pure(t.components[i]).MW);
+    const x0 = mol.map(v => v / mol.reduce((a, b) => a + b));
+    const s = system({ components: t.components, model });
+    const z = findAzeotrope(s, x0, lit.P_kPa);
+    assert.ok(z, "not found");
+    assert.ok(Math.abs(z.T - 273.15 - t.T_C) < 1.0, `T ${(z.T - 273.15).toFixed(2)}`);
+    z.x.forEach((v, i) => assert.ok(Math.abs(v - x0[i]) < 0.05, `x ${z.x.map(u => u.toFixed(3))}`));
+  });
+}
+
+test("known-issues.json names real components and models", () => {
+  for (const k of known) {
+    assert.ok(["NRTL", "UNIQUAC", "ideal", "PR", "SRK"].includes(k.model), k.model);
+    for (const c of k.components) assert.ok(pure(c), c);
+    assert.ok(["ternary-azeotrope", "phase-split"].includes(k.kind), k.kind);
+    assert.ok(k.message && k.reference);
+  }
 });
 
 test("every component with activity-model data boils at its normal boiling point", () => {

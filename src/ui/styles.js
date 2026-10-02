@@ -4,11 +4,13 @@
 const LIGHT = `
   --fug-bg:#ffffff; --fug-panel:#f5f7f9; --fug-fg:#15191d; --fug-fg2:#4c555e; --fug-muted:#7b848c;
   --fug-rule:#dde1e5; --fug-accent:#1c5cab; --fug-on-accent:#ffffff; --fug-liq:#2a78d6; --fug-vap:#eb6834;
-  --fug-halo:rgba(255,255,255,.85); --fug-iso:rgba(11,26,43,.42); --fug-err-bg:#fdecec; --fug-err-fg:#8a1c1c;`;
+  --fug-halo:rgba(255,255,255,.85); --fug-iso:rgba(11,26,43,.42); --fug-err-bg:#fdecec; --fug-err-fg:#8a1c1c;
+  --fug-warn-bg:#fff4dc; --fug-warn-fg:#6b4a00;`;
 const DARK = `
   --fug-bg:#1a1e22; --fug-panel:#22272c; --fug-fg:#eef1f3; --fug-fg2:#b3bbc2; --fug-muted:#86909a;
   --fug-rule:#2f363c; --fug-accent:#6da7ec; --fug-on-accent:#0d1620; --fug-liq:#3987e5; --fug-vap:#d95926;
-  --fug-halo:rgba(18,21,24,.8); --fug-iso:rgba(11,26,43,.5); --fug-err-bg:#3a1c1c; --fug-err-fg:#f3b0b0; color-scheme:dark;`;
+  --fug-halo:rgba(18,21,24,.8); --fug-iso:rgba(11,26,43,.5); --fug-err-bg:#3a1c1c; --fug-err-fg:#f3b0b0;
+  --fug-warn-bg:#3a2e12; --fug-warn-fg:#f2d48a; color-scheme:dark;`;
 
 export const CSS = `
 .fug{${LIGHT} background:var(--fug-bg); color:var(--fug-fg); font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -50,6 +52,7 @@ export const CSS = `
 .fug-ramp .ticks{display:flex; justify-content:space-between; font-size:.7rem; color:var(--fug-muted)}
 .fug-foot{font-size:.75rem; color:var(--fug-muted); display:grid; gap:2px}
 .fug-err{background:var(--fug-err-bg); color:var(--fug-err-fg); border-radius:8px; padding:10px 12px; font-size:.9rem}
+.fug-warn{background:var(--fug-warn-bg); color:var(--fug-warn-fg); border-radius:8px; padding:10px 12px; font-size:.9rem}
 .fug svg text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 `;
 

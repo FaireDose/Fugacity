@@ -55,3 +55,16 @@ export function rampColor(t, ramp = RAMP) {
 
 export const C = T => T - 273.15;
 export const fmt = (v, d = 3) => Number(v).toFixed(d);
+
+/**
+ * Composition in the display basis: mole fractions as they are, or mass fractions
+ * (w_i = x_i M_i / sum x_j M_j). Returns [values, formatter, label].
+ */
+export function basisView(basis, MW) {
+  if (basis !== "mass") return { conv: x => x, f: v => fmt(v), unit: "mole fraction", short: "mol" };
+  return {
+    conv: x => { const m = x.map((v, i) => v * MW[i]); const t = m.reduce((a, b) => a + b, 0); return m.map(v => v / t); },
+    f: v => `${(100 * v).toFixed(1)}`,
+    unit: "wt %", short: "wt %",
+  };
+}

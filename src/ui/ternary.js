@@ -1,4 +1,4 @@
-import { s, h, text, svgPoint, rampColor, RAMP, C, fmt } from "./dom.js";
+import { s, h, text, svgPoint, rampColor, RAMP, C, fmt, basisView } from "./dom.js";
 import { ternaryGrid } from "../equilibrium/diagrams.js";
 import { residueCurve } from "../equilibrium/residue.js";
 import { isLiquidStable } from "../equilibrium/stability.js";
@@ -15,6 +15,7 @@ const START = [[0.1, 0.1, 0.8], [0.2, 0.6, 0.2], [0.6, 0.2, 0.2], [0.3, 0.3, 0.4
  * residue curves, and a hover readout with the liquid-vapour tie line.
  */
 export function renderTernary(plot, side, sys, P, opts) {
+  const bv = basisView(opts.basis, opts.MW);
   const n = opts.grid ?? 40;
   const grid = ternaryGrid(sys, P, n);
   const node = new Map(grid.nodes.map(d => [d.i + "," + d.j, d]));
@@ -117,19 +118,20 @@ export function renderTernary(plot, side, sys, P, opts) {
   side.replaceChildren(...[
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Liquid composition"), xOut),
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Bubble temperature"), tOut),
-    h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, ""), h("th", {}, "x"), h("th", {}, "y"))), tab),
+    h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, bv.short), h("th", {}, "x"), h("th", {}, "y"))), tab),
     anyUnstable ? h("div", { class: "fug-err" }, "The liquid is predicted to split into two liquid phases in the hatched region. Results there assume a single liquid and are not reliable.") : null,
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Azeotropes at this pressure"),
-      azeo.length ? h("div", { class: "fug-num" }, ...azeo.map(z => h("div", {}, `${fmt(C(z.T), 1)} °C  ${z.x.map((v, k) => v > 1e-6 ? `${sys.names[k]} ${fmt(v, 2)}` : null).filter(Boolean).join(", ")}${z.kind === "ternary" ? " (ternary)" : ""}`)))
+      azeo.length ? h("div", { class: "fug-num" }, ...azeo.map(z => { const w = bv.conv(z.x); return h("div", {}, `${fmt(C(z.T), 1)} °C  ${z.x.map((v, k) => v > 1e-6 ? `${sys.names[k]} ${opts.basis === "mass" ? bv.f(w[k]) : fmt(v, 2)}` : null).filter(Boolean).join(", ")}${opts.basis === "mass" ? " wt %" : ""}${z.kind === "ternary" ? " (ternary)" : ""}`); }))
         : h("div", { class: "fug-sub" }, "None found.")),
-    h("div", { class: "fug-foot" }, "Hover or tap the diagram. ○ liquid, ● equilibrium vapour. Grid step " + (1 / n).toFixed(3) + "."),
+    h("div", { class: "fug-foot" }, "Hover or tap the diagram. ○ liquid, ● equilibrium vapour. Grid step " + (1 / n).toFixed(3) + "." + (opts.basis === "mass" ? " The triangle is drawn in mole fractions; readouts are in wt %." : "")),
   ].filter(Boolean));
 
   function show(i, j) {
     const d = get(i, j); if (!d) return;
-    xOut.textContent = d.x.map((v, k) => `${sys.names[k]} ${fmt(v)}`).join(" · ");
+    const xb = bv.conv(d.x), yb = bv.conv(d.y);
+    xOut.textContent = xb.map((v, k) => `${sys.names[k]} ${bv.f(v)}`).join(" · ") + (opts.basis === "mass" ? " (wt %)" : "");
     tOut.textContent = `${fmt(C(d.T), 1)} °C` + (d.stable ? "" : "  (two liquids)");
-    tab.replaceChildren(...sys.names.map((nm, k) => h("tr", {}, h("td", {}, nm), h("td", {}, fmt(d.x[k])), h("td", {}, fmt(d.y[k])))));
+    tab.replaceChildren(...sys.names.map((nm, k) => h("tr", {}, h("td", {}, nm), h("td", {}, bv.f(xb[k])), h("td", {}, bv.f(yb[k])))));
     hover.replaceChildren();
     const a = toXY(d.x), b = toXY(d.y);
     s("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "var(--fug-halo)", "stroke-width": 4 }, hover);

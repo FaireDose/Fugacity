@@ -3,6 +3,8 @@ import { h } from "./dom.js";
 import { createSystem, listComponents, findComponent } from "../thermo/system.js";
 import { renderTxy } from "./txy.js";
 import { renderTernary } from "./ternary.js";
+import { pure } from "../thermo/pure.js";
+import knownIssues from "../data/known-issues.json" with { type: "json" };
 
 const TIER = { fitted: "fitted to experimental data", databank: "databank", predicted: "predicted" };
 
@@ -20,6 +22,7 @@ const TIER = { fitted: "fitted to experimental data", databank: "databank", pred
  * @param {boolean} [cfg.isotherms=true]      ternary only
  * @param {number} [cfg.grid=40]              ternary grid divisions
  * @param {boolean} [cfg.allowMissingPairs=false]
+ * @param {"mole"|"mass"} [cfg.basis="mole"]  compositions in the readouts: mole fractions or wt %
  * @returns {{update:(patch:object)=>void, state:object}}
  *
  * @example
@@ -34,6 +37,7 @@ export function mount(target, cfg = {}) {
   const state = {
     components: (cfg.components || []).slice(),
     model: norm(cfg.model),
+    basis: cfg.basis === "mass" ? "mass" : "mole",
     P: cfg.P_kPa ?? 101.325,
     picker: cfg.picker !== false,
     residueCurves: cfg.residueCurves !== false,
@@ -80,6 +84,11 @@ export function mount(target, cfg = {}) {
         type: "button", "aria-pressed": String(state.model === m),
         on: { click: () => { state.model = m; render(); } },
       }, label)));
+    const basisSeg = h("div", { class: "fug-seg", role: "group", "aria-label": "Composition basis" },
+      ...[["mole", "mol frac"], ["mass", "wt %"]].map(([b, label]) => h("button", {
+        type: "button", "aria-pressed": String(state.basis === b),
+        on: { click: () => { state.basis = b; render(); } },
+      }, label)));
     const pIn = h("input", { type: "number", id: `fug-p-${uid}`, value: state.P, min: 1, max: 1000, step: "any",
       on: { change: ev => { const v = +ev.target.value; if (v > 0) { state.P = v; render(); } } } });
 
@@ -92,6 +101,9 @@ export function mount(target, cfg = {}) {
         : e.message;
     }
     const n = sys ? sys.n : state.components.length;
+    const issues = sys ? knownIssues.issues.filter(k => k.model === sys.model && k.components.length === sys.ids.length &&
+      k.components.every(c => sys.ids.includes(c))) : [];
+    const view = { basis: state.basis, MW: sys ? sys.ids.map(id => pure(id).MW) : [] };
     const checks = n === 3 ? [
       h("label", {}, h("input", { type: "checkbox", id: `fug-rc-${uid}`, checked: state.residueCurves, on: { change: ev => { state.residueCurves = ev.target.checked; render(); } } }), "Residue curves"),
       h("label", {}, h("input", { type: "checkbox", id: `fug-iso-${uid}`, checked: state.isotherms, on: { change: ev => { state.isotherms = ev.target.checked; render(); } } }), "Isotherms"),
@@ -107,7 +119,8 @@ export function mount(target, cfg = {}) {
         h("h3", { class: "fug-title" }, title),
         sys ? h("span", { class: "fug-sub" }, `${n === 2 ? "T-x-y" : "Ternary"} · P = ${state.P} kPa · ${state.model} · vapour: ${sys.info.vapour}`) : null),
       state.picker ? picker() : null,
-      h("div", { class: "fug-controls" }, seg, h("label", { for: pIn.id }, "Pressure, kPa", pIn), ...checks),
+      h("div", { class: "fug-controls" }, seg, h("label", { for: pIn.id }, "Pressure, kPa", pIn), basisSeg, ...checks),
+      ...issues.map(k => h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`)),
       h("div", { class: "fug-main" }, plot, side),
       h("div", { class: "fug-foot" }, sources.length ? h("div", {}, "Parameter sources:") : null, ...sources,
         h("div", {}, "Calculated live in this page by Fugacity. Predictions, not measurements. ",
@@ -115,9 +128,9 @@ export function mount(target, cfg = {}) {
 
     if (error) { plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, error)); side.hidden = true; return; }
     try {
-      if (n === 2) renderTxy(plot, side, sys, state.P);
+      if (n === 2) renderTxy(plot, side, sys, state.P, view);
       else if (n === 3) renderTernary(plot, side, sys, state.P, {
-        ...state, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs }),
+        ...state, ...view, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs }),
       });
       else throw new Error("The interface shows 2 or 3 components so far. Use the calculation functions for more.");
     } catch (e) {
