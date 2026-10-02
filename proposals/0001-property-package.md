@@ -37,20 +37,46 @@ flowsheets, cost engineering), which all need a flash with enthalpy.
 sets with their sources. It becomes the **property package**: the same object gains
 enthalpy, dew points for activity models and the flash. No second name to learn.
 
+The user chooses the **liquid model** and, separately, the **vapour model**. Every
+flash, bubble and dew point works with every combination:
+
 ```js
+// activity model for the liquid, equation of state for the vapour ("gamma-phi")
 const pp = Fugacity.system({
-  components: ["ethanol", "water", "ethyl acetate"],
-  model: "NRTL"            // NRTL | UNIQUAC | ideal | PR | SRK, as today
-  // sets, prefer, allowMissingPairs: as today (proposal 0003)
+  components: ["toluene", "chloroform"],
+  model: "NRTL",           // liquid: NRTL | UNIQUAC | ideal
+  vapour: "PR"             // vapour: ideal (default) | PR | SRK
 });
+
+// one equation of state for both phases ("phi-phi")
+const eos = Fugacity.system({ components: ["toluene", "chloroform"], model: "PR" });
+// sets, prefer, allowMissingPairs, kij: as today (proposal 0003)
 ```
 
-Two families, one interface:
-
-| Model | Liquid | Vapour | Use it for |
+| Choice | Liquid | Vapour | Use it for |
 |---|---|---|---|
-| NRTL, UNIQUAC, ideal ("gamma-phi") | activity coefficients × vapour pressure | ideal gas (chemical theory for acetic acid) | polar liquids at low to moderate pressure: alcohols, water, esters, acids |
-| PR, SRK ("phi-phi") | the equation of state | the same equation of state | hydrocarbons and gases, higher pressure |
+| `model: "NRTL"` or `"UNIQUAC"`, `vapour: "ideal"` | activity coefficients × vapour pressure | ideal gas (chemical theory for acetic acid) | polar liquids near atmospheric pressure |
+| `model: "NRTL"` or `"UNIQUAC"`, `vapour: "PR"` or `"SRK"` | activity coefficients × vapour pressure, with the fugacity coefficient of the saturated pure vapour and the Poynting correction | the cubic equation of state, with its k_ij | polar liquids at moderate pressure, where the vapour is no longer ideal |
+| `model: "PR"` or `"SRK"` | the equation of state | the same equation of state | hydrocarbons and gases, higher pressure, near-critical mixtures |
+| `model: "ideal"` | Raoult's law | as chosen | quick estimates, and as a reference |
+
+For gamma-phi the phase equilibrium is
+
+  y_i φ_i^V(T, P, y) P = x_i γ_i(T, x) P_i^sat(T) φ_i^sat(T) exp[v_i^L (P − P_i^sat) / (R T)]
+
+which reduces to the present modified Raoult's law when `vapour: "ideal"` (all φ = 1, no
+Poynting term). Results for `vapour: "ideal"` stay exactly as today. Acetic acid keeps its
+chemical-theory vapour (dimerization); combining it with a cubic vapour is not offered and
+gives a clear error.
+
+The workbench lets the user switch between these choices on the same feed, so a
+mixture such as toluene + chloroform can be checked with NRTL, NRTL with a Peng–Robinson
+vapour, and Peng–Robinson alone, side by side, against the data.
+
+Every calculation is a deterministic numerical method in the code (sections 5 and 6),
+validated against independent software and measured data. No AI model takes part in
+any calculation; parameters are fitted by least squares (scipy) to experimental data,
+with the fitting scripts in `validation/python/`.
 
 ### 2. New methods on every system
 
@@ -99,15 +125,15 @@ Reference state for every component: **ideal gas at 298.15 K**, h = 0, as in pro
 0002. For chemical reactions (roadmap A13) the heats
 of formation will be added to this reference; differences between states do not change.
 
-- **Vapour, activity models:** ideal gas, the same assumption as in the phase
-  equilibrium: h_V = Σ y_i h_IG,i(T).
-- **Liquid, activity models:** h_L = Σ x_i [h_IG,i(T) − ΔH_vap,i(T)] + h^E(T, x), with the
-  excess enthalpy from the activity model, h^E = −R T² Σ x_i (∂ ln γ_i / ∂T)_x. Then a pure
-  component boils with exactly its heat of vaporization, consistent with the ideal-gas
-  vapour. (`pure()` describes a real vapour, so its liquid enthalpy also contains the
-  residual enthalpy of the saturated vapour; the two differ by that residual term, which
-  is small at low pressure and reported by the tests.) The pressure effect on the liquid
-  is neglected; the tests state its size.
+- **Vapour, activity models:** the vapour model chosen for the phase equilibrium. Ideal
+  gas: h_V = Σ y_i h_IG,i(T). PR or SRK: h_V = Σ y_i h_IG,i(T) + h_R(T, P, y).
+- **Liquid, activity models:** h_L = Σ x_i [h_IG,i(T) + h_R,i^sat(T) − ΔH_vap,i(T)] + h^E(T, x),
+  with h_R,i^sat the residual enthalpy of the saturated pure vapour from the chosen vapour
+  model (zero for the ideal gas), and the excess enthalpy from the activity model,
+  h^E = −R T² Σ x_i (∂ ln γ_i / ∂T)_x. Then a pure component boils with exactly its heat
+  of vaporization, whichever vapour model is chosen. (With a PR vapour this is the liquid
+  enthalpy of `pure()` today.) The pressure effect on the liquid is neglected; the tests
+  state its size.
 - **Equations of state, both phases:** h = Σ z_i h_IG,i(T) + h_R(T, P, z), the residual
   enthalpy from the cubic equation (already used for pure components).
 - **Water** takes its ideal-gas enthalpy and heat of vaporization from IAPWS-IF97.
@@ -171,10 +197,11 @@ Fugacity's own earlier output):
 | Check | Reference | Tolerance |
 |---|---|---|
 | TP, PH and VF flashes, NRTL and UNIQUAC, 2 and 3 components | `thermo` `FlashVL` with the same parameters (Python script in `validation/python/`) | T 0.01 K, phase fractions 1e-4, compositions 1e-5, h 1 J/mol |
+| The same with a Peng–Robinson and an SRK vapour (φ, φ^sat, Poynting) | `thermo` `FlashVL` with a cubic gas phase and the same corrections | as above |
 | TP and PH flashes, Peng–Robinson and SRK, gas mixtures | `thermo` and CoolProp with the same k_ij | as above |
 | Flash at the bubble and dew points | Fugacity's bubble and dew solvers, which are already validated against data | VF = 0 and 1 within 1e-8 |
 | Round trip: TP flash → H → PH flash | itself | T within 1e-6 K |
-| Pure water PH flash at 1 atm and 10 bar | IAPWS-IF97 (`validation/data/iapws`) | T 0.01 K; with an activity model the enthalpy deviation must equal the residual enthalpy of saturated steam (from IF97) within 1 J/mol; with an equation of state it is reported |
+| Pure water PH flash at 1 atm and 10 bar | IAPWS-IF97 (`validation/data/iapws`) | T 0.01 K; with an ideal-gas vapour the enthalpy deviation must equal the residual enthalpy of saturated steam (from IF97) within 1 J/mol; with PR or SRK it is reported |
 | Liquid-liquid split, water + ethyl acetate | the three open LLE data sets already in `validation/data/` | report the deviation; no tolerance tuned to pass |
 | Excess enthalpy | open h^E data where they exist (ThermoML Archive); "no open data" listed otherwise | report the deviation |
 
@@ -185,7 +212,8 @@ result moved.
 
 - Nothing is removed. `createSystem`, `system`, `bubbleT`, `bubbleP`, the diagrams,
   `mount`, `mountProperties` and `app` keep their behaviour and results.
-- New methods only: `dewT` and `dewP` for activity models, `phase`, `enthalpy`, `flash`.
+- New methods and one new option: `vapour` for activity models (default `"ideal"`, as
+  today), `dewT` and `dewP` for activity models, `phase`, `enthalpy`, `flash`.
 - Solver errors become `FugacityError` objects. They are still `Error`s with the same
   messages, so existing pages that show `e.message` keep working.
 - The workbench gains a **Flash** workspace (feed, specification, model, result table
@@ -199,6 +227,9 @@ result moved.
   two names for the same thing would confuse users and AI assistants.
 - **Flash only for equations of state** (simpler, one model for both phases): rejected;
   most of the systems people ask for (alcohols, water, esters) need activity models.
+- **Ideal-gas vapour only for activity models** (the first version of this proposal):
+  rejected by the maintainer; the vapour model must be a choice, so that moderate
+  pressures and non-ideal vapours are covered and models can be compared.
 - **Gibbs-energy minimization for every flash:** more general, but slower and harder to
   check by hand. Kept for later, for reactive and multiphase cases.
 
@@ -208,13 +239,16 @@ Each step is one pull request with its tests and an updated engineering report.
 
 1. **Solver rules and dew points:** `FugacityError`, input checks, `dewT`/`dewP` for
    activity models, validated against `thermo`.
-2. **Mixture enthalpy:** `phase()` and `enthalpy()` for all models; h^E from NRTL and
+2. **Vapour model choice for activity models:** `vapour: "PR" | "SRK"` with φ, φ^sat and
+   the Poynting correction in bubble, dew and the diagrams; validated against `thermo`.
+3. **Mixture enthalpy:** `phase()` and `enthalpy()` for all models; h^E from NRTL and
    UNIQUAC; tests against `thermo` and open h^E data.
-3. **Two-phase flash:** TP, PH, P-VF and T-VF, for all models; stability test for
+4. **Two-phase flash:** TP, PH, P-VF and T-VF, for all models; stability test for
    activity models; tests from the table above.
-4. **Three-phase flash** (vapour + two liquids) and liquid-liquid tests against the open
+5. **Three-phase flash** (vapour + two liquids) and liquid-liquid tests against the open
    LLE data.
-5. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1).
+6. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1).
 
-Later, with streams (A5): flowrates, the stream object, and the P-S flash with entropy for
-compressors and turbines.
+Later: with streams (A5), flowrates, the stream object, and the P-S flash with entropy for
+compressors and turbines; equations of state with activity-model mixing rules (for
+example Wong–Sandler with NRTL) for polar mixtures at high pressure.
