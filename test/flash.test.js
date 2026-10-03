@@ -169,3 +169,20 @@ test("speed: a two-phase T-P flash with an SRK vapour under 5 ms", () => {
   const ms = (performance.now() - t0) / 10;
   assert.ok(ms < 5, `${ms.toFixed(2)} ms`);
 });
+
+test("speed: P-H flashes of up to 4 components under 20 ms (budget decided on #35)", () => {
+  for (const [ids, z, H, vapour] of [
+    [["ethanol", "water"], [0.4, 0.6], -20000, "ideal"],
+    [["methanol", "acetone", "chloroform"], [0.3, 0.3, 0.4], -15000, "ideal"],
+    [["methanol", "ethanol", "water", "acetone"], [0.25, 0.25, 0.25, 0.25], -20000, "ideal"],
+    [["methanol", "acetone", "chloroform"], [0.3, 0.3, 0.4], -10000, "SRK"],
+  ]) {
+    const s = system({ components: ids, model: ids.length === 3 ? "UNIQUAC" : "NRTL", vapour });
+    const P = vapour === "SRK" ? 800 : 101.325;
+    s.flash({ z, P, H });
+    const times = [];
+    for (let i = 0; i < 5; i++) { const t0 = performance.now(); s.flash({ z, P, H: H + i }); times.push(performance.now() - t0); }
+    const median = times.sort((a, b) => a - b)[2];
+    assert.ok(median < 20, `${ids.join("+")} ${vapour}: ${median.toFixed(1)} ms`);
+  }
+});
