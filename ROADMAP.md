@@ -189,7 +189,8 @@ Needs A4, A5 and D6; B1, B2.
 - [x] Vapour model choice for NRTL and UNIQUAC: ideal gas, Peng–Robinson or SRK, with φ_sat and the Poynting correction (proposal 0001, step 2)
 - [x] Mixture enthalpy for every model, excess enthalpy from NRTL and UNIQUAC, `phase()` with fugacities (proposal 0001, step 3)
 - [x] Two-phase flash for every model: T-P, P-H, P-VF, T-VF, with the heat duty from feed conditions (proposal 0001, step 4)
-- [ ] PT, PH and PQ flash; stream object
+- [ ] Three-phase flash (vapour + two liquids) (proposal 0001, step 5)
+- [ ] Stream object with flows, and the Flash workspace in the workbench with the heat duty in kW (proposal 0001, step 6)
 - [ ] Export (CSV, SVG, PNG) and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria
 

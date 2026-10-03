@@ -113,3 +113,59 @@ test("flash errors: specification, acetic acid enthalpy, liquid split", () => {
   const w = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
   code(() => w.flash({ z: [0.5, 0.5], T: 300, P: 101.325 }), "PHASE_SPLIT", /three-phase/);
 });
+
+test("two liquids are caught at the true liquid-liquid boundary (independent binodal)", async () => {
+  const { liquidTangentPlane } = await import("../src/equilibrium/stability.js");
+  const { binodal } = JSON.parse(readFileSync(new URL("../validation/fixtures/flash.json", import.meta.url)));
+  const s = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
+  for (const b of binodal) {
+    const [lo, hi] = b.x1;
+    for (const [x, stable] of [[lo - 0.005, true], [lo + 0.005, false], [0.5, false], [hi - 0.002, false], [hi + 0.002, true]]) {
+      assert.equal(liquidTangentPlane(s, [x, 1 - x], b.T_K).stable, stable, `T=${b.T_K} x=${x}`);
+    }
+  }
+  const split = fn => assert.throws(fn, e => e instanceof FugacityError && e.code === "PHASE_SPLIT");
+  split(() => s.flash({ z: [0.3, 0.7], T: 340, P: 101.325 }));     // inside the binodal, outside the spinodal
+  split(() => s.flash({ z: [0.98, 0.02], T: 340, P: 101.325 }));   // vapour + water-rich liquid would be wrong
+  split(() => s.flash({ z: [0.98, 0.02], P: 101.325, VF: 0 }));
+  split(() => s.flash({ z: [0.3, 0.7], P: 101.325, H: -20000 }));
+  // outside the two-liquid region the vapour-liquid flash is fine
+  const r = s.flash({ z: [0.995, 0.005], T: 360, P: 101.325 });
+  assert.ok(r.VF > 0 && r.VF < 1);
+});
+
+test("vapour-fraction flashes of a pure component and an azeotrope keep the vapour fraction asked for", () => {
+  const w = system({ components: ["water", "ethanol"], model: "NRTL" });
+  for (const VF of [0, 0.3, 0.5, 1]) {
+    const r = w.flash({ z: [1, 0], T: 373.15, VF });
+    assert.ok(Math.abs(r.VF - VF) < 1e-12, `water T-VF ${VF}: ${r.VF}`);
+    assert.ok(Math.abs(r.P / w.psat(373.15)[0] - 1) < 1e-6);
+  }
+  const e = system({ components: ["ethanol", "water"], model: "NRTL" });
+  const a = e.azeotropes(101.325)[0];
+  for (const VF of [0.3, 1]) assert.ok(Math.abs(e.flash({ z: [a.x, 1 - a.x], T: a.T, VF }).VF - VF) < 1e-12);
+  // VF = 0 and 1 report the first bubble or drop
+  const b = e.flash({ z: [0.4, 0.6], P: 101.325, VF: 0 }), bub = e.bubbleT([0.4, 0.6], 101.325);
+  b.incipient.composition.forEach((v, i) => assert.ok(Math.abs(v - bub.y[i]) < 1e-9));
+  const d = e.flash({ z: [0.4, 0.6], P: 101.325, VF: 1 }), dew = e.dewT([0.4, 0.6], 101.325);
+  assert.equal(d.incipient.type, "liquid");
+  d.incipient.composition.forEach((v, i) => assert.ok(Math.abs(v - dew.x[i]) < 1e-9));
+});
+
+test("P-H flashes without a two-phase region at that pressure, and cold liquids", () => {
+  const g = system({ components: ["methane", "ethane"], model: "PR" });
+  const h = g.flash({ z: [0.5, 0.5], T: 250, P: 7000 }).H_J_mol; // above the highest two-phase pressure
+  assert.ok(Math.abs(g.flash({ z: [0.5, 0.5], P: 7000, H: h }).T - 250) < 1e-6);
+  const n = system({ components: ["nitrogen", "methane"], model: "SRK" });
+  const hl = n.flash({ z: [0.4, 0.6], T: 130, P: 3000 }).H_J_mol;
+  assert.ok(Math.abs(n.flash({ z: [0.4, 0.6], P: 3000, H: hl }).T - 130) < 1e-6);
+});
+
+test("speed: a two-phase T-P flash with an SRK vapour under 5 ms", () => {
+  const s = system({ components: ["methanol", "acetone", "chloroform"], model: "UNIQUAC", vapour: "SRK" });
+  s.flash({ z: [0.3, 0.3, 0.4], T: 400, P: 800 });
+  const t0 = performance.now();
+  for (let i = 0; i < 10; i++) s.flash({ z: [0.3, 0.3, 0.4], T: 399 + i * 0.2, P: 800 });
+  const ms = (performance.now() - t0) / 10;
+  assert.ok(ms < 5, `${ms.toFixed(2)} ms`);
+});

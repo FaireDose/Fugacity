@@ -47,3 +47,53 @@ export function isLiquidStable(sys, x, T) {
   }
   return true;
 }
+
+/**
+ * Global stability of a liquid against splitting into two liquids: Michelsen's tangent-plane
+ * test with the activity model (the liquid-liquid form of eos-stability.js).
+ *
+ * M. L. Michelsen, The isothermal flash problem. Part I. Stability, Fluid Phase Equilib. 9
+ * (1982) 1-19; open descriptions as cited in eos-stability.js.
+ *
+ * With d_i = ln z_i + ln gamma_i(z), trial phases W are iterated to stationary points of
+ *     ln W_i = d_i - ln gamma_i(w),   w = W / sum(W);
+ * there tm = 1 - sum(W), and tm < 0 means the liquid z lowers its Gibbs energy by splitting
+ * off a liquid w: it is not stable as one liquid. Unlike isLiquidStable (the spinodal), this
+ * finds the full two-liquid region (the binodal) for the trial phases tried: one near-pure
+ * trial per component present, and one rich in each pair's second component.
+ *
+ * @returns {{stable:boolean, tm:number, trial:number[]|null}}
+ */
+export function liquidTangentPlane(sys, z, T, opts = {}) {
+  const n = sys.n, threshold = opts.threshold ?? -1e-8;
+  const gz = sys.gammas(z, T);
+  const d = z.map((v, i) => (v > 0 ? Math.log(v) + Math.log(gz[i]) : -Infinity));
+  const present = z.map(v => v > 0);
+  const starts = [];
+  for (let k = 0; k < n; k++) if (present[k]) {
+    starts.push(z.map((v, i) => (!present[i] ? 0 : i === k ? 0.98 : 0.02 * v)));
+    starts.push(z.map((v, i) => (!present[i] ? 0 : i === k ? 0.999 : 0.001 * v)));
+  }
+  let best = { tm: 0, trial: null };
+  for (const s0 of starts) {
+    let W = s0.slice(), w = null, tm = null;
+    for (let it = 0; it < 400; it++) {
+      const S = W.reduce((a, b) => a + b, 0);
+      w = W.map(v => v / S);
+      const g = sys.gammas(w.map(v => Math.max(v, 1e-300)), T);
+      const Wn = w.map((_, i) => (present[i] ? Math.exp(d[i] - Math.log(g[i])) : 0));
+      let ch = 0;
+      for (let i = 0; i < n; i++) if (present[i]) ch = Math.max(ch, Math.abs(Math.log(Wn[i] / Math.max(W[i], 1e-300))));
+      W = Wn;
+      if (ch < 1e-10) break;
+    }
+    const S = W.reduce((a, b) => a + b, 0);
+    w = W.map(v => v / S);
+    tm = 1 - S;
+    let dist = 0;
+    for (let i = 0; i < n; i++) if (present[i]) dist += Math.log(w[i] / z[i]) ** 2;
+    if (dist < 1e-4) continue; // converged back to z: trivial
+    if (tm < best.tm) best = { tm, trial: w };
+  }
+  return { stable: !(best.tm < threshold), ...best };
+}

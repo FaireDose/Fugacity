@@ -8,7 +8,7 @@ import { listComponents, findComponent } from "./components.js";
 import { selection, choosePair, describePair, pairWarnings } from "./library.js";
 import { createCubicVapour } from "./gamma-phi-vapour.js";
 import { activityPhaseMethods } from "./enthalpy.js";
-import { fail } from "../util/errors.js";
+import { fail, failRange } from "../util/errors.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
 export { EOS_MODELS, listComponents, findComponent };
@@ -142,6 +142,26 @@ export function createSystem(cfg) {
   // enthalpies need the association enthalpy of a dimerizing acid whether or not the chemical
   // theory is switched on for the phase equilibrium (association: false), as pure() says
   const dimerizing = comps.map(c => !!(c.association && c.association.type === "dimer"));
+  /**
+   * ln K_i = ln(y_i / x_i) at equilibrium for liquid x and vapour y at T, P (the flash's
+   * K-values): ln gamma_i P_i^sat / P, plus, with a cubic vapour, ln phi_i^sat + Poynting -
+   * ln phi_i^V(y). Not defined with the acid chemical theory (the flash then uses the bubble
+   * pressure of the liquid instead).
+   */
+  const lnKValues = assoc.some(Boolean) ? null : (x, y, T, P) => {
+    const g = gammas(x, T), ps = psat(T);
+    if (!cubicVapour) return g.map((gi, i) => Math.log(gi * ps[i] / P));
+    const t = cubicVapour.pureTerms(T, ps), st = cubicVapour.vapourState(T, P, y);
+    return g.map((gi, i) => {
+      let ls = t.lnPhiSat[i], vl = t.vL[i];
+      if (Number.isNaN(ls)) {
+        if (x[i] > 1e-10) throw failRange("OUT_OF_RANGE", `${comps[i].name} is above its critical temperature (${comps[i].Tc_K} K) at ${T.toFixed(2)} K, so it has no saturated vapour; use model "${vapourModel}" for both phases.`);
+        ls = 0; vl = 0;
+      }
+      return Math.log(gi * ps[i] / P) + ls + vl * (P - ps[i]) * 1000 / (8.314462618 * T) - st.lnPhi[i];
+    });
+  };
+
   const phaseMethods = activityPhaseMethods({ ids, comps, n, model, gammas, psat, cubicVapour, assoc: dimerizing, warnings });
-  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings, ...phaseMethods };
+  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, lnKValues, info, warnings, ...phaseMethods };
 }

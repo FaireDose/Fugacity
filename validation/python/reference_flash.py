@@ -124,11 +124,18 @@ def main():
             cases.append({"model": model, "components": ids, "z": z, "spec": spec,
                           "T_K": T, "P_kPa": P, "VF": VF, "x": x, "y": y, "H_J_mol": H})
             print(model, "+".join(ids), spec, f"T={T:.5f} P={P:.5f} VF={VF:.6f} H={H:.2f}")
+    # liquid-liquid boundary (binodal) of water + ethyl acetate, NRTL, from reference_model.lle_binary
+    binodal = []
+    s = System(["water", "ethyl-acetate"], "NRTL")
+    for T in (300.0, 320.0, 340.0):
+        a, b = s.lle_binary(T, (0.1, 0.99))
+        binodal.append({"model": "NRTL", "components": ["water", "ethyl-acetate"], "T_K": T, "x1": sorted([a, b])})
+        print("binodal", T, sorted([a, b]))
     OUT.write_text(json.dumps({
         "_about": "Two-phase flashes from validation/python/reference_flash.py: phase split by the thermo library's "
                   "FlashVL with the same parameters; enthalpy flashes by brentq on T with the independent enthalpies "
                   "of reference_enthalpy.py (liquid heat-capacity basis).",
-        "cases": cases}, indent=1))
+        "cases": cases, "binodal": binodal}, indent=1))
     print(f"wrote {len(cases)} cases to {OUT}")
 
 
