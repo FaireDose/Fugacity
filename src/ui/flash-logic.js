@@ -26,12 +26,30 @@ export const FLASH_SPECS = [
  *  - feedT_K, feedP_kPa: the state of the feed: used by the P-H flash, and by the others
  *    when `duty` is on (the heat duty Q = H_out - H_feed is then reported);
  *  - z: feed mole fractions, one per component of the flash inputs (null: equimolar);
- *  - flow_kmol_h: feed flow, for the phase flows and the heat duty in kW (a multiplication:
- *    the flash itself is per mole of feed).
+ *  - flow, flowUnit: feed flow in kmol/h, kg/h or t/h (FLOW_UNITS), for the stream and
+ *    component flows and the heat duty in kW (a multiplication: the flash itself is per mole
+ *    of feed). `flow_kmol_h` is accepted as flow in kmol/h.
  */
 export const FLASH_DEFAULTS = Object.freeze({
-  spec: "PVF", T_K: 350, P_kPa: 101.325, VF: 0.5, Q_J_mol: 0, feedT_K: 298.15, feedP_kPa: 101.325, duty: false, z: null, flow_kmol_h: 100,
+  spec: "PVF", T_K: 350, P_kPa: 101.325, VF: 0.5, Q_J_mol: 0, feedT_K: 298.15, feedP_kPa: 101.325, duty: false, z: null,
+  flow: 100, flowUnit: "kmol/h",
 });
+
+/** Units of the feed flow: a molar one and two mass ones (1 t = 1000 kg). */
+export const FLOW_UNITS = ["kmol/h", "kg/h", "t/h"];
+const MASS_PER = { "kg/h": 1, "t/h": 1000 };   // kg per unit
+
+/** The feed flow in kmol/h, for a feed of mean molar mass MW (g/mol = kg/kmol). */
+export function molarFlow(f, MW) {
+  return f.flowUnit === "kmol/h" ? f.flow : f.flow * MASS_PER[f.flowUnit] / MW;
+}
+
+/** The same feed flow expressed in another unit (for a feed of mean molar mass MW, kg/kmol). */
+export function flowIn(f, unit, MW) {
+  if (!FLOW_UNITS.includes(unit)) throw new Error(`Unknown flow unit "${unit}". Use one of: ${FLOW_UNITS.join(", ")}.`);
+  const kmol = molarFlow(f, MW);
+  return unit === "kmol/h" ? kmol : kmol * MW / MASS_PER[unit];
+}
 
 /** Heat duty in kW for a duty in J per mol of feed and a feed flow in kmol/h. */
 export const dutyKW = (Q_J_mol, flow_kmol_h) => Q_J_mol * flow_kmol_h / 3600;
@@ -45,7 +63,7 @@ const positive = (v, name) => {
 /** Merge a change into the flash settings, with checks (a typo is never silently ignored). */
 export function normalizeFlash(patch = {}, prev = FLASH_DEFAULTS) {
   if (patch == null || typeof patch !== "object" || Array.isArray(patch)) throw new Error("flash must be an object such as { spec: \"TP\", T_K: 350, P_kPa: 101.325 }.");
-  const known = Object.keys(FLASH_DEFAULTS);
+  const known = [...Object.keys(FLASH_DEFAULTS), "flow_kmol_h"];
   for (const k of Object.keys(patch)) if (!known.includes(k)) throw new Error(`flash: unknown key "${k}". Known: ${known.join(", ")}.`);
   const f = { ...prev };
   if (patch.spec != null) {
@@ -53,7 +71,13 @@ export function normalizeFlash(patch = {}, prev = FLASH_DEFAULTS) {
     if (!FLASH_SPECS.some(s => s.id === id)) throw new Error(`flash.spec "${patch.spec}" is not one of: ${FLASH_SPECS.map(s => s.id).join(", ")}.`);
     f.spec = id;
   }
-  for (const k of ["T_K", "P_kPa", "feedT_K", "feedP_kPa", "flow_kmol_h"]) if (patch[k] != null) f[k] = positive(patch[k], k);
+  for (const k of ["T_K", "P_kPa", "feedT_K", "feedP_kPa", "flow"]) if (patch[k] != null) f[k] = positive(patch[k], k);
+  if (patch.flow_kmol_h != null) { f.flow = positive(patch.flow_kmol_h, "flow_kmol_h"); f.flowUnit = "kmol/h"; }
+  if (patch.flowUnit != null) {
+    const u = String(patch.flowUnit).replace(/\s+/g, "").replace(/^tonne?s?\/h$/i, "t/h");
+    if (!FLOW_UNITS.includes(u)) throw new Error(`flash.flowUnit "${patch.flowUnit}" is not one of: ${FLOW_UNITS.join(", ")}.`);
+    f.flowUnit = u;
+  }
   if (patch.VF != null) {
     const v = Number(patch.VF);
     if (!(v >= 0 && v <= 1)) throw new RangeError(`flash.VF must be between 0 and 1 (got ${patch.VF}).`);
@@ -125,28 +149,37 @@ export function phaseName(p) {
  * The stream table of a flash result: one column for the feed and one per phase.
  * @param {object} r      the flash result (sys.flash)
  * @param {object} ctx    { names: string[], MW: number[] (g/mol), z: number[] (feed), units: { T, P },
- *   flow: feed flow in kmol/h (optional: adds the molar and mass flow of each stream) }
+ *   flow: feed flow in kmol/h (optional: adds the molar and mass flow of each stream and the
+ *   component flows), flowUnit: the unit the flows are shown in ("kmol/h", "kg/h" or "t/h";
+ *   the molar flow row is always in kmol/h) }
  * @returns {{columns:string[], rows:{key:string, label:string, unit:string, values:(number|string|null)[]}[]}}
  *   values in display units (T and P as `units` say); null where a value does not apply
  *   (the feed temperature when no feed state was given, an enthalpy the model cannot give)
  */
-export function flashTable(r, { names, MW, z, units, flow }) {
+export function flashTable(r, { names, MW, z, units, flow, flowUnit = "kmol/h" }) {
   const tU = units.T === "K" ? "K" : "°C";
   const phases = r.phases;
   const feedState = r.feed ?? null;
   const molarMass = x => x.reduce((a, v, i) => a + v * MW[i], 0);
   const row = (key, label, unit, feedValue, f) => ({ key, label, unit, values: [feedValue, ...phases.map(f)] });
+  // mass flows in kg/h, or t/h when the feed flow is given in t/h
+  const massU = flowUnit === "t/h" ? "t/h" : "kg/h", perKg = MASS_PER[massU];
+  // component flows: in kmol/h for a molar feed flow, else in its mass unit
+  const compFlows = flow > 0 ? names.map((n, i) => (flowUnit === "kmol/h"
+    ? row(`f${i}`, `Flow ${n}`, "kmol/h", flow * z[i], p => flow * p.fraction * p.composition[i])
+    : row(`f${i}`, `Flow ${n}`, massU, flow * z[i] * MW[i] / perKg, p => flow * p.fraction * p.composition[i] * MW[i] / perKg))) : [];
   const rows = [
     row("fraction", "Fraction of the feed", "mol/mol", 1, p => p.fraction),
     ...(flow > 0 ? [
       row("flow", "Molar flow", "kmol/h", flow, p => flow * p.fraction),
-      row("mflow", "Mass flow", "kg/h", flow * molarMass(z), p => flow * p.fraction * molarMass(p.composition)),
+      row("mflow", "Mass flow", massU, flow * molarMass(z) / perKg, p => flow * p.fraction * molarMass(p.composition) / perKg),
     ] : []),
     row("T", "Temperature", tU, feedState ? tToDisplay(feedState.T, units) : null, () => tToDisplay(r.T, units)),
     row("P", "Pressure", units.P, feedState ? pToDisplay(feedState.P, units) : null, () => pToDisplay(r.P, units)),
     row("h", "Molar enthalpy", "J/mol", feedState ? feedState.H_J_mol : null, p => p.h_J_mol),
     row("MW", "Molar mass", "g/mol", molarMass(z), p => molarMass(p.composition)),
     ...names.map((n, i) => row(`x${i}`, `Mole fraction ${n}`, "mol/mol", z[i], p => p.composition[i])),
+    ...compFlows,
     ...names.map((n, i) => row(`w${i}`, `Mass fraction ${n}`, "kg/kg", convertBasis(z, MW, true)[i], p => convertBasis(p.composition, MW, true)[i])),
   ];
   return { columns: ["Feed", ...phases.map(phaseName)], rows };
