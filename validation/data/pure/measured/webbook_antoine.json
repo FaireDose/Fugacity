@@ -23,5 +23,217 @@
     "comment": "Coefficents calculated by NIST from author's data."
    }
   ]
+ },
+ "1-propanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71238&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 333.32,
+    "Tmax_K": 377.72,
+    "A": 4.87601,
+    "B": 1441.629,
+    "C": -74.299,
+    "reference": "Ambrose and Sprake, 1970",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 292.4,
+    "Tmax_K": 370.5,
+    "A": 5.31384,
+    "B": 1690.864,
+    "C": -51.804,
+    "reference": "Kemme and Kreps, 1969",
+    "comment": ""
+   },
+   {
+    "Tmin_K": 405.46,
+    "Tmax_K": 536.71,
+    "A": 4.59871,
+    "B": 1300.491,
+    "C": -86.364,
+    "reference": "Ambrose and Townsend, 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "2-propanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 395.1,
+    "Tmax_K": 508.24,
+    "A": 4.57795,
+    "B": 1221.423,
+    "C": -87.474,
+    "reference": "Ambrose and Townsend, 1963, 3",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 329.92,
+    "Tmax_K": 362.41,
+    "A": 4.861,
+    "B": 1357.427,
+    "C": -75.814,
+    "reference": "Biddiscombe, Collerson, et al., 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "1-butanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71363&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 295.8,
+    "Tmax_K": 391.0,
+    "A": 4.54607,
+    "B": 1351.555,
+    "C": -93.34,
+    "reference": "Kemme and Kreps, 1969",
+    "comment": ""
+   },
+   {
+    "Tmin_K": 391.0,
+    "Tmax_K": 479.0,
+    "A": 4.39031,
+    "B": 1254.502,
+    "C": -105.246,
+    "reference": "Hessel and Geiseler, 1965",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 419.34,
+    "Tmax_K": 562.98,
+    "A": 4.42921,
+    "B": 1305.001,
+    "C": -94.676,
+    "reference": "Ambrose and Townsend, 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 362.36,
+    "Tmax_K": 398.84,
+    "A": 4.50393,
+    "B": 1313.878,
+    "C": -98.789,
+    "reference": "Biddiscombe, Collerson, et al., 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "2-butanone": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78933&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 314.6,
+    "Tmax_K": 370.6,
+    "A": 3.9894,
+    "B": 1150.207,
+    "C": -63.904,
+    "reference": "Nickerson, Kobe, et al., 1961",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "methyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79209&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 274.91,
+    "Tmax_K": 328.99,
+    "A": 4.20364,
+    "B": 1164.426,
+    "C": -52.69,
+    "reference": "Polák and Mertl, 1965",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "n-butyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C123864&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 332.89,
+    "Tmax_K": 399.24,
+    "A": 4.26803,
+    "B": 1440.231,
+    "C": -61.362,
+    "reference": "Kliment, Fried, et al., 1964",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "acetonitrile": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75058&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 288.3,
+    "Tmax_K": 362.3,
+    "A": 4.27873,
+    "B": 1355.374,
+    "C": -37.853,
+    "reference": "Dojcansky and Heinrich, 1974, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 280.41,
+    "Tmax_K": 300.53,
+    "A": 5.93296,
+    "B": 2345.829,
+    "C": 43.815,
+    "reference": "Putnam, McEachern, et al., 1965, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "mtbe": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1634044&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "sets": []
+ },
+ "glycerol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C56815&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 456.4,
+    "Tmax_K": 533.6,
+    "A": 3.93737,
+    "B": 1411.531,
+    "C": -200.566,
+    "reference": "Richardson, 1886, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "phenol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108952&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 380.3,
+    "Tmax_K": 454.9,
+    "A": 4.24688,
+    "B": 1509.677,
+    "C": -98.949,
+    "reference": "Dreisbach and Shrader, 1949",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
  }
 }
