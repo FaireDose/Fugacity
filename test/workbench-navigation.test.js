@@ -12,9 +12,9 @@ import {
 const MAC = ["methanol", "acetone", "chloroform"];
 const go = (s, ...patches) => patches.reduce(applyPatch, s);
 
-test("one navigation: four task workspaces holding every view; three supporting panels", () => {
-  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "solubility", "properties", "steam"]);
-  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Gas solubility", "Properties", "Steam"]);
+test("one navigation: five task workspaces holding every view; three supporting panels", () => {
+  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "flash", "solubility", "properties", "steam"]);
+  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Flash", "Gas solubility", "Properties", "Steam"]);
   assert.deepEqual(UTILITIES.map(u => u.id), ["library", "sources", "settings"]);
   // every view is in exactly one workspace, and every workspace view has its inputs defined
   const all = WORKSPACES.flatMap(w => w.views);

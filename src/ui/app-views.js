@@ -28,6 +28,8 @@ import {
   setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
 import { HENRY_PAIRS, isEosModel } from "./workspaces.js";
+import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW } from "./flash-logic.js";
+import pkg from "../../package.json" with { type: "json" };
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
 } from "./properties-logic.js";
@@ -44,6 +46,7 @@ export function renderView(view, ctx) {
     case "azeotropes": return azeotropeView(ctx);
     case "pxy": return pxyView(ctx);
     case "envelope": return envelopeView(ctx);
+    case "flash": return flashView(ctx);
     case "henry": return henryView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
@@ -505,6 +508,116 @@ function envelopeView(ctx) {
   move((xLo + xHi) / 2);
   extra.append(bubbleDewCalculator(ctx, sys, ids), ...sourcesOf(ctx, sys));
   return { data: ids.length > 1 ? pairData(sys) : "Critical constants from the component record" };
+}
+
+// ---------------------------------------------------------------------------------------
+// Flash (proposal 0001, step 6): the feed flashed with the model of the Model group; a bar of
+// the phase split, the stream table (feed and phases), CSV export; readouts and sources
+
+const PHASE_COLOR = { vapour: "var(--fug-vap)", liquid: "var(--fug-liq)" };
+
+/** Save text as a file (a Blob link), or say why the page cannot. */
+function saveText(text, name, type, status) {
+  try {
+    const url = URL.createObjectURL(new Blob(["\uFEFF" + text], { type })); // BOM: spreadsheets read UTF-8 (°C)
+    const a = h("a", { href: url, download: name, style: "display:none" });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    status.textContent = `Saved ${name}. If nothing was downloaded, the page does not allow downloads: use Copy CSV.`;
+  } catch (e) { status.textContent = `This page cannot save files (${e.message}); use Copy CSV.`; }
+}
+
+/** Copy text to the clipboard, falling back to a selected text area the reader can copy from. */
+function copyText(text, status, box) {
+  const fallback = () => {
+    const ta = h("textarea", { class: "fa-csv-text", rows: 6, readonly: true, "aria-label": "CSV of the flash result" });
+    ta.value = text;
+    box.replaceChildren(ta); ta.focus(); ta.select();
+    status.textContent = "The clipboard is not available here: the CSV is selected below, copy it with Ctrl+C (Cmd+C).";
+  };
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = "CSV copied: paste it into a spreadsheet."; }, fallback);
+  else fallback();
+}
+
+function flashView(ctx) {
+  const { state, plot, side, notes, below, extra } = ctx;
+  const u = state.units, ids = state.components;
+  let sys;
+  try { sys = modelSystem(state, ids); } catch (e) { throw new Error(friendly(e)); }
+  for (const k of sys.kind !== "eos" && onDefaults(sys) ? knownIssuesFor(sys.ids, sys.model) : []) {
+    notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
+  }
+  const { result: r, z } = runFlash(sys, state.flash);
+  const names = sys.names, MW = ids.map(id => pure(id).MW);
+  const flow = state.flash.flow_kmol_h;
+  const table = flashTable(r, { names, MW, z, units: u, flow });
+  const spec = FLASH_SPECS.find(f => f.id === state.flash.spec);
+  const ml = isEosModel(state.model) ? (state.model === "PR" ? "Peng–Robinson" : "SRK")
+    : `${state.model === "ideal" ? "Ideal solution" : state.model}${state.vapour !== "ideal" ? ` with a ${state.vapour} vapour` : ""}`;
+
+  // the phase split as one bar
+  const bar = h("div", { class: "fa-split", role: "img", "aria-label": `Phase split: ${r.phases.map(p => `${phaseName(p)} ${fmtNum(p.fraction, 4)}`).join(", ")}` },
+    ...r.phases.map((p, k) => h("div", { class: "fa-split-part" + (k ? " is-next" : ""), style: `flex:${Math.max(p.fraction, 0.002)};--c:${PHASE_COLOR[p.type]}` + (p.type === "liquid" && k > 1 ? ";--hatch:1" : ""),
+      title: `${phaseName(p)}: ${fmtNum(p.fraction, 4)} of the feed` },
+    p.fraction > 0.12 ? h("span", {}, `${phaseName(p)} ${fmtNum(100 * p.fraction, 3)} %`) : null)));
+
+  // the stream table, compositions in the display basis (the CSV has both)
+  const mass = state.basis === "mass";
+  const fmtCell = (row, v) => {
+    if (v == null) return "–";
+    if (row.key === "T") return (+v.toFixed(3)).toString();
+    if (row.key === "P") return fmtShort(v, 6);
+    if (row.key === "h") return Math.round(v).toLocaleString("en-US").replace(/,/g, " ");
+    if (row.key === "MW") return v.toFixed(3);
+    if (row.key === "flow" || row.key === "mflow") return fmtShort(v, 6);
+    if (row.key.startsWith("w")) return (100 * v).toFixed(3);
+    return v.toFixed(5);
+  };
+  const shownRows = table.rows.filter(row => !(mass ? row.key.startsWith("x") : row.key.startsWith("w")))
+    .map(row => (row.key.startsWith("w") ? { ...row, label: row.label.replace("Mass fraction", "Mass"), unit: "wt %" } : row));
+  const tableEl = h("div", { class: "fug-scroll" }, h("table", { class: "fa-table fa-stream" },
+    h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Stream"), h("th", { scope: "col" }, "Unit"), ...table.columns.map(c => h("th", { scope: "col", class: "fug-num" }, c)))),
+    h("tbody", {}, ...shownRows.map(row => h("tr", {}, h("th", { scope: "row" }, row.label), h("td", {}, row.unit),
+      ...row.values.map(v => h("td", { class: "fug-num" }, fmtCell(row, v))))))));
+
+  const summary = [
+    ["Temperature", +tToDisplay(r.T, u).toFixed(4), tU(u)], ["Pressure", +pToDisplay(r.P, u).toPrecision(8), u.P], ["Vapour fraction", r.VF, "mol/mol"],
+    ["Enthalpy of the outlet", r.H_J_mol, "J/mol of feed"],
+    ...(r.duty_J_mol != null ? [["Heat duty Q", r.duty_J_mol, "J/mol of feed"], ["Heat duty Q", dutyKW(r.duty_J_mol, flow), `kW at ${flow} kmol/h of feed`]] : []),
+    ["Feed flow", flow, "kmol/h"],
+  ];
+  const meta = {
+    title: names.join(", "), model: ml, spec: `${spec.title}: ${JSON.stringify(state.flash.spec === "PH" ? { P_kPa: r.P, Q_J_mol: state.flash.Q_J_mol, feed: { T_K: state.flash.feedT_K, P_kPa: state.flash.feedP_kPa } } : { TP: { T_K: r.T, P_kPa: r.P }, PVF: { P_kPa: r.P, VF: state.flash.VF }, TVF: { T_K: r.T, VF: state.flash.VF } }[state.flash.spec])}`,
+    summary, version: pkg.version,
+    sources: (r.sources ?? []).map(s => `${s.pair ? s.pair.join(" + ") + ": " : ""}${s.set ? `set ${s.set}, ` : ""}${s.tier ?? ""}${s.source ? `; ${s.source}` : ""}`),
+  };
+  const csv = flashCsv(table, meta);
+  const status = h("div", { class: "fug-foot", "aria-live": "polite" }), csvBox = h("div");
+  const file = `fugacity-flash-${ids.join("-")}.csv`;
+  const tools = h("div", { class: "fa-in-actions" },
+    h("button", { type: "button", class: "fa-mini", "data-fk": "csv-save", on: { click: () => saveText(csv, file, "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "csv-copy", on: { click: () => copyText(csv, status, csvBox) } }, icon("copy", 15), "Copy CSV"));
+
+  plot.replaceChildren(h("div", { class: "fa-flash" },
+    h("div", { class: "fug-eyebrow" }, `${r.phases.length === 1 ? `One phase: ${phaseName(r.phases[0]).toLowerCase()}` : `${r.phases.length} phases`} at ${fmtTemp(r.T, u, 2)} and ${fmtP(r.P, u)}`),
+    bar, tableEl, tools, status, csvBox,
+    h("div", { class: "fug-foot" }, `Enthalpy reference: each component as an ideal gas at 298.15 K (h = 0); the heat duty does not depend on it. Compositions in ${mass ? "wt %" : "mole fractions"}; the CSV has both, and the model, specification and sources.`)));
+
+  side.replaceChildren(
+    h("div", {}, h("div", { class: "fug-eyebrow" }, "Vapour fraction"), h("div", { class: "fug-big" }, fmtNum(r.VF, 4))),
+    h("div", { class: "fug-sub" }, r.phases.map(p => `${phaseName(p)} ${fmtNum(p.fraction, 4)}`).join(" · ")),
+    kv([
+      ["Temperature", fmtTemp(r.T, u, 3)], ["Pressure", fmtP(r.P, u)],
+      ["Outlet enthalpy", r.H_J_mol == null ? null : Math.round(r.H_J_mol).toString(), "J/mol"],
+      r.feed ? ["Feed enthalpy", Math.round(r.feed.H_J_mol).toString(), "J/mol"] : null,
+      r.duty_J_mol != null ? ["Heat duty Q", Math.round(r.duty_J_mol).toString(), "J/mol of feed"] : null,
+      r.duty_J_mol != null ? ["Heat duty Q", fmtShort(dutyKW(r.duty_J_mol, flow), 5), `kW at ${fmtShort(flow, 6)} kmol/h`] : null,
+      ["Iterations", String(r.iterations)],
+    ]),
+    ...(r.warnings ?? []).map(w => h("div", { class: "fug-warn" }, w)),
+    h("div", { class: "fug-foot" }, spec.hint));
+  extra.append(...sourcesOf(ctx, sys));
+  return { data: pairData(sys) };
 }
 
 // ---------------------------------------------------------------------------------------

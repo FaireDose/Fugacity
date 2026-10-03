@@ -263,7 +263,16 @@ Each step is one pull request with its tests and an updated engineering report.
    LLE data. Done for NRTL and UNIQUAC (added when step 5 was implemented); two liquids with
    an equation of state (PR/SRK, for example benzene + water) still give a PHASE_SPLIT error
    and come later.
-6. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1).
+6. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1). Done
+   (added when step 6 was implemented): feed (components, composition in mole fractions or
+   wt %, flow), the four specifications (the P-H flash as feed T and P plus a heat duty Q, so
+   Q = 0 is an adiabatic flash), the model of the toolbar, a stream table (feed and each
+   phase: fraction, molar and mass flow, T, P, enthalpy, molar mass, composition), the heat
+   duty per mole and in kW, and a CSV with both bases, the model, the specification and the
+   sources. The flows are a multiplication of the per-mole result; the stream object comes
+   with A5. At the maintainer's request the phase-equilibrium diagrams now share one model
+   choice: every diagram (T-x-y, P-x-y, ternary map, azeotropes, phase envelope) runs with
+   an activity model or with PR/SRK, using that model's own bubble point.
 
 Later: with streams (A5), flowrates, the stream object, and the P-S flash with entropy for
 compressors and turbines; equations of state with activity-model mixing rules (for

@@ -17,6 +17,7 @@ import { pure } from "../thermo/pure.js";
 import knownIssues from "../data/known-issues.json" with { type: "json" };
 import { WORKSPACES, UTILITIES, INPUTS, checkInputs, normalizeInputs, seedInputs, isEosModel } from "./workspaces.js";
 import { normalizeUnits, tToDisplay, tFromDisplay, pToDisplay, pFromDisplay, fmtShort } from "./properties-logic.js";
+import { normalizeFlash, FLASH_DEFAULTS } from "./flash-logic.js";
 
 /**
  * Canvas views: the workspace each belongs to and its name. The phase-equilibrium diagrams
@@ -29,6 +30,7 @@ export const VIEWS = {
   azeotropes: { workspace: "equilibrium", diagram: true, label: "Azeotropes" },
   pxy: { workspace: "equilibrium", diagram: true, label: "P-x-y diagram" },
   envelope: { workspace: "equilibrium", diagram: true, label: "Phase envelope" },
+  flash: { workspace: "flash", label: "Flash" },
   henry: { workspace: "solubility", label: "Gas solubility" },
   properties: { workspace: "properties", label: "Property curves" },
   steam: { workspace: "steam", label: "Steam tables" },
@@ -65,7 +67,7 @@ export const PRESETS = [
 ];
 
 export const MAX_COMPONENTS = 6;
-const START_ALIASES = { eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties", library: "sources" };
+const START_ALIASES = { drum: "flash", eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties", library: "sources" };
 
 const normModel = m => (String(m ?? "NRTL").toUpperCase() === "IDEAL" ? "ideal" : String(m ?? "NRTL").toUpperCase());
 const normEos = m => String(m ?? "PR").toUpperCase();
@@ -123,6 +125,11 @@ export function viewAvailability(view, ids, model = "NRTL") {
     case "envelope": {
       const min = isEosModel(model) ? 1 : 2;
       if (liq.length < min) return { enabled: false, use: [], reason: min === 1 ? "Select at least one component." : `With an activity model the phase envelope needs two liquids; ${word(liq.length)} selected.` };
+      return { enabled: true, use: liq.slice(0, 6) };
+    }
+    case "flash": {
+      const min = isEosModel(model) ? 1 : 2;
+      if (liq.length < min) return { enabled: false, use: [], reason: `A flash needs ${min === 1 ? "a component" : "two liquids with an activity model"}; ${word(liq.length)} selected.` };
       return { enabled: true, use: liq.slice(0, 6) };
     }
     case "henry": {
@@ -185,6 +192,8 @@ const DEFAULTS = {
  *  - `inputs`: the inputs of every view, kept separately ({ txy: [id, id], ternary: [id, id, id],
  *    azeotropes: [...], pxy: [id, id], envelope: [...], henry: { gas, solvent }, properties: [id] });
  *  - `utility`: the open supporting panel (null, "library", "sources" or "settings");
+ *  - `flash`: the settings of the Flash workspace (flash-logic.js FLASH_DEFAULTS: spec, T_K,
+ *    P_kPa, VF, Q_J_mol, feedT_K, feedP_kPa, duty, z);
  *  - `components`: the components the current view uses (read-only summary), and
  *    `propComponent`, the component of the Properties workspace (read-only).
  */
@@ -227,6 +236,7 @@ export function initialState(cfg = {}) {
     henryT_K: positive(cfg.henryT_K ?? DEFAULTS.henryT_K, "henryT_K"),
     compareGases: !!cfg.compareGases,
     steamP_kPa: cleanList(cfg.steamP_kPa ?? DEFAULTS.steamP_kPa),
+    flash: normalizeFlash(cfg.flash ?? {}, FLASH_DEFAULTS),
     title: cfg.title,
     sets: normalizeSets(cfg.sets),
     prefer: normalizePrefer(cfg.prefer),
@@ -290,7 +300,9 @@ function cleanList(list) {
  *    views, and moves the phase-equilibrium workspace to a diagram that can run with them);
  *  - `model`: the model of every diagram (ALL_MODELS); `eos`: selects that equation of state
  *    as the model (the key of earlier versions, when the equation of state had its own diagrams);
- *  - `z`: feed composition of the P-x-y or phase-envelope view on the canvas.
+ *  - `z`: feed composition of the P-x-y or phase-envelope view on the canvas;
+ *  - `flash`: settings of the Flash workspace, merged ({ spec: "TP", T_K: 350 }); a new list
+ *    of flash components resets its feed composition to equimolar.
  */
 export function applyPatch(state, patch = {}) {
   const next = {
@@ -313,6 +325,7 @@ export function applyPatch(state, patch = {}) {
     const keepProp = comps.includes(state.inputs.properties[0]) ? state.inputs.properties[0] : null;
     next.inputs = seedInputs(comps, { propComponent: keepProp, gas: henryGases(comps)[0] ?? state.inputs.henry.gas, solvent: state.inputs.henry.solvent, model: next.model });
     next.z = { pxy: null, envelope: null };
+    next.flash = { ...next.flash, z: null };
     if (patch.view == null && patch.start == null) {
       const d = resolveView(state.diagram, comps, next.model);
       if (VIEWS[d].workspace === "equilibrium") next.diagram = d;
@@ -331,6 +344,7 @@ export function applyPatch(state, patch = {}) {
     if (!(v in INPUTS) || v === "steam") throw new Error(`inputs: unknown view "${v}". Views with inputs: ${Object.keys(INPUTS).filter(k => k !== "steam").join(", ")}.`);
     next.inputs[v] = normalizeInputs(v, v === "henry" ? { ...next.inputs.henry, ...value } : value);
     if (v in next.z) next.z[v] = null;
+    if (v === "flash") next.flash = { ...next.flash, z: null };
   }
 
   // settings
@@ -349,6 +363,7 @@ export function applyPatch(state, patch = {}) {
   if ("title" in patch) next.title = patch.title;
   if ("sets" in patch) next.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);
   if ("prefer" in patch) next.prefer = normalizePrefer(patch.prefer);
+  if (patch.flash != null) next.flash = normalizeFlash(patch.flash, next.flash);
 
   // navigation
   let utility = "utility" in patch ? patch.utility : undefined;

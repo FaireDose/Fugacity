@@ -201,6 +201,18 @@ export const APP_CSS = `
 .fa-src-tools .fa-src-search{margin:0; flex:1 1 260px; min-width:0}
 .fug-app .fa-src-tools svg.fug-ico{width:16px; height:16px; flex:none; display:inline-block; touch-action:auto}
 .fa-check-label{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--fug-fg2)}
+.fa-feed{display:flex; flex-direction:column; gap:6px}
+.fa-plot[data-view="flash"]{max-width:none}
+.fa-flash{display:flex; flex-direction:column; gap:10px}
+.fa-split{display:flex; height:30px; border-radius:6px; overflow:hidden; border:1px solid var(--fug-rule)}
+.fa-split-part{background:color-mix(in srgb, var(--c) 30%, var(--fug-bg)); border-left:3px solid var(--c); display:flex; align-items:center; padding:0 8px; min-width:0}
+.fa-split-part.is-next{border-left-width:3px}
+.fa-split-part span{font-size:12px; color:var(--fug-fg); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.fug-app .fa-stream th,.fug-app .fa-stream td{padding:4px 12px 4px 0; white-space:nowrap}
+.fug-app .fa-stream td.fug-num,.fug-app .fa-stream th.fug-num{text-align:right}
+.fa-stream tbody th{font-weight:500; color:var(--fug-fg2)}
+.fa-csv-text{width:100%; font:12px/1.4 ui-monospace,monospace}
+.fa-flash .fa-in-actions svg.fug-ico{width:15px; height:15px; max-width:15px; flex:none}
 .fa-srcs{display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:12px; align-items:start}
 .fa-src-card{border:1px solid var(--fug-rule); border-radius:8px; padding:10px 12px; background:var(--fug-bg); display:grid; gap:5px; align-content:start; min-width:0}
 .fa-src-card-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
@@ -365,7 +377,7 @@ export const APP_CSS = `
 .fug-app[data-size="narrow"] .fa-utils{border-left:0; padding-left:0}
 .fug-app[data-size="narrow"] .fa-util-btn{padding:6px 8px}
 .fug-app[data-size="narrow"] .fa-collapse{margin-right:4px}
-.fug-app[data-size="narrow"] .fa-nav{order:3; flex:1 1 100%; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:2px; padding:0 4px}
+.fug-app[data-size="narrow"] .fa-nav{order:3; flex:1 1 100%; display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:2px; padding:0 4px}
 .fug-app[data-size="narrow"] .fa-nav-btn{flex-direction:column; gap:2px; padding:6px 2px 7px; font-size:11.5px; justify-content:center; min-width:0}
 .fug-app[data-size="narrow"] .fa-nav-short{overflow:hidden; text-overflow:ellipsis; max-width:100%}
 .fug-app[data-size="narrow"] .fa-ribbon{flex-direction:column; overflow:visible; min-height:0; padding:4px 10px}

@@ -14,8 +14,9 @@ import henryData from "../data/henry.json" with { type: "json" };
 
 /** The workspaces of the navigation, in order: one per calculation task. */
 export const WORKSPACES = [
-  { id: "equilibrium", label: "Phase equilibrium", short: "Equilibrium", icon: "ternary",
+  { id: "equilibrium", label: "Phase equilibrium", short: "Phase eq.", icon: "ternary",
     views: ["txy", "ternary", "azeotropes", "pxy", "envelope"], view: "ternary" },
+  { id: "flash", label: "Flash", short: "Flash", icon: "drum", views: ["flash"], view: "flash" },
   { id: "solubility", label: "Gas solubility", short: "Solubility", icon: "henry", views: ["henry"], view: "henry" },
   { id: "properties", label: "Properties", short: "Properties", icon: "curves", views: ["properties"], view: "properties" },
   { id: "steam", label: "Steam", short: "Steam", icon: "dome", views: ["steam"], view: "steam" },
@@ -56,6 +57,7 @@ export const INPUTS = {
   azeotropes: { kind: "list", min: 2, max: 4, liquid: true, what: "an azeotrope search" },
   pxy: { kind: "slots", n: 2, liquid: true, what: "a P-x-y diagram", roles: ["x axis", "1 − x"] },
   envelope: { kind: "list", min: 1, minActivity: 2, max: 6, liquid: true, what: "a phase envelope" },
+  flash: { kind: "list", min: 1, minActivity: 2, max: 6, liquid: true, what: "a flash" },
   henry: { kind: "henry", what: "a gas solubility" },
   properties: { kind: "slots", n: 1, liquid: false, what: "the property curves", roles: ["pure component"] },
   steam: { kind: "none", what: "the steam tables" },
@@ -174,6 +176,7 @@ export function seedInputs(components = [], { gas, solvent, propComponent, model
     azeotropes: normalizeInputs("azeotropes", liq.slice(0, 4)),
     pxy: normalizeInputs("pxy", ids.slice(0, 2)),
     envelope: normalizeInputs("envelope", ids.slice(0, 6)),
+    flash: normalizeInputs("flash", liq.slice(0, 6)),
     henry: { gas: g, solvent: pickId(solvent) ?? solventsFor(g)[0] ?? "water" },
     properties: [pickId(propComponent) ?? ids[0] ?? "water"],
     steam: [],

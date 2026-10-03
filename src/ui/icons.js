@@ -23,6 +23,10 @@ const P = {
   pxy: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 16.5 C10 15.5 15 11 19 6" class="a"/><path d="M5.5 16.5 C8 11 13 7.5 19 6"/>',
   henry: '<path d="M5.5 8.5v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-10"/><path d="M5.5 12.5c2.2-1 4.2 1 6.5 0s4.3-1 6.5 0" class="a"/><circle cx="10" cy="16.5" r="1.2"/><circle cx="14.2" cy="17.6" r=".9"/><circle cx="12.8" cy="4.8" r="1.3"/><circle cx="9.6" cy="7" r=".9"/>',
   curves: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 17C10 16 14 12 19.5 5.5" class="a"/><path d="M5.5 13C10 12.5 14 10 19.5 9"/>',
+  // a flash drum: feed in at the side, vapour out at the top, liquid at the bottom
+  drum: '<rect x="8" y="3.5" width="8" height="17" rx="4"/><path d="M3 12h5"/><path d="M8.2 13.5h7.6" class="a"/><path d="M12 3.5V1.5M12 20.5v2"/>',
+  download: '<path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5"/><path d="M4.5 16.5v3h15v-3" class="a"/>',
+  copy: '<rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M15.5 8.5v-3a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" class="a"/>',
   table: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9h17M3.5 13.5h17M9.5 4.5v15" /><path d="M3.5 9h17" class="a"/>',
   calc: '<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8 7.5h8" class="a"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01" stroke-width="2.2" stroke-linecap="round"/>',
   // water T-s diagram: saturation dome with an isobar
