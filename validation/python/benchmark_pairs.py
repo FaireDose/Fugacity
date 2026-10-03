@@ -2,8 +2,14 @@
 
 Writes docs/BENCHMARKS.md: for every benchmark, its components and every pair between them,
 with
-  - the route: "activity" when both components are liquids at 25 degC and 1 atm (normal
-    boiling point above 298.15 K, from the `chemicals` library), else "EOS / Henry";
+  - the primary model family and the second one (maintainer's decision, 2026-10-03: every
+    liquid pair gets both an equation of state and an activity model, with the one the
+    open simulator guides recommend first):
+      * a gas at 25 degC and 1 atm (normal boiling point at or below 298.15 K, from the
+        `chemicals` library) in the pair: equation of state (k_ij), or Henry's law for a
+        gas dilute in water; no activity model (no vapour pressure above the critical point);
+      * two hydrocarbons (HYDROCARBONS below): equation of state first, activity model second;
+      * otherwise (a polar component): activity model first, equation of state second;
   - what Fugacity has today (src/data/binaries.json, kij.json, henry.json);
   - what the ChemSep databank has (NRTL, UNIQUAC, PR k_ij, Henry), looked up in the copy of
     the ChemSep interaction-parameter files shipped with the open-source `thermo` library
@@ -59,6 +65,11 @@ KEY = {
     "Solvent recovery (pharmaceutical and coatings solvents)": ["water", "methanol", "ethanol", "acetone", "ethyl acetate", "toluene"],
     "Higher boilers and glycols": ["water", "propylene glycol", "glycerol", "phenol"],
 }
+
+# Hydrocarbons of the benchmarks: pairs of two of them take an equation of state first.
+HYDROCARBONS = {"methane", "ethane", "ethylene", "propane", "propylene", "n-butane", "isobutane", "n-pentane",
+                "n-hexane", "n-heptane", "n-octane", "cyclohexane", "benzene", "toluene", "o-xylene", "m-xylene",
+                "p-xylene", "ethylbenzene", "styrene"}
 
 # Spelling used for the lookups in `chemicals` where the common name is ambiguous.
 LOOKUP = {"MTBE": "methyl tert-butyl ether", "n-butyl acetate": "butyl acetate"}
@@ -130,10 +141,15 @@ def main(write):
     w("")
     w("How to read the tables:")
     w("")
-    w("- **Route**: *activity* when both components are liquids at 25 °C and 1 atm (normal boiling")
-    w("  point above 298.15 K, from the `chemicals` library), so an activity model (NRTL, UNIQUAC)")
-    w("  applies; *EOS / Henry* when one is a gas there: an equation of state (k_ij), or Henry's law")
-    w("  for a dilute gas in a liquid.")
+    w("- **Primary / second model**: every pair of two liquids gets both an equation of state")
+    w("  (Peng–Robinson or SRK, with a k_ij) and an activity model (NRTL, UNIQUAC), so they can be")
+    w("  compared; the primary one is what the workbench and the benchmark cases use first. As in")
+    w("  the selection guides of open and commercial simulators (DWSIM's property package guide;")
+    w("  Carlson's decision trees): *EOS* first for two hydrocarbons (non-polar), *activity*")
+    w("  first when a polar component is in the pair. With a gas at 25 °C and 1 atm (normal")
+    w("  boiling point at or below 298.15 K, from the `chemicals` library): *EOS* only, or *Henry*")
+    w("  for a gas dilute in water; an activity model cannot describe a component above its")
+    w("  critical temperature.")
     w("- **Fugacity now**: the pair's parameter sets in `src/data/` today (tier in brackets).")
     w("- **ChemSep NRTL / UNIQUAC / PR k_ij / Henry**: the pair is in the ChemSep databank")
     w("  (Artistic License 2.0), as shipped with the open-source `thermo` library. A databank")
@@ -156,10 +172,17 @@ def main(write):
         pairs = list(itertools.combinations(cs, 2))
         w(f"## {title}")
         w("")
-        w("| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |")
-        w("|---|---|---|---|---|---|---|---|")
+        w("| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |")
+        w("|---|---|---|---|---|---|---|---|---|")
         for a, b in pairs:
             liquid = all(tb[x] and tb[x] > 298.15 for x in (a, b))
+            hc = a in HYDROCARBONS and b in HYDROCARBONS
+            if not liquid:
+                primary, second = ("Henry or EOS" if "water" in (a, b) else "EOS"), "–"
+            elif hc:
+                primary, second = "EOS", "activity"
+            else:
+                primary, second = "activity", "EOS"
             prio = 1 if ("water" in (a, b) or (a in key and b in key)) else 2
             now = []
             if has_binary(a, b, "NRTL"):
@@ -172,33 +195,44 @@ def main(write):
                 now.append("Henry")
             t = tiers(a, b)
             now_text = (", ".join(now) + (f" ({', '.join(sorted(t))})" if t else "")) if now else "–"
-            row = (f"| {a} + {b} | {'activity' if liquid else 'EOS / Henry'} | {prio} | {now_text} | "
+            row = (f"| {a} + {b} | {primary} | {second} | {prio} | {now_text} | "
                    f"{yes(chemsep('ChemSep NRTL', a, b))} | {yes(chemsep('ChemSep UNIQUAC', a, b))} | "
                    f"{yes(chemsep('ChemSep PR', a, b))} | {yes(chemsep_henry(a, b))} |")
             w(row)
-            seen[tuple(sorted((a, b)))] = (prio, liquid, bool(now), chemsep("ChemSep NRTL", a, b) or chemsep("ChemSep UNIQUAC", a, b),
-                                           chemsep("ChemSep PR", a, b) or chemsep_henry(a, b))
+            seen[tuple(sorted((a, b)))] = dict(prio=prio, liquid=liquid, eos_first=(not liquid) or hc,
+                                               act_now=has_binary(a, b, "NRTL") or has_binary(a, b, "UNIQUAC"),
+                                               eos_now=has_kij(a, b) or has_henry(a, b),
+                                               act_db=chemsep("ChemSep NRTL", a, b) or chemsep("ChemSep UNIQUAC", a, b),
+                                               eos_db=chemsep("ChemSep PR", a, b) or chemsep_henry(a, b))
         total_pairs += len(pairs)
         w("")
         w(f"Key components: {', '.join(key)}. {len(pairs)} pairs.")
         w("")
 
-    # summary over distinct pairs
-    p1 = [k for k, v in seen.items() if v[0] == 1]
+    # summary over distinct pairs: for the primary and the second model of each pair
+    p1 = [k for k, v in seen.items() if v["prio"] == 1]
+    allp = list(seen)
     def count(sel, f):
         return sum(1 for k in sel if f(seen[k]))
+    def status(v, family):
+        now, db = (v["eos_now"], v["eos_db"]) if family == "eos" else (v["act_now"], v["act_db"])
+        return "now" if now else "db" if db else "none"
     w("## Summary")
     w("")
-    w(f"{len(seen)} distinct pairs ({total_pairs} counted per benchmark); {len(p1)} with priority 1.")
+    w(f"{len(seen)} distinct pairs ({total_pairs} counted per benchmark); {len(p1)} with priority 1. "
+      f"Primary model: equation of state for {count(allp, lambda v: v['eos_first'])} pairs "
+      f"({count(p1, lambda v: v['eos_first'])} of priority 1), activity model for {count(allp, lambda v: not v['eos_first'])} "
+      f"({count(p1, lambda v: not v['eos_first'])}).")
     w("")
-    w("| | All pairs | Priority 1 |")
-    w("|---|--:|--:|")
-    allp = list(seen)
-    w(f"| Already in Fugacity | {count(allp, lambda v: v[2])} | {count(p1, lambda v: v[2])} |")
-    w(f"| Activity route, ChemSep NRTL or UNIQUAC available, not yet in Fugacity | {count(allp, lambda v: v[1] and v[3] and not v[2])} | {count(p1, lambda v: v[1] and v[3] and not v[2])} |")
-    w(f"| Activity route, no ChemSep set: open data to be searched, else missing | {count(allp, lambda v: v[1] and not v[3] and not v[2])} | {count(p1, lambda v: v[1] and not v[3] and not v[2])} |")
-    w(f"| EOS / Henry route, ChemSep k_ij or Henry available, not yet in Fugacity | {count(allp, lambda v: not v[1] and v[4] and not v[2])} | {count(p1, lambda v: not v[1] and v[4] and not v[2])} |")
-    w(f"| EOS / Henry route, nothing in ChemSep: k_ij = 0 with a warning until fitted | {count(allp, lambda v: not v[1] and not v[4] and not v[2])} | {count(p1, lambda v: not v[1] and not v[4] and not v[2])} |")
+    w("| Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |")
+    w("|---|--:|--:|--:|--:|")
+    for label, st in [("In Fugacity now", "now"), ("In ChemSep, not yet in Fugacity", "db"),
+                      ("Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning)", "none")]:
+        def prim(v):
+            return status(v, "eos" if v["eos_first"] else "act") == st
+        def sec(v):
+            return v["liquid"] and status(v, "act" if v["eos_first"] else "eos") == st
+        w(f"| {label} | {count(allp, prim)} | {count(p1, prim)} | {count(allp, sec)} | {count(p1, sec)} |")
     w("")
     w("Every pair, including one with a ChemSep set, is checked against open experimental data in")
     w("step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched")

@@ -11,10 +11,15 @@ with its open source, following AGENTS.md.
 
 How to read the tables:
 
-- **Route**: *activity* when both components are liquids at 25 °C and 1 atm (normal boiling
-  point above 298.15 K, from the `chemicals` library), so an activity model (NRTL, UNIQUAC)
-  applies; *EOS / Henry* when one is a gas there: an equation of state (k_ij), or Henry's law
-  for a dilute gas in a liquid.
+- **Primary / second model**: every pair of two liquids gets both an equation of state
+  (Peng–Robinson or SRK, with a k_ij) and an activity model (NRTL, UNIQUAC), so they can be
+  compared; the primary one is what the workbench and the benchmark cases use first. As in
+  the selection guides of open and commercial simulators (DWSIM's property package guide;
+  Carlson's decision trees): *EOS* first for two hydrocarbons (non-polar), *activity*
+  first when a polar component is in the pair. With a gas at 25 °C and 1 atm (normal
+  boiling point at or below 298.15 K, from the `chemicals` library): *EOS* only, or *Henry*
+  for a gas dilute in water; an activity model cannot describe a component above its
+  critical temperature.
 - **Fugacity now**: the pair's parameter sets in `src/data/` today (tier in brackets).
 - **ChemSep NRTL / UNIQUAC / PR k_ij / Henry**: the pair is in the ChemSep databank
   (Artistic License 2.0), as shipped with the open-source `thermo` library. A databank
@@ -79,357 +84,355 @@ How to read the tables:
 
 ## Ethanol dehydration (extractive and azeotropic distillation)
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| ethanol + water | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethanol + ethylene glycol | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| ethanol + cyclohexane | activity | 1 | – | yes | yes | – | – |
-| water + ethylene glycol | activity | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
-| water + cyclohexane | activity | 1 | – | – | – | – | – |
-| ethylene glycol + cyclohexane | activity | 1 | – | – | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + cyclohexane | activity | EOS | 1 | – | yes | yes | – | – |
+| water + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
+| water + cyclohexane | activity | EOS | 1 | – | – | – | – | – |
+| ethylene glycol + cyclohexane | activity | EOS | 1 | – | – | – | – | – |
 
 Key components: ethanol, water, ethylene glycol, cyclohexane. 6 pairs.
 
 ## Ethyl acetate by esterification
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| acetic acid + ethanol | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| acetic acid + ethyl acetate | activity | 1 | – | – | – | – | – |
-| acetic acid + water | activity | 1 | NRTL, UNIQUAC (databank) | – | yes | – | – |
-| ethanol + ethyl acetate | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethanol + water | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethyl acetate + water | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| acetic acid + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| acetic acid + ethyl acetate | activity | EOS | 1 | – | – | – | – | – |
+| acetic acid + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | – | yes | – | – |
+| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 
 Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
 
 ## Methanol synthesis from syngas, with gas cleaning by cold methanol
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| hydrogen + carbon monoxide | EOS / Henry | 2 | – | – | – | yes | – |
-| hydrogen + carbon dioxide | EOS / Henry | 2 | – | – | – | yes | – |
-| hydrogen + methane | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| hydrogen + nitrogen | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| hydrogen + methanol | EOS / Henry | 2 | – | – | – | – | – |
-| hydrogen + water | EOS / Henry | 1 | Henry | – | – | – | yes |
-| hydrogen + dimethyl ether | EOS / Henry | 2 | – | – | – | – | – |
-| hydrogen + hydrogen sulfide | EOS / Henry | 2 | – | – | – | – | – |
-| carbon monoxide + carbon dioxide | EOS / Henry | 2 | – | – | – | – | – |
-| carbon monoxide + methane | EOS / Henry | 2 | – | – | – | yes | – |
-| carbon monoxide + nitrogen | EOS / Henry | 2 | – | – | – | yes | – |
-| carbon monoxide + methanol | EOS / Henry | 2 | – | – | – | – | – |
-| carbon monoxide + water | EOS / Henry | 1 | – | – | – | – | yes |
-| carbon monoxide + dimethyl ether | EOS / Henry | 2 | – | – | – | – | – |
-| carbon monoxide + hydrogen sulfide | EOS / Henry | 2 | – | – | – | yes | – |
-| carbon dioxide + methane | EOS / Henry | 2 | – | – | – | yes | – |
-| carbon dioxide + nitrogen | EOS / Henry | 2 | – | – | – | yes | – |
-| carbon dioxide + methanol | EOS / Henry | 1 | – | – | – | yes | – |
-| carbon dioxide + water | EOS / Henry | 1 | – | – | – | yes | yes |
-| carbon dioxide + dimethyl ether | EOS / Henry | 1 | – | – | – | – | – |
-| carbon dioxide + hydrogen sulfide | EOS / Henry | 1 | – | – | – | yes | – |
-| methane + nitrogen | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| methane + methanol | EOS / Henry | 2 | – | – | – | – | – |
-| methane + water | EOS / Henry | 1 | Henry | – | – | – | yes |
-| methane + dimethyl ether | EOS / Henry | 2 | – | – | – | – | – |
-| methane + hydrogen sulfide | EOS / Henry | 2 | – | – | – | – | – |
-| nitrogen + methanol | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| nitrogen + water | EOS / Henry | 1 | Henry | – | – | – | yes |
-| nitrogen + dimethyl ether | EOS / Henry | 2 | – | – | – | – | – |
-| nitrogen + hydrogen sulfide | EOS / Henry | 2 | – | – | – | yes | – |
-| methanol + water | activity | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
-| methanol + dimethyl ether | EOS / Henry | 1 | – | – | – | – | – |
-| methanol + hydrogen sulfide | EOS / Henry | 1 | – | – | – | – | – |
-| water + dimethyl ether | EOS / Henry | 1 | – | – | – | – | – |
-| water + hydrogen sulfide | EOS / Henry | 1 | – | – | – | yes | yes |
-| dimethyl ether + hydrogen sulfide | EOS / Henry | 1 | – | – | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| hydrogen + carbon monoxide | EOS | – | 2 | – | – | – | yes | – |
+| hydrogen + carbon dioxide | EOS | – | 2 | – | – | – | yes | – |
+| hydrogen + methane | EOS | – | 2 | k_ij | – | – | yes | – |
+| hydrogen + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
+| hydrogen + methanol | EOS | – | 2 | – | – | – | – | – |
+| hydrogen + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
+| hydrogen + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
+| hydrogen + hydrogen sulfide | EOS | – | 2 | – | – | – | – | – |
+| carbon monoxide + carbon dioxide | EOS | – | 2 | – | – | – | – | – |
+| carbon monoxide + methane | EOS | – | 2 | – | – | – | yes | – |
+| carbon monoxide + nitrogen | EOS | – | 2 | – | – | – | yes | – |
+| carbon monoxide + methanol | EOS | – | 2 | – | – | – | – | – |
+| carbon monoxide + water | Henry or EOS | – | 1 | – | – | – | – | yes |
+| carbon monoxide + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
+| carbon monoxide + hydrogen sulfide | EOS | – | 2 | – | – | – | yes | – |
+| carbon dioxide + methane | EOS | – | 2 | – | – | – | yes | – |
+| carbon dioxide + nitrogen | EOS | – | 2 | – | – | – | yes | – |
+| carbon dioxide + methanol | EOS | – | 1 | – | – | – | yes | – |
+| carbon dioxide + water | Henry or EOS | – | 1 | – | – | – | yes | yes |
+| carbon dioxide + dimethyl ether | EOS | – | 1 | – | – | – | – | – |
+| carbon dioxide + hydrogen sulfide | EOS | – | 1 | – | – | – | yes | – |
+| methane + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + methanol | EOS | – | 2 | – | – | – | – | – |
+| methane + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
+| methane + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
+| methane + hydrogen sulfide | EOS | – | 2 | – | – | – | – | – |
+| nitrogen + methanol | EOS | – | 2 | k_ij | – | – | yes | – |
+| nitrogen + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
+| nitrogen + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
+| nitrogen + hydrogen sulfide | EOS | – | 2 | – | – | – | yes | – |
+| methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
+| methanol + dimethyl ether | EOS | – | 1 | – | – | – | – | – |
+| methanol + hydrogen sulfide | EOS | – | 1 | – | – | – | – | – |
+| water + dimethyl ether | Henry or EOS | – | 1 | – | – | – | – | – |
+| water + hydrogen sulfide | Henry or EOS | – | 1 | – | – | – | yes | yes |
+| dimethyl ether + hydrogen sulfide | EOS | – | 1 | – | – | – | – | – |
 
 Key components: methanol, water, carbon dioxide, hydrogen sulfide, dimethyl ether. 36 pairs.
 
 ## Air separation (small case for equations of state)
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| nitrogen + oxygen | EOS / Henry | 1 | k_ij | – | – | yes | – |
-| nitrogen + argon | EOS / Henry | 1 | – | – | – | yes | – |
-| oxygen + argon | EOS / Henry | 1 | – | – | – | yes | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| nitrogen + oxygen | EOS | – | 1 | k_ij | – | – | yes | – |
+| nitrogen + argon | EOS | – | 1 | – | – | – | yes | – |
+| oxygen + argon | EOS | – | 1 | – | – | – | yes | – |
 
 Key components: nitrogen, oxygen, argon. 3 pairs.
 
 ## Light hydrocarbons and refrigeration
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| methane + ethane | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| methane + ethylene | EOS / Henry | 2 | k_ij | – | – | yes | – |
-| methane + propane | EOS / Henry | 2 | – | – | – | yes | – |
-| methane + propylene | EOS / Henry | 2 | – | – | – | yes | – |
-| methane + n-butane | EOS / Henry | 2 | – | – | – | yes | – |
-| methane + isobutane | EOS / Henry | 2 | – | – | – | yes | – |
-| methane + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| ethane + ethylene | EOS / Henry | 1 | k_ij | – | – | yes | – |
-| ethane + propane | EOS / Henry | 1 | – | – | – | yes | – |
-| ethane + propylene | EOS / Henry | 1 | – | – | – | yes | – |
-| ethane + n-butane | EOS / Henry | 1 | – | – | – | yes | – |
-| ethane + isobutane | EOS / Henry | 1 | – | – | – | yes | – |
-| ethane + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| ethylene + propane | EOS / Henry | 1 | – | – | – | – | – |
-| ethylene + propylene | EOS / Henry | 1 | – | – | – | – | – |
-| ethylene + n-butane | EOS / Henry | 1 | – | – | – | yes | – |
-| ethylene + isobutane | EOS / Henry | 1 | – | – | – | – | – |
-| ethylene + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| propane + propylene | EOS / Henry | 1 | – | – | – | yes | – |
-| propane + n-butane | EOS / Henry | 1 | – | – | – | yes | – |
-| propane + isobutane | EOS / Henry | 1 | – | – | – | yes | – |
-| propane + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| propylene + n-butane | EOS / Henry | 1 | – | – | – | – | – |
-| propylene + isobutane | EOS / Henry | 1 | – | – | – | yes | – |
-| propylene + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| n-butane + isobutane | EOS / Henry | 1 | – | – | – | yes | – |
-| n-butane + ammonia | EOS / Henry | 2 | – | – | – | – | – |
-| isobutane + ammonia | EOS / Henry | 2 | – | – | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| methane + ethane | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + ethylene | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + propane | EOS | – | 2 | – | – | – | yes | – |
+| methane + propylene | EOS | – | 2 | – | – | – | yes | – |
+| methane + n-butane | EOS | – | 2 | – | – | – | yes | – |
+| methane + isobutane | EOS | – | 2 | – | – | – | yes | – |
+| methane + ammonia | EOS | – | 2 | – | – | – | – | – |
+| ethane + ethylene | EOS | – | 1 | k_ij | – | – | yes | – |
+| ethane + propane | EOS | – | 1 | – | – | – | yes | – |
+| ethane + propylene | EOS | – | 1 | – | – | – | yes | – |
+| ethane + n-butane | EOS | – | 1 | – | – | – | yes | – |
+| ethane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| ethane + ammonia | EOS | – | 2 | – | – | – | – | – |
+| ethylene + propane | EOS | – | 1 | – | – | – | – | – |
+| ethylene + propylene | EOS | – | 1 | – | – | – | – | – |
+| ethylene + n-butane | EOS | – | 1 | – | – | – | yes | – |
+| ethylene + isobutane | EOS | – | 1 | – | – | – | – | – |
+| ethylene + ammonia | EOS | – | 2 | – | – | – | – | – |
+| propane + propylene | EOS | – | 1 | – | – | – | yes | – |
+| propane + n-butane | EOS | – | 1 | – | – | – | yes | – |
+| propane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| propane + ammonia | EOS | – | 2 | – | – | – | – | – |
+| propylene + n-butane | EOS | – | 1 | – | – | – | – | – |
+| propylene + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| propylene + ammonia | EOS | – | 2 | – | – | – | – | – |
+| n-butane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| n-butane + ammonia | EOS | – | 2 | – | – | – | – | – |
+| isobutane + ammonia | EOS | – | 2 | – | – | – | – | – |
 
 Key components: ethane, ethylene, propane, propylene, n-butane, isobutane. 28 pairs.
 
 ## Aromatics (BTX) and styrene
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| benzene + toluene | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| benzene + o-xylene | activity | 1 | – | – | – | – | – |
-| benzene + m-xylene | activity | 1 | – | yes | – | – | – |
-| benzene + p-xylene | activity | 1 | – | yes | yes | – | – |
-| benzene + ethylbenzene | activity | 1 | – | yes | – | – | – |
-| benzene + styrene | activity | 1 | – | yes | – | – | – |
-| toluene + o-xylene | activity | 1 | – | – | – | – | – |
-| toluene + m-xylene | activity | 1 | – | – | – | – | – |
-| toluene + p-xylene | activity | 1 | – | yes | yes | – | – |
-| toluene + ethylbenzene | activity | 1 | – | yes | – | – | – |
-| toluene + styrene | activity | 1 | – | – | – | – | – |
-| o-xylene + m-xylene | activity | 1 | – | – | – | – | – |
-| o-xylene + p-xylene | activity | 1 | – | – | – | – | – |
-| o-xylene + ethylbenzene | activity | 1 | – | – | – | – | – |
-| o-xylene + styrene | activity | 1 | – | – | – | – | – |
-| m-xylene + p-xylene | activity | 1 | – | yes | – | – | – |
-| m-xylene + ethylbenzene | activity | 1 | – | – | – | – | – |
-| m-xylene + styrene | activity | 1 | – | – | – | – | – |
-| p-xylene + ethylbenzene | activity | 1 | – | – | – | – | – |
-| p-xylene + styrene | activity | 1 | – | – | – | – | – |
-| ethylbenzene + styrene | activity | 1 | – | yes | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| benzene + toluene | EOS | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| benzene + o-xylene | EOS | activity | 1 | – | – | – | – | – |
+| benzene + m-xylene | EOS | activity | 1 | – | yes | – | – | – |
+| benzene + p-xylene | EOS | activity | 1 | – | yes | yes | – | – |
+| benzene + ethylbenzene | EOS | activity | 1 | – | yes | – | – | – |
+| benzene + styrene | EOS | activity | 1 | – | yes | – | – | – |
+| toluene + o-xylene | EOS | activity | 1 | – | – | – | – | – |
+| toluene + m-xylene | EOS | activity | 1 | – | – | – | – | – |
+| toluene + p-xylene | EOS | activity | 1 | – | yes | yes | – | – |
+| toluene + ethylbenzene | EOS | activity | 1 | – | yes | – | – | – |
+| toluene + styrene | EOS | activity | 1 | – | – | – | – | – |
+| o-xylene + m-xylene | EOS | activity | 1 | – | – | – | – | – |
+| o-xylene + p-xylene | EOS | activity | 1 | – | – | – | – | – |
+| o-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
+| o-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
+| m-xylene + p-xylene | EOS | activity | 1 | – | yes | – | – | – |
+| m-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
+| m-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
+| p-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
+| p-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
+| ethylbenzene + styrene | EOS | activity | 1 | – | yes | – | – | – |
 
 Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-xylene. 21 pairs.
 
 ## Solvent recovery (pharmaceutical and coatings solvents)
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| acetone + methanol | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| acetone + ethanol | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| acetone + ethyl acetate | activity | 1 | – | – | – | – | – |
-| acetone + toluene | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| acetone + 1-propanol | activity | 2 | – | – | – | – | – |
-| acetone + 2-propanol | activity | 2 | – | – | – | – | – |
-| acetone + 1-butanol | activity | 2 | – | – | – | – | – |
-| acetone + 2-butanone | activity | 2 | – | – | – | – | – |
-| acetone + methyl acetate | activity | 2 | – | – | – | – | – |
-| acetone + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| acetone + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| acetone + dichloromethane | activity | 2 | – | – | – | – | – |
-| acetone + acetonitrile | activity | 2 | – | – | – | – | – |
-| acetone + diethyl ether | activity | 2 | – | – | – | – | – |
-| acetone + MTBE | activity | 2 | – | – | – | – | – |
-| acetone + n-hexane | activity | 2 | – | – | – | – | – |
-| acetone + n-heptane | activity | 2 | – | – | – | – | – |
-| acetone + water | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| methanol + ethanol | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| methanol + ethyl acetate | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| methanol + toluene | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| methanol + 1-propanol | activity | 2 | – | yes | yes | – | – |
-| methanol + 2-propanol | activity | 2 | – | – | – | – | – |
-| methanol + 1-butanol | activity | 2 | – | yes | yes | – | – |
-| methanol + 2-butanone | activity | 2 | – | yes | yes | – | – |
-| methanol + methyl acetate | activity | 2 | – | yes | yes | – | – |
-| methanol + n-butyl acetate | activity | 2 | – | yes | yes | – | – |
-| methanol + tetrahydrofuran | activity | 2 | – | yes | yes | – | – |
-| methanol + dichloromethane | activity | 2 | – | yes | yes | – | – |
-| methanol + acetonitrile | activity | 2 | – | yes | yes | – | – |
-| methanol + diethyl ether | activity | 2 | – | yes | yes | – | – |
-| methanol + MTBE | activity | 2 | – | yes | yes | – | – |
-| methanol + n-hexane | activity | 2 | – | yes | yes | – | – |
-| methanol + n-heptane | activity | 2 | – | yes | yes | – | – |
-| methanol + water | activity | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
-| ethanol + ethyl acetate | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethanol + toluene | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| ethanol + 1-propanol | activity | 2 | – | – | – | – | – |
-| ethanol + 2-propanol | activity | 2 | – | yes | yes | – | – |
-| ethanol + 1-butanol | activity | 2 | – | – | – | – | – |
-| ethanol + 2-butanone | activity | 2 | – | yes | yes | – | – |
-| ethanol + methyl acetate | activity | 2 | – | yes | yes | – | – |
-| ethanol + n-butyl acetate | activity | 2 | – | yes | yes | – | – |
-| ethanol + tetrahydrofuran | activity | 2 | – | yes | yes | – | – |
-| ethanol + dichloromethane | activity | 2 | – | yes | yes | – | – |
-| ethanol + acetonitrile | activity | 2 | – | yes | yes | – | – |
-| ethanol + diethyl ether | activity | 2 | – | yes | yes | – | – |
-| ethanol + MTBE | activity | 2 | – | – | – | – | – |
-| ethanol + n-hexane | activity | 2 | – | yes | yes | – | – |
-| ethanol + n-heptane | activity | 2 | – | yes | yes | – | – |
-| ethanol + water | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethyl acetate + toluene | activity | 1 | – | – | – | – | – |
-| ethyl acetate + 1-propanol | activity | 2 | – | – | – | – | – |
-| ethyl acetate + 2-propanol | activity | 2 | – | – | – | – | – |
-| ethyl acetate + 1-butanol | activity | 2 | – | – | – | – | – |
-| ethyl acetate + 2-butanone | activity | 2 | – | – | – | – | – |
-| ethyl acetate + methyl acetate | activity | 2 | – | – | – | – | – |
-| ethyl acetate + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| ethyl acetate + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| ethyl acetate + dichloromethane | activity | 2 | – | – | – | – | – |
-| ethyl acetate + acetonitrile | activity | 2 | – | – | – | – | – |
-| ethyl acetate + diethyl ether | activity | 2 | – | – | – | – | – |
-| ethyl acetate + MTBE | activity | 2 | – | – | – | – | – |
-| ethyl acetate + n-hexane | activity | 2 | – | – | – | – | – |
-| ethyl acetate + n-heptane | activity | 2 | – | – | – | – | – |
-| ethyl acetate + water | activity | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| toluene + 1-propanol | activity | 2 | – | yes | yes | – | – |
-| toluene + 2-propanol | activity | 2 | – | – | – | – | – |
-| toluene + 1-butanol | activity | 2 | – | – | – | – | – |
-| toluene + 2-butanone | activity | 2 | – | yes | yes | – | – |
-| toluene + methyl acetate | activity | 2 | – | – | – | – | – |
-| toluene + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| toluene + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| toluene + dichloromethane | activity | 2 | – | – | – | – | – |
-| toluene + acetonitrile | activity | 2 | – | yes | – | – | – |
-| toluene + diethyl ether | activity | 2 | – | – | – | – | – |
-| toluene + MTBE | activity | 2 | – | – | – | – | – |
-| toluene + n-hexane | activity | 2 | – | – | – | – | – |
-| toluene + n-heptane | activity | 2 | – | – | – | – | – |
-| toluene + water | activity | 1 | – | – | – | – | – |
-| 1-propanol + 2-propanol | activity | 2 | – | yes | yes | – | – |
-| 1-propanol + 1-butanol | activity | 2 | – | – | – | – | – |
-| 1-propanol + 2-butanone | activity | 2 | – | yes | yes | – | – |
-| 1-propanol + methyl acetate | activity | 2 | – | – | – | – | – |
-| 1-propanol + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| 1-propanol + tetrahydrofuran | activity | 2 | – | yes | yes | – | – |
-| 1-propanol + dichloromethane | activity | 2 | – | – | – | – | – |
-| 1-propanol + acetonitrile | activity | 2 | – | – | – | – | – |
-| 1-propanol + diethyl ether | activity | 2 | – | – | – | – | – |
-| 1-propanol + MTBE | activity | 2 | – | – | – | – | – |
-| 1-propanol + n-hexane | activity | 2 | – | yes | yes | – | – |
-| 1-propanol + n-heptane | activity | 2 | – | yes | yes | – | – |
-| 1-propanol + water | activity | 1 | – | – | yes | – | – |
-| 2-propanol + 1-butanol | activity | 2 | – | – | – | – | – |
-| 2-propanol + 2-butanone | activity | 2 | – | – | – | – | – |
-| 2-propanol + methyl acetate | activity | 2 | – | – | – | – | – |
-| 2-propanol + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| 2-propanol + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| 2-propanol + dichloromethane | activity | 2 | – | – | – | – | – |
-| 2-propanol + acetonitrile | activity | 2 | – | – | – | – | – |
-| 2-propanol + diethyl ether | activity | 2 | – | – | – | – | – |
-| 2-propanol + MTBE | activity | 2 | – | – | – | – | – |
-| 2-propanol + n-hexane | activity | 2 | – | – | – | yes | – |
-| 2-propanol + n-heptane | activity | 2 | – | – | – | – | – |
-| 2-propanol + water | activity | 1 | – | – | yes | – | – |
-| 1-butanol + 2-butanone | activity | 2 | – | – | – | – | – |
-| 1-butanol + methyl acetate | activity | 2 | – | – | – | – | – |
-| 1-butanol + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| 1-butanol + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| 1-butanol + dichloromethane | activity | 2 | – | – | – | – | – |
-| 1-butanol + acetonitrile | activity | 2 | – | – | – | – | – |
-| 1-butanol + diethyl ether | activity | 2 | – | – | – | – | – |
-| 1-butanol + MTBE | activity | 2 | – | – | – | – | – |
-| 1-butanol + n-hexane | activity | 2 | – | – | – | – | – |
-| 1-butanol + n-heptane | activity | 2 | – | – | – | – | – |
-| 1-butanol + water | activity | 1 | – | yes | yes | – | – |
-| 2-butanone + methyl acetate | activity | 2 | – | – | – | – | – |
-| 2-butanone + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| 2-butanone + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| 2-butanone + dichloromethane | activity | 2 | – | – | – | – | – |
-| 2-butanone + acetonitrile | activity | 2 | – | – | – | – | – |
-| 2-butanone + diethyl ether | activity | 2 | – | – | – | – | – |
-| 2-butanone + MTBE | activity | 2 | – | – | – | – | – |
-| 2-butanone + n-hexane | activity | 2 | – | – | – | – | – |
-| 2-butanone + n-heptane | activity | 2 | – | yes | yes | – | – |
-| 2-butanone + water | activity | 1 | – | yes | yes | – | – |
-| methyl acetate + n-butyl acetate | activity | 2 | – | – | – | – | – |
-| methyl acetate + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| methyl acetate + dichloromethane | activity | 2 | – | – | – | – | – |
-| methyl acetate + acetonitrile | activity | 2 | – | – | – | – | – |
-| methyl acetate + diethyl ether | activity | 2 | – | – | – | – | – |
-| methyl acetate + MTBE | activity | 2 | – | – | – | – | – |
-| methyl acetate + n-hexane | activity | 2 | – | – | – | – | – |
-| methyl acetate + n-heptane | activity | 2 | – | – | – | – | – |
-| methyl acetate + water | activity | 1 | – | – | yes | – | – |
-| n-butyl acetate + tetrahydrofuran | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + dichloromethane | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + acetonitrile | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + diethyl ether | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + MTBE | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + n-hexane | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + n-heptane | activity | 2 | – | – | – | – | – |
-| n-butyl acetate + water | activity | 1 | – | yes | yes | – | – |
-| tetrahydrofuran + dichloromethane | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + acetonitrile | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + diethyl ether | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + MTBE | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + n-hexane | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + n-heptane | activity | 2 | – | – | – | – | – |
-| tetrahydrofuran + water | activity | 1 | – | yes | yes | – | – |
-| dichloromethane + acetonitrile | activity | 2 | – | – | – | – | – |
-| dichloromethane + diethyl ether | activity | 2 | – | – | – | – | – |
-| dichloromethane + MTBE | activity | 2 | – | – | – | – | – |
-| dichloromethane + n-hexane | activity | 2 | – | – | – | – | – |
-| dichloromethane + n-heptane | activity | 2 | – | – | – | – | – |
-| dichloromethane + water | activity | 1 | – | – | – | – | – |
-| acetonitrile + diethyl ether | activity | 2 | – | – | – | – | – |
-| acetonitrile + MTBE | activity | 2 | – | – | – | – | – |
-| acetonitrile + n-hexane | activity | 2 | – | – | – | – | – |
-| acetonitrile + n-heptane | activity | 2 | – | – | – | – | – |
-| acetonitrile + water | activity | 1 | – | – | yes | – | – |
-| diethyl ether + MTBE | activity | 2 | – | – | – | – | – |
-| diethyl ether + n-hexane | activity | 2 | – | – | – | – | – |
-| diethyl ether + n-heptane | activity | 2 | – | – | – | – | – |
-| diethyl ether + water | activity | 1 | – | yes | yes | – | – |
-| MTBE + n-hexane | activity | 2 | – | – | – | – | – |
-| MTBE + n-heptane | activity | 2 | – | – | – | – | – |
-| MTBE + water | activity | 1 | – | – | – | – | – |
-| n-hexane + n-heptane | activity | 2 | – | – | – | yes | – |
-| n-hexane + water | activity | 1 | – | – | – | – | – |
-| n-heptane + water | activity | 1 | – | – | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| acetone + methanol | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| acetone + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| acetone + ethyl acetate | activity | EOS | 1 | – | – | – | – | – |
+| acetone + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| acetone + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
+| acetone + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
+| acetone + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| acetone + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
+| acetone + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| acetone + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| acetone + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| acetone + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| acetone + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| acetone + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| acetone + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| acetone + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| acetone + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| acetone + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + 1-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
+| methanol + 1-butanol | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + methyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + n-butyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + dichloromethane | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + acetonitrile | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + diethyl ether | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + MTBE | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
+| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
+| ethanol + 2-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| ethanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + methyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + n-butyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + dichloromethane | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + acetonitrile | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + diethyl ether | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| ethanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethyl acetate + toluene | activity | EOS | 1 | – | – | – | – | – |
+| ethyl acetate + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| ethyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| toluene + 1-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| toluene + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
+| toluene + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| toluene + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| toluene + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| toluene + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| toluene + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| toluene + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| toluene + acetonitrile | activity | EOS | 2 | – | yes | – | – | – |
+| toluene + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| toluene + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| toluene + n-hexane | EOS | activity | 2 | – | – | – | – | – |
+| toluene + n-heptane | EOS | activity | 2 | – | – | – | – | – |
+| toluene + water | activity | EOS | 1 | – | – | – | – | – |
+| 1-propanol + 2-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| 1-propanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + water | activity | EOS | 1 | – | – | yes | – | – |
+| 2-propanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + n-hexane | activity | EOS | 2 | – | – | – | yes | – |
+| 2-propanol + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| 2-propanol + water | activity | EOS | 1 | – | – | yes | – | – |
+| 1-butanol + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| 1-butanol + water | activity | EOS | 1 | – | yes | yes | – | – |
+| 2-butanone + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| 2-butanone + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| 2-butanone + water | activity | EOS | 1 | – | yes | yes | – | – |
+| methyl acetate + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| methyl acetate + water | activity | EOS | 1 | – | – | yes | – | – |
+| n-butyl acetate + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| n-butyl acetate + water | activity | EOS | 1 | – | yes | yes | – | – |
+| tetrahydrofuran + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| tetrahydrofuran + water | activity | EOS | 1 | – | yes | yes | – | – |
+| dichloromethane + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
+| dichloromethane + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| dichloromethane + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| dichloromethane + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| dichloromethane + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| dichloromethane + water | activity | EOS | 1 | – | – | – | – | – |
+| acetonitrile + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
+| acetonitrile + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| acetonitrile + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| acetonitrile + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| acetonitrile + water | activity | EOS | 1 | – | – | yes | – | – |
+| diethyl ether + MTBE | activity | EOS | 2 | – | – | – | – | – |
+| diethyl ether + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| diethyl ether + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| diethyl ether + water | activity | EOS | 1 | – | yes | yes | – | – |
+| MTBE + n-hexane | activity | EOS | 2 | – | – | – | – | – |
+| MTBE + n-heptane | activity | EOS | 2 | – | – | – | – | – |
+| MTBE + water | activity | EOS | 1 | – | – | – | – | – |
+| n-hexane + n-heptane | EOS | activity | 2 | – | – | – | yes | – |
+| n-hexane + water | activity | EOS | 1 | – | – | – | – | – |
+| n-heptane + water | activity | EOS | 1 | – | – | – | – | – |
 
 Key components: water, methanol, ethanol, acetone, ethyl acetate, toluene. 171 pairs.
 
 ## Higher boilers and glycols
 
-| Pair | Route | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
-|---|---|---|---|---|---|---|---|
-| propylene glycol + glycerol | activity | 1 | – | – | – | – | – |
-| propylene glycol + phenol | activity | 1 | – | – | – | – | – |
-| propylene glycol + n-pentane | activity | 2 | – | – | – | – | – |
-| propylene glycol + n-octane | activity | 2 | – | – | – | – | – |
-| propylene glycol + water | activity | 1 | – | – | – | – | – |
-| glycerol + phenol | activity | 1 | – | – | – | – | – |
-| glycerol + n-pentane | activity | 2 | – | – | – | – | – |
-| glycerol + n-octane | activity | 2 | – | – | – | – | – |
-| glycerol + water | activity | 1 | – | – | – | – | – |
-| phenol + n-pentane | activity | 2 | – | – | – | – | – |
-| phenol + n-octane | activity | 2 | – | – | – | – | – |
-| phenol + water | activity | 1 | – | yes | yes | – | – |
-| n-pentane + n-octane | activity | 2 | – | – | – | yes | – |
-| n-pentane + water | activity | 1 | – | – | – | – | – |
-| n-octane + water | activity | 1 | – | – | – | – | – |
+| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+|---|---|---|---|---|---|---|---|---|
+| propylene glycol + glycerol | activity | EOS | 1 | – | – | – | – | – |
+| propylene glycol + phenol | activity | EOS | 1 | – | – | – | – | – |
+| propylene glycol + n-pentane | activity | EOS | 2 | – | – | – | – | – |
+| propylene glycol + n-octane | activity | EOS | 2 | – | – | – | – | – |
+| propylene glycol + water | activity | EOS | 1 | – | – | – | – | – |
+| glycerol + phenol | activity | EOS | 1 | – | – | – | – | – |
+| glycerol + n-pentane | activity | EOS | 2 | – | – | – | – | – |
+| glycerol + n-octane | activity | EOS | 2 | – | – | – | – | – |
+| glycerol + water | activity | EOS | 1 | – | – | – | – | – |
+| phenol + n-pentane | activity | EOS | 2 | – | – | – | – | – |
+| phenol + n-octane | activity | EOS | 2 | – | – | – | – | – |
+| phenol + water | activity | EOS | 1 | – | yes | yes | – | – |
+| n-pentane + n-octane | EOS | activity | 2 | – | – | – | yes | – |
+| n-pentane + water | activity | EOS | 1 | – | – | – | – | – |
+| n-octane + water | activity | EOS | 1 | – | – | – | – | – |
 
 Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 ## Summary
 
-281 distinct pairs (286 counted per benchmark); 96 with priority 1.
+281 distinct pairs (286 counted per benchmark); 96 with priority 1. Primary model: equation of state for 91 pairs (52 of priority 1), activity model for 190 (44).
 
-| | All pairs | Priority 1 |
-|---|--:|--:|
-| Already in Fugacity | 28 | 22 |
-| Activity route, ChemSep NRTL or UNIQUAC available, not yet in Fugacity | 50 | 19 |
-| Activity route, no ChemSep set: open data to be searched, else missing | 148 | 29 |
-| EOS / Henry route, ChemSep k_ij or Henry available, not yet in Fugacity | 29 | 17 |
-| EOS / Henry route, nothing in ChemSep: k_ij = 0 with a warning until fitted | 26 | 9 |
+| Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
+|---|--:|--:|--:|--:|
+| In Fugacity now | 27 | 21 | 2 | 2 |
+| In ChemSep, not yet in Fugacity | 73 | 28 | 9 | 8 |
+| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 181 | 47 | 204 | 55 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
 step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched
