@@ -97,7 +97,7 @@ export function mountProperties(target, cfg = {}) {
         `M = ${fmtNum(p.MW, 5)} g/mol`,
         `Tc = ${fmtT(p.Tc_K, u)} ${tU}`,
         `Pc = ${fmtNum(pToDisplay(p.Pc_kPa, u), 4)} ${u.P}`,
-        `Tb = ${fmtT(p.Tb_K, u)} ${tU}`,
+        p.Tb_K == null ? "no liquid at 1 atm (sublimes)" : `Tb = ${fmtT(p.Tb_K, u)} ${tU}`,
         `ω = ${fmtNum(p.omega, 3)}`,
       ].join(" · ")));
     const controls = h("div", { class: "fug-controls" },
@@ -166,7 +166,8 @@ export function mountProperties(target, cfg = {}) {
       x0: tToDisplay(smp.points[0].T, u), x1: tToDisplay(smp.points.at(-1).T, u), aria: `${prop.label} of ${p.name} against temperature` });
     side.replaceChildren(h("div", { class: "fug-eyebrow" }, prop.label), read,
       h("div", { class: "fug-foot" }, `Data range ${fmtT(smp.range[0], u)} to ${fmtT(smp.range[1], u)} ${unitLabel("temperature", u)}. Point at the plot to read values.`));
-    move(tToDisplay(clamp(p.Tb_K, smp.points[0].T, smp.points.at(-1).T), u));
+    // start the readout at the normal boiling point (the middle of the curve without one, e.g. carbon dioxide)
+    move(tToDisplay(clamp(p.Tb_K ?? 0.5 * (smp.points[0].T + smp.points.at(-1).T), smp.points[0].T, smp.points.at(-1).T), u));
     return { controls: rangeControls(domain, [], logAllowed, logAuto) };
   }
 
@@ -235,7 +236,7 @@ export function mountProperties(target, cfg = {}) {
       h("div", { class: "fug-foot" }, "Vertical dotted line: phase change (the property jumps from the saturated liquid to the vapour). Point at the plot to read values." +
         (prop.key === "enthalpy" ? " Reference: ideal gas at 25 °C (298.15 K), h = 0." : "")),
       read);
-    move(tToDisplay(clamp(p.Tb_K, lo, hi), u));
+    move(tToDisplay(clamp(p.Tb_K ?? 0.5 * (lo + hi), lo, hi), u));
     return { controls: rangeControls(domain, [pressureControl], logAllowed, logAuto) };
   }
 

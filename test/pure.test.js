@@ -39,10 +39,13 @@ test("pure() vapour pressure and boiling point agree with the VLE data", () => {
 });
 
 test("every component has critical constants and an acentric factor", () => {
-  assert.equal(listComponents().length, 16);
+  assert.equal(listComponents().length, 26);
   for (const c of listComponents()) {
     const p = pure(c.id);
-    for (const k of ["MW", "Tc_K", "Pc_kPa", "omega", "Tb_K"]) assert.ok(Number.isFinite(p[k]), `${c.name} ${k}`);
+    for (const k of ["MW", "Tc_K", "Pc_kPa", "omega"]) assert.ok(Number.isFinite(p[k]), `${c.name} ${k}`);
+    // a normal boiling point, except for carbon dioxide, which has no liquid at 1 atm (it sublimes)
+    if (c.id === "carbon-dioxide") assert.equal(p.Tb_K, null);
+    else assert.ok(Number.isFinite(p.Tb_K), `${c.name} Tb_K`);
   }
 });
 

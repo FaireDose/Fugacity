@@ -1,5 +1,6 @@
 """
-Pure-component temperature correlations for the 16 components (proposal 0002, sections 2, 4, 5).
+Pure-component temperature correlations (proposal 0002, sections 2, 4, 5), for the 16 components
+of v0.2 and the components of proposal 0004 (added with add_components.py).
 
 For each component and property this script takes the source chosen by the source chain
 (proposal 0002, section 4), samples it, fits a DIPPR equation (forms 100-107 only, as
@@ -21,8 +22,12 @@ Sources, in the order of the chain:
   1/2. CoolProp 8.0.0 (open source, MIT), reference equations of state and transport
        correlations cited per fluid (water: IAPWS-95 and the IAPWS 2008/2011 transport
        formulations as implemented in CoolProp). Requires `pip install CoolProp==8.0.0`.
-  3.   NIST Chemistry WebBook (SRD 69), gas-phase heat capacity tables or Shomate equations,
-       transcribed in WEBBOOK_CP0 below from the pages cited there.
+  3.   NIST Chemistry WebBook (SRD 69): gas-phase heat capacity tables or Shomate equations,
+       transcribed in WEBBOOK_CP0 below from the pages cited there; and the fluid tables
+       (Thermophysical Properties of Fluid Systems) for transport properties CoolProp does not
+       model, downloaded as tab-delimited text by --fetch-webbook into
+       validation/data/pure/webbook_fluid/<id>.json (WEBBOOK_FLUID below); only where the page
+       names the model behind the values.
   4.   ChemSep pure-component database v8.3 (chemsep1.xml), Copyright (c) Harry Kooijman and
        Ross Taylor, Artistic License 2.0, as redistributed in DWSIM
        (https://github.com/DanWBR/dwsim, DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml).
@@ -58,12 +63,22 @@ N_STORE = 41       # of which this many are stored for the test (every 5th, ends
 
 IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "acetone", "chloroform",
        "benzene", "toluene", "ethyl-acetate", "oxygen", "nitrogen", "hydrogen", "methane", "ethane",
-       "ethylene"]
-GASES = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene"]
+       "ethylene",
+       # proposal 0004, batch 1: gases at 25 degC and 1 atm
+       "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide", "argon", "propane", "propylene", "n-butane",
+       "isobutane", "ammonia", "dimethyl-ether"]
+# components whose vapour-pressure record is fitted here (the ten liquids of v0.1 keep theirs)
+GASES = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
+         "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide", "argon", "propane", "propylene", "n-butane",
+         "isobutane", "ammonia", "dimethyl-ether"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
-            "hydrogen": "Hydrogen", "methane": "Methane", "ethane": "Ethane", "ethylene": "Ethylene"}
+            "hydrogen": "Hydrogen", "methane": "Methane", "ethane": "Ethane", "ethylene": "Ethylene",
+            "carbon-monoxide": "CarbonMonoxide", "carbon-dioxide": "CarbonDioxide",
+            "hydrogen-sulfide": "HydrogenSulfide", "argon": "Argon", "propane": "n-Propane",
+            "propylene": "Propylene", "n-butane": "n-Butane", "isobutane": "IsoButane", "ammonia": "Ammonia",
+            "dimethyl-ether": "DimethylEther"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -97,7 +112,37 @@ NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetat
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+    "carbon-monoxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+    "hydrogen-sulfide": ["liquidThermalConductivity", "vapourThermalConductivity"],
+    "dimethyl-ether": ["liquidThermalConductivity", "vapourThermalConductivity"],
 }
+
+# NIST WebBook fluid tables (step 3 of the chain) for properties in COOLPROP_GAPS, where the WebBook
+# page names the model behind the values. Checked on the pages (2026-10-03):
+#  - carbon monoxide: transport model Huber, NISTIR 8209 (2018); used.
+#  - hydrogen sulfide: the page cites a viscosity model (Schmidt et al. 2008) but no thermal
+#    conductivity model, so its conductivity values cannot be cited: ChemSep is used (WEBBOOK_UNCITED).
+#  - dimethyl ether: not a WebBook fluid.
+WEBBOOK_FLUID = {
+    "carbon-monoxide": {
+        "ID": "C630080",
+        "props": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+        "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected "
+                     "Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), "
+                     "doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, "
+                     "Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; "
+                     "as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+        "notes": "WebBook: estimated uncertainty of the gas viscosity to atmospheric pressure 1 %, saturated liquid "
+                 "2 %; gas thermal conductivity 2 %, saturated liquid 5 %; upper temperature limit 500 K.",
+        "Tmax_vapour": 500.0,
+    },
+}
+WEBBOOK_UNCITED = {"hydrogen-sulfide": "NIST WebBook fluid tables: thermal conductivity values given without a "
+                                      "cited model, so not used"}
+WEBBOOK_FLUID_DIR = Path(__file__).resolve().parents[2] / "validation" / "data" / "pure" / "webbook_fluid"
+WEBBOOK_FLUID_URL = ("https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID={ID}&Digits=8&RefState=DEF"
+                     "&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm")
+WEBBOOK_DILUTE_MPa = 0.001   # the dilute-gas isobar, 1 kPa
 
 
 def chosen_source(cid, prop):
@@ -105,6 +150,8 @@ def chosen_source(cid, prop):
         return "coolprop"
     if prop == "idealGasHeatCapacity" and cid in WEBBOOK_CP0:
         return "webbook"
+    if cid in WEBBOOK_FLUID and prop in WEBBOOK_FLUID[cid]["props"]:
+        return "webbook-fluid"
     return "chemsep"
 
 
@@ -114,6 +161,8 @@ def chain_note(cid, prop):
     if src == "coolprop":
         return None
     notes = []
+    if src == "webbook-fluid":
+        return "CoolProp 8.0.0: no %s model" % ("viscosity" if "Viscosity" in prop else "thermal conductivity")
     if cid in NOT_IN_COOLPROP:
         notes.append("CoolProp 8.0.0: fluid not included")
     else:
@@ -121,6 +170,10 @@ def chain_note(cid, prop):
     if src == "chemsep":
         if cid == "ethylene":
             notes.append("NIST WebBook fluid tables (ethene): could not be opened in this session")
+        elif cid in WEBBOOK_UNCITED and "Conductivity" in prop:
+            notes.append(WEBBOOK_UNCITED[cid])
+        elif cid == "dimethyl-ether":
+            notes.append("NIST WebBook: dimethyl ether is not a WebBook fluid")
         elif cid == "acetone":
             notes.append("NIST WebBook: acetone is not a WebBook fluid")
         elif prop in ("liquidHeatCapacity", "heatOfVaporization"):
@@ -525,7 +578,9 @@ class CoolPropFluid:
         if prop == "surfaceTension":
             return self.sat(T, 0).surface_tension()
         if prop == "idealGasHeatCapacity":
-            self.AS.update(self.CoolProp.PT_INPUTS, 1000.0, T)
+            # cp0 depends on T only; the state is set by density, since CoolProp refuses p below the
+            # triple-point pressure at the triple-point temperature (carbon monoxide)
+            self.AS.update(self.CoolProp.DmolarT_INPUTS, 1000.0 / (8.314462618 * T), T)
             return self.AS.cp0molar()
         if prop == "vapourViscosity":
             return self.dilute(T).viscosity()
@@ -570,7 +625,10 @@ class Bib:
                 return ""
             s = " ".join(mm.group(1).split()).replace("{", "").replace("}", "")
             return s.replace("\\v s", "š").replace("\\~n", "ñ").replace("\\ss", "ß").replace("\\", "")
-        authors = [a.strip() for a in f("author").split(" and ")]
+        authors = [a.strip() for a in f("author").split(" and ") if a.strip()]
+        if not authors:  # an entry without authors (a report): its institution, or the key
+            authors = [f("institution") or f("organization") or key]
+            short = False if not f("author") else short
         if short:
             authors = [self.surname(a) for a in authors]
         au = authors[0] + (" et al." if len(authors) > 2 else (" and " + authors[1] if len(authors) == 2 else ""))
@@ -705,9 +763,34 @@ class Builder:
         form = FORM[prop]
         Tc = rnd(F.Tc, 8)
         sample = lambda T: np.array([F.value(prop, t) for t in T])  # noqa: E731
-        keep = (298.15, self.comps[cid]["Tb_K"])
+        keep = keep_T(self.comps[cid])
         T0, T1 = Tmin, Tmax
-        T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(form, sample, T0, T1, target, Tc, keep=keep)
+        start_note = None
+        if prop in ("vapourViscosity", "vapourThermalConductivity"):
+            # CoolProp's corresponding-states transport model (propylene) does not converge for the dilute gas
+            # at the lowest temperatures, where the vapour pressure is tiny: start where it does
+            Tg = grid(T0, T1)
+            ok = []
+            for tq in Tg:
+                try:
+                    F.value(prop, tq)
+                    ok.append(True)
+                except ValueError:
+                    ok.append(False)
+            if not all(ok):
+                first = next(i for i in range(len(Tg)) if all(ok[i:]))
+                T0 = math.ceil(Tg[first] * 100) / 100
+                start_note = ("starts at %.2f K: below it the CoolProp transport model does not converge for the "
+                              "dilute gas" % T0)
+        Tg = grid(T0, T1)
+        yg = sample(Tg)
+        if prop == "idealGasHeatCapacity" and np.ptp(yg) <= 1e-9 * np.mean(yg):
+            # a monatomic gas (argon): cp0 = 5/2 R at every temperature, a constant (DIPPR 100, A only)
+            form, c, extra = "DIPPR100", {"A": float(np.mean(yg))}, {}
+            T, y, Tmin, Tmax, narrowed = Tg, yg, T0, T1, None
+            m = rel_dev(ev(form, c, T), y)
+        else:
+            T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(form, sample, T0, T1, target, Tc, keep=keep)
         if narrowed and prop == "liquidDensity":
             # DIPPR105 cannot follow a density maximum (water at 4 °C): try the DIPPR100 polynomial
             alt = fit_range("DIPPR100", sample, T0, T1, target, Tc, keep=keep)
@@ -716,6 +799,8 @@ class Builder:
                 form = "DIPPR100"
                 narrowed = ("DIPPR100 used because DIPPR105 does not meet the 1 %% target over %.2f-%.2f K "
                             "(it cannot follow the density maximum of water)" % (T0, T1))
+        if start_note:
+            narrowed = (narrowed + "; " if narrowed else "") + start_note
         if narrowed and prop == "liquidViscosity" and Tmin > T0:
             narrowed += ("; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, "
                          "so this range starts above the triple point (%.2f K)" % T0)
@@ -778,6 +863,44 @@ class Builder:
                                     "deviation_percent": [round(100 * d, 2) for d in dev]}
         return rec
 
+    def from_webbook_fluid(self, cid, prop):
+        W = WEBBOOK_FLUID[cid]
+        D = json.loads((WEBBOOK_FLUID_DIR / ("%s.json" % cid)).read_text())
+        liquid = prop in LIQUID_SIDE
+        tab = D["saturation"] if liquid else D["dilute"]
+        col = {"liquidViscosity": "Viscosity (l, Pa*s)", "liquidThermalConductivity": "Therm. Cond. (l, W/m*K)",
+               "vapourViscosity": "Viscosity (Pa*s)", "vapourThermalConductivity": "Therm. Cond. (W/m*K)"}[prop]
+        i, j = tab["columns"].index("Temperature (K)"), tab["columns"].index(col)
+        # the liquid side ends at 0.95 Tc, as for every other record
+        T95 = math.floor(0.95 * self.coolprop(cid).Tc * 100) / 100
+        rows = [(r[i], r[j]) for r in tab["rows"] if isinstance(r[j], float) and r[i] <= T95]
+        if not liquid:
+            k = tab["columns"].index("Phase")
+            rows = [(r[i], r[j]) for r in tab["rows"] if isinstance(r[j], float) and r[k] in ("vapor", "supercritical")]
+        T = np.array([r[0] for r in rows])
+        y = np.array([r[1] for r in rows])
+        target = 0.03
+        form = FORM[prop]
+        # fit_range samples its own grid: linear interpolation between the (dense, about 120) tabulated
+        # points; the deviation reported below is then recomputed at the tabulated points themselves
+        sample = lambda Tq: np.interp(Tq, T, y)  # noqa: E731
+        Tc = rnd(self.coolprop(cid).Tc, 8)
+        lo, hi = float(T.min()), float(T.max())
+        T2, y2, c, extra, m, Tmin, Tmax, narrowed = fit_range(form, sample, lo, hi, target, Tc,
+                                                              keep=keep_T(self.comps[cid]))
+        sel = (T >= Tmin - 1e-9) & (T <= Tmax + 1e-9)
+        T, y = T[sel], y[sel]
+        m = rel_dev(ev(form, c, T, extra.get("Tc_K")), y)
+        how = "saturated liquid" if liquid else "dilute gas, %g kPa isobar" % (1000 * WEBBOOK_DILUTE_MPa)
+        source = {"name": "NIST Chemistry WebBook, fluid tables (%s)" % how, "reference": W["reference"],
+                  "url": D["urls"]["saturation" if liquid else "dilute"], "access": WEBBOOK_ACCESS,
+                  "fit": "%d tabulated points %.2f-%.2f K, max deviation %s %%%s" % (
+                      len(T), Tmin, Tmax, pct(m), ("; " + narrowed) if narrowed else ""),
+                  "notes": W["notes"] + " Tables downloaded %s (validation/data/pure/webbook_fluid/%s.json)." % (
+                      D["retrieved"], cid),
+                  "chain": chain_note(cid, prop)}
+        return self._record(cid, prop, form, c, extra, Tmin, Tmax, "fitted", source, T, y, m, target, store_all=True)
+
     def from_chemsep(self, cid, prop):
         cas = self.comps[cid]["cas"]
         d = self.cs.corr(cas, prop)
@@ -835,7 +958,7 @@ class Builder:
             why += ", limited to 0.95 Tc"
         T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(
             form, lambda T: self.cs.value_si(cas, prop, T), Tmin, Tmax, target, Tc,
-            keep=(298.15, self.comps[cid]["Tb_K"]))
+            keep=keep_T(self.comps[cid]))
         source = {"name": CHEMSEP_NAME, "reference": CHEMSEP_REF, "access": CHEMSEP_ACCESS,
                   "fit": ("refitted in the %s form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), "
                           "%s, converted to the mol basis): %d points %.2f-%.2f K (%s), max deviation %s %%%s"
@@ -858,6 +981,15 @@ class Builder:
         if m2 > m * 1.001 + 1e-7:
             raise RuntimeError("%s %s: rounding the coefficients changed the deviation (%g -> %g)" % (cid, prop, m, m2))
         idx = list(range(len(T))) if store_all else store_idx(len(T))
+        # also at the stored points (T and values rounded to 8 digits), which the test checks
+        Ts = np.array([rnd(float(T[i]), 8) for i in idx])
+        ys = np.array([rnd(float(y[i]), 8) for i in idx])
+        m3 = rel_dev(ev(form, coeffs, Ts, rec.get("Tc_K")), ys)
+        if max(m2, m3) > m and pct(max(m2, m3)) != pct(m):
+            # state the deviation of the stored (rounded) coefficients
+            rec["source"]["fit"] = rec["source"]["fit"].replace("max deviation %s %%" % pct(m),
+                                                                "max deviation %s %%" % pct(max(m2, m3)))
+            m = max(m2, m3)
         pts = {"units": UNITS[prop], "source": rec["source"],
                "T_K": [rnd(float(T[i]), 8) for i in idx], "values": [rnd(float(y[i]), 8) for i in idx]}
         flag = "" if m <= target else "   <-- above target %g %%" % (target * 100)
@@ -871,6 +1003,8 @@ class Builder:
             return self.from_coolprop(cid, prop)
         if src == "webbook":
             return self.from_webbook(cid, prop)
+        if src == "webbook-fluid":
+            return self.from_webbook_fluid(cid, prop)
         r = self.from_chemsep(cid, prop)
         if r is None:
             searched = ["CoolProp 8.0.0", "NIST Chemistry WebBook", CHEMSEP_NAME]
@@ -949,8 +1083,20 @@ def max_dev_text(rec):
     return m.group(1) if m else "?"
 
 
+def keep_T(c):
+    """Temperatures a fitted range keeps when it is narrowed: 25 degC and the normal boiling point."""
+    return tuple(x for x in (298.15, c["Tb_K"]) if x is not None)
+
+
 def spot_T(cid, comps):
-    return 298.15 if cid not in GASES else comps[cid]["Tb_K"]
+    if cid not in GASES:
+        return 298.15
+    if comps[cid]["Tb_K"] is not None:
+        return comps[cid]["Tb_K"]
+    # no normal boiling point (carbon dioxide): midway between the triple point and 0.95 Tc
+    import CoolProp
+    AS = CoolProp.AbstractState("HEOS", COOLPROP[cid])
+    return round(0.5 * (AS.Ttriple() + 0.95 * AS.T_critical()), 2)
 
 
 def webbook_value(cid, T):
@@ -1000,7 +1146,8 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
     L.append("\nTemperatures in K.\n")
 
     L.append("## Spot checks\n")
-    L.append("At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gases. "
+    L.append("At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gases (carbon dioxide, "
+             "which has no liquid at 1 atm: midway between its triple point and 0.95 Tc). "
              "\"Fugacity\" is the stored correlation, \"source\" the value of the source it was fitted to "
              "or taken from, and \"ChemSep\" an independent databank value (ChemSep v8.3) where the record "
              "is not itself from ChemSep. A dash: outside the range of the record.\n")
@@ -1029,6 +1176,8 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
                     src = builder.coolprop(cid).value(p, T)
                 elif s == "chemsep":
                     src = builder.chemsep_check(cid, p, T)
+                elif s == "webbook-fluid":
+                    src = None  # a table: the deviation over the tabulated points is in the record
                 else:
                     src = webbook_value(cid, T)
                 cs = builder.chemsep_check(cid, p, T) if s != "chemsep" else None
@@ -1063,7 +1212,8 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
             r = records[cid][p]
             if r.get("available") is False:
                 continue
-            if p in ("vapourViscosity", "vapourThermalConductivity", "idealGasHeatCapacity") and r["Tmin_K"] > c["Tb_K"]:
+            if (p in ("vapourViscosity", "vapourThermalConductivity", "idealGasHeatCapacity") and c["Tb_K"] is not None
+                    and r["Tmin_K"] > c["Tb_K"]):
                 L.append("- %s, %s: starts at %g K, above the normal boiling point %g K (%s range); vapour states "
                          "between Tb and %g K have no value." % (c["name"], SHORT[p], r["Tmin_K"], c["Tb_K"],
                                                                   short_source(r), r["Tmin_K"]))
@@ -1141,8 +1291,56 @@ def add_measured(records):
     return out
 
 
+def fetch_webbook_fluid(cid):
+    """Download the WebBook fluid tables of WEBBOOK_FLUID[cid] (saturation line and the dilute-gas
+    isobar) as tab-delimited text and store them unchanged (numbers as given) for the fit."""
+    import datetime
+    import urllib.error
+    import urllib.request
+    import CoolProp
+    W = WEBBOOK_FLUID[cid]
+    AS = CoolProp.AbstractState("HEOS", COOLPROP[cid])
+    Tt, Tc = AS.Ttriple(), AS.T_critical()
+    lo, hi = math.ceil(Tt * 100) / 100, math.floor(0.95 * Tc * 100) / 100
+    base = WEBBOOK_FLUID_URL.format(ID=W["ID"])
+    urls = {
+        "saturation": base + "&Type=SatT&TLow=%g&THigh=%g&TInc=%g" % (lo, hi, round((hi - lo) / 120, 3)),
+        "dilute": base + "&Type=IsoBar&P=%g&TLow=%g&THigh=%g&TInc=%g" % (
+            WEBBOOK_DILUTE_MPa, lo, W["Tmax_vapour"], round((W["Tmax_vapour"] - lo) / 120, 3)),
+    }
+    out = {"component": cid, "source": "NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+           "reference": W["reference"], "retrieved": datetime.date.today().isoformat(), "urls": urls}
+    for key, url in urls.items():
+        req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
+        for attempt in range(5):  # the WebBook gateway sometimes times out (HTTP 504)
+            try:
+                with urllib.request.urlopen(req, timeout=120) as f:
+                    text = f.read().decode("utf-8")
+                break
+            except urllib.error.HTTPError as e:
+                if e.code not in (502, 503, 504) or attempt == 4:
+                    raise
+                import time
+                time.sleep(5 * 2 ** attempt)
+        lines = [ln.split("\t") for ln in text.strip().splitlines()]
+        cols = lines[0]
+
+        def num(v):
+            try:
+                return float(v)
+            except ValueError:
+                return v
+        # keep only the columns the fit uses (the WebBook is cited per record, not redistributed)
+        keep = [i for i, c in enumerate(cols) if c.startswith(("Temperature", "Pressure", "Viscosity", "Therm. Cond.", "Phase"))]
+        out[key] = {"columns": [cols[i] for i in keep], "rows": [[num(ln[i]) for i in keep] for ln in lines[1:]]}
+    WEBBOOK_FLUID_DIR.mkdir(parents=True, exist_ok=True)
+    (WEBBOOK_FLUID_DIR / ("%s.json" % cid)).write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+    print("fetched %s: %d saturation rows, %d isobar rows" % (cid, len(out["saturation"]["rows"]), len(out["dilute"]["rows"])))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--fetch-webbook", action="store_true", help="download the WebBook fluid tables first")
     ap.add_argument("--chemsep", required=True, help="path to ChemSep chemsep1.xml (v8.3)")
     ap.add_argument("--bib", help="CoolProp's CoolPropBibTeXLibrary.bib (v8.0.0) for full references "
                     "(https://github.com/CoolProp/CoolProp/blob/v8.0.0/CoolPropBibTeXLibrary.bib)")
@@ -1152,6 +1350,9 @@ def main():
     import CoolProp
     if CoolProp.__version__ != "8.0.0":
         raise SystemExit("CoolProp 8.0.0 is required (found %s)" % CoolProp.__version__)
+    if args.fetch_webbook:
+        for cid in WEBBOOK_FLUID:
+            fetch_webbook_fluid(cid)
     data = json.loads(COMP_FILE.read_text())
     comps = data["components"]
     cs = ChemSep(args.chemsep)
@@ -1161,12 +1362,17 @@ def main():
     for cid, props in COOLPROP_GAPS.items():
         F = b.coolprop(cid)
         F.sat(0.7 * F.Tc, 0)
-        for fn in (F.AS.viscosity, F.AS.conductivity):
+        for name, fn in (("Viscosity", F.AS.viscosity), ("ThermalConductivity", F.AS.conductivity)):
+            listed = any(name in p for p in props)
             try:
                 fn()
-                raise SystemExit("CoolProp has a transport model for %s now: update COOLPROP_GAPS" % cid)
+                has = True
             except ValueError:
-                pass
+                has = False
+            if has and listed:
+                raise SystemExit("CoolProp has a %s model for %s now: update COOLPROP_GAPS" % (name, cid))
+            if not has and not listed:
+                raise SystemExit("CoolProp has no %s model for %s: add it to COOLPROP_GAPS" % (name, cid))
 
     records, points, vp_gas = {}, {}, {}
     for cid in IDS:
