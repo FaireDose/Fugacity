@@ -44,6 +44,7 @@ weg = json.loads((ROOT / "validation/data/water_ethylene_glycol_760mmHg.json").r
 sch = json.loads((ROOT / "validation/data/schmid2007_acetic_acid_ethylene_glycol.json").read_text())
 etw = json.loads((ROOT / "validation/data/ethanol_water_101kPa.json").read_text())
 weh = json.loads((ROOT / "validation/data/water_ethanol_HE_fang2014.json").read_text())
+flashref = json.loads((ROOT / "validation/fixtures/flash.json").read_text())["cases"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -89,6 +90,8 @@ SOURCES = {
     "schmid2007": sch["source"],
     "kamihama2012": etw["source"],
     "fang2014": weh["source"],
+    "thermo-flash": {"citation": "thermo library (Caleb Bell), FlashVL with the same parameters; enthalpy flashes with the independent enthalpies of validation/python/reference_enthalpy.py (validation/python/reference_flash.py)",
+                     "url": "https://github.com/CalebBell/thermo", "access": "Open source (MIT license)"},
 }
 
 
@@ -274,6 +277,13 @@ def reference(case, key):
                 if abs(x1 - case["x1"]) < 1e-9:
                     return val(he * 1000, "fang2014", f"x_water = {x1}, HE = {he} kJ/mol at {weh['T_K']} K, {weh['P_kPa']} kPa (converted to J/mol)")
         return none("No open excess-enthalpy data transcribed for this pair yet")
+    if t == "flash":
+        for c in flashref:
+            if c["components"] == case["components"] and c["model"] == case["model"] and c.get("vapour") == case.get("vapour") \
+                    and c["z"] == case["z"] and c["spec"] == case["spec"]:
+                v = {"VF": c["VF"], "T_C": c["T_K"] - 273.15, "y1": (c["y"] or [None])[0]}[key]
+                return val(v, "thermo-flash", f"spec {case['spec']}, z = {case['z']}") if v is not None else none("no vapour")
+        return none("Not in validation/fixtures/flash.json")
     if t == "dewT":
         if case["components"] == ["ethanol", "water"]:
             for x1, T, y1 in etw["rows"]:

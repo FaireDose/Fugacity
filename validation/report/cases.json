@@ -16,6 +16,8 @@
   "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
   "excessEnthalpy": {"abs": 50.0, "unit": "J/mol", "informational": true, "basis": "Report only: these data were used in the fit (AAD 24-30 J/mol), so this is a consistency check"},
   "excessEnthalpyPredicted": {"rel": 0.25, "informational": true, "basis": "Report only: excess enthalpy predicted from parameters fitted to vapour-liquid data, here outside their temperature range"},
+  "flashVF": {"abs": 0.001, "unit": "mole fraction", "basis": "Independent implementation (thermo FlashVL, same parameters)"},
+  "flashT": {"abs": 0.01, "unit": "K", "basis": "Independent implementation (thermo FlashVL and independent enthalpies, same parameters)"},
   "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
   "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
   "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
@@ -105,6 +107,13 @@
    {"id": "he/water+ethanol/UNIQUAC/x=0.2673", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.2673, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
    {"id": "he/water+ethanol/UNIQUAC/x=0.5845", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.5845, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
    {"id": "he/water+ethanol/UNIQUAC/x=0.8312", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.8312, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]}
+  ]},
+  {"id": "flash", "title": "Flashes", "cases": [
+   {"id": "flash/ethanol+water/NRTL/TP", "type": "flash", "components": ["ethanol", "water"], "model": "NRTL", "z": [0.4, 0.6], "spec": {"T": 355.0, "P": 101.325}, "quantities": [{"key": "VF", "tol": "flashVF"}, {"key": "y1", "tol": "flashVF"}], "vapour": "ideal"},
+   {"id": "flash/ethanol+water/NRTL/PH", "type": "flash", "components": ["ethanol", "water"], "model": "NRTL", "z": [0.4, 0.6], "spec": {"P": 101.325, "H": -20000.0}, "quantities": [{"key": "T_C", "tol": "flashT"}, {"key": "VF", "tol": "flashVF"}], "vapour": "ideal"},
+   {"id": "flash/ethanol+water/NRTL-PR/TP", "type": "flash", "components": ["ethanol", "water"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"T": 430.0, "P": 1000.0}, "quantities": [{"key": "VF", "tol": "flashVF"}], "vapour": "PR"},
+   {"id": "flash/methanol+acetone+chloroform/UNIQUAC/PVF", "type": "flash", "components": ["methanol", "acetone", "chloroform"], "model": "UNIQUAC", "z": [0.3, 0.3, 0.4], "spec": {"P": 101.325, "VF": 0.7}, "quantities": [{"key": "T_C", "tol": "flashT"}], "vapour": "ideal"},
+   {"id": "flash/methane+ethane/PR/TP", "type": "flash", "components": ["methane", "ethane"], "model": "PR", "z": [0.5, 0.5], "spec": {"T": 220.0, "P": 2000.0}, "quantities": [{"key": "VF", "tol": "flashVF"}, {"key": "y1", "tol": "flashVF"}]}
   ]},
   {"id": "pure", "title": "Pure-component properties at standard points", "cases": [
    {"id": "pure/water/psat/25C", "type": "pureProperty", "component": "water", "property": "vapourPressure", "T_K": 298.15, "quantities": [{"key": "psat_kPa", "tol": "vapourPressure"}]},

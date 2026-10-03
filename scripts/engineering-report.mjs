@@ -66,6 +66,7 @@ export const QUANTITIES = {
   mu_mPa_s: { label: "μ", unit: "mPa·s", fmt: sig(4) },
   k_W_mK: { label: "λ", unit: "W/(m·K)", fmt: sig(4) },
   HE_J_mol: { label: "hᴱ", unit: "J/mol", fmt: v => v.toFixed(1) },
+  VF: { label: "vapour fraction", unit: "mol/mol", fmt: v => v.toFixed(5) },
 };
 const PROPERTY_LABELS = {
   vapourPressure: "vapour pressure", liquidDensity: "liquid density", liquidHeatCapacity: "liquid cp",
@@ -176,11 +177,11 @@ function makeContext(F) {
       if (!pures.has(c)) pures.set(c, fn(F, "pure", "Fugacity.pure()")(c));
       return pures.get(c);
     },
-    system(components, model) {
-      const key = model + ":" + components.join("+");
+    system(components, model, vapour) {
+      const key = model + (vapour ? "/" + vapour : "") + ":" + components.join("+");
       if (!systems.has(key)) {
         const make = fn(F, "system", "Fugacity.system()");
-        try { systems.set(key, make({ components, model })); } catch (e) { systems.set(key, e); }
+        try { systems.set(key, make({ components, model, ...(vapour ? { vapour } : {}) })); } catch (e) { systems.set(key, e); }
       }
       const s = systems.get(key);
       if (s instanceof Error) throw s;
@@ -343,6 +344,13 @@ function evaluateQuantity(ctx, cs, key) {
       const r = fn(s, "bubbleT", "system.bubbleT()")([cs.x1, 1 - cs.x1], cs.P_kPa);
       return { value: key === "T_C" ? r.T - 273.15 : r.y[0], method: "system.bubbleT()" };
     }
+    case "flash": {
+      const s = ctx.system(cs.components, cs.model, cs.vapour && cs.vapour !== "ideal" ? cs.vapour : undefined);
+      const r = fn(s, "flash", "system.flash()")({ z: cs.z, ...cs.spec });
+      const vap = r.phases.find(p => p.type === "vapour");
+      const v = key === "VF" ? r.VF : key === "T_C" ? r.T - 273.15 : vap ? vap.composition[0] : null;
+      return { value: v, method: "system.flash()" };
+    }
     case "excessEnthalpy": {
       const s = ctx.system(cs.components, cs.model);
       return { value: fn(s, "excessEnthalpy", "system.excessEnthalpy()")([cs.x1, 1 - cs.x1], cs.T_K), method: "system.excessEnthalpy()" };
@@ -488,6 +496,12 @@ function describe(cs, key) {
     }
     case "bubbleT":
       return { property: `${c1} + ${c2}: bubble ${key === "T_C" ? "T" : `y(${c1.toLowerCase()})`}`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${bar(cs.P_kPa)} bar, ${cs.model}` };
+    case "flash": {
+      const comps = cs.components.map(name);
+      const sp = Object.entries(cs.spec).map(([k, v]) => (k === "T" ? `${tC(v)} °C` : k === "P" ? `${bar(v)} bar` : k === "H" ? `H = ${v} J/mol` : `VF = ${v}`)).join(", ");
+      const q = { VF: "vapour fraction", T_C: "T", y1: `y(${comps[0].toLowerCase()})` }[key];
+      return { property: `${comps.join(" + ")}: flash, ${q}`, conditions: `z = [${cs.z.join(", ")}], ${sp}, ${cs.model}${cs.vapour && cs.vapour !== "ideal" ? ` with ${cs.vapour} vapour` : ""}` };
+    }
     case "excessEnthalpy":
       return { property: `${c1} + ${c2}: excess enthalpy`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${tC(cs.T_K)} °C, ${cs.model}` };
     case "dewT":

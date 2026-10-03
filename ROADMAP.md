@@ -188,6 +188,7 @@ Needs A4, A5 and D6; B1, B2.
 - [x] Solver rules (errors with codes, input checks) and dew points for NRTL and UNIQUAC ([proposal 0001](proposals/0001-property-package.md), step 1)
 - [x] Vapour model choice for NRTL and UNIQUAC: ideal gas, Peng–Robinson or SRK, with φ_sat and the Poynting correction (proposal 0001, step 2)
 - [x] Mixture enthalpy for every model, excess enthalpy from NRTL and UNIQUAC, `phase()` with fugacities (proposal 0001, step 3)
+- [x] Two-phase flash for every model: T-P, P-H, P-VF, T-VF, with the heat duty from feed conditions (proposal 0001, step 4)
 - [ ] PT, PH and PQ flash; stream object
 - [ ] Export (CSV, SVG, PNG) and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria

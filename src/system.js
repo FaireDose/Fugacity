@@ -11,6 +11,7 @@ import { residueCurve } from "./equilibrium/residue.js";
 import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
 import { isLiquidStable } from "./equilibrium/stability.js";
 import { eosMethods } from "./equilibrium/phi-phi.js";
+import { flash } from "./equilibrium/flash.js";
 
 /**
  * Create a system with calculation methods attached.
@@ -21,6 +22,7 @@ import { eosMethods } from "./equilibrium/phi-phi.js";
  */
 export function system(cfg) {
   const sys = createSystem(cfg);
+  sys.flash = (spec, opts) => flash(sys, spec, opts);
   if (sys.kind === "eos") return Object.assign(sys, eosMethods(sys)); // model "PR" or "SRK"
   return Object.assign(sys, {
     bubbleT: (x, P) => bubbleT(sys, x, P),

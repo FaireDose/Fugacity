@@ -105,6 +105,22 @@ for model in ["NRTL", "UNIQUAC"]:
                       "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]})
 groups.append({"id": "txy", "title": "Bubble and dew points (T-x-y and P-x spot points)", "cases": cases})
 
+# (c2) flashes, against the thermo library's FlashVL with the same parameters (validation/fixtures/flash.json)
+cases = []
+for fid, comps, model, vapour, z, spec, keys in [
+    ("flash/ethanol+water/NRTL/TP", ["ethanol", "water"], "NRTL", "ideal", [0.4, 0.6], {"T": 355.0, "P": 101.325}, ["VF", "y1"]),
+    ("flash/ethanol+water/NRTL/PH", ["ethanol", "water"], "NRTL", "ideal", [0.4, 0.6], {"P": 101.325, "H": -20000.0}, ["T_C", "VF"]),
+    ("flash/ethanol+water/NRTL-PR/TP", ["ethanol", "water"], "NRTL", "PR", [0.5, 0.5], {"T": 430.0, "P": 1000.0}, ["VF"]),
+    ("flash/methanol+acetone+chloroform/UNIQUAC/PVF", ["methanol", "acetone", "chloroform"], "UNIQUAC", "ideal", [0.3, 0.3, 0.4], {"P": 101.325, "VF": 0.7}, ["T_C"]),
+    ("flash/methane+ethane/PR/TP", ["methane", "ethane"], "PR", None, [0.5, 0.5], {"T": 220.0, "P": 2000.0}, ["VF", "y1"]),
+]:
+    c = {"id": fid, "type": "flash", "components": comps, "model": model, "z": z, "spec": spec,
+         "quantities": [{"key": k, "tol": "flashT" if k == "T_C" else "flashVF"} for k in keys]}
+    if vapour:
+        c["vapour"] = vapour
+    cases.append(c)
+groups.append({"id": "flash", "title": "Flashes", "cases": cases})
+
 # (d) pure-component properties
 cases = []
 for c in LIQUIDS:
@@ -211,6 +227,8 @@ TOL = {
     "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
     "excessEnthalpy": {"abs": 50.0, "unit": "J/mol", "informational": True, "basis": "Report only: these data were used in the fit (AAD 24-30 J/mol), so this is a consistency check"},
     "excessEnthalpyPredicted": {"rel": 0.25, "informational": True, "basis": "Report only: excess enthalpy predicted from parameters fitted to vapour-liquid data, here outside their temperature range"},
+    "flashVF": {"abs": 0.001, "unit": "mole fraction", "basis": "Independent implementation (thermo FlashVL, same parameters)"},
+    "flashT": {"abs": 0.01, "unit": "K", "basis": "Independent implementation (thermo FlashVL and independent enthalpies, same parameters)"},
     "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
     "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
     "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
