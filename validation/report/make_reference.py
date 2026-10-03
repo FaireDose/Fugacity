@@ -43,6 +43,7 @@ azeo = json.loads((ROOT / "validation/data/azeotropes_101kPa.json").read_text())
 weg = json.loads((ROOT / "validation/data/water_ethylene_glycol_760mmHg.json").read_text())
 sch = json.loads((ROOT / "validation/data/schmid2007_acetic_acid_ethylene_glycol.json").read_text())
 etw = json.loads((ROOT / "validation/data/ethanol_water_101kPa.json").read_text())
+weh = json.loads((ROOT / "validation/data/water_ethanol_HE_fang2014.json").read_text())
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -87,6 +88,7 @@ SOURCES = {
     "water-eg-760mmHg": weg["source"],
     "schmid2007": sch["source"],
     "kamihama2012": etw["source"],
+    "fang2014": weh["source"],
 }
 
 
@@ -267,6 +269,10 @@ def reference(case, key):
             for p in sch["HE_323K"]:
                 if abs(p["x1"] - case["x1"]) < 1e-9:
                     return val(p["HE_J_mol"], "schmid2007", f"Table 17, x1 = {p['x1']}, T = 323.15 K (data used in the fit)")
+        if case["components"] == ["water", "ethanol"]:
+            for x1, he in weh["rows"]:
+                if abs(x1 - case["x1"]) < 1e-9:
+                    return val(he * 1000, "fang2014", f"x_water = {x1}, HE = {he} kJ/mol at {weh['T_K']} K, {weh['P_kPa']} kPa (converted to J/mol)")
         return none("No open excess-enthalpy data transcribed for this pair yet")
     if t == "dewT":
         if case["components"] == ["ethanol", "water"]:

@@ -15,6 +15,7 @@
   "bubbleT_scatter": {"abs": 3.5, "unit": "K", "basis": "Secondary compilation with visible scatter; same bound as test/vle.test.js"},
   "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
   "excessEnthalpy": {"abs": 50.0, "unit": "J/mol", "informational": true, "basis": "Report only: these data were used in the fit (AAD 24-30 J/mol), so this is a consistency check"},
+  "excessEnthalpyPredicted": {"rel": 0.25, "informational": true, "basis": "Report only: excess enthalpy predicted from parameters fitted to vapour-liquid data, here outside their temperature range"},
   "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
   "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
   "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
@@ -97,7 +98,13 @@
    {"id": "he/acetic-acid+ethylene-glycol/NRTL/x=0.898", "type": "excessEnthalpy", "components": ["acetic-acid", "ethylene-glycol"], "model": "NRTL", "T_K": 323.15, "x1": 0.898, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]},
    {"id": "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.098", "type": "excessEnthalpy", "components": ["acetic-acid", "ethylene-glycol"], "model": "UNIQUAC", "T_K": 323.15, "x1": 0.098, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]},
    {"id": "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.4445", "type": "excessEnthalpy", "components": ["acetic-acid", "ethylene-glycol"], "model": "UNIQUAC", "T_K": 323.15, "x1": 0.4445, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]},
-   {"id": "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.898", "type": "excessEnthalpy", "components": ["acetic-acid", "ethylene-glycol"], "model": "UNIQUAC", "T_K": 323.15, "x1": 0.898, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]}
+   {"id": "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.898", "type": "excessEnthalpy", "components": ["acetic-acid", "ethylene-glycol"], "model": "UNIQUAC", "T_K": 323.15, "x1": 0.898, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]},
+   {"id": "he/water+ethanol/NRTL/x=0.2673", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "NRTL", "T_K": 423.2, "x1": 0.2673, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
+   {"id": "he/water+ethanol/NRTL/x=0.5845", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "NRTL", "T_K": 423.2, "x1": 0.5845, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
+   {"id": "he/water+ethanol/NRTL/x=0.8312", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "NRTL", "T_K": 423.2, "x1": 0.8312, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
+   {"id": "he/water+ethanol/UNIQUAC/x=0.2673", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.2673, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
+   {"id": "he/water+ethanol/UNIQUAC/x=0.5845", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.5845, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]},
+   {"id": "he/water+ethanol/UNIQUAC/x=0.8312", "type": "excessEnthalpy", "components": ["water", "ethanol"], "model": "UNIQUAC", "T_K": 423.2, "x1": 0.8312, "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]}
   ]},
   {"id": "pure", "title": "Pure-component properties at standard points", "cases": [
    {"id": "pure/water/psat/25C", "type": "pureProperty", "component": "water", "property": "vapourPressure", "T_K": 298.15, "quantities": [{"key": "psat_kPa", "tol": "vapourPressure"}]},

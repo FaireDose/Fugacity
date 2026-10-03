@@ -139,6 +139,9 @@ export function createSystem(cfg) {
     return cubicVapour ? [...w, ...cubicVapour.warnings(T)] : w;
   }
 
-  const phaseMethods = activityPhaseMethods({ ids, comps, n, model, gammas, psat, cubicVapour, assoc, warnings });
+  // enthalpies need the association enthalpy of a dimerizing acid whether or not the chemical
+  // theory is switched on for the phase equilibrium (association: false), as pure() says
+  const dimerizing = comps.map(c => !!(c.association && c.association.type === "dimer"));
+  const phaseMethods = activityPhaseMethods({ ids, comps, n, model, gammas, psat, cubicVapour, assoc: dimerizing, warnings });
   return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings, ...phaseMethods };
 }

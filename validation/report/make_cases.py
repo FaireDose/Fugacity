@@ -96,6 +96,13 @@ for model in ["NRTL", "UNIQUAC"]:
         cases.append({"id": f"he/acetic-acid+ethylene-glycol/{model}/x={x1}", "type": "excessEnthalpy",
                       "components": ["acetic-acid", "ethylene-glycol"], "model": model, "T_K": 323.15, "x1": x1,
                       "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpy"}]})
+# excess enthalpy of water + ethanol at 423.2 K, 5000 kPa (Fang et al. 2014): an independent check,
+# the parameters were fitted to vapour-liquid data near 101.3 kPa only
+for model in ["NRTL", "UNIQUAC"]:
+    for x1 in [0.2673, 0.5845, 0.8312]:
+        cases.append({"id": f"he/water+ethanol/{model}/x={x1}", "type": "excessEnthalpy",
+                      "components": ["water", "ethanol"], "model": model, "T_K": 423.2, "x1": x1,
+                      "quantities": [{"key": "HE_J_mol", "tol": "excessEnthalpyPredicted"}]})
 groups.append({"id": "txy", "title": "Bubble and dew points (T-x-y and P-x spot points)", "cases": cases})
 
 # (d) pure-component properties
@@ -203,6 +210,7 @@ TOL = {
     "bubbleT_scatter": {"abs": 3.5, "unit": "K", "basis": "Secondary compilation with visible scatter; same bound as test/vle.test.js"},
     "bubbleY": {"abs": 0.02, "unit": "mole fraction", "basis": "Chosen for this report (not in proposal 0002)"},
     "excessEnthalpy": {"abs": 50.0, "unit": "J/mol", "informational": True, "basis": "Report only: these data were used in the fit (AAD 24-30 J/mol), so this is a consistency check"},
+    "excessEnthalpyPredicted": {"rel": 0.25, "informational": True, "basis": "Report only: excess enthalpy predicted from parameters fitted to vapour-liquid data, here outside their temperature range"},
     "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
     "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
     "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},

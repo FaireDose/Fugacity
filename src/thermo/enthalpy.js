@@ -17,6 +17,13 @@
  *           with exactly its heat of vaporization, whichever vapour model is chosen. The
  *           pressure effect on the liquid is neglected: about v_L (P - P_sat), 18 J/mol for
  *           water 10 bar above its vapour pressure (test/enthalpy.test.js).
+ *           Known limitation of this basis (proposal 0001 section 4; the `thermo` library
+ *           does the same): the non-ideality of the saturated vapour that the chosen vapour
+ *           model leaves out ends up in the liquid, so the liquid's sensible heat is too high.
+ *           Heating saturated liquid from 300 K to 400 K against CoolProp's reference
+ *           equations: methanol +29 % with an ideal-gas vapour (+19 % with PR), ethanol
+ *           +13 % (+7 %), water +5 % (+3 %); an adiabatic flash of a hot liquid then gives
+ *           too much vapour. To be decided before the enthalpy flash (proposal 0001 step 4).
  * Equation-of-state systems (PR, SRK): h = sum z_i h_IG,i(T) + h_R(T, P, z) for either phase.
  *
  * Fugacities (kPa), for the flash: liquid f_i = x_i gamma_i P_i^sat phi_i^sat exp[v_i^L (P - P_i^sat)/RT]
@@ -56,7 +63,8 @@ function named(name, what, fn) {
 
 /**
  * Methods for an activity-coefficient system.
- * @param {object} ctx  { ids, comps, n, model, gammas, psat, cubicVapour, assoc, warnings }
+ * @param {object} ctx  { ids, comps, n, model, gammas, psat, cubicVapour, assoc, warnings }; assoc[i] is
+ *        true for a dimerizing acid, whether or not the system uses the chemical theory
  */
 export function activityPhaseMethods(ctx) {
   const { ids, comps, n, gammas, psat, cubicVapour, assoc, warnings } = ctx;

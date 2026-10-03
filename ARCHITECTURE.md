@@ -25,8 +25,8 @@ Peng–Robinson does not break the flash drum.
 | # | Layer | Job | Code | Status |
 |---|---|---|---|---|
 | 0 | Data | Pure-component constants, binary parameters, UNIFAC groups, each with source, tier and license | `src/data/` | 16 components with constants and property correlations; 54 activity-model parameter sets; 42 k_ij (PR, SRK); Henry constants for 6 gases in water |
-| 1 | Property package | Activity coefficients, fugacities, K-values, enthalpy, density at any T, P, composition | `src/thermo/` | NRTL, UNIQUAC, ideal; acid dimerization; Peng–Robinson and SRK; pure-component properties and enthalpy (`pure()`); IAPWS-IF97 and IAPWS transport for water; Henry's law. **Mixture enthalpy (property package) missing** |
-| 2 | Equilibrium | Bubble and dew points, flash, azeotropes, phase stability, residue curves | `src/equilibrium/` | Bubble T/P, azeotropes, spinodal check, residue curves; with PR/SRK also dew T/P and a tangent-plane stability test. **Flash missing** |
+| 1 | Property package | Activity coefficients, fugacities, K-values, enthalpy, density at any T, P, composition | `src/thermo/` | NRTL, UNIQUAC, ideal; acid dimerization; Peng–Robinson and SRK; pure-component properties and enthalpy (`pure()`); IAPWS-IF97 and IAPWS transport for water; Henry's law; vapour model choice (ideal gas, PR, SRK) for activity models; mixture enthalpy, excess enthalpy and `phase()` for every model |
+| 2 | Equilibrium | Bubble and dew points, flash, azeotropes, phase stability, residue curves | `src/equilibrium/` | Bubble and dew T/P for every model, azeotropes, spinodal check, residue curves; tangent-plane stability test for PR/SRK; errors with codes. **Flash missing** |
 | 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | Not started |
 | 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | Not started |
 | 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |

@@ -638,7 +638,7 @@ export function renderMarkdown(cmp, meta = {}) {
   if (!changes.length) changes.push(`No result changed and every result with a reference is within tolerance.`, ``);
   const legend = [
     `<sub>Deviation = this PR minus reference (relative for properties, absolute for temperatures and compositions). ` +
-    `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = equation of state compared with a reference equation of state, informational. ` +
+    `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = informational, does not block (an equation of state against a reference equation of state, or an excess enthalpy compared with data the fit used or predicted outside the fitted range). ` +
     `Tolerances and sources: \`validation/report/README.md\`.${meta.htmlNote ? " " + meta.htmlNote : ""}</sub>`, ``,
   ];
   const detailsOpen = [`<details><summary>All ${s.total} results</summary>`, ``];

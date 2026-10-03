@@ -21,6 +21,13 @@
    "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je2008704.html",
    "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
    "tables": "ThermoML record, PureOrMixtureData 4 (boiling temperature) and 5 (vapour mole fraction): the binary ethanol + water set. The table number in the article was not checked (article not open)."
+  },
+  "fang2014": {
+   "citation": "G. S. Fang, K. Tsukamoto, M. Maebayashi, M. Ohba, H. Ogawa, Excess enthalpy for the (benzene + cyclohexane) mixture over a wide range of temperature and pressure, J. Chem. Thermodyn. 78 (2014) 204-214",
+   "doi": "10.1016/j.jct.2014.05.020",
+   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2014.05.020.html",
+   "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+   "tables": "ThermoML record, first data set: compounds 1 water + 2 ethanol, excess molar enthalpy, variable mole fraction of compound 1 (water), constraints T = 423.2 K and P = 5000 kPa. The table number in the article was not checked (article not open)."
   }
  },
  "values": {
@@ -310,6 +317,48 @@
     "value": 124.0,
     "source": "schmid2007",
     "detail": "Table 17, x1 = 0.898, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/water+ethanol/NRTL/x=0.2673": {
+   "HE_J_mol": {
+    "value": 665.6,
+    "source": "fang2014",
+    "detail": "x_water = 0.2673, HE = 0.6656 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
+   }
+  },
+  "he/water+ethanol/NRTL/x=0.5845": {
+   "HE_J_mol": {
+    "value": 910.3,
+    "source": "fang2014",
+    "detail": "x_water = 0.5845, HE = 0.9103 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
+   }
+  },
+  "he/water+ethanol/NRTL/x=0.8312": {
+   "HE_J_mol": {
+    "value": 535.2,
+    "source": "fang2014",
+    "detail": "x_water = 0.8312, HE = 0.5352 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
+   }
+  },
+  "he/water+ethanol/UNIQUAC/x=0.2673": {
+   "HE_J_mol": {
+    "value": 665.6,
+    "source": "fang2014",
+    "detail": "x_water = 0.2673, HE = 0.6656 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
+   }
+  },
+  "he/water+ethanol/UNIQUAC/x=0.5845": {
+   "HE_J_mol": {
+    "value": 910.3,
+    "source": "fang2014",
+    "detail": "x_water = 0.5845, HE = 0.9103 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
+   }
+  },
+  "he/water+ethanol/UNIQUAC/x=0.8312": {
+   "HE_J_mol": {
+    "value": 535.2,
+    "source": "fang2014",
+    "detail": "x_water = 0.8312, HE = 0.5352 kJ/mol at 423.2 K, 5000 kPa (converted to J/mol)"
    }
   }
  }

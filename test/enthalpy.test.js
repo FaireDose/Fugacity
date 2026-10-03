@@ -101,3 +101,9 @@ test("errors: dimerizing acid, phase name, above the critical temperature", () =
   // a vapour above the critical temperature is fine
   assert.ok(Number.isFinite(p.enthalpy("vapour", 520, 101.325, [0.5, 0.5])));
 });
+
+test("acetic acid enthalpies are refused also when the chemical theory is switched off", () => {
+  const s = system({ components: ["acetic acid", "ethylene glycol"], model: "NRTL", association: false });
+  assert.throws(() => s.enthalpy("liquid", 350, 101.325, [0.5, 0.5]), e => e instanceof FugacityError && e.code === "NOT_AVAILABLE");
+  assert.ok(Number.isFinite(s.excessEnthalpy([0.5, 0.5], 323.15)));
+});
