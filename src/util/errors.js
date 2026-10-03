@@ -13,7 +13,7 @@
  *   MISSING_DATA    a parameter or property needed for this calculation is not in the data
  *   NO_CONVERGENCE  a solver did not find a solution; the message says what was tried
  *   PHASE_SPLIT     the state splits into more phases than this calculation handles
- *                   (for example two liquids before the three-phase flash exists)
+ *                   (for example two liquids with an equation of state)
  *   NOT_AVAILABLE   the calculation does not exist for this model yet
  */
 

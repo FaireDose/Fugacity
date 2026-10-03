@@ -351,6 +351,16 @@ function evaluateQuantity(ctx, cs, key) {
       const v = key === "VF" ? r.VF : key === "T_C" ? r.T - 273.15 : vap ? vap.composition[0] : null;
       return { value: v, method: "system.flash()" };
     }
+    case "flash3": {
+      // flashes with two liquids: liquid A is the one richer in the first component
+      const s = ctx.system(cs.components, cs.model);
+      const r = fn(s, "flash", "system.flash()")({ z: cs.z, ...cs.spec });
+      const L = r.phases.filter(p => p.type === "liquid").sort((a, b) => b.composition[0] - a.composition[0]);
+      const vap = r.phases.find(p => p.type === "vapour");
+      const y = vap && vap.fraction > 0 ? vap.composition[0] : r.incipient && r.incipient.type === "vapour" ? r.incipient.composition[0] : null;
+      const v = { VF: r.VF, T_C: r.T - 273.15, y1: y, xA1: L[0] ? L[0].composition[0] : null, xB1: L.length > 1 ? L[1].composition[0] : null }[key];
+      return { value: v, method: "system.flash()" };
+    }
     case "excessEnthalpy": {
       const s = ctx.system(cs.components, cs.model);
       return { value: fn(s, "excessEnthalpy", "system.excessEnthalpy()")([cs.x1, 1 - cs.x1], cs.T_K), method: "system.excessEnthalpy()" };
@@ -501,6 +511,13 @@ function describe(cs, key) {
       const sp = Object.entries(cs.spec).map(([k, v]) => (k === "T" ? `${tC(v)} °C` : k === "P" ? `${bar(v)} bar` : k === "H" ? `H = ${v} J/mol` : `VF = ${v}`)).join(", ");
       const q = { VF: "vapour fraction", T_C: "T", y1: `y(${comps[0].toLowerCase()})` }[key];
       return { property: `${comps.join(" + ")}: flash, ${q}`, conditions: `z = [${cs.z.join(", ")}], ${sp}, ${cs.model}${cs.vapour && cs.vapour !== "ideal" ? ` with ${cs.vapour} vapour` : ""}` };
+    }
+    case "flash3": {
+      const comps = cs.components.map(name);
+      const sp = Object.entries(cs.spec).map(([k, v]) => (k === "T" ? `${tC(v)} °C` : k === "P" ? `${bar(v)} bar` : k === "H" ? `H = ${v} J/mol` : `VF = ${v}`)).join(", ");
+      const c = comps[0].toLowerCase();
+      const q = { VF: "vapour fraction", T_C: "T", y1: `y(${c})`, xA1: `x(${c}) in the liquid with more ${c}`, xB1: `x(${c}) in the liquid with less ${c}` }[key];
+      return { property: `${comps.join(" + ")}: flash with two liquids, ${q}`, conditions: `z = [${cs.z.join(", ")}], ${sp}, ${cs.model}` };
     }
     case "excessEnthalpy":
       return { property: `${c1} + ${c2}: excess enthalpy`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${tC(cs.T_K)} °C, ${cs.model}` };

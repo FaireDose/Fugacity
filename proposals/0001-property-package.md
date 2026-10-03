@@ -260,7 +260,9 @@ Each step is one pull request with its tests and an updated engineering report.
 4. **Two-phase flash:** TP, PH, P-VF and T-VF, for all models; stability test for
    activity models; tests from the table above.
 5. **Three-phase flash** (vapour + two liquids) and liquid-liquid tests against the open
-   LLE data.
+   LLE data. Done for NRTL and UNIQUAC (added when step 5 was implemented); two liquids with
+   an equation of state (PR/SRK, for example benzene + water) still give a PHASE_SPLIT error
+   and come later.
 6. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1).
 
 Later: with streams (A5), flowrates, the stream object, and the P-S flash with entropy for

@@ -109,12 +109,12 @@ test("flash errors: specification, acetic acid enthalpy, liquid split", () => {
   const r = a.flash({ z: [0.5, 0.5], T: 378, P: 101.325 });
   assert.ok(r.VF > 0 && r.VF < 1 && r.H_J_mol === null && r.warnings.some(w => /dimerizes/.test(w)));
   code(() => a.flash({ z: [0.5, 0.5], P: 101.325, H: 0 }), "NOT_AVAILABLE", /dimerizes/);
-  // a liquid that splits into two liquids: PHASE_SPLIT until the three-phase flash
+  // a liquid that splits into two liquids is resolved (step 5, test/three-phase.test.js)
   const w = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
-  code(() => w.flash({ z: [0.5, 0.5], T: 300, P: 101.325 }), "PHASE_SPLIT", /three-phase/);
+  assert.equal(w.flash({ z: [0.5, 0.5], T: 300, P: 101.325 }).phases.filter(p => p.type === "liquid").length, 2);
 });
 
-test("two liquids are caught at the true liquid-liquid boundary (independent binodal)", async () => {
+test("two liquids are found at the true liquid-liquid boundary (independent binodal)", async () => {
   const { liquidTangentPlane } = await import("../src/equilibrium/stability.js");
   const { binodal } = JSON.parse(readFileSync(new URL("../validation/fixtures/flash.json", import.meta.url)));
   const s = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
@@ -124,11 +124,12 @@ test("two liquids are caught at the true liquid-liquid boundary (independent bin
       assert.equal(liquidTangentPlane(s, [x, 1 - x], b.T_K).stable, stable, `T=${b.T_K} x=${x}`);
     }
   }
-  const split = fn => assert.throws(fn, e => e instanceof FugacityError && e.code === "PHASE_SPLIT");
-  split(() => s.flash({ z: [0.3, 0.7], T: 340, P: 101.325 }));     // inside the binodal, outside the spinodal
-  split(() => s.flash({ z: [0.98, 0.02], T: 340, P: 101.325 }));   // vapour + water-rich liquid would be wrong
-  split(() => s.flash({ z: [0.98, 0.02], P: 101.325, VF: 0 }));
-  split(() => s.flash({ z: [0.3, 0.7], P: 101.325, H: -20000 }));
+  // two liquids, not vapour + liquid (step 4 threw PHASE_SPLIT here; step 5 resolves them)
+  const liquids = r => r.phases.filter(p => p.type === "liquid").length;
+  assert.equal(liquids(s.flash({ z: [0.3, 0.7], T: 340, P: 101.325 })), 2);     // inside the binodal, outside the spinodal
+  assert.equal(liquids(s.flash({ z: [0.98, 0.02], T: 340, P: 101.325 })), 2);   // vapour + water-rich liquid would be wrong
+  assert.equal(liquids(s.flash({ z: [0.98, 0.02], P: 101.325, VF: 0 })), 2);
+  assert.equal(liquids(s.flash({ z: [0.3, 0.7], P: 101.325, H: -20000 })), 2);
   // outside the two-liquid region the vapour-liquid flash is fine
   const r = s.flash({ z: [0.995, 0.005], T: 360, P: 101.325 });
   assert.ok(r.VF > 0 && r.VF < 1);

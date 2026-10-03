@@ -45,6 +45,9 @@ sch = json.loads((ROOT / "validation/data/schmid2007_acetic_acid_ethylene_glycol
 etw = json.loads((ROOT / "validation/data/ethanol_water_101kPa.json").read_text())
 weh = json.loads((ROOT / "validation/data/water_ethanol_HE_fang2014.json").read_text())
 flashref = json.loads((ROOT / "validation/fixtures/flash.json").read_text())["cases"]
+threeref = json.loads((ROOT / "validation/fixtures/three_phase.json").read_text())
+xu = json.loads((ROOT / "validation/data/water_ethyl-acetate_lle_xu2017.json").read_text())
+weaz = json.loads((ROOT / "validation/data/water_ethyl-acetate_azeotrope_101kPa.json").read_text())
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -90,6 +93,13 @@ SOURCES = {
     "schmid2007": sch["source"],
     "kamihama2012": etw["source"],
     "fang2014": weh["source"],
+    "three-phase-ref": {"citation": "Independent Python reference (validation/python/reference_three_phase.py): binary from the "
+                                    "liquid-liquid equilibrium, bubble pressure and lever rule of reference_model.py; ternary from the "
+                                    "minimum of the Gibbs energy polished by the equal-fugacity equations (scipy)",
+                        "url": "https://github.com/FaireDose/Fugacity/blob/main/validation/python/reference_three_phase.py",
+                        "access": "Open source (MIT license)"},
+    "xu2017": xu["source"],
+    "water-ea-azeotrope": weaz["source"],
     "thermo-flash": {"citation": "thermo library (Caleb Bell), FlashVL with the same parameters; enthalpy flashes with the independent enthalpies of validation/python/reference_enthalpy.py (validation/python/reference_flash.py)",
                      "url": "https://github.com/CalebBell/thermo", "access": "Open source (MIT license)"},
 }
@@ -284,6 +294,29 @@ def reference(case, key):
                 v = {"VF": c["VF"], "T_C": c["T_K"] - 273.15, "y1": (c["y"] or [None])[0]}[key]
                 return val(v, "thermo-flash", f"spec {case['spec']}, z = {case['z']}") if v is not None else none("no vapour")
         return none("Not in validation/fixtures/flash.json")
+    if t == "flash3":
+        if case.get("data") == "xu2017":
+            for T, x2 in xu["rows"]:
+                if abs(T - case["spec"]["T"]) < 1e-9:
+                    return val(1 - x2, "xu2017", f"x(ethyl acetate) = {x2} in the water-rich liquid at {T} K, as x(water) = 1 - {x2} "
+                                                 "(data not used in the fit; expanded uncertainty 0.0012)")
+            return none("No Xu (2017) point at this temperature")
+        if case.get("data") == "handbook":
+            T_C, wt2 = weaz["rows"][0]
+            if key == "T_C":
+                return val(T_C, "water-ea-azeotrope", "heterogeneous azeotrope, handbook value (a fit target: consistency, not an independent check)")
+            Mw, Me = components["water"]["MW"], components["ethyl-acetate"]["MW"]
+            y = (100 - wt2) / Mw / ((100 - wt2) / Mw + wt2 / Me)
+            return val(y, "water-ea-azeotrope", f"{wt2} wt % ethyl acetate converted to the mole fraction of water with the databank molar masses (a fit target)")
+        for c in threeref["binary"] + threeref["ternary"]:
+            if c["components"] == case["components"] and c["model"] == case["model"] and c["z"] == case["z"] and c["spec"] == case["spec"]:
+                liq = sorted([p for p in c["phases"] if p["type"] == "liquid"], key=lambda p: -p["x"][0])
+                vap = [p for p in c["phases"] if p["type"] == "vapour" and p["fraction"] > 0]
+                y = vap[0]["x"][0] if vap else (threeref["three_phase_point"]["y_water"] if c["spec"].get("VF") == 0 and len(c["z"]) == 2 else None)
+                v = {"VF": vap[0]["fraction"] if vap else 0.0, "T_C": c["T_K"] - 273.15, "y1": y,
+                     "xA1": liq[0]["x"][0] if liq else None, "xB1": liq[1]["x"][0] if len(liq) > 1 else None}[key]
+                return val(v, "three-phase-ref", f"spec {case['spec']}, z = {case['z']}") if v is not None else none("not in the reference")
+        return none("Not in validation/fixtures/three_phase.json")
     if t == "dewT":
         if case["components"] == ["ethanol", "water"]:
             for x1, T, y1 in etw["rows"]:
