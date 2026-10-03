@@ -28,7 +28,7 @@ import {
   setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
 import { HENRY_PAIRS, isEosModel } from "./workspaces.js";
-import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW } from "./flash-logic.js";
+import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW, molarFlow } from "./flash-logic.js";
 import pkg from "../../package.json" with { type: "json" };
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
@@ -549,8 +549,10 @@ function flashView(ctx) {
   }
   const { result: r, z } = runFlash(sys, state.flash);
   const names = sys.names, MW = ids.map(id => pure(id).MW);
-  const flow = state.flash.flow_kmol_h;
-  const table = flashTable(r, { names, MW, z, units: u, flow });
+  const fu = state.flash.flowUnit;
+  const flow = molarFlow(state.flash, z.reduce((a, v, i) => a + v * MW[i], 0));   // kmol/h
+  const table = flashTable(r, { names, MW, z, units: u, flow, flowUnit: fu });
+  const feedFlowText = `${fmtShort(state.flash.flow, 6)} ${fu}${fu === "kmol/h" ? "" : ` (${fmtShort(flow, 6)} kmol/h)`}`;
   const spec = FLASH_SPECS.find(f => f.id === state.flash.spec);
   const ml = isEosModel(state.model) ? (state.model === "PR" ? "Peng–Robinson" : "SRK")
     : `${state.model === "ideal" ? "Ideal solution" : state.model}${state.vapour !== "ideal" ? ` with a ${state.vapour} vapour` : ""}`;
@@ -569,7 +571,7 @@ function flashView(ctx) {
     if (row.key === "P") return fmtShort(v, 6);
     if (row.key === "h") return Math.round(v).toLocaleString("en-US").replace(/,/g, " ");
     if (row.key === "MW") return v.toFixed(3);
-    if (row.key === "flow" || row.key === "mflow") return fmtShort(v, 6);
+    if (row.key === "flow" || row.key === "mflow" || /^f\d/.test(row.key)) return fmtShort(v, 6);
     if (row.key.startsWith("w")) return (100 * v).toFixed(3);
     return v.toFixed(5);
   };
@@ -583,8 +585,8 @@ function flashView(ctx) {
   const summary = [
     ["Temperature", +tToDisplay(r.T, u).toFixed(4), tU(u)], ["Pressure", +pToDisplay(r.P, u).toPrecision(8), u.P], ["Vapour fraction", r.VF, "mol/mol"],
     ["Enthalpy of the outlet", r.H_J_mol, "J/mol of feed"],
-    ...(r.duty_J_mol != null ? [["Heat duty Q", r.duty_J_mol, "J/mol of feed"], ["Heat duty Q", dutyKW(r.duty_J_mol, flow), `kW at ${flow} kmol/h of feed`]] : []),
-    ["Feed flow", flow, "kmol/h"],
+    ...(r.duty_J_mol != null ? [["Heat duty Q", r.duty_J_mol, "J/mol of feed"], ["Heat duty Q", dutyKW(r.duty_J_mol, flow), `kW at ${feedFlowText} of feed`]] : []),
+    ["Feed flow", state.flash.flow, fu], ...(fu === "kmol/h" ? [] : [["Feed molar flow", flow, "kmol/h"]]),
   ];
   const meta = {
     title: names.join(", "), model: ml, spec: `${spec.title}: ${JSON.stringify(state.flash.spec === "PH" ? { P_kPa: r.P, Q_J_mol: state.flash.Q_J_mol, feed: { T_K: state.flash.feedT_K, P_kPa: state.flash.feedP_kPa } } : { TP: { T_K: r.T, P_kPa: r.P }, PVF: { P_kPa: r.P, VF: state.flash.VF }, TVF: { T_K: r.T, VF: state.flash.VF } }[state.flash.spec])}`,
@@ -611,7 +613,7 @@ function flashView(ctx) {
       ["Outlet enthalpy", r.H_J_mol == null ? null : Math.round(r.H_J_mol).toString(), "J/mol"],
       r.feed ? ["Feed enthalpy", Math.round(r.feed.H_J_mol).toString(), "J/mol"] : null,
       r.duty_J_mol != null ? ["Heat duty Q", Math.round(r.duty_J_mol).toString(), "J/mol of feed"] : null,
-      r.duty_J_mol != null ? ["Heat duty Q", fmtShort(dutyKW(r.duty_J_mol, flow), 5), `kW at ${fmtShort(flow, 6)} kmol/h`] : null,
+      r.duty_J_mol != null ? ["Heat duty Q", fmtShort(dutyKW(r.duty_J_mol, flow), 5), `kW at ${feedFlowText}`] : null,
       ["Iterations", String(r.iterations)],
     ]),
     ...(r.warnings ?? []).map(w => h("div", { class: "fug-warn" }, w)),

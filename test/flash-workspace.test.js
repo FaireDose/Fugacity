@@ -8,7 +8,7 @@ import { system, pure } from "../src/index.js";
 import { initialState, applyPatch, VIEWS } from "../src/ui/app-logic.js";
 import { WORKSPACES, checkInputs } from "../src/ui/workspaces.js";
 import {
-  FLASH_DEFAULTS, FLASH_SPECS, normalizeFlash, dutyKW, feedComposition, convertBasis, runFlash, flashTable, flashCsv, csvField, phaseName,
+  FLASH_DEFAULTS, FLASH_SPECS, normalizeFlash, dutyKW, molarFlow, flowIn, FLOW_UNITS, feedComposition, convertBasis, runFlash, flashTable, flashCsv, csvField, phaseName,
 } from "../src/ui/flash-logic.js";
 
 const units = { T: "K", P: "kPa" };
@@ -106,6 +106,16 @@ test("stream table: the engine's numbers, balanced, in display units", () => {
   assert.ok(Math.abs(flows[1] + flows[2] - 100) < 1e-9);
   assert.ok(Math.abs(mflows[1] + mflows[2] - mflows[0]) < 1e-7);
   assert.equal(t.rows.some(x => x.key === "flow"), false, "no flows without a feed flow");
+  // component flows add up to the stream flows; in a mass unit when the feed flow is one
+  const fl = i => tf.rows.find(x => x.key === `f${i}`).values;
+  for (let k = 0; k < 3; k++) assert.ok(Math.abs([0, 1, 2].reduce((a, i) => a + fl(i)[k], 0) - flows[k]) < 1e-9, `column ${k}`);
+  const tt = flashTable(r, { names: sys.names, MW: MW(ids), z, units, flow: 100, flowUnit: "t/h" });
+  const mT = tt.rows.find(x => x.key === "mflow");
+  assert.equal(mT.unit, "t/h");
+  assert.ok(Math.abs(mT.values[0] * 1000 - mflows[0]) < 1e-9, "t/h = kg/h / 1000");
+  const fT = i => tt.rows.find(x => x.key === `f${i}`);
+  assert.equal(fT(0).unit, "t/h");
+  assert.ok(Math.abs([0, 1, 2].reduce((a, i) => a + fT(i).values[0], 0) - mT.values[0]) < 1e-12, "component mass flows add up");
   // without a feed state: no feed T, P, h
   const { result: r2, z: z2 } = runFlash(sys, { ...f, duty: false });
   const t2 = flashTable(r2, { names: sys.names, MW: MW(ids), z: z2, units });
@@ -131,4 +141,22 @@ test("CSV: standard quoting, decimal points, every row of the table", () => {
   assert.equal(lines.length - head - 2, table.rows.length);
   const xRow = lines.find(l => l.startsWith("Mole fraction Methanol,")).split(",");
   assert.equal(Number(xRow[3]), Number(r.phases[0].composition[0].toPrecision(10)));
+});
+
+test("feed flow in kmol/h, kg/h or t/h", () => {
+  assert.deepEqual(FLOW_UNITS, ["kmol/h", "kg/h", "t/h"]);
+  assert.deepEqual([FLASH_DEFAULTS.flow, FLASH_DEFAULTS.flowUnit], [100, "kmol/h"]);
+  const MWmix = 25;   // kg/kmol
+  assert.equal(molarFlow({ flow: 100, flowUnit: "kmol/h" }, MWmix), 100);
+  assert.equal(molarFlow({ flow: 2500, flowUnit: "kg/h" }, MWmix), 100);
+  assert.equal(molarFlow({ flow: 2.5, flowUnit: "t/h" }, MWmix), 100);
+  // a unit change keeps the flow
+  const f = { flow: 100, flowUnit: "kmol/h" };
+  assert.equal(flowIn(f, "kg/h", MWmix), 2500);
+  assert.equal(flowIn(f, "t/h", MWmix), 2.5);
+  assert.equal(molarFlow({ flow: flowIn(f, "t/h", MWmix), flowUnit: "t/h" }, MWmix), 100);
+  // settings: checked, and the key of 0.2.x still accepted
+  assert.equal(normalizeFlash({ flowUnit: "tonnes/h" }).flowUnit, "t/h");
+  assert.throws(() => normalizeFlash({ flowUnit: "lb/h" }), /not one of: kmol\/h, kg\/h, t\/h/);
+  assert.deepEqual([normalizeFlash({ flow_kmol_h: 40, flowUnit: "kg/h" }).flow, normalizeFlash({ flow_kmol_h: 40 }).flowUnit], [40, "kmol/h"]);
 });

@@ -84,8 +84,15 @@ export const APP_CSS = `
 .fug-app .fa-field{display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:12px; color:var(--fug-fg2)}
 .fa-hint{font-size:11px; color:var(--fug-muted); padding:0 2px}
 .fa-seg button{font-size:12px; padding:4px 10px}
+.fa-models{gap:3px}
 .fa-model-row{display:flex; align-items:center; gap:6px}
 .fa-model-cap{font-size:11px; color:var(--fug-muted); min-width:4.4em; text-align:right}
+.fa-model-family{display:flex; flex-direction:column; gap:2px; padding-left:6px; border-left:2px solid transparent; border-radius:1px}
+.fa-model-family.is-on{border-left-color:var(--fug-accent)}
+.fa-model-sub .fa-model-cap{font-size:10.5px}
+.fa-model-sub .fa-seg button{font-size:11px; padding:1px 8px}
+.fa-model-sub.is-off{opacity:.45}
+.fa-seg button:disabled{cursor:not-allowed}
 .fa-units{display:grid; grid-template-columns:auto auto auto auto; gap:5px 10px; align-items:center; font-size:12px; color:var(--fug-fg2)}
 .fa-units .fug-seg{justify-self:start}
 .fa-about{font-size:12px; max-width:220px}
@@ -202,6 +209,8 @@ export const APP_CSS = `
 .fug-app .fa-src-tools svg.fug-ico{width:16px; height:16px; flex:none; display:inline-block; touch-action:auto}
 .fa-check-label{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--fug-fg2)}
 .fa-feed{display:flex; flex-direction:column; gap:6px}
+.fa-flow{display:flex; flex-direction:column; gap:4px; margin-bottom:8px}
+.fa-flow .fa-seg{align-self:flex-end}
 .fa-plot[data-view="flash"]{max-width:none}
 .fa-flash{display:flex; flex-direction:column; gap:10px}
 .fa-split{display:flex; height:30px; border-radius:6px; overflow:hidden; border:1px solid var(--fug-rule)}

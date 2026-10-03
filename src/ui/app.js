@@ -31,7 +31,7 @@ import {
 import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView, sourcesPanel } from "./app-views.js";
-import { FLASH_SPECS, feedComposition, convertBasis } from "./flash-logic.js";
+import { FLASH_SPECS, FLOW_UNITS, feedComposition, convertBasis, flowIn } from "./flash-logic.js";
 import { pure } from "../thermo/pure.js";
 import pkg from "../../package.json" with { type: "json" };
 
@@ -207,9 +207,9 @@ export function app(target, cfg = {}) {
       disabled: !!disabled, title, "data-fk": fk ?? `small-${label}`, on: { click: onClick } },
       glyph ? h("span", { class: "fa-glyph", "aria-hidden": "true" }, glyph()) : icon(ico, 18), h("span", {}, label));
   }
-  function seg(label, choices, current, onPick) {
-    return h("div", { class: "fug-seg fa-seg", role: "group", "aria-label": label },
-      ...choices.map(([v, text]) => h("button", { type: "button", "aria-pressed": String(current === v), "data-fk": `seg-${label}-${v}`, on: { click: () => onPick(v) } }, text)));
+  function seg(label, choices, current, onPick, { disabled = false, title } = {}) {
+    return h("div", { class: "fug-seg fa-seg", role: "group", "aria-label": label, title },
+      ...choices.map(([v, text]) => h("button", { type: "button", "aria-pressed": String(current === v), disabled, "data-fk": `seg-${label}-${v}`, on: { click: () => onPick(v) } }, text)));
   }
   function group(label, ...children) {
     return h("div", { class: "fa-group", role: "group", "aria-label": label },
@@ -254,15 +254,27 @@ export function app(target, cfg = {}) {
   /** One labelled row of the Model group: a caption and its choices. */
   const modelRow = (caption, label, choices, current, onPick) =>
     h("div", { class: "fa-model-row" }, h("span", { class: "fa-model-cap", "aria-hidden": "true" }, caption), seg(label, choices, current, onPick));
+  /**
+   * The Model group: the activity models, with their vapour model as a smaller sub-row (it
+   * belongs to them: the liquid from γ, the vapour from an ideal gas or a cubic equation),
+   * then the equations of state, which describe both phases. The vapour row stays in place,
+   * dimmed and disabled, while an equation of state is chosen.
+   */
   function modelGroup() {
     const eos = isEosModel(state.model);
-    return group("Model", stack(
-      modelRow("Activity", "Activity model (liquid)", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : state.model, m => set({ model: m })),
-      modelRow("EOS", "Equation of state (both phases)", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? state.model : null, m => set({ model: m })),
-      eos
-        ? h("div", { class: "fa-hint" }, `${state.model === "PR" ? "Peng–Robinson" : "SRK"} for liquid and vapour; k_ij from the databank`)
-        : modelRow("Vapour", "Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], state.vapour, m => set({ vapour: m })),
-      eos ? null : h("div", { class: "fa-hint" }, `${state.model === "ideal" ? "Liquid γ = 1" : "Liquid γ"}; ${state.vapour === "ideal" ? "vapour ideal gas" : `${state.vapour} vapour with φsat and Poynting`}`)));
+    const hint = eos
+      ? `${state.model === "PR" ? "Peng–Robinson" : "SRK"} for liquid and vapour; k_ij from the databank`
+      : `${state.model === "ideal" ? "Liquid γ = 1" : `Liquid γ from ${state.model}`}; ${state.vapour === "ideal" ? "ideal-gas vapour" : `${state.vapour} vapour with φsat and Poynting`}`;
+    return group("Model", h("div", { class: "fa-stack fa-models" },
+      h("div", { class: "fa-model-family" + (eos ? "" : " is-on") },
+        modelRow("Activity", "Activity model (liquid)", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : state.model, m => set({ model: m })),
+        h("div", { class: "fa-model-row fa-model-sub" + (eos ? " is-off" : "") },
+          h("span", { class: "fa-model-cap", "aria-hidden": "true" }, "vapour"),
+          seg("Vapour model of the activity model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], state.vapour, m => set({ vapour: m }),
+            { disabled: eos, title: eos ? "The vapour model belongs to the activity models; an equation of state describes the vapour itself" : undefined }))),
+      h("div", { class: "fa-model-family" + (eos ? " is-on" : "") },
+        modelRow("EOS", "Equation of state (both phases)", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? state.model : null, m => set({ model: m }))),
+      h("div", { class: "fa-hint" }, hint)));
   }
   function ribbonGroups() {
     const u = state.units, v = state.view;
@@ -482,8 +494,15 @@ export function app(target, cfg = {}) {
     };
     const total = shown.reduce((a, b) => a + b, 0);
     return inputsSection(`Feed, ${mass ? "wt %" : "mole fractions"}`,
-      field("Feed flow, kmol/h", fmtShort(f.flow_kmol_h, 6), x => { const v = Number(String(x).trim().replace(",", ".")); if (!(v > 0) || !Number.isFinite(v)) return false; set({ flash: { flow_kmol_h: v } }); },
-        { id: "fflow", title: "For the stream flows and the heat duty in kW; the flash itself is per mole of feed" }),
+      h("div", { class: "fa-flow" },
+        field("Feed flow", fmtShort(f.flow, 6), x => { const v = Number(String(x).trim().replace(",", ".")); if (!(v > 0) || !Number.isFinite(v)) return false; set({ flash: { flow: v } }); },
+          { id: "fflow", title: "For the stream and component flows and the heat duty in kW; the flash itself is per mole of feed" }),
+        // a new unit keeps the same flow (6 significant digits), it does not relabel the number
+        seg("Feed flow unit", FLOW_UNITS.map(x => [x, x]), f.flowUnit, x => {
+          if (x === f.flowUnit) return;
+          const MWmix = z.reduce((a, v, i) => a + v * MW[i], 0);
+          set({ flash: { flowUnit: x, flow: +flowIn(f, x, MWmix).toPrecision(6) } });
+        })),
       h("div", { class: "fa-feed" }, ...ids.map((id, k) => field(nameOf(id), fmtShort(+shown[k].toPrecision(6), 6), t => commit(k, t), { id: `fz${k}`, width: "6em" }))),
       h("p", { class: "fa-in-hint" }, `Normalized to ${mass ? "100 wt %" : "1"} (now ${fmtShort(+total.toPrecision(6), 6)}).`,
         " ", h("button", { type: "button", class: "fa-link-btn", "data-fk": "feed-eq", on: { click: () => set({ flash: { z: null } }) } }, "Equimolar")));
