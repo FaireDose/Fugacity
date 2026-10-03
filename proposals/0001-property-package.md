@@ -171,8 +171,10 @@ The same rules for bubble, dew and every flash:
   temperature in an enthalpy flash 1e-6 K. Inputs are checked first (one mole fraction per component, none negative, a positive
   sum; compositions are normalized to a sum of 1, as the existing functions always did;
   positive T and P; the spec pair is one of those above).
-- **Speed budget:** under 5 ms for a two-phase flash of up to 5 components in a browser,
-  so that flowsheets with recycles stay interactive.
+- **Speed budget:** under 5 ms for a two-phase T-P flash of up to 5 components in a
+  browser, and under 20 ms for a P-H flash (added when step 4 was reviewed, pull request
+  #35: every heater, valve and column stage of a flowsheet runs a P-H flash, many times per
+  recycle loop), so that flowsheets with recycles stay interactive.
 
 ### 6. How the flash works
 
@@ -258,7 +260,9 @@ Each step is one pull request with its tests and an updated engineering report.
 4. **Two-phase flash:** TP, PH, P-VF and T-VF, for all models; stability test for
    activity models; tests from the table above.
 5. **Three-phase flash** (vapour + two liquids) and liquid-liquid tests against the open
-   LLE data.
+   LLE data. Done for NRTL and UNIQUAC (added when step 5 was implemented); two liquids with
+   an equation of state (PR/SRK, for example benzene + water) still give a PHASE_SPLIT error
+   and come later.
 6. **Flash workspace** in the workbench, with CSV export of the result (roadmap B1).
 
 Later: with streams (A5), flowrates, the stream object, and the P-S flash with entropy for

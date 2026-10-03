@@ -18,6 +18,8 @@
   "excessEnthalpyPredicted": {"rel": 0.25, "informational": true, "basis": "Report only: excess enthalpy predicted from parameters fitted to vapour-liquid data, here outside their temperature range"},
   "flashVF": {"abs": 0.001, "unit": "mole fraction", "basis": "Independent implementation (thermo FlashVL, same parameters)"},
   "flashT": {"abs": 0.01, "unit": "K", "basis": "Independent implementation (thermo FlashVL and independent enthalpies, same parameters)"},
+  "threePhaseX": {"abs": 0.001, "unit": "mole fraction", "basis": "Independent implementation (validation/python/reference_three_phase.py, same parameters)"},
+  "lleData": {"abs": 0.005, "unit": "mole fraction", "basis": "Model deviation from mutual-solubility data reported by the fit (AAD 0.0034 against Xu 2017); data uncertainty 0.0012"},
   "dewX": {"abs": 0.03, "unit": "mole fraction", "basis": "Chosen for this report: the liquid at a dew point (not in proposal 0002)"},
   "bubbleP": {"rel": 0.03, "basis": "Chosen for this report: fit AAD 1.2 % with the paper's own pure-component pressures, plus the databank vapour pressures (not in proposal 0002)"},
   "steam": {"rel": 0.001, "basis": "IAPWS-IF97 against IAPWS-95: IF97 agrees with IAPWS-95 within its stated uncertainty, not to 1e-8 (team brief)"},
@@ -114,6 +116,18 @@
    {"id": "flash/ethanol+water/NRTL-PR/TP", "type": "flash", "components": ["ethanol", "water"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"T": 430.0, "P": 1000.0}, "quantities": [{"key": "VF", "tol": "flashVF"}], "vapour": "PR"},
    {"id": "flash/methanol+acetone+chloroform/UNIQUAC/PVF", "type": "flash", "components": ["methanol", "acetone", "chloroform"], "model": "UNIQUAC", "z": [0.3, 0.3, 0.4], "spec": {"P": 101.325, "VF": 0.7}, "quantities": [{"key": "T_C", "tol": "flashT"}], "vapour": "ideal"},
    {"id": "flash/methane+ethane/PR/TP", "type": "flash", "components": ["methane", "ethane"], "model": "PR", "z": [0.5, 0.5], "spec": {"T": 220.0, "P": 2000.0}, "quantities": [{"key": "VF", "tol": "flashVF"}, {"key": "y1", "tol": "flashVF"}]}
+  ]},
+  {"id": "three-phase", "title": "Flashes with two liquids", "cases": [
+   {"id": "flash3/water+ethyl-acetate/NRTL/TP300", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"T": 300.0, "P": 101.325}, "quantities": [{"key": "xA1", "tol": "threePhaseX"}, {"key": "xB1", "tol": "threePhaseX"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/PVF0", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"P": 101.325, "VF": 0.0}, "quantities": [{"key": "T_C", "tol": "flashT"}, {"key": "y1", "tol": "threePhaseX"}, {"key": "xA1", "tol": "threePhaseX"}, {"key": "xB1", "tol": "threePhaseX"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/PH", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.3, 0.7], "spec": {"P": 101.325, "H": -20000.0}, "quantities": [{"key": "T_C", "tol": "flashT"}, {"key": "VF", "tol": "threePhaseX"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/TVF", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"T": 343.0, "VF": 0.3}, "quantities": [{"key": "xA1", "tol": "threePhaseX"}, {"key": "y1", "tol": "threePhaseX"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/handbook", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.5, 0.5], "spec": {"P": 101.325, "VF": 0.0}, "data": "handbook", "quantities": [{"key": "T_C", "tol": "azeotropeT"}, {"key": "y1", "tol": "azeotropeX"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/xu2017-298", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.6, 0.4], "spec": {"T": 298.15, "P": 101.325}, "data": "xu2017", "quantities": [{"key": "xA1", "tol": "lleData"}]},
+   {"id": "flash3/water+ethyl-acetate/NRTL/xu2017-318", "type": "flash3", "components": ["water", "ethyl-acetate"], "model": "NRTL", "z": [0.6, 0.4], "spec": {"T": 318.15, "P": 101.325}, "data": "xu2017", "quantities": [{"key": "xA1", "tol": "lleData"}]},
+   {"id": "flash3/ethanol+water+ethyl-acetate/NRTL/TP", "type": "flash3", "components": ["ethanol", "water", "ethyl-acetate"], "model": "NRTL", "z": [0.1, 0.4, 0.5], "spec": {"P": 101.325, "T": 343.1402}, "quantities": [{"key": "VF", "tol": "threePhaseX"}, {"key": "xA1", "tol": "threePhaseX"}]},
+   {"id": "flash3/ethanol+water+ethyl-acetate/NRTL/PVF0", "type": "flash3", "components": ["ethanol", "water", "ethyl-acetate"], "model": "NRTL", "z": [0.1, 0.4, 0.5], "spec": {"P": 101.325, "VF": 0.0}, "quantities": [{"key": "T_C", "tol": "flashT"}]},
+   {"id": "flash3/ethanol+water+ethyl-acetate/UNIQUAC/PVF", "type": "flash3", "components": ["ethanol", "water", "ethyl-acetate"], "model": "UNIQUAC", "z": [0.05, 0.5, 0.45], "spec": {"P": 101.325, "VF": 0.1}, "quantities": [{"key": "T_C", "tol": "flashT"}, {"key": "xA1", "tol": "threePhaseX"}]}
   ]},
   {"id": "pure", "title": "Pure-component properties at standard points", "cases": [
    {"id": "pure/water/psat/25C", "type": "pureProperty", "component": "water", "property": "vapourPressure", "T_K": 298.15, "quantities": [{"key": "psat_kPa", "tol": "vapourPressure"}]},

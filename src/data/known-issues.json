@@ -9,7 +9,7 @@
       ],
       "model": "NRTL",
       "kind": "phase-split",
-      "message": "The ternary azeotrope comes out at 69.95 °C and 7.7 / 9.3 / 83.0 wt % (ethanol / water / ethyl acetate), close to the handbook value of 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The model predicts that this liquid splits into two liquid phases (tangent-plane test), so the real boiling point is a vapour in equilibrium with two liquids, which Fugacity cannot calculate yet (three-phase flash, planned). The shaded two-liquid region shows only the spinodal, which is narrower than the real split.",
+      "message": "The ternary azeotrope comes out at 69.95 °C and 7.7 / 9.3 / 83.0 wt % (ethanol / water / ethyl acetate), close to the handbook value of 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The model predicts that this liquid splits into two liquid phases (tangent-plane test), so the real boiling point is a vapour in equilibrium with two liquids; the flash calculates it (P-VF flash, VF = 0): 69.99 °C for the handbook liquid, which the model splits into two liquids. The shaded two-liquid region shows only the spinodal, which is narrower than the real split.",
       "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)",
       "source_ids": [
         "wikipedia-azeotrope-tables"
@@ -23,7 +23,7 @@
       ],
       "model": "UNIQUAC",
       "kind": "ternary-azeotrope",
-      "message": "The ternary azeotrope comes out at 69.95 °C and 3.4 / 10.8 / 85.8 wt % (ethanol / water / ethyl acetate); handbook value 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The model predicts that this liquid splits into two liquid phases (tangent-plane test), so the real boiling point is a vapour in equilibrium with two liquids, which Fugacity cannot calculate yet (three-phase flash, planned). The shaded two-liquid region shows only the spinodal, which is narrower than the real split.",
+      "message": "The ternary azeotrope comes out at 69.95 °C and 3.4 / 10.8 / 85.8 wt % (ethanol / water / ethyl acetate); handbook value 70.3 °C and 7.8 / 9.0 / 83.2 wt %. The model predicts that this liquid splits into two liquid phases (tangent-plane test), so the real boiling point is a vapour in equilibrium with two liquids; the flash calculates it (P-VF flash, VF = 0): 70.10 °C for the handbook liquid, which the model splits into two liquids. The shaded two-liquid region shows only the spinodal, which is narrower than the real split.",
       "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)",
       "source_ids": [
         "wikipedia-azeotrope-tables"
@@ -36,7 +36,7 @@
       ],
       "model": "NRTL",
       "kind": "phase-split",
-      "message": "Water and ethyl acetate boil as two liquid phases at 70.4 °C (heterogeneous azeotrope). This diagram assumes one liquid and shows a minimum of 70.1 °C at water mole fraction 0.37, inside the real two-liquid region; the shaded band shows only the spinodal. A three-phase calculation is planned.",
+      "message": "Water and ethyl acetate boil as two liquid phases at 70.4 °C (heterogeneous azeotrope). This diagram assumes one liquid and shows a minimum of 70.1 °C at water mole fraction 0.37, inside the real two-liquid region; the shaded band shows only the spinodal. The flash calculates the two liquids and the three-phase point: 70.61 °C, vapour water mole fraction 0.313.",
       "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)",
       "source_ids": [
         "wikipedia-azeotrope-tables"
@@ -49,7 +49,7 @@
       ],
       "model": "UNIQUAC",
       "kind": "phase-split",
-      "message": "Water and ethyl acetate boil as two liquid phases at 70.4 °C (heterogeneous azeotrope). This diagram assumes one liquid and shows a minimum of 70.0 °C at water mole fraction 0.39, inside the real two-liquid region; the shaded band shows only the spinodal. A three-phase calculation is planned.",
+      "message": "Water and ethyl acetate boil as two liquid phases at 70.4 °C (heterogeneous azeotrope). This diagram assumes one liquid and shows a minimum of 70.0 °C at water mole fraction 0.39, inside the real two-liquid region; the shaded band shows only the spinodal. The flash calculates the two liquids and the three-phase point: 70.76 °C, vapour water mole fraction 0.315.",
       "reference": "Azeotrope tables, Wikipedia (from Lange's Handbook, 10th ed., and CRC Handbook, 44th ed.)",
       "source_ids": [
         "wikipedia-azeotrope-tables"

@@ -55,7 +55,7 @@ ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 | **Water and steam** | IAPWS-IF97 (all regions), IAPWS viscosity (2008) and thermal conductivity (2011) |
 | **Binary parameters** | NRTL/UNIQUAC for 27 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 21 pairs; Henry constants for the 6 gases in water |
 | **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
-| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check; with PR/SRK bubble and dew points with a stability test; gas solubility in water |
+| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check; flash (T-P, P-H, P-VF, T-VF, heat duty) with vapour, liquid, two liquids, or vapour + two liquids (NRTL, UNIQUAC; next release); with PR/SRK bubble and dew points with a stability test; gas solubility in water |
 | **Interface** | Workbench with a ribbon (`app`): components, T-x-y, ternary map, azeotropes, Peng–Robinson/SRK P-x-y and phase envelope, gas solubility, property curves, steam tables, units, mol/wt %; a button hides the background layers. Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
 
 A full ternary map (861 bubble points plus ten residue curves) takes well under a second
@@ -86,6 +86,9 @@ Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" }).enthalpy("l
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" })
   .flash({ z: [0.4, 0.6], T: 355, P: 101.325 }, { feed: { T: 298.15, P: 101.325 } });
 // { T, P, VF: 0.479, H_J_mol, phases: [{ type, fraction, composition, h_J_mol }, ...], duty_J_mol: 24582, warnings, sources }
+// two liquids: water + ethyl acetate boil at their three-phase point, 343.76 K (NRTL)
+Fugacity.system({ components: ["water", "ethyl acetate"], model: "NRTL" }).flash({ z: [0.5, 0.5], P: 101.325, VF: 0.2 });
+// phases: vapour 0.2, liquid "Ethyl acetate-rich" 0.450, liquid "Water-rich" 0.350
 s.azeotropes(101.325);            // [{ x, T, type }]
 // errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
 try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT" (next release)
@@ -135,13 +138,14 @@ The source of every parameter is recorded next to it in
 [`src/data/`](src/data) and shown under every diagram; licenses in
 [src/data/LICENSES.md](src/data/LICENSES.md).
 
-**Known limits:** the phase-split check finds the spinodal only, so the real two-liquid
-region is wider than the shaded one; the UNIQUAC databank set is less accurate than NRTL
+**Known limits:** the shaded two-liquid region of the diagrams is the spinodal only, so the
+real two-liquid region is wider (the flash finds the real one, next release); two liquids
+with Peng–Robinson or SRK are not calculated yet; the UNIQUAC databank set is less accurate than NRTL
 for some systems (acetone + chloroform + methanol); no ternary VLE data exist yet to check
 water + acetic acid + ethylene glycol; acetic acid and alcohols or glycols slowly
 esterify, which the model does not include. Cubic equations of state give poor liquid
 densities and underestimate the residual enthalpy of polar vapours (methanol, acetone) by
-27–45 %; 99 of the 120 pairs have no k_ij yet (treated as 0, with a warning); no flash yet.
+27–45 %; 99 of the 120 pairs have no k_ij yet (treated as 0, with a warning).
 Liquid properties are at saturation (pressure effect neglected); acetic acid liquid
 enthalpy is not given until association is included.
 
