@@ -22,7 +22,9 @@
  *    hence P_bub(x) = P, so the liquid is at its bubble point at P and y is its vapour.
  *    Equations of state: K_i = phi_i^L(x) / phi_i^V(y), started from Wilson's K-values.
  *  - Which phases exist: activity models compare P with the bubble and dew pressures of the
- *    feed at T; equations of state use Michelsen's tangent-plane test on the feed
+ *    feed at T (a vapour from the negative flash is checked against liquid trial phases with
+ *    the tangent-plane test, vapourTangentPlane: with two possible liquids the negative flash
+ *    can land on the wrong liquid branch); equations of state use Michelsen's test on the feed
  *    (eos-stability.js). Every liquid returned is checked with the tangent-plane test against
  *    a second liquid (stability.js liquidTangentPlane for activity models, eos-stability.js
  *    for equations of state).
@@ -32,7 +34,8 @@
  *    binary has vapour + one liquid (Gibbs' phase rule: vapour + two liquids only at P3), and
  *    three or more components have vapour + two liquids (splitThree: successive substitution
  *    on the K-values of the vapour and of liquid 2 relative to liquid 1, with the convex
- *    phase-fraction function of Okuno, Johns and Sepehrnoori, multiphaseRR). For a binary the
+ *    phase-fraction function of Okuno, Johns and Sepehrnoori, multiphaseRR, then Newton's
+ *    method on the same equations, newtonThree). For a binary the
  *    flash jumps at the three-phase temperature (at given P) or pressure (at given T); the
  *    P-H, P-VF and T-VF flashes find that point directly (P3(T) = P) and split the feed over
  *    the three phases by the lever rule with the vapour fraction or the energy balance.
@@ -236,6 +239,75 @@ function minGRoot(eos, T, P, z) {
 const richLabel = (sys, x) => `${sys.names[x.indexOf(Math.max(...x))]}-rich`;
 
 /**
+ * Newton's method on the vapour + two liquids equations (used by splitThree once successive
+ * substitution has a rough answer). Unknowns: ln K of the vapour and of liquid 2 relative to
+ * liquid 1, and the fractions of vapour and liquid 2; equations: the compositions of the
+ * vapour and of liquid 2 sum to that of liquid 1 (mass balance through x1 = z / (1 + bV (KV - 1)
+ * + b2 (KL2 - 1))), ln KV = sys.lnKValues(x1, y), ln KL2 = ln gamma(x1) - ln gamma(x2).
+ * Jacobian by finite differences. Returns { KV, KL2, beta: [b1, bV, b2] } or null.
+ */
+function newtonThree(sys, z, T, P, KV, KL2, bV, b2) {
+  const n = z.length, m = 2 * n + 2;
+  const on = z.map(v => v > 0);
+  const resid = u => {
+    const lv = u.slice(0, n), l2 = u.slice(n, 2 * n), BV = u[2 * n], B2 = u[2 * n + 1];
+    const kv = lv.map(Math.exp), k2 = l2.map(Math.exp);
+    const x1 = z.map((zi, i) => zi / (1 + BV * (kv[i] - 1) + B2 * (k2[i] - 1)));
+    if (x1.some((v, i) => on[i] && !(v > 0))) return null;
+    const y = x1.map((v, i) => v * kv[i]), x2 = x1.map((v, i) => v * k2[i]);
+    const sum = a => a.reduce((q, v) => q + v, 0);
+    const s1 = sum(x1), sy = sum(y), s2 = sum(x2);
+    const n1 = x1.map(v => v / s1), ny = y.map(v => v / sy), n2 = x2.map(v => v / s2);
+    const lk = sys.lnKValues(n1, ny, T, P), g1 = sys.gammas(n1, T), g2 = sys.gammas(n2, T);
+    const r = new Array(m).fill(0);
+    for (let i = 0; i < n; i++) if (on[i]) { r[i] = lv[i] - lk[i]; r[n + i] = l2[i] - Math.log(g1[i] / g2[i]); }
+    r[2 * n] = sy - s1; r[2 * n + 1] = s2 - s1;
+    return r;
+  };
+  const norm = r => r.reduce((a, v) => Math.max(a, Math.abs(v)), 0);
+  let u = [...KV.map(Math.log), ...KL2.map(Math.log), bV, b2];
+  let r = resid(u);
+  if (!r) return null;
+  for (let it = 0; it < 40; it++) {
+    if (norm(r) < 1e-12) {
+      const BV = u[2 * n], B2 = u[2 * n + 1];
+      return { KV: u.slice(0, n).map(Math.exp), KL2: u.slice(n, 2 * n).map(Math.exp), beta: [1 - BV - B2, BV, B2] };
+    }
+    const J = [];
+    for (let j = 0; j < m; j++) {
+      const h = 1e-7 * Math.max(1, Math.abs(u[j]));
+      const up = u.slice(); up[j] += h;
+      const rp = resid(up);
+      if (!rp) return null;
+      J.push(rp.map((v, i) => (v - r[i]) / h)); // column j
+    }
+    // solve J d = -r (J stored by columns), Gaussian elimination with partial pivoting
+    const A = Array.from({ length: m }, (_, i) => J.map(col => col[i]));
+    const b = r.map(v => -v);
+    for (let i = 0; i < m; i++) if (!on[i % n] && i < 2 * n) { A[i].fill(0); A[i][i] = 1; b[i] = 0; }
+    for (let c = 0; c < m; c++) {
+      let p = c; for (let q = c + 1; q < m; q++) if (Math.abs(A[q][c]) > Math.abs(A[p][c])) p = q;
+      if (!(Math.abs(A[p][c]) > 0)) return null;
+      [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+      for (let q = c + 1; q < m; q++) { const f = A[q][c] / A[c][c]; if (f) { for (let k = c; k < m; k++) A[q][k] -= f * A[c][k]; b[q] -= f * b[c]; } }
+    }
+    const d = new Array(m).fill(0);
+    for (let c = m - 1; c >= 0; c--) { let v = b[c]; for (let k = c + 1; k < m; k++) v -= A[c][k] * d[k]; d[c] = v / A[c][c]; }
+    if (!d.every(Number.isFinite)) return null;
+    let alpha = 1, next = null;
+    for (let ls = 0; ls < 30; ls++) {
+      const un = u.map((v, i) => v + alpha * d[i]);
+      const rn = resid(un);
+      if (rn && norm(rn) < (1 - 1e-4 * alpha) * norm(r)) { next = [un, rn]; break; }
+      alpha /= 2;
+    }
+    if (!next) return null;
+    [u, r] = next;
+  }
+  return null;
+}
+
+/**
  * Vapour + two liquids at T, P for activity models (successive substitution on K-values
  * relative to liquid 1, multiphaseRR for the fractions): K_V = sys.lnKValues(x1, y), K_L2 =
  * gamma_i(x1) / gamma_i(x2). Phases whose fraction goes to 0 drop out, so the result may be
@@ -270,8 +342,20 @@ function splitThree(sys, z, T, P, KV, KL2) {
     prev = step;
     KV = KVn; KL2 = KL2n;
     if (triv < 1e-10) return null;
-    if (d < K_TOL) {
-      const f = multiphaseRR(z, [z.map(() => 1), KV, KL2]);
+    // Newton from the substitution's estimate (kept if all three phases stay present): early,
+    // where substitution is slow, and as the final polish, which also closes the mass balance
+    let f = null;
+    if (d < K_TOL || it === 8 || it === 40 || it === 150) {
+      const est = multiphaseRR(z, [z.map(() => 1), KV, KL2]);
+      const nt = est.beta.every(b => b > 1e-6) ? newtonThree(sys, z, T, P, KV, KL2, est.beta[1], est.beta[2]) : null;
+      if (nt && nt.beta.every(b => b > 0)) {
+        KV = nt.KV; KL2 = nt.KL2;
+        const x1 = z.map((zi, i) => zi / (1 + nt.beta[1] * (KV[i] - 1) + nt.beta[2] * (KL2[i] - 1)));
+        const nz = a => { const t = a.reduce((q, v) => q + v, 0); return a.map(v => v / t); };
+        f = { beta: nt.beta, x: [nz(x1), nz(x1.map((v, i) => v * KV[i])), nz(x1.map((v, i) => v * KL2[i]))] };
+      } else if (d < K_TOL) f = est;
+    }
+    if (f) {
       const [b1, bV, b2] = f.beta, [l1, v, l2] = f.x;
       const tiny = 1e-12;
       const Ks = { KV, KL2 };
@@ -372,7 +456,11 @@ function resolveSplit(sys, z, T, P, lx, y, Pbub, st, lead, ctx = {}) {
         const xl = useA ? ll.x1 : ll.x2;
         const K0 = xl.map((xi, i) => e3.y[i] / Math.max(xi, 1e-300) * e3.P / P);
         const r = splitActivity(sys, z, T, P, K0);
-        if (r.V >= 1) return { V: 1, x: r.x, y: z, single: "vapour", iterations: ll.iterations + r.iterations };
+        if (r.V >= 1) {
+          const v = checkedVapour(sys, z, T, P, r.x, ll.iterations + r.iterations);
+          if (!v.unstable) return v;
+          throw fail("NO_CONVERGENCE", `${lead}: below the three-phase pressure the vapour-liquid split gave all vapour, but a liquid would form.`, { z, T, P });
+        }
         if (r.V <= 0) {
           if (!liquidTangentPlane(sys, z, T).stable) throw fail("NO_CONVERGENCE", `${lead}: no stable vapour-liquid or liquid-liquid state was found.`, { z, T, P });
           return { V: 0, x: z, y: e3.y, single: "liquid", iterations: ll.iterations + r.iterations };
@@ -401,6 +489,43 @@ function resolveSplit(sys, z, T, P, lx, y, Pbub, st, lead, ctx = {}) {
     ctx.three = r.Ks;
   }
   return r;
+}
+
+/**
+ * Is the vapour z at T, P stable against a liquid (activity models with sys.lnKValues)?
+ * Michelsen's tangent-plane test with liquid trial phases: W_i = z_i / K_i(w, z) by successive
+ * substitution, w = W / sum W; the vapour is unstable if sum W > 1 for some trial. Trials: the
+ * liquids given (for example that of a negative flash) and each component nearly pure. The
+ * negative flash alone can land on the wrong liquid branch when two liquids are possible.
+ */
+function vapourTangentPlane(sys, z, T, P, starts = []) {
+  const n = z.length;
+  const trials = starts.filter(Boolean).map(w => w.slice());
+  for (let k = 0; k < n; k++) if (z[k] > 0) trials.push(z.map((_, i) => (i === k ? 0.98 : 0.02 / (n - 1))));
+  let best = { sum: 0, trial: null };
+  for (let w of trials) {
+    let S = 0;
+    for (let it = 0; it < 200; it++) {
+      const K = sys.lnKValues(w, z, T, P);
+      const W = z.map((zi, i) => (zi > 0 ? zi / Math.exp(K[i]) : 0));
+      S = W.reduce((a, b) => a + b, 0);
+      const wn = W.map(v => v / S);
+      const ch = wn.reduce((a, v, i) => Math.max(a, Math.abs(v - w[i])), 0);
+      w = wn;
+      if (ch < 1e-10 || S > 1 + 1e-4) break;
+    }
+    if (S > best.sum) best = { sum: S, trial: w };
+  }
+  return { stable: !(best.sum > 1 + 1e-9), ...best };
+}
+
+/** A vapour z, after the tangent-plane test: null if a liquid would form (the caller splits). */
+function checkedVapour(sys, z, T, P, x, iterations) {
+  if (sys.lnKValues && sys.n > 1) {
+    const st = vapourTangentPlane(sys, z, T, P, [x]);
+    if (!st.stable) return { unstable: st };
+  }
+  return { V: 1, x, y: z, single: "vapour", iterations };
 }
 
 /**
@@ -449,7 +574,14 @@ function tpCore(sys, z, T, P, ctx = {}) {
     try { r = splitActivity(sys, z, T, P, K0); } catch (e) { if (!(e && e.code === "NO_CONVERGENCE")) throw e; r = null; }
     if (r) break;
   }
-  if (r && r.V >= 1) return { V: 1, x: r.x, y: z, single: "vapour", iterations: r.iterations };
+  if (r && r.V >= 1) {
+    if (!check) return { V: 1, x: r.x, y: z, single: "vapour", iterations: r.iterations };
+    const v = checkedVapour(sys, z, T, P, r.x, r.iterations);
+    if (!v.unstable) return v;
+    // a liquid forms after all: split from the liquid of the tangent-plane test
+    try { r = splitActivity(sys, z, T, P, z.map((zi, i) => Math.max(zi, 1e-300) / Math.max(v.unstable.trial[i], 1e-300))); } catch (e) { if (!(e && e.code === "NO_CONVERGENCE")) throw e; r = null; }
+    if (r && r.V >= 1) r = null;
+  }
   if (!r || !(r.V > 0)) {
     const dew = dewP(sys, z, T);
     if (P <= dew.P) return { V: 1, x: dew.x, y: z, single: "vapour", iterations: 0 };
@@ -459,7 +591,13 @@ function tpCore(sys, z, T, P, ctx = {}) {
       const Kb = bub.y[i] / Math.max(zi, 1e-300) * bub.P / P, Kd = zi / Math.max(dew.x[i], 1e-300) * dew.P / P;
       return Math.exp((1 - w) * Math.log(Kb) + w * Math.log(Kd));
     });
-    r = splitActivity(sys, z, T, P, K);
+    try { r = splitActivity(sys, z, T, P, K); } catch (e) {
+      // no vapour-liquid split converges: perhaps the feed splits into two liquids
+      if (!(e && e.code === "NO_CONVERGENCE" && check && sys.n > 1)) throw e;
+      const st = liquidTangentPlane(sys, z, T);
+      if (st.stable) throw e;
+      return resolveSplit(sys, z, T, P, z, bub.y, bub.P, st, `${what}: the feed liquid`, ctx);
+    }
   }
   if (check && sys.n > 1) {
     if (!(r.V > 0)) {

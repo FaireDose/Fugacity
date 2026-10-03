@@ -75,8 +75,10 @@ export function liquidTangentPlane(sys, z, T, opts = {}) {
     starts.push(z.map((v, i) => (!present[i] ? 0 : i === k ? 0.999 : 0.001 * v)));
   }
   let best = { tm: 0, trial: null };
+  const found = []; // converged non-trivial trials
+  const near = (a, b, tol) => a.every((v, i) => Math.abs(v - b[i]) < tol);
   for (const s0 of starts) {
-    let W = s0.slice(), w = null, tm = null;
+    let W = s0.slice(), w = null, tm = null, same = false;
     for (let it = 0; it < 400; it++) {
       const S = W.reduce((a, b) => a + b, 0);
       w = W.map(v => v / S);
@@ -86,13 +88,21 @@ export function liquidTangentPlane(sys, z, T, opts = {}) {
       for (let i = 0; i < n; i++) if (present[i]) ch = Math.max(ch, Math.abs(Math.log(Wn[i] / Math.max(W[i], 1e-300))));
       W = Wn;
       if (ch < 1e-10) break;
+      // shortcuts (same outcome, fewer steps): a trial that has come very close to the feed
+      // goes on to the trivial solution; one that has reached an earlier trial's answer ends there
+      let dz = 0;
+      for (let i = 0; i < n; i++) if (present[i]) dz += Math.log(w[i] / z[i]) ** 2;
+      if (it > 5 && dz < 1e-8) break;
+      if (found.some(f => near(f, w, 1e-9))) { same = true; break; }
     }
+    if (same) continue;
     const S = W.reduce((a, b) => a + b, 0);
     w = W.map(v => v / S);
     tm = 1 - S;
     let dist = 0;
     for (let i = 0; i < n; i++) if (present[i]) dist += Math.log(w[i] / z[i]) ** 2;
     if (dist < 1e-4) continue; // converged back to z: trivial
+    found.push(w);
     if (tm < best.tm) best = { tm, trial: w };
   }
   return { stable: !(best.tm < threshold), ...best };

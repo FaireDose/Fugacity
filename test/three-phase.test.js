@@ -48,18 +48,48 @@ test("binary water + ethyl acetate: two liquids, three-phase point and lever rul
   assert.ok(Math.abs(b.incipient.composition[0] - ref.three_phase_point.y_water) < 1e-6);
 });
 
-test("ternary ethanol + water + ethyl acetate: two liquids and vapour + two liquids at the Gibbs-energy minimum", () => {
-  for (const c of ref.ternary) {
+test("ternary, and states from the review of #36: the Gibbs-energy minimum, also at 50 and 300 kPa", () => {
+  assert.ok(ref.tp_review.length >= 7);
+  for (const c of [...ref.ternary, ...ref.tp_review]) {
     const s = system({ components: c.components, model: c.model });
-    const tag = `${c.model} ${JSON.stringify(c.spec)}`;
+    const tag = `${c.model} ${c.components.join("+")} z=${c.z} ${JSON.stringify(c.spec)}`;
     const r = s.flash({ z: c.z, ...c.spec });
     assert.ok(Math.abs(r.T - c.T_K) < 1e-6, `${tag}: T ${r.T} vs ${c.T_K}`);
     samePhases(tag, r, c.phases, 1e-6);
     // never above the Gibbs energy of the reference, nor of thermo's FlashVLN (which, near the
     // boundaries, returns two liquids where vapour + two liquids have a lower Gibbs energy)
+    // (1e-8: both are converged to about 1e-9 in G/RT; the states thermo misses differ by 3e-4 or more)
     const g = gibbs(s, r);
-    assert.ok(g <= c.G_RT + 1e-9, `${tag}: G ${g} vs reference ${c.G_RT}`);
-    assert.ok(g <= c.thermo_FlashVLN.G_RT + 1e-9, `${tag}: G ${g} vs thermo ${c.thermo_FlashVLN.G_RT}`);
+    assert.ok(g <= c.G_RT + 1e-8, `${tag}: G ${g} vs reference ${c.G_RT}`);
+    assert.ok(g <= c.thermo_FlashVLN.G_RT + 1e-8, `${tag}: G ${g} vs thermo ${c.thermo_FlashVLN.G_RT}`);
+  }
+});
+
+test("all vapour exactly from the dew point up, near the three-phase point (review of #36, finding 1)", () => {
+  // the T-P flash gives all vapour if and only if T is at or above the dew temperature (dew.js,
+  // checked against thermo in step 1); before the fix it gave all vapour below it
+  for (const [model, vapour] of [["NRTL", "ideal"], ["UNIQUAC", "ideal"], ["NRTL", "PR"]]) {
+    const s = system({ components: ["water", "ethyl acetate"], model, vapour });
+    for (const P of [50, 101.325, 300]) {
+      const T3 = s.flash({ z: [0.5, 0.5], P, VF: 0 }).T;
+      for (const zw of [0.32, 0.35, 0.38, 0.45]) {
+        const Td = s.dewT([zw, 1 - zw], P).T;
+        for (const dT of [-0.3, -0.05, 0.02, 0.3, 1, 2, 4]) {
+          const T = T3 + dT;
+          const r = s.flash({ z: [zw, 1 - zw], T, P });
+          assert.equal(r.VF === 1, T >= Td, `${model}/${vapour} P=${P} z=${zw} T=${T.toFixed(3)} (dew ${Td.toFixed(3)}): VF ${r.VF}`);
+          if (T < T3) assert.equal(r.phases.filter(p => p.type === "liquid").length, 2, `${model}/${vapour} P=${P} z=${zw} T=${T}: two liquids`);
+        }
+        // and the specifications that failed there
+        const r = s.flash({ z: [zw, 1 - zw], T: T3 + 0.5, P });
+        if (r.VF < 1) {
+          const ph = s.flash({ z: [zw, 1 - zw], P, H: r.H_J_mol }), pv = s.flash({ z: [zw, 1 - zw], P, VF: r.VF });
+          assert.ok(Math.abs(ph.T - r.T) < 1e-6 && Math.abs(pv.T - r.T) < 1e-6, `${model}/${vapour} P=${P} z=${zw}: round trips`);
+          const tv = s.flash({ z: [zw, 1 - zw], T: r.T, VF: r.VF });
+          assert.ok(Math.abs(tv.P / P - 1) < 1e-7, `${model}/${vapour} P=${P} z=${zw}: T-VF ${tv.P}`);
+        }
+      }
+    }
   }
 });
 
@@ -112,7 +142,7 @@ test("against open data: mutual solubilities (Xu 2017, not used in the fit) and 
   assert.ok(Math.abs(b.incipient.composition[0] - yData) < 0.015, `y ${b.incipient.composition[0]} vs ${yData}`);
 });
 
-test("speed: two liquids under 5 ms (T-P); binary P-H and P-VF across the three-phase point under 20 ms", () => {
+test("speed: two liquids under 5 ms (T-P); binary P-H and P-VF under 20 ms; ternary vapour + two liquids under 60 ms", () => {
   const s = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
   const t = system({ components: ["ethanol", "water", "ethyl acetate"], model: "NRTL" });
   const median = f => { f(0); f(1); const a = []; for (let i = 0; i < 7; i++) { const t0 = performance.now(); f(i); a.push(performance.now() - t0); } return a.sort((x, y) => x - y)[3]; };
@@ -121,11 +151,20 @@ test("speed: two liquids under 5 ms (T-P); binary P-H and P-VF across the three-
     ["T-P ternary", i => t.flash({ z: [0.1, 0.4, 0.5], T: 300 + i, P: 101.325 }), 5],
     ["P-VF binary", i => s.flash({ z: [0.5, 0.5], P: 101.325, VF: 0.1 * i }), 20],
     ["P-H binary", i => s.flash({ z: [0.5, 0.5], P: 101.325, H: -20000 + 100 * i }), 20],
-    // vapour + two liquids of a ternary: slower (successive substitution), stated in the docs
-    ["P-H ternary", i => t.flash({ z: [0.1, 0.4, 0.5], P: 101.325, H: -25000 + 100 * i }), 60],
   ]) {
     const ms = median(f);
     assert.ok(ms < budget, `${what}: ${ms.toFixed(1)} ms (budget ${budget})`);
+  }
+  // vapour + two liquids of a ternary: slower (10-35 ms measured), above the 20 ms of a
+  // two-phase P-H flash; stated in the pull request for the owner's decision
+  for (const model of ["NRTL", "UNIQUAC"]) {
+    const u = system({ components: ["ethanol", "water", "ethyl acetate"], model });
+    for (const z of [[0.1, 0.4, 0.5], [0.2, 0.4, 0.4], [0.05, 0.5, 0.45]]) {
+      for (const [what, f] of [["P-H", i => u.flash({ z, P: 101.325, H: -25000 + 1000 * i })], ["P-VF", i => u.flash({ z, P: 101.325, VF: 0.1 + 0.1 * i })]]) {
+        const ms = median(f);
+        assert.ok(ms < 60, `${model} z=${z} ${what}: ${ms.toFixed(1)} ms (budget 60)`);
+      }
+    }
   }
 });
 

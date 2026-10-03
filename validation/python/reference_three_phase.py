@@ -246,7 +246,9 @@ def ternary_cases():
     cases = []
     for model, z, specs in [
         ("NRTL", [0.1, 0.4, 0.5], [{"T": 300.0}, {"T": 343.1402}, {"T": 343.3}, {"VF": 0.0}, {"VF": 0.3}]),
-        ("UNIQUAC", [0.05, 0.5, 0.45], [{"T": 300.0}, {"VF": 0.1}]),
+        ("UNIQUAC", [0.05, 0.5, 0.45], [{"T": 300.0}, {"VF": 0.1}, {"VF": 0.3}, {"VF": 0.35}]),
+        # feeds from the review of pull request #36, where the first version failed
+        ("NRTL", [0.2, 0.4, 0.4], [{"T": 343.5}, {"VF": 0.0}, {"VF": 0.5}]),
     ]:
         ids = ["ethanol", "water", "ethyl-acetate"]
         s = System(ids, model)
@@ -289,17 +291,43 @@ def ternary_cases():
     return cases
 
 
+def tp_cases():
+    """T-P flashes at the Gibbs-energy minimum, at states from the review of pull request #36
+    where the first version returned all vapour (vapour + liquid, two liquids, or vapour + two
+    liquids are stable) or did not converge; also at other pressures."""
+    out = []
+    for model, ids, z, T, P in [
+        ("NRTL", ["water", "ethyl-acetate"], [0.35, 0.65], 344.0, P_ATM),
+        ("NRTL", ["water", "ethyl-acetate"], [0.35, 0.65], 343.66, P_ATM),
+        ("UNIQUAC", ["water", "ethyl-acetate"], [0.35, 0.65], 345.0, P_ATM),
+        ("NRTL", ["water", "ethyl-acetate"], [0.35, 0.65], 323.0, 50.0),
+        ("NRTL", ["water", "ethyl-acetate"], [0.35, 0.65], 377.0, 300.0),
+        ("NRTL", ["ethanol", "water", "ethyl-acetate"], [0.04, 0.33, 0.63], 343.431, P_ATM),
+        ("UNIQUAC", ["ethanol", "water", "ethyl-acetate"], [0.1, 0.4, 0.5], 375.379, 300.0),
+    ]:
+        s = System(ids, model)
+        ph = gibbs_min(s, z, T, P)
+        th = thermo_phases(thermo_vln(s).flash(T=T, P=P * 1000, zs=z))
+        c = {"model": model, "components": ids, "z": z, "spec": {"T": T, "P": P}, "T_K": T, "P_kPa": P, "phases": ph,
+             "G_RT": gibbs(s, T, P, ph), "thermo_FlashVLN": {"phases": th, "G_RT": gibbs(s, T, P, th)}}
+        out.append(c)
+        print(model, "+".join(ids), z, T, P, [(p["type"][0], round(p["fraction"], 6)) for p in ph], f"G={c['G_RT']:.10f};",
+              "thermo:", [(p["type"][0], round(p["fraction"], 6)) for p in th], f"G={c['thermo_FlashVLN']['G_RT']:.10f}")
+    return out
+
+
 def main():
     warnings.simplefilter("ignore", RuntimeWarning)
     b, point = binary_cases()
     t = ternary_cases()
+    e = tp_cases()
     OUT.write_text(json.dumps({
         "_about": "Flashes with two liquids from validation/python/reference_three_phase.py: binary water + ethyl "
                   "acetate (NRTL) built from reference_model.lle_binary, its bubble pressure and the lever rule; "
                   "ternary ethanol + water + ethyl acetate from the minimum of the Gibbs energy polished by the "
                   "equal-fugacity equations, with thermo's FlashVLN on the same states for comparison. Ideal-gas vapour.",
-        "three_phase_point": point, "binary": b, "ternary": t}, indent=1))
-    print(f"wrote {len(b) + len(t)} cases to {OUT}")
+        "three_phase_point": point, "binary": b, "ternary": t, "tp_review": e}, indent=1))
+    print(f"wrote {len(b) + len(t) + len(e)} cases to {OUT}")
 
 
 if __name__ == "__main__":
