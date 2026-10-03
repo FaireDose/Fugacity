@@ -61,6 +61,16 @@ const maxDiff = (a, b) => a.reduce((m, v, i) => Math.max(m, Math.abs(v - b[i])),
  * the iteration does not converge; the caller decides what to report.
  */
 function dewPInner(sys, y, T, x0) {
+  try {
+    return dewPIter(sys, y, T, x0);
+  } catch (e) {
+    // a temperature outside the data (e.g. above a critical temperature, with a cubic vapour)
+    if (e && e.code === "OUT_OF_RANGE") return { converged: false, x: x0 ?? null, rangeError: e };
+    throw e;
+  }
+}
+
+function dewPIter(sys, y, T, x0) {
   let x = x0 ? normalize(x0) : normalize(sys.psat(T).map((p, i) => y[i] / p));
   let e = sys.equilibrium(x, T);
   let err = maxDiff(e.y, y), step = 1;
@@ -91,7 +101,7 @@ function dewPInner(sys, y, T, x0) {
  * point; solutions whose liquid is not stable (inside the spinodal) are discarded.
  * Starts: the ideal-solution liquid, the previous solution (warm), and, for each
  * component, a liquid rich in that component.
- * @returns {{best:object|null, unstable:object|null, lastX:number[]|null}}
+ * @returns {{best:object|null, unstable:object|null, lastX:number[]|null, rangeError:Error|null}}
  */
 function dewPSolutions(sys, y, T, warm) {
   const n = sys.n;
@@ -99,17 +109,17 @@ function dewPSolutions(sys, y, T, warm) {
   if (warm) starts.push(warm);
   if (n > 1) for (let k = 0; k < n; k++) starts.push(y.map((v, i) => (i === k ? 0.98 : 0.02 * Math.max(v, 1e-6))));
   const found = [];
-  let unstable = null, lastX = null;
+  let unstable = null, lastX = null, rangeError = null;
   for (const x0 of starts) {
     const r = dewPInner(sys, y, T, x0);
-    if (!r.converged) { lastX = r.x; continue; }
+    if (!r.converged) { lastX = r.x; rangeError = r.rangeError ?? rangeError; continue; }
     const { converged, ...sol } = r;
     if (found.some(f => maxDiff(f.x, sol.x) < 1e-7)) continue;
     if (n > 1 && !isLiquidStable(sys, sol.x, T)) { if (!unstable || sol.P < unstable.P) unstable = sol; continue; }
     found.push(sol);
   }
   const best = found.reduce((m, r) => (!m || r.P < m.P ? r : m), null);
-  return { best, unstable, lastX };
+  return { best, unstable, lastX, rangeError };
 }
 
 function splitError(what, r, where) {
@@ -128,8 +138,9 @@ export function dewP(sys, y, T) {
   y = checkComposition(y, sys.n, "Vapour composition");
   T = checkTemperature(T);
   const what = `${sys.model} dew pressure at T = ${T} K`;
-  const { best, unstable, lastX } = dewPSolutions(sys, y, T);
+  const { best, unstable, lastX, rangeError } = dewPSolutions(sys, y, T);
   if (!best && unstable) throw splitError(what, unstable, `${unstable.P.toFixed(2)} kPa`);
+  if (!best && rangeError) throw rangeError;
   if (!best) throw fail("NO_CONVERGENCE", `${what}: the liquid composition did not converge in ${MAX_IT} substitution steps from any starting liquid.`, { y, T, lastX });
   return { ...best, warnings: sys.warnings ? sys.warnings(T, best.P) : [] };
 }
@@ -148,10 +159,10 @@ export function dewT(sys, y, P) {
   const tb = pureBoilingPoints(sys, P);
   const lo = Math.min(...tb) - 80, hi = Math.max(...tb) + 20;
 
-  let warm = null, lastUnstable = null;
+  let warm = null, lastUnstable = null, lastRange = null;
   const f = T => {
-    const { best, unstable } = dewPSolutions(sys, y, T, warm);
-    if (!best) { if (unstable) lastUnstable = { ...unstable, T }; return NaN; }
+    const { best, unstable, rangeError } = dewPSolutions(sys, y, T, warm);
+    if (!best) { if (unstable) lastUnstable = { ...unstable, T }; if (rangeError) lastRange = rangeError; return NaN; }
     warm = best.x;
     return Math.log(best.P / P);
   };
@@ -189,6 +200,7 @@ export function dewT(sys, y, P) {
   }
   if (!bracket) {
     if (lastUnstable) throw splitError(what, lastUnstable, `${lastUnstable.T.toFixed(2)} K`);
+    if (lastRange) throw lastRange;
     throw fail("NO_CONVERGENCE", `${what}: no dew point found between ${lo.toFixed(1)} K and ${hi.toFixed(1)} K (pure boiling points ${tb.map(t => t.toFixed(1)).join(", ")} K).`, { y, P });
   }
   const T = brent(f, bracket[0], bracket[1], { xtol: 1e-7 });

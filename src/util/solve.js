@@ -61,3 +61,25 @@ export function scanBracket(f, lo, hi, n = 24) {
   }
   throw failRange("NO_CONVERGENCE", `No solution between ${lo} and ${hi}.`);
 }
+
+/**
+ * scanBracket that steps over points outside the range of the data: where f throws an
+ * OUT_OF_RANGE error (for example a temperature above a component's critical temperature
+ * inside a wide scan), the point is skipped. With no such points the result is exactly that
+ * of scanBracket. If no bracket is found and points were skipped, the last range error is
+ * thrown, since it says more than "no solution".
+ */
+export function scanBracketInRange(f, lo, hi, n = 24) {
+  let x0 = null, f0 = NaN, rangeError = null;
+  const g = x => {
+    try { return f(x); } catch (e) { if (e && e.code === "OUT_OF_RANGE") { rangeError = e; return NaN; } throw e; }
+  };
+  for (let k = 0; k <= n; k++) {
+    const x1 = lo + (hi - lo) * k / n, f1 = g(x1);
+    if (!Number.isFinite(f1)) continue;
+    if (x0 !== null && f0 * f1 <= 0) return [x0, x1];
+    x0 = x1; f0 = f1;
+  }
+  if (rangeError) throw rangeError;
+  throw failRange("NO_CONVERGENCE", `No solution between ${lo} and ${hi}.`);
+}

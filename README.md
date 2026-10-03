@@ -78,6 +78,8 @@ From code (K, kPa, mole fractions):
 const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T: 376.36, y: [0.645, 0.355], gamma: [1.306, 1.164] }
 s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... }  (next release)
+// activity model for the liquid, Peng-Robinson or SRK for the vapour (next release)
+Fugacity.system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" }).bubbleT([0.5, 0.5], 1500);
 s.azeotropes(101.325);            // [{ x, T, type }]
 // errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
 try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT" (next release)

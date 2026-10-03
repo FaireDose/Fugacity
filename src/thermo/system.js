@@ -6,6 +6,7 @@ import { dimerK, monomerPressure } from "./vapour.js";
 import { createEosSystem, EOS_MODELS } from "./eos/system.js";
 import { listComponents, findComponent } from "./components.js";
 import { selection, choosePair, describePair, pairWarnings } from "./library.js";
+import { createCubicVapour } from "./gamma-phi-vapour.js";
 import { fail } from "../util/errors.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
@@ -25,11 +26,21 @@ export { EOS_MODELS, listComponents, findComponent };
  *        (pair in any order, any component name); see Fugacity.library.sets()
  * @param {string[]} [cfg.prefer]  tiers in order of preference for every pair, e.g. ["fitted", "databank"];
  *        without sets or prefer each pair uses its default set
+ * @param {"ideal"|"PR"|"SRK"} [cfg.vapour="ideal"]  vapour model of an activity-coefficient system:
+ *        ideal gas, or a Peng-Robinson or SRK vapour with phi_sat and the Poynting correction
+ *        (gamma-phi-vapour.js); its k_ij come from the databank (or cfg.kij)
  */
 export function createSystem(cfg) {
   const model = (cfg.model || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : (cfg.model || "NRTL").toUpperCase();
   const isEos = EOS_MODELS.includes(model);
   if (!MODELS.includes(model) && !isEos) throw fail("BAD_INPUT", `Unknown model "${cfg.model}". Use one of: ${MODELS.join(", ")}, or an equation of state: ${EOS_MODELS.join(", ")}.`);
+  const vapourModel = cfg.vapour == null ? (isEos ? model : "ideal") : String(cfg.vapour).toUpperCase() === "IDEAL" ? "ideal" : String(cfg.vapour).toUpperCase();
+  if (vapourModel !== "ideal" && !EOS_MODELS.includes(vapourModel)) {
+    throw fail("BAD_INPUT", `Unknown vapour model "${cfg.vapour}". Use "ideal", ${EOS_MODELS.map(m => `"${m}"`).join(" or ")}.`);
+  }
+  if (isEos && vapourModel !== model) {
+    throw fail("BAD_INPUT", `Model "${model}" describes both phases; the vapour option is for activity-coefficient models (${MODELS.join(", ")}).`);
+  }
   if (!Array.isArray(cfg.components) || cfg.components.length < (isEos ? 1 : 2)) throw fail("BAD_INPUT", isEos ? "Give at least one component." : "Give at least two components.");
   const ids = cfg.components.map(findComponent);
   if (new Set(ids).size !== ids.length) throw fail("BAD_INPUT", "A component appears twice.");
@@ -70,6 +81,10 @@ export function createSystem(cfg) {
   else gammas = () => new Array(n).fill(1);
 
   const assoc = comps.map(c => (useAssoc && c.association && c.association.type === "dimer") ? c.association : null);
+  if (vapourModel !== "ideal" && assoc.some(Boolean)) {
+    throw fail("NOT_AVAILABLE", `${comps.filter((_, i) => assoc[i]).map(c => c.name).join(", ")} dimerizes in the vapour (chemical theory); combining it with a ${vapourModel} vapour is not available. Use vapour: "ideal".`);
+  }
+  const cubicVapour = vapourModel === "ideal" ? null : createCubicVapour(ids, comps, vapourModel, cfg);
 
   /** Vapour pressures, kPa. cfg.psat can override them (array in kPa, or a function of T). */
   const psat = cfg.psat
@@ -82,6 +97,10 @@ export function createSystem(cfg) {
    */
   function equilibrium(x, T) {
     const ps = psat(T), g = gammas(x, T);
+    if (cubicVapour) {
+      const e = cubicVapour.equilibrium(x, T, g, ps);
+      return { P: e.P, y: e.y, gamma: g, phi: e.phi, phiSat: e.phiSat, poynting: e.poynting };
+    }
     const app = new Array(n);
     let Ptrue = 0;
     for (let i = 0; i < n; i++) {
@@ -103,7 +122,10 @@ export function createSystem(cfg) {
   const info = {
     components: comps.map((c, i) => ({ id: ids[i], name: c.name, formula: c.formula, Tb_K: c.Tb_K })),
     model, pairs, missingPairs: missing,
-    vapour: assoc.some(Boolean) ? "chemical theory (dimerization) for " + comps.filter((_, i) => assoc[i]).map(c => c.name).join(", ") : "ideal gas",
+    vapour: cubicVapour ? cubicVapour.describe
+      : assoc.some(Boolean) ? "chemical theory (dimerization) for " + comps.filter((_, i) => assoc[i]).map(c => c.name).join(", ") : "ideal gas",
+    vapourModel,
+    ...(cubicVapour ? { vapourPairs: cubicVapour.pairs } : {}),
   };
 
   /**
@@ -112,8 +134,9 @@ export function createSystem(cfg) {
    * fits), pressures outside a set's pressure range, and notes on the choice of sets.
    */
   function warnings(T, P) {
-    return pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
+    const w = pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
+    return cubicVapour ? [...w, ...cubicVapour.warnings(T)] : w;
   }
 
-  return { ids, names: comps.map(c => c.name), n, model, gammas, psat, equilibrium, info, warnings };
+  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings };
 }
