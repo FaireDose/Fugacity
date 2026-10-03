@@ -180,6 +180,13 @@ reported per property) and the existing pair workflow for binaries:
    monoxide), else ChemSep (thermal conductivity of hydrogen sulfide and dimethyl
    ether). Carbon dioxide has no normal boiling point (it sublimes at 1 atm): `Tb_K` is
    null. Pairs, Henry constants and k_ij for these gases come in step 3.
+   Batch 2: cyclohexane, the three xylenes, ethylbenzene, styrene, n-pentane, n-hexane,
+   n-heptane, n-octane, with UNIQUAC r and q from ChemSep. Cyclohexane thermal conductivity
+   from the WebBook (reference correlation of Koutian et al. 2017). Styrene is not a CoolProp
+   fluid: its constants and properties are from ChemSep, but its vapour pressure is fitted to
+   the measured data of Dreyer et al. (1955, via the WebBook) and the critical point, because
+   the ChemSep equation misses the measured normal boiling point by 1.2 K and diverges above
+   about 420 K; its range starts at 303.07 K, the lowest measured point.
 3. **Pairs, benchmark by benchmark:** fitted to open data where it exists, databank
    otherwise, missing pairs listed. One pull request per benchmark.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)

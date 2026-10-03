@@ -40,7 +40,7 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 26);
+  assert.equal(listComponents().length, 36);
   assert.equal(GASES.length, 16);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
@@ -138,6 +138,8 @@ test("the gases' vapour pressures give their normal boiling points within 0.1 K"
 const ENTHALPY_NOT_CONSISTENT = new Set(["acetic-acid"]);
 
 test("props() returns liquid and vapour properties for every component at a typical state", () => {
+  // styrene at 25 °C: below its measured vapour pressure, so the liquid enthalpy is refused with a reason
+  assert.match(pure("styrene").props(298.15, 101.325).notes.join(" "), /outside the range/);
   for (const { id, name } of listComponents()) {
     const p = pure(id);
     const isGas = GASES.includes(id);
@@ -146,8 +148,10 @@ test("props() returns liquid and vapour properties for every component at a typi
     // vapour pressure for the liquid and a hundredth of it for the vapour
     const vp = components[id].vapourPressure;
     const Tmid = p.Tb_K == null ? 0.5 * (vp.Tmin_K + vp.Tmax_K) : null;
-    // for a gas, Tb - 5 K, but at least 1 K above the triple point (argon: Tb is only 3.5 K above it)
-    const TL = Tmid ?? (isGas ? Math.max(p.Tb_K - 5, vp.Tmin_K + 1) : id === "acetic-acid" ? 303.15 : 298.15);
+    // for a gas, Tb - 5 K, but at least 1 K above the triple point (argon: Tb is only 3.5 K above it); for a
+    // liquid, 25 °C, or the lowest temperature of its vapour-pressure record when the measured data start above
+    // it (styrene: 303.07 K; below it there is no open measured vapour pressure, and props() says so)
+    const TL = Tmid ?? (isGas ? Math.max(p.Tb_K - 5, vp.Tmin_K + 1) : id === "acetic-acid" ? 303.15 : Math.max(298.15, vp.Tmin_K));
     const L = p.props(TL, Tmid ? 2 * p.psat(Tmid) : 101.325);
     assert.equal(L.phase, "liquid", name);
     const hKeys = ENTHALPY_NOT_CONSISTENT.has(id) ? [] : ["h_J_mol"];

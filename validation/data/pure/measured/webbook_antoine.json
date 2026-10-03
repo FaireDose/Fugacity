@@ -1,0 +1,27 @@
+{
+ "styrene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C100425&Units=SI&Mask=4",
+  "retrieved": "2026-10-03",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 305.6,
+    "Tmax_K": 355.34,
+    "A": 4.0593,
+    "B": 1459.909,
+    "C": -59.551,
+    "reference": "Chaiyavech and Van Winkle, 1959",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 303.07,
+    "Tmax_K": 417.92,
+    "A": 4.21948,
+    "B": 1525.059,
+    "C": -56.379,
+    "reference": "Dreyer, Martin, et al., 1955",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ }
+}
