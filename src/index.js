@@ -8,6 +8,7 @@
 import { createSystem, listComponents, findComponent, MODELS } from "./thermo/system.js";
 import { bubbleT, bubbleP, pureBoilingPoints } from "./equilibrium/bubble.js";
 import { dewT, dewP } from "./equilibrium/dew.js";
+import { flash, rachfordRice } from "./equilibrium/flash.js";
 import { FugacityError, ERROR_CODES, isFugacityError } from "./util/errors.js";
 import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
@@ -32,7 +33,7 @@ export const version = pkg.version;
 export {
   system, app,
   mount, createSystem, listComponents, findComponent, MODELS,
-  bubbleT, bubbleP, dewT, dewP, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
+  bubbleT, bubbleP, dewT, dewP, flash, rachfordRice, pureBoilingPoints, txy, pxy, ternaryGrid, residueCurve,
   binaryAzeotropes, findAzeotrope, isLiquidStable, checkPackage, validCas,
   pure, PROPERTIES, PROPERTY_NAMES,
   mountProperties,

@@ -82,6 +82,10 @@ s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... 
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" }).bubbleT([0.5, 0.5], 1500);
 // mixture enthalpy, J/mol, reference ideal gas at 298.15 K (next release)
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" }).enthalpy("liquid", 350, 101.325, [0.5, 0.5]);
+// flash: { z, T, P }, { z, P, H }, { z, P, VF } or { z, T, VF }; feed conditions add the heat duty (next release)
+Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" })
+  .flash({ z: [0.4, 0.6], T: 355, P: 101.325 }, { feed: { T: 298.15, P: 101.325 } });
+// { T, P, VF: 0.479, H_J_mol, phases: [{ type, fraction, composition, h_J_mol }, ...], duty_J_mol: 24582, warnings, sources }
 s.azeotropes(101.325);            // [{ x, T, type }]
 // errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
 try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT" (next release)
