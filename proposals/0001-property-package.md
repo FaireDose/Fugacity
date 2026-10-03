@@ -127,12 +127,21 @@ of formation will be added to this reference; differences between states do not 
 
 - **Vapour, activity models:** the vapour model chosen for the phase equilibrium. Ideal
   gas: h_V = Σ y_i h_IG,i(T). PR or SRK: h_V = Σ y_i h_IG,i(T) + h_R(T, P, y).
-- **Liquid, activity models:** h_L = Σ x_i [h_IG,i(T) + h_R,i^sat(T) − ΔH_vap,i(T)] + h^E(T, x),
-  with h_R,i^sat the residual enthalpy of the saturated pure vapour from the chosen vapour
-  model (zero for the ideal gas), and the excess enthalpy from the activity model,
-  h^E = −R T² Σ x_i (∂ ln γ_i / ∂T)_x. Then a pure component boils with exactly its heat
-  of vaporization, whichever vapour model is chosen. (With a PR vapour this is the liquid
-  enthalpy of `pure()` today.) The pressure effect on the liquid is neglected; the tests
+- **Liquid, activity models** (amended by the lead maintainer in pull request #34, on the
+  independent review's finding): h_L = Σ x_i h_L,i(T) + h^E(T, x), with the pure liquid on
+  the **liquid heat-capacity basis**
+  h_L,i(T) = h_R,i^sat(T0) − ΔH_vap,i(T0) + ∫ from T0 to T of c_p,L,i dT, T0 = 298.15 K,
+  h_R,i^sat the residual enthalpy of the saturated pure vapour from the chosen vapour model
+  (zero for the ideal gas), and the excess enthalpy from the activity model,
+  h^E = −R T² Σ x_i (∂ ln γ_i / ∂T)_x. The liquid's sensible heat then follows the measured
+  heat capacity (within 0.5 % of CoolProp from 300 K to 400 K); the latent heat is exact at
+  25 °C and follows Kirchhoff's law above it (0.5–1.7 % above the ΔH_vap record at the
+  normal boiling point with an ideal-gas vapour). The first version,
+  h_L,i = h_IG,i + h_R,i^sat − ΔH_vap,i at every T, kept the latent heat exact but put the
+  vapour non-ideality the model leaves out into the liquid: heating liquid methanol from
+  300 K to 400 K cost 29 % too much, so an adiabatic flash of a hot liquid gave too much
+  vapour. Above the end of a heat-capacity record the first form continues, joined
+  continuously, with a warning. The pressure effect on the liquid is neglected; the tests
   state its size.
 - **Equations of state, both phases:** h = Σ z_i h_IG,i(T) + h_R(T, P, z), the residual
   enthalpy from the cubic equation (already used for pure components).

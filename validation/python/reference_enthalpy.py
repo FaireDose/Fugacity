@@ -10,10 +10,16 @@ Every piece is computed here without the JavaScript engine:
     temperature derivative of the residual Helmholtz energy);
   - excess enthalpy: the open-source `thermo` library's NRTL and UNIQUAC classes (MIT),
     GibbsExcess.HE() (analytic), with the same parameters.
-The formulas are those of proposal 0001, section 4:
-  liquid  h = sum x_i [h_IG,i + h_R,i^sat - dHvap_i] + h^E
+  - liquid heat capacity: the DIPPR 100 records; water: IAPWS-IF97 saturated-liquid cp (`iapws`),
+    integrated with scipy.integrate.quad;
+The formulas are those of proposal 0001, section 4, with the liquid on the liquid
+heat-capacity basis decided in pull request #34 (T0 = 298.15 K):
+  liquid  h = sum x_i [h_R,i^sat(T0) - dHvap_i(T0) + integral_T0^T cp_L,i dT] + h^E
   vapour  h = sum y_i h_IG,i + h_R(T, P, y)
   equation of state  h = sum z_i h_IG,i + h_R(T, P, z), either phase.
+
+It also compares the liquid's sensible heat with CoolProp's reference equations of state
+(saturated liquid, 300 K to 400 K), the check that motivated the liquid heat-capacity basis.
 
 Writes validation/fixtures/enthalpy.json.
 Usage: python validation/python/reference_enthalpy.py
@@ -61,6 +67,25 @@ def dhvap(cid, T):
     return k["A"] * (1 - r) ** (k["B"] + r * (k["C"] + r * (k["D"] + r * k["E"])))
 
 
+def cp_liquid(cid, T):
+    if cid == "water":
+        from iapws import IAPWS97
+        return COMPONENTS["water"]["MW"] * IAPWS97(T=T, x=0).cp
+    rec = COMPONENTS[cid]["properties"]["liquidHeatCapacity"]
+    assert rec["equation"] == "DIPPR100"
+    k = rec["coefficients"]
+    assert rec["Tmin_K"] <= min(T, T_REF) and T <= rec["Tmax_K"], (cid, T)
+    return sum(k.get(n, 0.0) * T ** p for p, n in enumerate("ABCDE"))
+
+
+def h_liquid_pure(cid, T, cub, i, n, c):
+    hrs0 = 0.0
+    if cub is not None:
+        e = np.zeros(n); e[i] = 1.0
+        hrs0 = cub.h_res(T_REF, psat_kpa(c, T_REF) * 1000, e, "vapour")
+    return hrs0 - dhvap(cid, T_REF) + quad(lambda t: cp_liquid(cid, t), T_REF, T, epsabs=1e-9, epsrel=1e-12)[0]
+
+
 def h_excess(s, x, T):
     from thermo.nrtl import NRTL
     from thermo.uniquac import UNIQUAC
@@ -79,11 +104,7 @@ def liquid_h(s, x, T, vapour):
     for i, cid in enumerate(s.ids):
         if x[i] == 0:
             continue
-        hrs = 0.0
-        if cub is not None:
-            e = np.zeros(s.n); e[i] = 1.0
-            hrs = cub.h_res(T, psat_kpa(s.c[i], T) * 1000, e, "vapour")
-        h += x[i] * (h_ig(cid, T) + hrs - dhvap(cid, T))
+        h += x[i] * h_liquid_pure(cid, T, cub, i, s.n, s.c[i])
     he = h_excess(s, x, T) if s.model != "ideal" else 0.0
     return h + he, he
 
@@ -99,7 +120,7 @@ ACTIVITY = [  # model, vapour, components, liquid cases (x, T), vapour cases (y,
     ("NRTL", "ideal", ["ethanol", "water"], [([0.5, 0.5], 330.0), ([0.2, 0.8], 350.0), ([0.9, 0.1], 300.0)], [([0.6, 0.4], 380.0, 101.325)]),
     ("NRTL", "PR", ["ethanol", "water"], [([0.5, 0.5], 330.0), ([0.2, 0.8], 420.0)], [([0.6, 0.4], 450.0, 1000.0)]),
     ("UNIQUAC", "ideal", ["methanol", "acetone", "chloroform"], [([0.3, 0.3, 0.4], 320.0), ([0.6, 0.2, 0.2], 330.0)], [([0.3, 0.3, 0.4], 360.0, 101.325)]),
-    ("UNIQUAC", "SRK", ["methanol", "acetone", "chloroform"], [([0.3, 0.3, 0.4], 380.0)], [([0.3, 0.3, 0.4], 420.0, 800.0)]),
+    ("UNIQUAC", "SRK", ["methanol", "acetone", "chloroform"], [([0.3, 0.3, 0.4], 360.0)], [([0.3, 0.3, 0.4], 420.0, 800.0)]),
     ("NRTL", "ideal", ["benzene", "toluene"], [([0.5, 0.5], 360.0)], [([0.5, 0.5], 400.0, 101.325)]),
 ]
 EXCESS = [  # excess enthalpy only (works with acetic acid)
@@ -133,6 +154,16 @@ def main():
         for ph, z, T, P in pts:
             cases.append({"kind": "eos", "model": model, "components": ids, "phase": ph, "z": z, "T_K": T, "P_kPa": P,
                           "h_J_mol": sum(zi * h_ig(c, T) for c, zi in zip(ids, z)) + Cubic(model, ids).h_res(T, P * 1000, np.asarray(z), ph)})
+    import CoolProp.CoolProp as CP
+    sens = []
+    for cid, fl in [("water", "Water"), ("methanol", "Methanol"), ("ethanol", "Ethanol"), ("acetone", "Acetone"),
+                    ("benzene", "Benzene"), ("toluene", "Toluene")]:
+        M = CP.PropsSI("M", fl)
+        hc = lambda T: CP.PropsSI("H", "T", T, "Q", 0, fl) * M
+        ref = hc(400.0) - hc(300.0)
+        mine = quad(lambda t: cp_liquid(cid, t), 300.0, 400.0)[0]
+        sens.append({"component": cid, "T1_K": 300.0, "T2_K": 400.0, "coolprop_dh_J_mol": ref, "cpL_integral_J_mol": mine})
+        print(f"sensible heat 300->400 K {cid:9s}: CoolProp {ref:9.1f}, cp_L record {mine:9.1f} ({(mine / ref - 1) * 100:+.2f} %)")
     for c in cases:
         print(c["kind"], c.get("model"), c.get("vapour", ""), "+".join(c["components"]), c.get("phase", ""), c["z"], c["T_K"],
               round(c.get("h_J_mol", c.get("hE_J_mol")), 3))
@@ -141,7 +172,7 @@ def main():
                   "ideal-gas enthalpy by quadrature of the heat-capacity records (IAPWS-IF97 for water, iapws package), "
                   "heat of vaporization from the DIPPR 106 records (IAPWS-IF97 for water), residual enthalpies from "
                   "reference_eos.Cubic, excess enthalpies from the thermo library's NRTL and UNIQUAC.",
-        "cases": cases}, indent=1))
+        "cases": cases, "sensible_heat": sens}, indent=1))
     print(f"wrote {len(cases)} cases to {OUT}")
 
 

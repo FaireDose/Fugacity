@@ -28,29 +28,57 @@ test("mixture enthalpies match the independent reference", () => {
   }
 });
 
-test("a pure component boils with exactly its heat of vaporization, for every vapour model", () => {
+test("liquid heat-capacity basis: exact latent heat at 25 °C, Kirchhoff's law above it", () => {
   for (const vapour of ["ideal", "PR", "SRK"]) {
     const s = system({ components: ["water", "ethanol"], model: "NRTL", vapour });
-    for (const [i, P] of [[0, 101.325], [1, 101.325], [0, 1000], [1, 1000]]) {
-      const T = s.boilingPoints(P)[i];
+    for (const i of [0, 1]) {
       const z = i === 0 ? [1, 0] : [0, 1];
-      const dh = s.enthalpy("vapour", T, P, z) - s.enthalpy("liquid", T, P, z);
-      const ref = pure(s.ids[i]).property("heatOfVaporization", T);
-      assert.ok(Math.abs(dh - ref) < 1e-6 * ref, `${vapour} ${s.names[i]} at ${P} kPa: ${dh} vs ${ref}`);
+      const P0 = s.psat(298.15)[i];
+      const d0 = s.enthalpy("vapour", 298.15, P0, z) - s.enthalpy("liquid", 298.15, P0, z);
+      const r0 = pure(s.ids[i]).property("heatOfVaporization", 298.15);
+      assert.ok(Math.abs(d0 - r0) < 1e-6 * r0, `${vapour} ${s.names[i]} at 25 °C: ${d0} vs ${r0}`);
+      // at the normal boiling point h_V - h_L follows Kirchhoff's law: within 2 % of the record
+      const T = s.boilingPoints(101.325)[i];
+      const d = s.enthalpy("vapour", T, 101.325, z) - s.enthalpy("liquid", T, 101.325, z);
+      const r = pure(s.ids[i]).property("heatOfVaporization", T);
+      assert.ok(Math.abs(d / r - 1) < 0.02, `${vapour} ${s.names[i]} at Tb: ${d} vs ${r}`);
     }
   }
 });
 
-test("water against the steam tables: with an ideal-gas vapour the liquid differs by the residual enthalpy of steam", () => {
-  // Same reference (ideal gas at 298.15 K) on both sides: pure("water") gives IAPWS-IF97.
+test("the liquid's sensible heat follows the measured heat capacity (CoolProp, 300 K to 400 K)", () => {
+  const { sensible_heat } = load("../validation/fixtures/enthalpy.json");
+  const other = { water: "ethanol", methanol: "water", ethanol: "water", acetone: "methanol", benzene: "toluene", toluene: "benzene" };
+  for (const r of sensible_heat) {
+    const s = system({ components: [r.component, other[r.component]], model: "NRTL", allowMissingPairs: true });
+    const dh = s.enthalpy("liquid", r.T2_K, 101.325, [1, 0]) - s.enthalpy("liquid", r.T1_K, 101.325, [1, 0]);
+    assert.ok(Math.abs(dh - r.cpL_integral_J_mol) < 0.05, `${r.component}: ${dh} vs integral ${r.cpL_integral_J_mol}`);
+    assert.ok(Math.abs(dh / r.coolprop_dh_J_mol - 1) < 0.01, `${r.component}: ${dh} vs CoolProp ${r.coolprop_dh_J_mol}`);
+  }
+});
+
+test("above the end of a heat-capacity record the liquid enthalpy continues smoothly, with a warning", () => {
+  const s = system({ components: ["chloroform", "acetone"], model: "NRTL" });
+  const Tend = pure("chloroform").record("liquidHeatCapacity").Tmax_K;
+  const h = T => s.phase("liquid", T, 500, [1, 0]);
+  assert.ok(Math.abs(h(Tend + 1e-6).h_J_mol - h(Tend - 1e-6).h_J_mol) < 1e-2, "continuous");
+  assert.equal(h(Tend - 1).warnings.some(w => /heat-capacity record ends/.test(w)), false);
+  assert.ok(h(Tend + 10).warnings.some(w => /heat-capacity record ends/.test(w)));
+});
+
+test("water against the steam tables: the liquid enthalpy follows IAPWS-IF97", () => {
+  // Same reference (ideal gas at 298.15 K) on both sides: pure("water").saturation() is IF97.
   const w = pure("water");
   const s = system({ components: ["water", "ethanol"], model: "NRTL" });
-  for (const T of [323.15, 373.15, 423.15]) {
+  // The anchor at 25 °C leaves out the residual enthalpy of saturated steam there (ideal-gas
+  // vapour), a constant offset; above it, cp along saturation instead of dh'/dT adds a drift.
+  const offset = -(w.saturation(298.15).hV_J_mol - w.hIdealGas(298.15));
+  for (const T of [298.15, 323.15, 373.15, 423.15]) {
     const sat = w.saturation(T);
     const hL = s.enthalpy("liquid", T, sat.P_kPa, [1, 0]);
-    const hR = sat.hV_J_mol - w.hIdealGas(T); // residual enthalpy of saturated steam, IF97
-    assert.ok(Math.abs((hL - sat.hL_J_mol) - (-hR)) < 1, `T=${T}: ${hL - sat.hL_J_mol} vs ${-hR}`);
+    assert.ok(Math.abs(hL - sat.hL_J_mol - offset) < 10, `T=${T}: ${hL - sat.hL_J_mol} vs offset ${offset}`);
   }
+  assert.ok(Math.abs(offset) < 30, `offset ${offset} J/mol`);
 });
 
 test("fugacities of the two phases are equal at a computed bubble point", () => {
