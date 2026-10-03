@@ -32,6 +32,16 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Isobutane | CoolProp 0.24 (f) | CoolProp 0.28 (f) | CoolProp 0.31 (f) | CoolProp 0.85 (f) | CoolProp 0.12 (f) | CoolProp 1.6 (f) | CoolProp 0.014 (f) | CoolProp 0.53 (f) | CoolProp 0.29 (f) | CoolProp 0.24 (f) |
 | Ammonia | CoolProp 0.11 (f) | CoolProp 0.072 (f) | CoolProp 0.0044 (f) | CoolProp 0.47 (f) | CoolProp 0.019 (f) | CoolProp 0.36 (f) | CoolProp 0.69 (f) | CoolProp 0.60 (f) | CoolProp 2.9 (f) | CoolProp 0.26 (f) |
 | Dimethyl ether | CoolProp 0.25 (f) | CoolProp 0.20 (f) | CoolProp 0.14 (f) | CoolProp 0.49 (f) | CoolProp 0.099 (f) | CoolProp 2.0 (f) | CoolProp 0.88 (f) | ChemSep 0.71 (f) | ChemSep 0.0001 (d) | CoolProp 0.0001 (f) |
+| Cyclohexane | CoolProp 0.13 (f) | CoolProp 0.16 (f) | CoolProp 0.020 (f) | CoolProp 0.42 (f) | CoolProp 0.070 (f) | CoolProp 0.61 (f) | CoolProp 0.19 (f) | WebBook 0.065 (f) | WebBook 0.014 (f) | CoolProp 0.023 (f) |
+| o-Xylene | CoolProp 0.14 (f) | CoolProp 0.24 (f) | CoolProp 0.048 (f) | CoolProp 0.61 (f) | CoolProp 0.20 (f) | CoolProp 1.1 (f) | CoolProp 0.43 (f) | CoolProp 0.17 (f) | CoolProp 0.36 (f) | CoolProp 0.0001 (f) |
+| m-Xylene | CoolProp 0.16 (f) | CoolProp 0.24 (f) | CoolProp 0.021 (f) | CoolProp 0.49 (f) | CoolProp 0.11 (f) | CoolProp 0.80 (f) | CoolProp 0.55 (f) | CoolProp 0.23 (f) | CoolProp 0.71 (f) | CoolProp 0.0001 (f) |
+| p-Xylene | CoolProp 0.13 (f) | CoolProp 0.22 (f) | CoolProp 0.0058 (f) | CoolProp 0.45 (f) | CoolProp 0.070 (f) | CoolProp 0.86 (f) | CoolProp 0.26 (f) | CoolProp 0.37 (f) | CoolProp 0.15 (f) | CoolProp 0.0001 (f) |
+| Ethylbenzene | CoolProp 0.33 (f) | CoolProp 0.42 (f) | CoolProp 0.17 (f) | CoolProp 0.52 (f) | CoolProp 0.11 (f) | CoolProp 1.4 (f) | CoolProp 0.13 (f) | CoolProp 0.67 (f) | CoolProp 0.20 (f) | CoolProp 0.0001 (f) |
+| Styrene | ChemSep 0.100 (f) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.087 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.30 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
+| n-Pentane | CoolProp 0.25 (f) | CoolProp 0.32 (f) | CoolProp 0.16 (f) | CoolProp 0.67 (f) | CoolProp 0.19 (f) | CoolProp 2.6 (f) | CoolProp 0.030 (f) | CoolProp 0.37 (f) | CoolProp 0.59 (f) | CoolProp 0.18 (f) |
+| n-Hexane | CoolProp 0.18 (f) | CoolProp 0.26 (f) | CoolProp 0.092 (f) | CoolProp 0.56 (f) | CoolProp 0.15 (f) | CoolProp 1.4 (f) | CoolProp 0.0048 (f) | CoolProp 0.64 (f) | CoolProp 1.1 (f) | CoolProp 0.23 (f) |
+| n-Heptane | CoolProp 0.20 (f) | CoolProp 0.43 (f) | CoolProp 0.12 (f) | CoolProp 0.58 (f) | CoolProp 0.072 (f) | CoolProp 2.0 (f) | CoolProp 0.046 (f) | CoolProp 0.39 (f) | CoolProp 0.39 (f) | CoolProp 0.30 (f) |
+| n-Octane | CoolProp 0.17 (f) | CoolProp 0.22 (f) | CoolProp 0.11 (f) | CoolProp 0.39 (f) | CoolProp 0.19 (f) | CoolProp 0.65 (f) | CoolProp 0.0041 (f) | CoolProp 0.40 (f) | CoolProp 1.1 (f) | CoolProp 0.33 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -65,6 +75,16 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Isobutane | 113.73–387.41 | 113.73–575 | 113.73–373.72 | 113.73–387.41 | 113.73–387.41 | 113.73–575 | 113.73–387.41 | 113.73–575 | 113.73–387.41 |
 | Ammonia | 195.5–385.28 | 195.5–725 | 195.5–366.3 | 195.5–385.28 | 195.5–385.28 | 195.5–725 | 195.5–385.28 | 195.5–645.57 | 195.5–385.28 |
 | Dimethyl ether | 131.66–380.35 | 131.66–525 | 131.66–355.48 | 131.66–380.35 | 144.1–380.35 | 131.66–525 | 131.66–320.03 | 131.65–1500 | 131.66–380.35 |
+| Cyclohexane | 279.48–525.92 | 279.48–700 | 279.48–513.59 | 279.48–525.92 | 279.48–525.92 | 279.48–700 | 279.86–525.818 | 279.86–640.34 | 279.48–525.92 |
+| o-Xylene | 247.99–598.74 | 247.99–700 | 247.99–581.2 | 247.99–598.74 | 247.99–598.74 | 247.99–700 | 247.99–598.74 | 247.99–700 | 247.99–598.74 |
+| m-Xylene | 225.3–586.04 | 225.3–700 | 225.3–568 | 225.3–586.04 | 225.3–586.04 | 225.3–700 | 225.3–586.04 | 225.3–700 | 225.3–586.04 |
+| p-Xylene | 286.41–585.35 | 286.41–700 | 286.41–570.4 | 286.41–585.35 | 286.41–585.35 | 286.41–700 | 286.41–585.35 | 286.41–700 | 286.41–585.35 |
+| Ethylbenzene | 178.2–586.26 | 178.2–700 | 178.2–565.85 | 178.2–586.26 | 178.2–586.26 | 264.73–700 | 178.2–586.26 | 264.73–700 | 178.2–586.26 |
+| Styrene | 242.54–636 | 170–1500 | 242.54–418.31 | 242.54–615.29 | 242.54–508.8 | 242.54–1273.15 | 242.54–598.15 | 242.54–1000 | 273.15–418.31 |
+| n-Pentane | 143.47–446.21 | 143.47–650 | 143.47–431.07 | 143.47–446.21 | 173.75–446.21 | 143.47–650 | 143.47–446.21 | 143.47–650 | 143.47–446.21 |
+| n-Hexane | 177.83–482.42 | 177.83–600 | 177.83–467.19 | 177.83–482.42 | 177.83–482.42 | 177.83–600 | 177.83–482.42 | 177.83–600 | 177.83–482.42 |
+| n-Heptane | 182.55–514.16 | 182.55–600 | 182.55–497.57 | 182.55–514.16 | 182.55–514.16 | 182.55–600 | 182.55–514.16 | 182.55–600 | 182.55–514.16 |
+| n-Octane | 216.37–540.3 | 216.37–730 | 216.37–524.1 | 216.37–540.3 | 216.37–540.3 | 216.37–730 | 216.37–540.3 | 216.37–730 | 216.37–540.3 |
 
 Temperatures in K.
 
@@ -452,6 +472,156 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 11.392 | 11.392 | 0.00 % | – |
 | σ | mN/m | 18.65 | 18.65 | 0.00 % | 18.532 |
 
+### Cyclohexane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 13.005 | 13.019 | -0.10 % | – |
+| ρL | kg/m³ | 773.65 | 773.89 | -0.03 % | 773.21 |
+| cp° | J/(mol·K) | 106.28 | 106.3 | -0.02 % | 106.08 |
+| cpL | J/(mol·K) | 155.89 | 156.46 | -0.36 % | 155.01 |
+| ΔHvap | kJ/mol | 33.038 | 33.034 | 0.01 % | 32.92 |
+| μL | mPa·s | 0.89499 | 0.89012 | 0.55 % | 0.88425 |
+| μV | μPa·s | 7.0253 | 7.0218 | 0.05 % | 7.0885 |
+| kL | mW/(m·K) | 118.19 | (table) | – | 123.46 |
+| kV | mW/(m·K) | 10.879 | (table) | – | 11.404 |
+| σ | mN/m | 24.414 | 24.419 | -0.02 % | 24.646 |
+
+### o-Xylene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.89491 | 0.89598 | -0.12 % | – |
+| ρL | kg/m³ | 876.11 | 875.96 | 0.02 % | 875.88 |
+| cp° | J/(mol·K) | 131.34 | 131.34 | -0.00 % | 132.67 |
+| cpL | J/(mol·K) | 186.39 | 187.36 | -0.52 % | 186.36 |
+| ΔHvap | kJ/mol | 43.427 | 43.423 | 0.01 % | 43.576 |
+| μL | mPa·s | 0.76248 | 0.7562 | 0.83 % | 0.75801 |
+| μV | μPa·s | 6.6635 | 6.6367 | 0.40 % | 6.36 |
+| kL | mW/(m·K) | 130.49 | 130.66 | -0.13 % | 131.4 |
+| kV | mW/(m·K) | 13.577 | 13.53 | 0.35 % | 12.93 |
+| σ | mN/m | 29.51 | 29.51 | 0.00 % | 29.557 |
+
+### m-Xylene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.1189 | 1.1173 | 0.15 % | – |
+| ρL | kg/m³ | 860.17 | 859.85 | 0.04 % | 860.16 |
+| cp° | J/(mol·K) | 125.59 | 125.57 | 0.01 % | 126.38 |
+| cpL | J/(mol·K) | 181.38 | 181.69 | -0.17 % | 182.21 |
+| ΔHvap | kJ/mol | 42.748 | 42.701 | 0.11 % | 42.727 |
+| μL | mPa·s | 0.58541 | 0.58152 | 0.67 % | 0.58127 |
+| μV | μPa·s | 6.6379 | 6.6038 | 0.52 % | 6.4085 |
+| kL | mW/(m·K) | 129.59 | 129.84 | -0.19 % | 130.3 |
+| kV | mW/(m·K) | 9.2917 | 9.3099 | -0.19 % | 6.4541 |
+| σ | mN/m | 28.121 | 28.121 | 0.00 % | 28.244 |
+
+### p-Xylene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.1765 | 1.1777 | -0.10 % | – |
+| ρL | kg/m³ | 855.57 | 856.66 | -0.13 % | 856.7 |
+| cp° | J/(mol·K) | 126.23 | 126.23 | -0.00 % | 126.01 |
+| cpL | J/(mol·K) | 182 | 182.26 | -0.14 % | 181.54 |
+| ΔHvap | kJ/mol | 42.415 | 42.388 | 0.06 % | 42.285 |
+| μL | mPa·s | 0.60347 | 0.60605 | -0.43 % | 0.605 |
+| μV | μPa·s | 6.569 | 6.571 | -0.03 % | 6.2587 |
+| kL | mW/(m·K) | 126.71 | 126.59 | 0.10 % | 129.76 |
+| kV | mW/(m·K) | 10.415 | 10.425 | -0.09 % | 8.2128 |
+| σ | mN/m | 27.805 | 27.805 | 0.00 % | 27.847 |
+
+### Ethylbenzene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.282 | 1.2789 | 0.24 % | – |
+| ρL | kg/m³ | 863.79 | 862.46 | 0.15 % | 865.06 |
+| cp° | J/(mol·K) | 127.66 | 127.53 | 0.11 % | 127.97 |
+| cpL | J/(mol·K) | 186.04 | 185.35 | 0.37 % | 181.73 |
+| ΔHvap | kJ/mol | 42.273 | 42.248 | 0.06 % | 42.303 |
+| μL | mPa·s | 0.60369 | 0.61137 | -1.26 % | 0.64077 |
+| μV | μPa·s | 6.871 | 6.8679 | 0.04 % | 6.5233 |
+| kL | mW/(m·K) | 127.44 | 127.73 | -0.23 % | 129.18 |
+| kV | mW/(m·K) | 9.5882 | 9.5708 | 0.18 % | 10.687 |
+| σ | mN/m | 28.52 | 28.52 | 0.00 % | 28.594 |
+
+### Styrene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.81776 | 0.86842 | -5.83 % | – |
+| ρL | kg/m³ | 899.79 | 899.79 | -0.00 % | – |
+| cp° | J/(mol·K) | 123.37 | 122.75 | 0.51 % | – |
+| cpL | J/(mol·K) | 181.85 | 181.99 | -0.07 % | – |
+| ΔHvap | kJ/mol | 44.242 | 44.242 | 0.00 % | – |
+| μL | mPa·s | 0.70325 | 0.70325 | 0.00 % | – |
+| μV | μPa·s | 6.3739 | 6.3739 | 0.00 % | – |
+| kL | mW/(m·K) | 136.26 | 136.63 | -0.27 % | – |
+| kV | mW/(m·K) | 9.3668 | 9.3668 | 0.00 % | – |
+| σ | mN/m | 30.844 | 30.906 | -0.20 % | – |
+
+### n-Pentane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 68.191 | 68.355 | -0.24 % | – |
+| ρL | kg/m³ | 621.2 | 621.17 | 0.01 % | 621.43 |
+| cp° | J/(mol·K) | 120.04 | 120.13 | -0.07 % | 120.27 |
+| cpL | J/(mol·K) | 167.36 | 167.13 | 0.14 % | 166.98 |
+| ΔHvap | kJ/mol | 26.405 | 26.436 | -0.12 % | 26.454 |
+| μL | mPa·s | 0.1839 | 0.17974 | 2.31 % | 0.20834 |
+| μV | μPa·s | 6.7803 | 6.7817 | -0.02 % | 7.0577 |
+| kL | mW/(m·K) | 112.31 | 111.95 | 0.33 % | 111.48 |
+| kV | mW/(m·K) | 14.474 | 14.424 | 0.35 % | 14.963 |
+| σ | mN/m | 15.467 | 15.454 | 0.08 % | 15.462 |
+
+### n-Hexane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 20.193 | 20.164 | 0.15 % | – |
+| ρL | kg/m³ | 655.2 | 654.76 | 0.07 % | 656.75 |
+| cp° | J/(mol·K) | 142.82 | 142.76 | 0.04 % | 143.1 |
+| cpL | J/(mol·K) | 196.9 | 195.86 | 0.53 % | 196.45 |
+| ΔHvap | kJ/mol | 31.56 | 31.557 | 0.01 % | 31.57 |
+| μL | mPa·s | 0.29625 | 0.2977 | -0.49 % | 0.29889 |
+| μV | μPa·s | 6.2853 | 6.2856 | -0.00 % | 6.4648 |
+| kL | mW/(m·K) | 120.62 | 119.95 | 0.55 % | 119.9 |
+| kV | mW/(m·K) | 13.91 | 13.829 | 0.59 % | 13.456 |
+| σ | mN/m | 17.863 | 17.881 | -0.10 % | 17.917 |
+
+### n-Heptane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 6.0896 | 6.0908 | -0.02 % | – |
+| ρL | kg/m³ | 680.49 | 679.5 | 0.15 % | 680.94 |
+| cp° | J/(mol·K) | 165.24 | 165.18 | 0.03 % | 165.74 |
+| cpL | J/(mol·K) | 225.78 | 224.52 | 0.56 % | 224.8 |
+| ΔHvap | kJ/mol | 36.582 | 36.585 | -0.01 % | 36.604 |
+| μL | mPa·s | 0.38667 | 0.38965 | -0.76 % | 0.39031 |
+| μV | μPa·s | 5.8748 | 5.8725 | 0.04 % | 5.9392 |
+| kL | mW/(m·K) | 122.03 | 122.12 | -0.07 % | 124.59 |
+| kV | mW/(m·K) | 11.953 | 11.933 | 0.17 % | 12.323 |
+| σ | mN/m | 19.68 | 19.734 | -0.28 % | 19.859 |
+
+### n-Octane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.8723 | 1.8735 | -0.06 % | – |
+| ρL | kg/m³ | 699.01 | 698.49 | 0.07 % | 699.36 |
+| cp° | J/(mol·K) | 189.24 | 189.06 | 0.10 % | 188.54 |
+| cpL | J/(mol·K) | 254.87 | 254.48 | 0.16 % | 252.61 |
+| ΔHvap | kJ/mol | 41.585 | 41.513 | 0.17 % | 41.507 |
+| μL | mPa·s | 0.50877 | 0.51099 | -0.43 % | 0.51143 |
+| μV | μPa·s | 5.7326 | 5.7328 | -0.00 % | 5.4194 |
+| kL | mW/(m·K) | 125.04 | 124.55 | 0.40 % | 127.79 |
+| kV | mW/(m·K) | 11.019 | 10.957 | 0.56 % | 11.803 |
+| σ | mN/m | 21.109 | 21.171 | -0.29 % | 21.166 |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -482,10 +652,13 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - Ethylene, μV: starts at 169.41 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 169.41 K have no value.
 - Ethylene, kV: starts at 170 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 170 K have no value.
 - Dimethyl ether, μL: starts at 144.1 K, above the other liquid properties (131.66 K): range narrowed from 131.66-380.35 K (max deviation there 3.2 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (131.66 K)
+- n-Pentane, μL: starts at 173.75 K, above the other liquid properties (143.47 K): range narrowed from 143.47-446.21 K (max deviation there 17 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (143.47 K)
 
 ## Cross-checks
 
 - cross-check ethyl-acetate cp0 vs Connett J.E. et al., J. Chem. Thermodyn. 8 (1976) 1199-1203 (measured), via the NIST WebBook page above: deviations 1.04, 0.88, 0.85, 0.70, 0.40 %
+- cross-check styrene vapour pressure vs Chaiyavech and Van Winkle, 1959, 305.60-355.34 K: max -5.71 % at 305.6 K
+- cross-check styrene vapour pressure vs ChemSep, 303.07-636.00 K: max -98.80 % at 636.0 K
 
 ## Notes
 
@@ -500,18 +673,27 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Assael-JPCRD-2012-Benzene: M.J. Assael et al., Reference Correlation of the Thermal Conductivity of Benzene from the Triple Point to 725 K and up to 500 MPa, J. Phys. Chem. Ref. Data 41 (2012) 043102-1:9, doi:10.1063/1.4755781
   - Assael-JPCRD-2012-Toluene: M. J. Assael et al., Reference Correlation of the Thermal Conductivity of Toluene from the Triple Point to 1000 K and up to 1000 MPa, J. Phys. Chem. Ref. Data 41 (2012) 023101-1:12, doi:10.1063/1.3700155
   - Assael-JPCRD-2013-Ethanol: M. J. Assael et al., Reference Correlation of the Thermal Conductivity of Ethanol from the Triple Point to 600 K and up to 245 MPa, J. Phys. Chem. Ref. Data 42 (2013) 023102-1:10, doi:10.1063/1.4797368
+  - Assael-JPCRD-2013-Heptane: M. J. Assael et al., Reference Correlation of the Thermal Conductivity of n-Heptane from the Triple Point to 600 K and up to 250 MPa, J. Phys. Chem. Ref. Data 42 (2013) 023101-1:9, doi:10.1063/1.4794091
+  - Assael-JPCRD-2013-Hexane: M. J. Assael et al., Reference Correlation of the Thermal Conductivity of n-Hexane from the Triple Point to 600 K and up to 500 MPa, J. Phys. Chem. Ref. Data 42 (2013) 013106-1:8, doi:10.1063/1.4793335
   - Avgeri-JPCRD-2014-Benzene: S. Avgeri et al., Reference Correlation of the Viscosity of Benzene from the Triple Point to 675 K and up to 300 MPa, J. Phys. Chem. Ref. Data 43 (2014) 033103, doi:10.1063/1.4892935
   - Avgeri-JPCRD-2015-Toluene: S. Avgeri et al., Reference Correlation of the Viscosity of Toluene from the Triple Point to 675 K and up to 500 MPa, J. Phys. Chem. Ref. Data 44 (2015) 033101, doi:10.1063/1.4926955
+  - Balogun-JPCRD-2015-pxylene: B. Balogun et al., Reference Correlation of the Viscosity of para-Xylene from the Triple Point to 673 K and up to 110 MPa, J. Phys. Chem. Ref. Data 44 (2015) 013103, doi:10.1063/1.4908048
+  - Beckmueller-IJT-2019-octane: R. Beckmueller et al., Fundamental Equation of State for n-Octane, Int. J. Therrmophys.  ()
   - Buecker-JPCRD-2006: D. Buecker and W. Wagner, A Reference Equation of State for the Thermodynamic Properties of Ethane for Temperatures from the Melting Line to 675 K and Pressures up to 900 MPa, J. Phys. Chem. Ref. Data 35 (2006) 205-266, doi:10.1063/1.1859286
   - Buecker-JPCRD-2006B: D. Buecker and W. Wagner, Reference Equations of State for the Thermodynamic Properties of Fluid Phase n-Butane and Isobutane, J. Phys. Chem. Ref. Data 35 (2006) 929-1019, doi:10.1063/1.1901687
+  - Cao-JPCRD-2016-mxylene: F. L. Cao et al., Reference Correlation of the Viscosity of meta-Xylene from 273 to 673 K and up to 200 MPa, J. Phys. Chem. Ref. Data 45 (2016) 013103, doi:10.1063/1.4941241
+  - Cao-JPCRD-2016-oxylene: F. L. Cao et al., Reference Correlation of the Viscosity of ortho-Xylene from 273 to 673 K and up to 110 MPa, J. Phys. Chem. Ref. Data 45 (2016) 023102, doi:10.1063/1.4945663
   - Fenghour-JPCRD-1995: A. Fenghour et al., The Viscosity of Ammonia, J. Phys. Chem. Ref. Data 24 (1995) 1649-1667, doi:10.1063/1.555961
   - Friend-JPCRD-1989: Daniel G. Friend et al., Thermophysical Properties of Methane, J. Phys. Chem. Ref. Data 18 (1989) , doi:10.1063/1.555828
   - Friend-JPCRD-1991: Daniel G. Friend et al., Thermophysical Properties of Ethane, J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881
   - Gao-JPCRD-2020: K. Gao et al., Thermodynamic Properties of Ammonia for Temperatures from the Melting Line to 725 K and Pressures to 1000 MPa, J. Phys. Chem. Ref. Data  ()
+  - Huber-FPE-2004: Marcia L. Huber et al., Viscosity correlations for minor constituent fluids in natural gas: n-octane, n-nonane and n-decane, Fluid Phase Equilib. 224 (2004) 263-270, doi:10.1016/j.fluid.2004.07.012
+  - Huber-FPE-2005: M.L. Huber and R.A. Perkins, Thermal conductivity correlations for minor constituent fluids in natural gas: n-octane, n-nonane and n-decane, Fluid Phase Equilib. 227 (2005) 47-55, doi:10.1016/j.fluid.2004.10.031
   - Huber-IECR-2003: Marcia L. Huber et al., Model for the Viscosity and Thermal Conductivity of Refrigerants, Including a New Correlation for the Viscosity of R134a, Ind. Eng. Chem. Res. 42 (2003) 3163-3178, doi:10.1021/ie0300880
   - Huber-JPCRD-2009: M.L. Huber et al., New International Formulation for the Viscosity of H2O, J. Phys. Chem. Ref. Data 38 (2009) 101-125, doi:10.1063/1.3088050
   - Huber-JPCRD-2012: M. L. Huber et al., New International Formulation for the Thermal Conductivity of H2O, J. Phys. Chem. Ref. Data 41 (2012) 033102-1:23, doi:10.1063/1.4738955
   - Huber-JPCRD-2016-CO2: Huber-JPCRD-2016-CO2, Reference Correlation of the Thermal Conductivity of Carbon Dioxide from the Triple Point to 1100 K and up to 200 MPa, Journal of Physical and Chemical Reference Data 45 (2016) , doi:10.1063/1.4940892
+  - Huber-RP912: Huber-RP912
   - Kiselev-IECR-2005: S. B. Kiselev et al., Generalized SAFT-DFT/DMT Model for the Thermodynamic, Interfacial, and Transport Properties of Associating Fluids: Application for n-Alkanols, Ind. Eng. Chem. Res. 44 (2005) 6916-6927, doi:10.1021/ie050010e
   - Laesecke-JPCRD-2017-CO2: A. Laesecke and C. D. Muzny, Reference Correlation for the Viscosity of Carbon Dioxide, Journal of Physical and Chemical Reference Data 46 () , doi:10.1063/1.4977429
   - Leachman-JPCRD-2009: J.W. Leachman et al., Fundamental Equations of State for Parahydrogen, Normal Hydrogen, and Orthohydrogen, J. Phys. Chem. Ref. Data 38 (2009) 721-748, doi:10.1063/1.3160306
@@ -521,8 +703,12 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Lemmon-PROPYLENE-2013: E.W. Lemmon et al., Equation of state for propylene,  (2010)
   - Marsh-JCED-2002: Kenneth N. Marsh et al., Measurement and Correlation of the Thermal Conductivity of Propane from 86 K to 600 K at Pressures to 70 MPa, J. Chem. Eng. Data 47 (2002) 932-940, doi:10.1021/je010001m
   - Meng-JCED-2012: Xianyang Meng et al., Experimental Measurement and Modeling of the Viscosity of Dimethyl Ether, J. Chem. Eng. Data 57 (2012) 988-993, doi:10.1021/je201297j
+  - Michailidou-JPCRD-2013-Hexane: E. K. Michailidou et al., Reference Correlation of the Viscosity of n-Hexane from the Triple Point to 600 K and up to 100 MPa, J. Phys. Chem. Ref. Data 42 (2013) 033104:1-12, doi:10.1063/1.4818980
+  - Michailidou-JPCRD-2014-Heptane: E. K. Michailidou et al., Reference Correlation of the Viscosity of n-Heptane from the Triple Point to 600 K and up to 248 MPa, J. Phys. Chem. Ref. Data 43 (2014) 023103, doi:10.1063/1.4875930
   - Mulero-JPCRD-2012: A. Mulero et al., Recommended Correlations for the Surface Tension of Common Fluids, J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782
+  - Mulero-JPCRD-2014: A. Mulero and I. Cachadiña, Recommended Correlations for the Surface Tension of Several Fluids Included in the REFPROP Program, J. Phys. Chem. Ref. Data 43 (2014) 023104-1:8, doi:10.1063/1.4878755
   - Muzny-JCED-2013: Chris D. Muzny et al., Correlation for the Viscosity of Normal Hydrogen Obtained from Symbolic Regression, J. Chem. Eng. Data  (2013) , doi:10.1021/je301273j
+  - Mylona-JPCRD-2014-xylenes: S. K. Mylona et al., Reference Correlations of the Thermal Conductivity of o-Xylene, m-Xylene, p-Xylene, and Ethylbenzene from the Triple Point to 700 K and Moderate Pressures, J. Phys. Chem. Ref. Data 43 (2014) 043104, doi:10.1063/1.4901166
   - Perkins-JCED-2002-Isobutane: R.A. Perkins, Measurement and Correlation of the Thermal Conductivity of Isobutane from 114 K to 600 K at Pressures to 70 MPa, J. Chem. Eng. Data 47 (2002) 1272-1279, doi:10.1021/je010121u
   - Perkins-JCED-2002-nButane: R.A. Perkins et al., Measurement and Correlation of the Thermal Conductivity of Butane from 135 K to 600 K at Pressures to 70 MPa, J. Chem. Eng. Data 47 (2002.) 1263-1271, doi:10.1021/je0101202
   - QuinonesCisneros-JCED-2012: Sergio E. Quiñones-Cisneros et al., Reference Correlation for the Viscosity Surface of Hydrogen Sulfide, J. Chem. Eng. Data 57 (2012) 3014-3018, doi:10.1021/je300601h
@@ -531,19 +717,26 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Schroeder-JPCRD-2014: Schroeder, J. A. et al., A Fundamental Equation of State for Ethanol, J. Phys. Chem. Ref. Data 43 (2014) 043102, doi:10.1063/1.4895394
   - Setzmann-JPCRD-1991: U. Setzmann and W. Wagner, A New Equation of State and Tables of Thermodynamic Properties for Methane Covering the Range from the Melting Line to 625 K at Pressures up to 1000 MPa, J. Phys. Chem. Ref. Data 20 (1991) 1061-1151, doi:10.1063/1.555898
   - Smukala-JPCRD-2000: J. Smukala et al., New Equation of State for Ethylene Covering the Fluid Region for Temperatures From the Melting Line to 450 K at Pressures up to 300 MPa, J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318
+  - Span-IJT-2003B: R. Span and W. Wagner, Equations of State for Technical Applications. II. Results for Nonpolar Fluids, Int. J. Thermophys. 24 (2003) 41-109, doi:10.1023/A:1022310214958
   - Span-JPCRD-1996: R. Span and W. Wagner, A New Equation of State for Carbon Dioxide Covering the Fluid Region from the Triple Point Temperature to 1100 K at Pressures up to 800 MPa, J. Phys. Chem. Ref. Data 25 (1996) 1509-1596, doi:10.1063/1.555991
   - Span-JPCRD-2000: Roland Span et al., A Reference Equation of State for the Thermodynamic Properties of Nitrogen for Temperatures from 63.151 to 1000 K and Pressures to 2200 MPa, J. Phys. Chem. Ref. Data 29 (2000) 1361-1433, doi:10.1063/1.1349047
   - Stewart-JPCRD-1991: Richard B. Stewart et al., Thermodynamic Properties of Oxygen from the Triple Point to 300 K with Pressures to 80 MPa, J. Phys. Chem. Ref. Data 20 (1991) 917-1021, doi:10.1063/1.555897
   - Sykioti-JPCRD-2013-Methanol: E. A. Sykioti et al., Reference Correlation of the Thermal Conductivity of Methanol from the Triple Point to 660 K and up to 245 MPa, J. Phys. Chem. Ref. Data 42 (2013) 043101, doi:10.1063/1.4829449
+  - Tariq-JPCRD-2014-Cyclohexane: U. Tariq et al., Reference Correlation of the Viscosity of Cyclohexane from the Triple Point to 700 K and up to 110 MPa, J. Phys. Chem. Ref. Data 43 (2014) 033101-1:18, doi:10.1063/1.4891103
   - Tegeler-JPCRD-1999: Ch. Tegeler et al., A New Equation of State for Argon Covering the Fluid Region for Temperatures From the Melting Line to 700 K at Pressures up to 1000 MPa, J. Phys. Chem. Ref. Data 28 (1999) 779-850, doi:10.1063/1.556037
+  - Thol-FPE-2019-alkanes-hexane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part II. n-Hexane, Fluid Phase Equilib.  ()
+  - Thol-FPE-2019-alkanes-pentane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part I. n-Pentane, Fluid Phase Equilib.  ()
   - Thol-HTHP-2012: M. Thol et al., Equation of state for benzene for temperatures from the melting line up to 725 K with pressures up to 500 MPa, High Temperatures-High Pressures 41 (2012) 81-97
   - Tufeu-BBPC-1984: R. Tufeu et al., Thermal Conductivity of Ammonia in a Large Temperature and Pressure Range Including the Critical Region, Bereicht der Bunsengesellschaft Phys. Chem. 88 (1984) 422-427, doi:10.1002/bbpc.19840880421
+  - Vassiliou-JPCRD-2015-pentanes: Vassiliou, C-M et al., Reference Correlations of the Thermal Conductivity of Cyclopentane, iso-Pentane, and n-Pentane, Journal of Physical and Chemical Reference Data 44 (2015) 033102
   - Vogel-HTHP-1999: E. Vogel et al., Viscosity for n-Butane in the Fluid Region, High Temp. - High Pressures 31 (1999) 173-186, doi:10.1068/htrt154
   - Vogel-IJT-2000: E. Vogel et al., Viscosity Correlation for Isobutane over Wide Ranges of the Fluid Region, Int. J. Thermophys 21 (2000) 343-356, doi:10.1023/A:1006623310780
   - Vogel-JPCRD-1998: E. Vogel et al., Reference Correlation of the Viscosity of Propane, J. Phys. Chem. Ref. Data 27 (1998) 947-970, doi:10.1063/1.556025
   - Wagner-JPCRD-2002: W. Wagner and A. Pruß, The IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use, J. Phys. Chem. Ref. Data 31 (2002) 387-535, doi:10.1063/1.1461829
   - Wu-JPCRD-2011: Jiangtao Wu et al., An Equation of State for the Thermodynamic Properties of Dimethyl Ether, J. Phys. Chem. Ref. Data 40 (2011) 023104-1:16, doi:10.1063/1.3582533
   - Xiang-JPCRD-2006: Hong Wei Xiang et al., A New Reference Correlation for the Viscosity of Methanol, J. Phys. Chem. Ref. Data 35 (2006) 1597-1:24, doi:10.1063/1.2360605
+  - Zhou-JPCRD-2012: Yong Zhou et al., Thermodynamic Properties of o-Xylene, m-Xylene, p-Xylene, and Ethylbenzene, J. Phys. Chem. Ref. Data 41 (2012) 023103-1 - 023103-26, doi:10.1063/1.3703506
+  - Zhou-JPCRD-2014: Yong Zhou et al., An Equation of State for the Thermodynamic Properties of Cyclohexane, J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538
   - deReuck-BOOK-1993: K. M. de Reuck and R. J. B. Craven, Methanol: International Thermodynamic Tables of the Fluid State - 12, Blackwell Scientific Publications, Oxford, United Kingdom (1993)
 - H. Kooijman, R. Taylor, ChemSep pure-component database v8.3, file chemsep1.xml (2021), Artistic License 2.0, as redistributed in DWSIM, https://github.com/DanWBR/dwsim, DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml.
 - Acetic acid, ideal-gas heat capacity: Chao J., Thermodynamic properties of key organic oxygen compounds in the carbon range C1 to C4. Part 2. Ideal gas properties, J. Phys. Chem. Ref. Data 15 (1986) 1369-1436, as tabulated in the NIST Chemistry WebBook (SRD 69), gas phase thermochemistry data, Cp,gas; https://webbook.nist.gov/cgi/inchi?ID=C64197&Mask=1

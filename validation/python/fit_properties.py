@@ -66,11 +66,17 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "ethylene",
        # proposal 0004, batch 1: gases at 25 degC and 1 atm
        "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide", "argon", "propane", "propylene", "n-butane",
-       "isobutane", "ammonia", "dimethyl-ether"]
-# components whose vapour-pressure record is fitted here (the ten liquids of v0.1 keep theirs)
-GASES = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
-         "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide", "argon", "propane", "propylene", "n-butane",
-         "isobutane", "ammonia", "dimethyl-ether"]
+       "isobutane", "ammonia", "dimethyl-ether",
+       # proposal 0004, batch 2: hydrocarbon liquids
+       "cyclohexane", "o-xylene", "m-xylene", "p-xylene", "ethylbenzene", "styrene", "n-pentane", "n-hexane",
+       "n-heptane", "n-octane"]
+# components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
+# or from ChemSep for a component that is not a CoolProp fluid
+VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
+             "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide", "argon", "propane", "propylene", "n-butane",
+             "isobutane", "ammonia", "dimethyl-ether",
+             "cyclohexane", "o-xylene", "m-xylene", "p-xylene", "ethylbenzene", "styrene", "n-pentane", "n-hexane",
+             "n-heptane", "n-octane"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -78,7 +84,10 @@ COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "ace
             "carbon-monoxide": "CarbonMonoxide", "carbon-dioxide": "CarbonDioxide",
             "hydrogen-sulfide": "HydrogenSulfide", "argon": "Argon", "propane": "n-Propane",
             "propylene": "Propylene", "n-butane": "n-Butane", "isobutane": "IsoButane", "ammonia": "Ammonia",
-            "dimethyl-ether": "DimethylEther"}
+            "dimethyl-ether": "DimethylEther",
+            "cyclohexane": "Cyclohexane", "o-xylene": "o-Xylene", "m-xylene": "m-Xylene", "p-xylene": "p-Xylene",
+            "ethylbenzene": "EthylBenzene", "n-pentane": "n-Pentane", "n-hexane": "n-Hexane", "n-heptane": "n-Heptane",
+            "n-octane": "n-Octane"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -108,13 +117,14 @@ CHEMSEP_TAG = {"liquidDensity": "LiquidDensity", "idealGasHeatCapacity": "IdealG
 # "coolprop": CoolProp 8.0.0; "webbook": NIST WebBook; "chemsep": ChemSep v8.3.
 # Why each choice was made is in CHAIN_NOTES and in the records.
 # ---------------------------------------------------------------------------------------------
-NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetate"]
+NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetate", "styrene"]
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "carbon-monoxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "hydrogen-sulfide": ["liquidThermalConductivity", "vapourThermalConductivity"],
     "dimethyl-ether": ["liquidThermalConductivity", "vapourThermalConductivity"],
+    "cyclohexane": ["liquidThermalConductivity", "vapourThermalConductivity"],
 }
 
 # NIST WebBook fluid tables (step 3 of the chain) for properties in COOLPROP_GAPS, where the WebBook
@@ -136,6 +146,17 @@ WEBBOOK_FLUID = {
                  "2 %; gas thermal conductivity 2 %, saturated liquid 5 %; upper temperature limit 500 K.",
         "Tmax_vapour": 500.0,
     },
+    "cyclohexane": {
+        "ID": "C110827",
+        "props": ["liquidThermalConductivity", "vapourThermalConductivity"],
+        "reference": "Koutian A., Assael M.J., Huber M.L., Perkins R.A., Reference Correlation of the Thermal "
+                     "Conductivity of Cyclohexane from the Triple Point to 640 K and up to 175 MPa, J. Phys. Chem. "
+                     "Ref. Data 46 (2017) 013102, doi:10.1063/1.4974325; as computed by the NIST Chemistry WebBook "
+                     "(SRD 69), Thermophysical Properties of Fluid Systems",
+        "notes": "WebBook: estimated uncertainty 4 % for the compressed liquid, 2.5 % for the low-pressure gas "
+                 "(280-680 K).",
+        "Tmax_vapour": 640.0,
+    },
 }
 WEBBOOK_UNCITED = {"hydrogen-sulfide": "NIST WebBook fluid tables: thermal conductivity values given without a "
                                       "cited model, so not used"}
@@ -143,6 +164,18 @@ WEBBOOK_FLUID_DIR = Path(__file__).resolve().parents[2] / "validation" / "data" 
 WEBBOOK_FLUID_URL = ("https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID={ID}&Digits=8&RefState=DEF"
                      "&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm")
 WEBBOOK_DILUTE_MPa = 0.001   # the dilute-gas isobar, 1 kPa
+
+# NIST WebBook Antoine equations (phase change data), to cross-check vapour pressures taken from ChemSep
+# (proposal 0004: "checked against the NIST WebBook where it has data"). Downloaded by --fetch-webbook into
+# validation/data/pure/measured/webbook_antoine.json: log10(P/bar) = A - B / (T/K + C).
+WEBBOOK_ANTOINE = {"styrene": "C100425"}
+# Vapour pressures fitted to a WebBook Antoine set plus the critical point, where the ChemSep equation does not
+# reproduce the measured normal boiling point. Styrene: the ChemSep equation 101 gives 417.14 K at 101.325 kPa
+# against 418.31 K (ChemSep's own Tb, and the Antoine equation of Dreyer et al. (1955), measured to 417.92 K;
+# WebBook average of 18 measured Tb values: 419 +/- 2 K), and differs from Dreyer et al. by +6.7 % at 303 K.
+VP_FROM_ANTOINE = {"styrene": "Dreyer, Martin, et al., 1955"}
+WEBBOOK_ANTOINE_FILE = Path(__file__).resolve().parents[2] / "validation" / "data" / "pure" / "measured" / "webbook_antoine.json"
+WEBBOOK_ANTOINE_URL = "https://webbook.nist.gov/cgi/cbook.cgi?ID={ID}&Units=SI&Mask=4"
 
 
 def chosen_source(cid, prop):
@@ -174,6 +207,9 @@ def chain_note(cid, prop):
             notes.append(WEBBOOK_UNCITED[cid])
         elif cid == "dimethyl-ether":
             notes.append("NIST WebBook: dimethyl ether is not a WebBook fluid")
+        elif cid == "styrene":
+            notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST "
+                         "WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page")
         elif cid == "acetone":
             notes.append("NIST WebBook: acetone is not a WebBook fluid")
         elif prop in ("liquidHeatCapacity", "heatOfVaporization"):
@@ -1013,7 +1049,10 @@ class Builder:
         return r
 
     def vapour_pressure(self, cid):
-        """DIPPR101 vapour pressure of a gas, CoolProp, triple point to critical point."""
+        """DIPPR101 vapour pressure, triple point to critical point: fitted to CoolProp, or taken over from
+        ChemSep for a component that is not a CoolProp fluid."""
+        if cid not in COOLPROP:
+            return self.vapour_pressure_chemsep(cid)
         F = self.coolprop(cid)
         Tmin, Tmax, why = self.coolprop_ranges(F, "vapourPressure")
         T = grid(Tmin, Tmax)
@@ -1038,6 +1077,105 @@ class Builder:
                "Tb_K_at_101325Pa": tb}
         self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%" % (
             cid, "vapourPressure", "DIPPR101", "fitted", Tmin, Tmax, pct(max(m, m2))))
+        return rec, pts
+
+    def vapour_pressure_antoine(self, cid):
+        """DIPPR101 fitted to a WebBook Antoine set (sampled over its range) and the ChemSep critical point."""
+        W = json.loads(WEBBOOK_ANTOINE_FILE.read_text())[cid]
+        s = next(x for x in W["sets"] if x["reference"] == VP_FROM_ANTOINE[cid])
+        cas = self.comps[cid]["cas"]
+        Tc, Pc = self.cs.const(cas, "CriticalTemperature"), self.cs.const(cas, "CriticalPressure")
+        Ta = grid(s["Tmin_K"], s["Tmax_K"], 60)
+        ya = 1e5 * 10 ** (s["A"] - s["B"] / (Ta + s["C"]))
+        T = np.append(Ta, Tc)
+        y = np.append(ya, Pc)
+        c, _ = fit_101(T, y, 0.01, Es=(1, 2, 3, 4, 5, 6, 8, 10))
+        coeffs = {k: rnd(v) for k, v in c.items()}
+        m = rel_dev(ev("DIPPR101", coeffs, T), y)
+        ma = rel_dev(ev("DIPPR101", coeffs, Ta), ya)
+        pc_dev = float(ev("DIPPR101", coeffs, np.array([Tc]))[0] / Pc - 1)
+        cs_curve = self.cs.corr(cas, "vapourPressure")
+        source = ("Fitted to the Antoine equation of %s (log10(P/bar) = %g - %g/(T/K %+g), %.2f-%.2f K, coefficients "
+                  "calculated by NIST from the authors' data; NIST Chemistry WebBook (SRD 69), %s), sampled at %d "
+                  "points, and to the ChemSep v8.3 critical point (%.2f K, %.0f Pa): max deviation %s %% from the "
+                  "Antoine equation, %+.2f %% at the critical point. Range %.2f-%.2f K: below %.2f K there are no "
+                  "measured data in the WebBook; between %.2f K and the critical point the curve is held only by the "
+                  "critical point. The ChemSep vapour-pressure equation was not used: it gives %.2f K at 101.325 kPa "
+                  "against the measured %.2f K, and it diverges above about 420 K (%.3g Pa at the critical "
+                  "temperature, against the critical pressure %.3g Pa)."
+                  % (s["reference"], s["A"], s["B"], s["C"], s["Tmin_K"], s["Tmax_K"], W["url"], len(Ta), Tc, Pc,
+                     pct(ma), 100 * pc_dev, s["Tmin_K"], Tc, s["Tmin_K"], s["Tmax_K"],
+                     brent_tb(cs_curve), self.comps[cid]["Tb_K"],
+                     float(self.cs.value_si(cas, "vapourPressure", np.array([Tc]))[0]), Pc))
+        rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
+               "A": coeffs["A"], "B": coeffs["B"], "C": coeffs["C"], "D": coeffs["D"], "E": coeffs["E"],
+               "Tmin_K": rnd(s["Tmin_K"], 8), "Tmax_K": rnd(Tc, 8), "tier": "fitted", "source": source}
+        checks = []
+        for o in W["sets"]:
+            if o is s:
+                continue
+            Tq = np.linspace(o["Tmin_K"], o["Tmax_K"], 21)
+            dev = ev("DIPPR101", coeffs, Tq) / (1e5 * 10 ** (o["A"] - o["B"] / (Tq + o["C"]))) - 1
+            k = int(np.argmax(np.abs(dev)))
+            checks.append({"reference": o["reference"] + " (Antoine equation, NIST WebBook)", "url": W["url"],
+                           "T_range_K": [o["Tmin_K"], o["Tmax_K"]], "max_deviation_percent": round(100 * float(dev[k]), 2)})
+            self.log.append("  cross-check %s vapour pressure vs %s, %.2f-%.2f K: max %+.2f %% at %.1f K" % (
+                cid, o["reference"], o["Tmin_K"], o["Tmax_K"], 100 * dev[k], Tq[k]))
+        Tq = np.linspace(s["Tmin_K"], Tc, 21)
+        dev = ev("DIPPR101", coeffs, Tq) / self.cs.value_si(cas, "vapourPressure", Tq) - 1
+        k = int(np.argmax(np.abs(dev)))
+        checks.append({"reference": CHEMSEP_NAME + ", vapour pressure (equation 101)",
+                       "T_range_K": [s["Tmin_K"], Tc], "max_deviation_percent": round(100 * float(dev[k]), 2)})
+        self.log.append("  cross-check %s vapour pressure vs ChemSep, %.2f-%.2f K: max %+.2f %% at %.1f K" % (
+            cid, s["Tmin_K"], Tc, 100 * dev[k], Tq[k]))
+        rec["crossCheck"] = checks
+        idx = list(range(len(T)))
+        pts = {"units": "Pa", "source": {"name": "NIST Chemistry WebBook (Antoine equation) and ChemSep critical point",
+                                         "fit": source},
+               "T_K": [rnd(float(T[i]), 8) for i in idx], "values": [rnd(float(y[i]), 8) for i in idx],
+               "Tb_K_at_101325Pa": self.comps[cid]["Tb_K"]}
+        self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%" % (
+            cid, "vapourPressure", "DIPPR101", "fitted", s["Tmin_K"], Tc, pct(m)))
+        return rec, pts
+
+    def vapour_pressure_chemsep(self, cid):
+        if cid in VP_FROM_ANTOINE:
+            return self.vapour_pressure_antoine(cid)
+        cas = self.comps[cid]["cas"]
+        d = self.cs.corr(cas, "vapourPressure")
+        if d is None or d["eqno"] != 101 or d["units"] != "Pa":
+            raise ValueError("%s: ChemSep vapour pressure is not equation 101 in Pa" % cid)
+        Tmin, Tmax = d["Tmin"], d["Tmax"]
+        c = {k: d[k] for k in "ABCDE"}
+        T = grid(Tmin, Tmax)
+        y = self.cs.value_si(cas, "vapourPressure", T)
+        m = rel_dev(ev("DIPPR101", c, T), y)
+        source = ("%s, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; %.2f-%.2f K "
+                  "(ChemSep range); reproduces ChemSep within %s %% at %d points. Not a CoolProp 8.0.0 fluid. %s"
+                  % (CHEMSEP_NAME, Tmin, Tmax, pct(m), len(T), CHEMSEP_ACCESS))
+        rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
+               "A": c["A"], "B": c["B"], "C": c["C"], "D": c["D"], "E": c["E"],
+               "Tmin_K": rnd(Tmin, 8), "Tmax_K": rnd(Tmax, 8), "tier": "databank", "source": source}
+        idx = store_idx(len(T))
+        pts = {"units": "Pa", "source": {"name": CHEMSEP_NAME, "fit": source},
+               "T_K": [rnd(float(T[i]), 8) for i in idx], "values": [rnd(float(y[i]), 8) for i in idx],
+               "Tb_K_at_101325Pa": self.comps[cid]["Tb_K"]}
+        self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%" % (
+            cid, "vapourPressure", "DIPPR101", "databank", Tmin, Tmax, pct(m)))
+        if WEBBOOK_ANTOINE_FILE.exists() and cid in json.loads(WEBBOOK_ANTOINE_FILE.read_text()):
+            W = json.loads(WEBBOOK_ANTOINE_FILE.read_text())[cid]
+            checks = []
+            for s in W["sets"]:
+                Tq = np.linspace(s["Tmin_K"], s["Tmax_K"], 21)
+                ref = 1e5 * 10 ** (s["A"] - s["B"] / (Tq + s["C"]))
+                dev = ev("DIPPR101", c, Tq) / ref - 1
+                k = int(np.argmax(np.abs(dev)))
+                checks.append({"reference": s["reference"] + " (Antoine equation, NIST WebBook)", "url": W["url"],
+                               "T_range_K": [s["Tmin_K"], s["Tmax_K"]],
+                               "max_deviation_percent": round(100 * float(dev[k]), 2)})
+                self.log.append("  cross-check %s vapour pressure vs %s, %.2f-%.2f K: max %+.2f %% at %.1f K" % (
+                    cid, s["reference"], s["Tmin_K"], s["Tmax_K"], 100 * dev[k], Tq[k]))
+            rec["crossCheck"] = checks
         return rec, pts
 
     def chemsep_check(self, cid, prop, T):
@@ -1083,13 +1221,20 @@ def max_dev_text(rec):
     return m.group(1) if m else "?"
 
 
+def brent_tb(d):
+    """Temperature (K) at which a ChemSep equation-101 vapour pressure reaches 101.325 kPa."""
+    from scipy.optimize import brentq
+    c = {k: d[k] for k in "ABCDE"}
+    return brentq(lambda T: float(ev("DIPPR101", c, np.array([T]))[0]) - 101325.0, d["Tmin"], d["Tmax"])
+
+
 def keep_T(c):
     """Temperatures a fitted range keeps when it is narrowed: 25 degC and the normal boiling point."""
     return tuple(x for x in (298.15, c["Tb_K"]) if x is not None)
 
 
 def spot_T(cid, comps):
-    if cid not in GASES:
+    if comps[cid]["Tb_K"] is not None and comps[cid]["Tb_K"] > 298.15:
         return 298.15
     if comps[cid]["Tb_K"] is not None:
         return comps[cid]["Tb_K"]
@@ -1123,7 +1268,8 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
     for cid in IDS:
         c = comps[cid]
         vp = c.get("vapourPressure")
-        vps = ("CoolProp %s (f)" % max_dev_text({"source": vp["source"]})) if cid in GASES else "existing"
+        vps = ("%s %s (%s)" % ("CoolProp" if cid in COOLPROP else "ChemSep", max_dev_text({"source": vp["source"]}),
+                               vp["tier"][0])) if cid in VP_FITTED else "existing"
         cells = []
         for p in PROPS:
             r = records[cid][p]
@@ -1156,12 +1302,12 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
         L.append("### %s, T = %.2f K\n" % (comps[cid]["name"], T))
         L.append("| Property | Unit | Fugacity | Source | Deviation | ChemSep |")
         L.append("|---|---|---|---|---|---|")
-        for p in (["vapourPressure"] if cid in GASES else []) + PROPS:
+        for p in (["vapourPressure"] if cid in VP_FITTED else []) + PROPS:
             f, u = DISPLAY[p]
             if p == "vapourPressure":
                 v = comps[cid]["vapourPressure"]
                 ours = float(ev("DIPPR101", {k: v[k] for k in "ABCDE"}, T))
-                src = builder.coolprop(cid).value(p, T)
+                src = builder.coolprop(cid).value(p, T) if cid in COOLPROP else builder.chemsep_check(cid, p, T)
                 cs = None
                 label = "Psat"
             else:
@@ -1338,6 +1484,32 @@ def fetch_webbook_fluid(cid):
     print("fetched %s: %d saturation rows, %d isobar rows" % (cid, len(out["saturation"]["rows"]), len(out["dilute"]["rows"])))
 
 
+def fetch_webbook_antoine():
+    """Download the Antoine equations on the WebBook pages of WEBBOOK_ANTOINE (as printed there)."""
+    import datetime
+    import html as H
+    import re
+    import urllib.request
+    out = json.loads(WEBBOOK_ANTOINE_FILE.read_text()) if WEBBOOK_ANTOINE_FILE.exists() else {}
+    for cid, ID in WEBBOOK_ANTOINE.items():
+        url = WEBBOOK_ANTOINE_URL.format(ID=ID)
+        req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
+        with urllib.request.urlopen(req, timeout=120) as f:
+            page = f.read().decode("utf-8")
+        seg = page[page.index("Antoine Equation Parameters"):]
+        seg = seg[:seg.index("</table>")]
+        sets = []
+        for row in re.findall(r"<tr[^>]*>(.*?)</tr>", seg, re.S)[1:]:
+            cells = [H.unescape(re.sub(r"<[^>]+>", "", c)).strip() for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S)]
+            lo, hi = (float(v) for v in cells[0].split(" to "))
+            sets.append({"Tmin_K": lo, "Tmax_K": hi, "A": float(cells[1]), "B": float(cells[2]), "C": float(cells[3]),
+                         "reference": cells[4], "comment": cells[5] if len(cells) > 5 else ""})
+        out[cid] = {"url": url, "retrieved": datetime.date.today().isoformat(),
+                    "equation": "log10(P/bar) = A - B / (T/K + C)", "sets": sets}
+        print("fetched %s: %d Antoine sets" % (cid, len(sets)))
+    WEBBOOK_ANTOINE_FILE.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fetch-webbook", action="store_true", help="download the WebBook fluid tables first")
@@ -1353,6 +1525,7 @@ def main():
     if args.fetch_webbook:
         for cid in WEBBOOK_FLUID:
             fetch_webbook_fluid(cid)
+        fetch_webbook_antoine()
     data = json.loads(COMP_FILE.read_text())
     comps = data["components"]
     cs = ChemSep(args.chemsep)
@@ -1382,7 +1555,7 @@ def main():
             records[cid][p] = rec
             if pts:
                 points[cid][p] = pts
-        if cid in GASES:
+        if cid in VP_FITTED:
             rec, pts = b.vapour_pressure(cid)
             vp_gas[cid] = rec
             points[cid]["vapourPressure"] = pts
@@ -1397,7 +1570,7 @@ def main():
     if args.write:
         for cid in IDS:
             c = comps[cid]
-            if cid in GASES:
+            if cid in VP_FITTED:
                 # insert vapourPressure after Tb_K, like the liquids
                 new = {}
                 for k, v in c.items():

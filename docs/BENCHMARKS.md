@@ -28,7 +28,7 @@ How to read the tables:
 - **Priority** (proposed): 1 for pairs with water and pairs between the benchmark's key
   components (listed under each table), 2 for the others.
 
-## The components: 49 in the benchmarks, 24 new
+## The components: 49 in the benchmarks, 14 new
 
 | Component | CAS | In Fugacity | Liquid at 25 °C, 1 atm |
 |---|---|---|---|
@@ -45,39 +45,39 @@ How to read the tables:
 | benzene | 71-43-2 | yes | yes |
 | carbon dioxide | 124-38-9 | yes | – |
 | carbon monoxide | 630-08-0 | yes | – |
-| cyclohexane | 110-82-7 | – | yes |
+| cyclohexane | 110-82-7 | yes | yes |
 | dichloromethane | 75-09-2 | – | yes |
 | diethyl ether | 60-29-7 | – | yes |
 | dimethyl ether | 115-10-6 | yes | – |
 | ethane | 74-84-0 | yes | – |
 | ethanol | 64-17-5 | yes | yes |
 | ethyl acetate | 141-78-6 | yes | yes |
-| ethylbenzene | 100-41-4 | – | yes |
+| ethylbenzene | 100-41-4 | yes | yes |
 | ethylene | 74-85-1 | yes | – |
 | ethylene glycol | 107-21-1 | yes | yes |
 | glycerol | 56-81-5 | – | yes |
 | hydrogen | 1333-74-0 | yes | – |
 | hydrogen sulfide | 7783-06-4 | yes | – |
 | isobutane | 75-28-5 | yes | – |
-| m-xylene | 108-38-3 | – | yes |
+| m-xylene | 108-38-3 | yes | yes |
 | methane | 74-82-8 | yes | – |
 | methanol | 67-56-1 | yes | yes |
 | methyl acetate | 79-20-9 | – | yes |
 | n-butane | 106-97-8 | yes | – |
 | n-butyl acetate | 123-86-4 | – | yes |
-| n-heptane | 142-82-5 | – | yes |
-| n-hexane | 110-54-3 | – | yes |
-| n-octane | 111-65-9 | – | yes |
-| n-pentane | 109-66-0 | – | yes |
+| n-heptane | 142-82-5 | yes | yes |
+| n-hexane | 110-54-3 | yes | yes |
+| n-octane | 111-65-9 | yes | yes |
+| n-pentane | 109-66-0 | yes | yes |
 | nitrogen | 7727-37-9 | yes | – |
-| o-xylene | 95-47-6 | – | yes |
+| o-xylene | 95-47-6 | yes | yes |
 | oxygen | 7782-44-7 | yes | – |
-| p-xylene | 106-42-3 | – | yes |
+| p-xylene | 106-42-3 | yes | yes |
 | phenol | 108-95-2 | – | yes |
 | propane | 74-98-6 | yes | – |
 | propylene | 115-07-1 | yes | – |
 | propylene glycol | 57-55-6 | – | yes |
-| styrene | 100-42-5 | – | yes |
+| styrene | 100-42-5 | yes | yes |
 | tetrahydrofuran | 109-99-9 | – | yes |
 | toluene | 108-88-3 | yes | yes |
 | water | 7732-18-5 | yes | yes |

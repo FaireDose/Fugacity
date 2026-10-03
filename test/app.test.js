@@ -198,7 +198,8 @@ test("selection helpers: toggle, rotate, search", () => {
   const all = listComponents();
   assert.deepEqual(filterComponents(all, "").length, all.length);
   assert.deepEqual(filterComponents(all, "eth").map(c => c.id).sort(),
-    ["dimethyl-ether", "ethane", "ethanol", "ethyl-acetate", "ethylene", "ethylene-glycol", "methane", "methanol"].sort());
+    ["dimethyl-ether", "ethane", "ethanol", "ethyl-acetate", "ethylbenzene", "ethylene", "ethylene-glycol", "methane",
+      "methanol"].sort());
   assert.deepEqual(filterComponents(all, "7732-18-5").map(c => c.id), ["water"]);
   assert.deepEqual(filterComponents(all, "chcl3").map(c => c.id), ["chloroform"]);
   assert.deepEqual(filterComponents(all, "zzz"), []);
