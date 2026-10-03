@@ -7,6 +7,7 @@ import { createEosSystem, EOS_MODELS } from "./eos/system.js";
 import { listComponents, findComponent } from "./components.js";
 import { selection, choosePair, describePair, pairWarnings } from "./library.js";
 import { createCubicVapour } from "./gamma-phi-vapour.js";
+import { activityPhaseMethods } from "./enthalpy.js";
 import { fail } from "../util/errors.js";
 
 export const MODELS = ["NRTL", "UNIQUAC", "ideal"];
@@ -138,5 +139,6 @@ export function createSystem(cfg) {
     return cubicVapour ? [...w, ...cubicVapour.warnings(T)] : w;
   }
 
-  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings };
+  const phaseMethods = activityPhaseMethods({ ids, comps, n, model, gammas, psat, cubicVapour, assoc, warnings });
+  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, info, warnings, ...phaseMethods };
 }

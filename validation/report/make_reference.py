@@ -262,6 +262,12 @@ def reference(case, key):
         if case["components"] == ["methane", "ethane"]:
             return mixture_bubble(case["components"], case["x1"], case["T_K"], key)
         return none("No open data transcribed")
+    if t == "excessEnthalpy":
+        if case["components"] == ["acetic-acid", "ethylene-glycol"]:
+            for p in sch["HE_323K"]:
+                if abs(p["x1"] - case["x1"]) < 1e-9:
+                    return val(p["HE_J_mol"], "schmid2007", f"Table 17, x1 = {p['x1']}, T = 323.15 K (data used in the fit)")
+        return none("No open excess-enthalpy data transcribed for this pair yet")
     if t == "dewT":
         if case["components"] == ["ethanol", "water"]:
             for x1, T, y1 in etw["rows"]:

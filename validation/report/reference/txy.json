@@ -269,6 +269,48 @@
     "source": "kamihama2012",
     "detail": "measured point x1 = 0.67, T = 351.82 K, y1 = 0.736 at 101.3 kPa: the dew point of y1 is T, its liquid x1"
    }
+  },
+  "he/acetic-acid+ethylene-glycol/NRTL/x=0.098": {
+   "HE_J_mol": {
+    "value": 29.3,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.098, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/acetic-acid+ethylene-glycol/NRTL/x=0.4445": {
+   "HE_J_mol": {
+    "value": -9.6,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.4445, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/acetic-acid+ethylene-glycol/NRTL/x=0.898": {
+   "HE_J_mol": {
+    "value": 124.0,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.898, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.098": {
+   "HE_J_mol": {
+    "value": 29.3,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.098, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.4445": {
+   "HE_J_mol": {
+    "value": -9.6,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.4445, T = 323.15 K (data used in the fit)"
+   }
+  },
+  "he/acetic-acid+ethylene-glycol/UNIQUAC/x=0.898": {
+   "HE_J_mol": {
+    "value": 124.0,
+    "source": "schmid2007",
+    "detail": "Table 17, x1 = 0.898, T = 323.15 K (data used in the fit)"
+   }
   }
  }
 }

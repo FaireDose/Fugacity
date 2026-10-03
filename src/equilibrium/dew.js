@@ -40,7 +40,7 @@
  */
 import { brent } from "../util/solve.js";
 import { fail } from "../util/errors.js";
-import { checkComposition, checkPressure, checkTemperature } from "./inputs.js";
+import { checkComposition, checkPressure, checkTemperature } from "../util/inputs.js";
 import { pureBoilingPoints } from "./bubble.js";
 import { isLiquidStable } from "./stability.js";
 

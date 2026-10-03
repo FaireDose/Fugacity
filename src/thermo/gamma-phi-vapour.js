@@ -72,33 +72,42 @@ export function createCubicVapour(ids, comps, model, cfg) {
 
   let cacheT = NaN, cache = null;
   /**
-   * ln phi_i^sat at T for the given vapour pressures (kPa), and v_i^L; cached for the last T.
-   * NaN for a component at or above its critical temperature.
+   * ln phi_i^sat at T for the given vapour pressures (kPa), the residual enthalpy of each
+   * saturated pure vapour hRsat_i (J/mol, used by the liquid enthalpy), and v_i^L; cached for
+   * the last T. NaN for a component at or above its critical temperature.
    */
   function pureTerms(T, psat) {
     if (T === cacheT && cache.psat.every((p, i) => p === psat[i])) return cache;
     const above = comps.map(c => !(T < c.Tc_K));
-    const lnPhiSat = psat.map((ps, i) => {
-      if (above[i]) return NaN;
+    const sat = psat.map((ps, i) => {
+      if (above[i]) return null;
       const st = eos.state(T, ps, unit(i), "vapour");
       if (st.rootType === "liquid-like") {
         throw failRange("OUT_OF_RANGE", `${comps[i].name}: the ${model} equation has no vapour root at ${T.toFixed(2)} K and the vapour pressure ${ps.toPrecision(5)} kPa, so phi_sat cannot be calculated (too close to the critical point).`);
       }
-      return st.lnPhi[i];
+      return st;
     });
     cacheT = T;
-    cache = { psat: psat.slice(), lnPhiSat, vL: ids.map((_, i) => (above[i] ? NaN : vLiquid(i, T))) };
+    cache = {
+      psat: psat.slice(),
+      lnPhiSat: sat.map((st, i) => (st ? st.lnPhi[i] : NaN)),
+      hRsat: sat.map(st => (st ? st.hR_J_mol : NaN)),
+      vL: ids.map((_, i) => (above[i] ? NaN : vLiquid(i, T))),
+    };
     return cache;
   }
 
-  /** ln phi_i of the vapour mixture y at T, P. */
-  function lnPhiVapour(T, P, y) {
+  /** The vapour mixture y at T, P: { Z, lnPhi, hR_J_mol } (vapour root, checked). */
+  function vapourState(T, P, y) {
     const st = eos.state(T, P, y, "vapour");
     if (st.rootType === "liquid-like") {
       throw failRange("OUT_OF_RANGE", `The ${model} vapour has no vapour root at ${T.toFixed(2)} K and ${P.toPrecision(5)} kPa (near or above the critical region of the mixture). Use model "${model}" for both phases there.`);
     }
-    return st.lnPhi;
+    return st;
   }
+
+  /** ln phi_i of the vapour mixture y at T, P. */
+  const lnPhiVapour = (T, P, y) => vapourState(T, P, y).lnPhi;
 
   /**
    * Bubble pressure and vapour of liquid x at T, given gamma and the vapour pressures.
@@ -148,5 +157,5 @@ export function createCubicVapour(ids, comps, model, cfg) {
   }
 
   const describe = `${eos.name} vapour (fugacity coefficients with k_ij${missing.length ? `; k_ij = 0 for ${missing.map(m => m.join(" + ")).join(", ")}` : ""}), with phi_sat and the Poynting correction in the liquid`;
-  return { model, eos, kij: K, pairs, missing, equilibrium, warnings, describe };
+  return { model, eos, kij: K, pairs, missing, equilibrium, warnings, describe, pureTerms, vapourState };
 }

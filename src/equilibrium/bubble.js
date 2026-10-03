@@ -1,5 +1,5 @@
 import { brent, scanBracket, scanBracketInRange } from "../util/solve.js";
-import { checkComposition, checkPressure, checkTemperature } from "./inputs.js";
+import { checkComposition, checkPressure, checkTemperature } from "../util/inputs.js";
 import { fail } from "../util/errors.js";
 
 const clean = x => {
