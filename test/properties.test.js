@@ -15,7 +15,10 @@ const POINTS_DIR = new URL("../validation/data/pure/", import.meta.url);
 const points = Object.fromEntries(readdirSync(POINTS_DIR).filter(f => f.endsWith(".json"))
   .map(f => [f.replace(/\.json$/, ""), JSON.parse(readFileSync(new URL(f, POINTS_DIR)))]));
 
-const GASES = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene"];
+// gases at 25 °C and 1 atm (normal boiling point below 298.15 K): their vapour-pressure records are fitted
+// with the other properties; the six of v0.2 and the ten of proposal 0004, batch 1
+// (carbon dioxide has no normal boiling point: Tb_K is null, it has no liquid at 1 atm)
+const GASES = listComponents().map(c => c.id).filter(id => (components[id].Tb_K ?? 0) < 298.15);
 const TRANSPORT = new Set(["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"]);
 const TIERS = new Set(["standard", "fitted", "databank", "predicted"]);
 
@@ -37,7 +40,8 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 16);
+  assert.equal(listComponents().length, 26);
+  assert.equal(GASES.length, 16);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
     assert.ok(props, `${name}: no properties object`);
@@ -116,6 +120,12 @@ test("the gases' vapour pressures give their normal boiling points within 0.1 K"
     const vp = components[id].vapourPressure;
     assert.equal(vp.equation, "DIPPR101");
     assert.equal(vp.tier, "fitted");
+    if (p.Tb_K == null) {
+      // no liquid at 1 atm: the vapour-pressure curve starts above 101.325 kPa, and the record says why
+      assert.ok(p.psat(vp.Tmin_K) > 101.325, p.name);
+      assert.match(components[id].constants_source, /No normal boiling point/, p.name);
+      continue;
+    }
     const tb = p.tsat(101.325);
     assert.ok(Math.abs(tb - p.Tb_K) < 0.1, `${p.name}: Tb ${tb.toFixed(3)} K vs ${p.Tb_K} K`);
     assert.ok(Math.abs(tb - points[id].records.vapourPressure.Tb_K_at_101325Pa) < 0.1);
@@ -131,16 +141,21 @@ test("props() returns liquid and vapour properties for every component at a typi
   for (const { id, name } of listComponents()) {
     const p = pure(id);
     const isGas = GASES.includes(id);
-    // liquid: 25 °C for the liquids (acetic acid: 30 °C, above its melting point), Tb - 5 K for the gases
-    const TL = isGas ? p.Tb_K - 5 : id === "acetic-acid" ? 303.15 : 298.15;
-    const L = p.props(TL, 101.325);
+    // liquid: 25 °C for the liquids (acetic acid: 30 °C, above its melting point), below Tb for the gases
+    // without a normal boiling point (carbon dioxide): midway along the vapour-pressure curve, at twice the
+    // vapour pressure for the liquid and a hundredth of it for the vapour
+    const vp = components[id].vapourPressure;
+    const Tmid = p.Tb_K == null ? 0.5 * (vp.Tmin_K + vp.Tmax_K) : null;
+    // for a gas, Tb - 5 K, but at least 1 K above the triple point (argon: Tb is only 3.5 K above it)
+    const TL = Tmid ?? (isGas ? Math.max(p.Tb_K - 5, vp.Tmin_K + 1) : id === "acetic-acid" ? 303.15 : 298.15);
+    const L = p.props(TL, Tmid ? 2 * p.psat(Tmid) : 101.325);
     assert.equal(L.phase, "liquid", name);
     const hKeys = ENTHALPY_NOT_CONSISTENT.has(id) ? [] : ["h_J_mol"];
     for (const k of ["rho_kg_m3", "cp_J_molK", "dHvap_J_mol", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       assert.ok(Number.isFinite(L[k]), `${name} liquid ${k}: ${L.notes.join(" ")}`);
     }
     // vapour: 10 K above the normal boiling point at 1 kPa
-    const V = p.props(p.Tb_K + 10, 1);
+    const V = Tmid ? p.props(Tmid, p.psat(Tmid) / 100) : p.props(p.Tb_K + 10, 1);
     assert.equal(V.phase, "vapour", name);
     for (const k of ["cp_J_molK", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       assert.ok(Number.isFinite(V[k]), `${name} vapour ${k}: ${V.notes.join(" ")}`);

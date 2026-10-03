@@ -172,7 +172,14 @@ reported per property) and the existing pair workflow for binaries:
    proposed priority; the team decides the final list.
 2. **Pure-component data** for the new components, in batches of about ten per pull
    request (gases first, as they feed the methanol and air-separation benchmarks), with
-   the proposal 0002 tests.
+   the proposal 0002 tests. Batch 1 (added when it was done): carbon monoxide, carbon
+   dioxide, hydrogen sulfide, argon, propane, propylene, n-butane, isobutane, ammonia and
+   dimethyl ether, constants from CoolProp (`validation/python/add_components.py`),
+   correlations fitted by `fit_properties.py`; transport properties CoolProp does not
+   model from the NIST WebBook fluid tables where the page cites the model (carbon
+   monoxide), else ChemSep (thermal conductivity of hydrogen sulfide and dimethyl
+   ether). Carbon dioxide has no normal boiling point (it sublimes at 1 atm): `Tb_K` is
+   null. Pairs, Henry constants and k_ij for these gases come in step 3.
 3. **Pairs, benchmark by benchmark:** fitted to open data where it exists, databank
    otherwise, missing pairs listed. One pull request per benchmark.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)

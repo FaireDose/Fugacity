@@ -10,7 +10,7 @@ nothing to install).
 
 ![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
-> **Status: early (v0.2.2).** 16 components, activity models and cubic equations of state,
+> **Status: early (v0.2.2).** 26 components (10 gases added from proposal 0004, next release), activity models and cubic equations of state,
 > pure-component properties, steam tables, and a workbench with a ribbon.
 > Results are model predictions. Check them against data before using them for design.
 
