@@ -25,7 +25,8 @@ function referencing() {
   out.push(["henry water vapour pressure", henry.solvents.water.vapourPressure.source_ids]);
   for (const [id, c] of Object.entries(components)) {
     for (const k of ["vapourPressure", "uniquac", "association"]) if (c[k]) out.push([`${id}.${k}`, c[k].source_ids]);
-    for (const [k, r] of Object.entries(c.properties ?? {})) out.push([`${id}.properties.${k}`, r.source_ids]);
+    // a "no open data" marker has no source; it lists where it was searched instead (checked below)
+    for (const [k, r] of Object.entries(c.properties ?? {})) if (r.available !== false) out.push([`${id}.properties.${k}`, r.source_ids]);
     for (const f of ["constants_source", "omega_source"]) if (c[f]) out.push([`${id}.${f}`, c[f + "_ids"]]);
   }
   for (const k of issues) out.push([`known issue ${k.model} ${k.components.join("+")}`, k.source_ids]);
@@ -38,6 +39,12 @@ test("every record with a source refers to sources.json, and every source_id res
   for (const [where, ids] of refs) {
     assert.ok(Array.isArray(ids) && ids.length, `${where}: no source_ids`);
     for (const id of ids) assert.ok(sources[id], `${where}: unknown source "${id}"`);
+  }
+  // "no open data" markers say where they were searched
+  for (const [id, c] of Object.entries(components)) {
+    for (const [k, r] of Object.entries(c.properties ?? {})) {
+      if (r.available === false) assert.ok(Array.isArray(r.searched) && r.searched.length >= 2, `${id}.${k}: searched`);
+    }
   }
   // the text source stays for old readers
   for (const p of binaries) assert.ok(typeof p.source === "string" && p.source.length > 10, `${p.i}-${p.j}`);

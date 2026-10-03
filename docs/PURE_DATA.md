@@ -42,6 +42,19 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | n-Hexane | CoolProp 0.18 (f) | CoolProp 0.26 (f) | CoolProp 0.092 (f) | CoolProp 0.56 (f) | CoolProp 0.15 (f) | CoolProp 1.4 (f) | CoolProp 0.0048 (f) | CoolProp 0.64 (f) | CoolProp 1.1 (f) | CoolProp 0.23 (f) |
 | n-Heptane | CoolProp 0.20 (f) | CoolProp 0.43 (f) | CoolProp 0.12 (f) | CoolProp 0.58 (f) | CoolProp 0.072 (f) | CoolProp 2.0 (f) | CoolProp 0.046 (f) | CoolProp 0.39 (f) | CoolProp 0.39 (f) | CoolProp 0.30 (f) |
 | n-Octane | CoolProp 0.17 (f) | CoolProp 0.22 (f) | CoolProp 0.11 (f) | CoolProp 0.39 (f) | CoolProp 0.19 (f) | CoolProp 0.65 (f) | CoolProp 0.0041 (f) | CoolProp 0.40 (f) | CoolProp 1.1 (f) | CoolProp 0.33 (f) |
+| Diethyl ether | CoolProp 0.074 (f) | CoolProp 0.054 (f) | CoolProp 0.0067 (f) | CoolProp 0.43 (f) | CoolProp 0.0072 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.46 (f) | ChemSep 0.0001 (d) | CoolProp 0.20 (f) |
+| Propylene glycol | CoolProp 0.64 (f) | CoolProp 0.25 (f) | CoolProp 0.00085 (f) | CoolProp 0.92 (f) | CoolProp 0.17 (f) | no open data | no open data | no open data | no open data | no open data |
+| Tetrahydrofuran | CoolProp 0.34 (f) | CoolProp 0.27 (f) | CoolProp 0.18 (f) | CoolProp 0.79 (f) | CoolProp 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.32 (f) | ChemSep 0.0001 (d) | ChemSep 0.56 (f) |
+| 1-Propanol | ChemSep 0.00014 (d) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.18 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.23 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
+| 2-Propanol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.51 (f) | ChemSep 0.24 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.0001 (d) | ChemSep 0.16 (f) |
+| 1-Butanol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.61 (f) | ChemSep 0.076 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) | ChemSep 0.0001 (d) | ChemSep 0.085 (f) |
+| 2-Butanone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.49 (f) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.053 (f) | ChemSep 0.0001 (d) | ChemSep 0.11 (f) |
+| Methyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) | ChemSep 0.13 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.38 (f) | ChemSep 0.0001 (d) | ChemSep 0.21 (f) |
+| n-Butyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.26 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.57 (f) | ChemSep 0.0001 (d) | ChemSep 0.36 (f) |
+| Acetonitrile | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.55 (f) | ChemSep 0.0018 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.27 (f) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) |
+| MTBE | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.015 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.67 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
+| Glycerol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.057 (f) | ChemSep 0.27 (f) | ChemSep 0.028 (f) | ChemSep 2.1 (f) | ChemSep 0.15 (f) |
+| Phenol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.93 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -85,6 +98,19 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | n-Hexane | 177.83–482.42 | 177.83–600 | 177.83–467.19 | 177.83–482.42 | 177.83–482.42 | 177.83–600 | 177.83–482.42 | 177.83–600 | 177.83–482.42 |
 | n-Heptane | 182.55–514.16 | 182.55–600 | 182.55–497.57 | 182.55–514.16 | 182.55–514.16 | 182.55–600 | 182.55–514.16 | 182.55–600 | 182.55–514.16 |
 | n-Octane | 216.37–540.3 | 216.37–730 | 216.37–524.1 | 216.37–540.3 | 216.37–540.3 | 216.37–730 | 216.37–540.3 | 216.37–730 | 216.37–540.3 |
+| Diethyl ether | 270–444.5 | 270–548 | 270–435.77 | 270–444.5 | 270–373.15 | 156.85–1000 | 270–433.15 | 200–600 | 270–444.5 |
+| Propylene glycol | 213–640.29 | 213–680 | 213–618.92 | 213–640.29 | – | – | – | – | – |
+| Tetrahydrofuran | 164.76–513.18 | 164.76–600 | 164.76–495.75 | 164.76–513.18 | 164.76–440 | 164.65–1000 | 164.76–433.56 | 164.65–1000 | 164.76–513.19 |
+| 1-Propanol | 146.95–536.65 | 150–1500 | 146.95–400 | 146.95–536.24 | 146.95–523 | 200–1000 | 164.06–380.35 | 146.95–720.25 | 283.15–370.35 |
+| 2-Propanol | 185.28–508.3 | 150–1500 | 185.28–480 | 185.28–507.79 | 187.35–408 | 185.28–1000 | 185.28–410.15 | 185.28–995.41 | 273.15–355.41 |
+| 1-Butanol | 184.51–543.08 | 150–1500 | 184.51–390.81 | 184.51–563 | 190–473 | 184.51–1000 | 184.51–390.81 | 184.51–712.94 | 273.15–413.15 |
+| 2-Butanone | 186.48–535.5 | 150–1500 | 186.48–373.15 | 186.48–535.5 | 186.48–535.5 | 186.48–1000 | 186.48–422.04 | 186.48–1000 | 186.48–509.95 |
+| Methyl acetate | 175.15–506.8 | 220–1500 | 207.38–373.4 | 175.15–506.29 | 250–473 | 250–800 | 175.15–386.15 | 175.15–1000 | 175.15–481.46 |
+| n-Butyl acetate | 199.65–575.4 | 273–1200 | 202.7–461.7 | 199.65–575.4 | 250–399.26 | 199.65–1000 | 199.65–463.15 | 199.65–800 | 199.65–550.04 |
+| Acetonitrile | 229.32–545.5 | 100–1500 | 229.32–354.75 | 229.32–544.95 | 229.32–436.4 | 229.32–1000 | 229.32–383.15 | 229.32–994.75 | 229.32–518.22 |
+| MTBE | 164.55–497.1 | 200–1500 | 164.55–328.35 | 164.55–496.6 | 180–449.93 | 164.55–1000 | 164.55–460.87 | 164.55–1000 | 164.55–472.24 |
+| Glycerol | 291.33–850 | 273–1200.15 | 291.33–561 | 291.33–849.15 | 291.33–500 | 291.33–1000 | 293.15–550 | 274–1000 | 291.33–453.15 |
+| Phenol | 314.06–688.71 | 100–1500 | 314.06–655.37 | 314.06–674.24 | 314.06–690 | 199.82–1000 | 314.06–454.99 | 199.82–1000 | 314.06–659.53 |
 
 Temperatures in K.
 
@@ -622,6 +648,201 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 11.019 | 10.957 | 0.56 % | 11.803 |
 | σ | mN/m | 21.109 | 21.171 | -0.29 % | 21.166 |
 
+### Diethyl ether, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 71.459 | 71.505 | -0.06 % | – |
+| ρL | kg/m³ | 707.78 | 707.8 | -0.00 % | 707.88 |
+| cp° | J/(mol·K) | 120.59 | 120.6 | -0.00 % | 115.86 |
+| cpL | J/(mol·K) | 172.46 | 173.01 | -0.32 % | 176.49 |
+| ΔHvap | kJ/mol | 27.153 | 27.152 | 0.00 % | 27.138 |
+| μL | mPa·s | 0.22558 | 0.22558 | 0.00 % | – |
+| μV | μPa·s | 7.5636 | 7.5636 | 0.00 % | – |
+| kL | mW/(m·K) | 128.66 | 128.61 | 0.04 % | – |
+| kV | mW/(m·K) | 15.036 | 15.036 | 0.00 % | – |
+| σ | mN/m | 16.476 | 16.504 | -0.17 % | 16.44 |
+
+### Propylene glycol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.017489 | 0.017582 | -0.53 % | – |
+| ρL | kg/m³ | 1033.2 | 1032.5 | 0.07 % | – |
+| cp° | J/(mol·K) | 105.58 | 105.58 | -0.00 % | – |
+| cpL | J/(mol·K) | 190.11 | 189.54 | 0.30 % | – |
+| ΔHvap | kJ/mol | 65.977 | 66.002 | -0.04 % | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | – | – | – | – |
+
+### Tetrahydrofuran, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 21.7 | 21.633 | 0.31 % | – |
+| ρL | kg/m³ | 882.56 | 881.94 | 0.07 % | 881.38 |
+| cp° | J/(mol·K) | 76.309 | 76.319 | -0.01 % | 76.791 |
+| cpL | J/(mol·K) | 125.27 | 124.3 | 0.78 % | 124.5 |
+| ΔHvap | kJ/mol | 32.148 | 32.139 | 0.03 % | 32.025 |
+| μL | mPa·s | 0.45604 | 0.45604 | 0.00 % | – |
+| μV | μPa·s | 8.0164 | 8.0164 | 0.00 % | – |
+| kL | mW/(m·K) | 121.31 | 121.32 | -0.01 % | – |
+| kV | mW/(m·K) | 11.994 | 11.994 | 0.00 % | – |
+| σ | mN/m | 26.557 | 26.695 | -0.52 % | – |
+
+### 1-Propanol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 2.7983 | 2.7983 | 0.00 % | – |
+| ρL | kg/m³ | 800.94 | 800.94 | -0.00 % | – |
+| cp° | J/(mol·K) | 87.072 | 86.631 | 0.51 % | – |
+| cpL | J/(mol·K) | 145.08 | 144.87 | 0.15 % | – |
+| ΔHvap | kJ/mol | 47.201 | 47.201 | 0.00 % | – |
+| μL | mPa·s | 1.8943 | 1.8943 | 0.00 % | – |
+| μV | μPa·s | 7.5706 | 7.5706 | 0.00 % | – |
+| kL | mW/(m·K) | 155.79 | 155.65 | 0.09 % | – |
+| kV | mW/(m·K) | 14.017 | 14.017 | 0.00 % | – |
+| σ | mN/m | 23.356 | 23.405 | -0.21 % | – |
+
+### 2-Propanol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 6.0239 | 6.0239 | 0.00 % | – |
+| ρL | kg/m³ | 782.22 | 782.22 | 0.00 % | – |
+| cp° | J/(mol·K) | 89.811 | 89.367 | 0.50 % | – |
+| cpL | J/(mol·K) | 156.87 | 156.84 | 0.02 % | – |
+| ΔHvap | kJ/mol | 45.346 | 45.346 | 0.00 % | – |
+| μL | mPa·s | 2.0549 | 2.0549 | 0.00 % | – |
+| μV | μPa·s | 7.6912 | 7.6912 | 0.00 % | – |
+| kL | mW/(m·K) | 137.53 | 137.8 | -0.19 % | – |
+| kV | mW/(m·K) | 14.948 | 14.948 | 0.00 % | – |
+| σ | mN/m | 20.993 | 21.025 | -0.15 % | – |
+
+### 1-Butanol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.9323 | 0.9323 | 0.00 % | – |
+| ρL | kg/m³ | 806.1 | 806.1 | 0.00 % | – |
+| cp° | J/(mol·K) | 109.53 | 108.88 | 0.59 % | – |
+| cpL | J/(mol·K) | 177.88 | 177.76 | 0.07 % | – |
+| ΔHvap | kJ/mol | 52.823 | 52.823 | -0.00 % | – |
+| μL | mPa·s | 2.5216 | 2.5216 | 0.00 % | – |
+| μV | μPa·s | 6.9651 | 6.9651 | 0.00 % | – |
+| kL | mW/(m·K) | 153.16 | 153.21 | -0.03 % | – |
+| kV | mW/(m·K) | 15.407 | 15.407 | 0.00 % | – |
+| σ | mN/m | 24.375 | 24.356 | 0.08 % | – |
+
+### 2-Butanone, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 12.633 | 12.633 | 0.00 % | – |
+| ρL | kg/m³ | 802.32 | 802.32 | 0.00 % | – |
+| cp° | J/(mol·K) | 103.84 | 103.34 | 0.48 % | – |
+| cpL | J/(mol·K) | 158.98 | 158.87 | 0.07 % | – |
+| ΔHvap | kJ/mol | 34.48 | 34.48 | 0.00 % | – |
+| μL | mPa·s | 0.39566 | 0.39566 | 0.00 % | – |
+| μV | μPa·s | 7.2119 | 7.2119 | 0.00 % | – |
+| kL | mW/(m·K) | 146 | 146.06 | -0.04 % | – |
+| kV | mW/(m·K) | 11.658 | 11.658 | 0.00 % | – |
+| σ | mN/m | 24.005 | 24.018 | -0.05 % | – |
+
+### Methyl acetate, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 28.681 | 28.681 | 0.00 % | – |
+| ρL | kg/m³ | 927.79 | 927.79 | 0.00 % | – |
+| cp° | J/(mol·K) | 86.214 | 86.086 | 0.15 % | – |
+| cpL | J/(mol·K) | 142.71 | 142.81 | -0.07 % | – |
+| ΔHvap | kJ/mol | 32.403 | 32.403 | 0.00 % | – |
+| μL | mPa·s | 0.36348 | 0.36348 | 0.00 % | – |
+| μV | μPa·s | 7.9474 | 7.9474 | 0.00 % | – |
+| kL | mW/(m·K) | 155.85 | 156.26 | -0.26 % | – |
+| kV | mW/(m·K) | 11.606 | 11.606 | 0.00 % | – |
+| σ | mN/m | 24.491 | 24.541 | -0.20 % | – |
+
+### n-Butyl acetate, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.6453 | 1.6453 | 0.00 % | – |
+| ρL | kg/m³ | 875.35 | 875.35 | -0.00 % | – |
+| cp° | J/(mol·K) | 154.16 | 154.43 | -0.17 % | – |
+| cpL | J/(mol·K) | 228.48 | 228.62 | -0.06 % | – |
+| ΔHvap | kJ/mol | 44.091 | 44.091 | 0.00 % | – |
+| μL | mPa·s | 0.677 | 0.677 | 0.00 % | – |
+| μV | μPa·s | 6.576 | 6.576 | 0.00 % | – |
+| kL | mW/(m·K) | 135.86 | 136.06 | -0.15 % | – |
+| kV | mW/(m·K) | 10.236 | 10.236 | 0.00 % | – |
+| σ | mN/m | 24.706 | 24.786 | -0.32 % | – |
+
+### Acetonitrile, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 12.16 | 12.16 | 0.00 % | – |
+| ρL | kg/m³ | 776.65 | 776.65 | 0.00 % | – |
+| cp° | J/(mol·K) | 52.483 | 52.204 | 0.53 % | – |
+| cpL | J/(mol·K) | 91.45 | 91.451 | -0.00 % | – |
+| ΔHvap | kJ/mol | 33.047 | 33.047 | 0.00 % | – |
+| μL | mPa·s | 0.34414 | 0.34414 | 0.00 % | – |
+| μV | μPa·s | 7.1482 | 7.1482 | 0.00 % | – |
+| kL | mW/(m·K) | 200.33 | 200.46 | -0.07 % | – |
+| kV | mW/(m·K) | 8.7151 | 8.7151 | 0.00 % | – |
+| σ | mN/m | 28.692 | 28.66 | 0.11 % | – |
+
+### MTBE, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 33.242 | 33.242 | 0.00 % | – |
+| ρL | kg/m³ | 733.77 | 733.77 | 0.00 % | – |
+| cp° | J/(mol·K) | 131.09 | 131.03 | 0.05 % | – |
+| cpL | J/(mol·K) | 187.49 | 187.51 | -0.01 % | – |
+| ΔHvap | kJ/mol | 30.243 | 30.243 | 0.00 % | – |
+| μL | mPa·s | 0.33287 | 0.33287 | 0.00 % | – |
+| μV | μPa·s | 7.5151 | 7.5151 | 0.00 % | – |
+| kL | mW/(m·K) | 126.23 | 126.97 | -0.58 % | – |
+| kV | mW/(m·K) | 13.634 | 13.634 | 0.00 % | – |
+| σ | mN/m | 18.655 | 18.632 | 0.13 % | – |
+
+### Glycerol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 2.5668e-05 | 2.5668e-05 | 0.00 % | – |
+| ρL | kg/m³ | 1248.7 | 1248.7 | 0.00 % | – |
+| cp° | J/(mol·K) | 114.38 | 114.62 | -0.21 % | – |
+| cpL | J/(mol·K) | 221.79 | 221.78 | 0.00 % | – |
+| ΔHvap | kJ/mol | 88.826 | 88.826 | 0.00 % | – |
+| μL | mPa·s | 1176.8 | 1176.8 | -0.01 % | – |
+| μV | μPa·s | 6.6311 | 6.6375 | -0.10 % | – |
+| kL | mW/(m·K) | 291.77 | 291.72 | 0.02 % | – |
+| kV | mW/(m·K) | 6.938 | 7.075 | -1.94 % | – |
+| σ | mN/m | 63.032 | 63.004 | 0.04 % | – |
+
+### Phenol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.016008 | (table) | – | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 103.39 | 103.63 | -0.23 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | 7.287 | 7.287 | 0.00 % | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | 10.664 | 10.664 | 0.00 % | – |
+| σ | mN/m | – | – | – | – |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -659,6 +880,22 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - cross-check ethyl-acetate cp0 vs Connett J.E. et al., J. Chem. Thermodyn. 8 (1976) 1199-1203 (measured), via the NIST WebBook page above: deviations 1.04, 0.88, 0.85, 0.70, 0.40 %
 - cross-check styrene vapour pressure vs Chaiyavech and Van Winkle, 1959, 305.60-355.34 K: max -5.71 % at 305.6 K
 - cross-check styrene vapour pressure vs ChemSep, 303.07-636.00 K: max -98.80 % at 636.0 K
+- cross-check 1-propanol vapour pressure vs Ambrose and Sprake, 1970, 333.32-377.72 K: max -1.18 % at 377.7 K
+- cross-check 1-propanol vapour pressure vs Kemme and Kreps, 1969, 292.40-370.50 K: max -1.61 % at 292.4 K
+- cross-check 1-propanol vapour pressure vs Ambrose and Townsend, 1963, 2, 405.46-536.71 K: max +3.27 % at 536.7 K
+- cross-check 2-propanol vapour pressure vs Ambrose and Townsend, 1963, 3, 395.10-508.24 K: max +1.56 % at 468.6 K
+- cross-check 2-propanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 329.92-362.41 K: max +0.92 % at 329.9 K
+- cross-check 1-butanol vapour pressure vs Kemme and Kreps, 1969, 295.80-391.00 K: max +6.34 % at 295.8 K
+- cross-check 1-butanol vapour pressure vs Hessel and Geiseler, 1965, 391.00-479.00 K: max +1.74 % at 470.2 K
+- cross-check 1-butanol vapour pressure vs Ambrose and Townsend, 1963, 2, 419.34-562.98 K: max -2.16 % at 419.3 K
+- cross-check 1-butanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 362.36-398.84 K: max -1.58 % at 378.8 K
+- cross-check 2-butanone vapour pressure vs Nickerson, Kobe, et al., 1961, 314.60-370.60 K: max +2.94 % at 314.6 K
+- cross-check methyl-acetate vapour pressure vs Polák and Mertl, 1965, 274.91-328.99 K: max -0.51 % at 304.7 K
+- cross-check n-butyl-acetate vapour pressure vs Kliment, Fried, et al., 1964, 332.89-399.24 K: max +1.81 % at 332.9 K
+- cross-check acetonitrile vapour pressure vs Dojcansky and Heinrich, 1974, 2, 288.30-362.30 K: max +3.64 % at 288.3 K
+- cross-check acetonitrile vapour pressure vs Putnam, McEachern, et al., 1965, 2, 280.41-300.53 K: max +3.00 % at 290.5 K
+- cross-check glycerol vapour pressure vs Richardson, 1886, 2, 456.40-533.60 K: max -10.13 % at 533.6 K
+- cross-check phenol vapour pressure vs Dreisbach and Shrader, 1949, 380.30-454.90 K: max -17.14 % at 380.3 K
 
 ## Notes
 
@@ -683,7 +920,9 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Buecker-JPCRD-2006B: D. Buecker and W. Wagner, Reference Equations of State for the Thermodynamic Properties of Fluid Phase n-Butane and Isobutane, J. Phys. Chem. Ref. Data 35 (2006) 929-1019, doi:10.1063/1.1901687
   - Cao-JPCRD-2016-mxylene: F. L. Cao et al., Reference Correlation of the Viscosity of meta-Xylene from 273 to 673 K and up to 200 MPa, J. Phys. Chem. Ref. Data 45 (2016) 013103, doi:10.1063/1.4941241
   - Cao-JPCRD-2016-oxylene: F. L. Cao et al., Reference Correlation of the Viscosity of ortho-Xylene from 273 to 673 K and up to 110 MPa, J. Phys. Chem. Ref. Data 45 (2016) 023102, doi:10.1063/1.4945663
+  - Eisenbach-JPCRD-2021: Tim Eisenbach et al., Speed-of-Sound Measurements and a Fundamental Equation of State for Propylene Glycol, J. Phys. Chem. Ref. Data 50 (2021)
   - Fenghour-JPCRD-1995: A. Fenghour et al., The Viscosity of Ammonia, J. Phys. Chem. Ref. Data 24 (1995) 1649-1667, doi:10.1063/1.555961
+  - Fiedler-IJT-2023-THF: Felix Fiedler et al., Fundamental Equation of State for Fluid Tetrahydrofuran, International Journal of Thermophysics 44 (2023) 153
   - Friend-JPCRD-1989: Daniel G. Friend et al., Thermophysical Properties of Methane, J. Phys. Chem. Ref. Data 18 (1989) , doi:10.1063/1.555828
   - Friend-JPCRD-1991: Daniel G. Friend et al., Thermophysical Properties of Ethane, J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881
   - Gao-JPCRD-2020: K. Gao et al., Thermodynamic Properties of Ammonia for Temperatures from the Melting Line to 725 K and Pressures to 1000 MPa, J. Phys. Chem. Ref. Data  ()
@@ -727,6 +966,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Thol-FPE-2019-alkanes-hexane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part II. n-Hexane, Fluid Phase Equilib.  ()
   - Thol-FPE-2019-alkanes-pentane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part I. n-Pentane, Fluid Phase Equilib.  ()
   - Thol-HTHP-2012: M. Thol et al., Equation of state for benzene for temperatures from the melting line up to 725 K with pressures up to 500 MPa, High Temperatures-High Pressures 41 (2012) 81-97
+  - Thol-IJT-2014: Thol, Monika et al., A New Functional Form for Equations of State for Some Weakly Associating Fluids, Int. J. Thermophys. 35 (2014) 783-811, doi:10.1007/s10765-014-1633-1
   - Tufeu-BBPC-1984: R. Tufeu et al., Thermal Conductivity of Ammonia in a Large Temperature and Pressure Range Including the Critical Region, Bereicht der Bunsengesellschaft Phys. Chem. 88 (1984) 422-427, doi:10.1002/bbpc.19840880421
   - Vassiliou-JPCRD-2015-pentanes: Vassiliou, C-M et al., Reference Correlations of the Thermal Conductivity of Cyclopentane, iso-Pentane, and n-Pentane, Journal of Physical and Chemical Reference Data 44 (2015) 033102
   - Vogel-HTHP-1999: E. Vogel et al., Viscosity for n-Butane in the Fluid Region, High Temp. - High Pressures 31 (1999) 173-186, doi:10.1068/htrt154

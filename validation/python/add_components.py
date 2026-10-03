@@ -55,9 +55,29 @@ BATCHES = {
         ("n-heptane", "n-Heptane", "n-Heptane", ["heptane"]),
         ("n-octane", "n-Octane", "n-Octane", ["octane"]),
     ],
+    # dichloromethane is not in this batch: it is neither a CoolProp fluid nor in ChemSep v8.3 (as shipped
+    # with DWSIM); its data have to come from measured data (NIST WebBook, ThermoML), a separate step
+    3: [  # solvents, alcohols, glycols and phenol, for the solvent-recovery and higher-boiler benchmarks
+        ("diethyl-ether", "Diethyl ether", "DiethylEther", ["ether", "ethoxyethane"]),
+        ("propylene-glycol", "Propylene glycol", "PropyleneGlycol", ["1,2-propanediol", "propane-1,2-diol"]),
+        ("tetrahydrofuran", "Tetrahydrofuran", "Tetrahydrofuran", ["thf", "oxolane"]),
+        ("1-propanol", "1-Propanol", None, ["n-propanol", "propan-1-ol", "propyl alcohol"]),
+        ("2-propanol", "2-Propanol", None, ["isopropanol", "propan-2-ol", "isopropyl alcohol", "ipa"]),
+        ("1-butanol", "1-Butanol", None, ["n-butanol", "butan-1-ol", "butyl alcohol"]),
+        ("2-butanone", "2-Butanone", None, ["methyl ethyl ketone", "mek", "butanone"]),
+        ("methyl-acetate", "Methyl acetate", None, ["methyl ethanoate"]),
+        ("n-butyl-acetate", "n-Butyl acetate", None, ["butyl acetate", "butyl ethanoate"]),
+        ("acetonitrile", "Acetonitrile", None, ["methyl cyanide", "mecn"]),
+        ("mtbe", "MTBE", None, ["methyl tert-butyl ether", "2-methoxy-2-methylpropane"]),
+        ("glycerol", "Glycerol", None, ["glycerine", "propane-1,2,3-triol"]),
+        ("phenol", "Phenol", None, ["hydroxybenzene", "carbolic acid"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
-CHEMSEP_CAS = {"styrene": "100-42-5"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",
+               "2-butanone": "78-93-3", "methyl-acetate": "79-20-9", "n-butyl-acetate": "123-86-4",
+               "acetonitrile": "75-05-8", "mtbe": "1634-04-4", "glycerol": "56-81-5",
+               "phenol": "108-95-2"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
 
 
 class ChemSep:
@@ -75,6 +95,17 @@ class ChemSep:
     def value(self, cas, tag):
         e = self.compound(cas).find(tag)
         return None if e is None else float(e.get("value"))
+
+
+def uniquac_or_none(cs, cas):
+    """UNIQUAC r and q from ChemSep, or None when ChemSep does not have the compound or the values."""
+    try:
+        cs.compound(cas)
+    except SystemExit:
+        return None
+    if cs.value(cas, "UniquacR") is None or cs.value(cas, "UniquacQ") is None:
+        return None
+    return uniquac(cs, cas)
 
 
 def uniquac(cs, cas):
@@ -156,12 +187,22 @@ def main():
     for cid, name, fluid, aliases in BATCHES[args.batch]:
         rec = record(cid, name, fluid, aliases) if fluid else record_chemsep(cid, name, aliases, cs)
         if rec["Tb_K"] is not None and rec["Tb_K"] > 298.15:
-            # a liquid at 25 degC: UNIQUAC r and q for the activity-coefficient models, after Tb (as in v0.1)
+            # a liquid at 25 degC: UNIQUAC r and q for the activity-coefficient models, after Tb (as in v0.1);
+            # where no open source has them, the record says so and the component is for equations of state only
+            rq = uniquac_or_none(cs, rec["cas"])
             new = {}
             for k, v in rec.items():
                 new[k] = v
                 if k == "Tb_K":
-                    new["uniquac"] = uniquac(cs, rec["cas"])
+                    if rq:
+                        new["uniquac"] = rq
+                    else:
+                        new["uniquac_missing"] = {
+                            "searched": [CHEMSEP_NAME + " (compound not included)",
+                                         "thermo and chemicals libraries (no UNIQUAC r and q tables)"],
+                            "note": "no open data: UNIQUAC r and q could be computed from UNIFAC group volumes and "
+                                    "areas, but the licence of those group tables is the open question of roadmap A3; "
+                                    "until it is settled the component has no activity-model data."}
             rec = new
         tb = rec["Tb_K"] if rec["Tb_K"] is not None else float("nan")
         old = comps.get(cid, {})
