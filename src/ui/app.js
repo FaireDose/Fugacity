@@ -2,7 +2,7 @@
  * Workbench: Fugacity.app(target, config).
  *
  * Layout, from top to bottom:
- *  - the navigation bar: one tab per calculation task (Phase equilibrium, Gas solubility,
+ *  - the navigation bar: one tab per calculation task (Phase equilibrium, Flash, Gas solubility,
  *    Properties, Steam) and, on the right, the supporting utilities (Library, Sources,
  *    Settings), which open as a drawer over the workspace and never change it;
  *  - the toolbar of the active workspace: its diagrams, model and display options only;
@@ -26,30 +26,40 @@ import { HENRY_GASES } from "../thermo/henry.js";
 import { system } from "../system.js";
 import {
   VIEWS, PRESETS, initialState, applyPatch, TIER_SHORT, fmtP, parseP, parseT, fmtTemp, pxyTemperature,
-  RULES, ruleOf, setsFor, setChoices, pairKeyOf,
+  RULES, ruleOf, setsFor, setChoices, pairKeyOf, modelLabel,
 } from "./app-logic.js";
-import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor } from "./workspaces.js";
+import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView, sourcesPanel } from "./app-views.js";
+import { FLASH_SPECS, feedComposition, convertBasis } from "./flash-logic.js";
+import { pure } from "../thermo/pure.js";
 import pkg from "../../package.json" with { type: "json" };
 
 const PROPERTY_GLYPHS = [
   ["density", () => "ρ", "Density"], ["enthalpy", () => "h", "Enthalpy"], ["cp", () => ["c", h("sub", {}, "p")], "Heat capacity"],
   ["viscosity", () => "μ", "Viscosity"], ["conductivity", () => "k", "Conductivity"], ["vapourPressure", () => ["P", h("sup", {}, "sat")], "Vapour pressure"],
 ];
-const VIEW_ICON = { txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", properties: "curves", steam: "dome" };
+const VIEW_ICON = { flash: "drum", txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", properties: "curves", steam: "dome" };
 /** A label inside a sentence: "Ternary map" → "ternary map", but "T-x-y diagram" stays. */
 const lower = s => (/^[A-Z]-/.test(s) ? s : s[0].toLowerCase() + s.slice(1));
-const NEEDS = {
-  txy: "Two liquids", ternary: "Three liquids", azeotropes: "Two to four liquids", pxy: "Two components, gases too",
-  envelope: "One to six components, gases too", henry: "A gas and a solvent", properties: "One component", steam: "Water",
+const NEEDS_ACTIVITY = {
+  txy: "Two liquids", ternary: "Three liquids", azeotropes: "Two to four liquids", pxy: "Two liquids",
+  envelope: "Two to six liquids", flash: "Two to six liquids", henry: "A gas and a solvent", properties: "One component", steam: "Water",
 };
+const NEEDS_EOS = {
+  ...NEEDS_ACTIVITY, txy: "Two components", ternary: "Three components", azeotropes: "Two to four components", pxy: "Two components",
+  envelope: "One to six components", flash: "One to six components",
+};
+/** What a view needs with the model in use (an equation of state takes gases too). */
+const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY)[view];
 
 /**
  * Put the Fugacity workbench into a page element.
  *
- * The workbench has four workspaces, one per task: Phase equilibrium (T-x-y, ternary map,
- * azeotropes with an activity model; P-x-y and phase envelope with an equation of state),
+ * The workbench has five workspaces, one per task: Phase equilibrium (T-x-y, ternary map,
+ * azeotropes, P-x-y and phase envelope, each with the model chosen in the toolbar: an
+ * activity model with a vapour model, or an equation of state), Flash (a feed flashed at
+ * T and P, P and heat duty, or a vapour fraction, with the same model; stream table and CSV),
  * Gas solubility (Henry's law, a gas in a solvent), Properties (one pure component) and
  * Steam (IAPWS-IF97). Library, Sources and Settings open as a drawer over the workspace.
  * Each workspace keeps its own inputs: `components` seeds all of them (the first two liquids
@@ -63,8 +73,10 @@ const NEEDS = {
  *   "sources" (or "library") opens the Sources panel over the first workspace
  * @param {string[]} [cfg.components]   up to six names, ids, formulas or CAS numbers
  *   (default methanol, acetone, chloroform)
- * @param {"NRTL"|"UNIQUAC"|"ideal"|"PR"|"SRK"} [cfg.model="NRTL"]  activity model; "PR" or "SRK" sets the equation of state
- * @param {"PR"|"SRK"} [cfg.eos="PR"]    equation of state of the P-x-y and phase-envelope diagrams
+ * @param {"NRTL"|"UNIQUAC"|"ideal"|"PR"|"SRK"} [cfg.model="NRTL"]  model of every phase-equilibrium diagram
+ *   (default NRTL; an equation of state when `eos` or start "eos", "pxy" or "envelope" is given, or when gases need one)
+ * @param {"PR"|"SRK"} [cfg.eos="PR"]    equation of state to use when one is chosen (as `model` when no `model` is given)
+ * @param {"ideal"|"PR"|"SRK"} [cfg.vapour="ideal"]  vapour model with an activity model
  * @param {number} [cfg.P_kPa=101.325]   pressure of the activity-model diagrams
  * @param {number} [cfg.T_K]             temperature of the P-x-y diagram (default: 85 % of the lowest critical temperature)
  * @param {string} [cfg.gas]             gas of the Gas solubility workspace (default: the first gas in components, else oxygen)
@@ -80,6 +92,8 @@ const NEEDS = {
  * @param {boolean} [cfg.background=true]     show the background layers (colour map, isotherms, grid lines, two-liquid shading)
  * @param {{left?:boolean, right?:boolean}} [cfg.panels]  show the Inputs panel (left) and the Results panel (right)
  * @param {boolean} [cfg.ribbon=true]    show the toolbar of the workspace
+ * @param {object} [cfg.flash]          Flash workspace: { spec: "TP"|"PH"|"PVF"|"TVF", T_K, P_kPa, VF, Q_J_mol,
+ *   feedT_K, feedP_kPa, duty, z } (flash-logic.js); its components come from `components`
  * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" }
  *   (update({ sets }) merges; a null set name, or sets: null, goes back to the default)
  * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  global rule (Library panel) or a list of tiers
@@ -234,23 +248,31 @@ export function app(target, cfg = {}) {
 
   // ---- toolbar of the workspace: diagrams, model and display options
   function diagramButton(view, label) {
-    return bigButton({ ico: VIEW_ICON[view], label, pressed: state.view === view, title: `${VIEWS[view].label}: ${NEEDS[view].toLowerCase()}`,
+    return bigButton({ ico: VIEW_ICON[view], label, pressed: state.view === view, title: `${VIEWS[view].label}: ${needsOf(view, state.model).toLowerCase()}`,
       fk: `diagram-${view}`, onClick: () => set({ view }) });
   }
+  /** One labelled row of the Model group: a caption and its choices. */
+  const modelRow = (caption, label, choices, current, onPick) =>
+    h("div", { class: "fa-model-row" }, h("span", { class: "fa-model-cap", "aria-hidden": "true" }, caption), seg(label, choices, current, onPick));
+  function modelGroup() {
+    const eos = isEosModel(state.model);
+    return group("Model", stack(
+      modelRow("Activity", "Activity model (liquid)", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : state.model, m => set({ model: m })),
+      modelRow("EOS", "Equation of state (both phases)", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? state.model : null, m => set({ model: m })),
+      eos
+        ? h("div", { class: "fa-hint" }, `${state.model === "PR" ? "Peng–Robinson" : "SRK"} for liquid and vapour; k_ij from the databank`)
+        : modelRow("Vapour", "Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], state.vapour, m => set({ vapour: m })),
+      eos ? null : h("div", { class: "fa-hint" }, `${state.model === "ideal" ? "Liquid γ = 1" : "Liquid γ"}; ${state.vapour === "ideal" ? "vapour ideal gas" : `${state.vapour} vapour with φsat and Poynting`}`)));
+  }
   function ribbonGroups() {
-    const u = state.units, v = state.view, fam = VIEWS[v].family;
+    const u = state.units, v = state.view;
     const bg = smallButton({ ico: "layers", label: "Background", pressed: state.background, fk: "bg",
       title: "Show or hide the colour map, isotherms, grid lines and two-liquid shading", onClick: () => set({ background: !state.background }, { canvas: false }) });
     switch (state.workspace) {
       case "equilibrium": return [
-        group("Liquid mixtures, activity model", diagramButton("txy", "T-x-y"), diagramButton("ternary", "Ternary map"), diagramButton("azeotropes", "Azeotropes")),
-        group("Equation of state", diagramButton("pxy", "P-x-y"), diagramButton("envelope", "Phase envelope")),
-        fam === "activity"
-          ? group("Activity model", stack(seg("Activity model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], state.model, m => set({ model: m })),
-            seg("Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], state.vapour, m => set({ vapour: m })),
-            h("div", { class: "fa-hint" }, `${state.model === "ideal" ? "Liquid γ = 1" : "Liquid γ"}; ${state.vapour === "ideal" ? "vapour ideal gas" : `${state.vapour} vapour with φsat and Poynting`}`)))
-          : group("Equation of state", stack(seg("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], state.eos, m => set({ eos: m })),
-            h("div", { class: "fa-hint" }, "Both phases; k_ij from the databank"))),
+        group("Diagrams", diagramButton("txy", "T-x-y"), diagramButton("pxy", "P-x-y"), diagramButton("ternary", "Ternary map"),
+          diagramButton("azeotropes", "Azeotropes"), diagramButton("envelope", "Phase envelope")),
+        modelGroup(),
         group("Display", stack(
           ...(v === "ternary" ? [
             smallButton({ ico: "residue", label: "Residue curves", pressed: state.residueCurves, onClick: () => set({ residueCurves: !state.residueCurves }) }),
@@ -259,7 +281,14 @@ export function app(target, cfg = {}) {
               h("select", { id: `fa-grid-${uid}`, "data-fk": "grid", on: { change: ev => set({ grid: +ev.target.value }) } },
                 ...[[24, "Coarse"], [40, "Normal"], [60, "Fine"]].map(([g, t]) => h("option", { value: g, selected: state.grid === g }, t)))),
           ] : []), bg)),
-        ...(fam === "activity" ? [group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b })))] : []),
+        group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
+      ];
+      case "flash": return [
+        group("Specification", h("div", { class: "fa-stack" },
+          seg("Flash specification", FLASH_SPECS.map(f => [f.id, f.label]), state.flash.spec, sp => set({ flash: { spec: sp } })),
+          h("div", { class: "fa-hint" }, FLASH_SPECS.find(f => f.id === state.flash.spec).title))),
+        modelGroup(),
+        group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
       ];
       case "solubility": return [
         group("Model", h("div", { class: "fa-stack fa-about" },
@@ -295,7 +324,7 @@ export function app(target, cfg = {}) {
 
   // ---- Inputs panel: what the current view needs, each with its role
   function optionsFor(view, current, slot) {
-    const spec = INPUTS[view], value = state.inputs[view];
+    const spec = needsFor(view, state.model), value = state.inputs[view];
     const usedElsewhere = new Map((Array.isArray(value) ? value : []).map((id, i) => [id, i]).filter(([id, i]) => id && i !== slot));
     const opt = c => {
       const bad = spec.liquid && !c.activity;
@@ -305,12 +334,12 @@ export function app(target, cfg = {}) {
     };
     return [
       h("optgroup", { label: "Liquids" }, ...all.filter(c => c.activity).map(opt)),
-      h("optgroup", { label: spec.liquid ? "Gases (not for activity models)" : "Gases" }, ...all.filter(c => !c.activity).map(opt)),
+      h("optgroup", { label: spec.liquid ? "Gases (need an equation of state)" : "Gases" }, ...all.filter(c => !c.activity).map(opt)),
     ];
   }
 
   function slotsInput(view, check) {
-    const spec = INPUTS[view], value = state.inputs[view];
+    const spec = needsFor(view, state.model), value = state.inputs[view];
     const bad = new Map(check.problems.filter(p => p.slot != null).map(p => [p.slot, p.message]));
     return h("div", { class: "fa-slots" }, ...value.map((id, i) => {
       const sid = `fa-slot-${view}-${i}-${uid}`;
@@ -328,7 +357,7 @@ export function app(target, cfg = {}) {
   }
 
   function listInput(view) {
-    const spec = INPUTS[view], value = state.inputs[view];
+    const spec = needsFor(view, state.model), value = state.inputs[view];
     const chips = value.map((id, i) => h("li", { class: "fa-chip" },
       h("span", { class: "fa-chip-n", "aria-hidden": "true" }, String(i + 1)),
       h("span", { class: "fa-chip-name" }, nameOf(id)),
@@ -356,12 +385,12 @@ export function app(target, cfg = {}) {
   }
 
   function renderLeft() {
-    const v = state.view, spec = INPUTS[v], check = checkInputs(v, state.inputs[v]);
+    const v = state.view, spec = needsFor(v, state.model), check = checkInputs(v, state.inputs[v], state.model);
     const u = state.units;
     const secs = [];
     if (state.workspace === "equilibrium") {
       const value = state.inputs[v];
-      const examples = examplesFor(v, PRESETS);
+      const examples = examplesFor(v, PRESETS, state.model);
       const actions = [];
       if (spec.kind === "slots") {
         actions.push(h("button", { type: "button", class: "fa-mini", "data-fk": "act-order",
@@ -374,11 +403,11 @@ export function app(target, cfg = {}) {
           h("option", { value: "" }, "Examples…"), ...examples.map((p, i) => h("option", { value: i }, p.label))));
       }
       secs.push(inputsSection(`Components`,
-        h("p", { class: "fa-in-hint" }, `${NEEDS[v]} for the ${lower(VIEWS[v].label)}${spec.kind === "slots" && spec.n === 3 ? ", in corner order" : ""}.`),
+        h("p", { class: "fa-in-hint" }, `${needsOf(v, state.model)} for the ${lower(VIEWS[v].label)}${spec.kind === "slots" && spec.n === 3 ? ", in corner order" : ""}.`),
         spec.kind === "slots" ? slotsInput(v, check) : listInput(v),
         problemsBox(check),
         actions.length ? h("div", { class: "fa-in-actions" }, ...actions) : null));
-      if (VIEWS[v].family === "activity") secs.push(inputsSection("Conditions", pressureField()));
+      if (v === "txy" || v === "ternary" || v === "azeotropes") secs.push(inputsSection("Conditions", pressureField()));
       else if (v === "pxy") {
         secs.push(inputsSection("Conditions",
           field(`Temperature, ${u.T === "K" ? "K" : "°C"}`, check.ok ? String(+tToDisplay(pxyTemperature(state), u).toFixed(3)) : "",
@@ -388,6 +417,15 @@ export function app(target, cfg = {}) {
       } else {
         secs.push(inputsSection("Conditions", h("p", { class: "fa-in-hint" }, "The feed composition, and the temperature and pressure of the bubble and dew points, are set in the calculator under Results.")));
       }
+      if (check.ok) { const pairs = pairRows(check.use); if (pairs) secs.push(pairs); }
+    } else if (state.workspace === "flash") {
+      secs.push(inputsSection("Components",
+        h("p", { class: "fa-in-hint" }, `${needsOf("flash", state.model)} in the feed.`),
+        listInput("flash"), problemsBox(check),
+        examplesFor("flash", PRESETS, state.model).length ? h("div", { class: "fa-in-actions" }, h("select", { class: "fa-examples", "aria-label": "Load an example", "data-fk": "examples",
+          on: { change: ev => { const p = examplesFor("flash", PRESETS, state.model)[+ev.target.value]; if (p) set({ inputs: { flash: p.components } }); } } },
+          h("option", { value: "" }, "Examples…"), ...examplesFor("flash", PRESETS, state.model).map((p, i) => h("option", { value: i }, p.label)))) : null));
+      if (check.ok) secs.push(feedSection(check.use), specSection());
       if (check.ok) { const pairs = pairRows(check.use); if (pairs) secs.push(pairs); }
     } else if (state.workspace === "solubility") {
       const { gas, solvent } = state.inputs.henry;
@@ -429,11 +467,60 @@ export function app(target, cfg = {}) {
     left.replaceChildren(h("div", { class: "fa-panel-head" }, h("h2", {}, "Inputs"), h("span", { class: "fa-count" }, VIEWS[v].label)), ...secs);
   }
 
+  // ---- Flash workspace: the feed composition (in the display basis) and the specification
+  function feedSection(ids) {
+    const f = state.flash, mass = state.basis === "mass";
+    const MW = ids.map(id => pure(id).MW);
+    const z = feedComposition(f, ids.length);
+    const shown = mass ? convertBasis(z, MW, true).map(v => 100 * v) : z;
+    const commit = (k, text) => {
+      const v = Number(String(text).trim().replace(",", "."));
+      if (!(v >= 0) || !Number.isFinite(v)) return false;
+      const next = shown.slice(); next[k] = v;
+      if (!(next.reduce((a, b) => a + b, 0) > 0)) return false;
+      set({ flash: { z: mass ? convertBasis(next, MW) : next } });
+    };
+    const total = shown.reduce((a, b) => a + b, 0);
+    return inputsSection(`Feed, ${mass ? "wt %" : "mole fractions"}`,
+      field("Feed flow, kmol/h", fmtShort(f.flow_kmol_h, 6), x => { const v = Number(String(x).trim().replace(",", ".")); if (!(v > 0) || !Number.isFinite(v)) return false; set({ flash: { flow_kmol_h: v } }); },
+        { id: "fflow", title: "For the stream flows and the heat duty in kW; the flash itself is per mole of feed" }),
+      h("div", { class: "fa-feed" }, ...ids.map((id, k) => field(nameOf(id), fmtShort(+shown[k].toPrecision(6), 6), t => commit(k, t), { id: `fz${k}`, width: "6em" }))),
+      h("p", { class: "fa-in-hint" }, `Normalized to ${mass ? "100 wt %" : "1"} (now ${fmtShort(+total.toPrecision(6), 6)}).`,
+        " ", h("button", { type: "button", class: "fa-link-btn", "data-fk": "feed-eq", on: { click: () => set({ flash: { z: null } }) } }, "Equimolar")));
+  }
+  function specSection() {
+    const f = state.flash, u = state.units, sp = FLASH_SPECS.find(x => x.id === f.spec);
+    const tLab = `Temperature, ${u.T === "K" ? "K" : "°C"}`;
+    const tField = (label, key, id) => field(label, String(+tToDisplay(f[key], u).toFixed(3)),
+      x => { const v = parseT(x, u); if (v == null) return false; set({ flash: { [key]: v } }); }, { id });
+    const pField = (label, key, id) => field(label, fmtShort(pToDisplay(f[key], u), 6),
+      x => { const v = parseP(x, u); if (v == null) return false; set({ flash: { [key]: v } }); }, { id });
+    const vfField = () => field("Vapour fraction", String(f.VF), x => { const v = Number(String(x).replace(",", ".")); if (!(v >= 0 && v <= 1)) return false; set({ flash: { VF: v } }); },
+      { id: "fvf", title: "Moles of vapour per mole of feed: 0 bubble point, 1 dew point" });
+    const conds = [];
+    if (f.spec === "TP") conds.push(tField(tLab, "T_K", "ft"), pField(`Pressure, ${u.P}`, "P_kPa", "fp"));
+    if (f.spec === "PVF") conds.push(pField(`Pressure, ${u.P}`, "P_kPa", "fp"), vfField());
+    if (f.spec === "TVF") conds.push(tField(tLab, "T_K", "ft"), vfField());
+    if (f.spec === "PH") {
+      conds.push(pField(`Flash pressure, ${u.P}`, "P_kPa", "fp"),
+        field("Heat duty Q, J/mol", String(f.Q_J_mol), x => { const v = Number(String(x).trim().replace(",", ".")); if (!Number.isFinite(v)) return false; set({ flash: { Q_J_mol: v } }); },
+          { id: "fq", title: "Heat added per mole of feed; 0 for an adiabatic flash (valve), negative for cooling" }));
+    }
+    const feedState = [tField(`Feed temperature, ${u.T === "K" ? "K" : "°C"}`, "feedT_K", "fft"), pField(`Feed pressure, ${u.P}`, "feedP_kPa", "ffp")];
+    return h("div", {},
+      inputsSection(`Specification: ${sp.title.toLowerCase()}`, h("p", { class: "fa-in-hint" }, sp.hint), ...conds),
+      inputsSection("Feed state",
+        f.spec === "PH"
+          ? h("p", { class: "fa-in-hint" }, "The feed enthalpy is taken at this temperature and pressure; the flash outlet has H = H_feed + Q.")
+          : h("label", { class: "fa-check-label" }, h("input", { type: "checkbox", checked: f.duty, "data-fk": "fduty", on: { change: ev => set({ flash: { duty: ev.target.checked } }) } }),
+            h("span", {}, "Heat duty from a feed at")),
+        ...(f.spec === "PH" || f.duty ? feedState : [])));
+  }
+
   // binary pairs of the inputs with the tier of their parameters, for the model in use
   function pairRows(ids) {
-    const eosView = VIEWS[state.view].family === "eos";
+    const model = state.model, eosView = isEosModel(model);
     if (ids.length < 2) return null;
-    const model = eosView ? state.eos : state.model;
     const head = h("h3", {}, eosView ? `Pairs, ${model} k_ij` : `Parameter sets, ${model}`);
     if (model === "ideal") return h("section", { class: "fa-in-sec fa-pairs" }, head, h("p", { class: "fa-in-hint" }, "Ideal solution: no pair parameters."));
     let info;
@@ -469,9 +556,12 @@ export function app(target, cfg = {}) {
   function renderStatus() {
     const st = ui.status, u = state.units, v = state.view;
     const model = v === "steam" ? "IAPWS-IF97" : v === "henry" ? "Henry's law" : v === "properties" ? "Pure-component data"
-      : VIEWS[v].family === "eos" ? (state.eos === "PR" ? "Peng–Robinson" : "SRK") : state.model === "ideal" ? "Ideal" : state.model;
-    const cond = v === "pxy" ? `T ${fmtTemp(pxyTemperature(state), u)}` : v === "henry" ? `${fmtTemp(state.henryT_K, u)}, p gas ${fmtP(state.henryP_kPa, u)}`
-      : VIEWS[v].family === "activity" ? `P ${fmtP(state.P_kPa, u)}` : v === "envelope" ? "Feed under Results" : null;
+      : modelLabel(state);
+    const fs = state.flash;
+    const cond = v === "flash" ? { TP: `T ${fmtTemp(fs.T_K, u)}, P ${fmtP(fs.P_kPa, u)}`, PH: `P ${fmtP(fs.P_kPa, u)}, Q ${fs.Q_J_mol} J/mol`,
+      PVF: `P ${fmtP(fs.P_kPa, u)}, VF ${fs.VF}`, TVF: `T ${fmtTemp(fs.T_K, u)}, VF ${fs.VF}` }[fs.spec]
+      : v === "pxy" ? `T ${fmtTemp(pxyTemperature(state), u)}` : v === "henry" ? `${fmtTemp(state.henryT_K, u)}, p gas ${fmtP(state.henryP_kPa, u)}`
+      : VIEWS[v].diagram && v !== "envelope" ? `P ${fmtP(state.P_kPa, u)}` : v === "envelope" ? "Feed under Results" : null;
     const cell = (cls, ...c) => h("span", { class: `fa-cell ${cls}` }, ...c);
     const rule = ruleOf(state.prefer), hand = Object.keys(state.sets).length;
     const setsCell = rule !== "best" || hand
@@ -499,16 +589,17 @@ export function app(target, cfg = {}) {
   }
 
   function renderCanvasBar() {
-    const v = state.view, u = state.units, check = checkInputs(v, state.inputs[v]);
+    const v = state.view, u = state.units, check = checkInputs(v, state.inputs[v], state.model);
     const title = check.ok ? state.title || calculationName() : VIEWS[v].label;
     const prop = v === "properties" ? explorerProperties().find(p => p.key === state.property) : null;
-    const vap = state.vapour && state.vapour !== "ideal" ? ` with a ${state.vapour} vapour` : "";
-    const sub = !check.ok ? `${NEEDS[v]} needed: choose them in Inputs` : {
-      txy: `T-x-y diagram at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
-      ternary: `Bubble-temperature map and residue curves at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
-      azeotropes: `Binary and ternary azeotropes at ${fmtP(state.P_kPa, u)}, ${state.model}${vap}`,
-      pxy: `P-x-y diagram at ${fmtTemp(pxyTemperature(state), u)}, ${state.eos === "PR" ? "Peng–Robinson" : "SRK"}`,
-      envelope: `Bubble and dew points of the feed, ${state.eos === "PR" ? "Peng–Robinson" : "SRK"}`,
+    const ml = modelLabel(state);
+    const sub = !check.ok ? `${needsOf(v, state.model)} needed: choose them in Inputs` : {
+      txy: `T-x-y diagram at ${fmtP(state.P_kPa, u)}, ${ml}`,
+      ternary: `Bubble-temperature map and residue curves at ${fmtP(state.P_kPa, u)}, ${ml}`,
+      azeotropes: `Binary and ternary azeotropes at ${fmtP(state.P_kPa, u)}, ${ml}`,
+      pxy: `P-x-y diagram at ${fmtTemp(pxyTemperature(state), u)}, ${ml}`,
+      envelope: `Bubble and dew points of the feed, ${ml}`,
+      flash: `${FLASH_SPECS.find(f => f.id === state.flash.spec).title} flash, ${ml}`,
       henry: `Solubility at ${fmtTemp(state.henryT_K, u)} and a gas partial pressure of ${fmtP(state.henryP_kPa, u)}, Henry's law`,
       properties: `${prop?.label ?? "Property"} against temperature, pure component`,
       steam: "Temperature–entropy chart with isobars, IAPWS-IF97",
@@ -533,7 +624,7 @@ export function app(target, cfg = {}) {
   function drawerBody(id) {
     const u = state.units;
     if (id === "sources") {
-      const check = checkInputs(state.view, state.inputs[state.view]);
+      const check = checkInputs(state.view, state.inputs[state.view], state.model);
       return sourcesPanel({ ids: check.ok ? check.use : [], what: check.ok ? calculationName() : VIEWS[state.view].label, uid, look: ui.sources });
     }
     if (id === "library") {
@@ -611,10 +702,11 @@ export function app(target, cfg = {}) {
 
   // ---- canvas
   const canvasKey = () => {
-    const v = state.view, check = checkInputs(v, state.inputs[v]);
+    const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
     return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.vapour, state.P_kPa, state.T_K,
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
-      v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer]);
+      v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer,
+      v === "flash" ? state.flash : null]);
   };
   let canvasRendered = false, token = 0;
   function renderCanvas(now = false) {
@@ -625,7 +717,7 @@ export function app(target, cfg = {}) {
     const run = () => {
       if (my !== token) return;
       const t0 = performance.now();
-      const v = state.view, check = checkInputs(v, state.inputs[v]);
+      const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
       let info = null, error = null;
       notes.replaceChildren(); below.replaceChildren(); inspectorExtra.replaceChildren(); provenance.replaceChildren(); side.hidden = false;
       delete plot.dataset.view;
@@ -655,7 +747,7 @@ export function app(target, cfg = {}) {
 
   function needInputs(v, check) {
     return h("div", { class: "fa-need", role: "status" },
-      h("h3", {}, `The ${lower(VIEWS[v].label)} needs: ${NEEDS[v].toLowerCase()}`),
+      h("h3", {}, `The ${lower(VIEWS[v].label)} needs: ${needsOf(v, state.model).toLowerCase()}${isEosModel(state.model) || !VIEWS[v].diagram ? "" : ` with ${state.model === "ideal" ? "an ideal solution" : state.model}`}`),
       h("ul", {}, ...check.problems.map(p => h("li", {}, p.message))),
       h("p", {}, `Choose them in the Inputs panel${ui.size === "narrow" ? " above" : ""}. Nothing is calculated until the inputs fit; your choices are kept as they are.`),
       state.panels.left ? null : h("button", { type: "button", class: "fa-mini", "data-fk": "show-inputs", on: { click: () => set({ panels: { left: true } }, { canvas: false }) } }, icon("panelL", 15), "Show the Inputs panel"));

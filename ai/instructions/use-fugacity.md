@@ -22,7 +22,7 @@ pinned version and opens the workbench:
 <script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", {
-    start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "henry", "properties", "steam"
+    start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
     components: ["methanol", "acetone", "chloroform"],
     model: "NRTL",             // "NRTL", "UNIQUAC", "ideal", "PR" or "SRK"
     P_kPa: 101.325

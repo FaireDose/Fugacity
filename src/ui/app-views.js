@@ -21,13 +21,15 @@ import { listComponents } from "../thermo/system.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "../thermo/pure.js";
 import { steam, steamSat } from "../thermo/iapws/steam.js";
 import { henry, henryInfo, gasSolubility } from "../thermo/henry.js";
-import { ternaryAzeotropes } from "../equilibrium/azeotrope.js";
+import { ternaryAzeotropes, binaryAzeotropes } from "../equilibrium/azeotrope.js";
 import { library, sourceEntry, componentSources } from "../thermo/library.js";
 import {
   knownIssuesFor, pxyTemperature, tierCounts, tierSummary, normalizeComposition, interpolate, fmtP, fmtTemp, parseP, parseT,
   setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
-import { HENRY_PAIRS } from "./workspaces.js";
+import { HENRY_PAIRS, isEosModel } from "./workspaces.js";
+import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW } from "./flash-logic.js";
+import pkg from "../../package.json" with { type: "json" };
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
 } from "./properties-logic.js";
@@ -44,6 +46,7 @@ export function renderView(view, ctx) {
     case "azeotropes": return azeotropeView(ctx);
     case "pxy": return pxyView(ctx);
     case "envelope": return envelopeView(ctx);
+    case "flash": return flashView(ctx);
     case "henry": return henryView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
@@ -154,7 +157,7 @@ function vleView(view, ctx) {
   const av = { use: state.components };
   const opts = setsFor(state, state.model);
   let sys;
-  try { sys = system({ components: av.use, model: state.model, ...opts }); } catch (e) { throw new Error(friendly(e)); }
+  try { sys = modelSystem(state, av.use); } catch (e) { throw new Error(friendly(e)); }
   for (const k of onDefaults(sys) ? knownIssuesFor(sys.ids, sys.model) : []) {
     notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
   }
@@ -163,8 +166,12 @@ function vleView(view, ctx) {
   else {
     renderTernary(plot, side, sys, state.P_kPa, {
       ...look, residueCurves: state.residueCurves, isotherms: state.isotherms, grid: state.grid,
-      makePairSystem: ids => system({ components: ids, model: state.model, ...opts }),
+      makePairSystem: ids => modelSystem(state, ids),
     });
+  }
+  if (sys.kind === "eos") {
+    extra.append(...eosSources(ctx, sys));
+    return { data: tierSummary(tierCounts(sys.info.pairs), "k_ij pair") };
   }
   const counts = tierCounts(sys.info.pairs, sys.info.missingPairs);
   extra.append(section("Parameter sources", sys.info.pairs.length
@@ -179,9 +186,25 @@ function vleView(view, ctx) {
 // ---------------------------------------------------------------------------------------
 // Azeotropes: one small T-x-y per pair, and the singular points in boiling order
 
-function miniTxy(sys, data, azeo, P, u) {
+/** T-x-y samples by the system's own bubble point; null where none is found (an engine error). */
+function sampleTxy(sys, P, n) {
+  const out = [];
+  let missed = 0, message = null;
+  for (let k = 0; k < n; k++) {
+    const x = k / (n - 1);
+    try { const r = sys.bubbleT([x, 1 - x], P); out.push({ x, T: r.T, y: r.y[0] }); } catch (e) {
+      if (!(e && e.code)) throw e;
+      out.push(null); missed++; message ??= e.message;
+    }
+  }
+  if (!out.some(Boolean)) throw new Error(message ?? "No bubble point found.");
+  return { data: out, missed, message };
+}
+
+function miniTxy(sys, data, azeo, P, u, bv) {
+  const W1 = x1 => bv.conv([x1, 1 - x1])[0];   // drawn in the display basis
   const W = 260, H = 150, L = 34, R = 10, T = 10, B = 24;
-  const Tc = data.map(d => tToDisplay(d.T, u));
+  const Tc = data.filter(Boolean).map(d => tToDisplay(d.T, u));
   const lo = Math.min(...Tc), hi = Math.max(...Tc), pad = Math.max(0.5, (hi - lo) * 0.08);
   const y0 = lo - pad, y1 = hi + pad;
   const sx = v => L + v * (W - L - R), sy = v => H - B - (v - y0) / (y1 - y0) * (H - T - B);
@@ -192,12 +215,12 @@ function miniTxy(sys, data, azeo, P, u) {
     text(svg, L - 4, sy(v) + 3, String(+v.toFixed(1)), { "text-anchor": "end", "font-size": 9 });
   }
   s("line", { x1: L, x2: W - R, y1: H - B, y2: H - B, stroke: "var(--fug-muted)" }, svg);
-  for (const v of [0, 0.5, 1]) text(svg, sx(v), H - B + 12, String(v), { "text-anchor": "middle", "font-size": 9 });
-  text(svg, (L + W - R) / 2, H - 2, `x, y ${sys.names[0]}`, { "text-anchor": "middle", "font-size": 9, fill: "var(--fug-fg2)" });
-  const path = key => "M" + data.map(d => `${sx(d[key]).toFixed(1)},${sy(tToDisplay(d.T, u)).toFixed(1)}`).join("L");
+  for (const v of [0, 0.5, 1]) text(svg, sx(v), H - B + 12, bv.mass ? bv.tick(v) : String(v), { "text-anchor": "middle", "font-size": 9 });
+  text(svg, (L + W - R) / 2, H - 2, `x, y ${sys.names[0]}${bv.mass ? ", wt %" : ""}`, { "text-anchor": "middle", "font-size": 9, fill: "var(--fug-fg2)" });
+  const path = key => data.map((d, k) => (d ? `${data[k - 1] ? "L" : "M"}${sx(W1(d[key])).toFixed(1)},${sy(tToDisplay(d.T, u)).toFixed(1)}` : "")).join("");
   s("path", { d: path("x"), fill: "none", stroke: "var(--fug-liq)", "stroke-width": 1.8 }, svg);
   s("path", { d: path("y"), fill: "none", stroke: "var(--fug-vap)", "stroke-width": 1.8, "stroke-dasharray": "5 3" }, svg);
-  for (const z of azeo) s("circle", { cx: sx(z.x), cy: sy(tToDisplay(z.T, u)), r: 4, fill: "var(--fug-fg)", stroke: "var(--fug-halo)", "stroke-width": 2 }, svg);
+  for (const z of azeo) s("circle", { cx: sx(W1(z.x)), cy: sy(tToDisplay(z.T, u)), r: 4, fill: "var(--fug-fg)", stroke: "var(--fug-halo)", "stroke-width": 2 }, svg);
   return svg;
 }
 
@@ -216,37 +239,50 @@ function azeotropeView(ctx) {
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
     const pair = [ids[i], ids[j]];
     let sys;
-    try { sys = system({ components: pair, model: state.model, ...opts }); } catch (e) {
+    try { sys = modelSystem(state, pair); } catch (e) {
       errors.push(friendly(e));
       cards.push(h("div", { class: "fa-card is-missing" }, h("div", { class: "fa-card-head" }, h("strong", {}, `${nameOf(pair[0])} + ${nameOf(pair[1])}`), ctx.badge("none")),
         h("div", { class: "fa-empty" }, friendly(e))));
       continue;
     }
     for (const p of sys.info.pairs) sources.set(p.pair.join(" + "), p);
-    const data = sys.txy(P, 61), az = sys.azeotropes(P);
+    let sample, az;
+    try { sample = sampleTxy(sys, P, 61); az = binaryAzeotropes(sys, P, 200, { gaps: true }); } catch (e) {
+      if (!(e && e.code) && !/bubble point/i.test(e.message)) throw e;
+      errors.push(`${nameOf(pair[0])} + ${nameOf(pair[1])}: ${e.message}`);
+      cards.push(h("div", { class: "fa-card is-missing" }, h("div", { class: "fa-card-head" }, h("strong", {}, `${nameOf(pair[0])} + ${nameOf(pair[1])}`)),
+        h("div", { class: "fa-empty" }, e.message)));
+      continue;
+    }
+    const data = sample.data;
     for (const z of az) points.push({ T: z.T, kind: z.type === "minimum-boiling" ? "Minimum-boiling azeotrope" : "Maximum-boiling azeotrope", what: comp([z.x, 1 - z.x], pair) });
     const tier = sys.info.pairs[0]?.tier ?? (state.model === "ideal" ? "ideal" : "none");
     cards.push(h("div", { class: "fa-card" },
       h("div", { class: "fa-card-head" }, h("strong", {}, `${nameOf(pair[0])} + ${nameOf(pair[1])}`), state.model === "ideal" ? null : ctx.badge(tier)),
-      miniTxy(sys, data, az, P, u),
+      miniTxy(sys, data, az, P, u, basisView(state.basis, pair.map(id => MW[id]))),
       h("div", { class: "fa-card-text" }, az.length
-        ? az.map(z => h("div", {}, `${z.type === "minimum-boiling" ? "Minimum" : "Maximum"}-boiling azeotrope at ${fmtTemp(z.T, u, 1)}: ${comp([z.x, 1 - z.x], pair)}`))
-        : "No azeotrope at this pressure."),
+        ? az.map(z => h("div", {}, `${z.type === "minimum-boiling" ? "Minimum" : "Maximum"}-boiling azeotrope at ${fmtTemp(z.T, u, 1)}: ${comp([z.x, 1 - z.x], pair)}`,
+          z.within ? h("small", {}, ` (${nameOf(pair[0])} mole fraction between ${fmtNum(z.within[0], 4)} and ${fmtNum(z.within[1], 4)}: the equation-of-state solver stops at y = x)`) : null))
+        : "No azeotrope at this pressure.",
+      az.gaps ? h("div", { class: "fug-warn" }, `${az.gaps.points} of 200 search points had no bubble point from the solver and were skipped${sample.missed ? " (gaps in the curves)" : ""}: an azeotrope there would be missed. ${az.gaps.message}`) : null),
       h("button", { type: "button", class: "fa-link-btn", on: { click: () => set({ inputs: { txy: pair }, view: "txy" }) } }, "Open as T-x-y diagram")));
   }
   if (ids.length >= 3) {
     try {
       const tri = ids.slice(0, 3);
-      const sys3 = system({ components: tri, model: state.model, ...opts });
-      for (const z of ternaryAzeotropes(sys3, P, pids => system({ components: pids, model: state.model, ...opts })).filter(z => z.kind === "ternary")) {
+      const sys3 = modelSystem(state, tri);
+      const found = ternaryAzeotropes(sys3, P, pids => modelSystem(state, pids), { gaps: true });
+      if (found.notSearched) ctx.notes.append(h("div", { class: "fug-warn", role: "note" }, found.notSearched));
+      for (const z of found.filter(z => z.kind === "ternary")) {
         points.push({ T: z.T, kind: "Ternary azeotrope", what: comp(z.x, tri) });
       }
       for (const k of onDefaults(sys3) ? knownIssuesFor(sys3.ids, sys3.model) : []) ctx.notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
     } catch (e) { errors.push(`Ternary search (${ids.slice(0, 3).map(nameOf).join(", ")}): ${friendly(e)}`); }
   }
-  // pure-component boiling points do not depend on the mixture model
+  // pure-component boiling points do not depend on the mixing rules: the vapour-pressure
+  // correlations for activity models, the equation of state's own saturation curve otherwise
   try {
-    const tb = system({ components: ids, model: "ideal" }).boilingPoints(P);
+    const tb = (isEosModel(state.model) ? modelSystem(state, ids) : system({ components: ids, model: "ideal" })).boilingPoints(P);
     ids.forEach((id, k) => points.push({ T: tb[k], kind: "Pure component", what: nameOf(id) }));
   } catch (e) { errors.push(e.message); }
   points.sort((a, b) => a.T - b.T);
@@ -266,6 +302,10 @@ function azeotropeView(ctx) {
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Azeotropes found"), h("div", { class: "fug-big" }, String(nAz))),
     h("div", { class: "fug-sub" }, `${ids.length} components, ${ids.length * (ids.length - 1) / 2} pairs, at ${fmtP(P, u)}.`),
     ...(errors.length ? [h("div", { class: "fug-err" }, ...errors.map(e => h("div", {}, e)))] : []));
+  if (isEosModel(state.model)) {
+    extra.append(...eosSources(ctx, modelSystem(state, ids)));
+    return { data: tierSummary(tierCounts([...sources.values()]), "k_ij pair"), error: errors.length ? errors[0] : null };
+  }
   extra.append(section("Parameter sources", sources.size
     ? pairSources(ctx, [...sources.values()])
     : h("div", { class: "fa-empty" }, state.model === "ideal" ? "Ideal solution: no binary parameters." : "No pair has parameters.")),
@@ -274,11 +314,24 @@ function azeotropeView(ctx) {
 }
 
 // ---------------------------------------------------------------------------------------
-// Equation of state: P-x-y, phase envelope, calculator
+// The system of a diagram: the model of the Model group (activity model with its vapour
+// model, or an equation of state), with the parameter sets of the Library
 
-function eosSystem(state, ids) {
-  return system({ components: ids, model: state.eos, ...setsFor(state, state.eos) });
+function modelSystem(state, ids) {
+  return system({ components: ids, model: state.model, ...setsFor(state, state.model) });
 }
+
+/** Parameter and pure-component sources of an activity-model system. */
+function activitySources(ctx, sys) {
+  return [section("Parameter sources", sys.info.pairs.length
+    ? pairSources(ctx, sys.info.pairs)
+    : h("div", { class: "fa-empty" }, "Ideal solution: no binary parameters (activity coefficients equal 1)."),
+  h("div", { class: "fug-foot" }, `Vapour: ${sys.info.vapour}. Predictions, not measurements.`)),
+  section("Pure-component data", componentSourceList(sys.ids, ["vapourPressure", "uniquac", "association"]) ?? h("div", { class: "fa-empty" }, "No sources recorded."))];
+}
+const sourcesOf = (ctx, sys) => (sys.kind === "eos" ? eosSources(ctx, sys) : activitySources(ctx, sys));
+const pairData = sys => (sys.kind === "eos" ? tierSummary(tierCounts(sys.info.pairs), "k_ij pair")
+  : sys.model === "ideal" ? "Ideal solution, no pair parameters" : tierSummary(tierCounts(sys.info.pairs, sys.info.missingPairs)));
 
 function eosSources(ctx, sys) {
   const pairs = sys.info.pairs.map(p => (p.tier === "none" ? { ...p, source: "No k_ij in the databank; 0 is used.", kij: 0 }
@@ -291,7 +344,8 @@ function eosSources(ctx, sys) {
     ?? h("div", { class: "fa-empty" }, "From the component records (no source recorded for the critical constants of these liquids yet)."))];
 }
 
-function eosCalculator(ctx, sys, ids) {
+/** Bubble and dew points of the feed at a given T or P, with the model in use (any model). */
+function bubbleDewCalculator(ctx, sys, ids) {
   const { state, set, uid } = ctx;
   const u = state.units;
   const z = normalizeComposition(state.z, ids.length);
@@ -351,18 +405,25 @@ const interpSegs = (segs, x) => { for (const g of segs) { const v = interpolate(
 function pxyView(ctx) {
   const { state, plot, side, notes, extra, compact } = ctx;
   const u = state.units, ids = state.components;
-  const sys = eosSystem(state, ids), T = pxyTemperature(state);
+  let sys;
+  try { sys = modelSystem(state, ids); } catch (e) { throw new Error(friendly(e)); }
+  const T = pxyTemperature(state);
+  // the composition axis in the display basis: mole fraction, or wt % (0 to 100)
+  const bv = basisView(state.basis, ids.map(id => pure(id).MW));
+  const scale = bv.mass ? 100 : 1;
+  const X = x1 => scale * bv.conv([x1, 1 - x1])[0];
+  const fromX = v => bv.inv([v / scale, 1 - v / scale])[0];
   const N = 51, bub = [], dew = [], reasons = new Map(), warnings = new Set();
   for (let i = 0; i < N; i++) {
     const x = i / (N - 1);
     try {
       const r = sys.bubbleP([x, 1 - x], T);
       (r.warnings || []).forEach(w => warnings.add(w));
-      bub.push({ x, y: pToDisplay(r.P, u) }); dew.push({ x: r.y[0], y: pToDisplay(r.P, u) });
-    } catch (e) { addReason(reasons, e.message); bub.push(null); dew.push(null); }
+      bub.push({ x: X(x), y: pToDisplay(r.P, u) }); dew.push({ x: X(r.y[0]), y: pToDisplay(r.P, u) });
+    } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); dew.push(null); }
   }
   const bs = segmentsOf(bub), ds = segmentsOf(dew);
-  if (!bs.length) throw new Error(`No two-phase region at ${fmtTemp(T, u)} for ${sys.names.join(" + ")} (${sys.info.equation}). ${[...reasons.values()][0]?.example ?? ""}`);
+  if (!bs.length) throw new Error(`No two-phase region at ${fmtTemp(T, u)} for ${sys.names.join(" + ")} (${sys.info.equation ?? sys.model}). ${[...reasons.values()][0]?.example ?? ""}`);
   for (const w of warnings) notes.append(h("div", { class: "fug-warn", role: "note" }, w));
   const series = [
     { name: "Bubble", color: "var(--fug-liq)", segments: bs, label: false },
@@ -372,32 +433,33 @@ function pxyView(ctx) {
   const show = zx => {
     const pb = interpSegs(series[0].segments, zx), pd = interpSegs(series[1].segments, zx);
     read.replaceChildren(
-      h("div", { class: "fug-eyebrow" }, `Feed: ${sys.names[0]} ${fmtNum(zx, 3)}`),
+      h("div", { class: "fug-eyebrow" }, `Feed: ${sys.names[0]} ${bv.mass ? `${fmtNum(zx, 3)} wt %` : fmtNum(zx, 3)} (mole fraction ${fmtNum(fromX(zx), 3)})`),
       h("div", { class: "fa-row" }, h("span", {}, "Bubble pressure"), h("b", {}, pb == null ? "–" : `${fmtNum(pb, 4)} ${u.P}`)),
       h("div", { class: "fa-row" }, h("span", {}, "Dew pressure"), h("b", {}, pd == null ? "–" : `${fmtNum(pd, 4)} ${u.P}`)),
       h("div", { class: "fug-sub" }, "Liquid above the bubble curve, vapour below the dew curve, two phases between. Values read from the sampled curves; the calculator below solves exactly."));
     return [pb, pd];
   };
-  const move = drawPlot(plot, { compact, series, x0: 0, x1: 1, xLabel: `x, y  ${sys.names[0]} (mole fraction)`, yLabel: `P, ${u.P}`, show,
+  const move = drawPlot(plot, { compact, series, x0: 0, x1: scale, xLabel: `x, y  ${sys.names[0]} (${bv.axis})`, yLabel: `P, ${u.P}`, show,
     aria: `P-x-y diagram of ${sys.names.join(" and ")} at ${fmtTemp(T, u)}` });
   plot.append(h("div", { class: "fug-legend" },
     h("span", { class: "fug-key", style: "color:var(--fug-liq)" }, h("i"), h("span", { style: "color:var(--fug-fg2)" }, "Bubble curve (liquid)")),
     h("span", { class: "fug-key", style: "color:var(--fug-vap)" }, h("i", { style: "border-top-style:dashed" }), h("span", { style: "color:var(--fug-fg2)" }, "Dew curve (vapour)"))),
   gapNote(reasons, "two-phase solution") ?? "");
   side.replaceChildren(read);
-  move(0.5);
-  extra.append(eosCalculator(ctx, sys, ids), ...eosSources(ctx, sys));
-  return { data: tierSummary(tierCounts(sys.info.pairs), "k_ij pair") };
+  move(0.5 * scale);
+  extra.append(bubbleDewCalculator(ctx, sys, ids), ...sourcesOf(ctx, sys));
+  return { data: pairData(sys) };
 }
 
 function envelopeView(ctx) {
   const { state, plot, side, extra, compact } = ctx;
   const u = state.units, ids = state.components;
-  const sys = eosSystem(state, ids);
+  let sys;
+  try { sys = modelSystem(state, ids); } catch (e) { throw new Error(friendly(e)); }
   const z = normalizeComposition(state.z, ids.length);
   const reasons = new Map();
   let series, xLo, xHi;
-  const comps = sys.info.components;
+  const comps = ids.map(id => pure(id));
   if (ids.length === 1) {
     const Tc = comps[0].Tc_K;
     const pts = linspace(0.45 * Tc, 0.9995 * Tc, 70).map(T => {
@@ -408,12 +470,14 @@ function envelopeView(ctx) {
       transitions: [{ x: tToDisplay(Tc, u), y0: pToDisplay(comps[0].Pc_kPa, u), y1: null }] }];
     [xLo, xHi] = [tToDisplay(0.45 * Tc, u), tToDisplay(Tc, u)];
   } else {
-    const Pmax = 1.4 * Math.max(...comps.map(c => c.Pc_kPa));
+    // an equation of state reaches the mixture critical region; the vapour-pressure
+    // correlations of an activity model end at the lowest critical pressure
+    const Pmax = sys.kind === "eos" ? 1.4 * Math.max(...comps.map(c => c.Pc_kPa)) : Math.min(...comps.map(c => c.Pc_kPa));
     const Ps = linspace(Math.log(10), Math.log(Pmax), 46).map(Math.exp);
     const bub = [], dew = [];
     for (const P of Ps) {
-      try { bub.push({ x: tToDisplay(sys.bubbleT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { addReason(reasons, e.message); bub.push(null); }
-      try { dew.push({ x: tToDisplay(sys.dewT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { addReason(reasons, e.message); dew.push(null); }
+      try { bub.push({ x: tToDisplay(sys.bubbleT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); }
+      try { dew.push({ x: tToDisplay(sys.dewT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); dew.push(null); }
     }
     series = [{ name: "Bubble", color: "var(--fug-liq)", segments: segmentsOf(bub) }, { name: "Dew", color: "var(--fug-vap)", dash: "6 4", segments: segmentsOf(dew) }];
     const xs = [...bub, ...dew].filter(Boolean).map(p => p.x);
@@ -428,7 +492,9 @@ function envelopeView(ctx) {
       ...series.map((sr, i) => h("div", { class: "fa-row" }, h("span", {}, ids.length === 1 ? "Vapour pressure" : `${sr.name} pressure`), h("b", {}, vals[i] == null ? "–" : `${fmtNum(vals[i], 4)} ${u.P}`))),
       h("div", { class: "fug-sub" }, ids.length === 1
         ? `Equation-of-state vapour pressure up to the critical point (open circle), ${fmtTemp(comps[0].Tc_K, u)}, ${fmtP(comps[0].Pc_kPa, u)}.`
-        : "Liquid left of the bubble curve, vapour right of the dew curve. Near the mixture critical point the solver stops; no curve is drawn there."));
+        : sys.kind === "eos"
+          ? "Liquid left of the bubble curve, vapour right of the dew curve. Near the mixture critical point the solver stops; no curve is drawn there."
+          : `Liquid left of the bubble curve, vapour right of the dew curve. With an activity model the curves end at the lowest critical pressure (${fmtP(Math.min(...comps.map(c => c.Pc_kPa)), u)}); an equation of state reaches the critical region.`));
     return vals;
   };
   const move = drawPlot(plot, { compact, series, x0: xLo, x1: xHi, log: true, xLabel: `T, ${tU(u)}`, yLabel: `P, ${u.P}`, show,
@@ -440,8 +506,118 @@ function envelopeView(ctx) {
   gapNote(reasons, "bubble or dew point") ?? "");
   side.replaceChildren(read);
   move((xLo + xHi) / 2);
-  extra.append(eosCalculator(ctx, sys, ids), ...eosSources(ctx, sys));
-  return { data: ids.length > 1 ? tierSummary(tierCounts(sys.info.pairs), "k_ij pair") : "Critical constants from the component record" };
+  extra.append(bubbleDewCalculator(ctx, sys, ids), ...sourcesOf(ctx, sys));
+  return { data: ids.length > 1 ? pairData(sys) : "Critical constants from the component record" };
+}
+
+// ---------------------------------------------------------------------------------------
+// Flash (proposal 0001, step 6): the feed flashed with the model of the Model group; a bar of
+// the phase split, the stream table (feed and phases), CSV export; readouts and sources
+
+const PHASE_COLOR = { vapour: "var(--fug-vap)", liquid: "var(--fug-liq)" };
+
+/** Save text as a file (a Blob link), or say why the page cannot. */
+function saveText(text, name, type, status) {
+  try {
+    const url = URL.createObjectURL(new Blob(["\uFEFF" + text], { type })); // BOM: spreadsheets read UTF-8 (°C)
+    const a = h("a", { href: url, download: name, style: "display:none" });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    status.textContent = `Saved ${name}. If nothing was downloaded, the page does not allow downloads: use Copy CSV.`;
+  } catch (e) { status.textContent = `This page cannot save files (${e.message}); use Copy CSV.`; }
+}
+
+/** Copy text to the clipboard, falling back to a selected text area the reader can copy from. */
+function copyText(text, status, box) {
+  const fallback = () => {
+    const ta = h("textarea", { class: "fa-csv-text", rows: 6, readonly: true, "aria-label": "CSV of the flash result" });
+    ta.value = text;
+    box.replaceChildren(ta); ta.focus(); ta.select();
+    status.textContent = "The clipboard is not available here: the CSV is selected below, copy it with Ctrl+C (Cmd+C).";
+  };
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = "CSV copied: paste it into a spreadsheet."; }, fallback);
+  else fallback();
+}
+
+function flashView(ctx) {
+  const { state, plot, side, notes, below, extra } = ctx;
+  const u = state.units, ids = state.components;
+  let sys;
+  try { sys = modelSystem(state, ids); } catch (e) { throw new Error(friendly(e)); }
+  for (const k of sys.kind !== "eos" && onDefaults(sys) ? knownIssuesFor(sys.ids, sys.model) : []) {
+    notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
+  }
+  const { result: r, z } = runFlash(sys, state.flash);
+  const names = sys.names, MW = ids.map(id => pure(id).MW);
+  const flow = state.flash.flow_kmol_h;
+  const table = flashTable(r, { names, MW, z, units: u, flow });
+  const spec = FLASH_SPECS.find(f => f.id === state.flash.spec);
+  const ml = isEosModel(state.model) ? (state.model === "PR" ? "Peng–Robinson" : "SRK")
+    : `${state.model === "ideal" ? "Ideal solution" : state.model}${state.vapour !== "ideal" ? ` with a ${state.vapour} vapour` : ""}`;
+
+  // the phase split as one bar
+  const bar = h("div", { class: "fa-split", role: "img", "aria-label": `Phase split: ${r.phases.map(p => `${phaseName(p)} ${fmtNum(p.fraction, 4)}`).join(", ")}` },
+    ...r.phases.map((p, k) => h("div", { class: "fa-split-part" + (k ? " is-next" : ""), style: `flex:${Math.max(p.fraction, 0.002)};--c:${PHASE_COLOR[p.type]}` + (p.type === "liquid" && k > 1 ? ";--hatch:1" : ""),
+      title: `${phaseName(p)}: ${fmtNum(p.fraction, 4)} of the feed` },
+    p.fraction > 0.12 ? h("span", {}, `${phaseName(p)} ${fmtNum(100 * p.fraction, 3)} %`) : null)));
+
+  // the stream table, compositions in the display basis (the CSV has both)
+  const mass = state.basis === "mass";
+  const fmtCell = (row, v) => {
+    if (v == null) return "–";
+    if (row.key === "T") return (+v.toFixed(3)).toString();
+    if (row.key === "P") return fmtShort(v, 6);
+    if (row.key === "h") return Math.round(v).toLocaleString("en-US").replace(/,/g, " ");
+    if (row.key === "MW") return v.toFixed(3);
+    if (row.key === "flow" || row.key === "mflow") return fmtShort(v, 6);
+    if (row.key.startsWith("w")) return (100 * v).toFixed(3);
+    return v.toFixed(5);
+  };
+  const shownRows = table.rows.filter(row => !(mass ? row.key.startsWith("x") : row.key.startsWith("w")))
+    .map(row => (row.key.startsWith("w") ? { ...row, label: row.label.replace("Mass fraction", "Mass"), unit: "wt %" } : row));
+  const tableEl = h("div", { class: "fug-scroll" }, h("table", { class: "fa-table fa-stream" },
+    h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Stream"), h("th", { scope: "col" }, "Unit"), ...table.columns.map(c => h("th", { scope: "col", class: "fug-num" }, c)))),
+    h("tbody", {}, ...shownRows.map(row => h("tr", {}, h("th", { scope: "row" }, row.label), h("td", {}, row.unit),
+      ...row.values.map(v => h("td", { class: "fug-num" }, fmtCell(row, v))))))));
+
+  const summary = [
+    ["Temperature", +tToDisplay(r.T, u).toFixed(4), tU(u)], ["Pressure", +pToDisplay(r.P, u).toPrecision(8), u.P], ["Vapour fraction", r.VF, "mol/mol"],
+    ["Enthalpy of the outlet", r.H_J_mol, "J/mol of feed"],
+    ...(r.duty_J_mol != null ? [["Heat duty Q", r.duty_J_mol, "J/mol of feed"], ["Heat duty Q", dutyKW(r.duty_J_mol, flow), `kW at ${flow} kmol/h of feed`]] : []),
+    ["Feed flow", flow, "kmol/h"],
+  ];
+  const meta = {
+    title: names.join(", "), model: ml, spec: `${spec.title}: ${JSON.stringify(state.flash.spec === "PH" ? { P_kPa: r.P, Q_J_mol: state.flash.Q_J_mol, feed: { T_K: state.flash.feedT_K, P_kPa: state.flash.feedP_kPa } } : { TP: { T_K: r.T, P_kPa: r.P }, PVF: { P_kPa: r.P, VF: state.flash.VF }, TVF: { T_K: r.T, VF: state.flash.VF } }[state.flash.spec])}`,
+    summary, version: pkg.version,
+    sources: (r.sources ?? []).map(s => `${s.pair ? s.pair.join(" + ") + ": " : ""}${s.set ? `set ${s.set}, ` : ""}${s.tier ?? ""}${s.source ? `; ${s.source}` : ""}`),
+  };
+  const csv = flashCsv(table, meta);
+  const status = h("div", { class: "fug-foot", "aria-live": "polite" }), csvBox = h("div");
+  const file = `fugacity-flash-${ids.join("-")}.csv`;
+  const tools = h("div", { class: "fa-in-actions" },
+    h("button", { type: "button", class: "fa-mini", "data-fk": "csv-save", on: { click: () => saveText(csv, file, "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "csv-copy", on: { click: () => copyText(csv, status, csvBox) } }, icon("copy", 15), "Copy CSV"));
+
+  plot.replaceChildren(h("div", { class: "fa-flash" },
+    h("div", { class: "fug-eyebrow" }, `${r.phases.length === 1 ? `One phase: ${phaseName(r.phases[0]).toLowerCase()}` : `${r.phases.length} phases`} at ${fmtTemp(r.T, u, 2)} and ${fmtP(r.P, u)}`),
+    bar, tableEl, tools, status, csvBox,
+    h("div", { class: "fug-foot" }, `Enthalpy reference: each component as an ideal gas at 298.15 K (h = 0); the heat duty does not depend on it. Compositions in ${mass ? "wt %" : "mole fractions"}; the CSV has both, and the model, specification and sources.`)));
+
+  side.replaceChildren(
+    h("div", {}, h("div", { class: "fug-eyebrow" }, "Vapour fraction"), h("div", { class: "fug-big" }, fmtNum(r.VF, 4))),
+    h("div", { class: "fug-sub" }, r.phases.map(p => `${phaseName(p)} ${fmtNum(p.fraction, 4)}`).join(" · ")),
+    kv([
+      ["Temperature", fmtTemp(r.T, u, 3)], ["Pressure", fmtP(r.P, u)],
+      ["Outlet enthalpy", r.H_J_mol == null ? null : Math.round(r.H_J_mol).toString(), "J/mol"],
+      r.feed ? ["Feed enthalpy", Math.round(r.feed.H_J_mol).toString(), "J/mol"] : null,
+      r.duty_J_mol != null ? ["Heat duty Q", Math.round(r.duty_J_mol).toString(), "J/mol of feed"] : null,
+      r.duty_J_mol != null ? ["Heat duty Q", fmtShort(dutyKW(r.duty_J_mol, flow), 5), `kW at ${fmtShort(flow, 6)} kmol/h`] : null,
+      ["Iterations", String(r.iterations)],
+    ]),
+    ...(r.warnings ?? []).map(w => h("div", { class: "fug-warn" }, w)),
+    h("div", { class: "fug-foot" }, spec.hint));
+  extra.append(...sourcesOf(ctx, sys));
+  return { data: pairData(sys) };
 }
 
 // ---------------------------------------------------------------------------------------

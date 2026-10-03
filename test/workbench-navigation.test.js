@@ -6,15 +6,15 @@ import assert from "node:assert/strict";
 import { HENRY_GASES, listComponents } from "../src/index.js";
 import { VIEWS, PRESETS, initialState, applyPatch } from "../src/ui/app-logic.js";
 import {
-  WORKSPACES, UTILITIES, INPUTS, workspaceOf, checkInputs, normalizeInputs, seedInputs, examplesFor, rotateInputs, solventsFor, HENRY_PAIRS,
+  WORKSPACES, UTILITIES, INPUTS, workspaceOf, checkInputs, normalizeInputs, seedInputs, examplesFor, rotateInputs, solventsFor, HENRY_PAIRS, needsFor,
 } from "../src/ui/workspaces.js";
 
 const MAC = ["methanol", "acetone", "chloroform"];
 const go = (s, ...patches) => patches.reduce(applyPatch, s);
 
-test("one navigation: four task workspaces holding every view; three supporting panels", () => {
-  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "solubility", "properties", "steam"]);
-  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Gas solubility", "Properties", "Steam"]);
+test("one navigation: five task workspaces holding every view; three supporting panels", () => {
+  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "flash", "solubility", "properties", "steam"]);
+  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Flash", "Gas solubility", "Properties", "Steam"]);
   assert.deepEqual(UTILITIES.map(u => u.id), ["library", "sources", "settings"]);
   // every view is in exactly one workspace, and every workspace view has its inputs defined
   const all = WORKSPACES.flatMap(w => w.views);
@@ -32,7 +32,13 @@ test("each view asks for what it needs: one, two, three components, a list, or a
   assert.equal(INPUTS.properties.kind, "slots"); assert.equal(INPUTS.properties.n, 1);
   assert.equal(INPUTS.txy.n, 2); assert.equal(INPUTS.txy.liquid, true);
   assert.equal(INPUTS.ternary.n, 3); assert.equal(INPUTS.ternary.roles.length, 3);
-  assert.equal(INPUTS.pxy.n, 2); assert.equal(INPUTS.pxy.liquid, false, "gases allowed with an equation of state");
+  assert.equal(INPUTS.pxy.n, 2); assert.equal(INPUTS.pxy.liquid, true, "liquids with an activity model");
+  // every diagram takes gases with an equation of state; the envelope then takes one component
+  for (const v of ["txy", "ternary", "azeotropes", "pxy", "envelope"]) {
+    assert.equal(needsFor(v, "NRTL").liquid, true, v);
+    assert.equal(needsFor(v, "PR").liquid, false, v);
+  }
+  assert.deepEqual([needsFor("envelope", "UNIQUAC").min, needsFor("envelope", "SRK").min], [2, 1]);
   assert.deepEqual([INPUTS.azeotropes.min, INPUTS.azeotropes.max], [2, 4]);
   assert.deepEqual([INPUTS.envelope.min, INPUTS.envelope.max], [1, 6]);
   assert.equal(INPUTS.henry.kind, "henry");
@@ -61,15 +67,18 @@ test("checkInputs explains what does not fit, per slot, and passes what does", (
   c = checkInputs("txy", ["oxygen", "water"]);
   assert.equal(c.ok, false);
   assert.equal(c.problems[0].slot, 0);
-  assert.match(c.problems[0].message, /Oxygen, has no activity-model data .* a T-x-y diagram cannot use it.*P-x-y/);
-  assert.equal(checkInputs("pxy", ["oxygen", "water"]).ok, true, "an equation of state takes gases");
+  assert.match(c.problems[0].message, /Oxygen, has no activity-model data .* a T-x-y diagram with NRTL cannot use it.*equation of state/);
+  assert.equal(checkInputs("pxy", ["oxygen", "water"]).ok, false, "not with an activity model");
+  assert.equal(checkInputs("pxy", ["oxygen", "water"], "PR").ok, true, "an equation of state takes gases");
+  assert.equal(checkInputs("txy", ["oxygen", "water"], "SRK").ok, true);
 
   c = checkInputs("txy", ["ethanol", "ethanol"]);
   assert.match(c.problems[0].message, /Components 1 and 2 are both Ethanol/);
   assert.equal(c.problems[0].slot, 1);
 
   assert.match(checkInputs("azeotropes", ["water"]).problems[0].message, /at least two liquids; one chosen/);
-  assert.equal(checkInputs("envelope", ["methane"]).ok, true);
+  assert.equal(checkInputs("envelope", ["methane"], "PR").ok, true);
+  assert.match(checkInputs("envelope", ["water"]).problems.at(-1).message, /at least two liquids with an activity model/);
   assert.equal(checkInputs("properties", [null]).ok, false);
   assert.deepEqual(checkInputs("steam", []).use, ["water"]);
 
@@ -131,7 +140,10 @@ test("the configuration keys of earlier versions still work; old start names map
   assert.equal(s.panels.left, false);
   assert.equal(s.units.T, "K");
   // the old `tab` patch
-  assert.equal(applyPatch(s, { tab: "eos" }).view, "pxy");
+  // "eos" now selects the equation of state for the diagram on screen (every diagram takes either model)
+  assert.equal(applyPatch(s, { tab: "eos" }).model, "PR");
+  assert.equal(applyPatch(s, { tab: "eos" }).view, "txy");
+  assert.equal(applyPatch(applyPatch(s, { tab: "eos" }), { tab: "vle" }).model, "NRTL");
   assert.equal(applyPatch(s, { tab: "steam" }).workspace, "steam");
   assert.equal(applyPatch(s, { tab: "components" }).panels.left, true);
   assert.equal(applyPatch(s, { tab: "library" }).utility, "library");

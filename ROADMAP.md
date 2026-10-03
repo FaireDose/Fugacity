@@ -70,7 +70,7 @@ formats and open standards only.
 
 | Item | What | Depends on | Status |
 |---|---|---|---|
-| **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Open |
+| **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Started: CSV of the flash result |
 | **B2** | Share by link: the workbench state (components, model, conditions, view) in the page address, so a colleague opens exactly the same diagram | A9 | Open |
 | **B3** | Import open data files: read NIST ThermoML XML files and turn them into validation data and contribution packages with the source block filled in, which speeds up the data track | D3 | Open |
 | **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Open |
@@ -190,8 +190,10 @@ Needs A4, A5 and D6; B1, B2.
 - [x] Mixture enthalpy for every model, excess enthalpy from NRTL and UNIQUAC, `phase()` with fugacities (proposal 0001, step 3)
 - [x] Two-phase flash for every model: T-P, P-H, P-VF, T-VF, with the heat duty from feed conditions (proposal 0001, step 4)
 - [x] Flash with two liquids and with vapour + two liquids for NRTL and UNIQUAC (proposal 0001, step 5; equations of state later)
-- [ ] Stream object with flows, and the Flash workspace in the workbench with the heat duty in kW (proposal 0001, step 6)
-- [ ] Export (CSV, SVG, PNG) and share-by-link in the workbench
+- [x] Flash workspace in the workbench: feed, specification, model, stream table with flows, heat duty in kW, CSV export (proposal 0001, step 6)
+- [x] Every phase-equilibrium diagram with every model (activity models and PR/SRK), and the diagrams drawn in mole fractions or wt %
+- [ ] Stream object with flows (A5)
+- [ ] Export of the diagrams (SVG, PNG) and of the other tables (CSV), and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria
 
 ### v0.4 – Flowsheets

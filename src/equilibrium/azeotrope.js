@@ -1,4 +1,4 @@
-import { bubbleTCore as bubbleT } from "./bubble.js";
+import { anyBubbleT as bubbleT } from "./bubble-any.js"; // activity models and equations of state
 import { brent } from "../util/solve.js";
 import { fail } from "../util/errors.js";
 
@@ -41,23 +41,59 @@ export function findAzeotrope(sys, x0, P, opts = {}) {
 
 /**
  * Binary azeotropes at pressure P: compositions where y1 = x1 (0 < x1 < 1).
- * @returns {{x:number, T:number, type:"minimum-boiling"|"maximum-boiling"}[]}  x of the first component, T in K
+ * opts.gaps: skip scan points where the bubble point fails with an engine error (for example
+ * an equation of state that predicts two liquids there) instead of throwing; the result then
+ * carries `gaps: { points, message }` (the count and the first error), so the caller can say
+ * that part of the composition range was not searched. Without it, the first failure throws.
+ * With an equation of state, whose bubble-point solver stops at y = x (the trivial solution),
+ * an azeotrope is located by bisection and carries `within`, the bracket [x_lo, x_hi] that
+ * holds it.
+ * @returns {{x:number, T:number, type:"minimum-boiling"|"maximum-boiling", within?:number[]}[]}  x of the first component, T in K
  */
-export function binaryAzeotropes(sys, P, scan = 200) {
+export function binaryAzeotropes(sys, P, scan = 200, opts = {}) {
   if (sys.n !== 2) throw fail("BAD_INPUT", "binaryAzeotropes needs exactly two components.");
+  const gaps = { points: 0, message: null };
   const f = x1 => bubbleT(sys, [x1, 1 - x1], P).y[0] - x1;
+  const fSafe = x1 => {
+    if (!opts.gaps) return f(x1);
+    try { return f(x1); } catch (e) {
+      if (!(e && e.code)) throw e;
+      gaps.points++; gaps.message ??= e.message;
+      return null;
+    }
+  };
   const out = [];
-  let x0 = 1e-4, f0 = f(x0);
+  let x0 = 1e-4, f0 = fSafe(x0);
   for (let k = 1; k <= scan; k++) {
-    const x1 = Math.min(1 - 1e-4, k / scan), f1 = f(x1);
-    if (f0 * f1 < 0) {
-      const x = brent(f, x0, x1, { xtol: 1e-10 });
-      const T = bubbleT(sys, [x, 1 - x], P).T;
-      const Tl = bubbleT(sys, [Math.max(0, x - 0.01), 1 - Math.max(0, x - 0.01)], P).T;
-      out.push({ x, T, type: Tl > T ? "minimum-boiling" : "maximum-boiling" });
+    const x1 = Math.min(1 - 1e-4, k / scan), f1 = fSafe(x1);
+    if (f0 != null && f1 != null && f0 * f1 < 0) {
+      let x, T, within;
+      if (sys.kind !== "eos") {
+        x = brent(f, x0, x1, { xtol: 1e-10 });
+        T = bubbleT(sys, [x, 1 - x], P).T;
+      } else {
+        // An equation of state's bubble-point solver cannot converge at y = x itself (it is the
+        // trivial solution): bisect on the points it can solve and report the final bracket,
+        // which holds the azeotrope (`within`, in mole fraction).
+        let a = x0, fa = f0, b = x1, Ta = null, Tb = null;
+        for (let it = 0; it < 60 && b - a > 1e-9; it++) {
+          const m = 0.5 * (a + b);
+          let r;
+          try { r = bubbleT(sys, [m, 1 - m], P, { fallback: false }); } catch (e2) { if (!(e2 && e2.code)) throw e2; break; }
+          const fm = r.y[0] - m;
+          if (fm * fa > 0) { a = m; fa = fm; Ta = r.T; } else { b = m; Tb = r.T; }
+        }
+        Ta ??= bubbleT(sys, [a, 1 - a], P).T;
+        Tb ??= bubbleT(sys, [b, 1 - b], P).T;
+        x = 0.5 * (a + b); T = 0.5 * (Ta + Tb); within = [a, b];
+      }
+      const xl = Math.max(0, x - 0.01);
+      const Tl = bubbleT(sys, [xl, 1 - xl], P).T;
+      out.push({ x, T, type: Tl > T ? "minimum-boiling" : "maximum-boiling", ...(within ? { within } : {}) });
     }
     x0 = x1; f0 = f1;
   }
+  if (opts.gaps && gaps.points) out.gaps = gaps;
   return out;
 }
 
@@ -66,21 +102,39 @@ export function binaryAzeotropes(sys, P, scan = 200) {
  * ternary ones inside the triangle (searched from a set of starting points).
  * @param {object} sys      ternary system
  * @param {Function} makePairSystem  (ids) => binary system with the same model
+ * @param {{gaps?:boolean}} [opts]  gaps: skip failing points (see binaryAzeotropes); the result
+ *   then carries `gaps` for the three pairs and the ternary starts together. With an equation of
+ *   state only the binary azeotropes are searched, and the result carries `notSearched` (why)
  * @returns {{x:number[], T:number, kind:"binary"|"ternary"}[]}
  */
-export function ternaryAzeotropes(sys, P, makePairSystem) {
+export function ternaryAzeotropes(sys, P, makePairSystem, opts = {}) {
   const out = [];
+  const gaps = { points: 0, message: null };
   for (const [i, j] of [[0, 1], [0, 2], [1, 2]]) {
     const pair = makePairSystem([sys.ids[i], sys.ids[j]]);
-    for (const z of binaryAzeotropes(pair, P, 120)) {
+    const found = binaryAzeotropes(pair, P, 120, opts);
+    if (found.gaps) { gaps.points += found.gaps.points; gaps.message ??= found.gaps.message; }
+    for (const z of found) {
       const x = [0, 0, 0]; x[i] = z.x; x[j] = 1 - z.x;
       out.push({ x, T: z.T, kind: "binary" });
     }
   }
   const starts = [[1 / 3, 1 / 3, 1 / 3], [0.6, 0.2, 0.2], [0.2, 0.6, 0.2], [0.2, 0.2, 0.6], [0.45, 0.45, 0.1], [0.45, 0.1, 0.45], [0.1, 0.45, 0.45]];
+  // Newton's method on y = x converges onto the point where an equation of state's bubble
+  // solver stops (the trivial solution), so the interior search is not run for them
+  if (sys.kind === "eos") {
+    out.notSearched = `Ternary azeotropes are not searched with ${sys.model}: its bubble-point solver stops at y = x, where the search converges. Binary azeotropes on the edges are found.`;
+    if (opts.gaps && gaps.points) out.gaps = gaps;
+    return out;
+  }
   for (const x0 of starts) {
-    const z = findAzeotrope(sys, x0, P);
+    let z;
+    try { z = findAzeotrope(sys, x0, P); } catch (e) {
+      if (!(opts.gaps && e && e.code)) throw e;
+      gaps.points++; gaps.message ??= e.message; continue;
+    }
     if (z && Math.min(...z.x) > 1e-3 && !out.some(o => Math.hypot(...o.x.map((v, k) => v - z.x[k])) < 0.01)) out.push({ ...z, kind: "ternary" });
   }
+  if (opts.gaps && gaps.points) out.gaps = gaps;
   return out;
 }

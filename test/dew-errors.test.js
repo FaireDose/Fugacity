@@ -114,7 +114,7 @@ test("errors carry codes and keep their class", () => {
   code(() => steam({ T_K: 5000 }), "BAD_INPUT", RangeError);
   code(() => system({ components: ["benzene", "water"], model: "PR" }).bubbleT([0.5, 0.5], 101.325), "PHASE_SPLIT");
   code(() => system({ components: ["methane", "ethane"], model: "PR" }).bubbleP([0.9, 0.1], 260), "NO_CONVERGENCE");
-  code(() => system({ components: ["methane", "ethane"], model: "PR" }).txy(101.325), "NOT_AVAILABLE");
+  code(() => system({ components: ["methane", "ethane"], model: "PR" }).gammas([0.5, 0.5], 200), "NOT_AVAILABLE");
   code(() => pure("acetic acid").liquidEnthalpy(330), "NOT_AVAILABLE");
   // messages are unchanged, so pages that show e.message keep working
   assert.throws(() => system({ components: ["water", "water"] }), /appears twice/);

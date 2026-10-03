@@ -111,8 +111,8 @@ test("interface: model PR/SRK, argument orders, density, user k_ij, clear errors
   const v = s.state(300, 5000, x, "vapour").v_m3_mol;
   assert.ok(rel(s.density(x, 300, 5000), MW / 1000 / v) < 1e-12);
   assert.ok(s.density(x, 200, 2000, "liquid") > 5 * s.density(x, 200, 2000, "vapour") || s.state(200, 2000, x, "liquid").roots === 1);
-  // gamma-phi-only methods
-  for (const m of ["txy", "pxy", "azeotropes", "residueCurve", "gammas", "equilibrium"]) {
+  // gamma-phi-only methods (the diagrams use the equation of state's own bubble point)
+  for (const m of ["gammas", "equilibrium"]) {
     assert.throws(() => s[m](101.325), /equation-of-state|gamma-phi/, m);
   }
   // above the critical region

@@ -63,13 +63,19 @@ export const fmt = (v, d = 3) => Number(v).toFixed(d);
 
 /**
  * Composition in the display basis: mole fractions as they are, or mass fractions
- * (w_i = x_i M_i / sum x_j M_j). Returns [values, formatter, label].
+ * (w_i = x_i M_i / sum x_j M_j). The diagrams are drawn in this basis: `conv` maps mole
+ * fractions to the display basis, `inv` maps back (x_i = (w_i / M_i) / sum w_j / M_j),
+ * `f` formats a value, `tick` labels an axis fraction (0.2 or 20), `axis` names the axis.
  */
 export function basisView(basis, MW) {
-  if (basis !== "mass") return { conv: x => x, f: v => fmt(v), unit: "mole fraction", short: "mol" };
+  if (basis !== "mass") return { mass: false, conv: x => x, inv: w => w, f: v => fmt(v), tick: v => v.toFixed(1), unit: "mole fraction", short: "mol", axis: "mole fraction" };
+  const norm = v => { const t = v.reduce((a, b) => a + b, 0); return v.map(q => q / t); };
   return {
-    conv: x => { const m = x.map((v, i) => v * MW[i]); const t = m.reduce((a, b) => a + b, 0); return m.map(v => v / t); },
+    mass: true,
+    conv: x => norm(x.map((v, i) => v * MW[i])),
+    inv: w => norm(w.map((v, i) => v / MW[i])),
     f: v => `${(100 * v).toFixed(1)}`,
-    unit: "wt %", short: "wt %",
+    tick: v => String(Math.round(100 * v)),
+    unit: "wt %", short: "wt %", axis: "wt %",
   };
 }

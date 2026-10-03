@@ -28,7 +28,7 @@
  * supported yet". When no bubble point is found, the same test is used to say why.
  * Results carry `stability` ({ stable, tm }) and `warnings` (pairs with k_ij = 0, and
  * temperatures outside the data range of a stored k_ij). Pass { stability: false } as
- * the last argument to skip the test.
+ * the last argument to skip the test, and { fallback: false } to skip the fallback search.
  *
  * Units: T in K, P in kPa.
  */
@@ -150,6 +150,10 @@ function solve(sys, z, given, kind, opts = {}) {
     }
   }
 
+  // opts.fallback === false: stop here (used where a failure is expected and cheap failure
+  // matters, e.g. bisecting towards an azeotrope, where y = x is the trivial solution)
+  if (opts.fallback === false) throw fail("NO_CONVERGENCE", `${what}: no two-phase solution found by Newton's method (${note || "no convergence"}); the fallback search was not run.`);
+
   // 2. Fallback (near the critical region): scan u for a sign change of f, where f is
   //    evaluated with the incipient phase converged by successive substitution at fixed u;
   //    then Brent's method on u.
@@ -249,18 +253,31 @@ export const eosDewT = (sys, y, P, opts) => solve(sys, y, P, "dewT", opts);
 
 /** Methods attached by Fugacity.system() to an equation-of-state system. */
 export function eosMethods(sys) {
-  const no = what => () => {
-    throw fail("NOT_AVAILABLE", `${what} is not available for ${sys.model} (equation-of-state) systems yet; it needs an activity-coefficient model (NRTL, UNIQUAC, ideal). Available: bubbleT, bubbleP, dewT, dewP, Z, lnPhi, density.`);
-  };
   return {
     bubbleT: (x, P, opts) => eosBubbleT(sys, x, P, opts),
     bubbleP: (x, T, opts) => eosBubbleP(sys, x, T, opts),
     dewT: (y, P, opts) => eosDewT(sys, y, P, opts),
     dewP: (y, T, opts) => eosDewP(sys, y, T, opts),
-    boilingPoints: no("boilingPoints"),
+    /** Boiling point (K) of each pure component at P (kPa) from the equation of state: P_sat(T) = P. */
+    boilingPoints: P => sys.eos.comps.map((c, i) => {
+      const Pc = c.Pc_Pa / 1000;
+      if (!(P < Pc)) throw fail("OUT_OF_RANGE", `${sys.names[i]} has no boiling point at ${P} kPa: the pressure is at or above its critical pressure (${Pc.toFixed(0)} kPa).`);
+      // the saturation solver is reliable from 0.45 Tc to just below Tc (as in the phase-envelope view)
+      const lo = 0.45 * c.Tc_K, hi = 0.999 * c.Tc_K;
+      const f = T => Math.log(sys.eos.psat(i, T) / P);
+      if (f(lo) > 0) throw fail("OUT_OF_RANGE", `${sys.names[i]}: ${P} kPa is below its ${sys.model} vapour pressure at 0.45 Tc (${lo.toFixed(1)} K); no boiling point is computed at such low pressures.`);
+      if (f(hi) < 0) throw fail("OUT_OF_RANGE", `${sys.names[i]}: ${P} kPa is within 0.1 % of its critical temperature on the ${sys.model} saturation curve; no boiling point is computed there.`);
+      return brent(f, lo, hi, { xtol: 1e-7 });
+    }),
     /** Saturation pressure (kPa) of each pure component at T from the equation of state (null at or above Tc). */
     psatEos: T => sys.eos.comps.map((c, i) => (T < c.Tc_K ? sys.eos.psat(i, T) : null)),
-    txy: no("txy"), pxy: no("pxy"), ternaryGrid: no("ternaryGrid"), residueCurve: no("residueCurve"),
-    azeotropes: no("azeotropes"), findAzeotrope: no("findAzeotrope"), isLiquidStable: no("isLiquidStable"),
+    /**
+     * Is the liquid x stable as one liquid at T (K) and P (kPa)? Michelsen's tangent-plane test
+     * (eos-stability.js). Unlike the activity-model test (the spinodal), it needs the pressure.
+     */
+    isLiquidStable: (x, T, P) => {
+      if (P == null) throw fail("BAD_INPUT", `isLiquidStable for ${sys.model} needs the pressure: isLiquidStable(x, T, P).`);
+      return tpdStability(sys.eos, T, P, clean(x), "liquid").stable;
+    },
   };
 }

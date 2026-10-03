@@ -75,7 +75,7 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   const MW = comps.map(c => c.MW);
 
   const gammaPhiOnly = what => () => {
-    throw fail("NOT_AVAILABLE", `${what} belongs to activity-coefficient (gamma-phi) systems; this is a ${model} equation-of-state system. Use bubbleT, bubbleP, dewT, dewP, Z, lnPhi or density.`);
+    throw fail("NOT_AVAILABLE", `${what} belongs to activity-coefficient (gamma-phi) systems; this is a ${model} equation-of-state system. Use bubbleT, bubbleP, dewT, dewP, flash, the diagrams (txy, pxy, ternaryGrid, residueCurve, azeotropes), Z, lnPhi or density.`);
   };
 
   // Accept (x, T, P, phase) as well as (T, P, x, phase).

@@ -1,5 +1,10 @@
-import { bubbleT, bubbleP } from "./bubble.js";
+/**
+ * Diagram data (T-x-y, P-x-y, ternary bubble-temperature grid) for any system: activity
+ * models and equations of state alike (bubble-any.js).
+ */
+import { anyBubbleT as bubbleT, anyBubbleP as bubbleP } from "./bubble-any.js";
 import { fail } from "../util/errors.js";
+import { checkPressure, checkTemperature } from "../util/inputs.js";
 
 /**
  * Isobaric T-x-y data for a binary system.
@@ -7,6 +12,7 @@ import { fail } from "../util/errors.js";
  */
 export function txy(sys, P, points = 51) {
   if (sys.n !== 2) throw fail("BAD_INPUT", "T-x-y needs exactly two components.");
+  P = checkPressure(P);
   const out = [];
   for (let k = 0; k < points; k++) {
     const x1 = k / (points - 1);
@@ -22,6 +28,7 @@ export function txy(sys, P, points = 51) {
  */
 export function pxy(sys, T, points = 51) {
   if (sys.n !== 2) throw fail("BAD_INPUT", "P-x-y needs exactly two components.");
+  T = checkTemperature(T);
   const out = [];
   for (let k = 0; k < points; k++) {
     const x1 = k / (points - 1);
@@ -38,6 +45,7 @@ export function pxy(sys, T, points = 51) {
  */
 export function ternaryGrid(sys, P, n = 40) {
   if (sys.n !== 3) throw fail("BAD_INPUT", "A ternary grid needs exactly three components.");
+  P = checkPressure(P);
   const nodes = [];
   for (let i = 0; i <= n; i++) for (let j = 0; j <= n - i; j++) {
     const x = [i / n, j / n, (n - i - j) / n];
