@@ -101,6 +101,20 @@
         "validation/report/reference/"
       ]
     },
+    "fang2014-water-ethanol": {
+      "title": "Excess enthalpy for the (benzene + cyclohexane) mixture over a wide range of temperature and pressure",
+      "authors": "G. S. Fang, K. Tsukamoto, M. Maebayashi, M. Ohba, H. Ogawa",
+      "year": 2014,
+      "published": "J. Chem. Thermodyn. 78 (2014) 204-214",
+      "kind": "thermoml",
+      "doi": "10.1016/j.jct.2014.05.020",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2014.05.020.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/water_ethanol_HE_fang2014.json"
+      ]
+    },
     "fenclova2014-water-ethyl-acetate": {
       "title": "Temperature dependence of limiting activity coefficients, Henry's law constants, and related infinite dilution properties of C4-C6 isomeric n-alkyl ethanoates/ethyl n-alkanoates in water",
       "authors": "D. Fenclova, A. Blahut, P. Vrbka, V. Dohnal",

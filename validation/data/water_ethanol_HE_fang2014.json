@@ -1,0 +1,28 @@
+{
+ "_about": "Water (1) + ethanol (2): excess molar enthalpy at 423.2 K and 5000 kPa, binary data set from Fang et al. (2014). Rows as in the ThermoML Archive record: mole fraction of water, excess molar enthalpy in kJ/mol (as printed). Used as an independent check of the excess enthalpy predicted by the activity models (the ethanol + water parameters were fitted to vapour-liquid data only).",
+ "source": {
+  "citation": "G. S. Fang, K. Tsukamoto, M. Maebayashi, M. Ohba, H. Ogawa, Excess enthalpy for the (benzene + cyclohexane) mixture over a wide range of temperature and pressure, J. Chem. Thermodyn. 78 (2014) 204-214",
+  "doi": "10.1016/j.jct.2014.05.020",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2014.05.020.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, first data set: compounds 1 water + 2 ethanol, excess molar enthalpy, variable mole fraction of compound 1 (water), constraints T = 423.2 K and P = 5000 kPa. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethanol"],
+ "kind": "excess-enthalpy",
+ "T_K": 423.2,
+ "P_kPa": 5000,
+ "columns": ["x_1", "HE_kJ_mol"],
+ "rows": [
+  [0.1473, 0.3929],
+  [0.2673, 0.6656],
+  [0.4508, 0.901],
+  [0.5845, 0.9103],
+  [0.6864, 0.818],
+  [0.7665, 0.6846],
+  [0.8312, 0.5352],
+  [0.8845, 0.3836],
+  [0.9292, 0.2381],
+  [0.9673, 0.1066]
+ ],
+ "notes": "Expanded uncertainties (95 %) in the record: 0.015 kJ/mol at x_1 = 0.1473 down to 0.0112 kJ/mol at x_1 = 0.9673. The record also holds sets at 423.2 K / 15000 kPa and 523.2 K / 15000 kPa (not transcribed; at 523.2 K ethanol is above its critical temperature). Read twice from the ThermoML Archive (XML and JSON files), both reads identical for this set; the XML gives the mole fraction as that of compound 1, water. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

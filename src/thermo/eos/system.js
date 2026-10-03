@@ -11,6 +11,7 @@ import componentData from "../../data/components.json" with { type: "json" };
 import { cubicEos, CUBICS } from "./cubic.js";
 import { RANGE_MARGIN_K, selection, choosePair, describePair, pairWarnings } from "../library.js";
 import { fail } from "../../util/errors.js";
+import { eosPhaseMethods } from "../enthalpy.js";
 
 export const EOS_MODELS = Object.keys(CUBICS);
 
@@ -113,6 +114,7 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
   return {
     ids, names: comps.map(c => c.name), n, model, kind: "eos", eos, kij: K, info,
     state, warnings,
+    ...eosPhaseMethods({ ids, comps, n, model, eos, warnings }),
     /** Compressibility factor Z. Arguments (T, P, x, phase) or (x, T, P, phase); phase defaults to "vapour". */
     Z: (a, b, c, d) => state(a, b, c, d).Z,
     /** ln phi_i. Arguments (T, P, x, phase) or (x, T, P, phase). */

@@ -2,7 +2,7 @@
  * Input checks shared by the public equilibrium functions (proposal 0001, section 5).
  * Every check throws a BAD_INPUT error that says what is wrong, before any solver runs.
  */
-import { fail, failRange } from "../util/errors.js";
+import { fail, failRange } from "./errors.js";
 
 /** Mole fractions slightly below zero from rounding (1 - 0.3 - 0.7) are taken as zero. */
 const NEG_TOL = 1e-9;

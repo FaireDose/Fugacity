@@ -65,6 +65,7 @@ export const QUANTITIES = {
   s_kJ_kgK: { label: "s", unit: "kJ/(kg·K)", fmt: sig(5) },
   mu_mPa_s: { label: "μ", unit: "mPa·s", fmt: sig(4) },
   k_W_mK: { label: "λ", unit: "W/(m·K)", fmt: sig(4) },
+  HE_J_mol: { label: "hᴱ", unit: "J/mol", fmt: v => v.toFixed(1) },
 };
 const PROPERTY_LABELS = {
   vapourPressure: "vapour pressure", liquidDensity: "liquid density", liquidHeatCapacity: "liquid cp",
@@ -342,6 +343,10 @@ function evaluateQuantity(ctx, cs, key) {
       const r = fn(s, "bubbleT", "system.bubbleT()")([cs.x1, 1 - cs.x1], cs.P_kPa);
       return { value: key === "T_C" ? r.T - 273.15 : r.y[0], method: "system.bubbleT()" };
     }
+    case "excessEnthalpy": {
+      const s = ctx.system(cs.components, cs.model);
+      return { value: fn(s, "excessEnthalpy", "system.excessEnthalpy()")([cs.x1, 1 - cs.x1], cs.T_K), method: "system.excessEnthalpy()" };
+    }
     case "dewT": {
       const s = ctx.system(cs.components, cs.model);
       const r = fn(s, "dewT", "system.dewT()")([cs.y1, 1 - cs.y1], cs.P_kPa);
@@ -445,7 +450,7 @@ export function formatDeviation(dev, tol, key) {
   }
   const unit = QUANTITIES[key]?.devUnit ?? (QUANTITIES[key]?.unit === "mol/mol" ? "" : QUANTITIES[key]?.unit ?? "");
   const a = Math.abs(dev);
-  return `${sgn}${unit === "K" ? a.toFixed(2) : a < 1e-3 ? a.toExponential(1) : a.toFixed(4)}${unit ? " " + unit : ""}`;
+  return `${sgn}${unit === "K" ? a.toFixed(2) : unit === "J/mol" ? a.toFixed(1) : a < 1e-3 ? a.toExponential(1) : a.toFixed(4)}${unit ? " " + unit : ""}`;
 }
 
 function tolText(tol) {
@@ -483,6 +488,8 @@ function describe(cs, key) {
     }
     case "bubbleT":
       return { property: `${c1} + ${c2}: bubble ${key === "T_C" ? "T" : `y(${c1.toLowerCase()})`}`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${bar(cs.P_kPa)} bar, ${cs.model}` };
+    case "excessEnthalpy":
+      return { property: `${c1} + ${c2}: excess enthalpy`, conditions: `x(${c1.toLowerCase()}) = ${cs.x1}, ${tC(cs.T_K)} °C, ${cs.model}` };
     case "dewT":
       return { property: `${c1} + ${c2}: dew ${key === "T_C" ? "T" : `x(${c1.toLowerCase()})`}`, conditions: `y(${c1.toLowerCase()}) = ${cs.y1}, ${bar(cs.P_kPa)} bar, ${cs.model}` };
     case "bubbleP":
@@ -631,7 +638,7 @@ export function renderMarkdown(cmp, meta = {}) {
   if (!changes.length) changes.push(`No result changed and every result with a reference is within tolerance.`, ``);
   const legend = [
     `<sub>Deviation = this PR minus reference (relative for properties, absolute for temperatures and compositions). ` +
-    `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = equation of state compared with a reference equation of state, informational. ` +
+    `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = informational, does not block (an equation of state against a reference equation of state, or an excess enthalpy compared with data the fit used or predicted outside the fitted range). ` +
     `Tolerances and sources: \`validation/report/README.md\`.${meta.htmlNote ? " " + meta.htmlNote : ""}</sub>`, ``,
   ];
   const detailsOpen = [`<details><summary>All ${s.total} results</summary>`, ``];

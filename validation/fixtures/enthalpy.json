@@ -1,0 +1,496 @@
+{
+ "_about": "Mixture enthalpies (J/mol, reference ideal gas at 298.15 K) from validation/python/reference_enthalpy.py: ideal-gas enthalpy by quadrature of the heat-capacity records (IAPWS-IF97 for water, iapws package), heat of vaporization from the DIPPR 106 records (IAPWS-IF97 for water), residual enthalpies from reference_eos.Cubic, excess enthalpies from the thermo library's NRTL and UNIQUAC.",
+ "cases": [
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.5,
+    0.5
+   ],
+   "T_K": 330.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -39692.17328237099,
+   "hE_J_mol": 486.07434794530116
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.2,
+    0.8
+   ],
+   "T_K": 350.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -38723.70808946942,
+   "hE_J_mol": 574.5252125334007
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.9,
+    0.1
+   ],
+   "T_K": 300.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -42443.33225575474,
+   "hE_J_mol": 58.69310551122334
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.6,
+    0.4
+   ],
+   "T_K": 380.0,
+   "P_kPa": 101.325,
+   "h_J_mol": 4621.409228078711
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.5,
+    0.5
+   ],
+   "T_K": 330.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -39703.33232279779,
+   "hE_J_mol": 486.07434794530116
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.2,
+    0.8
+   ],
+   "T_K": 420.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -32261.730903843134,
+   "hE_J_mol": 627.3136289235324
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "PR",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.6,
+    0.4
+   ],
+   "T_K": 450.0,
+   "P_kPa": 1000.0,
+   "h_J_mol": 8102.661579207413
+  },
+  {
+   "kind": "activity",
+   "model": "UNIQUAC",
+   "vapour": "ideal",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.3,
+    0.3,
+    0.4
+   ],
+   "T_K": 320.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -30727.307306708986,
+   "hE_J_mol": 32.4413455723477
+  },
+  {
+   "kind": "activity",
+   "model": "UNIQUAC",
+   "vapour": "ideal",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.6,
+    0.2,
+    0.2
+   ],
+   "T_K": 330.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -31774.231907046276,
+   "hE_J_mol": 120.99937490281229
+  },
+  {
+   "kind": "activity",
+   "model": "UNIQUAC",
+   "vapour": "ideal",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.3,
+    0.3,
+    0.4
+   ],
+   "T_K": 360.0,
+   "P_kPa": 101.325,
+   "h_J_mol": 4028.3152635489205
+  },
+  {
+   "kind": "activity",
+   "model": "UNIQUAC",
+   "vapour": "SRK",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.3,
+    0.3,
+    0.4
+   ],
+   "T_K": 360.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -26145.404102498356,
+   "hE_J_mol": 101.3093139052603
+  },
+  {
+   "kind": "activity",
+   "model": "UNIQUAC",
+   "vapour": "SRK",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.3,
+    0.3,
+    0.4
+   ],
+   "T_K": 420.0,
+   "P_kPa": 800.0,
+   "h_J_mol": 7198.210543353769
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "benzene",
+    "toluene"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.5,
+    0.5
+   ],
+   "T_K": 360.0,
+   "P_kPa": 101.325,
+   "h_J_mol": -26416.338906756675,
+   "hE_J_mol": -22.583266254238264
+  },
+  {
+   "kind": "activity",
+   "model": "NRTL",
+   "vapour": "ideal",
+   "components": [
+    "benzene",
+    "toluene"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.5,
+    0.5
+   ],
+   "T_K": 400.0,
+   "P_kPa": 101.325,
+   "h_J_mol": 11185.100743882358
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.098,
+    0.902
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": -15.84674018356211
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.4445,
+    0.5555
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": 11.434863158673078
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.898,
+    0.10199999999999998
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": 66.35682948985686
+  },
+  {
+   "kind": "excess",
+   "model": "UNIQUAC",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.098,
+    0.902
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": -12.576356815946662
+  },
+  {
+   "kind": "excess",
+   "model": "UNIQUAC",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.4445,
+    0.5555
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": 4.429573326750649
+  },
+  {
+   "kind": "excess",
+   "model": "UNIQUAC",
+   "components": [
+    "acetic-acid",
+    "ethylene-glycol"
+   ],
+   "z": [
+    0.898,
+    0.10199999999999998
+   ],
+   "T_K": 323.15,
+   "hE_J_mol": 89.28245161457862
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "z": [
+    0.1,
+    0.9
+   ],
+   "T_K": 298.15,
+   "hE_J_mol": 369.10068519295265
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "z": [
+    0.3,
+    0.7
+   ],
+   "T_K": 298.15,
+   "hE_J_mol": 538.8368519008462
+  },
+  {
+   "kind": "excess",
+   "model": "NRTL",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "z": [
+    0.7,
+    0.30000000000000004
+   ],
+   "T_K": 298.15,
+   "hE_J_mol": 217.95416142931174
+  },
+  {
+   "kind": "eos",
+   "model": "PR",
+   "components": [
+    "methane",
+    "ethane"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.5,
+    0.5
+   ],
+   "T_K": 250.0,
+   "P_kPa": 2000.0,
+   "h_J_mol": -3081.009799506636
+  },
+  {
+   "kind": "eos",
+   "model": "PR",
+   "components": [
+    "methane",
+    "ethane"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.3,
+    0.7
+   ],
+   "T_K": 180.0,
+   "P_kPa": 2000.0,
+   "h_J_mol": -17431.8901658076
+  },
+  {
+   "kind": "eos",
+   "model": "SRK",
+   "components": [
+    "nitrogen",
+    "methane"
+   ],
+   "phase": "vapour",
+   "z": [
+    0.8,
+    0.2
+   ],
+   "T_K": 200.0,
+   "P_kPa": 5000.0,
+   "h_J_mol": -3864.0163874116397
+  },
+  {
+   "kind": "eos",
+   "model": "SRK",
+   "components": [
+    "nitrogen",
+    "methane"
+   ],
+   "phase": "liquid",
+   "z": [
+    0.2,
+    0.8
+   ],
+   "T_K": 120.0,
+   "P_kPa": 1000.0,
+   "h_J_mol": -13272.09998724041
+  }
+ ],
+ "sensible_heat": [
+  {
+   "component": "water",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 7573.400217674991,
+   "cpL_integral_J_mol": 7569.842413996237
+  },
+  {
+   "component": "methanol",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 9506.857290431402,
+   "cpL_integral_J_mol": 9466.707045480009
+  },
+  {
+   "component": "ethanol",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 13543.442085206209,
+   "cpL_integral_J_mol": 13546.210037416677
+  },
+  {
+   "component": "acetone",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 13431.429591641585,
+   "cpL_integral_J_mol": 13393.081030633342
+  },
+  {
+   "component": "benzene",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 14843.702334173948,
+   "cpL_integral_J_mol": 14847.270753619949
+  },
+  {
+   "component": "toluene",
+   "T1_K": 300.0,
+   "T2_K": 400.0,
+   "coolprop_dh_J_mol": 17339.047830255062,
+   "cpL_integral_J_mol": 17385.35576497334
+  }
+ ]
+}
