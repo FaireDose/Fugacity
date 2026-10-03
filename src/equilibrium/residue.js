@@ -1,4 +1,4 @@
-import { bubbleTCore as bubbleT } from "./bubble.js";
+import { anyBubbleT as bubbleT } from "./bubble-any.js"; // activity models and equations of state
 
 /**
  * Residue curve through x0 at pressure P: dx/dxi = x - y.

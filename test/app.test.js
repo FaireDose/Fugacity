@@ -47,7 +47,7 @@ test("initial state: defaults, normalization and errors for typos", () => {
   assert.equal(t.basis, "mass");
 
   assert.throws(() => initialState({ components: ["unobtainium"] }), /Unknown component/);
-  assert.throws(() => initialState({ model: "Wilson" }), /Unknown activity model/);
+  assert.throws(() => initialState({ model: "Wilson" }), /Unknown model "WILSON"/);
   assert.throws(() => initialState({ units: { T: "F" } }), /Unknown T unit/);
   assert.throws(() => initialState({ P_kPa: -1 }), /positive/);
   // duplicates dropped, at most MAX_COMPONENTS kept
@@ -61,13 +61,21 @@ test("start view and the equation-of-state model in the configuration", () => {
   assert.equal(initialState({ start: "properties" }).workspace, "properties");
   assert.equal(initialState({ start: "eos", components: ["methane", "ethane"] }).view, "pxy");
   assert.equal(initialState({ start: "eos", components: ["methane", "ethane", "nitrogen"] }).view, "envelope");
+  // one model for every diagram (maintainer's decision, 0.3): an equation of state as `model` is the model
   const pr = initialState({ model: "SRK", components: ["methane", "ethane"] });
   assert.equal(pr.eos, "SRK");
-  assert.equal(pr.model, "NRTL", "the activity model stays valid");
+  assert.equal(pr.model, "SRK");
   assert.equal(pr.view, "pxy");
+  // without `model`, the equation of state is chosen when the start view or the components ask for it
+  assert.equal(initialState({ start: "eos", components: ["methane", "ethane"] }).model, "PR");
+  assert.equal(initialState({ eos: "SRK", components: ["methane", "ethane"] }).model, "SRK");
+  assert.equal(initialState({ components: ["methane", "ethane"] }).model, "PR", "gases need an equation of state");
+  assert.equal(initialState({ components: ["ethanol", "water"] }).model, "NRTL");
+  assert.equal(initialState({ start: "pxy", components: ["ethanol", "water"], model: "NRTL" }).model, "NRTL", "P-x-y with an activity model");
   // a view that cannot run falls back to one that can
   assert.equal(initialState({ start: "ternary", components: ["ethanol", "water"] }).view, "txy");
-  assert.equal(initialState({ start: "txy", components: ["oxygen", "nitrogen"] }).view, "envelope");
+  assert.equal(initialState({ start: "txy", components: ["oxygen", "nitrogen"] }).view, "txy", "with Peng–Robinson, gases have a T-x-y diagram");
+  assert.equal(initialState({ start: "txy", components: ["oxygen", "nitrogen"], model: "NRTL" }).view, "envelope", "not with NRTL: the envelope explains why");
   assert.equal(initialState({ components: [] }).view, "properties");
 });
 
@@ -89,10 +97,16 @@ test("which views are enabled for which selection", () => {
   assert.equal(viewAvailability("azeotropes", ["water"]).enabled, false);
   assert.equal(viewAvailability("azeotropes", ["water", "ethanol", "methanol", "acetone", "benzene"]).use.length, 4);
 
-  assert.equal(viewAvailability("pxy", gas).enabled, true);
-  assert.equal(viewAvailability("pxy", [...gas, "methane"]).enabled, false);
+  // with an equation of state every component fits every diagram; with an activity model, liquids only
+  assert.equal(viewAvailability("pxy", gas).enabled, false);
+  assert.equal(viewAvailability("pxy", gas, "PR").enabled, true);
+  assert.deepEqual(viewAvailability("pxy", [...gas, "methane"], "PR").use, gas, "first two");
+  assert.equal(viewAvailability("txy", gas, "SRK").enabled, true);
+  assert.deepEqual(viewAvailability("ternary", ["methane", "ethane", "nitrogen"], "PR").use, ["methane", "ethane", "nitrogen"]);
   assert.equal(viewAvailability("envelope", []).enabled, false);
-  assert.equal(viewAvailability("envelope", ["methane"]).enabled, true);
+  assert.equal(viewAvailability("envelope", ["methane"], "PR").enabled, true);
+  assert.equal(viewAvailability("envelope", ["water"]).enabled, false, "an activity model needs two liquids");
+  assert.equal(viewAvailability("envelope", ["water", "ethanol"]).enabled, true);
 
   assert.deepEqual(viewAvailability("henry", ["water", "oxygen"]).use, ["oxygen"]);
   const all = viewAvailability("henry", MAC);
@@ -108,8 +122,8 @@ test("which views are enabled for which selection", () => {
   for (const v of Object.keys(VIEWS)) assert.ok(WORKSPACES.some(w => w.id === VIEWS[v].workspace && w.views.includes(v)), v);
   for (const p of PRESETS) {
     assert.deepEqual(normalizeComponents(p.components), p.components);
-    assert.equal(viewAvailability(p.view, p.components).enabled, true, p.label);
-    assert.equal(resolveView(p.view, p.components), p.view);
+    assert.equal(viewAvailability(p.view, p.components, p.model).enabled, true, p.label);
+    assert.equal(resolveView(p.view, p.components, p.model), p.view);
   }
 });
 
@@ -132,10 +146,13 @@ test("state changes return a new state and keep the view valid", () => {
   assert.equal(s3.view, "txy");
   assert.throws(() => applyPatch(s2, { tab: "macros" }), /Unknown tab/);
 
-  // EOS name as model switches the equation of state only
+  // an equation of state as model is the model of every diagram; `eos` selects one too
   const s4 = applyPatch(s2, { model: "SRK" });
   assert.equal(s4.eos, "SRK");
-  assert.equal(s4.model, "UNIQUAC");
+  assert.equal(s4.model, "SRK");
+  assert.equal(s4.view, "txy", "the diagram stays");
+  assert.equal(applyPatch(s4, { model: "UNIQUAC" }).eos, "SRK", "the last equation of state is remembered");
+  assert.equal(applyPatch(s2, { eos: "PR" }).model, "PR");
 
   // units merge, panels merge, booleans
   const s5 = applyPatch(s4, { units: { T: "K" }, panels: { left: false }, background: false });

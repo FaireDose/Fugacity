@@ -23,19 +23,23 @@ import { flash } from "./equilibrium/flash.js";
 export function system(cfg) {
   const sys = createSystem(cfg);
   sys.flash = (spec, opts) => flash(sys, spec, opts);
-  if (sys.kind === "eos") return Object.assign(sys, eosMethods(sys)); // model "PR" or "SRK"
-  return Object.assign(sys, {
-    bubbleT: (x, P) => bubbleT(sys, x, P),
-    bubbleP: (x, T) => bubbleP(sys, x, T),
-    dewT: (y, P) => dewT(sys, y, P),
-    dewP: (y, T) => dewP(sys, y, T),
-    boilingPoints: P => pureBoilingPoints(sys, P),
+  // diagrams work with every model: they use the system's own bubble point (bubble-any.js)
+  const diagrams = {
     txy: (P, points) => txy(sys, P, points),
     pxy: (T, points) => pxy(sys, T, points),
     ternaryGrid: (P, n) => ternaryGrid(sys, P, n),
     residueCurve: (x0, P, opts) => residueCurve(sys, x0, P, opts),
     azeotropes: P => binaryAzeotropes(sys, P),
     findAzeotrope: (x0, P) => findAzeotrope(sys, x0, P),
-    isLiquidStable: (x, T) => isLiquidStable(sys, x, T),
+  };
+  if (sys.kind === "eos") return Object.assign(sys, eosMethods(sys), diagrams); // model "PR" or "SRK"
+  return Object.assign(sys, diagrams, {
+    bubbleT: (x, P) => bubbleT(sys, x, P),
+    bubbleP: (x, T) => bubbleP(sys, x, T),
+    dewT: (y, P) => dewT(sys, y, P),
+    dewP: (y, T) => dewP(sys, y, T),
+    boilingPoints: P => pureBoilingPoints(sys, P),
+    // the spinodal test needs no pressure; P is accepted so that every model has one signature
+    isLiquidStable: (x, T, P) => isLiquidStable(sys, x, T),
   });
 }

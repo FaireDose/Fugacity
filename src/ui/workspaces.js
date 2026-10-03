@@ -8,7 +8,7 @@
  * gases with a Henry's law constant (HENRY_GASES) and the gas-solvent pairs of the Henry's
  * law table (src/data/henry.json), so that a selector offers only what the engine has.
  */
-import { listComponents, findComponent } from "../thermo/system.js";
+import { listComponents, findComponent, EOS_MODELS } from "../thermo/system.js";
 import { HENRY_GASES } from "../thermo/henry.js";
 import henryData from "../data/henry.json" with { type: "json" };
 
@@ -44,14 +44,18 @@ export function workspaceOf(view) {
  *  - kind "list": min to max components;
  *  - kind "henry": a gas and a solvent;
  *  - kind "none": nothing to choose (steam is water).
- * `liquid`: only components with activity-model data (vapour pressure, UNIQUAC r and q).
+ * `liquid`: with an activity-coefficient model (NRTL, UNIQUAC, ideal), only components with
+ * activity-model data (vapour pressure, UNIQUAC r and q); with an equation of state (PR, SRK)
+ * every component, gases too. `minActivity`: the smallest list with an activity model, where
+ * it differs from `min` (an activity-model system needs two components).
+ * The phase-equilibrium diagrams work with either kind of model (the Model group of the toolbar).
  */
 export const INPUTS = {
   txy: { kind: "slots", n: 2, liquid: true, what: "a T-x-y diagram", roles: ["x axis", "1 − x"] },
   ternary: { kind: "slots", n: 3, liquid: true, what: "a ternary map", roles: ["top corner", "lower left", "lower right"] },
   azeotropes: { kind: "list", min: 2, max: 4, liquid: true, what: "an azeotrope search" },
-  pxy: { kind: "slots", n: 2, liquid: false, what: "a P-x-y diagram", roles: ["x axis", "1 − x"] },
-  envelope: { kind: "list", min: 1, max: 6, liquid: false, what: "a phase envelope" },
+  pxy: { kind: "slots", n: 2, liquid: true, what: "a P-x-y diagram", roles: ["x axis", "1 − x"] },
+  envelope: { kind: "list", min: 1, minActivity: 2, max: 6, liquid: true, what: "a phase envelope" },
   henry: { kind: "henry", what: "a gas solubility" },
   properties: { kind: "slots", n: 1, liquid: false, what: "the property curves", roles: ["pure component"] },
   steam: { kind: "none", what: "the steam tables" },
@@ -64,6 +68,20 @@ const nameIn = (m, id) => m.get(id)?.name ?? id;
 
 /** Is this component usable with activity-coefficient models (a liquid with the data they need)? */
 export const isLiquid = id => !!cmap().get(id)?.activity;
+
+/** Is the model an equation of state (PR, SRK), which describes gases and liquids alike? */
+export const isEosModel = model => EOS_MODELS.includes(String(model ?? "").toUpperCase());
+
+/**
+ * What a view needs with a given model: `liquid` (only liquids with activity-model data) and
+ * `min` (smallest list), from INPUTS.
+ */
+export function needsFor(view, model = "NRTL") {
+  const spec = INPUTS[view];
+  if (!spec) throw new Error(`Unknown view "${view}".`);
+  const eos = isEosModel(model);
+  return { ...spec, liquid: !!spec.liquid && !eos, min: !eos && spec.minActivity ? spec.minActivity : spec.min };
+}
 
 /** Gas-solvent pairs with a Henry's law constant. */
 export const HENRY_PAIRS = henryData.pairs.map(p => ({ gas: p.gas, solvent: p.solvent }));
@@ -97,14 +115,13 @@ export function normalizeInputs(view, value) {
 }
 
 /**
- * Are the inputs of a view complete and compatible?
+ * Are the inputs of a view complete and compatible with the model (default: an activity model)?
  * @returns {{ok:boolean, use:string[], problems:{slot:number|null, message:string}[]}}
  *   `use`: the component ids the view calculates with (when ok); `problems`: one plain-language
  *   message per issue, with the slot it concerns (0-based; null for the whole selection).
  */
-export function checkInputs(view, value) {
-  const spec = INPUTS[view];
-  if (!spec) throw new Error(`Unknown view "${view}".`);
+export function checkInputs(view, value, model = "NRTL") {
+  const spec = needsFor(view, model);
   const m = cmap();
   const problems = [];
   if (spec.kind === "none") return { ok: true, use: view === "steam" ? ["water"] : [], problems };
@@ -125,13 +142,15 @@ export function checkInputs(view, value) {
     if (!id) { problems.push({ slot: i, message: `${label} is empty: choose ${spec.liquid ? "a liquid" : "a component"}.` }); return; }
     if (!m.has(id)) { problems.push({ slot: i, message: `${label}: unknown component "${id}".` }); return; }
     if (spec.liquid && !m.get(id).activity) {
-      problems.push({ slot: i, message: `${spec.kind === "slots" ? `${label}, ${nameIn(m, id)}` : nameIn(m, id)}, has no activity-model data (vapour pressure and UNIQUAC r and q), so ${spec.what} cannot use it. Choose a liquid, or use P-x-y or the phase envelope (equation of state) for gases.` });
+      problems.push({ slot: i, message: `${spec.kind === "slots" ? `${label}, ${nameIn(m, id)}` : nameIn(m, id)}, has no activity-model data (vapour pressure and UNIQUAC r and q), so ${spec.what} with ${model === "ideal" ? "an ideal solution" : model} cannot use it. Choose a liquid, or an equation of state (Peng–Robinson or SRK) in the Model group for gases.` });
     }
     if (seen.has(id)) problems.push({ slot: i, message: `Components ${seen.get(id) + 1} and ${i + 1} are both ${nameIn(m, id)}: choose different components.` });
     else seen.set(id, i);
   });
   if (spec.kind === "list" && ids.length < spec.min) {
-    problems.push({ slot: null, message: `${spec.what[0].toUpperCase()}${spec.what.slice(1)} needs at least ${word(spec.min)} ${spec.liquid ? "liquid" : "component"}${spec.min > 1 ? "s" : ""}; ${word(ids.length)} chosen.` });
+    const why = !isEosModel(model) && spec.minActivity
+      ? ` with an activity model (one pure component needs an equation of state: Peng–Robinson or SRK)` : "";
+    problems.push({ slot: null, message: `${spec.what[0].toUpperCase()}${spec.what.slice(1)} needs at least ${word(spec.min)} ${spec.liquid ? "liquid" : "component"}${spec.min > 1 ? "s" : ""}${why}; ${word(ids.length)} chosen.` });
   }
   return { ok: !problems.length, use: problems.length ? [] : ids.slice(), problems };
 }
@@ -141,11 +160,12 @@ export function checkInputs(view, value) {
  * configuration, or of update()): the first two liquids for T-x-y, the first three for the
  * ternary map, up to four for azeotropes, the first two components for P-x-y, all of them
  * for the phase envelope, the first selected gas with a Henry's law constant, and the first
- * component for the properties. A slot with nothing to take stays empty.
+ * component for the properties. A slot with nothing to take stays empty. With an equation of
+ * state (`model` PR or SRK), the diagrams take gases too.
  */
-export function seedInputs(components = [], { gas, solvent, propComponent } = {}) {
+export function seedInputs(components = [], { gas, solvent, propComponent, model } = {}) {
   const ids = components.map(pickId).filter(Boolean);
-  const liq = ids.filter(isLiquid);
+  const liq = isEosModel(model) ? ids : ids.filter(isLiquid);
   const firstGas = ids.find(id => HENRY_GASES.includes(id));
   const g = pickId(gas) ?? firstGas ?? (HENRY_GASES.includes("oxygen") ? "oxygen" : HENRY_GASES[0]);
   return {
@@ -160,13 +180,13 @@ export function seedInputs(components = [], { gas, solvent, propComponent } = {}
   };
 }
 
-/** Ready-made inputs (the Examples menu of the Inputs panel) that fit a view. */
-export function examplesFor(view, presets) {
+/** Ready-made inputs (the Examples menu of the Inputs panel) that fit a view and the model. */
+export function examplesFor(view, presets, model = "NRTL") {
   const spec = INPUTS[view];
   if (!spec || (spec.kind !== "slots" && spec.kind !== "list") || view === "properties") return [];
   return presets.filter(p => {
     const fits = spec.kind === "slots" ? p.components.length === spec.n : p.components.length >= spec.min && p.components.length <= spec.max;
-    return fits && checkInputs(view, normalizeInputs(view, p.components)).ok;
+    return fits && checkInputs(view, normalizeInputs(view, p.components), model).ok;
   });
 }
 
