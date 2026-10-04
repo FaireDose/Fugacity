@@ -99,10 +99,10 @@ Key components: ethanol, water, ethylene glycol, cyclohexane. 6 pairs.
 
 | Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
-| acetic acid + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| acetic acid + ethyl acetate | activity | EOS | 1 | – | – | – | – | – |
-| acetic acid + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | – | yes | – | – |
-| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| acetic acid + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| acetic acid + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
+| acetic acid + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | – | yes | – | – |
+| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 
@@ -263,7 +263,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | methanol + n-hexane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + n-heptane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
-| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethanol + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
 | ethanol + 2-propanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
@@ -430,9 +430,9 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 69 | 34 | 13 | 13 |
+| In Fugacity now | 70 | 35 | 14 | 14 |
 | In ChemSep, not yet in Fugacity | 33 | 17 | 1 | 0 |
-| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 179 | 45 | 201 | 52 |
+| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 178 | 44 | 200 | 51 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
 step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched

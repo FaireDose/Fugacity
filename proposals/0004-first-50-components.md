@@ -216,6 +216,17 @@ reported per property) and the existing pair workflow for binaries:
    equation of state (second model): PR and SRK k_ij fitted for the three miscible pairs;
    the three pairs with cyclohexane keep k_ij = 0 (the warning says so) until a fit to
    liquid-liquid data is added.
+   Ethyl acetate by esterification: the three acetic acid pairs fitted (ThermoML), each with
+   the vapour dimerization of acetic acid (chemical theory) as in the engine. Water + acetic
+   acid: two open 1-atm sets that disagree at low water content; fitted to the more
+   consistent one (Chang et al. 2005), the other is a check. Ethyl acetate + acetic acid:
+   fitted to static P-x data at 323 K (Brandt et al. 2014, with their own pure-component
+   pressures), which predict the 1-atm boiling points within 0.2 K. Ethanol + acetic acid: the
+   1-atm set and the static P-x data disagree; fitted to both, temperature-dependent (1.3 K,
+   0.6 %). `fit_parameters.py` gained an isothermal P-x kind, and its consistency point test now
+   uses the fit's vapour model (unchanged for pairs without acetic acid). PR and SRK k_ij for
+   ethanol + ethyl acetate; none for the acetic acid pairs, because a cubic equation of state
+   has no vapour dimerization.
    Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
    of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
    had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states
