@@ -29,6 +29,23 @@
         "validation/data/water_ethyl-acetate_gamma_inf_atik2004.json"
       ]
     },
+    "brandt2014-acetic-acid-ethanol": {
+      "title": "Phase equilibria and excess properties for binary systems in reactive distillation processes Part II. Ethyl acetate synthesis",
+      "authors": "S. Brandt, S. Horstmann, S. Steinigeweg, J. Gmehling",
+      "year": 2014,
+      "published": "Fluid Phase Equilib. 376 (2014) 48-54",
+      "kind": "thermoml",
+      "doi": "10.1016/j.fluid.2014.05.031",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.05.031.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/acetic-acid_ethanol_HE_brandt2014.json",
+        "validation/data/ethanol_acetic-acid_px_brandt2014.json",
+        "validation/data/ethyl-acetate_acetic-acid_HE_brandt2014.json",
+        "validation/data/ethyl-acetate_acetic-acid_px_brandt2014.json"
+      ]
+    },
     "calvar2005-ethyl-acetate-ethanol": {
       "title": "Vapor-liquid equilibria for the quaternary reactive system ethyl acetate + ethanol + water + acetic acid and some of the constituent binary systems at 101.3 kPa",
       "authors": "N. Calvar, A. Dominguez, J. Tojo",
@@ -40,7 +57,9 @@
       "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
       "via": "the NIST TRC ThermoML Archive",
       "files": [
-        "validation/data/ethyl-acetate_ethanol_101kPa.json"
+        "validation/data/ethyl-acetate_acetic-acid_101kPa.json",
+        "validation/data/ethyl-acetate_ethanol_101kPa.json",
+        "validation/data/water_acetic-acid_101kPa_calvar2005.json"
       ]
     },
     "cehreli2006-water-ethyl-acetate": {
@@ -55,6 +74,20 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/water_ethyl-acetate_lle_cehreli2006.json"
+      ]
+    },
+    "chang2005-water-acetic-acid": {
+      "title": "Isobaric Vapor-Liquid Equilibria for Water + Acetic Acid + (n-Pentyl Acetate or Isopropyl Acetate)",
+      "authors": "W. Chang, G. Guan, X. Li, H. Yao",
+      "year": 2005,
+      "published": "J. Chem. Eng. Data 50 (2005) 1129-1133",
+      "kind": "thermoml",
+      "doi": "10.1021/je049711t",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je049711t.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/water_acetic-acid_101kPa_chang2005.json"
       ]
     },
     "chemsep-8.3": {
@@ -460,6 +493,20 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/ethyl-acetate_ethanol_101kPa_zhang2017.json"
+      ]
+    },
+    "zhu2013-ethanol-acetic-acid": {
+      "title": "Geometric Structures of Associating Component Optimized toward Correlation and Prediction of Isobaric Vapor Liquid Equilibria for Binary and Ternary Mixtures of Ethanal, Ethanol, and Ethanoic Acid",
+      "authors": "D. Zhu, D. Gao, H. Zhang, B. Winter, P. Lucking, H. Sun, H. Guan, H. Chen, J. Shi",
+      "year": 2013,
+      "published": "J. Chem. Eng. Data 58 (2013) 7-17",
+      "kind": "thermoml",
+      "doi": "10.1021/je300810p",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je300810p.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/ethanol_acetic-acid_101kPa.json"
       ]
     }
   }

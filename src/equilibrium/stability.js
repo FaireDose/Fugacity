@@ -78,7 +78,7 @@ export function liquidTangentPlane(sys, z, T, opts = {}) {
   const found = []; // converged non-trivial trials
   const near = (a, b, tol) => a.every((v, i) => Math.abs(v - b[i]) < tol);
   for (const s0 of starts) {
-    let W = s0.slice(), w = null, tm = null, same = false;
+    let W = s0.slice(), w = null, tm = null, same = false, converged = false;
     for (let it = 0; it < 400; it++) {
       const S = W.reduce((a, b) => a + b, 0);
       w = W.map(v => v / S);
@@ -87,7 +87,7 @@ export function liquidTangentPlane(sys, z, T, opts = {}) {
       let ch = 0;
       for (let i = 0; i < n; i++) if (present[i]) ch = Math.max(ch, Math.abs(Math.log(Wn[i] / Math.max(W[i], 1e-300))));
       W = Wn;
-      if (ch < 1e-10) break;
+      if (ch < 1e-10) { converged = true; break; }
       // shortcuts (same outcome, fewer steps): a trial that has come very close to the feed
       // goes on to the trivial solution; one that has reached an earlier trial's answer ends there
       let dz = 0;
@@ -102,6 +102,16 @@ export function liquidTangentPlane(sys, z, T, opts = {}) {
     let dist = 0;
     for (let i = 0; i < n; i++) if (present[i]) dist += Math.log(w[i] / z[i]) ** 2;
     if (dist < 1e-4) continue; // converged back to z: trivial
+    if (!converged) {
+      // not a stationary point: 1 - sum(W) means nothing there. The tangent-plane distance of
+      // w itself, sum w_i (ln w_i + ln gamma_i(w) - d_i), still decides: a negative value
+      // proves that z is not stable; otherwise this trial shows nothing.
+      const g = sys.gammas(w.map(v => Math.max(v, 1e-300)), T);
+      let tpd = 0;
+      for (let i = 0; i < n; i++) if (present[i] && w[i] > 0) tpd += w[i] * (Math.log(w[i]) + Math.log(g[i]) - d[i]);
+      if (!(tpd < threshold)) continue;
+      tm = tpd;
+    }
     found.push(w);
     if (tm < best.tm) best = { tm, trial: w };
   }

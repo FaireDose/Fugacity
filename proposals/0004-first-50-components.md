@@ -216,11 +216,29 @@ reported per property) and the existing pair workflow for binaries:
    equation of state (second model): PR and SRK k_ij fitted for the three miscible pairs;
    the three pairs with cyclohexane keep k_ij = 0 (the warning says so) until a fit to
    liquid-liquid data is added.
+   Ethyl acetate by esterification: the three acetic acid pairs fitted (ThermoML), each with
+   the vapour dimerization of acetic acid (chemical theory) as in the engine. Water + acetic
+   acid: two open 1-atm sets that disagree at low water content; fitted to the more
+   consistent one (Chang et al. 2005), the other is a check. Ethyl acetate + acetic acid:
+   fitted to static P-x data at 323 K (Brandt et al. 2014, with their own pure-component
+   pressures), which predict the 1-atm boiling points within 0.2 K. Ethanol + acetic acid: the
+   1-atm set and the static P-x data disagree; fitted to both, temperature-dependent (1.3 K,
+   0.6 %). `fit_parameters.py` gained an isothermal P-x kind, and its consistency point test now
+   uses the fit's vapour model (unchanged for pairs without acetic acid). PR and SRK k_ij for
+   ethanol + ethyl acetate; none for the acetic acid pairs, because a cubic equation of state
+   has no vapour dimerization.
    Databank coverage of the gas benchmarks (methanol synthesis, air separation, light
    hydrocarbons, aromatics): the ChemSep PR and SRK k_ij of every pair among the 49
    components (122 pairs, up from 21; the existing values unchanged), and IAPWS G7-04 Henry
    constants for argon, carbon monoxide, carbon dioxide and hydrogen sulfide in water, checked
    against the guideline's table 6. Pairs without a databank value are fitted to open data
    benchmark by benchmark.
+   Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
+   of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
+   had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states
+   where the set predicts two liquid phases at 273-373 K, not yet checked against data; the
+   priority-1 pairs among them are fitted to open data benchmark by benchmark. The check
+   exposed a bug in the engine's tangent-plane test (an unconverged trial phase could report a
+   false liquid split), fixed in the same pull request.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
    is available.

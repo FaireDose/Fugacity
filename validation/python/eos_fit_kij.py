@@ -17,6 +17,9 @@ at the measured P and liquid x; the vapour composition is compared, not fitted.
   methanol synthesis benchmark: dimethyl ether + methanol, total pressures at 323.15 K of
   Park, Han, Gmehling, J. Chem. Eng. Data 52 (2007) 230
   (validation/data/dimethyl-ether_methanol_px_park2007.json)
+  ethyl acetate benchmark: ethanol + ethyl acetate, Calvar et al., Fluid Phase Equilib. 235
+  (2005) 215 (validation/data/ethyl-acetate_ethanol_101kPa.json); no k_ij for the acetic acid
+  pairs (the cubic equation of state has no vapour dimerization)
   ethanol dehydration benchmark (proposal 0004 step 3; the equation of state is the second
   model of these pairs, docs/BENCHMARKS.md), PR and SRK, isobaric T-x-y at 101.3 kPa from
   Kamihama et al., J. Chem. Eng. Data 57 (2012) 339 (NIST TRC ThermoML Archive):
@@ -76,6 +79,9 @@ TXY_FITS = [
     {"pair": ("ethanol", "water"), "file": "ethanol_water_101kPa.json"},
     {"pair": ("ethanol", "ethylene-glycol"), "file": "ethanol_ethylene-glycol_101kPa.json"},
     {"pair": ("water", "ethylene-glycol"), "file": "water_ethylene-glycol_101kPa_kamihama2012.json"},
+    # ethyl acetate by esterification benchmark; the acetic acid pairs get no k_ij: a cubic
+    # equation of state does not describe the dimerization of acetic acid in the vapour
+    {"pair": ("ethyl-acetate", "ethanol"), "file": "ethyl-acetate_ethanol_101kPa.json", "cite": "Calvar et al. (2005)"},
 ]
 
 
@@ -179,6 +185,9 @@ def fit_txy(doc):
     """kij of the TXY_FITS entries, both models, added or replaced in doc (tier "fitted")."""
     for fit in TXY_FITS:
         i, j = fit["pair"]
+        comps = json.load(open(os.path.join(ROOT, "validation", "data", fit["file"])))["components"]
+        if list(comps) != [i, j]:
+            raise SystemExit(f"{fit['file']}: components {comps}, pair {fit['pair']}: list the pair in the file's order")
         pts = load_txy(fit["file"])
         for model in ("PR", "SRK"):
             e = Cubic(model, [i, j])
@@ -210,7 +219,7 @@ def fit_txy(doc):
             entry = {
                 "model": model, "i": i, "j": j, "kij": k, "tier": "fitted",
                 "source": {
-                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to the {len(pts)} bubble temperatures of Kamihama et al. (2012) at {pts[0][0]} kPa: {q}",
+                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to the {len(pts)} bubble temperatures of {fit.get('cite', 'Kamihama et al. (2012)')} at {pts[0][0]} kPa: {q}",
                     "data": [f"validation/data/{fit['file']}"],
                     "conditions": f"P = {pts[0][0]} kPa, T = {min(Ts):g}-{max(Ts):g} K",
                     "T_range_K": [min(Ts), max(Ts)],

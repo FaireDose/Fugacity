@@ -44,8 +44,9 @@ class System:
             self.a[i, j], self.a[j, i], self.b[i, j], self.b[j, i] = p["a_ij"], p["a_ji"], p["b_ij"], p["b_ji"]
             if "alpha" in p:
                 self.alpha[i, j] = self.alpha[j, i] = p["alpha"]
-        self.r = np.array([c["uniquac"]["r"] for c in self.c])
-        self.q = np.array([c["uniquac"]["q"] for c in self.c])
+        if model == "UNIQUAC":   # r and q only where they are used (not every component has them)
+            self.r = np.array([c["uniquac"]["r"] for c in self.c])
+            self.q = np.array([c["uniquac"]["q"] for c in self.c])
 
     def gamma(self, x, T):
         x = np.clip(np.asarray(x, float), 1e-12, None); x = x / x.sum()
