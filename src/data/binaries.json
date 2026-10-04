@@ -1493,6 +1493,2179 @@
         "calvar2005-ethyl-acetate-ethanol"
       ],
       "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "1-butanol",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -244.73070540450144,
+      "b_ji": 399.46437138924983,
+      "alpha": 0.2483,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-butanol",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -61.143639095814194,
+      "b_ji": -20.324936314108452,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-butanol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 253.64181754760426,
+      "b_ji": 1325.3268195999854,
+      "alpha": 0.4447,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-butanol) 0.00317-0.379; 298.15 K: x(1-butanol) 0.00553-0.399; 323.15 K: x(1-butanol) 0.00905-0.411; 348.15 K: x(1-butanol) 0.0139-0.414; 373.15 K: x(1-butanol) 0.0202-0.41), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-butanol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -44.8088814286775,
+      "b_ji": -275.88774410889096,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-butanol) 0.00707-0.65; 298.15 K: x(1-butanol) 0.00962-0.619; 323.15 K: x(1-butanol) 0.0131-0.588; 348.15 K: x(1-butanol) 0.0168-0.558; 373.15 K: x(1-butanol) 0.0214-0.527), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "2-butanone",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 107.3784433946138,
+      "b_ji": 74.91278229336076,
+      "alpha": 0.3016,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "2-butanone",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 4.1618771518015425,
+      "b_ji": -74.30418858954737,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "2-propanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -88.21076104169245,
+      "b_ji": 84.16351729962193,
+      "alpha": 0.3057,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "2-propanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 52.19287325347164,
+      "b_ji": -52.13319141679869,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "acetic-acid",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 129.27704783387958,
+      "b_ji": -164.81310291877531,
+      "alpha": 0.3044,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "acetic-acid",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 366.88971293704094,
+      "b_ji": -835.3898663318262,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "benzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 143.8087699124902,
+      "b_ji": 439.93560108307463,
+      "alpha": 0.2899,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "benzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -10.329134466549016,
+      "b_ji": -190.52520562680147,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 177.77261620887575,
+      "b_ji": 859.3924316406502,
+      "alpha": 0.5914,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.0397-0.169), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 197.2374496963281,
+      "b_ji": -629.8505523816021,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.0611-0.221; 298.15 K: x(1-propanol) 0.12-0.175), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 283.62323477783394,
+      "b_ji": 239.32949918559913,
+      "alpha": 0.2921,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 37.614402080199,
+      "b_ji": -215.19136653445042,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 4.798147929957382,
+      "b_ji": 12.530317349979319,
+      "alpha": 0.3011,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -57.143848955752595,
+      "b_ji": 13.227678979501908,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 603.3461305180822,
+      "b_ji": 693.0830054390163,
+      "alpha": 0.5193,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 45.89452725024774,
+      "b_ji": -374.02596978549366,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.103-0.819; 298.15 K: x(1-propanol) 0.149-0.786; 323.15 K: x(1-propanol) 0.21-0.742; 348.15 K: x(1-propanol) 0.297-0.676), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 241.88454604498574,
+      "b_ji": 549.5897038520766,
+      "alpha": 0.294,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.153-0.658; 298.15 K: x(1-propanol) 0.247-0.542), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 64.03347791083755,
+      "b_ji": -373.94414628934675,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.147-0.642; 298.15 K: x(1-propanol) 0.232-0.564), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 558.223441388315,
+      "b_ji": 168.18160415406274,
+      "alpha": 0.2907,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.501-0.78), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 24.532958697131832,
+      "b_ji": -264.69010304947636,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.355-0.741), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -152.09800335609526,
+      "b_ji": 283.04141235320265,
+      "alpha": 0.3003,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 123.12222004160954,
+      "b_ji": -192.14210030988636,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 12.893490887305378,
+      "b_ji": 463.9688627834422,
+      "alpha": 0.0175,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 0.8788225933022445,
+      "b_ji": -171.34147057076152,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "1-propanol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -95.91097602133722,
+      "b_ji": -146.2124483362004,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(1-propanol) 0.0611-0.55; 298.15 K: x(1-propanol) 0.0831-0.488; 323.15 K: x(1-propanol) 0.107-0.421; 348.15 K: x(1-propanol) 0.149-0.341), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "benzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -324.5047896792737,
+      "b_ji": 452.09237857333784,
+      "alpha": 0.1563,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "benzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 151.39002379441584,
+      "b_ji": -194.17379885443427,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 304.8192441044288,
+      "b_ji": 118.48268690861096,
+      "alpha": 0.2963,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -73.48580266221832,
+      "b_ji": -50.452589140772865,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 16.926443194624536,
+      "b_ji": 220.00370525525247,
+      "alpha": 0.3022,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -241.6858246512071,
+      "b_ji": 85.50112514161499,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 109.65646790080935,
+      "b_ji": 154.70332184687842,
+      "alpha": 0.3003,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -293.91211168170304,
+      "b_ji": 68.44580742446144,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 342.9493455625573,
+      "b_ji": 468.72967182401396,
+      "alpha": 0.9809,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 92.83645563751982,
+      "b_ji": -281.7525664840056,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 253.15651262949805,
+      "b_ji": -91.36116693116148,
+      "alpha": 0.2996,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -184.36398694645598,
+      "b_ji": 125.94497969281751,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-butanone",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 339.4021510709245,
+      "b_ji": 910.770391181574,
+      "alpha": 0.3536,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(2-butanone) 0.0214-0.761; 298.15 K: x(2-butanone) 0.031-0.735; 323.15 K: x(2-butanone) 0.0449-0.704; 348.15 K: x(2-butanone) 0.065-0.668; 373.15 K: x(2-butanone) 0.0884-0.625), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-butanone",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -390.0721310501688,
+      "b_ji": -15.338433312762481,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(2-butanone) 0.0397-0.822; 298.15 K: x(2-butanone) 0.0477-0.779; 323.15 K: x(2-butanone) 0.054-0.734; 348.15 K: x(2-butanone) 0.0611-0.689; 373.15 K: x(2-butanone) 0.0691-0.642), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "2-propanol",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -266.3778510428779,
+      "b_ji": 347.2915262732114,
+      "alpha": 0.3125,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-propanol",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 163.3588991108706,
+      "b_ji": -220.1678051451264,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "2-propanol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -164.77571370743635,
+      "b_ji": -32.427869314287264,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetone",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 216.3192324748812,
+      "b_ji": 366.1671903308434,
+      "alpha": 0.2925,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetone",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 39.017680071313656,
+      "b_ji": -273.54762231226164,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetone",
+      "j": "phenol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -379.9079519467007,
+      "b_ji": -141.09420246098443,
+      "alpha": 0.3086,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetone",
+      "j": "phenol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 235.70209150032662,
+      "b_ji": -13.780717246817051,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetonitrile",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 170.17032775044984,
+      "b_ji": 266.56882285584066,
+      "alpha": 0.2964,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetonitrile",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -45.99089379091275,
+      "b_ji": -197.36687776034398,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetonitrile",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 554.8194631759159,
+      "b_ji": 2.67883886462733,
+      "alpha": 0.298,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetonitrile",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 158.3067762823564,
+      "b_ji": 172.9586671855665,
+      "alpha": 0.2981,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetonitrile",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -168.55776075535306,
+      "b_ji": -51.30967265022796,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetonitrile",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 711.0513143557968,
+      "b_ji": -105.69190312809268,
+      "alpha": 0.2938,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "acetonitrile",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 397.9082656258116,
+      "b_ji": 364.3789997185556,
+      "alpha": 0.9353,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "acetonitrile",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -134.01284686363647,
+      "b_ji": -167.3702129782493,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(acetonitrile) 0.143-0.649; 298.15 K: x(acetonitrile) 0.191-0.571; 323.15 K: x(acetonitrile) 0.274-0.459), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzene",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -35.64666273835877,
+      "b_ji": 28.72890381135124,
+      "alpha": 0.3034,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzene",
+      "j": "m-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -228.55587090511065,
+      "b_ji": 309.62121650284075,
+      "alpha": 0.2878,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzene",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -25.293575022015215,
+      "b_ji": 7.154775327285452,
+      "alpha": 0.3056,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "benzene",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -2.888329156422866,
+      "b_ji": -0.2867848121409466,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzene",
+      "j": "phenol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 187.91233884301585,
+      "b_ji": 160.11866853467203,
+      "alpha": 0.2986,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "benzene",
+      "j": "phenol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -36.35403843659799,
+      "b_ji": -99.3622065479318,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzene",
+      "j": "styrene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -323.8720414378523,
+      "b_ji": 488.3375203028867,
+      "alpha": 0.311,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "cyclohexane",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 937.228214916292,
+      "b_ji": 661.1960468012869,
+      "alpha": 0.441,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(cyclohexane) 0.534-0.976; 298.15 K: x(cyclohexane) 0.506-0.963; 323.15 K: x(cyclohexane) 0.489-0.946; 348.15 K: x(cyclohexane) 0.487-0.927; 373.15 K: x(cyclohexane) 0.504-0.896), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "cyclohexane",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -698.955426429087,
+      "b_ji": -24.318687819768055,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(cyclohexane) 0.101-0.949; 298.15 K: x(cyclohexane) 0.117-0.927; 323.15 K: x(cyclohexane) 0.135-0.891; 348.15 K: x(cyclohexane) 0.158-0.85; 373.15 K: x(cyclohexane) 0.186-0.798), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "diethyl-ether",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 384.2940134006759,
+      "b_ji": 35.82842563385853,
+      "alpha": 0.2946,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "diethyl-ether",
+      "j": "ethanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -323.4182883844965,
+      "b_ji": 86.4576951528428,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "diethyl-ether",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 355.27243710864184,
+      "b_ji": 106.25883025453238,
+      "alpha": 0.2953,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "diethyl-ether",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -456.1003711917955,
+      "b_ji": 79.18441162541839,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "diethyl-ether",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 776.9835905323853,
+      "b_ji": 1049.9562845276246,
+      "alpha": 0.3792,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(diethyl-ether) 0.0116-0.952; 298.15 K: x(diethyl-ether) 0.0168-0.939; 323.15 K: x(diethyl-ether) 0.0228-0.927; 348.15 K: x(diethyl-ether) 0.031-0.906; 373.15 K: x(diethyl-ether) 0.0397-0.889), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "diethyl-ether",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -603.3203153560137,
+      "b_ji": -51.46476491045228,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(diethyl-ether) 0.0139-0.96; 298.15 K: x(diethyl-ether) 0.0158-0.946; 323.15 K: x(diethyl-ether) 0.0178-0.927; 348.15 K: x(diethyl-ether) 0.0202-0.906; 373.15 K: x(diethyl-ether) 0.0228-0.887), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 403.4407114990504,
+      "b_ji": 506.68324386979117,
+      "alpha": 0.4962,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "ethylbenzene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 64.22807290444152,
+      "b_ji": -423.46925150792805,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.259-0.55), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "methyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 79.51462428330028,
+      "b_ji": 94.76323290933323,
+      "alpha": 0.3013,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "methyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 39.901383894090834,
+      "b_ji": -134.36811985428662,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "n-butyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 423.7075762789931,
+      "b_ji": -27.83966457370557,
+      "alpha": 0.2958,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "n-butyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 19.369523707807694,
+      "b_ji": -193.57421278027047,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 560.7348591141472,
+      "b_ji": 657.1665667087489,
+      "alpha": 0.4758,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 58.26310984216055,
+      "b_ji": -523.4937956058509,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.0831-0.822; 298.15 K: x(ethanol) 0.122-0.801; 323.15 K: x(ethanol) 0.173-0.774; 348.15 K: x(ethanol) 0.239-0.734; 373.15 K: x(ethanol) 0.334-0.672), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 289.5014427925397,
+      "b_ji": 612.9749846818144,
+      "alpha": 0.2882,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.0884-0.774; 298.15 K: x(ethanol) 0.126-0.716; 323.15 K: x(ethanol) 0.184-0.641; 348.15 K: x(ethanol) 0.287-0.521), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 68.2106026145041,
+      "b_ji": -531.8515675499185,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.0831-0.735; 298.15 K: x(ethanol) 0.125-0.706; 323.15 K: x(ethanol) 0.182-0.664; 348.15 K: x(ethanol) 0.269-0.597), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 607.2902142557855,
+      "b_ji": 697.1463018842055,
+      "alpha": 0.4717,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 76.90819870954343,
+      "b_ji": -582.0679957636205,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.065-0.83; 298.15 K: x(ethanol) 0.094-0.82; 323.15 K: x(ethanol) 0.135-0.804; 348.15 K: x(ethanol) 0.185-0.782; 373.15 K: x(ethanol) 0.249-0.749), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "n-pentane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 207.70617726146966,
+      "b_ji": 595.5005354152097,
+      "alpha": 0.2886,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.129-0.648; 298.15 K: x(ethanol) 0.205-0.547), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "n-pentane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 56.72335871356103,
+      "b_ji": -472.0620922187495,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.13-0.634; 298.15 K: x(ethanol) 0.208-0.563), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 513.7068801866468,
+      "b_ji": 447.5363295609467,
+      "alpha": 0.618,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 50.68391916032225,
+      "b_ji": -399.76977532413025,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethanol) 0.252-0.625), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -100.99188300716756,
+      "b_ji": 332.81470544570556,
+      "alpha": 0.3015,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 130.93525684066472,
+      "b_ji": -281.37716471201554,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethylbenzene",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 522.4209818823849,
+      "b_ji": 543.5390425032408,
+      "alpha": 0.4251,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethylbenzene) 0.312-0.609), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethylbenzene",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -633.7690725670037,
+      "b_ji": 28.731319265112035,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(ethylbenzene) 0.224-0.87; 298.15 K: x(ethylbenzene) 0.26-0.804; 323.15 K: x(ethylbenzene) 0.317-0.71), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethylbenzene",
+      "j": "styrene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -271.6338281044125,
+      "b_ji": 409.618637067908,
+      "alpha": 0.3466,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "ethylbenzene",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -242.80891000606962,
+      "b_ji": 333.6766701846356,
+      "alpha": 0.3005,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "m-xylene",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 413.7147434266813,
+      "b_ji": 498.77152572021686,
+      "alpha": 0.291,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(m-xylene) 0.117-0.848; 298.15 K: x(m-xylene) 0.162-0.798; 323.15 K: x(m-xylene) 0.224-0.73; 348.15 K: x(m-xylene) 0.324-0.625), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "m-xylene",
+      "j": "methanol",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -607.9661387331811,
+      "b_ji": 21.003225923311437,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(m-xylene) 0.2-0.856; 298.15 K: x(m-xylene) 0.236-0.787; 323.15 K: x(m-xylene) 0.291-0.69), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "m-xylene",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -128.28867434813466,
+      "b_ji": 141.92038829108273,
+      "alpha": 0.3085,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "methyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 174.3836842605283,
+      "b_ji": 191.95606004835184,
+      "alpha": 0.2965,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "methyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 35.719528926809396,
+      "b_ji": -307.5834793238908,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "mtbe",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 234.41777460693106,
+      "b_ji": 428.489117964345,
+      "alpha": 0.8178,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "mtbe",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 102.51135438856709,
+      "b_ji": -515.7924735432324,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "n-butane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 530.2784529662481,
+      "b_ji": 724.7115105243408,
+      "alpha": 0.4647,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.1-0.347; 298.15 K: x(methanol) 0.193-0.259), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "n-butyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 165.16480305073762,
+      "b_ji": 227.95930414814788,
+      "alpha": 0.2961,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "n-butyl-acetate",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 87.69189138070188,
+      "b_ji": -449.3457057155949,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 788.2627028342732,
+      "b_ji": 804.3021209571995,
+      "alpha": 0.4408,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.0611-0.386; 298.15 K: x(methanol) 0.094-0.378; 323.15 K: x(methanol) 0.15-0.347), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "n-heptane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 14.083957337703408,
+      "b_ji": -794.3872368106266,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.0477-0.898; 298.15 K: x(methanol) 0.0735-0.888; 323.15 K: x(methanol) 0.105-0.876; 348.15 K: x(methanol) 0.146-0.861; 373.15 K: x(methanol) 0.199-0.84), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 814.9051074938785,
+      "b_ji": 816.3685705411996,
+      "alpha": 0.4365,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.0574-0.399; 298.15 K: x(methanol) 0.0884-0.397; 323.15 K: x(methanol) 0.131-0.381; 348.15 K: x(methanol) 0.221-0.32), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "n-hexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -19.2860899091536,
+      "b_ji": -700.2258041414046,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.0611-0.917; 298.15 K: x(methanol) 0.0884-0.9; 323.15 K: x(methanol) 0.13-0.886; 348.15 K: x(methanol) 0.178-0.866; 373.15 K: x(methanol) 0.239-0.839), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 846.2601630846998,
+      "b_ji": 760.5837665795672,
+      "alpha": 0.4381,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.0884-0.337; 298.15 K: x(methanol) 0.158-0.286; 323.15 K: x(methanol) 0.555-0.9; 348.15 K: x(methanol) 0.568-0.857; 373.15 K: x(methanol) 0.623-0.779), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "n-octane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 16.50112204491138,
+      "b_ji": -785.9763248838216,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.054-0.917; 298.15 K: x(methanol) 0.0831-0.906; 323.15 K: x(methanol) 0.119-0.897; 348.15 K: x(methanol) 0.165-0.884; 373.15 K: x(methanol) 0.221-0.866), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 490.46518281247285,
+      "b_ji": 428.29366749753405,
+      "alpha": 0.2921,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.144-0.881; 298.15 K: x(methanol) 0.192-0.836; 323.15 K: x(methanol) 0.257-0.776; 348.15 K: x(methanol) 0.357-0.68), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "p-xylene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 23.98817323016607,
+      "b_ji": -619.5682173316685,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methanol) 0.136-0.794; 298.15 K: x(methanol) 0.203-0.76; 323.15 K: x(methanol) 0.296-0.707; 348.15 K: x(methanol) 0.472-0.578), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "methanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 85.25308823355346,
+      "b_ji": 192.81253969436676,
+      "alpha": 0.3002,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methanol",
+      "j": "tetrahydrofuran",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 77.11929930384616,
+      "b_ji": -316.8931413375247,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "methyl-acetate",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -418.0719200794337,
+      "b_ji": -23.904085246118424,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(methyl-acetate) 0.0691-0.843; 298.15 K: x(methyl-acetate) 0.0782-0.799; 323.15 K: x(methyl-acetate) 0.094-0.749; 348.15 K: x(methyl-acetate) 0.107-0.696; 373.15 K: x(methyl-acetate) 0.125-0.639), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "n-butyl-acetate",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 462.07726055702034,
+      "b_ji": 1914.7522371970313,
+      "alpha": 0.2951,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(n-butyl-acetate) 0.000305-0.837; 298.15 K: x(n-butyl-acetate) 0.000566-0.839; 323.15 K: x(n-butyl-acetate) 0.000985-0.838; 348.15 K: x(n-butyl-acetate) 0.00161-0.835; 373.15 K: x(n-butyl-acetate) 0.00248-0.831), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "n-butyl-acetate",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -380.64345761686246,
+      "b_ji": -198.38906759874004,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(n-butyl-acetate) 0.00047-0.917; 298.15 K: x(n-butyl-acetate) 0.00068-0.898; 323.15 K: x(n-butyl-acetate) 0.000926-0.876; 348.15 K: x(n-butyl-acetate) 0.00126-0.853; 373.15 K: x(n-butyl-acetate) 0.00161-0.83), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "p-xylene",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -121.65115837933259,
+      "b_ji": 113.9591962000372,
+      "alpha": 0.2874,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "p-xylene",
+      "j": "toluene",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 60.23839747700326,
+      "b_ji": -61.08642303485538,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "phenol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 142.2586524615006,
+      "b_ji": 1200.365483129298,
+      "alpha": 0.4942,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(phenol) 0.00553-0.286; 298.15 K: x(phenol) 0.00962-0.295; 323.15 K: x(phenol) 0.0158-0.294; 348.15 K: x(phenol) 0.0242-0.286; 373.15 K: x(phenol) 0.0373-0.269), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "phenol",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 192.51840787703674,
+      "b_ji": -358.43285706682747,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(phenol) 0.033-0.32; 298.15 K: x(phenol) 0.033-0.346; 323.15 K: x(phenol) 0.033-0.363; 348.15 K: x(phenol) 0.033-0.374; 373.15 K: x(phenol) 0.0351-0.381), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "tetrahydrofuran",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 460.8207717038273,
+      "b_ji": 868.1028598337939,
+      "alpha": 0.4522,
+      "source": "ChemSep NRTL databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(tetrahydrofuran) 0.033-0.471; 298.15 K: x(tetrahydrofuran) 0.0508-0.467; 323.15 K: x(tetrahydrofuran) 0.0735-0.445; 348.15 K: x(tetrahydrofuran) 0.114-0.402; 373.15 K: x(tetrahydrofuran) 0.191-0.313), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "tetrahydrofuran",
+      "j": "water",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -420.32045592096625,
+      "b_ji": -5.29200758013307,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library). The set predicts two liquid phases (273.15 K: x(tetrahydrofuran) 0.033-0.895; 298.15 K: x(tetrahydrofuran) 0.0351-0.87; 323.15 K: x(tetrahydrofuran) 0.0397-0.843; 348.15 K: x(tetrahydrofuran) 0.0422-0.816; 373.15 K: x(tetrahydrofuran) 0.0449-0.788), not checked against data in this import.",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
     }
   ]
 }

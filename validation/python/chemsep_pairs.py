@@ -4,6 +4,8 @@ with the open-source thermo library) for pairs that have no open experimental da
 
     python validation/python/chemsep_pairs.py            # print, no changes
     python validation/python/chemsep_pairs.py --write    # add to src/data/binaries.json
+    python validation/python/chemsep_pairs.py --all [--write]   # every ChemSep pair among
+                                                         # the components that has no set yet
 
 Then run make_sources.py (it names the sets "chemsep" and adds their source_ids).
 
@@ -48,17 +50,64 @@ def record(model, i, j, wanted):
     return rec
 
 
+ALL_WANTED = "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+
+
+def splits_note(rec):
+    """Where the set predicts two liquids at 273.15-373.15 K (convex-hull test of
+    fit_parameters.phase_splits), as a phrase for the record; empty when it predicts one."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from fit_parameters import phase_splits
+    from reference_model import System
+    s = System([rec["i"], rec["j"]], rec["model"], params=[rec])
+    found = []
+    for T in (273.15, 298.15, 323.15, 348.15, 373.15):
+        sp = phase_splits(s, T)
+        if sp:
+            a, b = sp[0]
+            found.append(f"{T:g} K: x({rec['i']}) {a:.3g}-{b:.3g}")
+    return ("The set predicts two liquid phases (" + "; ".join(found) + "), not checked against data in this import.") if found else ""
+
+
+def all_pairs(doc):
+    """Every pair among the components that ChemSep has and Fugacity has no set for, as
+    PAIRS entries."""
+    have = {frozenset((r["i"], r["j"])) for r in doc["pairs"]}
+    ids = sorted(COMPONENTS)
+    out = []
+    for n, a in enumerate(ids):
+        for b in ids[n + 1:]:
+            if frozenset((a, b)) not in have:
+                out.append(dict(pair=(a, b), wanted=ALL_WANTED))
+    return out
+
+
 def main(write):
     doc = json.loads(BIN_FILE.read_text())
-    for p in PAIRS:
+    pairs = all_pairs(doc) if "--all" in sys.argv else PAIRS
+    added = 0
+    for p in pairs:
         i, j = p["pair"]
         for model in ("NRTL", "UNIQUAC"):
             if any(r["model"] == model and {r["i"], r["j"]} == {i, j} for r in doc["pairs"]):
                 print(f"{model} {i} + {j}: already has a set, left alone")
                 continue
-            rec = record(model, i, j, p["wanted"])
-            print({k: v for k, v in rec.items() if k not in ("source", "data_wanted")})
+            if model == "UNIQUAC" and any("uniquac" not in COMPONENTS[c] for c in (i, j)):
+                continue   # no UNIQUAC r and q for a component (propylene glycol)
+            try:
+                rec = record(model, i, j, p["wanted"])
+            except SystemExit:
+                if "--all" in sys.argv:
+                    continue   # not in the databank for this model
+                raise
+            if "--all" in sys.argv:
+                note = splits_note(rec)
+                if note:
+                    rec["source"] += " " + note
+            print({k: v for k, v in rec.items() if k not in ("source", "data_wanted")}, rec["source"][60:])
             doc["pairs"].append(rec)
+            added += 1
+    print(f"{added} sets added")
     if write:
         BIN_FILE.write_text(json.dumps(doc, indent=2) + "\n")
         print(f"updated {BIN_FILE}")

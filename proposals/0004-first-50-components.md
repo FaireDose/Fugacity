@@ -227,5 +227,12 @@ reported per property) and the existing pair workflow for binaries:
    uses the fit's vapour model (unchanged for pairs without acetic acid). PR and SRK k_ij for
    ethanol + ethyl acetate; none for the acetic acid pairs, because a cubic equation of state
    has no vapour dimerization.
+   Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
+   of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
+   had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states
+   where the set predicts two liquid phases at 273-373 K, not yet checked against data; the
+   priority-1 pairs among them are fitted to open data benchmark by benchmark. The check
+   exposed a bug in the engine's tangent-plane test (an unconverged trial phase could report a
+   false liquid split), fixed in the same pull request.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
    is available.
