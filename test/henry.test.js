@@ -5,13 +5,17 @@ import { henry, henryInfo, gasSolubility, HENRY_GASES } from "../src/index.js";
 
 // IAPWS G7-04 (2004), table 6: check values of ln(kH / 1 GPa) for gases in H2O.
 // http://www.iapws.org/relguide/HenGuide.html. Values above the gas's Tmax are omitted
-// (C2H6 at 500 and 600 K: Tmax = 473.46 K).
+// (C2H6 at 500 and 600 K: Tmax = 473.46 K; Ar, CO and H2S at 600 K: Tmax = 568.36, 588.67 and 533.09 K).
 const IAPWS_CHECK = {
   hydrogen: { 300: 1.9702, 400: 1.8464, 500: 1.0513, 600: -0.1848 },
   nitrogen: { 300: 2.1716, 400: 2.3509, 500: 1.4842, 600: 0.1647 },
   oxygen: { 300: 1.5024, 400: 1.8832, 500: 1.1630, 600: -0.0276 },
   methane: { 300: 1.4034, 400: 1.7946, 500: 1.0342, 600: -0.2209 },
   ethane: { 300: 1.1418, 400: 1.8495 },
+  argon: { 300: 1.4061, 400: 1.8079, 500: 1.1536 },
+  "carbon monoxide": { 300: 1.7652, 400: 1.9939, 500: 1.1250 },
+  "carbon dioxide": { 300: -1.7508, 400: -0.5450, 500: -0.6524, 600: -1.3489 },
+  "hydrogen sulfide": { 300: -2.8784, 400: -1.7083, 500: -1.6074 },
 };
 
 test("Henry's constants reproduce the IAPWS G7-04 check values (table 6)", () => {
@@ -71,7 +75,7 @@ test("Henry's constants agree with independent measurements (Sander compilation)
 });
 
 test("gas solubility x = p / H, with range checks and sources", () => {
-  assert.deepEqual(HENRY_GASES, ["hydrogen", "nitrogen", "oxygen", "methane", "ethane", "ethylene"]);
+  assert.deepEqual(HENRY_GASES, ["hydrogen", "nitrogen", "oxygen", "methane", "ethane", "ethylene", "argon", "carbon-monoxide", "carbon-dioxide", "hydrogen-sulfide"]);
   const p = 21.0; // kPa
   assert.equal(gasSolubility("O2", 298.15, p), p / henry("oxygen", "water", 298.15));
   assert.ok(gasSolubility("oxygen", 298.15, p) > gasSolubility("nitrogen", 298.15, p)); // O2 more soluble than N2

@@ -64,7 +64,7 @@ def main():
     cas = {c["cas"]: k for k, c in comps.items()}
     pr, srk = parse(pr_path, cas), parse(srk_path, cas)
     kept = {(e["i"], e["j"]): e["page"] for e in parse(THERMO_PR, cas)}
-    print(f"pr.ipd: {len(pr)} lines, srk.ipd: {len(srk)} lines among the 16 components")
+    print(f"pr.ipd: {len(pr)} lines, srk.ipd: {len(srk)} lines among the {len(comps)} components")
     pairs = []
     for model, rows, fname in (("PR", pr, "pr.ipd"), ("SRK", srk, "srk.ipd")):
         keys = []
@@ -73,10 +73,16 @@ def main():
                 keys.append((r["i"], r["j"]))
         for key in keys:
             entries = [r for r in rows if (r["i"], r["j"]) == key]
-            page = kept[key]
+            page = kept.get(key, kept.get(key[::-1]))
             chosen = [r for r in entries if r["page"] == page]
-            assert len(chosen) == 1, (model, key, page)
-            c = chosen[0]
+            if len(chosen) == 1:
+                c, rule = chosen[0], None
+            elif len(entries) == 1:
+                c, rule = entries[0], "the only entry of the file for this pair (the pair is not in the thermo library's copy)"
+            else:
+                # not in the thermo library's copy (or not on the same page): the file's first
+                # entry, and the choice is stated in the record
+                c, rule = entries[0], "the first of the file's entries for this pair (the pair is not in the thermo library's copy, which decides the choice elsewhere)"
             pairs.append({
                 "model": model, "i": key[0], "j": key[1], "kij": c["kij"], "tier": "databank",
                 "source": {
@@ -85,6 +91,7 @@ def main():
                     "conditions": c["comment"],
                     "entries_in_file": len(entries),
                     **({"T_range_K": t_range(c["comment"])} if t_range(c["comment"]) else {}),
+                    **({"selection": rule} if rule else {}),
                 },
                 "alternatives": [f"{r['printed']} ({r['comment']})" for r in entries if r is not c],
             })

@@ -227,6 +227,12 @@ reported per property) and the existing pair workflow for binaries:
    uses the fit's vapour model (unchanged for pairs without acetic acid). PR and SRK k_ij for
    ethanol + ethyl acetate; none for the acetic acid pairs, because a cubic equation of state
    has no vapour dimerization.
+   Databank coverage of the gas benchmarks (methanol synthesis, air separation, light
+   hydrocarbons, aromatics): the ChemSep PR and SRK k_ij of every pair among the 49
+   components (122 pairs, up from 21; the existing values unchanged), and IAPWS G7-04 Henry
+   constants for argon, carbon monoxide, carbon dioxide and hydrogen sulfide in water, checked
+   against the guideline's table 6. Pairs without a databank value are fitted to open data
+   benchmark by benchmark.
    Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
    of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
    had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states
