@@ -1,0 +1,19 @@
+{
+ "_about": "Ethylene glycol (1) + cyclohexane (2): mutual solubilities at 280.15, 303.15 and 333.15 K and 101 kPa, from Lindemann et al. (2014). Rows: temperature in K, mole fraction of ethylene glycol in the glycol-rich liquid (I) and in the cyclohexane-rich liquid (II).",
+ "source": {
+  "citation": "C. Lindemann, P. Duchet-Suchaux, R. Abou Naccoul, I. Mokbel, V. Malicet, J. Jose, Liquid-Liquid Equilibria at Three Temperatures (between 280.15 K and 333.15 K) of Binary, Ternary, and Quaternary Systems Involving Monoethylene Glycol, Water, Cyclohexane, para-Xylene, trans- and cis-Dimethylcyclohexane, and trans- and cis-Decahydronaphthalene, J. Chem. Eng. Data 59 (2014) 3749-3755",
+  "doi": "10.1021/je500625r",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je500625r.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1 (ethylene glycol + cyclohexane + water): the three rows without water (x of ethylene glycol in liquid mixture 1 = 0.99238, 0.99526, 0.99628; there the two fractions of each liquid add up to 1). The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethylene-glycol", "cyclohexane"],
+ "kind": "lle",
+ "columns": ["T_K", "x_1_I", "x_1_II"],
+ "rows": [
+  [280.15, 0.99628, 2.61e-05],
+  [303.15, 0.99526, 0.000134],
+  [333.15, 0.99238, 0.000523]
+ ],
+ "notes": "The record stores these binary rows inside the ternary set with water; the water fraction of both liquids is zero there (x_EG + x_cyclohexane = 1 in each liquid, checked). Expanded uncertainty of x_1_II as stored: equal to the value itself at 280.15 K (2.61e-05), 6.3e-05 and 7.4e-05 at 303.15 and 333.15 K (at 280.15 K the stored uncertainty is as large as the value). Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

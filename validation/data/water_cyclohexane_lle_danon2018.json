@@ -1,0 +1,17 @@
+{
+ "_about": "Water (1) + cyclohexane (2): mutual solubilities at 295 K and 100 kPa, the binary reference point of Danon et al. (2018). Rows: temperature in K, mole fraction of cyclohexane in the water-rich liquid, mole fraction of water in the cyclohexane-rich liquid.",
+ "source": {
+  "citation": "R. Danon, M. C. Kroon, F. Banat, Mutual Solubilities of Cyclohexane and Water in Aqueous Methyldiethanolamine/Cyclohexane Liquid-Liquid Equilibria, J. Chem. Eng. Data 63 (2018) 1123-1131",
+  "doi": "10.1021/acs.jced.7b00873",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.7b00873.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3 (mole fraction of cyclohexane in liquid mixture 1, the water-rich liquid) and 4 (mole fraction of water in liquid mixture 2, the cyclohexane-rich liquid), T = 295 K, P = 100 kPa. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "cyclohexane"],
+ "kind": "lle",
+ "columns": ["T_K", "x_2_I", "x_1_II"],
+ "rows": [
+  [295.0, 1.67e-05, 0.000252]
+ ],
+ "notes": "Liquid I is the water-rich liquid, liquid II the cyclohexane-rich liquid; x_1 is the mole fraction of water, x_2 of cyclohexane. Expanded uncertainties in the record: 6.7e-06 (cyclohexane in water) and 6.6e-05 (water in cyclohexane). Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

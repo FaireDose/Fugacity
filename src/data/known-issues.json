@@ -54,6 +54,20 @@
       "source_ids": [
         "wikipedia-azeotrope-tables"
       ]
+    },
+    {
+      "components": [
+        "ethanol",
+        "cyclohexane"
+      ],
+      "model": "UNIQUAC",
+      "kind": "phase-split",
+      "message": "The UNIQUAC set for ethanol + cyclohexane (ChemSep databank) predicts two liquid phases at 323-338 K (at 338 K between ethanol mole fractions 0.30 and 0.55), so at 1 atm it boils as two liquids. The open excess-enthalpy data of Lien et al. (2003) were measured as one liquid over the whole composition range at 323.15 K, and the 1-atm azeotrope (64.9 °C, 69.5 wt % cyclohexane) is tabulated without liquid layers. Use NRTL for this pair. No open binary vapour-liquid data was found to refit UNIQUAC; a refit to the azeotrope alone also splits.",
+      "reference": "Lien, Lin, Lee, J. Chem. Eng. Data 48 (2003) 359, excess enthalpy at 323.15 K (data public in the NIST TRC ThermoML Archive); azeotrope from Wikipedia 'Azeotrope tables' (Ponton, Azeotrope Databank, 2001)",
+      "source_ids": [
+        "lien2003-ethanol-cyclohexane",
+        "wikipedia-azeotrope-tables"
+      ]
     }
   ]
 }

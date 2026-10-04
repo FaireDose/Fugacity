@@ -101,10 +101,10 @@ test("prefer: per pair the first tier that has a set; otherwise the default, wit
   assert.equal(by["Water + Ethanol"].set, "chemsep");
   assert.equal(by["Water + Ethanol"].chosenBy, "prefer");
   assert.equal(by["Ethanol + Ethylene glycol"].set, "chemsep");
-  assert.equal(by["Ethanol + Ethylene glycol"].chosenBy, "prefer", "databank default");
+  assert.equal(by["Ethanol + Ethylene glycol"].chosenBy, "prefer", "databank set kept as an alternative");
   const weg = s.info.pairs.find(p => p.pair.includes("Ethylene glycol") && p.pair.includes("Water"));
   assert.equal(weg.tier, "fitted", "no databank set for water + ethylene glycol: the default");
-  assert.match(weg.note, /No databank NRTL set for Water \+ Ethylene glycol: the default set "fitted-wikipedia" \(fitted\) is used/);
+  assert.match(weg.note, /No databank NRTL set for Water \+ Ethylene glycol: the default set "fitted-kamihama2012" \(fitted\) is used/);
   assert.ok(s.bubbleT([0.3, 0.3, 0.4], 101.325).warnings.includes(weg.note), "the note travels with the results");
   // fitted first = today's defaults for the current data
   const f = system({ components: MAC, model: "NRTL", prefer: ["fitted", "databank"] });

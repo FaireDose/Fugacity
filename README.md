@@ -53,7 +53,7 @@ ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 | **Components** | liquids: water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic acid, ethylene glycol; gases: oxygen, nitrogen, hydrogen, methane, ethane, ethylene |
 | **Pure-component properties** | vapour pressure, liquid density, heat capacity (liquid and ideal gas), heat of vaporization, viscosity and thermal conductivity (liquid and vapour), surface tension, enthalpy; each with its source, range and fit deviation |
 | **Water and steam** | IAPWS-IF97 (all regions), IAPWS viscosity (2008) and thermal conductivity (2011) |
-| **Binary parameters** | NRTL/UNIQUAC for 27 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 21 pairs; Henry constants for the 6 gases in water |
+| **Binary parameters** | NRTL/UNIQUAC for 30 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 24 pairs; Henry constants for the 6 gases in water |
 | **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
 | **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check, with every model (activity models and PR/SRK; next release); flash (T-P, P-H, P-VF, T-VF, heat duty) with vapour, liquid, two liquids, or vapour + two liquids (NRTL, UNIQUAC; next release); with PR/SRK bubble and dew points with a stability test; gas solubility in water |
 | **Interface** | Workbench with a ribbon (`app`): components; T-x-y, P-x-y, ternary map, azeotropes and phase envelope, each with the model chosen in the toolbar (NRTL, UNIQUAC or ideal with a vapour model, or Peng–Robinson/SRK); a Flash workspace with a stream table and CSV export (next release); gas solubility, property curves, steam tables, units, mol/wt % (the diagrams are drawn in the chosen basis); a button hides the background layers. Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
@@ -145,7 +145,7 @@ for some systems (acetone + chloroform + methanol); no ternary VLE data exist ye
 water + acetic acid + ethylene glycol; acetic acid and alcohols or glycols slowly
 esterify, which the model does not include. Cubic equations of state give poor liquid
 densities and underestimate the residual enthalpy of polar vapours (methanol, acetone) by
-27–45 %; 99 of the 120 pairs have no k_ij yet (treated as 0, with a warning).
+27–45 %; most pairs have no k_ij yet (treated as 0, with a warning).
 Liquid properties are at saturation (pressure effect neglected); acetic acid liquid
 enthalpy is not given until association is included.
 

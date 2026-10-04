@@ -38,15 +38,16 @@
       "model": "NRTL",
       "i": "water",
       "j": "ethylene-glycol",
-      "set": "fitted-wikipedia",
+      "set": "fitted-kamihama2012",
       "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -474.8421797252627,
-      "b_ji": 684.7935543141364,
+      "b_ij": 483.87919616114965,
+      "b_ji": -386.9808195453047,
       "alpha": 0.3,
-      "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 3.0 K, 0.010 in y.",
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/water_ethylene-glycol_101kPa_kamihama2012.json); checked against the older compilation on the Wikipedia ethylene glycol data page (validation/data/water_ethylene_glycol_760mmHg.json), to which it was fitted before. AAD 0.09 K in T, 0.0004 in y (max 0.20 K, 0.0012). Check against water_ethylene_glycol_760mmHg.json: AAD 3.13 K in T, 0.0135 in y (max 7.20 K, 0.0324). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.001 (passes, < 0.01).",
       "source_ids": [
+        "kamihama2012-ethanol-water",
         "wikipedia-ethylene-glycol-data"
       ],
       "tier": "fitted"
@@ -55,14 +56,15 @@
       "model": "UNIQUAC",
       "i": "water",
       "j": "ethylene-glycol",
-      "set": "fitted-wikipedia",
+      "set": "fitted-kamihama2012",
       "default": true,
       "a_ij": 0.0,
       "a_ji": 0.0,
-      "b_ij": -518.5008905873552,
-      "b_ji": 427.81623806117994,
-      "source": "Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page). AAD 2.6 K, 0.011 in y.",
+      "b_ij": 7.1446703751124145,
+      "b_ji": 136.6689926436286,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/water_ethylene-glycol_101kPa_kamihama2012.json); checked against the older compilation on the Wikipedia ethylene glycol data page (validation/data/water_ethylene_glycol_760mmHg.json), to which it was fitted before. AAD 0.08 K in T, 0.0005 in y (max 0.18 K, 0.0025). Check against water_ethylene_glycol_760mmHg.json: AAD 3.14 K in T, 0.0134 in y (max 7.22 K, 0.0321). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.001 (passes, < 0.01).",
       "source_ids": [
+        "kamihama2012-ethanol-water",
         "wikipedia-ethylene-glycol-data"
       ],
       "tier": "fitted"
@@ -150,6 +152,35 @@
         "chemsep-ipd"
       ],
       "tier": "databank"
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "ethanol",
+      "set": "fitted-kamihama2012-etal",
+      "default": false,
+      "a_ij": 4.87620987811259,
+      "a_ji": -2.7733672774205225,
+      "b_ij": -1299.3501767674184,
+      "b_ji": 1007.7806174043064,
+      "alpha": 0.3,
+      "source": "Fitted to the 21 T-x-y points at 101.3 kPa of Kamihama et al., J. Chem. Eng. Data 57 (2012) 339 together with excess enthalpies at 298.15 and 323.15 K (Nagamachi, Francesconi, J. Chem. Thermodyn. 38 (2006) 461) and at 423.2 K, 5 MPa (Fang et al., J. Chem. Thermodyn. 78 (2014) 204), all data public in the NIST TRC ThermoML Archive (validation/data/ethanol_water_101kPa.json, ethanol_water_HE_nagamachi2006.json, water_ethanol_HE_fang2014.json). Not the default set: it follows the excess enthalpy better and the T-x-y data worse than the default set fitted to T-x-y only. AAD 0.94 K in T, 0.0198 in y (max 3.04 K, 0.0718); excess enthalpy at 298.15, 323.15, 423.2 K: AAD 141 J/mol (max 308 J/mol; data -770 to 910 J/mol). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01). Temperature range of the data: 298.15-423.2 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "kamihama2012-ethanol-water",
+        "nagamachi2006-ethanol-water",
+        "fang2014-water-ethanol"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        298.15,
+        423.2
+      ],
+      "valid": {
+        "T_K": [
+          298.15,
+          423.2
+        ]
+      }
     },
     {
       "model": "NRTL",
@@ -254,10 +285,27 @@
     },
     {
       "model": "NRTL",
+      "i": "ethanol",
+      "j": "ethylene-glycol",
+      "set": "fitted-kamihama2012",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 138.35960675856887,
+      "b_ji": 79.25281598878736,
+      "alpha": 0.3,
+      "source": "Fitted to 15 T-x-y points at 101.3 kPa (x of ethanol 0.18-0.90) from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_ethylene-glycol_101kPa.json). AAD 0.06 K in T, 0.0006 in y (max 0.17 K, 0.0010). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.000 (passes, < 0.01).",
+      "source_ids": [
+        "kamihama2012-ethanol-water"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
       "i": "ethylene-glycol",
       "j": "ethanol",
       "set": "chemsep",
-      "default": true,
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -102.54059144346337,
@@ -678,6 +726,34 @@
     {
       "model": "UNIQUAC",
       "i": "water",
+      "j": "ethanol",
+      "set": "fitted-kamihama2012-etal",
+      "default": false,
+      "a_ij": -4.2591239172215625,
+      "a_ji": 1.7333736933857289,
+      "b_ij": 1052.1004430242301,
+      "b_ji": -437.91025615981385,
+      "source": "Fitted to the 21 T-x-y points at 101.3 kPa of Kamihama et al., J. Chem. Eng. Data 57 (2012) 339 together with excess enthalpies at 298.15 and 323.15 K (Nagamachi, Francesconi, J. Chem. Thermodyn. 38 (2006) 461) and at 423.2 K, 5 MPa (Fang et al., J. Chem. Thermodyn. 78 (2014) 204), all data public in the NIST TRC ThermoML Archive (validation/data/ethanol_water_101kPa.json, ethanol_water_HE_nagamachi2006.json, water_ethanol_HE_fang2014.json). Not the default set: it follows the excess enthalpy better and the T-x-y data worse than the default set fitted to T-x-y only. AAD 0.79 K in T, 0.0177 in y (max 1.89 K, 0.0529); excess enthalpy at 298.15, 323.15, 423.2 K: AAD 65 J/mol (max 166 J/mol; data -770 to 910 J/mol). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01). Temperature range of the data: 298.15-423.2 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "kamihama2012-ethanol-water",
+        "nagamachi2006-ethanol-water",
+        "fang2014-water-ethanol"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        298.15,
+        423.2
+      ],
+      "valid": {
+        "T_K": [
+          298.15,
+          423.2
+        ]
+      }
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
       "j": "acetone",
       "set": "chemsep",
       "default": true,
@@ -773,10 +849,26 @@
     },
     {
       "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "ethylene-glycol",
+      "set": "fitted-kamihama2012",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -19.521128341652425,
+      "b_ji": -85.72921828370775,
+      "source": "Fitted to 15 T-x-y points at 101.3 kPa (x of ethanol 0.18-0.90) from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 (data public in the NIST TRC ThermoML Archive; validation/data/ethanol_ethylene-glycol_101kPa.json). AAD 0.06 K in T, 0.0006 in y (max 0.17 K, 0.0010). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.000 (passes, < 0.01).",
+      "source_ids": [
+        "kamihama2012-ethanol-water"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
       "i": "ethylene-glycol",
       "j": "ethanol",
       "set": "chemsep",
-      "default": true,
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 100.72276120065241,
@@ -1123,6 +1215,157 @@
         "chemsep-ipd"
       ],
       "tier": "databank"
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "cyclohexane",
+      "set": "fitted-marche2006-etal",
+      "default": true,
+      "a_ij": 4.221576212159018,
+      "a_ji": -7.83067205247978,
+      "b_ij": 1551.0773883085922,
+      "b_ji": 4243.078218276431,
+      "alpha": 0.2,
+      "source": "Fitted (NRTL with alpha 0.2: with 0.3 the fitted set predicts a spurious third liquid at 270-340 K) to mutual solubilities: water in cyclohexane at 303-446 K (Marche, Ferronato, de Hemptinne, Jose, J. Chem. Eng. Data 51 (2006) 355), cyclohexane in water at 343-424 K and 1700 kPa (Marche, Delepine, Ferronato, Jose, J. Chem. Eng. Data 48 (2003) 398) and both at 295 K (Danon, Kroon, Banat, J. Chem. Eng. Data 63 (2018) 1123), all data public in the NIST TRC ThermoML Archive (validation/data/water_cyclohexane_lle_*.json); checked against the heterogeneous azeotrope at 101.325 kPa, 69.8 degC and 91.5 wt % cyclohexane (CRC Handbook 44th ed., via Wikipedia 'Azeotrope tables'). liquid-liquid: AAD 0.0000 in x of water in the water-rich liquid, 0.0004 in the cyclohexane-rich liquid; mole fraction of the dissolved (minor) component: AARD 20 % in the water-rich liquid (6 points, max 30 %), 14 % in the cyclohexane-rich liquid (8 points, max 39 %). Check against water_cyclohexane_azeotrope_101kPa.json: heterogeneous azeotrope at 101.325 kPa: 69.37 degC, vapour x of water 0.300, liquids 1.000 / 0.002 (target 69.80 degC, 0.303). Temperature range of the data: 295.0-446.15 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "marche2006-water-cyclohexane",
+        "marche2003-water-cyclohexane",
+        "danon2018-water-cyclohexane",
+        "wikipedia-azeotrope-tables"
+      ],
+      "tier": "fitted",
+      "data_wanted": "open vapour-liquid or vapour-liquid-liquid data for the binary at 101.3 kPa (the 1-atm target here is a handbook azeotrope, used as a check only), and more solubility data below 343 K for the water-rich liquid.",
+      "T_range_K": [
+        295.0,
+        446.15
+      ],
+      "valid": {
+        "T_K": [
+          295.0,
+          446.15
+        ]
+      }
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "cyclohexane",
+      "set": "fitted-marche2006-etal",
+      "default": true,
+      "a_ij": -0.4446563617696057,
+      "a_ji": 5.1544460976961,
+      "b_ij": -394.9306021311917,
+      "b_ji": -2863.1164039292316,
+      "source": "Fitted (NRTL with alpha 0.2: with 0.3 the fitted set predicts a spurious third liquid at 270-340 K) to mutual solubilities: water in cyclohexane at 303-446 K (Marche, Ferronato, de Hemptinne, Jose, J. Chem. Eng. Data 51 (2006) 355), cyclohexane in water at 343-424 K and 1700 kPa (Marche, Delepine, Ferronato, Jose, J. Chem. Eng. Data 48 (2003) 398) and both at 295 K (Danon, Kroon, Banat, J. Chem. Eng. Data 63 (2018) 1123), all data public in the NIST TRC ThermoML Archive (validation/data/water_cyclohexane_lle_*.json); checked against the heterogeneous azeotrope at 101.325 kPa, 69.8 degC and 91.5 wt % cyclohexane (CRC Handbook 44th ed., via Wikipedia 'Azeotrope tables'). liquid-liquid: AAD 0.0000 in x of water in the water-rich liquid, 0.0004 in the cyclohexane-rich liquid; mole fraction of the dissolved (minor) component: AARD 21 % in the water-rich liquid (6 points, max 34 %), 14 % in the cyclohexane-rich liquid (8 points, max 38 %). Check against water_cyclohexane_azeotrope_101kPa.json: heterogeneous azeotrope at 101.325 kPa: 69.37 degC, vapour x of water 0.300, liquids 1.000 / 0.002 (target 69.80 degC, 0.303). Temperature range of the data: 295.0-446.15 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "marche2006-water-cyclohexane",
+        "marche2003-water-cyclohexane",
+        "danon2018-water-cyclohexane",
+        "wikipedia-azeotrope-tables"
+      ],
+      "tier": "fitted",
+      "data_wanted": "open vapour-liquid or vapour-liquid-liquid data for the binary at 101.3 kPa (the 1-atm target here is a handbook azeotrope, used as a check only), and more solubility data below 343 K for the water-rich liquid.",
+      "T_range_K": [
+        295.0,
+        446.15
+      ],
+      "valid": {
+        "T_K": [
+          295.0,
+          446.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "ethylene-glycol",
+      "j": "cyclohexane",
+      "set": "fitted-lindemann2014",
+      "default": true,
+      "a_ij": -1.4695751732055466,
+      "a_ji": -9.863151543503788,
+      "b_ij": 1882.0226466893594,
+      "b_ji": 5395.611402598216,
+      "alpha": 0.3,
+      "source": "Fitted to mutual solubilities at 280.15, 303.15 and 333.15 K from Lindemann, Duchet-Suchaux, Abou Naccoul, Mokbel, Malicet, Jose, J. Chem. Eng. Data 59 (2014) 3749 (data public in the NIST TRC ThermoML Archive; validation/data/ethylene-glycol_cyclohexane_lle_lindemann2014.json). liquid-liquid: AAD 0.0003 in x of ethylene-glycol in the ethylene-glycol-rich liquid, 0.0000 in the cyclohexane-rich liquid; mole fraction of the dissolved (minor) component: AARD 5 % in the ethylene-glycol-rich liquid (3 points, max 8 %), 10 % in the cyclohexane-rich liquid (3 points, max 14 %). Temperature range of the data: 280.15-333.15 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "lindemann2014-ethylene-glycol-cyclohexane"
+      ],
+      "tier": "fitted",
+      "data_wanted": "open vapour-liquid data for the binary (none found); the parameters rest on three mutual-solubility points at 280-333 K.",
+      "T_range_K": [
+        280.15,
+        333.15
+      ],
+      "valid": {
+        "T_K": [
+          280.15,
+          333.15
+        ]
+      }
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethylene-glycol",
+      "j": "cyclohexane",
+      "set": "fitted-lindemann2014",
+      "default": true,
+      "a_ij": 0.3135932173917591,
+      "a_ji": 3.637818551226918,
+      "b_ij": -299.3039121977496,
+      "b_ji": -2174.295789473961,
+      "source": "Fitted to mutual solubilities at 280.15, 303.15 and 333.15 K from Lindemann, Duchet-Suchaux, Abou Naccoul, Mokbel, Malicet, Jose, J. Chem. Eng. Data 59 (2014) 3749 (data public in the NIST TRC ThermoML Archive; validation/data/ethylene-glycol_cyclohexane_lle_lindemann2014.json). liquid-liquid: AAD 0.0002 in x of ethylene-glycol in the ethylene-glycol-rich liquid, 0.0000 in the cyclohexane-rich liquid; mole fraction of the dissolved (minor) component: AARD 3 % in the ethylene-glycol-rich liquid (3 points, max 5 %), 9 % in the cyclohexane-rich liquid (3 points, max 13 %). Temperature range of the data: 280.15-333.15 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "lindemann2014-ethylene-glycol-cyclohexane"
+      ],
+      "tier": "fitted",
+      "data_wanted": "open vapour-liquid data for the binary (none found); the parameters rest on three mutual-solubility points at 280-333 K.",
+      "T_range_K": [
+        280.15,
+        333.15
+      ],
+      "valid": {
+        "T_K": [
+          280.15,
+          333.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "ethanol",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 383.33950658953546,
+      "b_ji": 701.3870335369063,
+      "alpha": 0.4376,
+      "source": "ChemSep NRTL databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open binary vapour-liquid data (isobaric T-x-y near 101.3 kPa or isothermal P-x-y) and liquid-liquid or miscibility data below 323 K. Searched: NIST TRC ThermoML Archive (ternary sets with water only: Gomis et al., Fluid Phase Equilib. 235 (2005) 7; Antosik et al., J. Chem. Eng. Data 49 (2004) 7; Cui et al., J. Chem. Eng. Data 49 (2004) 212), Crossref, open repositories. Open checks: the 1-atm azeotrope (64.9 degC, 69.5 wt % cyclohexane; validation/data/ethanol_cyclohexane_azeotrope_101kPa.json) and the excess enthalpy at 323.15 K, one liquid over the whole range (Lien et al., J. Chem. Eng. Data 48 (2003) 359; validation/data/ethanol_cyclohexane_HE_lien2003.json). A fit to these two alone predicts two liquids at 323 K, against the second; NRTL: the databank set passes both checks but predicts two liquids below about 315 K, not checked against data; UNIQUAC: the databank set predicts two liquids at 323-338 K (src/data/known-issues.json)"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "cyclohexane",
+      "set": "chemsep",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 43.12138504504274,
+      "b_ji": -465.56346484119314,
+      "source": "ChemSep UNIQUAC databank (via the open-source thermo library).",
+      "source_ids": [
+        "chemsep-ipd"
+      ],
+      "tier": "databank",
+      "data_wanted": "open binary vapour-liquid data (isobaric T-x-y near 101.3 kPa or isothermal P-x-y) and liquid-liquid or miscibility data below 323 K. Searched: NIST TRC ThermoML Archive (ternary sets with water only: Gomis et al., Fluid Phase Equilib. 235 (2005) 7; Antosik et al., J. Chem. Eng. Data 49 (2004) 7; Cui et al., J. Chem. Eng. Data 49 (2004) 212), Crossref, open repositories. Open checks: the 1-atm azeotrope (64.9 degC, 69.5 wt % cyclohexane; validation/data/ethanol_cyclohexane_azeotrope_101kPa.json) and the excess enthalpy at 323.15 K, one liquid over the whole range (Lien et al., J. Chem. Eng. Data 48 (2003) 359; validation/data/ethanol_cyclohexane_HE_lien2003.json). A fit to these two alone predicts two liquids at 323 K, against the second; NRTL: the databank set passes both checks but predicts two liquids below about 315 K, not checked against data; UNIQUAC: the databank set predicts two liquids at 323-338 K (src/data/known-issues.json)"
     }
   ]
 }

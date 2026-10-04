@@ -1161,6 +1161,180 @@
     "chemsep-eos-ipd"
    ],
    "alternatives": []
+  },
+  {
+   "model": "PR",
+   "i": "ethanol",
+   "j": "water",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.0931,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.72 K in T (max 1.47 K), 0.0222 in y (max 0.0748)",
+    "data": [
+     "validation/data/ethanol_water_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 351.26-368.18 K",
+    "T_range_K": [
+     351.26,
+     368.18
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     351.26,
+     368.18
+    ]
+   }
+  },
+  {
+   "model": "SRK",
+   "i": "ethanol",
+   "j": "water",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.086,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.12 K in T (max 2.08 K), 0.0257 in y (max 0.1119)",
+    "data": [
+     "validation/data/ethanol_water_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 351.26-368.18 K",
+    "T_range_K": [
+     351.26,
+     368.18
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     351.26,
+     368.18
+    ]
+   }
+  },
+  {
+   "model": "PR",
+   "i": "ethanol",
+   "j": "ethylene-glycol",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.0415,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.31 K in T (max 0.83 K), 0.0100 in y (max 0.0286)",
+    "data": [
+     "validation/data/ethanol_ethylene-glycol_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 354-389.79 K",
+    "T_range_K": [
+     354.0,
+     389.79
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     354.0,
+     389.79
+    ]
+   }
+  },
+  {
+   "model": "SRK",
+   "i": "ethanol",
+   "j": "ethylene-glycol",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.0425,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.25 K in T (max 0.83 K), 0.0079 in y (max 0.0211)",
+    "data": [
+     "validation/data/ethanol_ethylene-glycol_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 354-389.79 K",
+    "T_range_K": [
+     354.0,
+     389.79
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     354.0,
+     389.79
+    ]
+   }
+  },
+  {
+   "model": "PR",
+   "i": "water",
+   "j": "ethylene-glycol",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.0371,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.88 K in T (max 8.76 K), 0.0485 in y (max 0.1138)",
+    "data": [
+     "validation/data/water_ethylene-glycol_101kPa_kamihama2012.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 376.05-462.57 K",
+    "T_range_K": [
+     376.05,
+     462.57
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     376.05,
+     462.57
+    ]
+   }
+  },
+  {
+   "model": "SRK",
+   "i": "water",
+   "j": "ethylene-glycol",
+   "set": "fitted-kamihama2012",
+   "default": true,
+   "kij": -0.0311,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 2.01 K in T (max 7.98 K), 0.0404 in y (max 0.0959)",
+    "data": [
+     "validation/data/water_ethylene-glycol_101kPa_kamihama2012.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 376.05-462.57 K",
+    "T_range_K": [
+     376.05,
+     462.57
+    ]
+   },
+   "source_ids": [
+    "kamihama2012-ethanol-water"
+   ],
+   "valid": {
+    "T_K": [
+     376.05,
+     462.57
+    ]
+   }
   }
  ]
 }

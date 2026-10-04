@@ -1,0 +1,36 @@
+{
+ "_about": "Water (1) + ethylene-glycol (2): isobaric T-x-y at 101.3 kPa, binary data set from Kamihama et al. (2012). Rows as in the ThermoML Archive record: liquid mole fraction of water, boiling temperature in K, vapour mole fraction of water.",
+ "source": {
+  "citation": "N. Kamihama, H. Matsuda, K. Kurihara, K. Tochigi, S. Oba, Isobaric Vapor-Liquid Equilibria for Ethanol + Water + Ethylene Glycol and Its Constituent Three Binary Systems, J. Chem. Eng. Data 57 (2012) 339-344",
+  "doi": "10.1021/je2008704",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je2008704.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 6 (boiling temperature) and 7 (vapour mole fraction): the binary water + ethylene glycol set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "ethylene-glycol"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.02, 462.57, 0.227],
+  [0.063, 448.77, 0.527],
+  [0.104, 438.69, 0.681],
+  [0.128, 433.6, 0.742],
+  [0.167, 426.7, 0.81],
+  [0.197, 422.03, 0.848],
+  [0.25, 415.27, 0.892],
+  [0.279, 411.98, 0.91],
+  [0.317, 408.0, 0.928],
+  [0.346, 405.33, 0.939],
+  [0.409, 400.18, 0.956],
+  [0.444, 397.27, 0.964],
+  [0.501, 393.53, 0.973],
+  [0.557, 390.22, 0.98],
+  [0.674, 384.51, 0.989],
+  [0.747, 381.51, 0.993],
+  [0.797, 379.47, 0.995],
+  [0.861, 377.3, 0.997],
+  [0.9, 376.05, 0.998]
+ ],
+ "notes": "Expanded uncertainties per point in the ThermoML record: T from 4.49 K to 0.46 K, y_1 from 0.099 to 0.002. No pure-component rows in the set. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

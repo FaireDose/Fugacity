@@ -1,0 +1,19 @@
+{
+ "_about": "Water (1) + cyclohexane (2): heterogeneous (two-liquid) azeotrope at 101.325 kPa, as tabulated in the Wikipedia 'Azeotrope tables' article. Row as printed: azeotrope boiling point in degC and composition in weight percent of cyclohexane (the second component).",
+ "source": {
+  "citation": "Azeotrope tables, Wikipedia, table 'binary azeotropes of water', row cyclohexane (colour code 'CRC only'); values from the CRC Handbook of Chemistry and Physics (44th ed., 1962)",
+  "doi": "",
+  "open_copy": "https://en.wikipedia.org/wiki/Azeotrope_tables",
+  "access": "Open (CC BY-SA text; handbook values). Secondary compilation, the same source as validation/data/azeotropes_101kPa.json.",
+  "tables": "Binary azeotropes of water, row 'cyclohexane': b.p. of component 80.7 degC, b.p. of mixture 69.8 degC, % by weight 91.5 (U 99.99, L 0.01), specific gravity U 0.780, L 1.00"
+ },
+ "components": ["water", "cyclohexane"],
+ "kind": "azeotrope",
+ "heterogeneous": true,
+ "P_kPa": 101.325,
+ "columns": ["T_C", "wt_pct_2"],
+ "rows": [
+  [69.8, 91.5]
+ ],
+ "notes": "Old handbook value (1962), no uncertainty given. 91.5 wt % cyclohexane is the overall (vapour) azeotrope composition; the layers (U 99.99, L 0.01 wt %) are not used. Not fitted: an independent check of the water + cyclohexane parameters, which are fitted to mutual solubilities only (validation/python/fit_parameters.py converts the weight percent to a vapour mole fraction with the molar masses in src/data/components.json). Read from the page source (wikitext) of the article on 2026-10-04. To be checked by a person against the page (AGENTS.md rule 4)."
+}

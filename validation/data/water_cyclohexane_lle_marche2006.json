@@ -1,0 +1,23 @@
+{
+ "_about": "Water (1) + cyclohexane (2): solubility of water in liquid cyclohexane (cyclohexane-rich liquid of the liquid-liquid equilibrium), 303-446 K, from Marche et al. (2006). Rows: temperature in K, mole fraction of water in the cyclohexane-rich liquid.",
+ "source": {
+  "citation": "C. Marche, C. Ferronato, J.-C. de Hemptinne, J. Jose, Apparatus for the Determination of Water Solubility in Hydrocarbon: Toluene and Alkylcyclohexanes (C6 to C8) from 30 C to 180 C, J. Chem. Eng. Data 51 (2006) 355-359",
+  "doi": "10.1021/je0502041",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0502041.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 2: cyclohexane + water, mole fraction of water in liquid mixture 1 (the cyclohexane-rich liquid), constraint P = 101 kPa as stored. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "cyclohexane"],
+ "kind": "lle",
+ "columns": ["T_K", "x_1_II"],
+ "rows": [
+  [303.25, 0.00068],
+  [323.05, 0.0013],
+  [342.95, 0.00278],
+  [373.35, 0.00598],
+  [393.85, 0.0112],
+  [423.35, 0.0263],
+  [446.15, 0.0445]
+ ],
+ "notes": "Liquid I is the water-rich liquid, liquid II the cyclohexane-rich liquid; x_1 is the mole fraction of water, x_2 of cyclohexane. Only the cyclohexane-rich liquid was measured. Expanded uncertainties in the record: 4e-05 to 0.00071. The record gives P = 101 kPa for every row, also at temperatures where the two liquids would boil at that pressure; the pressure is not used in the fit (the article, not open, was not checked for the apparatus pressure). Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

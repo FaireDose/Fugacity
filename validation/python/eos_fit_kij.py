@@ -4,13 +4,22 @@ Used where the databank value is contradicted by open data. The fitted entry rep
 databank entry in src/data/kij.json (tier "fitted"); the databank value is kept in
 `replaced` with the reason. Then run make_sources.py (it adds set names and source_ids).
 
-Fits (objective: sum of squared ln(P_bubble,calc / P_exp) at the measured T and liquid x,
-bubble pressure from the independent Python implementation in reference_eos.py):
+Fits (bubble points from the independent Python implementation in reference_eos.py).
+Isothermal P-x data: objective sum of squared ln(P_bubble,calc / P_exp) at the measured T and
+liquid x. Isobaric T-x-y data ("txy" entries): sum of squared (T_bubble,calc - T_exp) / 0.5 K
+at the measured P and liquid x; the vapour composition is compared, not fitted.
 
   hydrogen + toluene, PR (the SRK databank value, +0.39, agrees with these data and is kept):
     Tsuji et al., Fluid Phase Equilib. 228-229 (2005) 499, 303.15 K, 9 points
     Aslam et al., J. Chem. Eng. Data 61 (2016) 643, 293-333 K, 510-891 kPa, 20 points
     (both from the NIST TRC ThermoML Archive; validation/data/eos/*_hydrogen_toluene.json)
+
+  ethanol dehydration benchmark (proposal 0004 step 3; the equation of state is the second
+  model of these pairs, docs/BENCHMARKS.md), PR and SRK, isobaric T-x-y at 101.3 kPa from
+  Kamihama et al., J. Chem. Eng. Data 57 (2012) 339 (NIST TRC ThermoML Archive):
+    ethanol + water, ethanol + ethylene glycol, water + ethylene glycol
+    (validation/data/ethanol_water_101kPa.json, ethanol_ethylene-glycol_101kPa.json,
+    water_ethylene-glycol_101kPa_kamihama2012.json)
 
 Usage: python validation/python/eos_fit_kij.py [--write]
 """
@@ -46,6 +55,27 @@ def bubble_p(e, T, x1, P_guess):
     return P / 1000
 
 
+def load_txy(name):
+    """Isobaric T-x-y file of validation/data as [(P_kPa, x1, T_K, y1)], x1 and y1 of the
+    file's first component; pure-component rows left out."""
+    d = json.load(open(os.path.join(ROOT, "validation", "data", name)))
+    c = {k: n for n, k in enumerate(d["columns"])}
+    return [(d["P_kPa"], r[c["x_1"]], r[c["T_K"]], r[c["y_1"]]) for r in d["rows"] if 0 < r[c["x_1"]] < 1]
+
+
+def bubble_t(e, P_kPa, x1, T_guess):
+    """Bubble temperature (K) and vapour mole fraction of the first component, liquid [x1, 1 - x1]."""
+    T, y = e.point("bubbleT", [x1, 1 - x1], P_kPa * 1000, T_guess - 25, T_guess + 25)
+    return T, y[0]
+
+
+TXY_FITS = [
+    {"pair": ("ethanol", "water"), "file": "ethanol_water_101kPa.json"},
+    {"pair": ("ethanol", "ethylene-glycol"), "file": "ethanol_ethylene-glycol_101kPa.json"},
+    {"pair": ("water", "ethylene-glycol"), "file": "water_ethylene-glycol_101kPa_kamihama2012.json"},
+]
+
+
 FITS = [
     {
         "pair": ("hydrogen", "toluene"),
@@ -57,9 +87,61 @@ FITS = [
 ]
 
 
+def fit_txy(doc):
+    """kij of the TXY_FITS entries, both models, added or replaced in doc (tier "fitted")."""
+    for fit in TXY_FITS:
+        i, j = fit["pair"]
+        pts = load_txy(fit["file"])
+        for model in ("PR", "SRK"):
+            e = Cubic(model, [i, j])
+
+            def calc(k):
+                """Bubble points at k; None where there is none within 25 K of the data."""
+                e.k[0, 1] = e.k[1, 0] = k
+                out = []
+                for P, x, T, _ in pts:
+                    try:
+                        out.append(bubble_t(e, P, x, T))
+                    except ValueError:
+                        out.append(None)
+                return out
+
+            def obj(k):
+                return sum(((r[0] - T) / 0.5) ** 2 if r else (25 / 0.5) ** 2 for r, (_, _, T, _) in zip(calc(k), pts))
+
+            res = minimize_scalar(obj, bounds=(-0.3, 0.3), method="bounded", options={"xatol": 1e-5})
+            k = round(float(res.x), 4)
+            out = calc(k)
+            if None in out:
+                raise SystemExit(f"{model} {i}-{j}: at the optimum k_ij = {k} {out.count(None)} data points have no bubble point within 25 K")
+            dT = [abs(Tc - T) for (Tc, _), (_, _, T, _) in zip(out, pts)]
+            dy = [abs(yc - y) for (_, yc), (_, _, _, y) in zip(out, pts)]
+            q = f"AAD {sum(dT) / len(dT):.2f} K in T (max {max(dT):.2f} K), {sum(dy) / len(dy):.4f} in y (max {max(dy):.4f})"
+            print(f"{model} {i}-{j}: k_ij = {k:.4f}, {q}, {len(pts)} points")
+            Ts = [T for _, _, T, _ in pts]
+            entry = {
+                "model": model, "i": i, "j": j, "kij": k, "tier": "fitted",
+                "source": {
+                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to the {len(pts)} bubble temperatures of Kamihama et al. (2012) at {pts[0][0]} kPa: {q}",
+                    "data": [f"validation/data/{fit['file']}"],
+                    "conditions": f"P = {pts[0][0]} kPa, T = {min(Ts):g}-{max(Ts):g} K",
+                    "T_range_K": [min(Ts), max(Ts)],
+                },
+            }
+            idx = [n for n, p in enumerate(doc["pairs"]) if p["model"] == model and {p["i"], p["j"]} == {i, j}]
+            if idx:
+                old = doc["pairs"][idx[0]]
+                if old.get("tier") != "fitted":
+                    raise SystemExit(f"{model} {i}-{j}: a databank value exists; keep it under 'replaced' as for hydrogen + toluene")
+                doc["pairs"][idx[0]] = entry
+            else:
+                doc["pairs"].append(entry)
+
+
 def main():
     path = os.path.join(ROOT, "src", "data", "kij.json")
     doc = json.load(open(path))
+    fit_txy(doc)
     for fit in FITS:
         i, j = fit["pair"]
         pts = fit["data"]()

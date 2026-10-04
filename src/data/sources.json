@@ -101,6 +101,20 @@
         "validation/report/reference/"
       ]
     },
+    "danon2018-water-cyclohexane": {
+      "title": "Mutual Solubilities of Cyclohexane and Water in Aqueous Methyldiethanolamine/Cyclohexane Liquid-Liquid Equilibria",
+      "authors": "R. Danon, M. C. Kroon, F. Banat",
+      "year": 2018,
+      "published": "J. Chem. Eng. Data 63 (2018) 1123-1131",
+      "kind": "thermoml",
+      "doi": "10.1021/acs.jced.7b00873",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.7b00873.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/water_cyclohexane_lle_danon2018.json"
+      ]
+    },
     "fang2014-water-ethanol": {
       "title": "Excess enthalpy for the (benzene + cyclohexane) mixture over a wide range of temperature and pressure",
       "authors": "G. S. Fang, K. Tsukamoto, M. Maebayashi, M. Ohba, H. Ogawa",
@@ -234,7 +248,9 @@
       "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
       "via": "the NIST TRC ThermoML Archive",
       "files": [
-        "validation/data/ethanol_water_101kPa.json"
+        "validation/data/ethanol_ethylene-glycol_101kPa.json",
+        "validation/data/ethanol_water_101kPa.json",
+        "validation/data/water_ethylene-glycol_101kPa_kamihama2012.json"
       ]
     },
     "li2014-chloroform-methanol": {
@@ -263,6 +279,76 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/acetone_methanol_101kPa.json"
+      ]
+    },
+    "lien2003-ethanol-cyclohexane": {
+      "title": "Excess Molar Enthalpies for Binary Mixtures of Ethanol + Acetone, + Octane, + Cyclohexane and 1-Propanol + Acetone, + Octane, + Heptane at 323.15 (title as stored in the ThermoML record)",
+      "authors": "P.-J. Lien, H.-M. Lin, M.-J. Lee",
+      "year": 2003,
+      "published": "J. Chem. Eng. Data 48 (2003) 359-361",
+      "kind": "thermoml",
+      "doi": "10.1021/je020149l",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je020149l.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/ethanol_cyclohexane_HE_lien2003.json"
+      ]
+    },
+    "lindemann2014-ethylene-glycol-cyclohexane": {
+      "title": "Liquid-Liquid Equilibria at Three Temperatures (between 280.15 K and 333.15 K) of Binary, Ternary, and Quaternary Systems Involving Monoethylene Glycol, Water, Cyclohexane, para-Xylene, trans- and cis-Dimethylcyclohexane, and trans- and cis-Decahydronaphthalene",
+      "authors": "C. Lindemann, P. Duchet-Suchaux, R. Abou Naccoul, I. Mokbel, V. Malicet, J. Jose",
+      "year": 2014,
+      "published": "J. Chem. Eng. Data 59 (2014) 3749-3755",
+      "kind": "thermoml",
+      "doi": "10.1021/je500625r",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je500625r.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/ethylene-glycol_cyclohexane_lle_lindemann2014.json"
+      ]
+    },
+    "marche2003-water-cyclohexane": {
+      "title": "An apparatus for the on-line GC determination of hydrocarbon solubility in water: benzene and cyclohexane from 70 C to 150 C",
+      "authors": "C. Marche, H. Delepine, C. Ferronato, J. Jose",
+      "year": 2003,
+      "published": "J. Chem. Eng. Data 48 (2003) 398-401",
+      "kind": "thermoml",
+      "doi": "10.1021/je025609p",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je025609p.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/water_cyclohexane_lle_marche2003.json"
+      ]
+    },
+    "marche2006-water-cyclohexane": {
+      "title": "Apparatus for the Determination of Water Solubility in Hydrocarbon: Toluene and Alkylcyclohexanes (C6 to C8) from 30 C to 180 C",
+      "authors": "C. Marche, C. Ferronato, J.-C. de Hemptinne, J. Jose",
+      "year": 2006,
+      "published": "J. Chem. Eng. Data 51 (2006) 355-359",
+      "kind": "thermoml",
+      "doi": "10.1021/je0502041",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je0502041.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/water_cyclohexane_lle_marche2006.json"
+      ]
+    },
+    "nagamachi2006-ethanol-water": {
+      "title": "Measurement and correlation of excess molar enthalpy for (1,2-propanediol, or 1,3-propanediol, or 1,4-butanediol + water) at the temperatures (298.15, 323.15, and 343.15) K",
+      "authors": "M. Y. Nagamachi, A. Z. Francesconi",
+      "year": 2006,
+      "published": "J. Chem. Thermodyn. 38 (2006) 461-466",
+      "kind": "thermoml",
+      "doi": "10.1016/j.jct.2005.06.018",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2005.06.018.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/ethanol_water_HE_nagamachi2006.json"
       ]
     },
     "nist-webbook": {
@@ -332,6 +418,8 @@
       "note": "Secondary compilation. Used as test references, and as one weighted fit target for water + ethyl acetate because no open finite-concentration VLE data for that pair was found; to be replaced by open primary data.",
       "files": [
         "validation/data/azeotropes_101kPa.json",
+        "validation/data/ethanol_cyclohexane_azeotrope_101kPa.json",
+        "validation/data/water_cyclohexane_azeotrope_101kPa.json",
         "validation/data/water_ethyl-acetate_azeotrope_101kPa.json"
       ]
     },

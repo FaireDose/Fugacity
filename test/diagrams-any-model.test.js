@@ -70,8 +70,9 @@ test("equation-of-state azeotropes: located by bisection, bracket reported and c
 });
 
 test("points without a bubble point are counted with gaps, and throw without it", () => {
-  // PR with k_ij = 0 (none in the databank) predicts two liquids for most ethanol + water liquids
-  const s = system({ components: ["ethanol", "water"], model: "PR" });
+  // PR with k_ij = 0 (given here; the databank k_ij fitted to the 1-atm data avoids it) predicts
+  // two liquids for most ethanol + water liquids
+  const s = system({ components: ["ethanol", "water"], model: "PR", kij: [[0, 0], [0, 0]] });
   assert.throws(() => binaryAzeotropes(s, P, 50), e => e.code === "PHASE_SPLIT");
   const az = binaryAzeotropes(s, P, 50, { gaps: true });
   assert.ok(az.gaps.points > 10 && /two liquid phases/.test(az.gaps.message));

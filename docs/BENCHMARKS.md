@@ -86,12 +86,12 @@ How to read the tables:
 
 | Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
-| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethanol + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| ethanol + cyclohexane | activity | EOS | 1 | – | yes | yes | – | – |
-| water + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
-| water + cyclohexane | activity | EOS | 1 | – | – | – | – | – |
-| ethylene glycol + cyclohexane | activity | EOS | 1 | – | – | – | – | – |
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
+| ethanol + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
+| ethanol + cyclohexane | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| water + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (fitted) | – | – | – | – |
+| water + cyclohexane | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
+| ethylene glycol + cyclohexane | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
 
 Key components: ethanol, water, ethylene glycol, cyclohexane. 6 pairs.
 
@@ -103,7 +103,7 @@ Key components: ethanol, water, ethylene glycol, cyclohexane. 6 pairs.
 | acetic acid + ethyl acetate | activity | EOS | 1 | – | – | – | – | – |
 | acetic acid + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | – | yes | – | – |
 | ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 
 Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
@@ -278,7 +278,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | ethanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | ethanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
 | ethanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
+| ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethyl acetate + toluene | activity | EOS | 1 | – | – | – | – | – |
 | ethyl acetate + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
 | ethyl acetate + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
@@ -430,9 +430,9 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 27 | 21 | 2 | 2 |
-| In ChemSep, not yet in Fugacity | 73 | 28 | 9 | 8 |
-| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 181 | 47 | 204 | 55 |
+| In Fugacity now | 30 | 24 | 5 | 5 |
+| In ChemSep, not yet in Fugacity | 72 | 27 | 9 | 8 |
+| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 179 | 45 | 201 | 52 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
 step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched

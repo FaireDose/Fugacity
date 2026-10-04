@@ -69,17 +69,19 @@ test("thermodynamic consistency: G_R/RT = sum x ln phi, cp_R = dH_R/dT", () => {
   }
 });
 
-test("k_ij data: 21 pairs for PR and SRK (ChemSep, one PR pair refitted), each with a source", () => {
+test("k_ij data: 24 pairs for PR and SRK (ChemSep, one PR pair refitted, three fitted for the ethanol dehydration benchmark), each with a source", () => {
   const ids = new Set(listComponents().map(c => c.id));
   for (const model of ["PR", "SRK"]) {
     const pairs = kij.pairs.filter(p => p.model === model);
-    assert.equal(pairs.length, 21, model);
+    assert.equal(pairs.length, 24, model);
     for (const p of pairs) {
       assert.ok(ids.has(p.i) && ids.has(p.j), `${p.i} ${p.j}`);
       assert.ok(Math.abs(p.kij) < 0.6);
       if (p.tier === "fitted") {
-        // replaces a databank value contradicted by open data; the old value and the reason are kept
-        assert.ok(p.source.fit && p.source.data.length && p.replaced?.reason && p.replaced.tier === "databank", `${p.i}-${p.j}`);
+        // fitted to open data; where it replaces a databank value contradicted by the data, the
+        // old value and the reason are kept
+        assert.ok(p.source.fit && p.source.data.length && p.source.T_range_K, `${p.i}-${p.j}`);
+        if (p.replaced) assert.ok(p.replaced.reason && p.replaced.tier === "databank", `${p.i}-${p.j}`);
         continue;
       }
       assert.equal(p.tier, "databank");
@@ -87,8 +89,8 @@ test("k_ij data: 21 pairs for PR and SRK (ChemSep, one PR pair refitted), each w
     }
   }
   const fitted = kij.pairs.filter(p => p.tier === "fitted").map(p => `${p.model} ${p.i}-${p.j}`);
-  assert.deepEqual(fitted, ["PR hydrogen-toluene"]);
-  assert.equal(kij.pairs.find(p => p.tier === "fitted").replaced.kij, -0.51);
+  assert.deepEqual(fitted, ["PR hydrogen-toluene", "PR ethanol-water", "SRK ethanol-water", "PR ethanol-ethylene-glycol", "SRK ethanol-ethylene-glycol", "PR water-ethylene-glycol", "SRK water-ethylene-glycol"]);
+  assert.equal(kij.pairs.find(p => p.tier === "fitted" && p.j === "toluene").replaced.kij, -0.51);
   const sys = system({ components: ["methane", "nitrogen", "water"], model: "PR" });
   const byPair = Object.fromEntries(sys.info.pairs.map(p => [p.pair.join("+"), p]));
   assert.equal(byPair["Methane+Nitrogen"].kij, 0.0289);
