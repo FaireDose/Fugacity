@@ -6183,6 +6183,64 @@
      462.57
     ]
    }
+  },
+  {
+   "model": "PR",
+   "i": "ethyl-acetate",
+   "j": "ethanol",
+   "set": "fitted-calvar2005",
+   "default": true,
+   "kij": 0.0205,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.40 K in T (max 1.02 K), 0.0220 in y (max 0.0425)",
+    "data": [
+     "validation/data/ethyl-acetate_ethanol_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 345.19-350.77 K",
+    "T_range_K": [
+     345.19,
+     350.77
+    ]
+   },
+   "source_ids": [
+    "calvar2005-ethyl-acetate-ethanol"
+   ],
+   "valid": {
+    "T_K": [
+     345.19,
+     350.77
+    ]
+   }
+  },
+  {
+   "model": "SRK",
+   "i": "ethyl-acetate",
+   "j": "ethanol",
+   "set": "fitted-calvar2005",
+   "default": true,
+   "kij": 0.0296,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.26 K in T (max 0.60 K), 0.0149 in y (max 0.0294)",
+    "data": [
+     "validation/data/ethyl-acetate_ethanol_101kPa.json"
+    ],
+    "conditions": "P = 101.3 kPa, T = 345.19-350.77 K",
+    "T_range_K": [
+     345.19,
+     350.77
+    ]
+   },
+   "source_ids": [
+    "calvar2005-ethyl-acetate-ethanol"
+   ],
+   "valid": {
+    "T_K": [
+     345.19,
+     350.77
+    ]
+   }
   }
  ]
 }

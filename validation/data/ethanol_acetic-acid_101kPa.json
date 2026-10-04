@@ -1,0 +1,41 @@
+{
+ "_about": "Ethanol (1) + acetic acid (2): isobaric T-x-y at 101.325 kPa, binary data set from Zhu et al. (2013). Rows as in the ThermoML Archive record: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol.",
+ "source": {
+  "citation": "D. Zhu, D. Gao, H. Zhang, B. Winter, P. Lucking, H. Sun, H. Guan, H. Chen, J. Shi, Geometric Structures of Associating Component Optimized toward Correlation and Prediction of Isobaric Vapor Liquid Equilibria for Binary and Ternary Mixtures of Ethanal, Ethanol, and Ethanoic Acid, J. Chem. Eng. Data 58 (2013) 7-17",
+  "doi": "10.1021/je300810p",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je300810p.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 14 (boiling temperature) and 15 (vapour mole fraction): the binary ethanol + acetic acid set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethanol", "acetic-acid"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.325,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.0, 391.43, 0.0],
+  [0.0364, 389.53, 0.1161],
+  [0.0772, 387.9, 0.2098],
+  [0.1219, 386.25, 0.2829],
+  [0.1707, 384.29, 0.34],
+  [0.2245, 382.43, 0.4277],
+  [0.2839, 379.91, 0.5151],
+  [0.3498, 376.93, 0.6008],
+  [0.4235, 374.31, 0.6739],
+  [0.4388, 373.68, 0.7052],
+  [0.4788, 371.79, 0.7531],
+  [0.5188, 369.93, 0.7999],
+  [0.5587, 368.01, 0.8256],
+  [0.5987, 366.35, 0.8491],
+  [0.6387, 364.76, 0.8705],
+  [0.6788, 363.37, 0.8901],
+  [0.7189, 361.71, 0.9256],
+  [0.7588, 359.79, 0.942],
+  [0.7989, 358.36, 0.9522],
+  [0.8389, 356.84, 0.9678],
+  [0.8789, 355.01, 0.9768],
+  [0.919, 353.72, 0.9846],
+  [0.9589, 352.56, 0.9986],
+  [1.0, 351.46, 1.0]
+ ],
+ "notes": "Expanded uncertainties per point in the ThermoML record: T 0.51 to 0.7 K, y_1 0.0014 to 0.0289. Rows of the pure components (x_1 = 0 or 1) are in the set; the fit leaves them out. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}
