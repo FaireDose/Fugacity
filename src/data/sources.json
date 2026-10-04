@@ -395,6 +395,20 @@
         "validation/report/reference/"
       ]
     },
+    "park2007-dimethyl-ether-methanol": {
+      "title": "Vapor-Liquid Equilibria and HE for Binary Systems of Dimethyl Ether (DME) with C1-C4 Alkan-1-ols at 323.15 K and Liquid-Liquid Equilibria for Ternary System of DME + Methanol + Water at 313.15 K",
+      "authors": "S.-J. Park, K.-J. Han, J. Gmehling",
+      "year": 2007,
+      "published": "J. Chem. Eng. Data 52 (2007) 230-234",
+      "kind": "thermoml",
+      "doi": "10.1021/je0603574",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je0603574.html",
+      "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/dimethyl-ether_methanol_px_park2007.json"
+      ]
+    },
     "sander2023-henry": {
       "title": "Compilation of Henry's law constants (version 5.0.0) for water as solvent",
       "authors": "R. Sander",

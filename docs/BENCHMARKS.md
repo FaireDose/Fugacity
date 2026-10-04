@@ -143,7 +143,7 @@ Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
 | nitrogen + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
 | nitrogen + hydrogen sulfide | EOS | – | 2 | k_ij | – | – | yes | – |
 | methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
-| methanol + dimethyl ether | EOS | – | 1 | – | – | – | – | – |
+| methanol + dimethyl ether | EOS | – | 1 | k_ij | – | – | – | – |
 | methanol + hydrogen sulfide | EOS | – | 1 | – | – | – | – | – |
 | water + dimethyl ether | Henry or EOS | – | 1 | – | – | – | – | – |
 | water + hydrogen sulfide | Henry or EOS | – | 1 | k_ij, Henry | – | – | yes | yes |
@@ -430,9 +430,9 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 102 | 52 | 15 | 14 |
+| In Fugacity now | 103 | 53 | 15 | 14 |
 | In ChemSep, not yet in Fugacity | 2 | 0 | 0 | 0 |
-| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 177 | 44 | 200 | 51 |
+| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 176 | 43 | 200 | 51 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
 step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched
