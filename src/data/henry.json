@@ -58,6 +58,34 @@
       "tier": "databank",
       "source": "R. Sander, Compilation of Henry's law constants (version 5.0.0) for water as solvent, Atmos. Chem. Phys. 23 (2023) 10901-12440, doi:10.5194/acp-23-10901-2023, open access CC BY 4.0, https://henrys-law.org/henry/casrn/74-85-1, note 309: three-parameter fit by Sander to the measurements of T. J. Morrison and F. Billett, J. Chem. Soc. (1952) 3819, doi:10.1039/JR9520003819.",
       "validity": "The compilation does not state the temperature range of the fit. Fugacity accepts 273.15-353.15 K, the range over which this fit and the two other measured data sets in the compilation (Maassen 1995, note 307; Reichl 1995, note 308) agree within 7.5 % (test/henry.test.js; largest difference 7.2 % at 273.15 K, Maassen 1995). Ethylene is not covered by IAPWS G7-04."
+    },
+    {
+      "gas": "argon", "solvent": "water", "equation": "IAPWS-G7-04",
+      "set": "iapws-g7-04", "default": true, "source_ids": ["iapws-g7-04"],
+      "A": -8.40954, "B": 4.29587, "C": 10.52779, "Tmin_K": 273.19, "Tmax_K": 568.36,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (Ar in H2O)"
+    },
+    {
+      "gas": "carbon-monoxide", "solvent": "water", "equation": "IAPWS-G7-04",
+      "set": "iapws-g7-04", "default": true, "source_ids": ["iapws-g7-04"],
+      "A": -10.52862, "B": 5.13259, "C": 12.01421, "Tmin_K": 278.15, "Tmax_K": 588.67,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (CO in H2O)"
+    },
+    {
+      "gas": "carbon-dioxide", "solvent": "water", "equation": "IAPWS-G7-04",
+      "set": "iapws-g7-04", "default": true, "source_ids": ["iapws-g7-04"],
+      "A": -8.55445, "B": 4.01195, "C": 9.52345, "Tmin_K": 274.19, "Tmax_K": 642.66,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (CO2 in H2O)"
+    },
+    {
+      "gas": "hydrogen-sulfide", "solvent": "water", "equation": "IAPWS-G7-04",
+      "set": "iapws-g7-04", "default": true, "source_ids": ["iapws-g7-04"],
+      "A": -4.51499, "B": 5.23538, "C": 4.42126, "Tmin_K": 273.15, "Tmax_K": 533.09,
+      "tier": "standard",
+      "source": "IAPWS G7-04 (2004), table 2 (H2S in H2O)"
     }
   ]
 }

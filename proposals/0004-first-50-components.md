@@ -216,5 +216,11 @@ reported per property) and the existing pair workflow for binaries:
    equation of state (second model): PR and SRK k_ij fitted for the three miscible pairs;
    the three pairs with cyclohexane keep k_ij = 0 (the warning says so) until a fit to
    liquid-liquid data is added.
+   Databank coverage of the gas benchmarks (methanol synthesis, air separation, light
+   hydrocarbons, aromatics): the ChemSep PR and SRK k_ij of every pair among the 49
+   components (122 pairs, up from 21; the existing values unchanged), and IAPWS G7-04 Henry
+   constants for argon, carbon monoxide, carbon dioxide and hydrogen sulfide in water, checked
+   against the guideline's table 6. Pairs without a databank value are fitted to open data
+   benchmark by benchmark.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
    is available.

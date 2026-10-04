@@ -69,11 +69,11 @@ test("thermodynamic consistency: G_R/RT = sum x ln phi, cp_R = dH_R/dT", () => {
   }
 });
 
-test("k_ij data: 24 pairs for PR and SRK (ChemSep, one PR pair refitted, three fitted for the ethanol dehydration benchmark), each with a source", () => {
+test("k_ij data: 125 pairs for PR and SRK (ChemSep for the 49 components, one PR pair refitted, three fitted for the ethanol dehydration benchmark), each with a source", () => {
   const ids = new Set(listComponents().map(c => c.id));
   for (const model of ["PR", "SRK"]) {
     const pairs = kij.pairs.filter(p => p.model === model);
-    assert.equal(pairs.length, 24, model);
+    assert.equal(pairs.length, 125, model);
     for (const p of pairs) {
       assert.ok(ids.has(p.i) && ids.has(p.j), `${p.i} ${p.j}`);
       assert.ok(Math.abs(p.kij) < 0.6);

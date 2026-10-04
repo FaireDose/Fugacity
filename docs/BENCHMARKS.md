@@ -112,8 +112,8 @@ Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
 
 | Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
-| hydrogen + carbon monoxide | EOS | – | 2 | – | – | – | yes | – |
-| hydrogen + carbon dioxide | EOS | – | 2 | – | – | – | yes | – |
+| hydrogen + carbon monoxide | EOS | – | 2 | k_ij | – | – | yes | – |
+| hydrogen + carbon dioxide | EOS | – | 2 | k_ij | – | – | yes | – |
 | hydrogen + methane | EOS | – | 2 | k_ij | – | – | yes | – |
 | hydrogen + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
 | hydrogen + methanol | EOS | – | 2 | – | – | – | – | – |
@@ -121,32 +121,32 @@ Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
 | hydrogen + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
 | hydrogen + hydrogen sulfide | EOS | – | 2 | – | – | – | – | – |
 | carbon monoxide + carbon dioxide | EOS | – | 2 | – | – | – | – | – |
-| carbon monoxide + methane | EOS | – | 2 | – | – | – | yes | – |
-| carbon monoxide + nitrogen | EOS | – | 2 | – | – | – | yes | – |
+| carbon monoxide + methane | EOS | – | 2 | k_ij | – | – | yes | – |
+| carbon monoxide + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
 | carbon monoxide + methanol | EOS | – | 2 | – | – | – | – | – |
-| carbon monoxide + water | Henry or EOS | – | 1 | – | – | – | – | yes |
+| carbon monoxide + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
 | carbon monoxide + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
-| carbon monoxide + hydrogen sulfide | EOS | – | 2 | – | – | – | yes | – |
-| carbon dioxide + methane | EOS | – | 2 | – | – | – | yes | – |
-| carbon dioxide + nitrogen | EOS | – | 2 | – | – | – | yes | – |
-| carbon dioxide + methanol | EOS | – | 1 | – | – | – | yes | – |
-| carbon dioxide + water | Henry or EOS | – | 1 | – | – | – | yes | yes |
+| carbon monoxide + hydrogen sulfide | EOS | – | 2 | k_ij | – | – | yes | – |
+| carbon dioxide + methane | EOS | – | 2 | k_ij | – | – | yes | – |
+| carbon dioxide + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
+| carbon dioxide + methanol | EOS | – | 1 | k_ij | – | – | yes | – |
+| carbon dioxide + water | Henry or EOS | – | 1 | k_ij, Henry | – | – | yes | yes |
 | carbon dioxide + dimethyl ether | EOS | – | 1 | – | – | – | – | – |
-| carbon dioxide + hydrogen sulfide | EOS | – | 1 | – | – | – | yes | – |
+| carbon dioxide + hydrogen sulfide | EOS | – | 1 | k_ij | – | – | yes | – |
 | methane + nitrogen | EOS | – | 2 | k_ij | – | – | yes | – |
 | methane + methanol | EOS | – | 2 | – | – | – | – | – |
 | methane + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
 | methane + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
-| methane + hydrogen sulfide | EOS | – | 2 | – | – | – | – | – |
+| methane + hydrogen sulfide | EOS | – | 2 | k_ij | – | – | – | – |
 | nitrogen + methanol | EOS | – | 2 | k_ij | – | – | yes | – |
 | nitrogen + water | Henry or EOS | – | 1 | Henry | – | – | – | yes |
 | nitrogen + dimethyl ether | EOS | – | 2 | – | – | – | – | – |
-| nitrogen + hydrogen sulfide | EOS | – | 2 | – | – | – | yes | – |
+| nitrogen + hydrogen sulfide | EOS | – | 2 | k_ij | – | – | yes | – |
 | methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
 | methanol + dimethyl ether | EOS | – | 1 | – | – | – | – | – |
 | methanol + hydrogen sulfide | EOS | – | 1 | – | – | – | – | – |
 | water + dimethyl ether | Henry or EOS | – | 1 | – | – | – | – | – |
-| water + hydrogen sulfide | Henry or EOS | – | 1 | – | – | – | yes | yes |
+| water + hydrogen sulfide | Henry or EOS | – | 1 | k_ij, Henry | – | – | yes | yes |
 | dimethyl ether + hydrogen sulfide | EOS | – | 1 | – | – | – | – | – |
 
 Key components: methanol, water, carbon dioxide, hydrogen sulfide, dimethyl ether. 36 pairs.
@@ -156,8 +156,8 @@ Key components: methanol, water, carbon dioxide, hydrogen sulfide, dimethyl ethe
 | Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | nitrogen + oxygen | EOS | – | 1 | k_ij | – | – | yes | – |
-| nitrogen + argon | EOS | – | 1 | – | – | – | yes | – |
-| oxygen + argon | EOS | – | 1 | – | – | – | yes | – |
+| nitrogen + argon | EOS | – | 1 | k_ij | – | – | yes | – |
+| oxygen + argon | EOS | – | 1 | k_ij | – | – | yes | – |
 
 Key components: nitrogen, oxygen, argon. 3 pairs.
 
@@ -167,30 +167,30 @@ Key components: nitrogen, oxygen, argon. 3 pairs.
 |---|---|---|---|---|---|---|---|---|
 | methane + ethane | EOS | – | 2 | k_ij | – | – | yes | – |
 | methane + ethylene | EOS | – | 2 | k_ij | – | – | yes | – |
-| methane + propane | EOS | – | 2 | – | – | – | yes | – |
-| methane + propylene | EOS | – | 2 | – | – | – | yes | – |
-| methane + n-butane | EOS | – | 2 | – | – | – | yes | – |
-| methane + isobutane | EOS | – | 2 | – | – | – | yes | – |
+| methane + propane | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + propylene | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + n-butane | EOS | – | 2 | k_ij | – | – | yes | – |
+| methane + isobutane | EOS | – | 2 | k_ij | – | – | yes | – |
 | methane + ammonia | EOS | – | 2 | – | – | – | – | – |
 | ethane + ethylene | EOS | – | 1 | k_ij | – | – | yes | – |
-| ethane + propane | EOS | – | 1 | – | – | – | yes | – |
-| ethane + propylene | EOS | – | 1 | – | – | – | yes | – |
-| ethane + n-butane | EOS | – | 1 | – | – | – | yes | – |
-| ethane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| ethane + propane | EOS | – | 1 | k_ij | – | – | yes | – |
+| ethane + propylene | EOS | – | 1 | k_ij | – | – | yes | – |
+| ethane + n-butane | EOS | – | 1 | k_ij | – | – | yes | – |
+| ethane + isobutane | EOS | – | 1 | k_ij | – | – | yes | – |
 | ethane + ammonia | EOS | – | 2 | – | – | – | – | – |
 | ethylene + propane | EOS | – | 1 | – | – | – | – | – |
 | ethylene + propylene | EOS | – | 1 | – | – | – | – | – |
-| ethylene + n-butane | EOS | – | 1 | – | – | – | yes | – |
+| ethylene + n-butane | EOS | – | 1 | k_ij | – | – | yes | – |
 | ethylene + isobutane | EOS | – | 1 | – | – | – | – | – |
 | ethylene + ammonia | EOS | – | 2 | – | – | – | – | – |
-| propane + propylene | EOS | – | 1 | – | – | – | yes | – |
-| propane + n-butane | EOS | – | 1 | – | – | – | yes | – |
-| propane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| propane + propylene | EOS | – | 1 | k_ij | – | – | yes | – |
+| propane + n-butane | EOS | – | 1 | k_ij | – | – | yes | – |
+| propane + isobutane | EOS | – | 1 | k_ij | – | – | yes | – |
 | propane + ammonia | EOS | – | 2 | – | – | – | – | – |
 | propylene + n-butane | EOS | – | 1 | – | – | – | – | – |
-| propylene + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| propylene + isobutane | EOS | – | 1 | k_ij | – | – | yes | – |
 | propylene + ammonia | EOS | – | 2 | – | – | – | – | – |
-| n-butane + isobutane | EOS | – | 1 | – | – | – | yes | – |
+| n-butane + isobutane | EOS | – | 1 | k_ij | – | – | yes | – |
 | n-butane + ammonia | EOS | – | 2 | – | – | – | – | – |
 | isobutane + ammonia | EOS | – | 2 | – | – | – | – | – |
 
@@ -330,7 +330,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | 2-propanol + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
-| 2-propanol + n-hexane | activity | EOS | 2 | – | – | – | yes | – |
+| 2-propanol + n-hexane | activity | EOS | 2 | k_ij | – | – | yes | – |
 | 2-propanol + n-heptane | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + water | activity | EOS | 1 | – | – | yes | – | – |
 | 1-butanol + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
@@ -396,7 +396,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | MTBE + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | MTBE + n-heptane | activity | EOS | 2 | – | – | – | – | – |
 | MTBE + water | activity | EOS | 1 | – | – | – | – | – |
-| n-hexane + n-heptane | EOS | activity | 2 | – | – | – | yes | – |
+| n-hexane + n-heptane | EOS | activity | 2 | k_ij | – | – | yes | – |
 | n-hexane + water | activity | EOS | 1 | – | – | – | – | – |
 | n-heptane + water | activity | EOS | 1 | – | – | – | – | – |
 
@@ -418,7 +418,7 @@ Key components: water, methanol, ethanol, acetone, ethyl acetate, toluene. 171 p
 | phenol + n-pentane | activity | EOS | 2 | – | – | – | – | – |
 | phenol + n-octane | activity | EOS | 2 | – | – | – | – | – |
 | phenol + water | activity | EOS | 1 | – | yes | yes | – | – |
-| n-pentane + n-octane | EOS | activity | 2 | – | – | – | yes | – |
+| n-pentane + n-octane | EOS | activity | 2 | k_ij | – | – | yes | – |
 | n-pentane + water | activity | EOS | 1 | – | – | – | – | – |
 | n-octane + water | activity | EOS | 1 | – | – | – | – | – |
 
@@ -430,9 +430,9 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 30 | 24 | 5 | 5 |
-| In ChemSep, not yet in Fugacity | 72 | 27 | 9 | 8 |
-| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 179 | 45 | 201 | 52 |
+| In Fugacity now | 62 | 41 | 6 | 5 |
+| In ChemSep, not yet in Fugacity | 41 | 10 | 8 | 8 |
+| Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 178 | 45 | 201 | 52 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
 step 3 (NIST TRC ThermoML Archive, open-access articles, free books), and the places searched
