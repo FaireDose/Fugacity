@@ -5,8 +5,26 @@
       "model": "NRTL",
       "i": "water",
       "j": "acetic-acid",
-      "set": "chemsep-uniquac-curve",
+      "set": "fitted-chang2005",
       "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 517.1400277897334,
+      "b_ji": -170.7443336361849,
+      "alpha": 0.3,
+      "source": "Fitted to 18 T-x-y points at 101.33 kPa from Chang, Guan, Li, Yao, J. Chem. Eng. Data 50 (2005) 1129 (data public in the NIST TRC ThermoML Archive; validation/data/water_acetic-acid_101kPa_chang2005.json); checked against the 24 points at 101.325 kPa of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/water_acetic-acid_101kPa_calvar2005.json), which scatter more (point test mean |dy| 0.038). Vapour: chemical theory for the acetic acid dimer. AAD 0.24 K in T, 0.0085 in y (max 0.67 K, 0.0236). Check against water_acetic-acid_101kPa_calvar2005.json: AAD 0.45 K in T, 0.0327 in y (max 1.47 K, 0.0865). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.015 (fails, >= 0.01).",
+      "source_ids": [
+        "chang2005-water-acetic-acid",
+        "calvar2005-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "water",
+      "j": "acetic-acid",
+      "set": "chemsep-uniquac-curve",
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 546.6173945877769,
@@ -22,8 +40,25 @@
       "model": "UNIQUAC",
       "i": "water",
       "j": "acetic-acid",
-      "set": "chemsep",
+      "set": "fitted-chang2005",
       "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 253.12629857349472,
+      "b_ji": -367.5960931755607,
+      "source": "Fitted to 18 T-x-y points at 101.33 kPa from Chang, Guan, Li, Yao, J. Chem. Eng. Data 50 (2005) 1129 (data public in the NIST TRC ThermoML Archive; validation/data/water_acetic-acid_101kPa_chang2005.json); checked against the 24 points at 101.325 kPa of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/water_acetic-acid_101kPa_calvar2005.json), which scatter more (point test mean |dy| 0.038). Vapour: chemical theory for the acetic acid dimer. AAD 0.26 K in T, 0.0080 in y (max 0.65 K, 0.0227). Check against water_acetic-acid_101kPa_calvar2005.json: AAD 0.41 K in T, 0.0316 in y (max 1.32 K, 0.0876). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.015 (fails, >= 0.01).",
+      "source_ids": [
+        "chang2005-water-acetic-acid",
+        "calvar2005-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "water",
+      "j": "acetic-acid",
+      "set": "chemsep",
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 126.65371408379717,
@@ -268,10 +303,39 @@
     },
     {
       "model": "NRTL",
+      "i": "ethanol",
+      "j": "acetic-acid",
+      "set": "fitted-zhu2013",
+      "default": true,
+      "a_ij": -3.044259513524909,
+      "a_ji": 6.420915461972245,
+      "b_ij": 518.007322141546,
+      "b_ji": -1343.2692484541355,
+      "alpha": 0.3,
+      "source": "Fitted to 22 T-x-y points at 101.325 kPa (Zhu et al., J. Chem. Eng. Data 58 (2013) 7) and 37 total pressures at 298.15 and 323.15 K, static method, with the measured pure-component pressures (Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48), both data public in the NIST TRC ThermoML Archive (validation/data/ethanol_acetic-acid_101kPa.json, ethanol_acetic-acid_px_brandt2014.json); a fit to either set alone misses the other by about 3 K or 9 %. Checked against the excess enthalpy at 323.15 K of Brandt et al. (validation/data/acetic-acid_ethanol_HE_brandt2014.json). Vapour: chemical theory for the acetic acid dimer. AAD 1.25 K in T, 0.0246 in y (max 1.74 K, 0.0566); P-x at 298.15, 323.15 K (with the measured pure-component pressures): AAD 0.63 % (max 1.80 %). Check against acetic-acid_ethanol_HE_brandt2014.json: excess enthalpy at 323.15 K: AAD 140 J/mol (max 338 J/mol; data 12 to 215 J/mol). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.028 (fails, >= 0.01). Temperature range of the data: 298.15-389.53 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "zhu2013-ethanol-acetic-acid",
+        "brandt2014-acetic-acid-ethanol"
+      ],
+      "tier": "fitted",
+      "data_wanted": "consistent open vapour-liquid data at 1 atm (the 1-atm set fails the point test, and it disagrees with the static P-x data at 298-323 K).",
+      "T_range_K": [
+        298.15,
+        389.53
+      ],
+      "valid": {
+        "T_K": [
+          298.15,
+          389.53
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
       "i": "acetic-acid",
       "j": "ethanol",
       "set": "chemsep",
-      "default": true,
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -96.00236068862058,
@@ -833,10 +897,38 @@
     },
     {
       "model": "UNIQUAC",
+      "i": "ethanol",
+      "j": "acetic-acid",
+      "set": "fitted-zhu2013",
+      "default": true,
+      "a_ij": 1.7249116325605827,
+      "a_ji": -3.9505736528551187,
+      "b_ij": -261.9168109915354,
+      "b_ji": 773.222772408138,
+      "source": "Fitted to 22 T-x-y points at 101.325 kPa (Zhu et al., J. Chem. Eng. Data 58 (2013) 7) and 37 total pressures at 298.15 and 323.15 K, static method, with the measured pure-component pressures (Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48), both data public in the NIST TRC ThermoML Archive (validation/data/ethanol_acetic-acid_101kPa.json, ethanol_acetic-acid_px_brandt2014.json); a fit to either set alone misses the other by about 3 K or 9 %. Checked against the excess enthalpy at 323.15 K of Brandt et al. (validation/data/acetic-acid_ethanol_HE_brandt2014.json). Vapour: chemical theory for the acetic acid dimer. AAD 1.44 K in T, 0.0269 in y (max 2.26 K, 0.0649); P-x at 298.15, 323.15 K (with the measured pure-component pressures): AAD 0.62 % (max 1.80 %). Check against acetic-acid_ethanol_HE_brandt2014.json: excess enthalpy at 323.15 K: AAD 107 J/mol (max 275 J/mol; data 12 to 215 J/mol). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.028 (fails, >= 0.01). Temperature range of the data: 298.15-389.53 K; outside it the parameters are extrapolated.",
+      "source_ids": [
+        "zhu2013-ethanol-acetic-acid",
+        "brandt2014-acetic-acid-ethanol"
+      ],
+      "tier": "fitted",
+      "data_wanted": "consistent open vapour-liquid data at 1 atm (the 1-atm set fails the point test, and it disagrees with the static P-x data at 298-323 K).",
+      "T_range_K": [
+        298.15,
+        389.53
+      ],
+      "valid": {
+        "T_K": [
+          298.15,
+          389.53
+        ]
+      }
+    },
+    {
+      "model": "UNIQUAC",
       "i": "acetic-acid",
       "j": "ethanol",
       "set": "chemsep",
-      "default": true,
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": 43.74703789104175,
@@ -1366,6 +1458,41 @@
       ],
       "tier": "databank",
       "data_wanted": "open binary vapour-liquid data (isobaric T-x-y near 101.3 kPa or isothermal P-x-y) and liquid-liquid or miscibility data below 323 K. Searched: NIST TRC ThermoML Archive (ternary sets with water only: Gomis et al., Fluid Phase Equilib. 235 (2005) 7; Antosik et al., J. Chem. Eng. Data 49 (2004) 7; Cui et al., J. Chem. Eng. Data 49 (2004) 212), Crossref, open repositories. Open checks: the 1-atm azeotrope (64.9 degC, 69.5 wt % cyclohexane; validation/data/ethanol_cyclohexane_azeotrope_101kPa.json) and the excess enthalpy at 323.15 K, one liquid over the whole range (Lien et al., J. Chem. Eng. Data 48 (2003) 359; validation/data/ethanol_cyclohexane_HE_lien2003.json). A fit to these two alone predicts two liquids at 323 K, against the second; NRTL: the databank set passes both checks but predicts two liquids below about 315 K, not checked against data; UNIQUAC: the databank set predicts two liquids at 323-338 K (src/data/known-issues.json)"
+    },
+    {
+      "model": "NRTL",
+      "i": "ethyl-acetate",
+      "j": "acetic-acid",
+      "set": "fitted-brandt2014",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 470.95719282823865,
+      "b_ji": -234.24842986450048,
+      "alpha": 0.3,
+      "source": "Fitted to 42 total pressures at 323.15 K, static method, with the measured pure-component pressures, from Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_acetic-acid_px_brandt2014.json); checked against the 1-atm T-x-y data of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/ethyl-acetate_acetic-acid_101kPa.json) and the excess enthalpy at 323.15 K of Brandt et al. Vapour: chemical theory for the acetic acid dimer. P-x at 323.15 K (with the measured pure-component pressures): AAD 0.12 % (max 0.45 %). Check against ethyl-acetate_acetic-acid_101kPa.json: AAD 0.15 K in T, 0.0390 in y (max 0.41 K, 0.0734). Check against ethyl-acetate_acetic-acid_HE_brandt2014.json: excess enthalpy at 323.15 K: AAD 19 J/mol (max 45 J/mol; data -44 to 79 J/mol).",
+      "source_ids": [
+        "brandt2014-acetic-acid-ethanol",
+        "calvar2005-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "UNIQUAC",
+      "i": "ethyl-acetate",
+      "j": "acetic-acid",
+      "set": "fitted-brandt2014",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -323.1233174219028,
+      "b_ji": 171.78063158610013,
+      "source": "Fitted to 42 total pressures at 323.15 K, static method, with the measured pure-component pressures, from Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48 (data public in the NIST TRC ThermoML Archive; validation/data/ethyl-acetate_acetic-acid_px_brandt2014.json); checked against the 1-atm T-x-y data of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/ethyl-acetate_acetic-acid_101kPa.json) and the excess enthalpy at 323.15 K of Brandt et al. Vapour: chemical theory for the acetic acid dimer. P-x at 323.15 K (with the measured pure-component pressures): AAD 0.19 % (max 0.63 %). Check against ethyl-acetate_acetic-acid_101kPa.json: AAD 0.25 K in T, 0.0379 in y (max 0.82 K, 0.0706). Check against ethyl-acetate_acetic-acid_HE_brandt2014.json: excess enthalpy at 323.15 K: AAD 108 J/mol (max 208 J/mol; data -44 to 79 J/mol).",
+      "source_ids": [
+        "brandt2014-acetic-acid-ethanol",
+        "calvar2005-ethyl-acetate-ethanol"
+      ],
+      "tier": "fitted"
     }
   ]
 }

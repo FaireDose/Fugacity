@@ -106,7 +106,9 @@ test("flash errors: specification, acetic acid enthalpy, liquid split", () => {
   code(() => s.flash({ z: [0.5], T: 350, P: 100 }), "BAD_INPUT", /Feed composition/);
   // acetic acid: T-P flash works, the enthalpy is null with the reason; P-H is refused
   const a = system({ components: ["water", "acetic acid"], model: "NRTL" });
-  const r = a.flash({ z: [0.5, 0.5], T: 378, P: 101.325 });
+  // a state between the bubble and dew points of the current parameters (two phases)
+  const Tmid = 0.5 * (a.bubbleT([0.5, 0.5], 101.325).T + a.dewT([0.5, 0.5], 101.325).T);
+  const r = a.flash({ z: [0.5, 0.5], T: Tmid, P: 101.325 });
   assert.ok(r.VF > 0 && r.VF < 1 && r.H_J_mol === null && r.warnings.some(w => /dimerizes/.test(w)));
   code(() => a.flash({ z: [0.5, 0.5], P: 101.325, H: 0 }), "NOT_AVAILABLE", /dimerizes/);
   // a liquid that splits into two liquids is resolved (step 5, test/three-phase.test.js)

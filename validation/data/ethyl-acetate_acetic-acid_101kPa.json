@@ -1,0 +1,43 @@
+{
+ "_about": "Ethyl acetate (1) + acetic acid (2): isobaric T-x-y at 101.325 kPa, binary data set from Calvar et al. (2005). Rows as in the ThermoML Archive record: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate.",
+ "source": {
+  "citation": "N. Calvar, A. Dominguez, J. Tojo, Vapor liquid equilibria for the quaternary reactive system ethyl acetate + ethanol + water + acetic acid and some of the constituent binary systems at 101.3 kPa, Fluid Phase Equilib. 235 (2005) 215-222",
+  "doi": "10.1016/j.fluid.2005.07.010",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.07.010.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 12 (boiling temperature) and 13 (vapour mole fraction): the binary acetic acid + ethyl acetate set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethyl-acetate", "acetic-acid"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.325,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.0238, 388.86, 0.0825],
+  [0.0366, 387.91, 0.1189],
+  [0.0476, 386.97, 0.1518],
+  [0.0776, 385.03, 0.2443],
+  [0.0907, 384.03, 0.2718],
+  [0.117, 382.21, 0.3265],
+  [0.141, 380.57, 0.3795],
+  [0.1657, 379.12, 0.4297],
+  [0.2203, 376.35, 0.5369],
+  [0.2661, 373.77, 0.6113],
+  [0.3085, 371.67, 0.6739],
+  [0.3924, 367.87, 0.7621],
+  [0.4617, 365.0, 0.8215],
+  [0.4924, 364.0, 0.8463],
+  [0.5332, 362.65, 0.8702],
+  [0.5559, 361.91, 0.882],
+  [0.6068, 360.21, 0.9074],
+  [0.6568, 358.94, 0.9266],
+  [0.6986, 357.82, 0.9439],
+  [0.7426, 356.57, 0.9571],
+  [0.7974, 355.2, 0.971],
+  [0.8415, 354.21, 0.9769],
+  [0.8644, 353.55, 0.9811],
+  [0.9197, 352.2, 0.9898],
+  [0.9482, 351.45, 0.9938],
+  [0.9809, 350.61, 0.9968]
+ ],
+ "notes": "Expanded uncertainties per point in the ThermoML record: T 0.25 to 0.25 K, y_1 0.0032 to 0.0322. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}
