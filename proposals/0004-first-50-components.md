@@ -233,5 +233,12 @@ reported per property) and the existing pair workflow for binaries:
    constants for argon, carbon monoxide, carbon dioxide and hydrogen sulfide in water, checked
    against the guideline's table 6. Pairs without a databank value are fitted to open data
    benchmark by benchmark.
+   Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
+   of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
+   had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states
+   where the set predicts two liquid phases at 273-373 K, not yet checked against data; the
+   priority-1 pairs among them are fitted to open data benchmark by benchmark. The check
+   exposed a bug in the engine's tangent-plane test (an unconverged trial phase could report a
+   false liquid split), fixed in the same pull request.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
    is available.
