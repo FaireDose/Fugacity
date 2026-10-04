@@ -1,0 +1,41 @@
+{
+ "_about": "Water (1) + acetic acid (2): isobaric T-x-y at 101.325 kPa, binary data set from Calvar et al. (2005). Rows as in the ThermoML Archive record: liquid mole fraction of water, boiling temperature in K, vapour mole fraction of water.",
+ "source": {
+  "citation": "N. Calvar, A. Dominguez, J. Tojo, Vapor liquid equilibria for the quaternary reactive system ethyl acetate + ethanol + water + acetic acid and some of the constituent binary systems at 101.3 kPa, Fluid Phase Equilib. 235 (2005) 215-222",
+  "doi": "10.1016/j.fluid.2005.07.010",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.07.010.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 14 (boiling temperature) and 15 (vapour mole fraction): the binary acetic acid + water set. The table number in the article was not checked (article not open)."
+ },
+ "components": ["water", "acetic-acid"],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.325,
+ "columns": ["x_1", "T_K", "y_1"],
+ "rows": [
+  [0.0901, 386.54, 0.2253],
+  [0.1414, 384.47, 0.3177],
+  [0.1934, 382.96, 0.3954],
+  [0.2593, 381.86, 0.4654],
+  [0.3241, 380.39, 0.5311],
+  [0.3627, 379.83, 0.5622],
+  [0.4454, 378.65, 0.6371],
+  [0.4702, 378.35, 0.6593],
+  [0.5071, 377.84, 0.6844],
+  [0.5337, 377.47, 0.7047],
+  [0.5698, 377.18, 0.7271],
+  [0.6046, 376.7, 0.7536],
+  [0.6546, 376.28, 0.7961],
+  [0.6808, 375.98, 0.82],
+  [0.7057, 375.68, 0.8394],
+  [0.7332, 375.45, 0.8566],
+  [0.7789, 375.0, 0.8819],
+  [0.8287, 374.62, 0.9064],
+  [0.8555, 374.45, 0.9183],
+  [0.8963, 374.11, 0.9419],
+  [0.914, 373.99, 0.9515],
+  [0.9391, 373.84, 0.9651],
+  [0.9653, 373.66, 0.9809],
+  [0.9902, 373.31, 0.9951]
+ ],
+ "notes": "Expanded uncertainties per point in the ThermoML record: T 0.25 to 0.25 K, y_1 0.0049 to 0.0206. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

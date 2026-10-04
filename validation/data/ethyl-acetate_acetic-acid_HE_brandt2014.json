@@ -1,0 +1,32 @@
+{
+ "_about": "Ethyl acetate (1) + acetic acid (2): excess molar enthalpy at 323.15 K and 1548.0 kPa from Brandt et al. (2014). Rows as in the ThermoML Archive record: mole fraction of ethyl acetate, excess molar enthalpy in kJ/mol (as printed).",
+ "source": {
+  "citation": "S. Brandt, S. Horstmann, S. Steinigeweg, J. Gmehling, Phase equilibria and excess properties for binary systems in reactive distillation processes Part II. Ethyl acetate synthesis, Fluid Phase Equilib. 376 (2014) 48-54",
+  "doi": "10.1016/j.fluid.2014.05.031",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.05.031.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 5: acetic acid + ethyl acetate, excess molar enthalpy, variable mole fraction of ethyl acetate, constraints T = 323.15 K and P = 1548.0 kPa. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethyl-acetate", "acetic-acid"],
+ "kind": "excess-enthalpy",
+ "T_K": 323.15,
+ "P_kPa": 1548.0,
+ "columns": ["x_1", "HE_kJ_mol"],
+ "rows": [
+  [0.0148, -0.0074],
+  [0.03, -0.0148],
+  [0.0613, -0.0266],
+  [0.1108, -0.0387],
+  [0.1637, -0.0437],
+  [0.2403, -0.0394],
+  [0.3246, -0.0264],
+  [0.4179, -0.0055],
+  [0.5217, 0.0219],
+  [0.6379, 0.0539],
+  [0.7347, 0.073],
+  [0.8409, 0.0786],
+  [0.9178, 0.0638],
+  [0.9582, 0.044]
+ ],
+ "notes": "Expanded uncertainties in the record: 0.005 to 0.0167 kJ/mol. Used as a check of the activity-model parameters, not fitted. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

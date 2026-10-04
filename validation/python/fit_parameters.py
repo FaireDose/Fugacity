@@ -36,6 +36,11 @@ Data kinds a FITS entry can use:
                      kind "azeotrope" with "heterogeneous": false  the same columns: the liquid
                                           of that composition boils at T and P with a vapour
                                           of the same composition (a T-x-y point with y = x).
+                     kind "isothermal-px"  columns T_K, x_1, P_kPa: total pressure of the liquid
+                                          at T (1/0.5 %). The rows of the pure components at
+                                          each T are the vapour pressures of that isotherm (the
+                                          pair parameters are not biased by the databank
+                                          vapour pressures); they are not fitted.
                      kind "excess-enthalpy"  columns x_1 and HE_kJ_mol (or HE_J_mol), with
                                           T_K as a column or at the top of the file.
                    Files under "check" are compared with the result but not fitted.
@@ -150,6 +155,27 @@ def het_azeotrope_file(name, pair):
     return out
 
 
+def px_file(name, pair):
+    """Isothermal P-x file as [(T_K, x1, P_kPa, (P1sat, P2sat))] with x1 of pair[0] and the
+    pure-component pressures of the file at that T (in pair order)."""
+    d = load(name)
+    flip = _orient(d, name, pair)
+    col = {c: k for k, c in enumerate(d["columns"])}
+    rows = [(r[col["T_K"]], r[col["x_1"]], r[col["P_kPa"]]) for r in d["rows"]]
+    pure = {}
+    for T, x1, P in rows:
+        if x1 in (0, 1):
+            pure.setdefault(T, [None, None])[0 if x1 == 1 else 1] = P
+    out = []
+    for T, x1, P in rows:
+        if 0 < x1 < 1:
+            if T not in pure or None in pure[T]:
+                raise ValueError(f"{name}: no pure-component pressures at {T} K")
+            ps = pure[T]
+            out.append((T, 1 - x1, P, (ps[1], ps[0])) if flip else (T, x1, P, tuple(ps)))
+    return out
+
+
 def he_file(name, pair):
     """Excess-enthalpy file as [(T_K, x1, HE in J/mol)] with x1 of pair[0]."""
     d = load(name)
@@ -187,6 +213,8 @@ def file_sets(spec, key="files"):
             out.append(("haz" if d.get("heterogeneous") else "az", name, het_azeotrope_file(name, spec["pair"])))
         elif kind == "excess-enthalpy":
             out.append(("he", name, he_file(name, spec["pair"])))
+        elif kind == "isothermal-px":
+            out.append(("px", name, px_file(name, spec["pair"])))
         else:
             raise ValueError(f"{name}: unknown kind {kind!r}")
     return out
@@ -219,8 +247,13 @@ MAC = "data public in the NIST TRC ThermoML Archive"
 # starting values of (b_ij, b_ji) in K for nearly immiscible pairs (large positive interaction)
 IMMISCIBLE_STARTS = [(1500, 500), (500, 1500), (1000, 1000), (2000, 300), (300, 2000), (100, -100)]
 FITS = [
-    dict(pair=("water", "acetic-acid"), data="uniquac-curve", models=["NRTL"], temperature_dependent=False,
-         describe="Fitted to reproduce the ChemSep UNIQUAC T-x-y curve at 101.325 kPa (no open experimental set yet)."),
+    # Ethyl acetate by esterification benchmark (docs/BENCHMARKS.md, proposal 0004 step 3).
+    # Water + acetic acid: the two open 1-atm sets disagree at low water content; the fit uses
+    # the one that passes the consistency point test more nearly (Chang 2005: mean |dy| 0.015,
+    # Calvar 2005: 0.038), the other is a check.
+    dict(pair=("water", "acetic-acid"), data="txy-file", file="water_acetic-acid_101kPa_chang2005.json",
+         check=["water_acetic-acid_101kPa_calvar2005.json"], temperature_dependent=False,
+         describe=f"Fitted to 18 T-x-y points at 101.33 kPa from Chang, Guan, Li, Yao, J. Chem. Eng. Data 50 (2005) 1129 ({MAC}; validation/data/water_acetic-acid_101kPa_chang2005.json); checked against the 24 points at 101.325 kPa of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/water_acetic-acid_101kPa_calvar2005.json), which scatter more (point test mean |dy| 0.038). Vapour: chemical theory for the acetic acid dimer."),
     # Ethanol dehydration benchmark (docs/BENCHMARKS.md, proposal 0004 step 3). Water + ethylene
     # glycol: the open primary source replaces the Wikipedia compilation it was first fitted to
     # (the compilation stays as a check).
@@ -264,6 +297,19 @@ FITS = [
          temperature_dependent=True, single_liquid=True, starts=IMMISCIBLE_STARTS,
          wanted="open vapour-liquid data for the binary (none found); the parameters rest on three mutual-solubility points at 280-333 K.",
          describe=f"Fitted to mutual solubilities at 280.15, 303.15 and 333.15 K from Lindemann, Duchet-Suchaux, Abou Naccoul, Mokbel, Malicet, Jose, J. Chem. Eng. Data 59 (2014) 3749 ({MAC}; validation/data/ethylene-glycol_cyclohexane_lle_lindemann2014.json)."),
+    # Ethanol + acetic acid: the 1-atm T-x-y set and the static P-x data at 298-323 K disagree
+    # (a fit to either misses the other by about 3 K or 9 %); both together, temperature-
+    # dependent. The two esterify, which may affect either measurement.
+    dict(pair=("ethanol", "acetic-acid"), data="txy-file", temperature_dependent=True,
+         files=["ethanol_acetic-acid_101kPa.json", "ethanol_acetic-acid_px_brandt2014.json"], check=["acetic-acid_ethanol_HE_brandt2014.json"],
+         wanted="consistent open vapour-liquid data at 1 atm (the 1-atm set fails the point test, and it disagrees with the static P-x data at 298-323 K).",
+         describe=f"Fitted to 22 T-x-y points at 101.325 kPa (Zhu et al., J. Chem. Eng. Data 58 (2013) 7) and 37 total pressures at 298.15 and 323.15 K, static method, with the measured pure-component pressures (Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48), both {MAC} (validation/data/ethanol_acetic-acid_101kPa.json, ethanol_acetic-acid_px_brandt2014.json); a fit to either set alone misses the other by about 3 K or 9 %. Checked against the excess enthalpy at 323.15 K of Brandt et al. (validation/data/acetic-acid_ethanol_HE_brandt2014.json). Vapour: chemical theory for the acetic acid dimer."),
+    # Ethyl acetate + acetic acid: the static P-x data fit to 0.1 % and predict the 1-atm
+    # boiling points within 0.2 K, better than a fit to the 1-atm set itself (its vapour
+    # compositions fail the point test).
+    dict(pair=("ethyl-acetate", "acetic-acid"), data="txy-file", file="ethyl-acetate_acetic-acid_px_brandt2014.json", temperature_dependent=False,
+         check=["ethyl-acetate_acetic-acid_101kPa.json", "ethyl-acetate_acetic-acid_HE_brandt2014.json"],
+         describe=f"Fitted to 42 total pressures at 323.15 K, static method, with the measured pure-component pressures, from Brandt, Horstmann, Steinigeweg, Gmehling, Fluid Phase Equilib. 376 (2014) 48 ({MAC}; validation/data/ethyl-acetate_acetic-acid_px_brandt2014.json); checked against the 1-atm T-x-y data of Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 (validation/data/ethyl-acetate_acetic-acid_101kPa.json) and the excess enthalpy at 323.15 K of Brandt et al. Vapour: chemical theory for the acetic acid dimer."),
     # Partially miscible: liquid-liquid data, activity coefficients at infinite dilution and the
     # heterogeneous azeotrope at 1 atm together, temperature-dependent. No open finite-
     # concentration VLE data for this pair was found, so the handbook azeotrope is the only VLE
@@ -316,6 +362,11 @@ def file_residuals(s, sets, single=False):
         elif kind == "he":
             for T, x1, h in c:
                 r.append((s.excess_enthalpy([x1, 1 - x1], T) - h) / 20.0)
+        elif kind == "px":
+            for T, x1, P, ps in c:
+                s.psat_fixed = list(ps)
+                r.append((s.equilibrium([x1, 1 - x1], T)[0] / P - 1) / 0.005)
+                s.psat_fixed = None
         elif kind == "az":
             for T, P, x1 in c:
                 Tc, y = s.bubble_t([x1, 1 - x1], P)
@@ -453,6 +504,15 @@ def describe_fit(sets, model, i, j, params, minor=False):
             x = [1e-9, 1 - 1e-9] if k == 0 else [1 - 1e-9, 1e-9]
             dev.append(abs(s.gamma(x, T)[k] / g - 1) * 100)
         out.append(f"gamma at infinite dilution: AARD {np.mean(dev):.1f} % (max {np.max(dev):.1f} %)")
+    px = [p for kind, _, c in sets if kind == "px" for p in c]
+    if px:
+        dev = []
+        for T, x1, P, ps in px:
+            s.psat_fixed = list(ps)
+            dev.append(abs(s.equilibrium([x1, 1 - x1], T)[0] / P - 1) * 100)
+            s.psat_fixed = None
+        Ts = sorted({round(T, 2) for T, _, _, _ in px})
+        out.append(f"P-x at {', '.join(f'{T:g}' for T in Ts)} K (with the measured pure-component pressures): AAD {np.mean(dev):.2f} % (max {np.max(dev):.2f} %)")
     he = [p for kind, _, c in sets if kind == "he" for p in c]
     if he:
         dev = [s.excess_enthalpy([x1, 1 - x1], T) - h for T, x1, h in he]
@@ -579,34 +639,37 @@ def quality(spec, model, params):
 
 def point_test(spec, nterms=4):
     """Thermodynamic consistency point test (Van Ness et al. 1973; Fredenslund et al. 1977):
-    fit a Redlich-Kister expansion of G^E/RT to the T-x data only (Barker's method, ideal
-    vapour, the databank vapour pressures) and compare the vapour compositions it predicts
-    with the measured ones. Mean |dy| below 0.01 is the usual pass criterion.
-    Returns None when the fit has no T-x-y data."""
+    fit a Redlich-Kister expansion of G^E/RT to the T-x data only (Barker's method, the
+    databank vapour pressures and the same vapour model as the fit: ideal gas, or chemical
+    theory for a dimerizing component such as acetic acid) and compare the vapour
+    compositions it predicts with the measured ones. Mean |dy| below 0.01 is the usual pass
+    criterion. Returns None when the fit has no T-x-y data."""
     i, j = spec["pair"]
-    c = [COMPONENTS[i], COMPONENTS[j]]
     sets = txy_sets(spec)
     if not sets:
         return None
 
-    def lngam(A, x1):
-        x2 = 1 - x1
-        d = x1 - x2
-        g = x1 * x2 * sum(a * d ** k for k, a in enumerate(A))
-        dg = (x2 - x1) * sum(a * d ** k for k, a in enumerate(A)) + x1 * x2 * sum(2 * k * a * d ** (k - 1) for k, a in enumerate(A) if k)
-        return g + x2 * dg, g - x1 * dg
+    class RK(System):
+        def __init__(self, A):
+            super().__init__([i, j], "NRTL", params=[])
+            self.A = A
 
-    def bubble(A, x1, P):
-        l1, l2 = lngam(A, x1)
-        f = lambda T: x1 * np.exp(l1) * psat_kpa(c[0], T) + (1 - x1) * np.exp(l2) * psat_kpa(c[1], T) - P
-        T = brentq(f, 250.0, 600.0, xtol=1e-10)
-        return T, x1 * np.exp(l1) * psat_kpa(c[0], T) / P
+        def gamma(self, x, T):
+            x1 = float(np.clip(x[0], 1e-12, 1 - 1e-12))
+            x2 = 1 - x1
+            d = x1 - x2
+            A = self.A
+            g = x1 * x2 * sum(a * d ** k for k, a in enumerate(A))
+            dg = (x2 - x1) * sum(a * d ** k for k, a in enumerate(A)) + x1 * x2 * sum(2 * k * a * d ** (k - 1) for k, a in enumerate(A) if k)
+            return np.exp(np.array([g + x2 * dg, g - x1 * dg]))
 
     def res(A):
-        return np.array([(bubble(A, x1, P)[0] - T) for P, pts in sets for x1, T, _ in pts])
+        s = RK(A)
+        return np.array([(s.bubble_t([x1, 1 - x1], P)[0] - T) for P, pts in sets for x1, T, _ in pts])
 
     A = least_squares(res, [0.0] * nterms, method="lm").x
-    dy = [abs(bubble(A, x1, P)[1] - y1) for P, pts in sets for x1, _, y1 in pts]
+    s = RK(A)
+    dy = [abs(s.bubble_t([x1, 1 - x1], P)[1][0] - y1) for P, pts in sets for x1, _, y1 in pts]
     return float(np.mean(dy))
 
 
