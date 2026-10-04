@@ -871,7 +871,7 @@
    "units": "Pa",
    "source": {
     "name": "NIST Chemistry WebBook (Antoine equation) and ChemSep critical point",
-    "fit": "Fitted to the Antoine equation of Dreyer, Martin, et al., 1955 (log10(P/bar) = 4.21948 - 1525.06/(T/K -56.379), 303.07-417.92 K, coefficients calculated by NIST from the authors' data; NIST Chemistry WebBook (SRD 69), https://webbook.nist.gov/cgi/cbook.cgi?ID=C100425&Units=SI&Mask=4), sampled at 60 points, and to the ChemSep v8.3 critical point (636.00 K, 3840000 Pa): max deviation 0.100 % from the Antoine equation, +0.10 % at the critical point. Range 303.07-636.00 K: below 303.07 K there are no measured data in the WebBook; between 417.92 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it gives 417.14 K at 101.325 kPa against the measured 418.31 K, and it diverges above about 420 K (3.2e+08 Pa at the critical temperature, against the critical pressure 3.84e+06 Pa)."
+    "fit": "Fitted to the Antoine equation of Dreyer, Martin, et al., 1955 (log10(P/bar) = 4.21948 - 1525.06/(T/K -56.379), 303.07-417.92 K, coefficients calculated by NIST from the authors' data; NIST Chemistry WebBook (SRD 69), https://webbook.nist.gov/cgi/cbook.cgi?ID=C100425&Units=SI&Mask=4), sampled at 60 points, and to the ChemSep v8.3 critical point (636.00 K, 3840000 Pa): max deviation 0.100 % from the Antoine equation, +0.10 % at the critical point. Range 303.07-636.00 K: below 303.07 K there are no measured data in the WebBook; between 417.92 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it gives 417.14 K at 101.325 kPa against the measured 418.34 K, and it diverges above about 420 K (3.2e+08 Pa at the critical temperature, against the critical pressure 3.84e+06 Pa)."
    },
    "T_K": [
     303.07,
@@ -999,7 +999,7 @@
     100290.85,
     3840000.0
    ],
-   "Tb_K_at_101325Pa": 418.31
+   "Tb_K_at_101325Pa": 418.3405
   }
  }
 }

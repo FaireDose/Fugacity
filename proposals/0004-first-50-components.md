@@ -187,6 +187,16 @@ reported per property) and the existing pair workflow for binaries:
    the measured data of Dreyer et al. (1955, via the WebBook) and the critical point, because
    the ChemSep equation misses the measured normal boiling point by 1.2 K and diverges above
    about 420 K; its range starts at 303.07 K, the lowest measured point.
+   Batch 3: diethyl ether, propylene glycol and tetrahydrofuran (CoolProp fluids), and
+   1-propanol, 2-propanol, 1-butanol, 2-butanone, methyl acetate, n-butyl acetate,
+   acetonitrile, MTBE, glycerol and phenol (ChemSep). Every ChemSep vapour pressure is
+   cross-checked with the WebBook Antoine sets (stored in the record); Tb of these
+   components is where their vapour-pressure record reaches 101.325 kPa, as for the CoolProp
+   fluids. Left open: dichloromethane (neither a CoolProp fluid nor in ChemSep v8.3: its
+   data have to come from measured data, WebBook and ThermoML), the UNIQUAC r and q and
+   the transport properties and surface tension of propylene glycol (not in ChemSep; "no
+   open data" until the UNIFAC licence question of roadmap A3 is settled or open data are
+   found).
 3. **Pairs, benchmark by benchmark:** fitted to open data where it exists, databank
    otherwise, missing pairs listed. One pull request per benchmark.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
