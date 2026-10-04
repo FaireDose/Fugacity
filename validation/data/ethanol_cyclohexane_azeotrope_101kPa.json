@@ -1,0 +1,19 @@
+{
+ "_about": "Ethanol (1) + cyclohexane (2): azeotrope at 101.325 kPa, as tabulated in the Wikipedia 'Azeotrope tables' article. Row as printed: azeotrope boiling point in degC and composition in weight percent of cyclohexane (the second component).",
+ "source": {
+  "citation": "Azeotrope tables, Wikipedia, table 'binary azeotropes of ethanol', row cyclohexane (colour code 'other'); cited there to J. Ponton, Azeotrope Databank, The Edinburgh Collection of Open Software for Simulation and Education, University of Edinburgh (2001)",
+  "doi": "",
+  "open_copy": "https://en.wikipedia.org/wiki/Azeotrope_tables",
+  "access": "Open (CC BY-SA text; the cited databank is open software). Secondary compilation, the same article as validation/data/azeotropes_101kPa.json.",
+  "tables": "Binary azeotropes of ethanol, row 'cyclohexane': b.p. of component 80.7 degC, b.p. of mixture 64.9 degC, % by weight 69.5"
+ },
+ "components": ["ethanol", "cyclohexane"],
+ "kind": "azeotrope",
+ "heterogeneous": false,
+ "P_kPa": 101.325,
+ "columns": ["T_C", "wt_pct_2"],
+ "rows": [
+  [64.9, 69.5]
+ ],
+ "notes": "No uncertainty given; the table marks no heterogeneous layers. 69.5 wt % cyclohexane is the liquid = vapour composition; validation/python/fit_parameters.py converts it to a mole fraction with the molar masses in src/data/components.json (x_ethanol = 0.445). Used as the only 1-atm vapour-liquid target of the ethanol + cyclohexane fit, because no open binary vapour-liquid data was found (see data_wanted in src/data/binaries.json). Read from the page source (wikitext) of the article on 2026-10-04. To be checked by a person against the page (AGENTS.md rule 4)."
+}

@@ -199,5 +199,22 @@ reported per property) and the existing pair workflow for binaries:
    found).
 3. **Pairs, benchmark by benchmark:** fitted to open data where it exists, databank
    otherwise, missing pairs listed. One pull request per benchmark.
+   Ethanol dehydration (added when it was done): all six pairs have NRTL and UNIQUAC sets,
+   from records of the NIST TRC ThermoML Archive read with `validation/python/thermoml_read.py`
+   (the bulk archive download failed on the server side, so records are fetched one DOI at a
+   time). Ethanol + ethylene glycol and water + ethylene glycol fitted to Kamihama et al.
+   (2012): the ChemSep ethanol + glycol set was 6 K off these data, and the water + glycol
+   fit replaces the earlier one to a Wikipedia compilation. Water + cyclohexane and ethylene
+   glycol + cyclohexane fitted to mutual solubilities (`fit_parameters.py` now fits rows
+   where only one liquid was measured, and refuses a set that predicts a spurious extra
+   liquid phase inside its data range); the 1-atm heterogeneous azeotrope of water +
+   cyclohexane is an independent check (69.4 vs 69.8 degC). Ethanol + water: excess
+   enthalpies at 298-423 K found; a joint fit with the T-x-y data is a second, non-default
+   set, because with tau = a + b/T no set follows both. Ethanol + cyclohexane: no open binary
+   vapour-liquid data found; ChemSep NRTL passes the open checks (azeotrope, one liquid at
+   323 K), ChemSep UNIQUAC predicts two liquids there (a known issue shown to users). The
+   equation of state (second model): PR and SRK k_ij fitted for the three miscible pairs;
+   the three pairs with cyclohexane keep k_ij = 0 (the warning says so) until a fit to
+   liquid-liquid data is added.
 4. **Benchmark flash cases** in the engineering report, once the flash (proposal 0001)
    is available.

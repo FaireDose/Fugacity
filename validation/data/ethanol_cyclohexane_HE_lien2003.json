@@ -1,0 +1,38 @@
+{
+ "_about": "Ethanol (1) + cyclohexane (2): excess molar enthalpy at 323.15 K and 101 kPa from Lien et al. (2003). Rows as in the ThermoML Archive record: mole fraction of ethanol, excess molar enthalpy in kJ/mol (as printed). The record gives the phase as one liquid over the whole range (x of ethanol 0.032-0.951).",
+ "source": {
+  "citation": "P.-J. Lien, H.-M. Lin, M.-J. Lee, Excess Molar Enthalpies for Binary Mixtures of Ethanol + Acetone, + Octane, + Cyclohexane and 1-Propanol + Acetone, + Octane, + Heptane at 323.15 (title as stored in the ThermoML record), J. Chem. Eng. Data 48 (2003) 359-361",
+  "doi": "10.1021/je020149l",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je020149l.html",
+  "access": "Journal article is subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9: ethanol + cyclohexane, excess molar enthalpy, variable mole fraction of ethanol, constraints T = 323.15 K and P = 101 kPa. The table number in the article was not checked (article not open)."
+ },
+ "components": ["ethanol", "cyclohexane"],
+ "kind": "excess-enthalpy",
+ "T_K": 323.15,
+ "P_kPa": 101.0,
+ "columns": ["x_1", "HE_kJ_mol"],
+ "rows": [
+  [0.032, 0.445],
+  [0.054, 0.554],
+  [0.102, 0.707],
+  [0.151, 0.805],
+  [0.202, 0.868],
+  [0.251, 0.907],
+  [0.3, 0.935],
+  [0.351, 0.947],
+  [0.401, 0.946],
+  [0.452, 0.933],
+  [0.5, 0.91],
+  [0.551, 0.874],
+  [0.601, 0.829],
+  [0.65, 0.774],
+  [0.707, 0.69],
+  [0.75, 0.628],
+  [0.802, 0.531],
+  [0.851, 0.424],
+  [0.901, 0.302],
+  [0.951, 0.159]
+ ],
+ "notes": "Expanded uncertainties in the record: 0.005 to 0.02 kJ/mol. Values as stored in the ThermoML record (XML file), extracted with validation/python/thermoml_read.py; nothing converted or rounded. To be checked by a person against the record before use (AGENTS.md rule 4)."
+}

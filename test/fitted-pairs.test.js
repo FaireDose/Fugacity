@@ -18,6 +18,8 @@ const TXY_FILES = [
   "ethanol_water_101kPa.json",
   "ethyl-acetate_ethanol_101kPa.json",
   "ethyl-acetate_ethanol_101kPa_zhang2017.json", // independent check, not fitted
+  "ethanol_ethylene-glycol_101kPa.json",
+  "water_ethylene-glycol_101kPa_kamihama2012.json",
 ];
 
 for (const file of TXY_FILES) {

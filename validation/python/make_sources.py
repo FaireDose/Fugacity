@@ -268,7 +268,15 @@ def validation_sources():
         if entry["kind"] is None:
             raise ValueError(f"{rel}: cannot tell the kind of source from its access text")
         out.append((sid, {k: v for k, v in entry.items() if v is not None}, rel))
-    return out
+    # one article, several data files (e.g. the binary sets of one paper): one source. Its id
+    # is the one already in sources.json, else the first file's.
+    known = json.loads(SOURCES_FILE.read_text())["sources"] if SOURCES_FILE.exists() else {}
+    by_url = {}
+    for sid, entry, rel in out:
+        if entry is not None:
+            by_url.setdefault(entry["url"], []).append(sid)
+    keep = {url: next((i for i in ids if i in known), ids[0]) for url, ids in by_url.items()}
+    return [(sid if entry is None else keep[entry["url"]], entry, rel) for sid, entry, rel in out]
 
 
 # ------------------------------------------------------------------------------------------

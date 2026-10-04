@@ -33,8 +33,18 @@ Data kinds a FITS entry can use:
                                           and "P_kPa": the two liquids in equilibrium at T
                                           must boil at P with that vapour. Fitted in a second
                                           stage, started from the fit without it.
+                     kind "azeotrope" with "heterogeneous": false  the same columns: the liquid
+                                          of that composition boils at T and P with a vapour
+                                          of the same composition (a T-x-y point with y = x).
+                     kind "excess-enthalpy"  columns x_1 and HE_kJ_mol (or HE_J_mol), with
+                                          T_K as a column or at the top of the file.
                    Files under "check" are compared with the result but not fitted.
-For "txy-file" fits a spec may also set "alpha" (NRTL non-randomness, default 0.3).
+For "txy-file" fits a spec may also set "alpha" (NRTL non-randomness, default 0.3), "starts"
+(starting values of b_ij, b_ji in K; nearly immiscible pairs need larger ones) and
+"single_liquid": True, which also fits liquid-liquid rows where only one liquid was measured
+(solubility data): the model's split at T is solved and the logarithm of the minor
+component's mole fraction in the measured liquid is compared (1/0.05). Without it such rows
+are only compared.
 """
 import json
 import sys
@@ -123,11 +133,10 @@ def gamma_inf_file(name, pair):
 
 
 def het_azeotrope_file(name, pair):
-    """Heterogeneous azeotrope file as [(T_K, P_kPa, y1)] with y1 the vapour mole fraction of
-    pair[0], converted from weight percent with the molar masses in components.json."""
+    """Azeotrope file as [(T_K, P_kPa, y1)] with y1 the vapour mole fraction of pair[0] (for a
+    homogeneous azeotrope also the liquid one), converted from weight percent with the molar
+    masses in components.json."""
     d = load(name)
-    if not d.get("heterogeneous"):
-        raise ValueError(f"{name}: only heterogeneous azeotropes are supported")
     flip = _orient(d, name, pair)
     col = {c: k for k, c in enumerate(d["columns"])}
     M = [COMPONENTS[c]["MW"] for c in d["components"]]
@@ -141,20 +150,43 @@ def het_azeotrope_file(name, pair):
     return out
 
 
+def he_file(name, pair):
+    """Excess-enthalpy file as [(T_K, x1, HE in J/mol)] with x1 of pair[0]."""
+    d = load(name)
+    flip = _orient(d, name, pair)
+    col = {c: k for k, c in enumerate(d["columns"])}
+    f = 1000.0 if "HE_kJ_mol" in col else 1.0
+    h = col["HE_kJ_mol"] if "HE_kJ_mol" in col else col["HE_J_mol"]
+    out = []
+    for r in d["rows"]:
+        T = r[col["T_K"]] if "T_K" in col else d["T_K"]
+        x1 = r[col["x_1"]]
+        out.append((T, 1 - x1 if flip else x1, r[h] * f))
+    return out
+
+
 def file_sets(spec, key="files"):
     """Data sets of a "txy-file" fit: list of (kind, name, content)."""
     names = spec.get(key, [spec["file"]] if key == "files" and "file" in spec else [])
     out = []
     for name in names:
-        kind = load(name)["kind"]
-        if kind == "isobaric-txy":
+        d = load(name)
+        kind = d.get("kind")
+        if kind is None and name == "water_ethylene_glycol_760mmHg.json":   # the older compilation format
+            P, pts = water_eg_txy()
+            if spec["pair"] != ("water", "ethylene-glycol"):
+                raise ValueError(f"{name}: pair {spec['pair']}")
+            out.append(("txy", name, (P, pts)))
+        elif kind == "isobaric-txy":
             out.append(("txy", name, txy_file(name, spec["pair"])))
         elif kind == "lle":
             out.append(("lle", name, lle_file(name, spec["pair"])))
         elif kind == "gamma-infinite-dilution":
             out.append(("ginf", name, gamma_inf_file(name, spec["pair"])))
         elif kind == "azeotrope":
-            out.append(("haz", name, het_azeotrope_file(name, spec["pair"])))
+            out.append(("haz" if d.get("heterogeneous") else "az", name, het_azeotrope_file(name, spec["pair"])))
+        elif kind == "excess-enthalpy":
+            out.append(("he", name, he_file(name, spec["pair"])))
         else:
             raise ValueError(f"{name}: unknown kind {kind!r}")
     return out
@@ -184,11 +216,17 @@ def uniquac_curve(i, j):
 
 
 MAC = "data public in the NIST TRC ThermoML Archive"
+# starting values of (b_ij, b_ji) in K for nearly immiscible pairs (large positive interaction)
+IMMISCIBLE_STARTS = [(1500, 500), (500, 1500), (1000, 1000), (2000, 300), (300, 2000), (100, -100)]
 FITS = [
     dict(pair=("water", "acetic-acid"), data="uniquac-curve", models=["NRTL"], temperature_dependent=False,
          describe="Fitted to reproduce the ChemSep UNIQUAC T-x-y curve at 101.325 kPa (no open experimental set yet)."),
-    dict(pair=("water", "ethylene-glycol"), data="txy", temperature_dependent=False,
-         describe="Fitted to 18 T-x-y points at 760 mmHg (compilation on Wikipedia ethylene glycol data page)."),
+    # Ethanol dehydration benchmark (docs/BENCHMARKS.md, proposal 0004 step 3). Water + ethylene
+    # glycol: the open primary source replaces the Wikipedia compilation it was first fitted to
+    # (the compilation stays as a check).
+    dict(pair=("water", "ethylene-glycol"), data="txy-file", file="water_ethylene-glycol_101kPa_kamihama2012.json",
+         check=["water_ethylene_glycol_760mmHg.json"], temperature_dependent=False, new_set=True,
+         describe=f"Fitted to 19 T-x-y points at 101.3 kPa from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 ({MAC}; validation/data/water_ethylene-glycol_101kPa_kamihama2012.json); checked against the older compilation on the Wikipedia ethylene glycol data page (validation/data/water_ethylene_glycol_760mmHg.json), to which it was fitted before."),
     dict(pair=("acetic-acid", "ethylene-glycol"), data="schmid", temperature_dependent=True,
          describe="Fitted to Schmid, Doeker, Gmehling, Fluid Phase Equilib. 258 (2007) 115 (data public in the NIST TRC ThermoML Archive): P-x at 363.15 K (with the paper's pure-component pressures) and HE at 323.15 K."),
     # Methanol + acetone + chloroform: the three pairs of the saddle-azeotrope ternary.
@@ -204,6 +242,28 @@ FITS = [
     dict(pair=("ethanol", "ethyl-acetate"), data="txy-file", file="ethyl-acetate_ethanol_101kPa.json",
          check=["ethyl-acetate_ethanol_101kPa_zhang2017.json"], temperature_dependent=False,
          describe=f"Fitted to 24 T-x-y points at 101.3 kPa from Calvar, Dominguez, Tojo, Fluid Phase Equilib. 235 (2005) 215 ({MAC}; validation/data/ethyl-acetate_ethanol_101kPa.json); checked against Zhang et al., Fluid Phase Equilib. 454 (2017) 91."),
+    dict(pair=("ethanol", "ethylene-glycol"), data="txy-file", file="ethanol_ethylene-glycol_101kPa.json", temperature_dependent=False,
+         describe=f"Fitted to 15 T-x-y points at 101.3 kPa (x of ethanol 0.18-0.90) from Kamihama, Matsuda, Kurihara, Tochigi, Oba, J. Chem. Eng. Data 57 (2012) 339 ({MAC}; validation/data/ethanol_ethylene-glycol_101kPa.json)."),
+    # Ethanol + water, vapour-liquid and excess-enthalpy data together: a second set, not the
+    # default. With tau = a + b/T, no set follows both the 1-atm T-x-y data and the excess
+    # enthalpy, which changes sign between 298 and 423 K; the default set stays the
+    # vapour-liquid fit above, this one is for enthalpy balances.
+    dict(pair=("water", "ethanol"), data="txy-file", temperature_dependent=True, default=False,
+         files=["ethanol_water_101kPa.json", "ethanol_water_HE_nagamachi2006.json", "water_ethanol_HE_fang2014.json"],
+         describe=f"Fitted to the 21 T-x-y points at 101.3 kPa of Kamihama et al., J. Chem. Eng. Data 57 (2012) 339 together with excess enthalpies at 298.15 and 323.15 K (Nagamachi, Francesconi, J. Chem. Thermodyn. 38 (2006) 461) and at 423.2 K, 5 MPa (Fang et al., J. Chem. Thermodyn. 78 (2014) 204), all {MAC} (validation/data/ethanol_water_101kPa.json, ethanol_water_HE_nagamachi2006.json, water_ethanol_HE_fang2014.json). Not the default set: it follows the excess enthalpy better and the T-x-y data worse than the default set fitted to T-x-y only."),
+    # Nearly immiscible pairs: mutual solubilities only (one liquid measured per row in most
+    # sets), temperature-dependent; the heterogeneous azeotrope is an independent check.
+    dict(pair=("water", "cyclohexane"), data="txy-file", temperature_dependent=True, single_liquid=True,
+         files=["water_cyclohexane_lle_marche2006.json", "water_cyclohexane_lle_marche2003.json", "water_cyclohexane_lle_danon2018.json"],
+         check=["water_cyclohexane_azeotrope_101kPa.json"], starts=IMMISCIBLE_STARTS, alpha=0.2,
+         # alpha 0.3 gives a set with a spurious third liquid at 270-340 K (phase_splits below);
+         # 0.2 does not, and follows the solubilities better
+         wanted="open vapour-liquid or vapour-liquid-liquid data for the binary at 101.3 kPa (the 1-atm target here is a handbook azeotrope, used as a check only), and more solubility data below 343 K for the water-rich liquid.",
+         describe=f"Fitted (NRTL with alpha 0.2: with 0.3 the fitted set predicts a spurious third liquid at 270-340 K) to mutual solubilities: water in cyclohexane at 303-446 K (Marche, Ferronato, de Hemptinne, Jose, J. Chem. Eng. Data 51 (2006) 355), cyclohexane in water at 343-424 K and 1700 kPa (Marche, Delepine, Ferronato, Jose, J. Chem. Eng. Data 48 (2003) 398) and both at 295 K (Danon, Kroon, Banat, J. Chem. Eng. Data 63 (2018) 1123), all {MAC} (validation/data/water_cyclohexane_lle_*.json); checked against the heterogeneous azeotrope at 101.325 kPa, 69.8 degC and 91.5 wt % cyclohexane (CRC Handbook 44th ed., via Wikipedia 'Azeotrope tables')."),
+    dict(pair=("ethylene-glycol", "cyclohexane"), data="txy-file", file="ethylene-glycol_cyclohexane_lle_lindemann2014.json",
+         temperature_dependent=True, single_liquid=True, starts=IMMISCIBLE_STARTS,
+         wanted="open vapour-liquid data for the binary (none found); the parameters rest on three mutual-solubility points at 280-333 K.",
+         describe=f"Fitted to mutual solubilities at 280.15, 303.15 and 333.15 K from Lindemann, Duchet-Suchaux, Abou Naccoul, Mokbel, Malicet, Jose, J. Chem. Eng. Data 59 (2014) 3749 ({MAC}; validation/data/ethylene-glycol_cyclohexane_lle_lindemann2014.json)."),
     # Partially miscible: liquid-liquid data, activity coefficients at infinite dilution and the
     # heterogeneous azeotrope at 1 atm together, temperature-dependent. No open finite-
     # concentration VLE data for this pair was found, so the handbook azeotrope is the only VLE
@@ -227,7 +287,17 @@ def make_params(model, i, j, p, alpha=0.3):
     return e
 
 
-def file_residuals(s, sets):
+def minor_ln(z, a, b):
+    """ln of the minor component's mole fraction in the measured liquid(s), model and data."""
+    out = []
+    for zm, xd in ((z[0], a), (z[1], b)):
+        if xd is not None:
+            m, d = (zm, xd) if xd < 0.5 else (1 - zm, 1 - xd)
+            out.append((np.log(max(m, 1e-300)), np.log(d)))
+    return out
+
+
+def file_residuals(s, sets, single=False):
     """Weighted residuals of a system against the data sets of a "txy-file" fit."""
     r = []
     for kind, _, c in sets:
@@ -240,6 +310,16 @@ def file_residuals(s, sets):
             for T, a, b in c:
                 if a is not None and b is not None:
                     r += list(s.isoactivity_residual([a, 1 - a], [b, 1 - b], T) / 0.05)
+                elif single:
+                    z = lle_single(s, T, a, b)
+                    r += [100.0] if z is None else [(m - d) / 0.05 for m, d in minor_ln(z, a, b)]
+        elif kind == "he":
+            for T, x1, h in c:
+                r.append((s.excess_enthalpy([x1, 1 - x1], T) - h) / 20.0)
+        elif kind == "az":
+            for T, P, x1 in c:
+                Tc, y = s.bubble_t([x1, 1 - x1], P)
+                r += [(Tc - T) / 0.5, (y[0] - x1) / 0.01]
         elif kind == "ginf":
             for T, k, g in c:
                 x = [1e-9, 1 - 1e-9] if k == 0 else [1 - 1e-9, 1e-9]
@@ -263,7 +343,9 @@ def fit(spec, model):
         sets = [st for st in all_sets if st[0] != "haz"]   # first stage: without azeotrope targets
 
         def residuals(p):
-            return np.array(file_residuals(System([i, j], model, params=[make_params(model, i, j, p, alpha)]), sets))
+            r = np.array(file_residuals(System([i, j], model, params=[make_params(model, i, j, p, alpha)]), sets, spec.get("single_liquid", False)))
+            # activity coefficients that overflow (far from the optimum) count as a large miss
+            return np.nan_to_num(r, nan=1e4, posinf=1e4, neginf=-1e4)
     elif txy_sets(spec) is not None:
         sets = txy_sets(spec)
 
@@ -287,7 +369,7 @@ def fit(spec, model):
 
     n = 4 if spec["temperature_dependent"] else 2
     best = None
-    for start in [(100, -100), (-100, 100), (300, -200), (-200, 300), (500, -300), (-300, 500)]:
+    for start in spec.get("starts", [(100, -100), (-100, 100), (300, -200), (-200, 300), (500, -300), (-300, 500)]):
         try:
             res = least_squares(residuals, list(start) + [0.0] * (n - len(start)), method="lm")
         except Exception:
@@ -329,8 +411,10 @@ def lle_from_data(s, T, a, b):
     return best
 
 
-def describe_fit(sets, model, i, j, params):
-    """Fit quality against "txy-file" data sets, one phrase per kind of data."""
+def describe_fit(sets, model, i, j, params, minor=False):
+    """Fit quality against "txy-file" data sets, one phrase per kind of data. minor: also the
+    relative deviation of the minor component's mole fraction in each measured liquid (for
+    solubility data, where absolute deviations say little)."""
     s = System([i, j], model, params=params)
     out = []
     txy = [c for kind, _, c in sets if kind == "txy"]
@@ -339,12 +423,16 @@ def describe_fit(sets, model, i, j, params):
         out.append(f"AAD {np.mean(dT):.2f} K in T, {np.mean(dy):.4f} in y (max {dT.max():.2f} K, {dy.max():.4f})")
     lle = [p for kind, _, c in sets if kind == "lle" for p in c]
     if lle:
-        dI, dII, miss = [], [], 0
+        dI, dII, miss, rI, rII = [], [], 0, [], []
         for T, a, b in lle:
-            z = lle_from_data(s, T, a, b)
+            z = lle_single(s, T, a, b) if minor and (a is None) != (b is None) else lle_from_data(s, T, a, b)
             if z is None:
                 miss += 1
                 continue
+            for k, xd in ((0, a), (1, b)):
+                if xd is not None:
+                    m, d = (z[k], xd) if xd < 0.5 else (1 - z[k], 1 - xd)
+                    (rI if k == 0 else rII).append(abs(m / d - 1) * 100)
             if a is not None:
                 dI.append(abs(z[0] - a))
             if b is not None:
@@ -354,6 +442,9 @@ def describe_fit(sets, model, i, j, params):
             phr += f", {np.mean(dII):.4f} in the {j}-rich liquid"
         if miss:
             phr += f" ({miss} points without a predicted split)"
+        if minor:
+            parts = [f"{np.mean(v):.0f} % in the {n}-rich liquid ({len(v)} points, max {np.max(v):.0f} %)" for v, n in ((rI, i), (rII, j)) if v]
+            phr += "; mole fraction of the dissolved (minor) component: AARD " + ", ".join(parts)
         out.append(phr)
     ginf = [p for kind, _, c in sets if kind == "ginf" for p in c]
     if ginf:
@@ -362,19 +453,47 @@ def describe_fit(sets, model, i, j, params):
             x = [1e-9, 1 - 1e-9] if k == 0 else [1 - 1e-9, 1e-9]
             dev.append(abs(s.gamma(x, T)[k] / g - 1) * 100)
         out.append(f"gamma at infinite dilution: AARD {np.mean(dev):.1f} % (max {np.max(dev):.1f} %)")
+    he = [p for kind, _, c in sets if kind == "he" for p in c]
+    if he:
+        dev = [s.excess_enthalpy([x1, 1 - x1], T) - h for T, x1, h in he]
+        Ts = sorted({round(T, 2) for T, _, _ in he})
+        out.append(f"excess enthalpy at {', '.join(f'{T:g}' for T in Ts)} K: AAD {np.mean(np.abs(dev)):.0f} J/mol (max {np.max(np.abs(dev)):.0f} J/mol; data {min(h for _, _, h in he):.0f} to {max(h for _, _, h in he):.0f} J/mol)")
+    for T, P, x1 in [p for kind, _, c in sets if kind == "az" for p in c]:
+        Tc, y = s.bubble_t([x1, 1 - x1], P)
+        out.append(f"azeotrope at {P} kPa: the liquid of the azeotrope's composition (x of {i} {x1:.3f}) boils at {Tc - 273.15:.2f} degC with a vapour of x {y[0]:.3f} (target {T - 273.15:.2f} degC, y = x)")
     for T, P, y1 in [p for kind, _, c in sets if kind == "haz" for p in c]:
-        az = heterogeneous_azeotrope(s, P, T)
+        az = heterogeneous_azeotrope(s, P, T, start=(1 - 1e-4, 1e-3) if minor else None)
         out.append(f"heterogeneous azeotrope at {P} kPa: {az[0] - 273.15:.2f} degC, vapour x of {i} {az[3]:.3f}, liquids {az[1]:.3f} / {az[2]:.3f} (target {T - 273.15:.2f} degC, {y1:.3f})"
                    if az else f"heterogeneous azeotrope at {P} kPa: none found (target {T - 273.15:.2f} degC)")
     return "; ".join(out)
 
 
-def heterogeneous_azeotrope(s, P, T_guess, span=15.0):
+def lle_single(s, T, a, b):
+    """Liquid-liquid split at T when one liquid was measured (a or b, x1 in liquid I or II):
+    the other liquid is started rich in the component that is dilute in the measured one, from
+    a few values, and the first distinct split is kept. None when none is found."""
+    meas = a if a is not None else b
+    rich1 = meas < 0.5            # the unmeasured liquid is rich in component 1
+    for g in (1e-4, 1e-3, 1e-2, 0.1, 0.3):
+        other = 1 - g if rich1 else g
+        guess = (meas, other) if a is not None else (other, meas)
+        try:
+            z = s.lle_binary(T, guess)
+        except (ValueError, FloatingPointError, OverflowError):
+            z = None
+        if z is not None:
+            return z
+    return None
+
+
+def heterogeneous_azeotrope(s, P, T_guess, span=15.0, start=None):
     """Binary heterogeneous azeotrope: the temperature at which the two liquids in equilibrium
     boil at P. Follows the liquid-liquid split from T_guess - span upwards and bisects.
+    start: (x1 in liquid a, x1 in liquid b) to start the split from (nearly immiscible pairs:
+    both liquids nearly pure); default: the search of lle_from_data.
     Returns (T, x1 in liquid a, x1 in liquid b, y1) or None."""
     T0 = T_guess - span
-    z0 = lle_from_data(s, T0, None, None)
+    z0 = lle_from_data(s, T0, None, None) if start is None else s.lle_binary(T0, start)
     if z0 is None:
         return None
     P0 = s.equilibrium([z0[0], 1 - z0[0]], T0)[0]
@@ -401,6 +520,34 @@ def heterogeneous_azeotrope(s, P, T_guess, span=15.0):
     return None
 
 
+def phase_splits(s, T):
+    """Liquid-liquid splits of a binary at T from the lower convex hull of the Gibbs energy of
+    mixing on a fine grid (log-spaced near the pure components): the composition ranges
+    (x1_a, x1_b) the hull bridges. A fitted set must give the number of splits its data show
+    (one for liquid-liquid data, none for a miscible pair): an extra split is a spurious
+    liquid phase."""
+    xs = np.unique(np.concatenate([np.logspace(-9, -1, 300), np.linspace(0.1, 0.9, 1500), 1 - np.logspace(-1, -9, 300)]))
+    g = np.array([x * np.log(x * s.gamma([x, 1 - x], T)[0]) + (1 - x) * np.log((1 - x) * s.gamma([x, 1 - x], T)[1]) for x in xs])
+    hull = []
+    for p in zip(xs, g):
+        while len(hull) >= 2 and (hull[-1][0] - hull[-2][0]) * (p[1] - hull[-2][1]) - (hull[-1][1] - hull[-2][1]) * (p[0] - hull[-2][0]) <= 0:
+            hull.pop()
+        hull.append(p)
+    return [(a[0], b[0]) for a, b in zip(hull, hull[1:]) if b[0] - a[0] > 0.01]
+
+
+def check_phase_splits(spec, model, params):
+    """Raise if the fitted set predicts another number of liquid phases than its data, at
+    eleven temperatures across the data range."""
+    sets = file_sets(spec)
+    want = 1 if any(kind in ("lle", "haz") for kind, _, _ in sets) else 0
+    lo, hi = data_T_range(sets)
+    s = System(list(spec["pair"]), model, params=[params])
+    bad = [round(T, 1) for T in np.linspace(lo, hi, 11) if len(phase_splits(s, T)) != want]
+    if bad:
+        raise SystemExit(f"{model} {spec['pair']}: the fitted set predicts {'no or more than one' if want else 'a'} liquid-liquid split at T = {bad} K, inside the range of its data; not written.")
+
+
 def data_T_range(sets):
     """Lowest and highest temperature (K) in the data sets of a "txy-file" fit."""
     Ts = []
@@ -418,9 +565,10 @@ def quality(spec, model, params):
         dy = [abs(s.bubble_t([x1, 1 - x1], P)[1][0] - y1) for x1, _, y1 in pts]
         return f"AAD {np.mean(dT):.1f} K, {np.mean(dy):.3f} in y."
     if spec["data"] == "txy-file":
-        q = describe_fit(file_sets(spec), model, i, j, [params]) + "."
+        mi = spec.get("single_liquid", False)
+        q = describe_fit(file_sets(spec), model, i, j, [params], mi) + "."
         for kind, name, c in file_sets(spec, "check"):
-            q += f" Check against {name}: {describe_fit([(kind, name, c)], model, i, j, [params])}."
+            q += f" Check against {name}: {describe_fit([(kind, name, c)], model, i, j, [params], mi)}."
         return q
     T0, px, he = schmid()
     s = System([i, j], model, psat=[px[-1][1], px[0][1]], params=[params])
@@ -473,6 +621,8 @@ def main(write):
                 test = f" Data consistency point test (Redlich-Kister fit to T-x): mean |dy| {dy_test:.3f}{' (passes, < 0.01)' if dy_test < 0.01 else ' (fails, >= 0.01)'}."
         for model in spec.get("models", ["NRTL", "UNIQUAC"]):
             params, _ = fit(spec, model)
+            if spec["data"] == "txy-file":
+                check_phase_splits(spec, model, params)
             q = quality(spec, model, params) + test
             params["source"] = f"{spec['describe']} {q}"
             params["tier"] = "databank" if spec["data"] == "uniquac-curve" else "fitted"
@@ -492,20 +642,33 @@ def main(write):
             print(model, spec["pair"], {k: round(v, 4) for k, v in params.items() if isinstance(v, float)}, q)
             # A pair can have several parameter sets per model (proposal 0003); the fit replaces
             # the default set. A databank default replaced by a fit to data stays as a
-            # non-default set. Run make_sources.py afterwards: it names new sets and adds their
-            # source_ids.
+            # non-default set; a spec with "new_set" (fitted to other data than before) drops the
+            # old set name, and one with "default": False adds a further set. Run make_sources.py
+            # afterwards: it names new sets and adds their source_ids.
             recs = binaries["pairs"]
+            same = lambda r: r["model"] == model and {r["i"], r["j"]} == set(spec["pair"])
+            params = {"model": params.pop("model"), "i": params.pop("i"), "j": params.pop("j"), "default": spec.get("default", True), **params}
+            if not spec.get("default", True):
+                # a further, non-default set: replaces the earlier result of the same fit
+                # (recognised by its description), else goes after the pair's other sets
+                k = next((k for k, r in enumerate(recs) if same(r) and not r.get("default", True) and r.get("source", "").startswith(spec["describe"][:80])), None)
+                if k is not None:
+                    recs[k] = ({"model": model, "i": params["i"], "j": params["j"], "set": recs[k]["set"], **params} if recs[k].get("set") else params)
+                else:
+                    recs.insert(max(k for k, r in enumerate(recs) if same(r)) + 1, params)
+                continue
             for k, old in enumerate(recs):
-                if old["model"] == model and {old["i"], old["j"]} == set(spec["pair"]) and old.get("default", True):
-                    params = {"model": params.pop("model"), "i": params.pop("i"), "j": params.pop("j"), "default": True, **params}
+                if same(old) and old.get("default", True):
                     if spec["data"] == "txy-file" and old.get("tier") != "fitted":
                         recs[k] = dict(old, default=False)
                         recs.insert(k, params)
                     else:
-                        if old.get("set") and old.get("tier") == params["tier"]:
+                        if old.get("set") and old.get("tier") == params["tier"] and not spec.get("new_set"):
                             params = {"model": params["model"], "i": params["i"], "j": params["j"], "set": old["set"], **params}
                         recs[k] = params
                     break
+            else:
+                recs.append(params)   # a pair without parameters so far
     if write:
         BIN_FILE.write_text(json.dumps(binaries, indent=2) + "\n")
         print(f"updated {BIN_FILE}")

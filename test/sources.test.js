@@ -88,12 +88,17 @@ test("exactly one default parameter set per pair and model; set names unique", (
 });
 
 test("the replaced ChemSep sets of the refitted pairs are ordinary non-default sets", () => {
-  const refitted = [["methanol", "acetone"], ["methanol", "chloroform"], ["acetone", "chloroform"], ["water", "ethanol"], ["ethanol", "ethyl-acetate"], ["water", "ethyl-acetate"]];
+  const refitted = [["methanol", "acetone"], ["methanol", "chloroform"], ["acetone", "chloroform"], ["water", "ethanol"], ["ethanol", "ethyl-acetate"], ["water", "ethyl-acetate"], ["ethanol", "ethylene-glycol"]];
+  // further fitted sets of a pair (water + ethanol: the vapour-liquid + excess-enthalpy fit) are non-default
+  const further = { "water,ethanol": 1 };
   for (const model of ["NRTL", "UNIQUAC"]) {
     for (const [a, b] of refitted) {
       const sets = binaries.filter(p => p.model === model && [p.i, p.j].sort().join() === [a, b].sort().join());
-      assert.equal(sets.length, 2, `${model} ${a}-${b}`);
-      const [def, alt] = [sets.find(s => s.default), sets.find(s => !s.default)];
+      const extra = further[[a, b].join()] ?? 0;
+      assert.equal(sets.length, 2 + extra, `${model} ${a}-${b}`);
+      const [def, alt] = [sets.find(s => s.default), sets.find(s => !s.default && s.tier === "databank")];
+      assert.equal(sets.filter(s => s.default).length, 1);
+      for (const s of sets.filter(s => s !== def && s !== alt)) assert.ok(s.tier === "fitted" && !s.default, `${model} ${a}-${b}: further set ${s.set}`);
       assert.equal(def.tier, "fitted");
       assert.equal(alt.tier, "databank");
       assert.equal(alt.set, "chemsep");
