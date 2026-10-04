@@ -202,25 +202,25 @@ Key components: ethane, ethylene, propane, propylene, n-butane, isobutane. 28 pa
 |---|---|---|---|---|---|---|---|---|
 | benzene + toluene | EOS | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | benzene + o-xylene | EOS | activity | 1 | – | – | – | – | – |
-| benzene + m-xylene | EOS | activity | 1 | – | yes | – | – | – |
-| benzene + p-xylene | EOS | activity | 1 | – | yes | yes | – | – |
-| benzene + ethylbenzene | EOS | activity | 1 | – | yes | – | – | – |
-| benzene + styrene | EOS | activity | 1 | – | yes | – | – | – |
+| benzene + m-xylene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
+| benzene + p-xylene | EOS | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| benzene + ethylbenzene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
+| benzene + styrene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
 | toluene + o-xylene | EOS | activity | 1 | – | – | – | – | – |
 | toluene + m-xylene | EOS | activity | 1 | – | – | – | – | – |
-| toluene + p-xylene | EOS | activity | 1 | – | yes | yes | – | – |
-| toluene + ethylbenzene | EOS | activity | 1 | – | yes | – | – | – |
+| toluene + p-xylene | EOS | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| toluene + ethylbenzene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
 | toluene + styrene | EOS | activity | 1 | – | – | – | – | – |
 | o-xylene + m-xylene | EOS | activity | 1 | – | – | – | – | – |
 | o-xylene + p-xylene | EOS | activity | 1 | – | – | – | – | – |
 | o-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
 | o-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
-| m-xylene + p-xylene | EOS | activity | 1 | – | yes | – | – | – |
+| m-xylene + p-xylene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
 | m-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
 | m-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
 | p-xylene + ethylbenzene | EOS | activity | 1 | – | – | – | – | – |
 | p-xylene + styrene | EOS | activity | 1 | – | – | – | – | – |
-| ethylbenzene + styrene | EOS | activity | 1 | – | yes | – | – | – |
+| ethylbenzene + styrene | EOS | activity | 1 | NRTL (databank) | yes | – | – | – |
 
 Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-xylene. 21 pairs.
 
@@ -249,35 +249,35 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | methanol + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
-| methanol + 1-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + 1-propanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
-| methanol + 1-butanol | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + methyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + n-butyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + 1-butanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + 2-butanone | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + methyl acetate | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + n-butyl acetate | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + tetrahydrofuran | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + dichloromethane | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + acetonitrile | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + diethyl ether | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + MTBE | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
-| methanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| methanol + acetonitrile | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + diethyl ether | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + MTBE | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + n-hexane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| methanol + n-heptane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank) | yes | yes | yes | – |
 | ethanol + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 | ethanol + toluene | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
-| ethanol + 2-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + 2-propanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
-| ethanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + methyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + n-butyl acetate | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + 2-butanone | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + methyl acetate | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + n-butyl acetate | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + tetrahydrofuran | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + dichloromethane | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + acetonitrile | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + diethyl ether | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + acetonitrile | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + diethyl ether | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
-| ethanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
-| ethanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
+| ethanol + n-hexane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| ethanol + n-heptane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethyl acetate + toluene | activity | EOS | 1 | – | – | – | – | – |
 | ethyl acetate + 1-propanol | activity | EOS | 2 | – | – | – | – | – |
@@ -294,33 +294,33 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | ethyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | ethyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
 | ethyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
-| toluene + 1-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| toluene + 1-propanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | toluene + 2-propanol | activity | EOS | 2 | – | – | – | – | – |
 | toluene + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
-| toluene + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| toluene + 2-butanone | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | toluene + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | toluene + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | toluene + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
 | toluene + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
-| toluene + acetonitrile | activity | EOS | 2 | – | yes | – | – | – |
+| toluene + acetonitrile | activity | EOS | 2 | NRTL (databank) | yes | – | – | – |
 | toluene + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | toluene + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | toluene + n-hexane | EOS | activity | 2 | – | – | – | – | – |
 | toluene + n-heptane | EOS | activity | 2 | – | – | – | – | – |
 | toluene + water | activity | EOS | 1 | – | – | – | – | – |
-| 1-propanol + 2-propanol | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + 2-propanol | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | 1-propanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
-| 1-propanol + 2-butanone | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + 2-butanone | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | 1-propanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | 1-propanol + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
-| 1-propanol + tetrahydrofuran | activity | EOS | 2 | – | yes | yes | – | – |
+| 1-propanol + tetrahydrofuran | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | 1-propanol + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
 | 1-propanol + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
 | 1-propanol + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | 1-propanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
-| 1-propanol + n-hexane | activity | EOS | 2 | – | yes | yes | – | – |
-| 1-propanol + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
-| 1-propanol + water | activity | EOS | 1 | – | – | yes | – | – |
+| 1-propanol + n-hexane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| 1-propanol + n-heptane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| 1-propanol + water | activity | EOS | 1 | UNIQUAC (databank) | – | yes | – | – |
 | 2-propanol + 1-butanol | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
@@ -332,7 +332,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | 2-propanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | 2-propanol + n-hexane | activity | EOS | 2 | – | – | – | yes | – |
 | 2-propanol + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| 2-propanol + water | activity | EOS | 1 | – | – | yes | – | – |
+| 2-propanol + water | activity | EOS | 1 | UNIQUAC (databank) | – | yes | – | – |
 | 1-butanol + 2-butanone | activity | EOS | 2 | – | – | – | – | – |
 | 1-butanol + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | 1-butanol + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
@@ -343,7 +343,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | 1-butanol + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | 1-butanol + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | 1-butanol + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| 1-butanol + water | activity | EOS | 1 | – | yes | yes | – | – |
+| 1-butanol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | 2-butanone + methyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | 2-butanone + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | 2-butanone + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
@@ -352,8 +352,8 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | 2-butanone + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | 2-butanone + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | 2-butanone + n-hexane | activity | EOS | 2 | – | – | – | – | – |
-| 2-butanone + n-heptane | activity | EOS | 2 | – | yes | yes | – | – |
-| 2-butanone + water | activity | EOS | 1 | – | yes | yes | – | – |
+| 2-butanone + n-heptane | activity | EOS | 2 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
+| 2-butanone + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | methyl acetate + n-butyl acetate | activity | EOS | 2 | – | – | – | – | – |
 | methyl acetate + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
 | methyl acetate + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
@@ -362,7 +362,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | methyl acetate + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | methyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | methyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| methyl acetate + water | activity | EOS | 1 | – | – | yes | – | – |
+| methyl acetate + water | activity | EOS | 1 | UNIQUAC (databank) | – | yes | – | – |
 | n-butyl acetate + tetrahydrofuran | activity | EOS | 2 | – | – | – | – | – |
 | n-butyl acetate + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
 | n-butyl acetate + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
@@ -370,14 +370,14 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | n-butyl acetate + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | n-butyl acetate + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | n-butyl acetate + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| n-butyl acetate + water | activity | EOS | 1 | – | yes | yes | – | – |
+| n-butyl acetate + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | tetrahydrofuran + dichloromethane | activity | EOS | 2 | – | – | – | – | – |
 | tetrahydrofuran + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
 | tetrahydrofuran + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | tetrahydrofuran + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | tetrahydrofuran + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | tetrahydrofuran + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| tetrahydrofuran + water | activity | EOS | 1 | – | yes | yes | – | – |
+| tetrahydrofuran + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | dichloromethane + acetonitrile | activity | EOS | 2 | – | – | – | – | – |
 | dichloromethane + diethyl ether | activity | EOS | 2 | – | – | – | – | – |
 | dichloromethane + MTBE | activity | EOS | 2 | – | – | – | – | – |
@@ -388,11 +388,11 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 | acetonitrile + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | acetonitrile + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | acetonitrile + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| acetonitrile + water | activity | EOS | 1 | – | – | yes | – | – |
+| acetonitrile + water | activity | EOS | 1 | UNIQUAC (databank) | – | yes | – | – |
 | diethyl ether + MTBE | activity | EOS | 2 | – | – | – | – | – |
 | diethyl ether + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | diethyl ether + n-heptane | activity | EOS | 2 | – | – | – | – | – |
-| diethyl ether + water | activity | EOS | 1 | – | yes | yes | – | – |
+| diethyl ether + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | MTBE + n-hexane | activity | EOS | 2 | – | – | – | – | – |
 | MTBE + n-heptane | activity | EOS | 2 | – | – | – | – | – |
 | MTBE + water | activity | EOS | 1 | – | – | – | – | – |
@@ -417,7 +417,7 @@ Key components: water, methanol, ethanol, acetone, ethyl acetate, toluene. 171 p
 | glycerol + water | activity | EOS | 1 | – | – | – | – | – |
 | phenol + n-pentane | activity | EOS | 2 | – | – | – | – | – |
 | phenol + n-octane | activity | EOS | 2 | – | – | – | – | – |
-| phenol + water | activity | EOS | 1 | – | yes | yes | – | – |
+| phenol + water | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | n-pentane + n-octane | EOS | activity | 2 | – | – | – | yes | – |
 | n-pentane + water | activity | EOS | 1 | – | – | – | – | – |
 | n-octane + water | activity | EOS | 1 | – | – | – | – | – |
@@ -430,8 +430,8 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 30 | 24 | 5 | 5 |
-| In ChemSep, not yet in Fugacity | 72 | 27 | 9 | 8 |
+| In Fugacity now | 69 | 34 | 13 | 13 |
+| In ChemSep, not yet in Fugacity | 33 | 17 | 1 | 0 |
 | Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 179 | 45 | 201 | 52 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in
