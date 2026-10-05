@@ -233,6 +233,15 @@ reported per property) and the existing pair workflow for binaries:
    constants for argon, carbon monoxide, carbon dioxide and hydrogen sulfide in water, checked
    against the guideline's table 6. Pairs without a databank value are fitted to open data
    benchmark by benchmark.
+   Methanol synthesis, pairs without a databank value: dimethyl ether + methanol fitted to the
+   total pressures of Park, Han and Gmehling (2007) at 323.15 K (ThermoML; PR and SRK, 3.0-3.4 %
+   in P). Dimethyl ether + water: open P-x and liquid-liquid data found (Park, Han, Gmehling
+   2007, J. Chem. Eng. Data 52, 1814, 323.15 K, a miscibility gap), not fitted, because the
+   equations of state cannot yet calculate two liquids. No open binary data found in the ThermoML
+   Archive or by Crossref search for carbon dioxide + dimethyl ether (two articles found,
+   neither open), methanol + hydrogen sulfide, dimethyl ether + hydrogen sulfide, nor, in the
+   light-hydrocarbon benchmark, for ethylene with propane, propylene and isobutane, and
+   propylene + n-butane: they keep k_ij = 0 with the warning, listed in docs/DATA_WANTED.md.
    Databank coverage of the liquid benchmarks (solvent recovery, glycols, and the liquid pairs
    of the others): the ChemSep NRTL and UNIQUAC sets of every pair among the components that
    had none (70 pairs, 124 sets; `validation/python/chemsep_pairs.py --all`). Each record states

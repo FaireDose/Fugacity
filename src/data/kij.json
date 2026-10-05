@@ -6241,6 +6241,64 @@
      350.77
     ]
    }
+  },
+  {
+   "model": "PR",
+   "i": "dimethyl-ether",
+   "j": "methanol",
+   "set": "fitted-park2007",
+   "default": true,
+   "kij": -0.0077,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.44 % in P (deviations -6.6 to 6.2 %)",
+    "data": [
+     "validation/data/dimethyl-ether_methanol_px_park2007.json"
+    ],
+    "conditions": "T = 323.15 K, P = 71.99-1137.7 kPa",
+    "T_range_K": [
+     323.15,
+     323.15
+    ]
+   },
+   "source_ids": [
+    "park2007-dimethyl-ether-methanol"
+   ],
+   "valid": {
+    "T_K": [
+     323.15,
+     323.15
+    ]
+   }
+  },
+  {
+   "model": "SRK",
+   "i": "dimethyl-ether",
+   "j": "methanol",
+   "set": "fitted-park2007",
+   "default": true,
+   "kij": -0.0124,
+   "tier": "fitted",
+   "source": {
+    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.04 % in P (deviations -5.7 to 5.4 %)",
+    "data": [
+     "validation/data/dimethyl-ether_methanol_px_park2007.json"
+    ],
+    "conditions": "T = 323.15 K, P = 71.99-1137.7 kPa",
+    "T_range_K": [
+     323.15,
+     323.15
+    ]
+   },
+   "source_ids": [
+    "park2007-dimethyl-ether-methanol"
+   ],
+   "valid": {
+    "T_K": [
+     323.15,
+     323.15
+    ]
+   }
   }
  ]
 }
