@@ -27,6 +27,7 @@ export const WORKSPACES = [
  * the workspace, its inputs or its results, and navigating to a workspace closes them.
  */
 export const UTILITIES = [
+  { id: "project", label: "Project", icon: "file", title: "Project", intro: "Save your work as a file and open it again." },
   { id: "library", label: "Library", icon: "book", title: "Library", intro: "Which parameter set each binary pair uses." },
   { id: "sources", label: "Sources", icon: "search", title: "Sources", intro: "Every source behind Fugacity's data, why it is open and what uses it." },
   { id: "settings", label: "Settings", icon: "units", title: "Settings", intro: "Units, composition basis and panels. They apply to every workspace." },

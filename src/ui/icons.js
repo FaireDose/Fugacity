@@ -25,6 +25,8 @@ const P = {
   curves: '<path d="M4 3.5v16.5h16.5"/><path d="M5.5 17C10 16 14 12 19.5 5.5" class="a"/><path d="M5.5 13C10 12.5 14 10 19.5 9"/>',
   // a flash drum: feed in at the side, vapour out at the top, liquid at the bottom
   drum: '<rect x="8" y="3.5" width="8" height="17" rx="4"/><path d="M3 12h5"/><path d="M8.2 13.5h7.6" class="a"/><path d="M12 3.5V1.5M12 20.5v2"/>',
+  // a sheet of paper with a folded corner (project files)
+  file: '<path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4"/><path d="M9 12.5h6M9 16h6" class="a"/>',
   download: '<path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5"/><path d="M4.5 16.5v3h15v-3" class="a"/>',
   copy: '<rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M15.5 8.5v-3a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" class="a"/>',
   table: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9h17M3.5 13.5h17M9.5 4.5v15" /><path d="M3.5 9h17" class="a"/>',

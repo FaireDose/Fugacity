@@ -30,7 +30,8 @@ import {
 } from "./app-logic.js";
 import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
-import { renderView, sourcesPanel } from "./app-views.js";
+import { renderView, sourcesPanel, saveText, copyText } from "./app-views.js";
+import { projectOf, projectText, projectFileName, stateFromProject } from "./project.js";
 import { FLASH_SPECS, FLOW_UNITS, feedComposition, convertBasis, flowIn } from "./flash-logic.js";
 import { pure } from "../thermo/pure.js";
 import pkg from "../../package.json" with { type: "json" };
@@ -97,7 +98,10 @@ const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY
  * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" }
  *   (update({ sets }) merges; a null set name, or sets: null, goes back to the default)
  * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  global rule (Library panel) or a list of tiers
- * @returns {{state:object, update:(patch:object)=>void}}  `update` takes any configuration key and
+ * @param {object|string} [cfg.project]  start from a project file (src/ui/project.js) instead of the keys above
+ * @param {(project:object)=>void} [cfg.onSave]  also called with the project when the person saves it in the
+ *   Project panel, so the page can keep it (browser or chat storage)
+ * @returns {{state:object, update:(patch:object)=>void, save:()=>object, load:(project:object|string)=>void}}  `update` takes any configuration key and
  *   `workspace`, `view`, `inputs` (e.g. { ternary: ["water", "ethanol", "methanol"] }), `utility`
  *   ("library", "sources", "settings" or null), `z`, and the `tab` names of earlier versions;
  *   see applyPatch in app-logic.js
@@ -111,7 +115,7 @@ export function app(target, cfg = {}) {
   const doc = root.ownerDocument;
   injectAppStyles(doc);
 
-  let state = initialState(cfg);
+  let state = cfg.project != null ? stateFromProject(cfg.project) : initialState(cfg);
   const uid = Math.random().toString(36).slice(2, 7);
   const all = listComponents();
   const byId = new Map(all.map(c => [c.id, c]));
@@ -120,6 +124,8 @@ export function app(target, cfg = {}) {
   const ui = {
     size: sizeOf(root.clientWidth || 1200), status: { busy: false, ms: null, error: null, info: null },
     sources: { query: "", kind: "all", mine: false }, opener: null, drawnUtility: null,
+    records: {},   // the last result of a view that a project file keeps (the flash stream table), by view
+    projectNote: "",
   };
 
   // ---- skeleton
@@ -647,8 +653,76 @@ export function app(target, cfg = {}) {
   function drawerSection(title, ...children) {
     return h("section", { class: "fa-dsec" }, h("h3", {}, title), ...children);
   }
+  /** The project document of the workbench as it is now (the flash stream table when it is current). */
+  function currentProject() {
+    const results = {};
+    const rec = ui.records.flash;
+    if (rec && rec.key === flashKey()) results.flash = rec.record;
+    return projectOf(state, { version: pkg.version, results });
+  }
+  const flashKey = () => JSON.stringify([state.inputs.flash, state.flash, state.model, state.eos, state.vapour, state.units, state.sets, state.prefer]);
+  /** Replace the workbench with a project (throws with the reason when it cannot be read). */
+  function loadProject(input) {
+    const next = stateFromProject(input);
+    state = next; api.state = state; ui.records = {};
+    renderChrome(true);
+    renderCanvas(true);
+  }
+
+  function projectPanel() {
+    const status = h("div", { class: "fug-foot", "aria-live": "polite" }), box = h("div");
+    const openStatus = h("div", { class: "fug-foot", "aria-live": "polite" }, ui.projectNote);
+    ui.projectNote = "";
+    const fail = e => { openStatus.textContent = ""; openStatus.append(h("div", { class: "fug-err", role: "alert" }, `Not opened: ${e.message}`)); };
+    const open = (text, name) => {
+      try { loadProject(text); } catch (e) { fail(e); return; }
+      ui.projectNote = `Opened ${name}. Everything was calculated again with Fugacity ${pkg.version}.`;
+      set({ utility: "project" }, { canvas: false });
+    };
+    const fileId = `fa-pfile-${uid}`;
+    const file = h("input", { type: "file", id: fileId, accept: ".json,application/json", class: "fa-visually-hidden", "data-fk": "proj-file",
+      on: { change: ev => {
+        const f = ev.target.files?.[0];
+        if (!f) return;
+        f.text().then(t => open(t, f.name), fail);
+      } } });
+    const paste = h("textarea", { class: "fa-csv-text", rows: 5, "aria-label": "Project text", placeholder: "…or paste the text of a project here", "data-fk": "proj-paste" });
+    const doc = () => currentProject();
+    const name = projectFileName(state);
+    const hasFlash = !!doc().results?.flash;
+    return h("div", { class: "fa-dgrid" },
+      drawerSection("Save",
+        h("p", {}, "A small JSON file with the components, model and conditions of every workspace, the flash specification and feed, the parameter sets and the open view."
+          + (hasFlash ? " It also keeps the flash stream table (the mass balance) as calculated now." : " Open the Flash workspace before saving to keep its stream table (the mass balance) in the file too.")),
+        h("div", { class: "fa-in-actions" },
+          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-save",
+            on: { click: () => {
+              const d = doc();
+              saveText(projectText(d), name, "application/json", status, { copyLabel: "Copy", bom: false });
+              if (typeof cfg.onSave === "function") {
+                try { cfg.onSave(d); status.textContent += " Also passed to this page."; } catch (e) { status.textContent += ` This page could not keep it: ${e.message}`; }
+              }
+            } } }, icon("download", 15), "Download file"),
+          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-copy",
+            on: { click: () => copyText(projectText(doc()), status, box, { what: "project", done: "Project copied: paste it into a file or a chat to keep it." }) } }, icon("copy", 15), "Copy")),
+        status, box,
+        h("p", { class: "fa-in-hint" }, `File name: ${name}`)),
+      drawerSection("Open",
+        h("p", {}, "A project file saved here. It replaces what is open now; the results are calculated again."),
+        h("div", { class: "fa-in-actions" },
+          h("label", { class: "fa-mini", for: fileId, role: "button", tabindex: "0", "data-fk": "proj-open",
+            on: { keydown: ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); file.click(); } } } }, icon("file", 15), "Open a file…"), file),
+        paste,
+        h("div", { class: "fa-in-actions" },
+          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-load", on: { click: () => { if (paste.value.trim()) open(paste.value, "the pasted project"); } } }, icon("check", 15), "Open the pasted text")),
+        openStatus),
+      drawerSection("From code",
+        h("p", { class: "fa-in-hint" }, "const w = Fugacity.app(\"#app\"); w.save() returns the project; w.load(project) opens one; Fugacity.app(\"#app\", { project }) starts from one; { onSave(project) { … } } lets the page keep it (for example in an AI chat's storage).")));
+  }
+
   function drawerBody(id) {
     const u = state.units;
+    if (id === "project") return projectPanel();
     if (id === "sources") {
       const check = checkInputs(state.view, state.inputs[state.view], state.model);
       return sourcesPanel({ ids: check.ok ? check.use : [], what: check.ok ? calculationName() : VIEWS[state.view].label, uid, look: ui.sources });
@@ -754,6 +828,7 @@ export function app(target, cfg = {}) {
         try {
           const viewState = { ...state, components: check.use, z: state.z[v] ?? null };
           info = renderView(v, { state: viewState, set, plot, side, notes, below, extra: inspectorExtra, compact: ui.size === "narrow", uid, badge, ui });
+          if (info?.record?.flash) ui.records.flash = { key: flashKey(), record: info.record.flash };
           provenance.append(h("button", { type: "button", class: "fa-mini", "data-fk": "src-here",
             on: { click: () => { ui.sources.mine = true; ui.sources.query = ""; ui.sources.kind = "all"; set({ utility: "sources" }, { canvas: false }); } } },
           icon("book", 15), "Sources used here"));
@@ -794,6 +869,10 @@ export function app(target, cfg = {}) {
     state,
     /** Change the workbench: any configuration key, plus workspace, view, inputs, utility, panels, ribbon, z (see applyPatch). */
     update(patch = {}) { set(patch); },
+    /** The project document of the workbench as it is now (src/ui/project.js); JSON.stringify it to keep it. */
+    save() { return currentProject(); },
+    /** Open a project (a document or its JSON text); throws, naming the problem, when it cannot be read. */
+    load(project) { loadProject(project); },
   };
   renderChrome();
   renderCanvas(true);

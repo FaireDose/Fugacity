@@ -73,7 +73,7 @@ formats and open standards only.
 | **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Started: CSV of the flash result |
 | **B2** | Share by link: the workbench state (components, model, conditions, view) in the page address, so a colleague opens exactly the same diagram | A9 | Open |
 | **B3** | Import open data files: read NIST ThermoML XML files and turn them into validation data and contribution packages with the source block filled in, which speeds up the data track | D3 | Open |
-| **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Open |
+| **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Started: the workbench (format 1, `src/ui/project.js`); the flowsheet follows with A7 |
 | **B5** | Use from notebooks and spreadsheets: call the engine from Python notebooks and from spreadsheet functions, with the same numbers as in the browser | A1, A9 | Open |
 | **B6** | Other simulators: exchange flowsheets with open-source simulators where the file format is openly documented, and study the CAPE-OPEN interface standard so Fugacity's thermodynamics can be used by other simulators and the other way round | A1, A7 | Open |
 
