@@ -17,6 +17,8 @@ import {
   setComponents, streamsOf, endOf, openInlets, deleteStream,
 } from "./flowsheet-logic.js";
 import { tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
+import { flowsheetXlsx } from "./flowsheet-excel.js";
+import pkg from "../../package.json" with { type: "json" };
 import { parseP, parseT, fmtTemp, fmtP } from "./app-logic.js";
 
 const byId = () => new Map(listComponents().map(c => [c.id, c]));
@@ -702,7 +704,19 @@ function csvTools(ctx, fs, res, u) {
     "Energy stream,Block,Duty kW", ...Object.values(res.energy).map(e => [e.id, e.block, q(e.duty_kW)].join(","))];
   const csv = lines.join("\r\n") + "\r\n";
   const status = h("div", { class: "fug-foot", "aria-live": "polite" }), box = h("div");
+  const excel = () => {
+    try {
+      const bytes = flowsheetXlsx(fs, res, { version: pkg.version });
+      const name = `${(ctx.state.title || "flowsheet").replace(/[\\/:*?"<>|]+/g, "-")}.xlsx`;
+      const url = URL.createObjectURL(new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      const a = h("a", { href: url, download: name, style: "display:none" });
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      status.textContent = `Saved ${name}: blue cells are inputs, black cells formulas, grey cells values from Fugacity (see its About sheet). If nothing was downloaded, the page does not allow downloads.`;
+    } catch (e) { status.textContent = `The Excel file could not be made: ${e.message}`; }
+  };
   return [h("div", { class: "fa-in-actions" },
+    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx", title: "An Excel workbook with the balances as formulas", on: { click: excel } }, icon("table", 15), "Download Excel"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv", on: { click: () => ctx.saveText(csv, "fugacity-flowsheet-streams.csv", "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv-copy", on: { click: () => ctx.copyText(csv, status, box) } }, icon("copy", 15), "Copy CSV")), status, box];
 }
