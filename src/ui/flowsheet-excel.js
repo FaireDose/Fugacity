@@ -158,6 +158,7 @@ export function flowsheetSheets(fs, res, { version = "", names = {} } = {}) {
     ["Change a blue input and the formulas update. A recycle through mixers, splitters, separators and heaters is a circular reference: iterative calculation is switched on in this workbook, so Excel solves it."],
     ["Flash drum outlets, temperatures and enthalpies cannot be Excel formulas (they need phase equilibrium): after changing inputs, run the flowsheet again in Fugacity for them."],
     ["Model predictions, not measurements; the parameter sources are listed in Fugacity."],
+    ["This workbook is yours: Fugacity claims no rights in the files and results you create with it."],
   ];
   return {
     sheets: [
