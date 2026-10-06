@@ -82,6 +82,7 @@ export const APP_CSS = `
 .fa-stack{display:flex; flex-direction:column; gap:4px; justify-content:center; min-height:72px}
 .fa-cols{display:grid; grid-template-rows:repeat(3, auto); grid-auto-flow:column; gap:1px 2px}
 .fug-app .fa-field{display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:12px; color:var(--fug-fg2)}
+.fug-app .fa-field-wide{justify-content:flex-start; margin-bottom:4px} .fug-app .fa-field-wide input{flex:1; min-width:0}
 .fa-hint{font-size:11px; color:var(--fug-muted); padding:0 2px}
 .fa-seg button{font-size:12px; padding:4px 10px}
 .fa-models{gap:3px}
