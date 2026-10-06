@@ -30,6 +30,15 @@ const HINT = {
   flash: "Vapour and liquid at equilibrium: two of T, P, vapour fraction and duty.",
   heater: "Heats or cools: outlet T, duty or vapour fraction; pressure drop optional. Several inlets are mixed first.",
 };
+/** Blocks on the roadmap, shown in the toolbar but not available yet. */
+const COMING = [
+  { id: "pump", label: "Pump", icon: "pump", note: "roadmap v0.4" },
+  { id: "compressor", label: "Compressor", icon: "compressor", note: "roadmap v0.6" },
+  { id: "valve", label: "Valve", icon: "valve", note: "roadmap v0.4" },
+  { id: "reactor", label: "Reactor", icon: "flask", note: "roadmap v0.6 and A13" },
+  { id: "column", label: "Distillation", icon: "column", note: "roadmap v0.5" },
+  { id: "extraction", label: "Extraction", icon: "extract", note: "after liquid-liquid equilibria in the flash" },
+];
 const SIZE = { feed: [44, 26], mixer: [40, 44], splitter: [40, 44], separator: [46, 62], flash: [34, 72], heater: [40, 40], product: [0, 0] };
 
 export const ensureUi = ui => (ui.fs ??= { sel: null, auto: true, solveKey: null, cache: null, note: "" });
@@ -64,9 +73,9 @@ export function solution(state, ui) {
   if (f.cache?.key !== key) {
     const t0 = typeof performance !== "undefined" ? performance.now() : 0;
     try { f.cache = { key, result: runFlowsheet(fs), error: null, ms: (typeof performance !== "undefined" ? performance.now() : 0) - t0 }; }
-    catch (e) { f.cache = { key, result: null, error: e.message }; }
+    catch (e) { f.cache = { key, result: null, error: e.message, loop: e.details?.loop ?? null }; }
   }
-  return { status, result: f.cache.result, error: f.cache.error, ms: f.cache.ms, stale: false };
+  return { status, result: f.cache.result, error: f.cache.error, loop: f.cache.loop, ms: f.cache.ms, stale: false };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -95,18 +104,27 @@ export function flowsheetRibbon({ state, set, ui, group, bigButton, smallButton 
       b.disabled = !ready;
       return b;
     })),
-    group("Edit", (() => {
-      const what = f.sel ? `${f.sel.kind === "block" ? "" : "stream "}${f.sel.id}` : "";
-      const b = bigButton({ ico: "trash", label: "Delete", fk: "fs-delete", note: what || undefined,
-        title: f.sel ? `Delete ${what} (Delete key)` : "Select a block or a stream on the canvas first", onClick: () => deleteSelected(state, set, ui) });
-      b.disabled = !f.sel;
-      return b;
-    })()),
     group("Run",
       bigButton({ ico: "solve", label: "Solve", fk: "fs-solve", title: "Calculate the flowsheet now",
         onClick: () => { f.solveKey = JSON.stringify(fs); set({}); } }),
       smallButton({ ico: "check", label: "Solve on change", pressed: f.auto, fk: "fs-auto",
         title: "Recalculate whenever the flowsheet is complete and changes", onClick: () => { f.auto = !f.auto; set({}); } })),
+    group("Canvas", h("div", { class: "fa-canvas-grid" },
+      smallButton({ ico: "plus", label: "Zoom in", fk: "fs-zoom-in", title: "Zoom in (Ctrl + mouse wheel)", onClick: () => { f.zoom = Math.min(3, (f.zoom ?? 1) * 1.25); set({}); } }),
+      (() => {
+        const what = f.sel ? `${f.sel.kind === "block" ? "" : "stream "}${f.sel.id}` : "";
+        const b = smallButton({ ico: "trash", label: f.sel ? `Delete ${f.sel.id}` : "Delete", fk: "fs-delete",
+          title: f.sel ? `Delete ${what} (Delete key)` : "Select a block or a stream on the canvas first", onClick: () => deleteSelected(state, set, ui) });
+        b.disabled = !f.sel;
+        return b;
+      })(),
+      smallButton({ ico: "minus", label: "Zoom out", fk: "fs-zoom-out", title: "Zoom out (Ctrl + mouse wheel)", onClick: () => { f.zoom = Math.max(0.4, (f.zoom ?? 1) / 1.25); set({}); } }),
+      smallButton({ ico: "search", label: `Fit, ${Math.round((f.zoom ?? 1) * 100)} %`, fk: "fs-zoom-fit", title: "Back to the whole drawing at 100 %", onClick: () => { f.zoom = 1; set({}); } }))),
+    group("Coming later", h("div", { class: "fa-soon-grid" }, ...COMING.map(c => {
+      const b = smallButton({ ico: c.icon, label: c.label, fk: `fs-soon-${c.id}`, title: `${c.label}: not available yet (${c.note})`, onClick: () => {} });
+      b.disabled = true; b.classList.add("is-locked");
+      return b;
+    })))
   ];
 }
 
@@ -291,7 +309,22 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
           h("ul", { class: "fa-dof-list" }, ...(st ? [...st.structure.map(p => h("li", {}, p.message)),
             ...Object.entries(st.blocks).filter(([, b]) => !b.ok).map(([id, b]) => h("li", {}, h("button", { type: "button", class: "fa-link", "data-fk": `fs-go-${id}`,
               on: { click: () => { f.sel = { kind: "block", id }; set({}); } } }, id), ": ", b.message.replace(/^[^:]+: /, "")))] : [])))));
+  if (fs.components.length) secs.push(...solverSection({ fs, set, uid, inputsSection }));
   return secs;
+}
+
+/** The solver settings of the flowsheet: method, tolerance, maximum iterations. */
+function solverSection({ fs, set, uid, inputsSection }) {
+  const sv = { method: "wegstein", tolerance: 1e-8, maxIterations: 50, ...(fs.solver ?? {}) };
+  const put = patch => set({ flowsheet: { ...fs, solver: { ...(fs.solver ?? {}), ...patch } } });
+  return [inputsSection("4. Recycle solver",
+    h("p", { class: "fa-in-hint" }, "Recycles are solved by tearing them: the solver picks the fewest streams that break every loop (or the ones you mark as tear streams), guesses them (no flow at first), and calculates around the loop until they stop changing."),
+    segRow("Method", [["wegstein", "Wegstein"], ["direct", "Direct substitution"]], sv.method, m => put({ method: m }), "fs-solver-method"),
+    h("p", { class: "fa-in-hint" }, sv.method === "wegstein" ? "Wegstein: two plain steps, then each flow is extrapolated from its last two values (bounded). Usually much faster." : "Direct substitution: the next guess is the last result. Slower, but it never overshoots."),
+    numberField("Tolerance", String(sv.tolerance), t => { const v = num(t); if (!(v > 0 && v < 0.1)) return false; put({ tolerance: v }); },
+      { id: "solver-tol", uid, unit: "relative", title: "Converged when every flow and temperature of the tear streams changes by less than this, relative" }),
+    numberField("Maximum iterations", String(sv.maxIterations), t => { const v = num(t); if (!(Number.isInteger(v) && v >= 1 && v <= 1000)) return false; put({ maxIterations: v }); },
+      { id: "solver-iter", uid }))];
 }
 
 function streamSections({ fs, put, sel, f, inputsSection, back, set }) {
@@ -301,7 +334,7 @@ function streamSections({ fs, put, sel, f, inputsSection, back, set }) {
     ...[...new Set(opts)].map(o => h("option", { value: o, selected: o === (end.kind === "unit" ? s.to : "") }, o ? o.replace(".", " · ") : "Leaves the flowsheet (product)")));
   return [
     inputsSection(`Stream ${s.id}`, h("p", { class: "fa-in-hint" }, `From ${from[0]} (${from[1]}).`),
-      h("label", { class: "fa-field" }, h("span", {}, "Goes to"), goes),
+      h("label", { class: "fa-field fa-field-stack" }, h("span", {}, "Goes to"), goes),
       end.kind === "unit" ? h("label", { class: "fa-field" }, h("span", {}, "Tear stream (recycle)"),
         h("input", { type: "checkbox", checked: !!s.tear, "data-fk": `fs-tear-${s.id}`, on: { change: ev => put(setTear(fs, s.id, ev.target.checked)) } })) : null,
       h("p", { class: "fa-in-hint" }, "The solver chooses the tear stream of a recycle itself; mark one only to choose it.")),
@@ -367,7 +400,8 @@ export function flowsheetView(ctx) {
   }
   const sol = solution(state, ui);
   const res = sol.result;
-  if (sol.error) notes.append(h("div", { class: "fug-err", role: "alert" }, sol.error));
+  if (sol.error) notes.append(h("div", { class: "fug-err", role: "alert" }, h("strong", {}, "Not solved. "), sol.error,
+    sol.loop ? h("div", { class: "fa-in-hint" }, "The blocks of that recycle are outlined in red. The solver settings are in the Inputs panel (with nothing selected): 4. Recycle solver.") : null));
   if (sol.stale) notes.append(h("div", { class: "fug-warn", role: "note" }, "The results are not up to date: press Solve."));
 
   // ---- the drawing
@@ -377,7 +411,16 @@ export function flowsheetView(ctx) {
   let minX = Math.min(...xs) - 90, maxX = Math.max(...xs) + 110, minY = Math.min(...ys) - 80, maxY = Math.max(...ys) + 120;
   if (maxX - minX < 520) { const c = (maxX + minX) / 2; minX = c - 260; maxX = c + 260; }
   if (maxY - minY < 300) { const c = (maxY + minY) / 2; minY = c - 150; maxY = c + 150; }
-  const svg = svgEl("svg", { class: "fs-canvas", viewBox: `${minX} ${minY} ${maxX - minX} ${maxY - minY}`, role: "group", "aria-label": "Flowsheet drawing" });
+  const zoom = f.zoom ?? 1;
+  const svg = svgEl("svg", { class: "fs-canvas", viewBox: `${minX} ${minY} ${maxX - minX} ${maxY - minY}`, role: "group", "aria-label": "Flowsheet drawing",
+    style: zoom === 1 ? undefined : `width:${zoom * 100}%; max-height:none` });
+  // Ctrl + mouse wheel zooms
+  svg.addEventListener("wheel", ev => {
+    if (!ev.ctrlKey) return;
+    ev.preventDefault();
+    f.zoom = Math.min(3, Math.max(0.4, zoom * (ev.deltaY < 0 ? 1.15 : 1 / 1.15)));
+    set({});
+  }, { passive: false });
   const defs = svgEl("defs", {});
   const mk = (id, cls) => { const m = svgEl("marker", { id, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" }); m.append(svgEl("path", { d: "M0 0 L10 5 L0 10 z", class: cls })); return m; };
   const uidM = `fsm-${ctx.uid}`;
@@ -429,7 +472,7 @@ export function flowsheetView(ctx) {
     for (const b of doc.blocks) {
       if (b.type === "product") continue;
       const [w, hh] = SIZE[b.type];
-      const g = svgEl("g", { class: `fs-block fs-${b.type}` + (selected("block", b.id) ? " is-sel" : "") + (sol.status?.blocks?.[b.id] && !sol.status.blocks[b.id].ok ? " is-incomplete" : ""),
+      const g = svgEl("g", { class: `fs-block fs-${b.type}` + (selected("block", b.id) ? " is-sel" : "") + (sol.loop?.includes(b.id) ? " is-failed" : "") + (sol.status?.blocks?.[b.id] && !sol.status.blocks[b.id].ok ? " is-incomplete" : ""),
         transform: `translate(${b.x ?? 0} ${b.y ?? 0})`, "data-block": b.id, tabindex: 0, role: "button",
         "aria-label": `${LABEL[b.type]} ${b.id}${sol.status?.blocks?.[b.id]?.ok === false ? ", not fully specified" : ""}` });
       g.append(shape(b.type, w, hh));
@@ -564,6 +607,7 @@ export function flowsheetView(ctx) {
   // ---- stream table
   if (res) below.replaceChildren(streamTable({ fs, res, u, state }), ...csvTools(ctx, fs, res, u));
   const it = res?.loops?.reduce((a, l) => a + l.iterations, 0);
+  if (sol.error) return { data: "Not solved: see the message above the drawing" };
   return { data: res ? `Solved${res.loops.length ? `, ${res.loops.length} recycle${res.loops.length > 1 ? "s" : ""} in ${it} iterations` : ""}` : sol.status.message };
 }
 

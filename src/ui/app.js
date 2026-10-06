@@ -200,12 +200,13 @@ export function app(target, cfg = {}) {
   function set(patch, { canvas: redraw = true } = {}) {
     if (useAutosave && Object.keys(patch).some(k => k !== "utility" && k !== "panels" && k !== "ribbon")) scheduleAutosave();
     const fk = focusKey();
-    const before = canvasKey();
     const util0 = state.utility;
     state = applyPatch(state, patch);
     api.state = state;
     renderChrome();
-    if (redraw && canvasKey() !== before) renderCanvas();
+    // redraw when what the canvas shows differs from what it last drew (also for changes made
+    // to `ui` just before this call, such as the flowsheet's selection or zoom)
+    if (redraw && canvasKey() !== ui.drawnKey) renderCanvas();
     if (state.utility !== util0) {
       if (state.utility) {
         if (!util0) ui.opener = fk;
@@ -955,10 +956,11 @@ export function app(target, cfg = {}) {
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
       v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer,
       v === "flash" ? state.flash : null,
-      v === "flowsheet" ? [state.flowsheet, ensureUi(ui).sel, ui.fs.auto, ui.fs.solveKey] : null]);
+      v === "flowsheet" ? [state.flowsheet, ensureUi(ui).sel, ui.fs.auto, ui.fs.solveKey, ui.fs.zoom] : null]);
   };
   let canvasRendered = false, token = 0;
   function renderCanvas(now = false) {
+    ui.drawnKey = canvasKey();
     const my = ++token;
     ui.status = { busy: true, ms: null, error: null, info: null };
     renderStatus();

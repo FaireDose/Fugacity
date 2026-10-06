@@ -73,7 +73,7 @@ export const APP_CSS = `
 .fa-visually-hidden{position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
 /* ribbon */
-.fa-ribbon{display:flex; align-items:stretch; background:var(--fa-ribbon); border-bottom:1px solid var(--fa-edge); padding:6px 4px 0; overflow-x:auto; min-height:104px}
+.fa-ribbon{display:flex; flex-wrap:wrap; row-gap:6px; align-items:stretch; background:var(--fa-ribbon); border-bottom:1px solid var(--fa-edge); padding:6px 4px 0; min-height:104px}
 .fa-group{display:flex; flex-direction:column; padding:0 10px; border-right:1px solid var(--fa-edge); flex:0 0 auto}
 .fa-group:last-child{border-right:0}
 .fa-group-body{display:flex; align-items:center; gap:3px; flex:1}
@@ -340,6 +340,13 @@ export const APP_CSS = `
 .fs-handle{fill:var(--fug-bg); stroke:var(--fug-accent); stroke-width:1.6; cursor:crosshair}
 .fs-handle.is-end{fill:var(--fug-bg); stroke:var(--fug-fg2); stroke-width:1.3}
 .fs-handle:hover{fill:var(--fug-accent)}
+.fa-field.fa-field-stack{display:grid; grid-template-columns:1fr; gap:4px}
+.fa-field.fa-field-stack select{width:100%}
+.fs-block.is-failed .fs-shape{stroke:#c0392b; stroke-width:2.6}
+.fa-btn.is-locked{opacity:.5}
+.fa-canvas-grid{display:grid; grid-template-columns:repeat(2, auto); gap:2px 4px}
+.fa-soon-grid{display:grid; grid-template-columns:repeat(3, auto); gap:2px 4px}
+.fs-wrap{overflow:auto}
 .fs-port-in{fill:var(--fug-bg); stroke:var(--fug-fg2); stroke-width:1.4}
 .fs-port-in.is-open{stroke:var(--fug-accent)}
 .fs-canvas.is-connecting .fs-port-in{opacity:.35}

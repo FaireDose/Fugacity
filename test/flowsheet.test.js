@@ -150,3 +150,14 @@ test("structure errors name the block or stream", () => {
     [{ blocks: [], streams: [] }, /no blocks/],
   ]) assert.throws(() => checkFlowsheet(fs), err => err instanceof FugacityError && re.test(err.message), re.source);
 });
+
+test("solver methods: direct substitution reaches the same answer as Wegstein, in more iterations", () => {
+  const c = cases[0], sys = system({ components: c.components, model: c.model });
+  const w = solveFlowsheet(sys, recycleFlowsheet(c));
+  const fs = recycleFlowsheet(c);
+  fs.solver = { method: "direct", maxIterations: 300, tolerance: 1e-9 };
+  const d = solveFlowsheet(sys, fs);
+  c.recycle_kmol_h.forEach((v, i) => close(d.streams.S5.flows[i], w.streams.S5.flows[i], 1e-6 * 100, `recycle ${i}`));
+  assert.ok(d.loops[0].iterations >= w.loops[0].iterations, `direct ${d.loops[0].iterations}, Wegstein ${w.loops[0].iterations}`);
+  assert.throws(() => solveFlowsheet(sys, { ...fs, solver: { method: "broyden" } }), /solver.method "broyden"/);
+});
