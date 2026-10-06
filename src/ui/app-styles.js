@@ -309,6 +309,42 @@ export const APP_CSS = `
 .fa-crumb{font-size:11.5px; color:var(--fug-muted); margin-bottom:1px}
 .fa-role-tag{display:inline-block; vertical-align:3px; font-size:11px; font-weight:500; color:var(--fa-pressed-fg); background:var(--fa-pressed);
   border:1px solid var(--fa-pressed-edge); border-radius:999px; padding:0 8px; margin-right:8px}
+/* Flowsheet workspace (flowsheet-view.js) */
+.fs-wrap{position:relative}
+.fs-canvas{display:block; width:100%; height:auto; min-height:320px; max-height:620px; touch-action:none; user-select:none; background:
+  radial-gradient(circle, var(--fug-rule) 1px, transparent 1.2px) 0 0/20px 20px}
+.fs-shape{fill:var(--fug-bg); stroke:var(--fug-fg); stroke-width:1.6}
+.fs-detail{fill:none; stroke:var(--fug-fg); stroke-width:1.3; opacity:.7}
+.fs-block{cursor:grab}
+.fs-block:focus{outline:none}
+.fs-block:focus-visible .fs-shape,.fs-block.is-sel .fs-shape{stroke:var(--fug-accent); stroke-width:2.6}
+.fs-block.is-incomplete .fs-shape{stroke-dasharray:5 3}
+.fs-warn-dot{fill:#d9822b; stroke:var(--fug-bg); stroke-width:1.5}
+.fs-name{font-size:12px; font-weight:600; fill:var(--fug-fg)}
+.fs-line{fill:none; stroke:var(--fug-fg2, #555); stroke-width:1.6}
+.fs-hit{fill:none; stroke:transparent; stroke-width:12; cursor:pointer}
+.fs-stream.is-sel .fs-line{stroke:var(--fug-accent); stroke-width:2.6}
+.fs-stream.is-tear .fs-line{stroke-dasharray:6 4}
+.fs-arrow{fill:var(--fug-fg2, #555)}
+.fs-label{font-size:10.5px; fill:var(--fug-fg2, #555); paint-order:stroke; stroke:var(--fug-halo); stroke-width:3px}
+.fs-handle{fill:var(--fug-bg); stroke:var(--fug-accent); stroke-width:1.6; cursor:crosshair}
+.fs-handle:hover{fill:var(--fug-accent)}
+.fs-q{fill:none; stroke:#c0392b; stroke-width:1.4; stroke-dasharray:4 3}
+.fs-qarrow{fill:#c0392b}
+.fs-qlabel{font-size:10px; fill:#c0392b; paint-order:stroke; stroke:var(--fug-halo); stroke-width:3px}
+.fs-drag{fill:none; stroke:var(--fug-accent); stroke-width:1.6; stroke-dasharray:4 3}
+.fs-empty-hint{position:absolute; inset:auto 0 45% 0; text-align:center; color:var(--fug-fg2); font-size:13px; pointer-events:none}
+.fs-tables h3{font-size:13px; margin:14px 0 6px}
+.fa-dof{font-size:12px; border-radius:6px; padding:6px 8px; margin:6px 0; display:flex; gap:6px; align-items:flex-start}
+.fa-dof.is-ok{background:color-mix(in srgb, #2e9a5b 14%, transparent); color:inherit}
+.fa-dof.is-bad{background:color-mix(in srgb, #d9822b 16%, transparent); color:inherit}
+.fa-dof-list{margin:4px 0 0; padding-left:18px; font-size:12px; display:grid; gap:3px}
+.fa-link{background:none; border:0; padding:0; color:var(--fug-accent); text-decoration:underline; cursor:pointer; font:inherit}
+.fa-frac-row{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0}
+.fa-frac{display:flex; align-items:center; gap:4px; font-size:12px}
+.fa-frac-name{font-size:12px; font-weight:600; margin-top:6px}
+.fa-fs-model{display:grid; gap:3px; margin:6px 0}
+.fa-chip-x{background:none; border:0; cursor:pointer; font-size:14px; line-height:1; padding:0 2px; color:inherit}
 .fa-need{max-width:520px; margin:32px auto; border:1px dashed var(--fug-rule); border-radius:10px; padding:18px 20px; background:var(--fa-panel); font-size:13px}
 .fa-need h3{margin:0 0 8px; font-size:14px; font-weight:600}
 .fa-need ul{margin:0 0 10px; padding-left:18px; display:grid; gap:4px; color:var(--fug-fg)}

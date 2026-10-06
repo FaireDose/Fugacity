@@ -28,6 +28,7 @@ import {
   setsFor, filterSources, sourceUsedFor,
 } from "./app-logic.js";
 import { HENRY_PAIRS, isEosModel } from "./workspaces.js";
+import { flowsheetView } from "./flowsheet-view.js";
 import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW, molarFlow } from "./flash-logic.js";
 import pkg from "../../package.json" with { type: "json" };
 import {
@@ -50,6 +51,7 @@ export function renderView(view, ctx) {
     case "henry": return henryView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
+    case "flowsheet": return flowsheetView({ ...ctx, saveText, copyText });
     default: throw new Error(`Unknown view "${view}".`);
   }
 }
