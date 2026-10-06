@@ -688,25 +688,55 @@ export function app(target, cfg = {}) {
       } } });
     const paste = h("textarea", { class: "fa-csv-text", rows: 5, "aria-label": "Project text", placeholder: "…or paste the text of a project here", "data-fk": "proj-paste" });
     const doc = () => currentProject();
-    const name = projectFileName(state);
     const hasFlash = !!doc().results?.flash;
+    const nameHint = h("p", { class: "fa-in-hint" }, `File name: ${projectFileName(state)}`);
+    // the name is the project's title (also shown on the canvas); typing updates it without
+    // redrawing the panel, so a click on Save right after typing is not lost
+    const nameInput = h("input", { type: "text", id: `fa-pname-${uid}`, value: state.title ?? "", placeholder: calculationName(), maxlength: 80,
+      style: "width:100%", "data-fk": "proj-name", "aria-describedby": `fa-pname-hint-${uid}`,
+      on: { input: ev => {
+        state = applyPatch(state, { title: ev.target.value.trim() || null }); api.state = state;
+        nameHint.textContent = `File name: ${projectFileName(state)}`;
+        renderCanvasBar();
+      } } });
+    nameHint.id = `fa-pname-hint-${uid}`;
+    const keep = d => {
+      if (typeof cfg.onSave !== "function") return;
+      try { cfg.onSave(d); status.textContent += " Also passed to this page."; } catch (e) { status.textContent += ` This page could not keep it: ${e.message}`; }
+    };
+    /** Save with the browser's Save dialog (choose the folder and the name) where the page may
+     *  use it, else as a download. */
+    async function saveProject() {
+      const d = doc(), text = projectText(d), name = projectFileName(state);
+      const picker = typeof window !== "undefined" ? window.showSaveFilePicker : null;
+      if (picker) {
+        try {
+          const handle = await picker.call(window, { suggestedName: name, types: [{ description: "Fugacity project", accept: { "application/json": [".json"] } }] });
+          const w = await handle.createWritable();
+          await w.write(text); await w.close();
+          status.textContent = `Saved ${handle.name}.`;
+          keep(d);
+          return;
+        } catch (e) {
+          if (e?.name === "AbortError") { status.textContent = "Not saved."; return; }
+          // a sandboxed page may not open the dialog: download instead
+        }
+      }
+      saveText(text, name, "application/json", status, { copyLabel: "Copy", bom: false });
+      keep(d);
+    }
     return h("div", { class: "fa-dgrid" },
       drawerSection("Save",
+        h("label", { class: "fa-field fa-field-wide", for: nameInput.id }, h("span", {}, "Name"), nameInput),
+        nameHint,
         h("p", {}, "A small JSON file with the components, model and conditions of every workspace, the flash specification and feed, the parameter sets and the open view."
           + (hasFlash ? " It also keeps the flash stream table (the mass balance) as calculated now." : " Open the Flash workspace before saving to keep its stream table (the mass balance) in the file too.")),
         h("div", { class: "fa-in-actions" },
-          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-save",
-            on: { click: () => {
-              const d = doc();
-              saveText(projectText(d), name, "application/json", status, { copyLabel: "Copy", bom: false });
-              if (typeof cfg.onSave === "function") {
-                try { cfg.onSave(d); status.textContent += " Also passed to this page."; } catch (e) { status.textContent += ` This page could not keep it: ${e.message}`; }
-              }
-            } } }, icon("download", 15), "Download file"),
+          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-save", on: { click: () => { saveProject(); } } }, icon("download", 15), "Save…"),
           h("button", { type: "button", class: "fa-mini", "data-fk": "proj-copy",
             on: { click: () => copyText(projectText(doc()), status, box, { what: "project", done: "Project copied: paste it into a file or a chat to keep it." }) } }, icon("copy", 15), "Copy")),
         status, box,
-        h("p", { class: "fa-in-hint" }, `File name: ${name}`)),
+        h("p", { class: "fa-in-hint" }, "Save opens your browser's Save dialog where it can (choose the folder and the name); otherwise the file goes to your Downloads folder.")),
       drawerSection("Open",
         h("p", {}, "A project file saved here. It replaces what is open now; the results are calculated again."),
         h("div", { class: "fa-in-actions" },

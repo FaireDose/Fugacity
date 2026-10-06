@@ -90,7 +90,11 @@ test("a component this library does not know is refused by name", () => {
 });
 
 test("file names", () => {
-  assert.equal(projectFileName(worked()), "fugacity-column-feed.fugacity.json");
+  // a name given by the person is kept as typed, without characters that file systems refuse
+  assert.equal(projectFileName(worked()), "Column feed.fugacity.json");
+  assert.equal(projectFileName({ title: "Run 2: ethanol/water?  " }), "Run 2- ethanol-water.fugacity.json");
+  assert.equal(projectFileName({ title: "flash.fugacity.json" }), "flash.fugacity.json");
+  assert.equal(projectFileName({ title: " ... ", components: ["water"] }), "fugacity-water.fugacity.json");
   assert.equal(projectFileName(initialState({ components: ["ethanol", "water"] })), "fugacity-ethanol-water.fugacity.json");
   assert.equal(projectFileName(initialState({ components: [] })), "fugacity-workbench.fugacity.json", "the empty workbench (no components chosen)");
 });

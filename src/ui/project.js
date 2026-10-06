@@ -71,10 +71,17 @@ export function projectOf(state, { version = "", results, now = new Date() } = {
 /** Text of a project file (JSON, two-space indented). */
 export const projectText = doc => JSON.stringify(doc, null, 2) + "\n";
 
-/** A file name for a project: the title or the components, then ".fugacity.json". */
+/**
+ * A file name for a project, ending in ".fugacity.json": the name the person gave the project
+ * (kept as typed, without characters that file systems refuse), else "fugacity-" and the
+ * components.
+ */
 export function projectFileName(state) {
-  const base = state.title || (state.components?.length ? state.components.join("-") : "workbench");
-  const slug = String(base).toLowerCase().normalize("NFKD").replace(/[^\w]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "workbench";
+  const named = String(state.title ?? "").normalize("NFC").replace(/[\\/:*?"<>|\u0000-\u001f]+/g, "-")
+    .replace(/\.fugacity\.json$|\.json$/i, "").replace(/\s+/g, " ").replace(/^[\s.-]+|[\s.-]+$/g, "").slice(0, 80);
+  if (named) return `${named}.fugacity.json`;
+  const base = state.components?.length ? state.components.join("-") : "workbench";
+  const slug = base.toLowerCase().replace(/[^\w]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "workbench";
   return `fugacity-${slug}.fugacity.json`;
 }
 
