@@ -6,15 +6,20 @@ import assert from "node:assert/strict";
 import { HENRY_GASES, listComponents } from "../src/index.js";
 import { VIEWS, PRESETS, initialState, applyPatch } from "../src/ui/app-logic.js";
 import {
-  WORKSPACES, UTILITIES, INPUTS, workspaceOf, checkInputs, normalizeInputs, seedInputs, examplesFor, rotateInputs, solventsFor, HENRY_PAIRS, needsFor,
+  WORKSPACES, SECTIONS, sectionOf, UTILITIES, INPUTS, workspaceOf, checkInputs, normalizeInputs, seedInputs, examplesFor, rotateInputs, solventsFor, HENRY_PAIRS, needsFor,
 } from "../src/ui/workspaces.js";
 
 const MAC = ["methanol", "acetone", "chloroform"];
 const go = (s, ...patches) => patches.reduce(applyPatch, s);
 
 test("one navigation: six task workspaces holding every view; four supporting panels", () => {
-  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "flash", "flowsheet", "solubility", "properties", "steam"]);
-  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Flash", "Flowsheet", "Gas solubility", "Properties", "Steam"]);
+  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "steam", "solubility", "properties", "flash", "flowsheet"]);
+  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Steam", "Gas solubility", "Properties", "Flash", "Flowsheet"]);
+  // the top navigation: File, then three sections holding every workspace once, in order
+  assert.deepEqual(SECTIONS.map(x => x.label), ["Thermodynamics", "Unit models", "Flowsheet"]);
+  assert.deepEqual(SECTIONS.flatMap(x => x.workspaces), WORKSPACES.map(w => w.id));
+  assert.equal(sectionOf("steam"), "thermo"); assert.equal(sectionOf("flash"), "units"); assert.equal(sectionOf("flowsheet"), "flowsheet");
+  assert.deepEqual(SECTIONS.find(x => x.id === "units").locked.map(l => l.label), ["Reaction", "Distillation"]);
   assert.deepEqual(UTILITIES.map(u => u.id), ["project", "library", "sources", "settings"]);
   // every view is in exactly one workspace, and every workspace view has its inputs defined
   const all = WORKSPACES.flatMap(w => w.views);

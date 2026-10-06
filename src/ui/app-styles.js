@@ -36,7 +36,7 @@ export const APP_CSS = `
 .fug-app input:focus-visible,.fug-app select:focus-visible,.fug-app button:focus-visible{outline:2px solid var(--fug-accent); outline-offset:1px}
 
 /* navigation bar: workspaces (tasks), then the supporting utilities */
-.fa-titlebar{display:flex; align-items:stretch; gap:18px; background:var(--fa-bar); color:var(--fa-bar-fg); padding:0 6px 0 14px; min-height:44px}
+.fa-titlebar{margin:0; max-width:none; align-self:stretch; flex-wrap:nowrap; display:flex; align-items:stretch; gap:18px; background:var(--fa-bar); color:var(--fa-bar-fg); padding:0 6px 0 14px; min-height:44px}
 .fa-brand{display:flex; align-items:center; gap:8px; color:var(--fa-bar-strong); font-weight:600; font-size:14px; letter-spacing:.01em}
 .fa-brand .fug-ico .a{stroke:var(--fa-bar-accent)}
 .fa-nav{display:flex; align-items:flex-end; gap:2px; min-width:0}
@@ -50,6 +50,16 @@ export const APP_CSS = `
 .fa-nav-btn[aria-current="page"]::before{content:""; position:absolute; left:10px; right:10px; top:0; height:2px; border-radius:0 0 2px 2px; background:var(--fug-accent)}
 .fa-ribbon-closed .fa-nav-btn[aria-current="page"]{background:var(--fa-canvas)}
 .fa-nav-short{display:none}
+.fa-file-btn{margin-right:8px; border-right:1px solid rgba(255,255,255,.12) !important}
+.fa-file-btn[aria-expanded="true"]{color:var(--fa-bar-strong); background:rgba(255,255,255,.1)}
+.fa-subnav{display:flex; flex-wrap:wrap; align-items:center; gap:2px 4px; padding:4px 10px 0; background:var(--fa-ribbon); border-bottom:1px solid var(--fug-rule)}
+.fa-subnav[hidden]{display:none}
+.fa-sub-btn{display:inline-flex; align-items:center; gap:6px; border:0; background:transparent; color:var(--fug-fg2); font:inherit; font-size:12.5px; padding:6px 10px 7px; border-bottom:2px solid transparent; cursor:pointer}
+.fa-sub-btn:hover{color:var(--fug-fg)}
+.fa-sub-btn[aria-current="page"]{color:var(--fug-fg); font-weight:600; border-bottom-color:var(--fug-accent)}
+.fa-sub-btn[aria-current="page"] .fug-ico{color:var(--fug-accent)}
+.fa-sub-btn.is-locked{opacity:.55; cursor:not-allowed}
+.fa-sub-btn.is-locked small{font-size:10.5px; color:var(--fug-muted)}
 .fa-utils{display:flex; align-items:center; gap:2px; margin-left:auto; padding-left:12px; border-left:1px solid rgba(255,255,255,.12); align-self:center; min-height:28px}
 .fa-util-btn{display:flex; align-items:center; gap:6px; border:1px solid transparent; background:transparent; color:var(--fa-bar-fg); font-size:12.5px;
   padding:4px 9px; border-radius:6px; cursor:pointer; white-space:nowrap}
@@ -344,6 +354,13 @@ export const APP_CSS = `
 .fa-frac{display:flex; align-items:center; gap:4px; font-size:12px}
 .fa-frac-name{font-size:12px; font-weight:600; margin-top:6px}
 .fa-fs-model{display:grid; gap:3px; margin:6px 0}
+.fa-paste{margin-top:8px}
+.fa-paste summary{cursor:pointer; font-size:12.5px; color:var(--fug-fg2)}
+.fa-restore{display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:12.5px; padding:8px 10px; margin:0 0 12px; border-radius:8px; background:color-mix(in srgb, var(--fug-accent) 10%, transparent)}
+.fa-store-list{list-style:none; margin:6px 0 0; padding:0; display:grid; gap:4px}
+.fa-store-list li{display:flex; align-items:center; gap:8px; font-size:12.5px}
+.fa-store-list .fa-store-name{font-weight:600}
+.fa-store-list small{color:var(--fug-muted); margin-right:auto}
 .fa-chip-x{background:none; border:0; cursor:pointer; font-size:14px; line-height:1; padding:0 2px; color:inherit}
 .fa-need{max-width:520px; margin:32px auto; border:1px dashed var(--fug-rule); border-radius:10px; padding:18px 20px; background:var(--fa-panel); font-size:13px}
 .fa-need h3{margin:0 0 8px; font-size:14px; font-weight:600}
@@ -423,7 +440,7 @@ export const APP_CSS = `
 .fug-app[data-size="narrow"] .fa-utils{border-left:0; padding-left:0}
 .fug-app[data-size="narrow"] .fa-util-btn{padding:6px 8px}
 .fug-app[data-size="narrow"] .fa-collapse{margin-right:4px}
-.fug-app[data-size="narrow"] .fa-nav{order:3; flex:1 1 100%; display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:2px; padding:0 4px}
+.fug-app[data-size="narrow"] .fa-nav{order:3; flex:1 1 100%; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:2px; padding:0 4px}
 .fug-app[data-size="narrow"] .fa-nav-btn{flex-direction:column; gap:2px; padding:6px 2px 7px; font-size:11.5px; justify-content:center; min-width:0}
 .fug-app[data-size="narrow"] .fa-nav-short{overflow:hidden; text-overflow:ellipsis; max-width:100%}
 .fug-app[data-size="narrow"] .fa-ribbon{flex-direction:column; overflow:visible; min-height:0; padding:4px 10px}
