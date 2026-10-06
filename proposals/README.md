@@ -13,7 +13,8 @@ interface or file format, the steps of the core track in the
 4. Maintainers and data reviewers decide by lazy consensus (see [GOVERNANCE.md](../GOVERNANCE.md)).
    Polls are advisory.
 5. The status in the file is set to **Accepted** or **Declined**, and the pull request is merged
-   either way, so the reasoning stays on record.
+   either way, so the reasoning stays on record. A proposal that is sound but not wanted yet
+   can be set to **Deferred** and merged the same way; it is reopened with a new pull request.
 6. Accepted proposals are implemented through normal pull requests, by contributors or
    their coding agents.
 
@@ -25,4 +26,4 @@ interface or file format, the steps of the core track in the
 | 0002 | [Pure-component properties, gases and Peng–Robinson](0002-pure-component-properties.md) | Accepted |
 | 0003 | [The Fugacity Library: sources you can see and choose](0003-fugacity-library.md) | Draft |
 | 0004 | [The first 50 components, chosen by process](0004-first-50-components.md) | Accepted |
-| 0005 | [Association models for strongly associating mixtures](0005-association-models.md) | Draft |
+| 0005 | [Association models for strongly associating mixtures](0005-association-models.md) | Deferred |

@@ -1,6 +1,8 @@
 # 0005: Association models for strongly associating mixtures
 
-- **Status:** Draft
+- **Status:** Deferred (2026-10-06). The present activity-model deviations are acceptable for
+  now except for the mixing enthalpy; the proposal is kept on record and taken up again when
+  the enthalpy of associating mixtures becomes a priority. No code from it is planned until then.
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track, thermodynamic models (after proposal 0004 step 3)
