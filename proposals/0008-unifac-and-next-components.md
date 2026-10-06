@@ -1,7 +1,8 @@
 # 0008: UNIFAC as the predicted tier, and the next 50 components
 
-- **Status:** Draft (UNIFAC part waiting for the answer of DDBST on the use of the published
-  parameters; nothing of it is implemented until then)
+- **Status:** Accepted (by the lead maintainer, 2026-10-06). Part A (UNIFAC) is on hold: nothing
+  of it is implemented until DDBST has answered on the use of the published parameters and the
+  maintainer decides. Part B (components) goes ahead.
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A3 (quality tiers and prediction); data track (components);
@@ -58,11 +59,95 @@
 | Solids (proposal 0007) | naphthalene, benzoic acid, salicylic acid, urea, phthalic anhydride, caprolactam |
 | Nitrogen compounds | pyridine, aniline, acrylonitrile, methylamine |
 
-That is 45; the last five are kept free for what the first benchmarks of proposal 0007 show
+That is 46 (an earlier draft counted 45); the last four are kept free for what the first benchmarks of proposal 0007 show
 is missing. Each component goes through the pipeline of proposal 0004: constants and
 correlations from the sources in rule 1 (CoolProp, the NIST Chemistry WebBook, ChemSep,
 open libraries with checked sources), UNIQUAC r and q, the pairs with open data fitted, the
 others from the ChemSep databank, and every value labelled with its source and tier.
+
+### Part B, scan of the sources (2026-10-06)
+
+Before anything is added, `validation/python/scan_components.py` looked up every candidate in
+the open sources of rule 1 that the pipeline of proposal 0004 uses: CoolProp 8.0.0, matched by
+CAS, and the two ChemSep pure-component files that DWSIM redistributes under the Artistic
+License 2.0 (`chemsep1.xml`, v8.3, already used; `chemsep2.xml`, "ChemSep v8.31 pure component
+data 2", new), at DWSIM commit `1abf72d1b6b41d3e9a8cc770d3cc4e8fc76e5766`. CAS numbers and
+formulas come from the `chemicals` library. The phase at 25 °C follows ChemSep's melting and
+normal boiling points. "Missing in ChemSep" lists the constants and temperature correlations
+that `add_components.py` and `fit_properties.py` need and the record lacks.
+
+| Component | CAS | Formula | At 25 °C | CoolProp 8.0.0 | ChemSep | Missing in ChemSep |
+|---|---|---|---|---|---|---|
+| dichloromethane | 75-09-2 | CH2Cl2 | ? | — | **not found** | — |
+| 1,2-dichloroethane | 107-06-2 | C2H4Cl2 | liquid | Dichloroethane | chemsep1.xml | nothing |
+| methyl isobutyl ketone | 108-10-1 | C6H12O | liquid | — | chemsep1.xml | nothing |
+| cyclohexanone | 108-94-1 | C6H10O | liquid | — | chemsep1.xml | nothing |
+| N,N-dimethylformamide | 68-12-2 | C3H7NO | liquid | — | chemsep1.xml | nothing |
+| dimethyl sulfoxide | 67-68-5 | C2H6OS | liquid | — | chemsep1.xml | nothing |
+| N-methyl-2-pyrrolidone | 872-50-4 | C5H9NO | liquid | — | chemsep2.xml | nothing |
+| sulfolane | 126-33-0 | C4H8O2S | solid | — | chemsep1.xml | nothing |
+| furfural | 98-01-1 | C5H4O2 | liquid | — | chemsep1.xml | nothing |
+| 2-methoxyethanol | 109-86-4 | C3H8O2 | ? | — | **not found** | — |
+| 1,4-dioxane | 123-91-1 | C4H8O2 | liquid | — | chemsep1.xml | nothing |
+| isobutanol | 78-83-1 | C4H10O | liquid | — | chemsep1.xml | nothing |
+| 2-butanol | 78-92-2 | C4H10O | liquid | — | chemsep1.xml | nothing |
+| monoethanolamine | 141-43-5 | C2H7NO | liquid | — | chemsep1.xml | nothing |
+| diethanolamine | 111-42-2 | C4H11NO2 | solid | — | chemsep1.xml | nothing |
+| methyldiethanolamine | 105-59-9 | C5H13NO2 | liquid | — | chemsep1.xml | nothing |
+| sulfur dioxide | 7446-09-5 | O2S | gas | SulfurDioxide | chemsep1.xml | nothing |
+| nitrous oxide | 10024-97-2 | N2O | gas | NitrousOxide | chemsep1.xml | nothing |
+| formic acid | 64-18-6 | CH2O2 | liquid | — | chemsep2.xml | nothing |
+| propionic acid | 79-09-4 | C3H6O2 | liquid | — | chemsep1.xml | nothing |
+| acrylic acid | 79-10-7 | C3H4O2 | liquid | — | chemsep1.xml | nothing |
+| vinyl acetate | 108-05-4 | C4H6O2 | liquid | — | chemsep1.xml | nothing |
+| isopropyl acetate | 108-21-4 | C5H10O2 | liquid | — | chemsep1.xml | nothing |
+| ethylene oxide | 75-21-8 | C2H4O | gas | EthyleneOxide | chemsep1.xml | nothing |
+| propylene oxide | 75-56-9 | C3H6O | liquid | — | chemsep1.xml | nothing |
+| formaldehyde | 50-00-0 | CH2O | gas | — | chemsep1.xml | nothing |
+| hydrogen peroxide | 7722-84-1 | H2O2 | liquid | — | chemsep2.xml | nothing |
+| cumene | 98-82-8 | C9H12 | liquid | — | chemsep1.xml | nothing |
+| mesitylene | 108-67-8 | C9H12 | liquid | — | chemsep1.xml | nothing |
+| n-nonane | 111-84-2 | C9H20 | liquid | n-Nonane | chemsep1.xml | nothing |
+| n-decane | 124-18-5 | C10H22 | liquid | n-Decane | chemsep1.xml | nothing |
+| n-dodecane | 112-40-3 | C12H26 | liquid | n-Dodecane | chemsep1.xml | nothing |
+| isooctane | 540-84-1 | C8H18 | liquid | — | chemsep1.xml | nothing |
+| 1-butene | 106-98-9 | C4H8 | gas | 1-Butene | chemsep1.xml | nothing |
+| isoprene | 78-79-5 | C5H8 | liquid | — | chemsep1.xml | nothing |
+| ethyl tert-butyl ether | 637-92-3 | C6H14O | liquid | — | chemsep1.xml | nothing |
+| naphthalene | 91-20-3 | C10H8 | solid | — | chemsep1.xml | nothing |
+| benzoic acid | 65-85-0 | C7H6O2 | solid | — | chemsep1.xml | nothing |
+| salicylic acid | 69-72-7 | C7H6O3 | solid | — | chemsep1.xml | nothing |
+| urea | 57-13-6 | CH4N2O | ? | — | **not found** | — |
+| phthalic anhydride | 85-44-9 | C8H4O3 | ? | — | **not found** | — |
+| caprolactam | 105-60-2 | C6H11NO | ? | — | **not found** | — |
+| pyridine | 110-86-1 | C5H5N | liquid | — | chemsep1.xml | nothing |
+| aniline | 62-53-3 | C6H7N | liquid | — | chemsep1.xml | nothing |
+| acrylonitrile | 107-13-1 | C3H3N | liquid | — | chemsep1.xml | nothing |
+| methylamine | 74-89-5 | CH5N | gas | — | chemsep1.xml | nothing |
+
+Result: **41 of 46** have every record the pipeline needs (8 of them also have a CoolProp
+reference equation of state, which comes first in the source chain). Notes:
+
+- **Not found in either source:** dichloromethane, 2-methoxyethanol, urea, phthalic anhydride
+  and caprolactam. They need a separate search, in the order of rule 1 (NIST Chemistry WebBook,
+  ThermoML Archive, open articles, free books). Until a source is found they stay out, with
+  "no open data" and the places searched.
+- **New source:** `chemsep2.xml` is a second file of the same databank, with the same licence. It
+  is used for N-methyl-2-pyrrolidone, formic acid and hydrogen peroxide. It needs its own entry in
+  `src/data/sources.json` and `src/data/LICENSES.md` when the first of these is added.
+- **Solids at 25 °C:** sulfolane, diethanolamine, naphthalene, benzoic acid and salicylic acid.
+  They are useful as liquids above their melting point and for solid-liquid solubility
+  (proposal 0007).
+- **Gases at 25 °C:** sulfur dioxide, nitrous oxide, ethylene oxide, formaldehyde, 1-butene and
+  methylamine. They work with the equations of state, with Henry's law where open data exist, and
+  with activity models only below their critical temperature.
+- **Difficult cases, flagged now:** formic acid (it associates in the vapour like acetic acid),
+  formaldehyde and hydrogen peroxide (they react in water), and the amines with CO₂
+  (electrolytes; only the molecular solvent properties are in scope).
+
+Batches, in the order of the process areas: 1. extraction solvents (11 found), 2. gas treating
+and acids/esters (14), 3. petrochemicals and nitrogen compounds (13), 4. solids (3). The five not
+found follow when a source is found.
 
 ## Engineering basis
 
