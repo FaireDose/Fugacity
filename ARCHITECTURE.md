@@ -27,7 +27,7 @@ Peng–Robinson does not break the flash drum.
 | 0 | Data | Pure-component constants, binary parameters, UNIFAC groups, each with source, tier and license | `src/data/` | 49 components with constants and property correlations (16 of v0.2, 33 of proposal 0004); 54 activity-model parameter sets; 42 k_ij (PR, SRK); Henry constants for 6 gases in water |
 | 1 | Property package | Activity coefficients, fugacities, K-values, enthalpy, density at any T, P, composition | `src/thermo/` | NRTL, UNIQUAC, ideal; acid dimerization; Peng–Robinson and SRK; pure-component properties and enthalpy (`pure()`); IAPWS-IF97 and IAPWS transport for water; Henry's law; vapour model choice (ideal gas, PR, SRK) for activity models; mixture enthalpy, excess enthalpy and `phase()` for every model |
 | 2 | Equilibrium | Bubble and dew points, flash, azeotropes, phase stability, residue curves | `src/equilibrium/` | Bubble and dew T/P for every model, azeotropes, spinodal check, residue curves; tangent-plane stability test for PR/SRK; flash (T-P, P-H, P-VF, T-VF) with heat duty, with two liquids and vapour + two liquids for NRTL and UNIQUAC; errors with codes. **Two liquids with PR/SRK missing** |
-| 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | Not started |
+| 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | `stream()`: a flash of component flows (kmol/h or kg/h) at T-P, P-H (enthalpy flow), P-VF or T-VF, with phase flows and enthalpy flow in kW (proposal 0006, step 1) |
 | 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | Not started |
 | 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |
 | 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench (`app`) with task workspaces (phase equilibrium, flash, gas solubility, properties, steam), per-workspace inputs and Library, Sources and Settings panels; one model choice for every diagram (activity model with a vapour model, or PR/SRK); T-x-y, P-x-y, ternary, azeotrope and envelope views in mole fraction or wt %; flash stream table with CSV export; property explorer; Henry and steam views |
@@ -113,16 +113,18 @@ Algorithms take a property package and never look inside it:
 ## Layer 3: stream
 
 ```js
-{
-  T_K: 351.2, P_kPa: 101.325,
-  flow_kmol_h: { water: 60, ethanol: 40 },
-  vapourFraction: 0.25,        // from a flash
-  H_kW: -1234.5                // enthalpy flow, reference: elements or ideal gas at 298.15 K
-}
+const sys = Fugacity.system({ components: ["water", "ethanol"], model: "NRTL" });
+const s = Fugacity.stream(sys, { flow_kmol_h: { water: 60, ethanol: 40 }, T_K: 355, P_kPa: 101.325 });
+// { T_K, P_kPa, flow_kmol_h: { water, ethanol }, F_kmol_h, mass_kg_h, z, VF,
+//   phases: [{ type, fraction, composition, F_kmol_h, flow_kmol_h, h_J_mol }],
+//   h_J_mol, H_kW, MW, warnings, sources }
+Fugacity.stream(sys, { flow_kmol_h, P_kPa: 101.325, H_kW: s.H_kW });   // P-H: gives back T
 ```
 
 A stream is always created by a flash, so its phase split and enthalpy are consistent
-with the property package.
+with the property package. The enthalpy flow has the flash's reference (each component as
+an ideal gas at 298.15 K). A stream without flow carries T and P only (`src/stream/stream.js`,
+proposal 0006).
 
 ## Layer 4: unit operations
 
