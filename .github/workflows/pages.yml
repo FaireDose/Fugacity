@@ -42,6 +42,7 @@ jobs:
           cp ai/instructions/use-fugacity.md _site/use.md
           cp AGENTS.md _site/agents.md
           cp llms.txt _site/llms.txt
+          mkdir -p _site/schema && cp docs/schema/*.json _site/schema/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

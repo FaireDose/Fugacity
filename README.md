@@ -10,8 +10,9 @@ nothing to install).
 
 ![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
-> **Status: early (v0.2.2).** 49 components (33 added from proposal 0004, next release), activity models and cubic equations of state,
-> pure-component properties, steam tables, and a workbench with a ribbon.
+> **Status: early (v0.3.0).** 49 components, activity models and cubic equations of state,
+> pure-component properties, steam tables, the flash, and a first flowsheet with recycles,
+> degrees of freedom and energy streams, in a workbench with project files.
 > Results are model predictions. Check them against data before using them for design.
 
 **Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria and properties →
@@ -30,7 +31,7 @@ Paste one of these into your assistant (the last two need one that can open web 
 **Load the workbench** (the assistant opens no link; the workbench opens empty and you choose the components):
 
 > Load the Fugacity workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
-> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
+> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
 
 **Load it with your components:**
 
@@ -60,8 +61,8 @@ ask, for example *"Open the Fugacity workbench with ethanol and water"*.
 | **Water and steam** | IAPWS-IF97 (all regions), IAPWS viscosity (2008) and thermal conductivity (2011) |
 | **Binary parameters** | NRTL/UNIQUAC for 100 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 127 pairs; Henry constants for 10 gases in water |
 | **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
-| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check, with every model (activity models and PR/SRK; next release); flash (T-P, P-H, P-VF, T-VF, heat duty) with vapour, liquid, two liquids, or vapour + two liquids (NRTL, UNIQUAC; next release); with PR/SRK bubble and dew points with a stability test; gas solubility in water |
-| **Interface** | Workbench with a ribbon (`app`): components; T-x-y, P-x-y, ternary map, azeotropes and phase envelope, each with the model chosen in the toolbar (NRTL, UNIQUAC or ideal with a vapour model, or Peng–Robinson/SRK); a Flash workspace with a stream table and CSV export (next release); a Flowsheet workspace: choose components and method, place feeds, mixers, splitters, component separators, flash drums and heaters, connect them on a canvas, see the degrees of freedom of every block, solve with recycles, and read the stream table and the energy streams (next release); gas solubility, property curves, steam tables, units, mol/wt % (the diagrams are drawn in the chosen basis); a button hides the background layers; project files: File saves the work (to a file, in this browser, or in the host page's storage such as an AI chat's; an automatic copy of the open work is offered back after a reload) (components, model, conditions, the inputs of every workspace, the flash feed and specification, and the flash stream table as a record) as a JSON file and opens it again (next release). Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
+| **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check, with every model (activity models and PR/SRK); flash (T-P, P-H, P-VF, T-VF, heat duty) with vapour, liquid, two liquids, or vapour + two liquids (NRTL, UNIQUAC); with PR/SRK bubble and dew points with a stability test; gas solubility in water |
+| **Interface** | Workbench with a ribbon (`app`): components; T-x-y, P-x-y, ternary map, azeotropes and phase envelope, each with the model chosen in the toolbar (NRTL, UNIQUAC or ideal with a vapour model, or Peng–Robinson/SRK); a Flash workspace with a stream table and CSV export; a Flowsheet workspace: choose components and method, place feeds, mixers, splitters, component separators, flash drums and heaters, connect them on a canvas, see the degrees of freedom of every block, solve with recycles, and read the stream table and the energy streams; gas solubility, property curves, steam tables, units, mol/wt % (the diagrams are drawn in the chosen basis); a button hides the background layers; project files: File saves the work (to a file, in this browser, or in the host page's storage such as an AI chat's; an automatic copy of the open work is offered back after a reload) (components, model, conditions, the inputs of every workspace, the flash feed and specification, and the flash stream table as a record) as a JSON file and opens it again. Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
 
 A full ternary map (861 bubble points plus ten residue curves) takes well under a second
 in the browser. If a pair has no parameters yet, the interface says which one.
@@ -70,7 +71,7 @@ In any web page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
   // or a single view: Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
@@ -82,12 +83,12 @@ From code (K, kPa, mole fractions):
 ```js
 const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T: 376.36, y: [0.645, 0.355], gamma: [1.306, 1.164] }
-s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... }  (next release)
-// activity model for the liquid, Peng-Robinson or SRK for the vapour (next release)
+s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... } 
+// activity model for the liquid, Peng-Robinson or SRK for the vapour
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" }).bubbleT([0.5, 0.5], 1500);
-// mixture enthalpy, J/mol, reference ideal gas at 298.15 K (next release)
+// mixture enthalpy, J/mol, reference ideal gas at 298.15 K
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" }).enthalpy("liquid", 350, 101.325, [0.5, 0.5]);
-// flash: { z, T, P }, { z, P, H }, { z, P, VF } or { z, T, VF }; feed conditions add the heat duty (next release)
+// flash: { z, T, P }, { z, P, H }, { z, P, VF } or { z, T, VF }; feed conditions add the heat duty
 Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" })
   .flash({ z: [0.4, 0.6], T: 355, P: 101.325 }, { feed: { T: 298.15, P: 101.325 } });
 // { T, P, VF: 0.479, H_J_mol, phases: [{ type, fraction, composition, h_J_mol }, ...], duty_J_mol: 24582, warnings, sources }
@@ -96,7 +97,7 @@ Fugacity.system({ components: ["water", "ethyl acetate"], model: "NRTL" }).flash
 // phases: vapour 0.2, liquid "Ethyl acetate-rich" 0.450, liquid "Water-rich" 0.350
 s.azeotropes(101.325);            // [{ x, T, type }]
 // errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
-try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT" (next release)
+try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT"
 
 Fugacity.pure("water").tsat(101.325);         // 373.1243 K (IAPWS-IF97)
 Fugacity.pure("benzene").props(298.15, 101.325); // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }
@@ -144,7 +145,7 @@ The source of every parameter is recorded next to it in
 [src/data/LICENSES.md](src/data/LICENSES.md).
 
 **Known limits:** the shaded two-liquid region of the diagrams is the spinodal only, so the
-real two-liquid region is wider (the flash finds the real one, next release); two liquids
+real two-liquid region is wider (the flash finds the real one); two liquids
 with Peng–Robinson or SRK are not calculated yet; the UNIQUAC databank set is less accurate than NRTL
 for some systems (acetone + chloroform + methanol); no ternary VLE data exist yet to check
 water + acetic acid + ethylene glycol; acetic acid and alcohols or glycols slowly

@@ -1,6 +1,6 @@
 ---
 name: fugacity
-description: Build live chemical-engineering tools in an artifact with the open-source Fugacity library - phase diagrams (T-x-y, ternary maps, residue curves, azeotropes), bubble and dew points (activity models or Peng-Robinson/SRK), pure-component properties, steam tables and gas solubility in water. Use when the user asks for VLE, phase diagrams, physical properties of the supported components, steam properties or Henry's law.
+description: Build live chemical-engineering tools in an artifact with the open-source Fugacity library - process flowsheets with recycles (feeds, mixers, splitters, separators, flash drums, heaters), phase diagrams (T-x-y, ternary maps, residue curves, azeotropes), bubble and dew points (activity models or Peng-Robinson/SRK), pure-component properties, steam tables and gas solubility in water. Use when the user asks for VLE, phase diagrams, physical properties of the supported components, steam properties or Henry's law.
 ---
 
 # Fugacity: phase equilibria and properties in an artifact
@@ -18,7 +18,7 @@ whole page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
 <script>
   Fugacity.app("#app", { components: [] });
 </script>
@@ -44,7 +44,7 @@ For one diagram without the ribbon, call `Fugacity.mount`:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
 <script>
   Fugacity.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
@@ -63,6 +63,64 @@ For one diagram without the ribbon, call `Fugacity.mount`:
 - The interface has its own model switch and pressure input, and follows the page's
   light or dark theme. Keep the rest of the page simple: a heading, a sentence on what
   the diagram shows, and the widget.
+
+## Flowsheets
+
+When the user describes a process (a feed, units, conditions, a recycle), write it as a Fugacity
+project with a flowsheet and open it in the workbench's Flowsheet tab:
+
+```html
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
+<script>
+  const project = {
+    fugacity_project: 2,
+    workbench: { view: "flowsheet" },
+    flowsheet: {
+      components: ["ethanol", "water"],
+      thermo: { model: "NRTL", vapour: "ideal" },          // or { model: "PR" } / "SRK"
+      blocks: [
+        { id: "F1", type: "feed", x: 0, y: 160, spec: { flow_kmol_h: { ethanol: 30, water: 70 }, T_K: 298.15, P_kPa: 101.325 } },
+        { id: "M1", type: "mixer", x: 140, y: 160 },
+        { id: "V1", type: "flash", x: 300, y: 160, spec: { T_K: 360, P_kPa: 101.325 } },
+        { id: "SP1", type: "splitter", x: 460, y: 220, spec: { fractions: [0.7, "rest"] } },
+        { id: "P1", type: "product", x: 460, y: 80 }, { id: "P2", type: "product", x: 600, y: 260 }
+      ],
+      streams: [
+        { id: "S1", from: "F1.out", to: "M1.in" }, { id: "S2", from: "M1.out", to: "V1.in" },
+        { id: "S3", from: "V1.vapour", to: "P1.in" }, { id: "S4", from: "V1.liquid", to: "SP1.in" },
+        { id: "S5", from: "SP1.out", to: "M1.in" }, { id: "S6", from: "SP1.out", to: "P2.in" }
+      ]
+    }
+  };
+  Fugacity.app("#app", { project });
+</script>
+```
+
+- Blocks and their specifications (SI units: K, kPa, kmol/h or kg/h, kW):
+  `feed` (flow_kmol_h or flow_kg_h, and two of T_K, P_kPa, VF), `mixer` (P_kPa optional),
+  `splitter` (fractions, one per outlet, one may be "rest"), `separator` (fractions per
+  component, e.g. `{ ethanol: [0.95, "rest"], water: [0.1, "rest"] }`), `flash` (two of T_K,
+  P_kPa, VF, duty_kW), `heater` (one of T_K, duty_kW, VF; P_kPa or dP_kPa optional),
+  `product` (the end of a stream). Every outlet must go to a block or a product. Streams
+  are written "BLOCK.port": feed out; mixer in, out; splitter and separator in, out (one
+  stream per outlet); flash in, vapour, liquid, liquid2 (optional); heater in, out; product in.
+  Splitters, separators and heaters may take several inlets (mixed first).
+- Before giving me the page, check the project in code you can run:
+  `Fugacity.checkProject(project)` lists every problem (connections and degrees of freedom,
+  e.g. "Flash drum V1: missing: one more of T_K, P_kPa, VF or duty_kW"); fix them all.
+  `Fugacity.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles); a
+  recycle without a way out throws an error that says so. The schema is at
+  https://fairedose.github.io/Fugacity/schema/project-2.json.
+- If the user gives a project file (`.fugacity.json`), open it the same way with `{ project }`;
+  to change it, edit the JSON, check it again and open it.
+
+**Keeping work in the chat.** The workbench saves projects as files (File menu), in the
+browser, and, if this chat gives its pages persistent storage, there too: pass that storage
+to the workbench as `Fugacity.app("#app", { storage: { list, get, put, remove } })`, four
+functions that list the saved names, return a project, keep a project under a name, and
+delete one (promises are fine). Only do this with storage the chat platform really offers;
+otherwise leave it out and tell the user to use File > Save or Copy.
 
 ## Calculate numbers directly
 
@@ -102,11 +160,9 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.2.2 holds
-  water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic
-  acid, ethylene glycol (activity models and properties) and oxygen, nitrogen, hydrogen,
-  methane, ethane, ethylene (equations of state, properties, Henry's law). Not every pair
-  has parameters: the widget names missing pairs, and equation-of-state results carry
+- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 49
+  components (water, alcohols, glycols, ketones, esters, aromatics, alkanes, light gases
+  and more). Not every pair has parameters: the widget names missing pairs, and equation-of-state results carry
   `warnings` for pairs without k_ij. If the user asks for other chemicals or pairs, say
   they are not in the databank yet and point to
   https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md; do not invent parameters.

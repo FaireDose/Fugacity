@@ -13,7 +13,7 @@
  *
  *   {
  *     "fugacity_project": 1,
- *     "saved_with": "fugacity 0.2.2",
+ *     "saved_with": "fugacity 0.3.0",
  *     "saved_at": "2026-10-06T12:00:00.000Z",
  *     "title": "Ethanol, water",                 // optional
  *     "workbench": {
