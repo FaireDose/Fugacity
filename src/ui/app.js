@@ -28,11 +28,12 @@ import {
   VIEWS, PRESETS, initialState, applyPatch, TIER_SHORT, fmtP, parseP, parseT, fmtTemp, pxyTemperature,
   RULES, ruleOf, setsFor, setChoices, pairKeyOf, modelLabel,
 } from "./app-logic.js";
-import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
+import { WORKSPACES, SECTIONS, sectionOf, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView, sourcesPanel, saveText, copyText } from "./app-views.js";
 import { flowsheetRibbon, flowsheetInputs, ensureUi } from "./flowsheet-view.js";
 import { projectOf, projectText, projectFileName, stateFromProject } from "./project.js";
+import { browserStore, hostStore, autosave, lastAutosave, clearAutosave } from "./project-store.js";
 import { FLASH_SPECS, FLOW_UNITS, feedComposition, convertBasis, flowIn } from "./flash-logic.js";
 import { pure } from "../thermo/pure.js";
 import pkg from "../../package.json" with { type: "json" };
@@ -117,6 +118,12 @@ export function app(target, cfg = {}) {
   injectAppStyles(doc);
 
   let state = cfg.project != null ? stateFromProject(cfg.project) : initialState(cfg);
+  // where projects are kept besides files: this browser, and the host page's storage (project-store.js)
+  const stores = [hostStore(cfg.storage), browserStore()].filter(st => st && st.available);
+  // the automatic copy of the last session, offered back (never opened by itself)
+  const useAutosave = cfg.autosave !== false;
+  let previous = useAutosave && cfg.project == null ? lastAutosave() : null;
+  let autosaveTimer = null;
   const uid = Math.random().toString(36).slice(2, 7);
   const all = listComponents();
   const byId = new Map(all.map(c => [c.id, c]));
@@ -125,6 +132,7 @@ export function app(target, cfg = {}) {
   const ui = {
     size: sizeOf(root.clientWidth || 1200), status: { busy: false, ms: null, error: null, info: null },
     sources: { query: "", kind: "all", mine: false }, opener: null, drawnUtility: null,
+    lastWs: {},   // the workspace each section had open last
     records: {},   // the last result of a view that a project file keeps (the flash stream table), by view
     projectNote: "",
   };
@@ -150,7 +158,8 @@ export function app(target, cfg = {}) {
     "aria-labelledby": `fa-dt-${uid}`, "aria-describedby": `fa-dd-${uid}` });
   const layer = h("div", { class: "fa-layer", hidden: true },
     h("div", { class: "fa-scrim", "aria-hidden": "true", on: { click: () => set({ utility: null }, { canvas: false }) } }), drawer);
-  const stage = h("div", { class: "fa-stage" }, ribbon, body, statusBar, layer);
+  const subnav = h("nav", { class: "fa-subnav", "aria-label": "Workspaces of the section" });
+  const stage = h("div", { class: "fa-stage" }, subnav, ribbon, body, statusBar, layer);
   box.append(titleBar, stage);
   root.replaceChildren(box);
 
@@ -189,6 +198,7 @@ export function app(target, cfg = {}) {
 
   // ---- state changes
   function set(patch, { canvas: redraw = true } = {}) {
+    if (useAutosave && Object.keys(patch).some(k => k !== "utility" && k !== "panels" && k !== "ribbon")) scheduleAutosave();
     const fk = focusKey();
     const before = canvasKey();
     const util0 = state.utility;
@@ -202,6 +212,12 @@ export function app(target, cfg = {}) {
         drawer.focus({ preventScroll: true }); // the navigation bar stays in view
       } else if (!restoreFocus(fk) && !restoreFocus(ui.opener)) restoreFocus(`util-${util0}`);
     } else restoreFocus(fk);
+  }
+
+  /** Keep a copy of the open work in this browser a moment after it changes. */
+  function scheduleAutosave() {
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(() => { previous = null; autosave(projectText(currentProject())); }, 800);
   }
 
   // ---- controls
@@ -233,11 +249,21 @@ export function app(target, cfg = {}) {
 
   // ---- navigation bar: workspaces, then the supporting utilities
   function renderTitleBar() {
-    const nav = h("nav", { class: "fa-nav", "aria-label": "Workspaces" }, ...WORKSPACES.map(w => h("button", {
-      type: "button", class: "fa-nav-btn", "aria-current": state.workspace === w.id ? "page" : undefined, "data-fk": `ws-${w.id}`,
-      "aria-label": w.label, on: { click: () => set({ workspace: w.id, utility: null }) } },
-      icon(w.icon, 18), h("span", { class: "fa-nav-long" }, w.label), h("span", { class: "fa-nav-short", "aria-hidden": "true" }, w.short))));
-    const utils = h("div", { class: "fa-utils", role: "group", "aria-label": "Supporting tools" }, ...UTILITIES.map(u => h("button", {
+    // File (save and open: the Project panel) first, then the sections; the supporting panels on the right
+    const proj = UTILITIES.find(u => u.id === "project");
+    const file = h("button", { type: "button", class: "fa-nav-btn fa-file-btn", "aria-expanded": String(state.utility === "project"), "aria-controls": drawer.id,
+      "aria-haspopup": "dialog", "data-fk": "util-project", title: proj.intro, "aria-label": "File: save and open projects",
+      on: { click: () => set({ utility: state.utility === "project" ? null : "project" }, { canvas: false }) } },
+      icon("file", 18), h("span", { class: "fa-nav-long" }, "File"), h("span", { class: "fa-nav-short", "aria-hidden": "true" }, "File"));
+    const current = sectionOf(state.workspace);
+    const nav = h("nav", { class: "fa-nav", "aria-label": "Sections" }, file, ...SECTIONS.map(sec => h("button", {
+      type: "button", class: "fa-nav-btn", "aria-current": current === sec.id ? "page" : undefined, "data-fk": `sec-${sec.id}`,
+      "aria-label": sec.label, on: { click: () => {
+        const ws = ui.lastWs[sec.id] && sec.workspaces.includes(ui.lastWs[sec.id]) ? ui.lastWs[sec.id] : sec.workspaces[0];
+        set({ workspace: ws, utility: null });
+      } } },
+      icon(sec.icon, 18), h("span", { class: "fa-nav-long" }, sec.label), h("span", { class: "fa-nav-short", "aria-hidden": "true" }, sec.short ?? sec.label))));
+    const utils = h("div", { class: "fa-utils", role: "group", "aria-label": "Supporting tools" }, ...UTILITIES.filter(u => u.id !== "project").map(u => h("button", {
       type: "button", class: "fa-util-btn", "aria-expanded": String(state.utility === u.id), "aria-controls": drawer.id, "aria-haspopup": "dialog",
       "data-fk": `util-${u.id}`, title: u.intro, "aria-label": u.label,
       on: { click: () => {
@@ -251,6 +277,15 @@ export function app(target, cfg = {}) {
       h("button", { type: "button", class: "fa-icon-btn fa-collapse", title: state.ribbon ? "Hide the toolbar" : "Show the toolbar",
         "aria-label": state.ribbon ? "Hide the toolbar" : "Show the toolbar", "aria-expanded": String(state.ribbon), "aria-controls": ribbon.id, "data-fk": "collapse",
         on: { click: () => set({ ribbon: !state.ribbon }, { canvas: false }) } }, icon(state.ribbon ? "chevronUp" : "chevronDown", 16)));
+    // the second row: the workspaces of the section, and the models not available yet
+    const sec = SECTIONS.find(x => x.id === current);
+    ui.lastWs[current] = state.workspace;
+    const tabs = sec ? [...sec.workspaces.map(id => WORKSPACES.find(w => w.id === id)), ...(sec.locked ?? []).map(l => ({ ...l, isLocked: true }))] : [];
+    subnav.hidden = tabs.length < 2;
+    subnav.replaceChildren(...tabs.map(w => w.isLocked
+      ? h("span", { class: "fa-sub-btn is-locked", title: w.note, "aria-disabled": "true", role: "link" }, icon("lock", 15), h("span", {}, w.label), h("small", {}, "not available yet"))
+      : h("button", { type: "button", class: "fa-sub-btn", "aria-current": state.workspace === w.id ? "page" : undefined, "data-fk": `ws-${w.id}`,
+        on: { click: () => set({ workspace: w.id, utility: null }) } }, icon(w.icon, 16), h("span", {}, w.label))));
   }
 
   // ---- toolbar of the workspace: diagrams, model and display options
@@ -744,6 +779,7 @@ export function app(target, cfg = {}) {
       keep(d);
     }
     return h("div", { class: "fa-dgrid" },
+      previous ? drawerSection("Continue where you left off", restoreBox()) : null,
       drawerSection("Save",
         h("label", { class: "fa-field fa-field-wide", for: nameInput.id }, h("span", {}, "Name"), nameInput),
         nameHint,
@@ -765,8 +801,51 @@ export function app(target, cfg = {}) {
         h("div", { class: "fa-in-actions" },
           h("button", { type: "button", class: "fa-mini", "data-fk": "proj-load", on: { click: () => { if (paste.value.trim()) open(paste.value, "the pasted project"); } } }, icon("check", 15), "Open the pasted text")),
         openStatus),
+      ...stores.map(storeSection),
       drawerSection("From code",
-        h("p", { class: "fa-in-hint" }, "const w = Fugacity.app(\"#app\"); w.save() returns the project; w.load(project) opens one; Fugacity.app(\"#app\", { project }) starts from one; { onSave(project) { … } } lets the page keep it (for example in an AI chat's storage).")));
+        h("p", { class: "fa-in-hint" }, "const w = Fugacity.app(\"#app\"); w.save() returns the project; w.load(project) opens one; Fugacity.app(\"#app\", { project }) starts from one; { storage: { list(), get(name), put(name, project), remove(name) } } keeps projects in the page's own storage (for example an AI chat's); { autosave: false } turns off the copy in this browser.")));
+  }
+
+  /** A store (this browser, or the host page's storage): save under the project's name, and the list. */
+  function storeSection(store) {
+    const status = h("div", { class: "fug-foot", "aria-live": "polite" });
+    const list = h("ul", { class: "fa-store-list" }, h("li", { class: "fa-empty" }, "Loading…"));
+    const name = () => (state.title || calculationName() || "Workbench").trim();
+    const refresh = () => store.list().then(items => {
+      list.replaceChildren(...(items.length ? items.map(it => h("li", {},
+        h("span", { class: "fa-store-name" }, it.name), it.saved_at ? h("small", {}, new Date(it.saved_at).toLocaleString()) : null,
+        h("button", { type: "button", class: "fa-mini", "data-fk": `store-open-${store.id}-${it.name}`, on: { click: () => {
+          store.get(it.name).then(p => { loadProject(p); ui.projectNote = `Opened "${it.name}" from ${store.label.toLowerCase()}. Everything was calculated again.`; set({ utility: "project" }, { canvas: false }); },
+            e => { status.textContent = `Not opened: ${e.message}`; });
+        } } }, "Open"),
+        h("button", { type: "button", class: "fa-mini", "aria-label": `Delete ${it.name}`, "data-fk": `store-del-${store.id}-${it.name}`, on: { click: () => {
+          store.remove(it.name).then(refresh, e => { status.textContent = e.message; });
+        } } }, icon("trash", 14)))) : [h("li", { class: "fa-empty" }, "Nothing kept here yet.")]));
+    }, e => { list.replaceChildren(h("li", { class: "fug-err" }, `This storage did not answer: ${e.message}`)); });
+    refresh();
+    return drawerSection(store.label,
+      h("p", { class: "fa-in-hint" }, store.id === "browser"
+        ? "Kept in this browser until you clear its site data; not on other computers. For safe keeping, also save a file."
+        : "Kept by the page that shows the workbench (for example the AI chat's storage)."),
+      h("div", { class: "fa-in-actions" }, h("button", { type: "button", class: "fa-mini", "data-fk": `store-save-${store.id}`, on: { click: () => {
+        const n = name();
+        store.put(n, currentProject()).then(() => { status.textContent = `Kept as "${n}".`; refresh(); }, e => { status.textContent = `Not kept: ${e.message}`; });
+      } } }, icon("download", 15), `Keep here as "${name()}"`)),
+      status, list);
+  }
+
+  /** "Continue where you left off": the automatic copy of the last session in this browser. */
+  function restoreBox() {
+    if (!previous) return null;
+    const when = new Date(previous.saved_at).toLocaleString();
+    return h("div", { class: "fa-restore", role: "note" },
+      h("span", {}, `Your last work in this browser (${when}) can be opened again.`),
+      h("button", { type: "button", class: "fa-mini", "data-fk": "restore", on: { click: () => {
+        const p = previous; previous = null;
+        try { loadProject(p.text); ui.projectNote = "Your last work was opened again."; } catch (e) { ui.projectNote = `It could not be opened: ${e.message}`; clearAutosave(); }
+        set({ utility: state.utility }, { canvas: false });
+      } } }, "Continue"),
+      h("button", { type: "button", class: "fa-mini", "data-fk": "restore-no", on: { click: () => { previous = null; clearAutosave(); set({}, { canvas: false }); renderCanvas(true); } } }, "Start new"));
   }
 
   function drawerBody(id) {
@@ -810,7 +889,7 @@ export function app(target, cfg = {}) {
   function renderDrawer() {
     const id = state.utility;
     layer.hidden = !id;
-    for (const el of [ribbon, body, statusBar]) el.inert = !!id;
+    for (const el of [subnav, ribbon, body, statusBar]) el.inert = !!id;
     if (!id) { drawer.replaceChildren(); ui.drawnUtility = null; return; }
     // the source browser keeps its scroll and search while it is open; the others follow the state
     if (id === "sources" && ui.drawnUtility === "sources") return;
@@ -900,6 +979,7 @@ export function app(target, cfg = {}) {
     if (blank(v)) {
       const examples = examplesFor(v, PRESETS, state.model).length;
       return h("div", { class: "fa-need is-start", role: "status" },
+        restoreBox(),
         h("h3", {}, `Start by choosing ${needsOf(v, state.model).toLowerCase()}`),
         h("p", {}, `Choose them in the Inputs panel${ui.size === "narrow" ? " above" : ""}${examples ? ", or load one of the Examples there" : ""}. The ${lower(VIEWS[v].label)} is calculated as soon as the inputs fit; the ribbon switches between diagrams, models and the other workspaces.`),
         state.panels.left ? null : h("button", { type: "button", class: "fa-mini", "data-fk": "show-inputs", on: { click: () => set({ panels: { left: true } }, { canvas: false }) } }, icon("panelL", 15), "Show the Inputs panel"));

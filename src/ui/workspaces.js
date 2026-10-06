@@ -12,16 +12,33 @@ import { listComponents, findComponent, EOS_MODELS } from "../thermo/system.js";
 import { HENRY_GASES } from "../thermo/henry.js";
 import henryData from "../data/henry.json" with { type: "json" };
 
-/** The workspaces of the navigation, in order: one per calculation task. */
+/** The workspaces, one per calculation task, in the order of the navigation (see SECTIONS). */
 export const WORKSPACES = [
   { id: "equilibrium", label: "Phase equilibrium", short: "Phase eq.", icon: "ternary",
     views: ["txy", "ternary", "azeotropes", "pxy", "envelope"], view: "ternary" },
-  { id: "flash", label: "Flash", short: "Flash", icon: "drum", views: ["flash"], view: "flash" },
-  { id: "flowsheet", label: "Flowsheet", short: "Flowsheet", icon: "flowsheet", views: ["flowsheet"], view: "flowsheet" },
+  { id: "steam", label: "Steam", short: "Steam", icon: "dome", views: ["steam"], view: "steam" },
   { id: "solubility", label: "Gas solubility", short: "Solubility", icon: "henry", views: ["henry"], view: "henry" },
   { id: "properties", label: "Properties", short: "Properties", icon: "curves", views: ["properties"], view: "properties" },
-  { id: "steam", label: "Steam", short: "Steam", icon: "dome", views: ["steam"], view: "steam" },
+  { id: "flash", label: "Flash", short: "Flash", icon: "drum", views: ["flash"], view: "flash" },
+  { id: "flowsheet", label: "Flowsheet", short: "Flowsheet", icon: "flowsheet", views: ["flowsheet"], view: "flowsheet" },
 ];
+
+/**
+ * The top navigation: sections, each holding workspaces (shown as a second row when there is
+ * more than one). `locked`: models on the roadmap, shown but not available yet.
+ */
+export const SECTIONS = [
+  { id: "thermo", label: "Thermodynamics", short: "Thermo", icon: "ternary", workspaces: ["equilibrium", "steam", "solubility", "properties"] },
+  { id: "units", label: "Unit models", short: "Units", icon: "drum", workspaces: ["flash"],
+    locked: [
+      { id: "reaction", label: "Reaction", icon: "flask", note: "Reactors and reactions: roadmap A13, not available yet." },
+      { id: "distillation", label: "Distillation", icon: "column", note: "Shortcut and rigorous columns: roadmap v0.5, not available yet." },
+    ] },
+  { id: "flowsheet", label: "Flowsheet", short: "Flowsheet", icon: "flowsheet", workspaces: ["flowsheet"] },
+];
+
+/** The section of a workspace. */
+export const sectionOf = ws => SECTIONS.find(s => s.workspaces.includes(ws))?.id ?? null;
 
 /**
  * Supporting utilities: temporary panels (a drawer over the workspace). They never change
