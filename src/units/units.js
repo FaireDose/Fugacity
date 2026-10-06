@@ -105,6 +105,27 @@ function outletAt(sys, flows, H_in_kW, c, id) {
 const sumFlows = (sys, list) => list.reduce((acc, s) => acc.map((v, i) => v + s.flows[i]), new Array(sys.n).fill(0));
 const sumH = list => list.reduce((a, s) => a + (s.H_kW ?? 0), 0);
 
+/**
+ * Several inlet streams as one: flows added, adiabatic (the enthalpy flows added, a P-H flash),
+ * at P_kPa or the lowest pressure of the inlets that carry flow (an empty recycle at its start
+ * does not count). One inlet is returned as it is. Used by the mixer and by every block that
+ * takes several inlets (they mix them first, as desktop simulators do).
+ */
+function mixed(sys, ins, P_kPa = null) {
+  const notes = [];
+  if (ins.length === 1 && P_kPa == null) return { stream: ins[0], notes };
+  const flows = sumFlows(sys, ins);
+  const flowing = ins.filter(s => s.F_kmol_h > 0);
+  const Ps = (flowing.length ? flowing : ins).map(s => s.P_kPa).filter(p => p != null);
+  const P = P_kPa ?? Math.min(...Ps);
+  if (P_kPa != null && Ps.some(p => p < P_kPa)) notes.push(`The outlet pressure (${P_kPa} kPa) is above an inlet pressure (${Math.min(...Ps)} kPa): a real mixer needs a pump or compressor on that inlet.`);
+  const F = flows.reduce((a, v) => a + v, 0);
+  // without flow: the first inlet's temperature
+  const out = F > 0 ? stream(sys, { flow_kmol_h: flows, P_kPa: P, H_kW: sumH(ins) })
+    : stream(sys, { flow_kmol_h: flows, T_K: ins.find(s => s.T_K != null)?.T_K ?? 298.15, P_kPa: P });
+  return { stream: out, notes };
+}
+
 // ---------------------------------------------------------------------------------------
 // The first blocks
 
@@ -128,35 +149,24 @@ registerUnit({
     return spec.P_kPa == null ? {} : { P_kPa: num(spec.P_kPa, "Mixer: P_kPa", { positive: true }) };
   },
   solve({ sys, inlets, spec }) {
-    const ins = inlets.in;
-    const flows = sumFlows(sys, ins);
-    // the lowest pressure of the inlets that carry flow (an empty recycle at its start does not count)
-    const flowing = ins.filter(s => s.F_kmol_h > 0);
-    const Ps = (flowing.length ? flowing : ins).map(s => s.P_kPa).filter(p => p != null);
-    const P = spec.P_kPa ?? Math.min(...Ps);
-    const notes = [];
-    if (spec.P_kPa != null && Ps.some(p => p < spec.P_kPa)) notes.push(`The outlet pressure (${spec.P_kPa} kPa) is above an inlet pressure (${Math.min(...Ps)} kPa): a real mixer needs a pump or compressor on that inlet.`);
-    const F = flows.reduce((a, v) => a + v, 0);
-    // adiabatic: the outlet has the inlets' enthalpy flow (P-H flash); without flow, the first inlet's T
-    const out = F > 0 ? stream(sys, { flow_kmol_h: flows, P_kPa: P, H_kW: sumH(ins) })
-      : stream(sys, { flow_kmol_h: flows, T_K: ins.find(s => s.T_K != null)?.T_K ?? 298.15, P_kPa: P });
+    const { stream: out, notes } = mixed(sys, inlets.in, spec.P_kPa);
     return { outlets: { out }, duty_kW: 0, notes };
   },
 });
 
 registerUnit({
-  type: "splitter", label: "Splitter", inlets: [{ port: "in" }], outlets: [{ port: "out", min: 2, max: Infinity }],
+  type: "splitter", label: "Splitter", inlets: [{ port: "in", min: 1, max: Infinity }], outlets: [{ port: "out", min: 2, max: Infinity }],
   checkSpec(spec, { outletCount }) {
     return { fractions: splitFractions(asList(spec.fractions), outletCount, "Splitter: fractions") };
   },
-  solve({ inlets, spec }) {
-    const s = inlets.in[0];
+  solve({ sys, inlets, spec }) {
+    const s = mixed(sys, inlets.in).stream;   // several inlets: mixed first
     return { outlets: { out: spec.fractions.map(f => scaleStream(s, f)) }, duty_kW: 0 };
   },
 });
 
 registerUnit({
-  type: "separator", label: "Component separator", duty: true, inlets: [{ port: "in" }], outlets: [{ port: "out", min: 2, max: Infinity }],
+  type: "separator", label: "Component separator", duty: true, inlets: [{ port: "in", min: 1, max: Infinity }], outlets: [{ port: "out", min: 2, max: Infinity }],
   checkSpec(spec, { sys, outletCount }) {
     const fr = spec.fractions;
     if (!fr || typeof fr !== "object" || Array.isArray(fr)) throw fail("BAD_INPUT", "Component separator: give the split fractions per component, e.g. { fractions: { ethanol: [0.95, \"rest\"], water: [0.02, \"rest\"] } }.");
@@ -178,7 +188,7 @@ registerUnit({
     };
   },
   solve({ sys, inlets, spec, outletCount }) {
-    const s = inlets.in[0];
+    const s = mixed(sys, inlets.in).stream;   // several inlets: mixed first
     const outs = [];
     for (let k = 0; k < outletCount; k++) {
       const flows = s.flows.map((v, i) => v * spec.fractions[i][k]);
@@ -214,7 +224,7 @@ registerUnit({
 });
 
 registerUnit({
-  type: "heater", label: "Heater / cooler", duty: true, inlets: [{ port: "in" }], outlets: [{ port: "out" }],
+  type: "heater", label: "Heater / cooler", duty: true, inlets: [{ port: "in", min: 1, max: Infinity }], outlets: [{ port: "out" }],
   checkSpec(spec) {
     // the outlet: T_K, duty_kW or VF, at P_kPa or the inlet pressure minus dP_kPa; or T_K and VF
     const has = k => spec[k] !== undefined && spec[k] !== null;
@@ -231,7 +241,7 @@ registerUnit({
     return { ...c, dP_kPa: has("dP_kPa") ? num(spec.dP_kPa, "Heater: dP_kPa", { min: 0 }) : 0 };
   },
   solve({ sys, inlets, spec }) {
-    const s = inlets.in[0];
+    const s = mixed(sys, inlets.in).stream;   // several inlets: mixed first
     const { dP_kPa, ...c } = spec;
     if (c.P_kPa == null && !(c.T_K != null && c.VF != null)) c.P_kPa = s.P_kPa - dP_kPa;   // T and VF fix P themselves
     if (c.P_kPa != null && !(c.P_kPa > 0)) throw fail("BAD_INPUT", `Heater: the pressure drop (${dP_kPa} kPa) is larger than the inlet pressure (${s.P_kPa} kPa).`);

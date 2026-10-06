@@ -25,10 +25,10 @@ const LABEL = { feed: "Feed", mixer: "Mixer", splitter: "Splitter", separator: "
 const HINT = {
   feed: "A stream entering the flowsheet: its flows and two of T, P and vapour fraction.",
   mixer: "Joins streams; adiabatic, at the lowest inlet pressure unless you set one.",
-  splitter: "Divides a stream: the same state in every outlet, a fraction of the flow each.",
-  separator: "Sends a fraction of each component to each outlet (a black box); each outlet flashes at its T and P.",
+  splitter: "Divides a stream: the same state in every outlet, a fraction of the flow each. Several inlets are mixed first.",
+  separator: "Sends a fraction of each component to each outlet (a black box); each outlet flashes at its T and P. Several inlets are mixed first.",
   flash: "Vapour and liquid at equilibrium: two of T, P, vapour fraction and duty.",
-  heater: "Heats or cools: outlet T, duty or vapour fraction; pressure drop optional.",
+  heater: "Heats or cools: outlet T, duty or vapour fraction; pressure drop optional. Several inlets are mixed first.",
 };
 const SIZE = { feed: [44, 26], mixer: [40, 44], splitter: [40, 44], separator: [46, 62], flash: [34, 72], heater: [40, 40], product: [0, 0] };
 
@@ -488,7 +488,7 @@ export function flowsheetView(ctx) {
       if (inlet) { f.sel = { kind: "stream", id: d.sid }; set({ flowsheet: connect(fs, d.sid, inlet) }); return; }
       f.note = under.dataset.block === fs.streams.find(s => s.id === d.sid)?.from.split(".")[0]
         ? "A stream cannot go back into the block it leaves; send it through another block (a recycle goes back to an earlier block, for example a mixer)."
-        : `${under.dataset.block} takes no more streams: its inlet is full (a mixer joins several streams).`;
+        : `${under.dataset.block} takes no more streams: its inlet is full.`;
       set({});
       return;
     }
