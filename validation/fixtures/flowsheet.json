@@ -1,0 +1,109 @@
+{
+ "_about": "Recycle flowsheets solved equation-oriented (scipy root on the recycle flows) with the independent flash of reference_flash.py; validation/python/reference_flowsheet.py.",
+ "cases": [
+  {
+   "name": "ethanol-water liquid recycle",
+   "model": "NRTL",
+   "components": [
+    "ethanol",
+    "water"
+   ],
+   "feed": [
+    30.0,
+    70.0
+   ],
+   "drum": {
+    "T": 360.0,
+    "P": 101.325
+   },
+   "recycle_phase": "liquid",
+   "r": 0.7,
+   "recycle_kmol_h": [
+    7.376726183064851,
+    79.26090187608636
+   ],
+   "purge_kmol_h": [
+    3.1614540784563663,
+    33.96895794689417
+   ],
+   "other_product_kmol_h": [
+    26.83854592154363,
+    36.03104205310584
+   ],
+   "drum_T_K": 360.0,
+   "drum_P_kPa": 101.325,
+   "drum_VF": 0.33685376645873444
+  },
+  {
+   "name": "methanol-acetone-chloroform liquid recycle",
+   "model": "UNIQUAC",
+   "components": [
+    "methanol",
+    "acetone",
+    "chloroform"
+   ],
+   "feed": [
+    30.0,
+    30.0,
+    40.0
+   ],
+   "drum": {
+    "P": 101.325,
+    "VF": 0.5
+   },
+   "recycle_phase": "liquid",
+   "r": 0.5,
+   "recycle_kmol_h": [
+    7.6833966531159605,
+    11.335659355967204,
+    14.314277324250169
+   ],
+   "purge_kmol_h": [
+    7.6833966531159374,
+    11.335659355967309,
+    14.314277324250085
+   ],
+   "other_product_kmol_h": [
+    22.316603302056397,
+    18.664340669878403,
+    25.685722694731865
+   ],
+   "drum_T_K": 330.711830028285,
+   "drum_P_kPa": 101.325,
+   "drum_VF": 0.5
+  },
+  {
+   "name": "methane-ethane vapour recycle",
+   "model": "PR",
+   "components": [
+    "methane",
+    "ethane"
+   ],
+   "feed": [
+    50.0,
+    50.0
+   ],
+   "drum": {
+    "T": 220.0,
+    "P": 2000.0
+   },
+   "recycle_phase": "vapour",
+   "r": 0.6,
+   "recycle_kmol_h": [
+    59.19318483027406,
+    21.466957519189986
+   ],
+   "purge_kmol_h": [
+    39.46212322018272,
+    14.311305012793333
+   ],
+   "other_product_kmol_h": [
+    10.537876779817267,
+    35.688694987206645
+   ],
+   "drum_T_K": 220.0,
+   "drum_P_kPa": 2000.0,
+   "drum_VF": 0.7441241262967428
+  }
+ ]
+}

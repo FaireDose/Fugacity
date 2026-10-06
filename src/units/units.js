@@ -130,7 +130,9 @@ registerUnit({
   solve({ sys, inlets, spec }) {
     const ins = inlets.in;
     const flows = sumFlows(sys, ins);
-    const Ps = ins.map(s => s.P_kPa).filter(p => p != null);
+    // the lowest pressure of the inlets that carry flow (an empty recycle at its start does not count)
+    const flowing = ins.filter(s => s.F_kmol_h > 0);
+    const Ps = (flowing.length ? flowing : ins).map(s => s.P_kPa).filter(p => p != null);
     const P = spec.P_kPa ?? Math.min(...Ps);
     const notes = [];
     if (spec.P_kPa != null && Ps.some(p => p < spec.P_kPa)) notes.push(`The outlet pressure (${spec.P_kPa} kPa) is above an inlet pressure (${Math.min(...Ps)} kPa): a real mixer needs a pump or compressor on that inlet.`);
