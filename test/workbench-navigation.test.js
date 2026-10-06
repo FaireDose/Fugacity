@@ -16,7 +16,7 @@ test("one navigation: six task workspaces holding every view; four supporting pa
   assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "steam", "solubility", "properties", "flash", "flowsheet"]);
   assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Steam", "Gas solubility", "Properties", "Flash", "Flowsheet"]);
   // the top navigation: File, then three sections holding every workspace once, in order
-  assert.deepEqual(SECTIONS.map(x => x.label), ["Thermodynamics", "Unit models", "Flowsheet"]);
+  assert.deepEqual(SECTIONS.map(x => x.label), ["Properties & Equilibria", "Unit models", "Flowsheet"]);
   assert.deepEqual(SECTIONS.flatMap(x => x.workspaces), WORKSPACES.map(w => w.id));
   assert.equal(sectionOf("steam"), "thermo"); assert.equal(sectionOf("flash"), "units"); assert.equal(sectionOf("flowsheet"), "flowsheet");
   assert.deepEqual(SECTIONS.find(x => x.id === "units").locked.map(l => l.label), ["Reaction", "Distillation"]);
