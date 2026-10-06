@@ -14,7 +14,7 @@ import { unitType } from "../units/units.js";
 import { flowsheetDocStatus, runFlowsheet } from "../flowsheet/document.js";
 import {
   PALETTE, addBlock, addFeedTo, connect, deleteBlock, addOutlet, removeOutlet, setSpec, moveBlock, setTear,
-  setComponents, streamsOf, endOf, openInlets,
+  setComponents, streamsOf, endOf, openInlets, deleteStream,
 } from "./flowsheet-logic.js";
 import { tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { parseP, parseT, fmtTemp, fmtP } from "./app-logic.js";
@@ -33,6 +33,22 @@ const HINT = {
 const SIZE = { feed: [44, 26], mixer: [40, 44], splitter: [40, 44], separator: [46, 62], flash: [34, 72], heater: [40, 40], product: [0, 0] };
 
 export const ensureUi = ui => (ui.fs ??= { sel: null, auto: true, solveKey: null, cache: null, note: "" });
+
+/** Delete what is selected (a block, or a stream as far as the flowsheet allows) and say what happened. */
+export function deleteSelected(state, set, ui) {
+  const f = ensureUi(ui), fs = state.flowsheet;
+  if (!f.sel) return;
+  if (f.sel.kind === "block") {
+    const id = f.sel.id;
+    f.sel = null; f.note = `Deleted ${id}. Streams that went into it now leave the flowsheet.`;
+    set({ flowsheet: deleteBlock(fs, id) });
+    return;
+  }
+  const r = deleteStream(fs, f.sel.id);
+  f.note = r.note;
+  if (r.fs !== fs) { if (!r.fs.streams.some(x => x.id === f.sel.id)) f.sel = null; set({ flowsheet: r.fs }); }
+  else set({});
+}
 
 // ---------------------------------------------------------------------------------------
 // Solving (cached by the flowsheet's text)
@@ -79,6 +95,13 @@ export function flowsheetRibbon({ state, set, ui, group, bigButton, smallButton 
       b.disabled = !ready;
       return b;
     })),
+    group("Edit", (() => {
+      const what = f.sel ? `${f.sel.kind === "block" ? "" : "stream "}${f.sel.id}` : "";
+      const b = bigButton({ ico: "trash", label: "Delete", fk: "fs-delete", note: what || undefined,
+        title: f.sel ? `Delete ${what} (Delete key)` : "Select a block or a stream on the canvas first", onClick: () => deleteSelected(state, set, ui) });
+      b.disabled = !f.sel;
+      return b;
+    })()),
     group("Run",
       bigButton({ ico: "solve", label: "Solve", fk: "fs-solve", title: "Calculate the flowsheet now",
         onClick: () => { f.solveKey = JSON.stringify(fs); set({}); } }),
@@ -106,7 +129,14 @@ function dofBadge(st) {
 }
 
 /** The sections of the Inputs panel. env: { state, set, ui, uid, inputsSection } */
-export function flowsheetInputs({ state, set, ui, uid, inputsSection }) {
+export function flowsheetInputs(env) {
+  const f = ensureUi(env.ui);
+  const note = f.note; f.note = "";
+  const secs = inputsFor(env);
+  return note ? [h("div", { class: "fug-warn", role: "note" }, note), ...secs] : secs;
+}
+
+function inputsFor({ state, set, ui, uid, inputsSection }) {
   const f = ensureUi(ui), fs = state.flowsheet, u = state.units;
   let st = null;
   try { st = flowsheetDocStatus(fs); } catch { /* shown on the canvas */ }
@@ -217,8 +247,7 @@ export function flowsheetInputs({ state, set, ui, uid, inputsSection }) {
       h("p", { class: "fa-in-hint" }, "To connect: drag from an outlet dot (●, where a stream leaves a block) to an inlet ring (○ on the left of a block). The rings that can take the stream light up while you drag. A recycle is the same: drag a later block's outlet back to an earlier block, usually a mixer.")));
   }
   secs.push(inputsSection("Block", h("div", { class: "fa-in-actions" }, back,
-    h("button", { type: "button", class: "fa-mini", "data-fk": `fs-del-${b.id}`, on: { click: () => { f.sel = null; put(deleteBlock(fs, b.id)); } } }, icon("trash", 14), `Delete ${b.id}`))));
-  if (f.note) { secs.unshift(h("div", { class: "fug-warn", role: "note" }, f.note)); f.note = ""; }
+    h("button", { type: "button", class: "fa-mini", "data-fk": `fs-del-${b.id}`, on: { click: () => deleteSelected(state, set, ui) } }, icon("trash", 14), `Delete ${b.id}`))));
   return secs;
 }
 
@@ -241,7 +270,7 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
     set({ flowsheet: { ...fs, thermo } });
   };
   const secs = [];
-  if (f.note) { secs.push(h("div", { class: "fug-warn", role: "note" }, f.note)); f.note = ""; }
+
   secs.push(inputsSection("1. Components",
     h("p", { class: "fa-in-hint" }, "The components of the whole simulation. Every feed lists exactly these."),
     chips.length ? h("ol", { class: "fa-chips", "aria-label": "Components of the flowsheet" }, ...chips) : h("div", { class: "fa-empty" }, "None chosen yet."),
@@ -276,7 +305,11 @@ function streamSections({ fs, put, sel, f, inputsSection, back, set }) {
       end.kind === "unit" ? h("label", { class: "fa-field" }, h("span", {}, "Tear stream (recycle)"),
         h("input", { type: "checkbox", checked: !!s.tear, "data-fk": `fs-tear-${s.id}`, on: { change: ev => put(setTear(fs, s.id, ev.target.checked)) } })) : null,
       h("p", { class: "fa-in-hint" }, "The solver chooses the tear stream of a recycle itself; mark one only to choose it.")),
-    inputsSection("Stream", h("div", { class: "fa-in-actions" }, back)),
+    inputsSection("Stream", h("div", { class: "fa-in-actions" }, back,
+      h("button", { type: "button", class: "fa-mini", "data-fk": `fs-delstream-${s.id}`, on: { click: () => {
+        const r = deleteStream(fs, s.id); f.note = r.note;
+        if (r.fs !== fs) { if (!r.fs.streams.some(x => x.id === s.id)) f.sel = null; put(r.fs); } else set({});
+      } } }, icon("trash", 14), `Delete ${s.id}`))),
   ];
 }
 
@@ -366,7 +399,8 @@ export function flowsheetView(ctx) {
       if (!a || !e) continue;
       const pts = route(a, e);
       const d = pts.map((p, i) => `${i ? "L" : "M"}${p.x} ${p.y}`).join(" ");
-      const g = svgEl("g", { class: "fs-stream" + (selected("stream", s.id) ? " is-sel" : "") + (s.tear ? " is-tear" : ""), "data-stream": s.id });
+      const g = svgEl("g", { class: "fs-stream" + (selected("stream", s.id) ? " is-sel" : "") + (s.tear ? " is-tear" : ""), "data-stream": s.id,
+        tabindex: 0, role: "button", "aria-label": `Stream ${s.id}` });
       g.append(svgEl("path", { d, class: "fs-hit" }), svgEl("path", { d, class: "fs-line", "marker-end": `url(#${uidM}-a)` }));
       // label on the longest segment
       let best = 1, len = 0;
@@ -380,12 +414,15 @@ export function flowsheetView(ctx) {
       tip.textContent = st ? `${s.id}: ${fmtShort(st.F_kmol_h, 5)} kmol/h${st.T_K != null ? `, ${fmtTemp(st.T_K, u, 2)}` : ""}${st.VF != null ? `, VF ${fmtShort(st.VF, 3)}` : ""}` : `${s.id} (not calculated)`;
       g.append(tip);
       g.append(t);
-      // the open end of a product stream: a handle to drag onto a block
-      if (doc.blocks.find(b => b.id === tb)?.type === "product") {
-        const hnd = svgEl("circle", { cx: e.x, cy: e.y, r: 7, class: "fs-handle", "data-handle": s.id });
-        const tt = svgEl("title", {}); tt.textContent = `${s.id} leaves the flowsheet. Drag this end onto a block to connect it.`; hnd.append(tt);
-        g.append(hnd);
-      }
+      // the end of every stream is a handle: drag it onto another inlet to reconnect, or into
+      // empty space to disconnect (the stream then leaves the flowsheet)
+      const leaves = doc.blocks.find(b => b.id === tb)?.type === "product";
+      const hnd = svgEl("circle", { cx: leaves ? e.x : e.x - 9, cy: e.y, r: leaves ? 7 : 4.5, class: "fs-handle" + (leaves ? "" : " is-end"), "data-handle": s.id, "data-end": "1" });
+      const tt = svgEl("title", {});
+      tt.textContent = leaves ? `${s.id} leaves the flowsheet. Drag this end onto a block to connect it.`
+        : `${s.id} goes into ${tb}. Drag this end onto another inlet to reconnect it, or into empty space to disconnect it.`;
+      hnd.append(tt);
+      g.append(hnd);
       layer.append(g);
     }
     // blocks
@@ -448,7 +485,7 @@ export function flowsheetView(ctx) {
   let drag = null;
   svg.addEventListener("pointerdown", ev => {
     const hnd = ev.target.closest?.("[data-handle]"), blk = ev.target.closest?.("[data-block]"), str = ev.target.closest?.("[data-stream]");
-    if (hnd) { drag = { kind: "connect", sid: hnd.dataset.handle, start: toSvg(ev), moved: false }; svg.setPointerCapture?.(ev.pointerId); ev.preventDefault(); return; }
+    if (hnd) { drag = { kind: "connect", sid: hnd.dataset.handle, start: toSvg(ev), moved: false, fromEnd: !!hnd.dataset.end }; svg.setPointerCapture?.(ev.pointerId); ev.preventDefault(); return; }
     if (blk) { const b = pos.get(blk.dataset.block); drag = { kind: "move", id: b.id, start: toSvg(ev), x0: b.x ?? 0, y0: b.y ?? 0, moved: false, doc: fs }; svg.setPointerCapture?.(ev.pointerId); ev.preventDefault(); return; }
     if (str) { select("stream", str.dataset.stream); return; }
     if (f.sel) select(null);
@@ -492,19 +529,30 @@ export function flowsheetView(ctx) {
       set({});
       return;
     }
-    // dropped in the open: move the product end
+    // dropped in the open: a product end moves there; a connected stream is disconnected there
     const p = toSvg(ev), end = endOf(fs, d.sid);
     if (end?.kind === "product") set({ flowsheet: moveBlock(fs, end.block, p.x, p.y) });
-    else draw(fs);
+    else if (end?.kind === "unit" && d.fromEnd) {
+      const out = connect(fs, d.sid, null), e2 = endOf(out, d.sid);
+      f.sel = { kind: "stream", id: d.sid };
+      f.note = `${d.sid} no longer goes to ${end.block}: it now leaves the flowsheet. Drag its end onto another inlet to connect it again.`;
+      set({ flowsheet: moveBlock(out, e2.block, p.x, p.y) });
+    } else draw(fs);
   });
   svg.addEventListener("keydown", ev => {
+    const str = ev.target.closest?.("[data-stream]");
+    if (str) {
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select("stream", str.dataset.stream); }
+      else if (ev.key === "Delete" || ev.key === "Backspace") { ev.preventDefault(); f.sel = { kind: "stream", id: str.dataset.stream }; deleteSelected(state, set, ui); }
+      return;
+    }
     const blk = ev.target.closest?.("[data-block]");
     if (!blk) return;
     const b = pos.get(blk.dataset.block);
     const step = { ArrowLeft: [-10, 0], ArrowRight: [10, 0], ArrowUp: [0, -10], ArrowDown: [0, 10] }[ev.key];
     if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select("block", b.id); }
     else if (step) { ev.preventDefault(); f.sel = { kind: "block", id: b.id }; set({ flowsheet: moveBlock(fs, b.id, (b.x ?? 0) + step[0], (b.y ?? 0) + step[1]) }); }
-    else if (ev.key === "Delete" || ev.key === "Backspace") { ev.preventDefault(); f.sel = null; set({ flowsheet: deleteBlock(fs, b.id) }); }
+    else if (ev.key === "Delete" || ev.key === "Backspace") { ev.preventDefault(); f.sel = { kind: "block", id: b.id }; deleteSelected(state, set, ui); }
   });
 
   const units = fs.blocks.filter(b => b.type !== "product");

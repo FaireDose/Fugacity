@@ -242,3 +242,40 @@ export function endOf(fs, sid) {
   const t = portOf(s.to);
   return isProduct(fs, t.block) ? { kind: "product", block: t.block } : { kind: "unit", block: t.block, port: t.port };
 }
+
+/**
+ * Delete a stream, as far as the flowsheet allows; returns { fs, note } (note says what
+ * happened, or why nothing did):
+ *  - a feed's stream: the feed goes with it;
+ *  - a stream into a unit: disconnected, it leaves the flowsheet (a product);
+ *  - an outlet of a splitter or separator with more than two: that outlet is removed with its
+ *    fraction;
+ *  - any other stream already leaving the flowsheet: kept, since every outlet of a unit must
+ *    go somewhere (delete the unit instead).
+ */
+export function deleteStream(fs, sid) {
+  const s = fs.streams.find(x => x.id === sid);
+  if (!s) return { fs, note: `No stream ${sid}.` };
+  const src = fs.blocks.find(b => b.id === portOf(s.from).block);
+  if (src?.type === "feed") {
+    const out = clone(fs);
+    out.streams = out.streams.filter(x => x.id !== sid);
+    out.blocks = out.blocks.filter(b => b.id !== src.id);
+    return { fs: out, note: `Deleted the feed ${src.id} with its stream ${sid}.` };
+  }
+  const end = endOf(fs, sid);
+  if (end.kind === "unit") return { fs: connect(fs, sid, null), note: `${sid} no longer goes to ${end.block}: it now leaves the flowsheet.` };
+  const outs = fs.streams.filter(x => x.from === s.from);
+  if (src && ["splitter", "separator"].includes(src.type) && portOf(s.from).port === "out" && outs.length > 2) {
+    const k = outs.findIndex(x => x.id === sid);
+    const out = clone(fs);
+    out.streams = out.streams.filter(x => x.id !== sid);
+    out.blocks = out.blocks.filter(b => b.id !== end.block);
+    const b = out.blocks.find(x => x.id === src.id);
+    const cut = list => { if (!Array.isArray(list)) return list; const l = list.slice(); const was = l[k]; l.splice(k, 1); if (was === "rest" && !l.includes("rest")) l[l.length - 1] = "rest"; return l; };
+    if (b.type === "splitter") b.spec = { ...b.spec, fractions: cut(b.spec?.fractions) };
+    else b.spec = { ...b.spec, fractions: Object.fromEntries(Object.entries(b.spec?.fractions ?? {}).map(([c, l]) => [c, cut(l)])) };
+    return { fs: out, note: `Removed the outlet ${sid} of ${src.id}.` };
+  }
+  return { fs, note: `${sid} is how ${src?.id ?? "a unit"} sends its ${portOf(s.from).port} out of the flowsheet; every outlet must go somewhere. To remove it, delete ${src?.id ?? "the unit"}, or connect ${sid} to another block.` };
+}
