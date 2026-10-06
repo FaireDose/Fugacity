@@ -30,6 +30,7 @@ import { stream, componentFlows, scaleStream, phaseStream } from "./stream/strea
 import { registerUnit, runUnit, unitTypes, unitType, specStatus } from "./units/units.js";
 import { solveFlowsheet, checkFlowsheet, inspectFlowsheet, flowsheetStatus } from "./flowsheet/flowsheet.js";
 import { runFlowsheet, normalizeFlowsheet, flowsheetSystem, flowsheetDocStatus } from "./flowsheet/document.js";
+import { checkProject, readProject, PROJECT_FORMAT } from "./ui/project.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -49,5 +50,6 @@ export {
   registerUnit, runUnit, unitTypes, unitType, specStatus,
   solveFlowsheet, checkFlowsheet, inspectFlowsheet, flowsheetStatus,
   runFlowsheet, normalizeFlowsheet, flowsheetSystem, flowsheetDocStatus,
+  checkProject, readProject, PROJECT_FORMAT,
   FugacityError, ERROR_CODES, isFugacityError,
 };
