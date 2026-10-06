@@ -1,6 +1,6 @@
 # 0006: The first flowsheet: streams, blocks, recycles and a Flowsheet workspace
 
-- **Status:** Draft
+- **Status:** Accepted (by the lead maintainer, 2026-10-06)
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A5 (streams), A6 (unit operation interface), A7 (flowsheet file
