@@ -28,7 +28,7 @@ export const WORKSPACES = [
  * more than one). `locked`: models on the roadmap, shown but not available yet.
  */
 export const SECTIONS = [
-  { id: "thermo", label: "Thermodynamics", short: "Thermo", icon: "ternary", workspaces: ["equilibrium", "steam", "solubility", "properties"] },
+  { id: "thermo", label: "Properties & Equilibria", short: "Prop. & eq.", icon: "ternary", workspaces: ["equilibrium", "steam", "solubility", "properties"] },
   { id: "units", label: "Unit models", short: "Units", icon: "drum", workspaces: ["flash"],
     locked: [
       { id: "reaction", label: "Reaction", icon: "flask", note: "Reactors and reactions: roadmap A13, not available yet." },
