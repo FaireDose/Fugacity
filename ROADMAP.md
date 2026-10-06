@@ -181,7 +181,7 @@ sources, assumptions) that anyone can re-run and check.
 - [ ] Property package with mixture enthalpy (A1)
 - [ ] Data packs; UNIFAC (Dortmund) as the `predicted` tier (A2, A3)
 
-### v0.3 – Flash and streams
+### v0.3 – Flash and streams (0.3.0)
 
 Needs A4, A5 and D6; B1, B2.
 
@@ -192,18 +192,19 @@ Needs A4, A5 and D6; B1, B2.
 - [x] Flash with two liquids and with vapour + two liquids for NRTL and UNIQUAC (proposal 0001, step 5; equations of state later)
 - [x] Flash workspace in the workbench: feed, specification, model, stream table with flows, heat duty in kW, CSV export (proposal 0001, step 6)
 - [x] Every phase-equilibrium diagram with every model (activity models and PR/SRK), and the diagrams drawn in mole fractions or wt %
-- [ ] Stream object with flows (A5)
+- [x] Stream object with flows (A5; [proposal 0006](proposals/0006-first-flowsheet.md), step 1)
 - [ ] Export of the diagrams (SVG, PNG) and of the other tables (CSV), and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria
 
-### v0.4 – Flowsheets
+### v0.4 – Flowsheets (first part in 0.3.0)
 
 Needs A6, A7, A8, A10, A11.
 
-- [ ] Mixer, splitter, heater/cooler, pump, valve, flash drum
-- [ ] Flowsheet solver with recycles; flowsheet drawing and stream tables
-- [ ] Assistants can write and edit flowsheet files
-- [ ] Project files (B4)
+- [x] Mixer, splitter, component separator, heater/cooler, flash drum, with degrees of freedom and energy streams (proposal 0006, step 2)
+- [ ] Pump, valve
+- [x] Flowsheet solver with recycles; flowsheet drawing and stream tables (proposal 0006, steps 3 and 5)
+- [x] Assistants can write, check and edit flowsheet files (proposal 0006, steps 4 and 7)
+- [x] Project files (B4): files, this browser, the host page's storage (proposal 0006, step 6)
 
 ### v0.5 – Distillation
 

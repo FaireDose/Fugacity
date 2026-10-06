@@ -1,11 +1,12 @@
 # Fugacity
 
-> Open-source chemical-engineering thermodynamics that runs in the browser and inside AI chat pages. Phase equilibria (NRTL, UNIQUAC, Peng–Robinson, SRK, residue curves, azeotropes), pure-component properties for 49 components and IAPWS-IF97 steam tables and a workbench interface today; flowsheets, cost engineering and agent-run process-route comparison planned. Every parameter has an open source and a quality tier. Contributions come mainly through AI assistants such as ChatGPT, Claude or Gemini.
+> Open-source chemical-engineering thermodynamics that runs in the browser and inside AI chat pages. Phase equilibria (NRTL, UNIQUAC, Peng–Robinson, SRK, residue curves, azeotropes), pure-component properties for 49 components and IAPWS-IF97 steam tables and a workbench interface with flash and a first flowsheet with recycles today; more unit operations, cost engineering and agent-run process-route comparison planned. Every parameter has an open source and a quality tier. Contributions come mainly through AI assistants such as ChatGPT, Claude or Gemini.
 
 ## For AI assistants
 
 - [Rules for AI assistants, coding agents and contributors](https://fairedose.github.io/Fugacity/agents.md): sources, citing, checking, the two ways to contribute, contribution package format
 - [Using Fugacity in a chat page](https://fairedose.github.io/Fugacity/use.md) (same file: [raw copy](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md)): load the workbench with a three-line page (the page loads the library from jsDelivr; do not download or inspect it), build diagrams, answer property questions with sources
+- [Project and flowsheet file schema](https://fairedose.github.io/Fugacity/schema/project-2.json): what Fugacity.checkProject checks; an example in [examples/flowsheet-recycle.fugacity.json](https://raw.githubusercontent.com/FaireDose/Fugacity/main/examples/flowsheet-recycle.fugacity.json)
 - [Install the skill](https://github.com/FaireDose/Fugacity/blob/main/ai/README.md#install-the-skills)
 - [Data wanted](https://raw.githubusercontent.com/FaireDose/Fugacity/main/docs/DATA_WANTED.md): pairs that need open experimental data
 - [Example contribution package](https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/examples/acetic-acid_ethylene-glycol.json)

@@ -1,0 +1,104 @@
+{
+  "fugacity_project": 2,
+  "workbench": {
+    "view": "flowsheet"
+  },
+  "flowsheet": {
+    "components": [
+      "ethanol",
+      "water"
+    ],
+    "thermo": {
+      "model": "NRTL",
+      "vapour": "ideal"
+    },
+    "blocks": [
+      {
+        "id": "F1",
+        "type": "feed",
+        "x": 0,
+        "y": 160,
+        "spec": {
+          "flow_kmol_h": {
+            "ethanol": 30,
+            "water": 70
+          },
+          "T_K": 298.15,
+          "P_kPa": 101.325
+        }
+      },
+      {
+        "id": "M1",
+        "type": "mixer",
+        "x": 140,
+        "y": 160
+      },
+      {
+        "id": "V1",
+        "type": "flash",
+        "x": 300,
+        "y": 160,
+        "spec": {
+          "T_K": 360,
+          "P_kPa": 101.325
+        }
+      },
+      {
+        "id": "SP1",
+        "type": "splitter",
+        "x": 460,
+        "y": 220,
+        "spec": {
+          "fractions": [
+            0.7,
+            "rest"
+          ]
+        }
+      },
+      {
+        "id": "P1",
+        "type": "product",
+        "x": 460,
+        "y": 80
+      },
+      {
+        "id": "P2",
+        "type": "product",
+        "x": 600,
+        "y": 260
+      }
+    ],
+    "streams": [
+      {
+        "id": "S1",
+        "from": "F1.out",
+        "to": "M1.in"
+      },
+      {
+        "id": "S2",
+        "from": "M1.out",
+        "to": "V1.in"
+      },
+      {
+        "id": "S3",
+        "from": "V1.vapour",
+        "to": "P1.in"
+      },
+      {
+        "id": "S4",
+        "from": "V1.liquid",
+        "to": "SP1.in"
+      },
+      {
+        "id": "S5",
+        "from": "SP1.out",
+        "to": "M1.in"
+      },
+      {
+        "id": "S6",
+        "from": "SP1.out",
+        "to": "P2.in"
+      }
+    ]
+  }
+}

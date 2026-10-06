@@ -15,7 +15,7 @@ passwords.
 The assistant needs to open no link for this one:
 
 > Load the Fugacity workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
-> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
+> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
 
 It opens empty; choose the components in it.
 
@@ -26,6 +26,13 @@ It opens empty; choose the components in it.
 If the assistant says it cannot open that address, give it
 https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
 (the same file), or paste the file into the chat.
+
+### Build a flowsheet
+
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Build a Fugacity flowsheet:
+> **100 kmol/h of 30 mol % ethanol in water at 25 °C and 1 atm, heated to a vapour fraction of
+> 0.4, then separated in a flash drum; 70 % of the liquid goes back to the heater**. Check it
+> with Fugacity.checkProject before you show it, and open it in the workbench.
 
 ### Ask for a property value
 
