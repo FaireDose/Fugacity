@@ -3,6 +3,10 @@
 Fugacity's code is MIT-licensed. Some of the data in this folder comes from other
 sources with their own terms, recorded in the `source` field of every entry.
 
+Files and results that people create with Fugacity (project files, flowsheets, CSV and Excel
+exports, numbers, diagrams) belong to them; the licenses here cover Fugacity's code and data,
+not those files (see the README, License).
+
 Every source is listed once in [`sources.json`](sources.json), with an id; parameter records
 refer to it in `source_ids` (their text `source` stays). The table below is generated from
 that file. Parameters fitted for Fugacity (tier `fitted`, with `validation/python/`) are

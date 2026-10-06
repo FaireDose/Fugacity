@@ -176,3 +176,5 @@ change reviewed by someone other than its author.
 ## License
 
 Code: MIT. Data: under the license of its source, see [src/data/LICENSES.md](src/data/LICENSES.md).
+
+**Your files and results are yours.** Project files, flowsheets, exports (CSV, Excel) and the numbers and diagrams you make with Fugacity belong to the people who make them. The MIT license covers the Fugacity software, not what you create with it: Fugacity claims no rights in your inputs or results and puts no conditions on their use, commercial use included. Exports may repeat a few values from Fugacity's data (for example molar masses); their sources are listed in [src/data/LICENSES.md](src/data/LICENSES.md).
