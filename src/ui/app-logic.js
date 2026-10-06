@@ -10,6 +10,7 @@
  * converts units with the exact definitions in properties-logic.js (0 °C = 273.15 K,
  * 1 bar = 100 kPa).
  */
+import { normalizeFlowsheet } from "../flowsheet/document.js";
 import { listComponents, findComponent, MODELS, EOS_MODELS } from "../thermo/system.js";
 import { library, selection } from "../thermo/library.js";
 import { HENRY_GASES } from "../thermo/henry.js";
@@ -241,6 +242,7 @@ export function initialState(cfg = {}) {
     flash: normalizeFlash(cfg.flash ?? {}, FLASH_DEFAULTS),
     title: cfg.title,
     sets: normalizeSets(cfg.sets),
+    flowsheet: normalizeFlowsheet(cfg.flowsheet),
     prefer: normalizePrefer(cfg.prefer),
   };
   if (start === "sources") { state.utility = "sources"; start = ""; }
@@ -365,6 +367,7 @@ export function applyPatch(state, patch = {}) {
   if ("title" in patch) next.title = patch.title;
   if ("sets" in patch) next.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);
   if ("prefer" in patch) next.prefer = normalizePrefer(patch.prefer);
+  if ("flowsheet" in patch) next.flowsheet = normalizeFlowsheet(patch.flowsheet);
   if (patch.flash != null) next.flash = normalizeFlash(patch.flash, next.flash);
 
   // navigation

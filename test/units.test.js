@@ -163,3 +163,38 @@ test("a new block type can be registered (a valve: isenthalpic pressure drop)", 
   close(r.outlets.out.H_kW, s.H_kW, 1e-6, "isenthalpic");
   assert.throws(() => registerUnit({ type: "test-valve", solve() {} }), /already registered/);
 });
+
+test("degrees of freedom: what each block needs, has, misses or has too much", async () => {
+  const { specStatus } = await import("../src/index.js");
+  const sys = system({ components: ["ethanol", "water"], model: "NRTL" });
+  const cases = [
+    // type, spec, outlets, needed, given, status
+    ["feed", { flow_kmol_h: { water: 1 }, T_K: 300, P_kPa: 100 }, 1, 4, 4, "ok"],
+    ["feed", { flow_kmol_h: { water: 1 }, T_K: 300 }, 1, 4, 3, "missing"],
+    ["feed", { T_K: 300, P_kPa: 100 }, 1, 4, 2, "missing"],
+    ["mixer", {}, 1, 0, 0, "ok"],
+    ["splitter", { fractions: [0.3, "rest"] }, 2, 1, 1, "ok"],
+    ["splitter", { fractions: [0.2, 0.3, "rest"] }, 3, 2, 2, "ok"],
+    ["splitter", { fractions: [0.3] }, 2, 1, 1, "missing"],
+    ["splitter", { fractions: [0.3, 0.3] }, 2, 1, 1, "invalid"],
+    ["separator", { fractions: { ethanol: [0.9, "rest"], water: [0.1, "rest"] } }, 2, 2, 2, "ok"],
+    ["separator", { fractions: { ethanol: [0.9, "rest"] } }, 2, 2, 1, "missing"],
+    ["flash", { T_K: 350, P_kPa: 101.325 }, 2, 2, 2, "ok"],
+    ["flash", { P_kPa: 101.325, duty_kW: 0 }, 2, 2, 2, "ok"],
+    ["flash", { P_kPa: 101.325 }, 2, 2, 1, "missing"],
+    ["flash", { P_kPa: 101.325, T_K: 350, VF: 0.5 }, 2, 2, 3, "extra"],
+    ["heater", { T_K: 350 }, 1, 1, 1, "ok"],
+    ["heater", { duty_kW: 100, dP_kPa: 5 }, 1, 1, 1, "ok"],
+    ["heater", {}, 1, 1, 0, "missing"],
+    ["heater", { T_K: 350, duty_kW: 5 }, 1, 1, 2, "extra"],
+    ["product", {}, 0, 0, 0, "ok"],
+  ];
+  for (const [type, spec, n, needed, given, status] of cases) {
+    const st = specStatus(type, spec, { sys, outletCount: n });
+    const tag = `${type} ${JSON.stringify(spec)}`;
+    assert.equal(st.status, status, `${tag}: ${st.message}`);
+    assert.equal(st.needed, needed, `${tag}: needed`);
+    assert.equal(st.given, given, `${tag}: given`);
+    if (status !== "ok") assert.ok(st.message.length > 10, `${tag}: says why`);
+  }
+});

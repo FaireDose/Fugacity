@@ -159,27 +159,46 @@ CSTR, plug flow) with a common description of reactions, heat exchangers and com
 
 ### File format
 
-A flowsheet is a JSON file. An engineer can read it, GitHub shows exactly what changed,
-and an AI assistant can write it:
+A flowsheet is part of a project file (format 2, `src/ui/project.js`; schema
+`docs/schema/project-2.json`). An engineer can read it, GitHub shows exactly what changed,
+and an AI assistant can write it, check it with `Fugacity.checkProject(doc)` and solve it with
+`Fugacity.runFlowsheet(doc)`:
 
 ```json
 {
-  "fugacity": "0.4",
-  "components": ["water", "acetic acid", "ethylene glycol"],
-  "thermo": { "liquid": "NRTL", "fallback": "UNIFAC-Dortmund" },
-  "streams": {
-    "FEED": { "T_C": 25, "P_kPa": 101.3,
-              "flow_kmol_h": { "water": 60, "acetic acid": 30, "ethylene glycol": 10 } }
-  },
-  "units": [
-    { "id": "E1", "type": "heater", "in": ["FEED"], "out": ["S1"], "spec": { "T_C": 105 } },
-    { "id": "V1", "type": "flash",  "in": ["S1"],   "out": ["VAP", "LIQ"], "spec": { "P_kPa": 101.3, "Q_kW": 0 } }
-  ]
+  "fugacity_project": 2,
+  "workbench": {},
+  "flowsheet": {
+    "components": ["ethanol", "water"],
+    "thermo": { "model": "NRTL", "vapour": "ideal" },
+    "blocks": [
+      { "id": "F1", "type": "feed", "x": 40, "y": 120,
+        "spec": { "flow_kmol_h": { "ethanol": 30, "water": 70 }, "T_K": 300, "P_kPa": 101.325 } },
+      { "id": "E1", "type": "heater", "x": 160, "y": 120, "spec": { "VF": 0.4 }, "energy": "Q1" },
+      { "id": "V1", "type": "flash", "x": 280, "y": 120, "spec": { "P_kPa": 101.325, "duty_kW": 0 } },
+      { "id": "P1", "type": "product", "x": 400, "y": 60 },
+      { "id": "P2", "type": "product", "x": 400, "y": 180 }
+    ],
+    "streams": [
+      { "id": "S1", "from": "F1.out", "to": "E1.in" },
+      { "id": "S2", "from": "E1.out", "to": "V1.in" },
+      { "id": "S3", "from": "V1.vapour", "to": "P1.in" },
+      { "id": "S4", "from": "V1.liquid", "to": "P2.in" }
+    ]
+  }
 }
 ```
 
-The `fugacity` field states the format version. Older files keep working: a newer
-engine reads every older format version.
+The `fugacity_project` field states the format version. Older files keep working: a newer
+engine reads every older format version (format 1 has no flowsheet).
+
+**Degrees of freedom.** Before solving, every block's specifications are counted
+(`specStatus`, `flowsheetStatus`): what it needs, what is given, what is missing or too much.
+A flowsheet is solved only at zero degrees of freedom with every connection in place; the
+message names each block that is not ready.
+
+**Energy streams.** Every block with a duty (heater/cooler, flash drum, component separator)
+has an energy stream, `Q-<block>` or the name in `energy`, in kW (positive: heat in).
 
 ### Solver
 

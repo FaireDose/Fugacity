@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fairedose.github.io/Fugacity/schema/project-2.json",
+  "title": "Fugacity project, format 2",
+  "description": "A workbench project with an optional flowsheet (src/ui/project.js, src/flowsheet/document.js; proposal 0006). Units: K, kPa, kmol/h, kg/h, kW. The structure is checked here; connections, degrees of freedom and values are checked by Fugacity.checkProject(doc), which names every problem.",
+  "type": "object",
+  "required": ["fugacity_project", "workbench"],
+  "properties": {
+    "fugacity_project": { "const": 2 },
+    "saved_with": { "type": "string" },
+    "saved_at": { "type": "string" },
+    "title": { "type": "string" },
+    "workbench": { "type": "object", "description": "Settings and inputs of every workspace (see src/ui/project.js); {} gives the defaults." },
+    "flowsheet": { "$ref": "#/$defs/flowsheet" },
+    "results": { "type": "object", "description": "A record of results at save time; never read back into a calculation." }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "flowsheet": {
+      "type": "object",
+      "properties": {
+        "components": { "type": "array", "items": { "type": "string" }, "description": "Names, ids, formulas or CAS numbers of Fugacity.listComponents()." },
+        "thermo": {
+          "type": "object",
+          "properties": {
+            "model": { "enum": ["NRTL", "UNIQUAC", "ideal", "PR", "SRK"] },
+            "vapour": { "enum": ["ideal", "PR", "SRK"] },
+            "sets": { "type": "object", "additionalProperties": { "type": "string" } },
+            "prefer": {}
+          },
+          "additionalProperties": false
+        },
+        "blocks": { "type": "array", "items": { "$ref": "#/$defs/block" } },
+        "streams": { "type": "array", "items": { "$ref": "#/$defs/stream" } },
+        "solver": {
+          "type": "object",
+          "properties": { "maxIterations": { "type": "integer", "minimum": 1 }, "tolerance": { "type": "number", "exclusiveMinimum": 0 } }
+        }
+      },
+      "additionalProperties": false
+    },
+    "block": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "enum": ["feed", "mixer", "splitter", "separator", "flash", "heater", "product"] },
+        "label": { "type": "string" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "energy": { "type": "string", "description": "Name of the block's energy stream (heater, flash, separator); default Q-<id>." },
+        "spec": {
+          "type": "object",
+          "description": "feed: flow_kmol_h or flow_kg_h, and two of T_K, P_kPa, VF. mixer: P_kPa (optional). splitter: fractions [one per outlet, one may be \"rest\"]. separator: fractions { component: [one per outlet] }, outlets [{ T_K, P_kPa } or null]. flash: two of T_K, P_kPa, VF, duty_kW. heater: one of T_K, duty_kW, VF (or T_K and VF), with P_kPa or dP_kPa. product: none."
+        }
+      },
+      "additionalProperties": false
+    },
+    "stream": {
+      "type": "object",
+      "required": ["id", "from", "to"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "from": { "type": "string", "pattern": "^[^.\\s]+\\.[A-Za-z0-9]+$", "description": "BLOCK.port, e.g. V1.vapour" },
+        "to": { "type": "string", "pattern": "^[^.\\s]+\\.[A-Za-z0-9]+$" },
+        "tear": { "type": "boolean" },
+        "guess": {
+          "type": "object",
+          "properties": { "flow_kmol_h": {}, "T_K": { "type": "number" }, "P_kPa": { "type": "number" } }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

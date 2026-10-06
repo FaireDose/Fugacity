@@ -35,7 +35,7 @@
  */
 import { fail } from "../util/errors.js";
 import { stream } from "../stream/stream.js";
-import { runUnit, unitType } from "../units/units.js";
+import { runUnit, unitType, specStatus } from "../units/units.js";
 
 export const SOLVER_DEFAULTS = Object.freeze({ maxIterations: 50, tolerance: 1e-8, accelMin: -5, accelMax: 0 });
 
@@ -47,53 +47,108 @@ function endpoint(text, what, sid) {
 }
 
 /**
- * Check the flowsheet's structure and return it with its connections resolved: every block
- * of a known type with a unique id, every stream from an existing outlet port to an
- * existing inlet port, every required port connected.
+ * The flowsheet's structure with every problem found, without stopping at the first:
+ * { blocks: Map, edges, problems: [{ where, message }] }. A problem names its block or stream
+ * (`where`); blocks of unknown types are left out of `blocks`.
  */
-export function checkFlowsheet(fs) {
-  if (!fs || typeof fs !== "object") throw fail("BAD_INPUT", "The flowsheet must be an object with blocks and streams.");
+export function inspectFlowsheet(fs) {
+  const problems = [];
+  const add = (where, message) => problems.push({ where, message });
+  const byId = new Map(), edges = [];
+  if (!fs || typeof fs !== "object") { add(null, "The flowsheet must be an object with blocks and streams."); return { blocks: byId, edges, problems }; }
   const blocks = Array.isArray(fs.blocks) ? fs.blocks : [];
   const streams = Array.isArray(fs.streams) ? fs.streams : [];
-  if (!blocks.length) throw fail("BAD_INPUT", "The flowsheet has no blocks.");
-  const byId = new Map();
+  if (!blocks.length) add(null, "The flowsheet has no blocks.");
+  const known = new Set();
   for (const b of blocks) {
-    if (!b || typeof b.id !== "string" || !b.id) throw fail("BAD_INPUT", "Every block needs an id such as \"V1\".");
-    if (byId.has(b.id)) throw fail("BAD_INPUT", `Two blocks are called ${b.id}.`);
-    const u = unitType(b.type);
-    byId.set(b.id, { id: b.id, type: b.type, unit: u, spec: b.spec ?? {}, ins: {}, outs: {} });
+    if (!b || typeof b.id !== "string" || !b.id) { add(null, "Every block needs an id such as \"V1\"."); continue; }
+    if (known.has(b.id)) { add(b.id, `Two blocks are called ${b.id}.`); continue; }
+    known.add(b.id);
+    let u;
+    try { u = unitType(b.type); } catch (e) { add(b.id, `${b.id}: ${e.message}`); continue; }
+    byId.set(b.id, { id: b.id, type: b.type, unit: u, spec: b.spec ?? {}, energy: b.energy ?? null, ins: {}, outs: {} });
   }
   const sids = new Set();
-  const edges = [];
   for (const s of streams) {
-    if (!s || typeof s.id !== "string" || !s.id) throw fail("BAD_INPUT", "Every stream needs an id such as \"S1\".");
-    if (sids.has(s.id)) throw fail("BAD_INPUT", `Two streams are called ${s.id}.`);
+    if (!s || typeof s.id !== "string" || !s.id) { add(null, "Every stream needs an id such as \"S1\"."); continue; }
+    if (sids.has(s.id)) { add(s.id, `Two streams are called ${s.id}.`); continue; }
     sids.add(s.id);
-    const from = endpoint(s.from, "from", s.id), to = endpoint(s.to, "to", s.id);
+    let from, to;
+    try { from = endpoint(s.from, "from", s.id); to = endpoint(s.to, "to", s.id); } catch (e) { add(s.id, e.message); continue; }
     const a = byId.get(from.block), b = byId.get(to.block);
-    if (!a) throw fail("BAD_INPUT", `Stream ${s.id} comes from ${from.block}, which is not a block of the flowsheet.`);
-    if (!b) throw fail("BAD_INPUT", `Stream ${s.id} goes to ${to.block}, which is not a block of the flowsheet.`);
-    const op = a.unit.outlets.find(p => p.port === from.port);
-    if (!op) throw fail("BAD_INPUT", `Stream ${s.id}: ${a.unit.label} ${a.id} has no outlet "${from.port}"; its outlets: ${a.unit.outlets.map(p => p.port).join(", ") || "none"}.`);
-    const ip = b.unit.inlets.find(p => p.port === to.port);
-    if (!ip) throw fail("BAD_INPUT", `Stream ${s.id}: ${b.unit.label} ${b.id} has no inlet "${to.port}"; its inlets: ${b.unit.inlets.map(p => p.port).join(", ") || "none"}.`);
+    if (!a && !known.has(from.block)) { add(s.id, `Stream ${s.id} comes from ${from.block}, which is not a block of the flowsheet.`); continue; }
+    if (!b && !known.has(to.block)) { add(s.id, `Stream ${s.id} goes to ${to.block}, which is not a block of the flowsheet.`); continue; }
+    if (!a || !b) continue;   // a block of unknown type: already reported
+    if (!a.unit.outlets.some(p => p.port === from.port)) { add(s.id, `Stream ${s.id}: ${a.unit.label} ${a.id} has no outlet "${from.port}"; its outlets: ${a.unit.outlets.map(p => p.port).join(", ") || "none"}.`); continue; }
+    if (!b.unit.inlets.some(p => p.port === to.port)) { add(s.id, `Stream ${s.id}: ${b.unit.label} ${b.id} has no inlet "${to.port}"; its inlets: ${b.unit.inlets.map(p => p.port).join(", ") || "none"}.`); continue; }
     (a.outs[from.port] ??= []).push(s.id);
     (b.ins[to.port] ??= []).push(s.id);
     edges.push({ id: s.id, from: a.id, fromPort: from.port, to: b.id, toPort: to.port, tear: !!s.tear, guess: s.guess ?? null });
   }
+  const energyIds = new Set();
   for (const b of byId.values()) {
     for (const p of b.unit.inlets) {
       const n = (b.ins[p.port] ?? []).length;
-      if (n < p.min) throw fail("BAD_INPUT", `${b.unit.label} ${b.id}: connect ${p.min === 1 ? "a stream" : `at least ${p.min} streams`} to its ${p.label} inlet.`);
-      if (n > p.max) throw fail("BAD_INPUT", `${b.unit.label} ${b.id}: its ${p.label} inlet takes ${p.max === 1 ? "one stream" : `at most ${p.max}`} (${n} connected).`);
+      if (n < p.min) add(b.id, `${b.unit.label} ${b.id}: connect ${p.min === 1 ? "a stream" : `at least ${p.min} streams`} to its ${p.label} inlet.`);
+      if (n > p.max) add(b.id, `${b.unit.label} ${b.id}: its ${p.label} inlet takes ${p.max === 1 ? "one stream" : `at most ${p.max}`} (${n} connected).`);
     }
     for (const p of b.unit.outlets) {
       const n = (b.outs[p.port] ?? []).length;
-      if (!p.optional && n < p.min) throw fail("BAD_INPUT", `${b.unit.label} ${b.id}: connect ${p.min === 1 ? "a stream" : `at least ${p.min} streams`} to its ${p.label} outlet${p.min === 1 ? " (end it with a Product block if it leaves the flowsheet)" : ""}.`);
-      if (n > p.max) throw fail("BAD_INPUT", `${b.unit.label} ${b.id}: its ${p.label} outlet takes one stream (${n} connected); use a Splitter to divide it.`);
+      if (!p.optional && n < p.min) add(b.id, `${b.unit.label} ${b.id}: connect ${p.min === 1 ? "a stream" : `at least ${p.min} streams`} to its ${p.label} outlet${p.min === 1 ? " (end it with a Product block if it leaves the flowsheet)" : ""}.`);
+      if (n > p.max) add(b.id, `${b.unit.label} ${b.id}: its ${p.label} outlet takes one stream (${n} connected); use a Splitter to divide it.`);
     }
+    if (b.unit.duty) {
+      const q = energyName(b);
+      if (sids.has(q) || energyIds.has(q)) add(b.id, `${b.unit.label} ${b.id}: its energy stream ${q} has the name of another stream.`);
+      energyIds.add(q);
+    } else if (b.energy) add(b.id, `${b.unit.label} ${b.id} has no duty, so it cannot have an energy stream (${b.energy}).`);
   }
-  return { blocks: byId, edges };
+  return { blocks: byId, edges, problems };
+}
+
+/** The name of a block's energy stream: given as `energy`, else "Q-" and the block id. */
+const energyName = b => b.energy || `Q-${b.id}`;
+
+/**
+ * Check the flowsheet's structure and return it with its connections resolved: every block
+ * of a known type with a unique id, every stream from an existing outlet port to an
+ * existing inlet port, every required port connected. Throws the first problem
+ * (inspectFlowsheet lists them all).
+ */
+export function checkFlowsheet(fs) {
+  const r = inspectFlowsheet(fs);
+  if (r.problems.length) throw fail("BAD_INPUT", r.problems[0].message, { problems: r.problems });
+  return { blocks: r.blocks, edges: r.edges };
+}
+
+/**
+ * Is the flowsheet ready to solve? Its structure, and the degrees of freedom of every block
+ * (units.js specStatus): what each needs, what is given, what is missing or too much.
+ * @returns {{ready:boolean, needed:number, given:number, structure:object[], blocks:Object<string,object>, message:string}}
+ */
+export function flowsheetStatus(sys, fs) {
+  const { blocks, problems } = inspectFlowsheet(fs);
+  const out = {};
+  let needed = 0, given = 0;
+  for (const b of blocks.values()) {
+    const multi = b.unit.outlets.find(p => p.max > 1);
+    const outletCount = multi ? Math.max((b.outs[multi.port] ?? []).length, multi.min) : undefined;
+    const st = specStatus(b.type, b.spec, { sys, outletCount });
+    // name the block in the message: "Flash drum V1: ..."
+    out[b.id] = st.message ? { ...st, message: st.message.startsWith(`${b.unit.label}:`) ? `${b.unit.label} ${b.id}:${st.message.slice(b.unit.label.length + 1)}` : `${b.unit.label} ${b.id}: ${st.message}` } : st;
+    needed += st.needed ?? 0; given += st.given ?? 0;
+  }
+  const bad = Object.entries(out).filter(([, st]) => !st.ok);
+  const ready = !problems.length && !bad.length;
+  const missing = Object.values(out).reduce((a, st) => a + (st.status === "missing" ? Math.max(1, (st.needed ?? 0) - (st.given ?? 0)) : 0), 0);
+  const extra = Object.values(out).reduce((a, st) => a + (st.status === "extra" ? Math.max(1, (st.given ?? 0) - (st.needed ?? 0)) : 0), 0);
+  const message = ready
+    ? `Degrees of freedom: 0 (${given} specification${given === 1 ? "" : "s"} for ${needed} needed). Ready to solve.`
+    : [problems.length ? `${problems.length} connection problem${problems.length === 1 ? "" : "s"}` : "",
+      missing ? `${missing} specification${missing === 1 ? "" : "s"} missing` : "",
+      extra ? `${extra} too many` : "",
+      bad.some(([, st]) => st.status === "invalid") ? "a value to correct" : ""].filter(Boolean).join(", ") + ".";
+  return { ready, needed, given, dof: needed - given, structure: problems, blocks: out, message: message[0].toUpperCase() + message.slice(1) };
 }
 
 /** Strongly connected components of a directed graph (Tarjan), in reverse topological order. */
@@ -176,6 +231,11 @@ export function solveFlowsheet(sys, fs) {
   const opt = { ...SOLVER_DEFAULTS, ...(fs?.solver ?? {}) };
   if (!(Number.isInteger(opt.maxIterations) && opt.maxIterations >= 1)) throw fail("BAD_INPUT", `solver.maxIterations must be a positive whole number (got ${opt.maxIterations}).`);
   if (!(opt.tolerance > 0 && opt.tolerance < 0.1)) throw fail("BAD_INPUT", `solver.tolerance must be between 0 and 0.1 (got ${opt.tolerance}).`);
+  const status = flowsheetStatus(sys, fs);
+  if (!status.ready) {
+    const lines = [...status.structure.map(p => p.message), ...Object.values(status.blocks).filter(b => !b.ok).map(b => b.message)];
+    throw fail("BAD_INPUT", `The flowsheet is not ready to solve: ${status.message} ${lines.join(" ")}`, { status });
+  }
   const { blocks, edges } = checkFlowsheet(fs);
   const nodes = [...blocks.keys()];
   const values = new Map();   // stream id → stream
@@ -277,9 +337,13 @@ export function solveFlowsheet(sys, fs) {
   const fin = sum(feeds), fout = sum(products);
   const duties = Object.values(results).reduce((a, r) => a + (r.duty_kW ?? 0), 0);
   const H = list => list.reduce((a, s) => a + (s.H_kW ?? 0), 0);
+  // energy streams: one per block with a duty (heater, drum, separator), in kW (+ heat in, - heat out)
+  const energy = Object.fromEntries([...blocks.values()].filter(b => b.unit.duty)
+    .map(b => [energyName(b), { id: energyName(b), block: b.id, duty_kW: results[b.id]?.duty_kW ?? 0 }]));
   return {
     components: sys.ids.slice(),
     streams: Object.fromEntries(edges.map(e => [e.id, values.get(e.id)])),
+    energy,
     blocks: results,
     order: comps.map(c => (c.length === 1 && !edges.some(e => e.from === c[0] && e.to === c[0]) ? c[0] : c)),
     loops,

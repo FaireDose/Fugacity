@@ -8,7 +8,8 @@
  * carry `results`, the stream table of the flash as it was at save time, so the mass balance
  * can be read without Fugacity (it is a record and is never read back into a calculation).
  *
- * Format 1 (the "fugacity_project" key is the format version):
+ * Format 2 (the "fugacity_project" key is the format version; format 1 is the same without
+ * "flowsheet"):
  *
  *   {
  *     "fugacity_project": 1,
@@ -28,6 +29,7 @@
  *       "henryT_K", "henryP_kPa", "compareGases", "property", "steamP_kPa",
  *       "background", "residueCurves", "isotherms", "grid", "panels", "ribbon"
  *     },
+ *     "flowsheet": { "components", "thermo", "blocks", "streams", "solver" },   // optional; src/flowsheet/document.js
  *     "results": { "flash": { "columns", "rows", "summary", "model", "spec", "sources" } }   // optional
  *   }
  *
@@ -38,9 +40,11 @@
  * A view helper (layer 6): no thermodynamics here.
  */
 import { initialState, applyPatch, VIEWS } from "./app-logic.js";
+import { normalizeFlowsheet, flowsheetDocStatus } from "../flowsheet/document.js";
 
-/** The format version this library writes and reads. */
-export const PROJECT_FORMAT = 1;
+/** The format version this library writes; it reads this one and every older one. Format 2
+ *  adds the flowsheet (proposal 0006, step 4); a format 1 file is a format 2 file without it. */
+export const PROJECT_FORMAT = 2;
 
 /** The keys of `workbench`, in the order they are written. */
 const KEYS = ["view", "diagram", "model", "eos", "vapour", "P_kPa", "T_K", "units", "basis", "inputs", "z", "flash", "sets", "prefer",
@@ -64,6 +68,8 @@ export function projectOf(state, { version = "", results, now = new Date() } = {
   const doc = { fugacity_project: PROJECT_FORMAT, saved_with: `fugacity ${version}`.trim(), saved_at: now.toISOString() };
   if (state.title) doc.title = String(state.title);
   doc.workbench = w;
+  const fs = state.flowsheet;
+  if (fs && (fs.components?.length || fs.blocks?.length)) doc.flowsheet = normalizeFlowsheet(fs);
   if (results && Object.keys(results).length) doc.results = copy(results);
   return doc;
 }
@@ -102,7 +108,7 @@ export function readProject(input) {
   }
   const f = doc.fugacity_project;
   if (!Number.isInteger(f) || f < 1) throw new Error(`fugacity_project must be a format number such as ${PROJECT_FORMAT} (got ${JSON.stringify(f)}).`);
-  if (f > PROJECT_FORMAT) throw new Error(`This project uses format ${f}, saved with ${doc.saved_with || "a newer Fugacity"}; this library reads format ${PROJECT_FORMAT}. Open it with a newer version of Fugacity.`);
+  if (f > PROJECT_FORMAT) throw new Error(`This project uses format ${f}, saved with ${doc.saved_with || "a newer Fugacity"}; this library reads formats 1 to ${PROJECT_FORMAT}. Open it with a newer version of Fugacity.`);
   const w = doc.workbench;
   if (w == null || typeof w !== "object" || Array.isArray(w)) throw new Error('The project has no "workbench" object.');
   const unknown = Object.keys(w).filter(k => !KEYS.includes(k));
@@ -131,6 +137,7 @@ export function stateFromProject(input) {
     cfg.flash = rest;
   }
   if (doc.title) cfg.title = String(doc.title);
+  if (doc.flowsheet != null) cfg.flowsheet = doc.flowsheet;
   let s = initialState(cfg);
   if (w.inputs != null) {
     if (typeof w.inputs !== "object" || Array.isArray(w.inputs)) throw new Error("workbench.inputs must be an object such as { txy: [\"ethanol\", \"water\"] }.");
@@ -150,4 +157,26 @@ export function stateFromProject(input) {
   if (w.diagram && VIEWS[w.diagram].workspace === "equilibrium") s = applyPatch(s, { view: w.diagram });
   s = applyPatch(s, { view: w.view ?? s.view, utility: null });
   return s;
+}
+
+/**
+ * Check a project without opening it: every problem found, as text, and the flowsheet's
+ * status (structure and degrees of freedom). Never throws; for files written by hand or by
+ * an AI assistant before they are opened.
+ * @returns {{ok:boolean, problems:string[], flowsheet:object|null}}
+ */
+export function checkProject(input) {
+  const problems = [];
+  let doc = null, flowsheet = null;
+  try { doc = readProject(input); } catch (e) { return { ok: false, problems: [e.message], flowsheet: null }; }
+  try { stateFromProject(doc); } catch (e) { problems.push(e.message); }
+  if (doc.flowsheet != null) {
+    try {
+      flowsheet = flowsheetDocStatus(doc.flowsheet);
+      if (flowsheet.setup === false) problems.push(`flowsheet: ${flowsheet.message}`);
+      problems.push(...flowsheet.structure.map(p => `flowsheet: ${p.message}`));
+      problems.push(...Object.values(flowsheet.blocks).filter(b => !b.ok).map(b => `flowsheet: ${b.message}`));
+    } catch (e) { problems.push(`flowsheet: ${e.message}`); }
+  }
+  return { ok: !problems.length, problems, flowsheet };
 }

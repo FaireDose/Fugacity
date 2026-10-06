@@ -4,7 +4,7 @@
  * Every block type is registered with the same shape (ARCHITECTURE.md, layer 4):
  *
  *   registerUnit({
- *     type: "heater", label: "Heater / cooler",
+ *     type: "heater", label: "Heater / cooler", duty: true,   // duty: the block has an energy stream
  *     inlets:  [{ port: "in" }],                       // { port, min?, max? }: several streams on
  *     outlets: [{ port: "out" }],                      //   one port when max > 1
  *     checkSpec(spec, ctx) → spec,                     // normalized, or a BAD_INPUT error naming the problem
@@ -156,7 +156,7 @@ registerUnit({
 });
 
 registerUnit({
-  type: "separator", label: "Component separator", inlets: [{ port: "in" }], outlets: [{ port: "out", min: 2, max: Infinity }],
+  type: "separator", label: "Component separator", duty: true, inlets: [{ port: "in" }], outlets: [{ port: "out", min: 2, max: Infinity }],
   checkSpec(spec, { sys, outletCount }) {
     const fr = spec.fractions;
     if (!fr || typeof fr !== "object" || Array.isArray(fr)) throw fail("BAD_INPUT", "Component separator: give the split fractions per component, e.g. { fractions: { ethanol: [0.95, \"rest\"], water: [0.02, \"rest\"] } }.");
@@ -191,7 +191,7 @@ registerUnit({
 });
 
 registerUnit({
-  type: "flash", label: "Flash drum", inlets: [{ port: "in", min: 1, max: Infinity }],
+  type: "flash", label: "Flash drum", duty: true, inlets: [{ port: "in", min: 1, max: Infinity }],
   outlets: [{ port: "vapour" }, { port: "liquid" }, { port: "liquid2", optional: true, label: "second liquid" }],
   checkSpec(spec) { return flashConditions(spec, "Flash drum"); },
   solve({ sys, inlets, spec, outletCount }) {
@@ -214,7 +214,7 @@ registerUnit({
 });
 
 registerUnit({
-  type: "heater", label: "Heater / cooler", inlets: [{ port: "in" }], outlets: [{ port: "out" }],
+  type: "heater", label: "Heater / cooler", duty: true, inlets: [{ port: "in" }], outlets: [{ port: "out" }],
   checkSpec(spec) {
     // the outlet: T_K, duty_kW or VF, at P_kPa or the inlet pressure minus dP_kPa; or T_K and VF
     const has = k => spec[k] !== undefined && spec[k] !== null;
@@ -245,6 +245,98 @@ registerUnit({
   checkSpec() { return {}; },
   solve() { return { outlets: {}, duty_kW: 0 }; },
 });
+
+
+// ---------------------------------------------------------------------------------------
+// Degrees of freedom: how many specifications each block needs, how many are given, and what
+// is missing or too much. Optional values with a default (a mixer's outlet pressure, a heater's
+// pressure drop, a separator's outlet conditions) are not counted: the default fills them.
+
+const hasKey = (spec, k) => spec?.[k] !== undefined && spec?.[k] !== null && spec?.[k] !== "";
+const listOf = keys => keys.length === 1 ? keys[0] : `${keys.slice(0, -1).join(", ")} or ${keys[keys.length - 1]}`;
+
+/** Two of `keys` (a flash state); `what` names them for the person. */
+function twoOf(spec, keys, what) {
+  const given = keys.filter(k => hasKey(spec, k));
+  return {
+    needed: 2, given: Math.min(given.length, 2) + Math.max(0, given.length - 2),
+    missing: given.length < 2 ? [`${2 - given.length === 2 ? "two" : "one more"} of ${listOf(keys)} (${what})`] : [],
+    extra: given.length > 2 ? [`only two of ${listOf(keys)} can be given (now ${given.join(", ")})`] : [],
+  };
+}
+
+/** Fractions over n outlets: one value per outlet ("rest" for one of them); n - 1 are independent. */
+function fractionsDof(fr, n, what) {
+  const list = Array.isArray(fr) ? fr : fr == null ? [] : [fr];
+  const numbers = list.filter(v => v !== "rest" && v !== "" && v != null).length;
+  if (list.length < n) {
+    const k = n - list.length;
+    return { needed: n - 1, given: Math.min(numbers, n - 1), extra: [],
+      missing: [`${list.length ? `${k} more ` : ""}split fraction${n - (list.length ? list.length : 0) === 1 ? "" : "s"} for ${what} (one value per outlet, one may be "rest")`] };
+  }
+  if (list.length > n) return { needed: n - 1, given: numbers, missing: [], extra: [`${what}: ${list.length} fractions for ${n} outlets`] };
+  // one per outlet: the sum to 1 (or "rest") fixes the last; the specification check tests the sum
+  return { needed: n - 1, given: n - 1, missing: [], extra: [] };
+}
+
+const DOF = {
+  feed(spec, { sys }) {
+    const n = sys?.n ?? 0;
+    const flows = hasKey(spec, "flow_kmol_h") || hasKey(spec, "flow_kg_h");
+    const st = twoOf(spec, ["T_K", "P_kPa", "VF"], "the feed's state");
+    return {
+      needed: n + 2, given: (flows ? n : 0) + st.given,
+      missing: [...(flows ? [] : [`the flows of the ${n} components (flow_kmol_h or flow_kg_h)`]), ...st.missing],
+      extra: [...(hasKey(spec, "flow_kmol_h") && hasKey(spec, "flow_kg_h") ? ["flow_kmol_h and flow_kg_h: give one"] : []), ...st.extra],
+    };
+  },
+  mixer: () => ({ needed: 0, given: 0, missing: [], extra: [] }),
+  splitter: (spec, { outletCount }) => fractionsDof(spec?.fractions, outletCount, "the outlets"),
+  separator(spec, { sys, outletCount }) {
+    const fr = spec?.fractions && typeof spec.fractions === "object" && !Array.isArray(spec.fractions) ? spec.fractions : {};
+    const out = { needed: 0, given: 0, missing: [], extra: [] };
+    for (const [i, id] of (sys?.ids ?? []).entries()) {
+      const key = Object.keys(fr).find(k => { try { return findComponent(k) === id; } catch { return false; } });
+      const d = fractionsDof(key == null ? null : fr[key], outletCount, sys.names[i]);
+      out.needed += d.needed; out.given += d.given; out.missing.push(...d.missing); out.extra.push(...d.extra);
+    }
+    return out;
+  },
+  flash: spec => twoOf(spec, ["T_K", "P_kPa", "VF", "duty_kW"], "the drum's conditions"),
+  heater(spec) {
+    const given = ["T_K", "duty_kW", "VF"].filter(k => hasKey(spec, k));
+    const TVF = given.length === 2 && given.includes("T_K") && given.includes("VF");
+    const extra = given.length > 1 && !TVF ? [`give one of T_K, duty_kW or VF (now ${given.join(", ")})`] : [];
+    if (hasKey(spec, "P_kPa") && hasKey(spec, "dP_kPa")) extra.push("P_kPa and dP_kPa: give one");
+    if (TVF && (hasKey(spec, "P_kPa") || hasKey(spec, "dP_kPa"))) extra.push("T_K and VF fix the pressure: leave out P_kPa and dP_kPa");
+    return {
+      needed: TVF ? 2 : 1, given: given.length + (extra.length && !TVF ? 0 : 0),
+      missing: given.length ? [] : ["the outlet temperature T_K, the duty duty_kW or the vapour fraction VF"], extra,
+    };
+  },
+  product: () => ({ needed: 0, given: 0, missing: [], extra: [] }),
+};
+
+/**
+ * The degrees of freedom of one block: { needed, given, missing, extra, ok, status, message }.
+ * `status` is "ok" (fully specified and the values pass the block's checks), "missing" (under-
+ * specified), "extra" (over-specified) or "invalid" (the count is right but a value is wrong;
+ * `message` says which). Block types registered without a count are checked by their
+ * specification check only.
+ */
+export function specStatus(type, spec = {}, { sys, outletCount } = {}) {
+  const u = unitType(type);
+  const multi = u.outlets.find(p => p.max > 1);
+  const n = outletCount ?? (multi ? multi.min : u.outlets.filter(p => !p.optional).length);
+  const d = (u.dof ?? DOF[type])?.(spec ?? {}, { sys, outletCount: n }) ?? { needed: null, given: null, missing: [], extra: [] };
+  let status = d.missing.length ? "missing" : d.extra.length ? "extra" : "ok", message = "";
+  if (status === "ok" && sys && u.checkSpec) {
+    try { u.checkSpec(spec ?? {}, { sys, outletCount: n }); } catch (e) { status = "invalid"; message = e.message; }
+  }
+  if (status === "missing") message = `${u.label}: ${d.missing.length === 1 ? "missing" : `${d.missing.length} specifications missing`}: ${d.missing.join("; ")}.`;
+  if (status === "extra") message = `${u.label}: too many specifications: ${d.extra.join("; ")}.`;
+  return { ...d, ok: status === "ok", status, message };
+}
 
 // ---------------------------------------------------------------------------------------
 
