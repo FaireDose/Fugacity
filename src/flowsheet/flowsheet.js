@@ -37,7 +37,10 @@ import { fail } from "../util/errors.js";
 import { stream } from "../stream/stream.js";
 import { runUnit, unitType, specStatus } from "../units/units.js";
 
-export const SOLVER_DEFAULTS = Object.freeze({ maxIterations: 50, tolerance: 1e-8, accelMin: -5, accelMax: 0 });
+/** Solver settings: `method` "wegstein" (direct substitution for two steps, then bounded Wegstein)
+ *  or "direct" (direct substitution only: slower, never overshoots). */
+export const SOLVER_DEFAULTS = Object.freeze({ method: "wegstein", maxIterations: 50, tolerance: 1e-8, accelMin: -5, accelMax: 0 });
+export const SOLVER_METHODS = ["wegstein", "direct"];
 
 /** "B1.out" → { block: "B1", port: "out" } */
 function endpoint(text, what, sid) {
@@ -231,6 +234,7 @@ export function solveFlowsheet(sys, fs) {
   const opt = { ...SOLVER_DEFAULTS, ...(fs?.solver ?? {}) };
   if (!(Number.isInteger(opt.maxIterations) && opt.maxIterations >= 1)) throw fail("BAD_INPUT", `solver.maxIterations must be a positive whole number (got ${opt.maxIterations}).`);
   if (!(opt.tolerance > 0 && opt.tolerance < 0.1)) throw fail("BAD_INPUT", `solver.tolerance must be between 0 and 0.1 (got ${opt.tolerance}).`);
+  if (!SOLVER_METHODS.includes(opt.method)) throw fail("BAD_INPUT", `solver.method "${opt.method}" is not one of ${SOLVER_METHODS.join(", ")}.`);
   const status = flowsheetStatus(sys, fs);
   if (!status.ready) {
     const lines = [...status.structure.map(p => p.message), ...Object.values(status.blocks).filter(b => !b.ok).map(b => b.message)];
@@ -305,7 +309,7 @@ export function solveFlowsheet(sys, fs) {
       if (err < opt.tolerance) { it++; break; }
       // next tear values: direct substitution for two steps, then bounded Wegstein per variable
       let xNew = g;
-      if (it >= 2 && xPrev) {
+      if (opt.method === "wegstein" && it >= 2 && xPrev) {
         xNew = g.map((gk, k) => gk.map((gi, i) => {
           const dx = x[k][i] - xPrev[k][i];
           const s = dx !== 0 ? (gi - gPrev[k][i]) / dx : 0;

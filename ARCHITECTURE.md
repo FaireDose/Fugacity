@@ -203,7 +203,8 @@ has an energy stream, `Q-<block>` or the name in `energy`, in kW (positive: heat
 ### Solver
 
 Sequential modular, as in most commercial simulators: order the units, choose tear
-streams to break recycles, and converge them with Wegstein acceleration
+streams to break recycles, and converge them with Wegstein acceleration or direct
+substitution (`solver: { method, tolerance, maxIterations }` per flowsheet)
 (`Fugacity.solveFlowsheet(sys, { blocks, streams, solver })`, `src/flowsheet/flowsheet.js`; a
 loop that does not converge throws NO_CONVERGENCE naming the loop and its tear streams). Design
 specifications ("adjust the reflux until the distillate purity is 99 %") are an outer

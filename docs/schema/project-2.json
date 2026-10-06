@@ -34,7 +34,7 @@
         "streams": { "type": "array", "items": { "$ref": "#/$defs/stream" } },
         "solver": {
           "type": "object",
-          "properties": { "maxIterations": { "type": "integer", "minimum": 1 }, "tolerance": { "type": "number", "exclusiveMinimum": 0 } }
+          "properties": { "method": { "enum": ["wegstein", "direct"] }, "maxIterations": { "type": "integer", "minimum": 1 }, "tolerance": { "type": "number", "exclusiveMinimum": 0 } }
         }
       },
       "additionalProperties": false
