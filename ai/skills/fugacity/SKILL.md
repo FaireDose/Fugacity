@@ -12,21 +12,32 @@ only needs a few lines.
 
 ## Build the artifact
 
-Load the library from jsdelivr with a pinned version. To open the whole workbench (ribbon
-with components, phase equilibrium, gases and equations of state, properties, steam,
-units):
+Build the page right away. To load the whole workbench (ribbon with components, phase
+equilibrium, flash, gases and equations of state, properties, steam, units), this is the
+whole page:
 
 ```html
 <div id="app"></div>
 <script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
-  Fugacity.app("#app", {
-    start: "ternary",   // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
-    components: ["methanol", "acetone", "chloroform"],
-    model: "NRTL",      // "NRTL", "UNIQUAC", "ideal", "PR", "SRK"
-    P_kPa: 101.325
-  });
+  Fugacity.app("#app", { components: [] });
 </script>
+```
+
+The page loads the library from jsdelivr (pinned version) when it opens. Do not download,
+read, inline, count or test `fugacity.js` (about 850 KB) first, and do not check components
+or models in a code sandbox before building the page: the workbench has the component
+pickers, examples, models, pressure, units and parameter sources. With `components: []`
+it opens empty and the user chooses; if the user names components, a diagram or
+conditions, pass them:
+
+```js
+Fugacity.app("#app", {
+  start: "ternary",   // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
+  components: ["methanol", "acetone", "chloroform"],
+  model: "NRTL",      // "NRTL", "UNIQUAC", "ideal", "PR", "SRK"
+  P_kPa: 101.325
+});
 ```
 
 For one diagram without the ribbon, call `Fugacity.mount`:

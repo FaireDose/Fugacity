@@ -350,9 +350,16 @@ export function app(target, cfg = {}) {
     ];
   }
 
+  /** True while no component is chosen for a view that takes them (the workbench opened empty):
+   *  the inputs then show a neutral start hint instead of problems. */
+  function blank(view) {
+    const value = state.inputs[view];
+    return Array.isArray(value) && view !== "steam" && !value.some(Boolean);
+  }
+
   function slotsInput(view, check) {
     const spec = needsFor(view, state.model), value = state.inputs[view];
-    const bad = new Map(check.problems.filter(p => p.slot != null).map(p => [p.slot, p.message]));
+    const bad = new Map(blank(view) ? [] : check.problems.filter(p => p.slot != null).map(p => [p.slot, p.message]));
     return h("div", { class: "fa-slots" }, ...value.map((id, i) => {
       const sid = `fa-slot-${view}-${i}-${uid}`;
       const sel = h("select", { id: sid, "data-fk": `slot-${view}-${i}`, "aria-invalid": bad.has(i) ? "true" : undefined,
@@ -389,7 +396,7 @@ export function app(target, cfg = {}) {
 
   function problemsBox(check) {
     return h("div", { class: "fa-problems", id: `fa-problems-${uid}`, "aria-live": "polite" },
-      ...(check.ok ? [] : [h("ul", {}, ...check.problems.map(p => h("li", {}, p.message)))]));
+      ...(check.ok || blank(state.view) ? [] : [h("ul", {}, ...check.problems.map(p => h("li", {}, p.message)))]));
   }
 
   function inputsSection(title, ...children) {
@@ -742,7 +749,7 @@ export function app(target, cfg = {}) {
       delete plot.dataset.view;
       if (!check.ok) {
         plot.replaceChildren(needInputs(v, check));
-        side.replaceChildren(h("div", { class: "fa-empty" }, "No results yet: the inputs are incomplete."));
+        side.replaceChildren(h("div", { class: "fa-empty" }, blank(v) ? "No results yet: choose the components." : "No results yet: the inputs are incomplete."));
       } else {
         try {
           const viewState = { ...state, components: check.use, z: state.z[v] ?? null };
@@ -765,6 +772,13 @@ export function app(target, cfg = {}) {
   }
 
   function needInputs(v, check) {
+    if (blank(v)) {
+      const examples = examplesFor(v, PRESETS, state.model).length;
+      return h("div", { class: "fa-need is-start", role: "status" },
+        h("h3", {}, `Start by choosing ${needsOf(v, state.model).toLowerCase()}`),
+        h("p", {}, `Choose them in the Inputs panel${ui.size === "narrow" ? " above" : ""}${examples ? ", or load one of the Examples there" : ""}. The ${lower(VIEWS[v].label)} is calculated as soon as the inputs fit; the ribbon switches between diagrams, models and the other workspaces.`),
+        state.panels.left ? null : h("button", { type: "button", class: "fa-mini", "data-fk": "show-inputs", on: { click: () => set({ panels: { left: true } }, { canvas: false }) } }, icon("panelL", 15), "Show the Inputs panel"));
+    }
     return h("div", { class: "fa-need", role: "status" },
       h("h3", {}, `The ${lower(VIEWS[v].label)} needs: ${needsOf(v, state.model).toLowerCase()}${isEosModel(state.model) || !VIEWS[v].diagram ? "" : ` with ${state.model === "ideal" ? "an ideal solution" : state.model}`}`),
       h("ul", {}, ...check.problems.map(p => h("li", {}, p.message))),

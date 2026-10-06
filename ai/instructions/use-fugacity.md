@@ -13,21 +13,33 @@ maps, residue curves, azeotropes), physical properties, steam tables or gas solu
 use the open-source Fugacity library (https://github.com/FaireDose/Fugacity) instead of
 writing thermodynamics yourself.
 
-**If this chat can show an HTML page** (for example a Claude artifact) and I ask to open
-Fugacity or the workbench, or for a diagram, build a page that loads the library with a
-pinned version and opens the workbench:
+**If this chat can show an HTML page** (for example a Claude artifact) and I ask to load or
+open Fugacity or the workbench, or for a diagram, build this page **right away**:
 
 ```html
 <div id="app"></div>
 <script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script>
 <script>
-  Fugacity.app("#app", {
-    start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
-    components: ["methanol", "acetone", "chloroform"],
-    model: "NRTL",             // "NRTL", "UNIQUAC", "ideal", "PR" or "SRK"
-    P_kPa: 101.325
-  });
+  Fugacity.app("#app", { components: [] });
 </script>
+```
+
+That is the whole page. It loads the library itself when it opens, so:
+- do **not** download, read, inline, count or test `fugacity.js` (about 850 KB) first, and
+  do not check components or models in a code sandbox before building the page;
+- do not write your own interface around it: the workbench has the component pickers,
+  examples, models, pressure, units and parameter sources.
+
+With `components: []` the workbench opens empty and I choose the components in it. If I
+name components, a diagram or conditions, pass them:
+
+```js
+Fugacity.app("#app", {
+  start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
+  components: ["methanol", "acetone", "chloroform"],
+  model: "NRTL",             // "NRTL", "UNIQUAC", "ideal", "PR" or "SRK"
+  P_kPa: 101.325
+});
 ```
 
 For a single diagram without the ribbon, use `Fugacity.mount("#app", { components, model,
