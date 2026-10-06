@@ -8,7 +8,7 @@ import { emptyFlowsheet } from "../src/flowsheet/document.js";
 import { initialState, applyPatch } from "../src/ui/app-logic.js";
 import { WORKSPACES } from "../src/ui/workspaces.js";
 import {
-  addBlock, addFeedTo, connect, deleteBlock, addOutlet, removeOutlet, setSpec, moveBlock, setTear, setComponents, openInlets, endOf, streamsOf,
+  addBlock, addFeedTo, connect, deleteBlock, deleteStream, addOutlet, removeOutlet, setSpec, moveBlock, setTear, setComponents, openInlets, endOf, streamsOf,
 } from "../src/ui/flowsheet-logic.js";
 
 const base = () => ({ ...emptyFlowsheet(), components: ["ethanol", "water"] });
@@ -119,4 +119,35 @@ test("a recycle back into a separator (feed → separator → drum → back to t
   const r = runFlowsheet(fs);
   assert.equal(r.loops.length, 1);
   for (const v of Object.values(r.balance.material_kmol_h)) assert.ok(Math.abs(v) < 1e-6, `balance ${v}`);
+});
+
+test("deleting streams: what each kind of stream allows", () => {
+  let fs = base(), r;
+  ({ fs } = addBlock(fs, "heater"));
+  ({ fs } = addFeedTo(fs, "E1.in"));
+  ({ fs } = addBlock(fs, "splitter"));
+  const hOut = streamsOf(fs, "E1").out[0];
+  fs = connect(fs, hOut, "SP1.in");
+  fs = addOutlet(fs, "SP1");
+  fs = setSpec(fs, "SP1", { fractions: [0.2, 0.3, "rest"] });
+  // a stream into a unit: disconnected, it leaves the flowsheet
+  r = deleteStream(fs, hOut);
+  assert.equal(endOf(r.fs, hOut).kind, "product");
+  assert.match(r.note, /now leaves the flowsheet/);
+  // the splitter has lost its inlet, and the status says so
+  assert.deepEqual(flowsheetDocStatus(r.fs).structure.map(p => p.message), ["Splitter SP1: connect a stream to its in inlet."]);
+  // an extra splitter outlet: removed with its fraction ("rest" moves to the last one)
+  const outs = streamsOf(fs, "SP1").out;
+  r = deleteStream(fs, outs[2]);
+  assert.deepEqual(streamsOf(r.fs, "SP1").out, outs.slice(0, 2));
+  assert.deepEqual(r.fs.blocks.find(b => b.id === "SP1").spec.fractions, [0.2, "rest"]);
+  structureOk(r.fs);
+  // with two outlets left, an outlet that already leaves cannot go: the unit needs it
+  r = deleteStream(r.fs, streamsOf(r.fs, "SP1").out[0]);
+  assert.match(r.note, /every outlet must go somewhere/);
+  // a feed's stream: the feed goes with it
+  const feedStream = streamsOf(fs, "E1").in[0];
+  r = deleteStream(fs, feedStream);
+  assert.ok(!r.fs.blocks.some(b => b.type === "feed"));
+  assert.match(r.note, /Deleted the feed F1/);
 });

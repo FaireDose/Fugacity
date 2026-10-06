@@ -338,6 +338,7 @@ export const APP_CSS = `
 .fs-arrow{fill:var(--fug-fg2, #555)}
 .fs-label{font-size:10.5px; fill:var(--fug-fg2, #555); paint-order:stroke; stroke:var(--fug-halo); stroke-width:3px}
 .fs-handle{fill:var(--fug-bg); stroke:var(--fug-accent); stroke-width:1.6; cursor:crosshair}
+.fs-handle.is-end{fill:var(--fug-bg); stroke:var(--fug-fg2); stroke-width:1.3}
 .fs-handle:hover{fill:var(--fug-accent)}
 .fs-port-in{fill:var(--fug-bg); stroke:var(--fug-fg2); stroke-width:1.4}
 .fs-port-in.is-open{stroke:var(--fug-accent)}
