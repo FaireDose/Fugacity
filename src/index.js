@@ -27,8 +27,9 @@ import { cubicEos } from "./thermo/eos/cubic.js";
 import { henry, henryInfo, gasSolubility, HENRY_GASES } from "./thermo/henry.js";
 import { library } from "./thermo/library.js";
 import { stream, componentFlows, scaleStream, phaseStream } from "./stream/stream.js";
-import { registerUnit, runUnit, unitTypes, unitType } from "./units/units.js";
-import { solveFlowsheet, checkFlowsheet } from "./flowsheet/flowsheet.js";
+import { registerUnit, runUnit, unitTypes, unitType, specStatus } from "./units/units.js";
+import { solveFlowsheet, checkFlowsheet, inspectFlowsheet, flowsheetStatus } from "./flowsheet/flowsheet.js";
+import { runFlowsheet, normalizeFlowsheet, flowsheetSystem, flowsheetDocStatus } from "./flowsheet/document.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -45,7 +46,8 @@ export {
   steam, steamSat,
   library,
   stream, componentFlows, scaleStream, phaseStream,
-  registerUnit, runUnit, unitTypes, unitType,
-  solveFlowsheet, checkFlowsheet,
+  registerUnit, runUnit, unitTypes, unitType, specStatus,
+  solveFlowsheet, checkFlowsheet, inspectFlowsheet, flowsheetStatus,
+  runFlowsheet, normalizeFlowsheet, flowsheetSystem, flowsheetDocStatus,
   FugacityError, ERROR_CODES, isFugacityError,
 };
