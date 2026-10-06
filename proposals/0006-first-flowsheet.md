@@ -117,6 +117,7 @@ a newer engine reads every older format version).
   "workbench": { "view": "flowsheet", "model": "NRTL", "vapour": "ideal" },
   "flowsheet": {
     "components": ["methanol", "water"],
+    "thermo": { "model": "NRTL", "vapour": "ideal" },
     "blocks": [
       { "id": "F1", "type": "feed", "x": 40, "y": 120,
         "spec": { "T_K": 298.15, "P_kPa": 101.325, "flow_kmol_h": { "methanol": 30, "water": 70 } } },
@@ -172,25 +173,59 @@ All three ways use the same file, so a flowsheet moves freely between them:
 Fugacity itself never sends a flowsheet anywhere; only the host page decides where `storage`
 puts it.
 
-### 6. The Flowsheet workspace (A11)
+### 6. The Flowsheet workspace (A11): set up first, then draw
 
-A sixth tab next to Flash:
+As in a desktop simulator, a simulation is set up in a fixed order: first the components, then
+the property method, then the flowsheet. The setup is part of the flowsheet and is fixed while
+the flowsheet is drawn and solved; changing it later is a deliberate step that recalculates
+everything.
 
-- **Toolbar**: the block palette (Feed, Mixer, Splitter, Separator, Flash drum, Heater,
-  Product), Connect, Delete, Solve (with "solve on every change" as an option), Fit to view.
+A sixth tab next to Flash. Its toolbar has three groups, one per step, left to right:
+
+```
+┌ Setup ─────────────────────────┐┌ Flowsheet ──────────────────────────────────────────────┐┌ Run ────────────┐
+│ [1 Components]  [2 Method]     ││ Feed  Mixer  Splitter  Separator  Flash  Heater  Product ││ [Solve] [Reset] │
+│  ethanol, water, +2   NRTL     ││ Connect  Delete  Fit to view                             ││ ☐ on every change│
+└────────────────────────────────┘└──────────────────────────────────────────────────────────┘└─────────────────┘
+```
+
+1. **Components.** The button opens the component list of the setup: search the databank
+   (name, formula, CAS), add or remove, reorder. Before components are chosen, the rest of the
+   toolbar is disabled and the canvas says "Start by choosing the components of the
+   simulation".
+2. **Method.** The property method for the whole flowsheet: an activity model (NRTL, UNIQUAC,
+   ideal) with its vapour model, or an equation of state (Peng–Robinson, SRK). The panel shows,
+   for the chosen components, which pairs have parameters, their tier and source, and which
+   are missing, as the Library does today, and refuses a method that cannot calculate every
+   pair (or asks the person to accept named pairs as ideal). The parameter sets per pair are
+   chosen here too.
+3. **Flowsheet.** Once the setup is complete, the block palette is enabled. Every block and
+   stream uses the setup's components and method; a feed lists exactly those components.
+
+The setup is shown as a summary in the toolbar (the components and the method). Changing it
+after blocks exist opens a confirmation that says what will happen: a removed component
+disappears from every feed; a new component starts at zero flow; a new method recalculates
+every stream. The Phase equilibrium and Flash tabs keep their own quick choices, so a
+diagram can be checked without touching the simulation; a button "Use the flowsheet's setup"
+copies the setup into them.
+
+The rest of the workspace:
+
 - **Canvas** (SVG): blocks are placed by clicking the palette and then the canvas, moved by
   dragging, and connected by dragging from an outlet port to an inlet port. Streams are drawn
   as orthogonal lines with their name; a tear stream is drawn dashed. Unconverged or
   unspecified parts are marked, with the reason on hover. Keyboard: arrows move the selection,
   Delete removes it, Tab walks through blocks and streams.
-- **Inputs panel**: with nothing selected, the flowsheet's components and model (the same
-  pickers as the Flash workspace); with a block selected, its specifications (split fractions
-  as a table, flash specification as in the Flash workspace); with a stream selected, its
-  initial guess when it is a tear stream.
+- **Inputs panel**: with nothing selected, the setup summary with links to steps 1 and 2; with
+  a block selected, its specifications (split fractions as a table, flash specification as in
+  the Flash workspace); with a stream selected, its initial guess when it is a tear stream.
 - **Results panel**: the selected block's balances and duty, or the selected stream's state;
   the full stream table (all streams as columns, as in the Flash workspace) below the canvas,
   with CSV export.
 - **Status bar**: converged in N iterations, or the error of section 3.
+
+In the file (section 4) the setup is the `components` and `thermo` of `flowsheet`:
+`"thermo": { "model": "NRTL", "vapour": "ideal", "sets": { "ethanol+water": "chemsep" } }`.
 
 Views only call the layers below (ARCHITECTURE.md); the canvas holds no thermodynamics and no
 balances.
