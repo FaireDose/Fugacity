@@ -1,6 +1,6 @@
 # 0007: Solubility and liquid-liquid equilibria
 
-- **Status:** Draft
+- **Status:** Accepted (by the lead maintainer, 2026-10-06)
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** v0.3 "Liquid-liquid and vapour-liquid-liquid equilibria"; data track D6 (liquid-liquid
