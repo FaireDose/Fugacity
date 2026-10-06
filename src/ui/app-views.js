@@ -516,26 +516,29 @@ function envelopeView(ctx) {
 
 const PHASE_COLOR = { vapour: "var(--fug-vap)", liquid: "var(--fug-liq)" };
 
-/** Save text as a file (a Blob link), or say why the page cannot. */
-function saveText(text, name, type, status) {
+/**
+ * Save text as a file (a Blob link), or say why the page cannot. `copyLabel` names the
+ * fallback button; `bom` prefixes a byte-order mark (spreadsheets then read UTF-8, as °C).
+ */
+export function saveText(text, name, type, status, { copyLabel = "Copy CSV", bom = true } = {}) {
   try {
-    const url = URL.createObjectURL(new Blob(["\uFEFF" + text], { type })); // BOM: spreadsheets read UTF-8 (°C)
+    const url = URL.createObjectURL(new Blob([(bom ? "\uFEFF" : "") + text], { type }));
     const a = h("a", { href: url, download: name, style: "display:none" });
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
-    status.textContent = `Saved ${name}. If nothing was downloaded, the page does not allow downloads: use Copy CSV.`;
-  } catch (e) { status.textContent = `This page cannot save files (${e.message}); use Copy CSV.`; }
+    status.textContent = `Saved ${name}. If nothing was downloaded, the page does not allow downloads: use ${copyLabel}.`;
+  } catch (e) { status.textContent = `This page cannot save files (${e.message}); use ${copyLabel}.`; }
 }
 
 /** Copy text to the clipboard, falling back to a selected text area the reader can copy from. */
-function copyText(text, status, box) {
+export function copyText(text, status, box, { what = "CSV", done = "CSV copied: paste it into a spreadsheet." } = {}) {
   const fallback = () => {
-    const ta = h("textarea", { class: "fa-csv-text", rows: 6, readonly: true, "aria-label": "CSV of the flash result" });
+    const ta = h("textarea", { class: "fa-csv-text", rows: 6, readonly: true, "aria-label": what });
     ta.value = text;
     box.replaceChildren(ta); ta.focus(); ta.select();
-    status.textContent = "The clipboard is not available here: the CSV is selected below, copy it with Ctrl+C (Cmd+C).";
+    status.textContent = `The clipboard is not available here: the ${what} is selected below, copy it with Ctrl+C (Cmd+C).`;
   };
-  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = "CSV copied: paste it into a spreadsheet."; }, fallback);
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = done; }, fallback);
   else fallback();
 }
 
@@ -619,7 +622,10 @@ function flashView(ctx) {
     ...(r.warnings ?? []).map(w => h("div", { class: "fug-warn" }, w)),
     h("div", { class: "fug-foot" }, spec.hint));
   extra.append(...sourcesOf(ctx, sys));
-  return { data: pairData(sys) };
+  // the stream table as a record for project files (src/ui/project.js), each row with its unit
+  const record = { columns: table.columns, rows: table.rows.map(r => ({ key: r.key, label: r.label, unit: r.unit, values: r.values })),
+    summary: meta.summary.map(([label, value, unit]) => ({ label, value, unit })), model: meta.model, spec: meta.spec, sources: meta.sources };
+  return { data: pairData(sys), record: { flash: record } };
 }
 
 // ---------------------------------------------------------------------------------------
