@@ -746,7 +746,8 @@ export function app(target, cfg = {}) {
         if (!f) return;
         f.text().then(t => open(t, f.name), fail);
       } } });
-    const paste = h("textarea", { class: "fa-csv-text", rows: 5, "aria-label": "Project text", placeholder: "…or paste the text of a project here", "data-fk": "proj-paste" });
+    const paste = h("textarea", { class: "fa-csv-text", rows: 5, "aria-label": "The text of a saved project",
+      placeholder: '{ "fugacity_project": 2, "workbench": { … } }', "data-fk": "proj-paste" });
     const doc = () => currentProject();
     const hasFlash = !!doc().results?.flash;
     const nameHint = h("p", { class: "fa-in-hint" }, `File name: ${projectFileName(state)}`);
@@ -801,13 +802,24 @@ export function app(target, cfg = {}) {
         status, box,
         h("p", { class: "fa-in-hint" }, "Save opens your browser's Save dialog where it can (choose the folder and the name); otherwise the file goes to your Downloads folder.")),
       drawerSection("Open",
-        h("p", {}, "A project file saved here. It replaces what is open now; the results are calculated again."),
+        h("p", {}, "A project file (.fugacity.json) saved with Save. It replaces what is open now; the results are calculated again."),
         h("div", { class: "fa-in-actions" },
           h("label", { class: "fa-mini", for: fileId, role: "button", tabindex: "0", "data-fk": "proj-open",
             on: { keydown: ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); file.click(); } } } }, icon("file", 15), "Open a file…"), file),
-        paste,
-        h("div", { class: "fa-in-actions" },
-          h("button", { type: "button", class: "fa-mini", "data-fk": "proj-load", on: { click: () => { if (paste.value.trim()) open(paste.value, "the pasted project"); } } }, icon("check", 15), "Open the pasted text")),
+        h("details", { class: "fa-paste" },
+          h("summary", { "data-fk": "proj-paste-toggle" }, "Paste a project's text instead (from Copy)"),
+          h("p", { class: "fa-in-hint" }, "Where a page cannot download files (some AI chats), Copy puts the project's text on the clipboard; it starts with { \"fugacity_project\": … }. Paste that text here to open the project again. This box is not for instructions or questions: to have a flowsheet built from a description, ask your AI assistant."),
+          paste,
+          h("div", { class: "fa-in-actions" },
+            h("button", { type: "button", class: "fa-mini", "data-fk": "proj-load", on: { click: () => {
+              const t = paste.value.trim();
+              if (!t) return;
+              if (!t.startsWith("{")) {
+                openStatus.replaceChildren(h("div", { class: "fug-err", role: "alert" }, "This is not a project's text. Paste the text that Copy gave you (it starts with { \"fugacity_project\": … }). To describe what you want in words, ask your AI assistant instead."));
+                return;
+              }
+              open(t, "the pasted project");
+            } } }, icon("check", 15), "Open the pasted text"))),
         openStatus),
       ...stores.map(storeSection),
       drawerSection("From code",

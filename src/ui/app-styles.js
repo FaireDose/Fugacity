@@ -354,6 +354,8 @@ export const APP_CSS = `
 .fa-frac{display:flex; align-items:center; gap:4px; font-size:12px}
 .fa-frac-name{font-size:12px; font-weight:600; margin-top:6px}
 .fa-fs-model{display:grid; gap:3px; margin:6px 0}
+.fa-paste{margin-top:8px}
+.fa-paste summary{cursor:pointer; font-size:12.5px; color:var(--fug-fg2)}
 .fa-restore{display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:12.5px; padding:8px 10px; margin:0 0 12px; border-radius:8px; background:color-mix(in srgb, var(--fug-accent) 10%, transparent)}
 .fa-store-list{list-style:none; margin:6px 0 0; padding:0; display:grid; gap:4px}
 .fa-store-list li{display:flex; align-items:center; gap:8px; font-size:12.5px}
