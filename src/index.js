@@ -26,6 +26,7 @@ import { eosBubbleP, eosBubbleT, eosDewP, eosDewT } from "./equilibrium/phi-phi.
 import { cubicEos } from "./thermo/eos/cubic.js";
 import { henry, henryInfo, gasSolubility, HENRY_GASES } from "./thermo/henry.js";
 import { library } from "./thermo/library.js";
+import { stream, componentFlows } from "./stream/stream.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -41,5 +42,6 @@ export {
   henry, henryInfo, gasSolubility, HENRY_GASES,
   steam, steamSat,
   library,
+  stream, componentFlows,
   FugacityError, ERROR_CODES, isFugacityError,
 };
