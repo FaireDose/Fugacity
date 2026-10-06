@@ -214,7 +214,7 @@ export function flowsheetInputs({ state, set, ui, uid, inputsSection }) {
       open.length ? h("button", { type: "button", class: "fa-mini", "data-fk": `fs-feed-${b.id}`, on: { click: () => {
         const r = addFeedTo(fs, open[0]); f.sel = { kind: "block", id: r.id }; put(r.fs);
       } } }, icon("feed", 14), "Add a feed to this inlet") : null,
-      h("p", { class: "fa-in-hint" }, "To connect another block's outlet, drag the end of its stream onto this block, or select the stream.")));
+      h("p", { class: "fa-in-hint" }, "To connect: drag from an outlet dot (●, where a stream leaves a block) to an inlet ring (○ on the left of a block). The rings that can take the stream light up while you drag. A recycle is the same: drag a later block's outlet back to an earlier block, usually a mixer.")));
   }
   secs.push(inputsSection("Block", h("div", { class: "fa-in-actions" }, back,
     h("button", { type: "button", class: "fa-mini", "data-fk": `fs-del-${b.id}`, on: { click: () => { f.sel = null; put(deleteBlock(fs, b.id)); } } }, icon("trash", 14), `Delete ${b.id}`))));
@@ -257,7 +257,7 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
   const units = fs.blocks.filter(b => b.type !== "product");
   secs.push(inputsSection("3. Flowsheet",
     !fs.components.length ? h("p", { class: "fa-in-hint" }, "Choose the components first; then place blocks from the toolbar.")
-      : !units.length ? h("p", { class: "fa-in-hint" }, "Place a block from the toolbar (for example a Flash drum), then add a feed to it. Its outlets leave the flowsheet until you connect them.")
+      : !units.length ? h("p", { class: "fa-in-hint" }, "Place a block from the toolbar (for example a Flash drum), then add a feed to it. Its outlets leave the flowsheet until you connect them: drag from an outlet dot (●) to another block's inlet ring (○).")
         : h("div", {}, st ? h("div", { class: `fa-dof ${st.ready ? "is-ok" : "is-bad"}`, role: "status" }, st.message) : null,
           h("ul", { class: "fa-dof-list" }, ...(st ? [...st.structure.map(p => h("li", {}, p.message)),
             ...Object.entries(st.blocks).filter(([, b]) => !b.ok).map(([id, b]) => h("li", {}, h("button", { type: "button", class: "fa-link", "data-fk": `fs-go-${id}`,
@@ -396,6 +396,15 @@ export function flowsheetView(ctx) {
         transform: `translate(${b.x ?? 0} ${b.y ?? 0})`, "data-block": b.id, tabindex: 0, role: "button",
         "aria-label": `${LABEL[b.type]} ${b.id}${sol.status?.blocks?.[b.id]?.ok === false ? ", not fully specified" : ""}` });
       g.append(shape(b.type, w, hh));
+      // inlet ports: a ring on the left; an open one takes another stream
+      for (const ip of unitType(b.type).inlets) {
+        const key = `${b.id}.${ip.port}`, n = doc.streams.filter(x => x.to === key).length;
+        if (n >= ip.max) continue;   // full: nothing more to drop here
+        // empty: at the middle; with streams in (a mixer, a drum): just below the last one
+        const ring = svgEl("circle", { cx: -w / 2, cy: n ? ((n - 1) / 2) * 16 + 16 : 0, r: 5, class: "fs-port-in is-open", "data-inlet": key });
+        const tt = svgEl("title", {}); tt.textContent = `Inlet of ${b.id}${n ? ` (${n} stream${n > 1 ? "s" : ""} in)` : ""}${n < ip.max ? ": drop a stream here" : ": full"}`; ring.append(tt);
+        g.append(ring);
+      }
       // the drum's liquid leaves at the bottom: its name goes on the right
       const t = b.type === "flash" ? svgEl("text", { x: w / 2 + 6, y: 4, class: "fs-name", "text-anchor": "start" })
         : svgEl("text", { y: hh / 2 + 15, class: "fs-name", "text-anchor": "middle" });
@@ -415,6 +424,21 @@ export function flowsheetView(ctx) {
         g.append(ln, qt);
       }
       layer.append(g);
+    }
+    // outlet ports (drawn last, on top of the blocks): a dot where each stream leaves a unit; drag it onto an inlet to connect
+    const OUT_LABEL = { vapour: "vapour", liquid: "liquid", liquid2: "liquid 2" };
+    for (const st of doc.streams) {
+      const [fb, port] = st.from.split(".");
+      const src = doc.blocks.find(b => b.id === fb);
+      const a = P.get(`${st.id}@${fb}`);
+      if (!a || !src || src.type === "product") continue;
+      const dot = svgEl("circle", { cx: a.x, cy: a.y, r: 4.5, class: "fs-port-out", "data-handle": st.id });
+      const tt = svgEl("title", {}); tt.textContent = `${src.id} ${OUT_LABEL[port] ?? "outlet"} (stream ${st.id}): drag onto an inlet to connect it`; dot.append(tt);
+      layer.append(dot);
+      if (OUT_LABEL[port]) {
+        const lb = svgEl("text", { x: a.x + (a.dir[0] ? 4 : 7), y: a.y + (a.dir[1] < 0 ? -6 : a.dir[1] > 0 ? 13 : -6), class: "fs-port-label" });
+        lb.textContent = OUT_LABEL[port]; layer.append(lb);
+      }
     }
   };
   draw(fs);
@@ -437,6 +461,10 @@ export function flowsheetView(ctx) {
     if (drag.kind === "move") { drag.doc = moveBlock(fs, drag.id, drag.x0 + dx, drag.y0 + dy); draw(drag.doc); }
     else {
       draw(fs);
+      svg.classList.add("is-connecting");
+      const src = fs.streams.find(x => x.id === drag.sid)?.from.split(".")[0];
+      const valid = new Set(openInlets(fs, src));
+      for (const el of svg.querySelectorAll("[data-inlet]")) el.classList.toggle("is-target", valid.has(el.dataset.inlet));
       const ln = svgEl("path", { d: `M${drag.start.x} ${drag.start.y} L${p.x} ${p.y}`, class: "fs-drag", "marker-end": `url(#${uidM}-a)` });
       layer.append(ln);
     }
@@ -448,12 +476,19 @@ export function flowsheetView(ctx) {
       if (d.moved) set({ flowsheet: d.doc }); else select("block", d.id);
       return;
     }
+    svg.classList.remove("is-connecting");
     if (!d.moved) { select("stream", d.sid); return; }
-    const under = document.elementFromPoint(ev.clientX, ev.clientY)?.closest?.("[data-block]");
+    const hit = document.elementFromPoint(ev.clientX, ev.clientY);
+    const valid = openInlets(fs, fs.streams.find(s => s.id === d.sid)?.from.split(".")[0]);
+    const ring = hit?.closest?.("[data-inlet]");
+    if (ring && valid.includes(ring.dataset.inlet)) { f.sel = { kind: "stream", id: d.sid }; set({ flowsheet: connect(fs, d.sid, ring.dataset.inlet) }); return; }
+    const under = hit?.closest?.("[data-block]");
     if (under) {
-      const inlet = openInlets(fs, fs.streams.find(s => s.id === d.sid)?.from.split(".")[0]).find(x => x.startsWith(`${under.dataset.block}.`));
+      const inlet = valid.find(x => x.startsWith(`${under.dataset.block}.`));
       if (inlet) { f.sel = { kind: "stream", id: d.sid }; set({ flowsheet: connect(fs, d.sid, inlet) }); return; }
-      f.note = `${under.dataset.block} takes no more streams there.`;
+      f.note = under.dataset.block === fs.streams.find(s => s.id === d.sid)?.from.split(".")[0]
+        ? "A stream cannot go back into the block it leaves; send it through another block (a recycle goes back to an earlier block, for example a mixer)."
+        : `${under.dataset.block} takes no more streams: its inlet is full (a mixer joins several streams).`;
       set({});
       return;
     }

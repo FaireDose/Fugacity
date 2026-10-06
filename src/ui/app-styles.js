@@ -339,10 +339,17 @@ export const APP_CSS = `
 .fs-label{font-size:10.5px; fill:var(--fug-fg2, #555); paint-order:stroke; stroke:var(--fug-halo); stroke-width:3px}
 .fs-handle{fill:var(--fug-bg); stroke:var(--fug-accent); stroke-width:1.6; cursor:crosshair}
 .fs-handle:hover{fill:var(--fug-accent)}
+.fs-port-in{fill:var(--fug-bg); stroke:var(--fug-fg2); stroke-width:1.4}
+.fs-port-in.is-open{stroke:var(--fug-accent)}
+.fs-canvas.is-connecting .fs-port-in{opacity:.35}
+.fs-canvas.is-connecting .fs-port-in.is-target{opacity:1; fill:var(--fug-accent); stroke:var(--fug-accent); stroke-width:7; stroke-opacity:.25}
+.fs-port-out{fill:var(--fug-accent); stroke:var(--fug-bg); stroke-width:1.2; cursor:crosshair}
+.fs-port-out:hover{stroke:var(--fug-accent); stroke-width:6; stroke-opacity:.3}
+.fs-port-label{font-size:9.5px; fill:var(--fug-muted); pointer-events:none}
 .fs-q{fill:none; stroke:#c0392b; stroke-width:1.4; stroke-dasharray:4 3}
 .fs-qarrow{fill:#c0392b}
 .fs-qlabel{font-size:10px; fill:#c0392b; paint-order:stroke; stroke:var(--fug-halo); stroke-width:3px}
-.fs-drag{fill:none; stroke:var(--fug-accent); stroke-width:1.6; stroke-dasharray:4 3}
+.fs-drag{pointer-events:none; fill:none; stroke:var(--fug-accent); stroke-width:1.6; stroke-dasharray:4 3}
 .fs-empty-hint{position:absolute; inset:auto 0 45% 0; text-align:center; color:var(--fug-fg2); font-size:13px; pointer-events:none}
 .fs-tables h3{font-size:13px; margin:14px 0 6px}
 .fa-dof{font-size:12px; border-radius:6px; padding:6px 8px; margin:6px 0; display:flex; gap:6px; align-items:flex-start}
