@@ -28,8 +28,8 @@ Peng–Robinson does not break the flash drum.
 | 1 | Property package | Activity coefficients, fugacities, K-values, enthalpy, density at any T, P, composition | `src/thermo/` | NRTL, UNIQUAC, ideal; acid dimerization; Peng–Robinson and SRK; pure-component properties and enthalpy (`pure()`); IAPWS-IF97 and IAPWS transport for water; Henry's law; vapour model choice (ideal gas, PR, SRK) for activity models; mixture enthalpy, excess enthalpy and `phase()` for every model |
 | 2 | Equilibrium | Bubble and dew points, flash, azeotropes, phase stability, residue curves | `src/equilibrium/` | Bubble and dew T/P for every model, azeotropes, spinodal check, residue curves; tangent-plane stability test for PR/SRK; flash (T-P, P-H, P-VF, T-VF) with heat duty, with two liquids and vapour + two liquids for NRTL and UNIQUAC; errors with codes. **Two liquids with PR/SRK missing** |
 | 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | `stream()`: a flash of component flows (kmol/h or kg/h) at T-P, P-H (enthalpy flow), P-VF or T-VF, with phase flows and enthalpy flow in kW (proposal 0006, step 1) |
-| 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | Not started |
-| 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |
+| 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | `registerUnit`, `runUnit` with port, specification and balance checks; feed, mixer, splitter, component separator, flash drum, heater/cooler, product (proposal 0006, step 2) |
+| 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | `solveFlowsheet`: structure checks, loops (Tarjan), tear streams (chosen or marked), direct substitution then bounded Wegstein, overall balances; checked against an equation-oriented Python solution (proposal 0006, step 3). File format: step 4 |
 | 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench (`app`) with task workspaces (phase equilibrium, flash, gas solubility, properties, steam), per-workspace inputs and Library, Sources and Settings panels; one model choice for every diagram (activity model with a vapour model, or PR/SRK); T-x-y, P-x-y, ternary, azeotrope and envelope views in mole fraction or wt %; flash stream table with CSV export; property explorer; Henry and steam views |
 | 7 | Design studio | Cost engineering (sizing, capital and operating cost, cost of product) and agent-run studies that compare process routes from the literature; every result reproducible and sourced | `src/design/` | Not started; roadmap tracks E and G |
 
@@ -128,30 +128,29 @@ proposal 0006).
 
 ## Layer 4: unit operations
 
-Every unit is one module with the same shape, so contributors can add units
-independently:
+Every unit has the same shape, so contributors can add units independently
+(`src/units/units.js`):
 
 ```js
 Fugacity.registerUnit({
-  type: "flash",
-  inlets: ["feed"],
-  outlets: ["vapour", "liquid"],
-  specs: {
-    P_kPa: { required: true },
-    Q_kW:  { default: 0 }
-  },
-  solve({ inlets, specs, pkg }) {
-    // material and energy balances + equilibrium
-    return { outlets: { vapour, liquid }, duties: { Q_kW }, report: { ... } };
+  type: "heater", label: "Heater / cooler",
+  inlets: [{ port: "in" }],
+  outlets: [{ port: "out" }],                 // { port, min, max }: several streams on one port when max > 1
+  checkSpec(spec, { sys, outletCount }) { /* normalize, or throw BAD_INPUT naming the problem */ },
+  solve({ sys, inlets, spec, outletCount }) {
+    // material and energy balances + equilibrium (streams from Fugacity.stream)
+    return { outlets: { out }, duty_kW, notes };
   }
 });
+Fugacity.runUnit("heater", { sys, inlets: { in: s }, spec: { T_K: 350 } });
+// { outlets, duty_kW, balance: { material, energy_kW }, notes }
 ```
 
 Rules for a unit: it closes its material balance to 1e-9 relative, reports its energy
 balance, validates its specs with clear messages, and ships with a test against a
 published example or an independent calculation.
 
-First units (v0.4): mixer, splitter, heater/cooler, pump, valve, flash drum.
+First units: feed, mixer, splitter, component separator, flash drum, heater/cooler, product (proposal 0006); pump and valve next.
 Then shortcut and rigorous distillation (v0.5), then reactors (conversion, equilibrium,
 CSTR, plug flow) with a common description of reactions, heat exchangers and compressors
 (v0.6), growing towards models of all the common unit operations.
@@ -185,7 +184,9 @@ engine reads every older format version.
 ### Solver
 
 Sequential modular, as in most commercial simulators: order the units, choose tear
-streams to break recycles, and converge them with Wegstein acceleration. Design
+streams to break recycles, and converge them with Wegstein acceleration
+(`Fugacity.solveFlowsheet(sys, { blocks, streams, solver })`, `src/flowsheet/flowsheet.js`; a
+loop that does not converge throws NO_CONVERGENCE naming the loop and its tear streams). Design
 specifications ("adjust the reflux until the distillate purity is 99 %") are an outer
 loop. An equation-oriented mode can come later.
 
