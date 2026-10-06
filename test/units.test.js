@@ -137,7 +137,7 @@ test("ports and specifications are checked", () => {
   const other = stream(system({ components: ["methanol", "water"], model: "NRTL" }), { flow_kmol_h: { methanol: 1 }, T_K: 300, P_kPa: 101.325 });
   for (const [type, args, re] of [
     ["flash", { inlets: {}, spec: { T_K: 350, P_kPa: 101.325 } }, /needs a stream/],
-    ["heater", { inlets: { in: [s, s] }, spec: { T_K: 350 } }, /takes one stream/],
+    ["product", { inlets: { in: [s, s] } }, /takes one stream/],
     ["flash", { inlets: { in: other }, spec: { T_K: 350, P_kPa: 101.325 } }, /does not belong to this system/],
     ["flash", { inlets: { feed: s }, spec: { T_K: 350, P_kPa: 101.325 } }, /no inlet port "feed"/],
     ["flash", { inlets: { in: s }, spec: { T_K: 350 } }, /give T_K and P_kPa/],
@@ -196,5 +196,27 @@ test("degrees of freedom: what each block needs, has, misses or has too much", a
     assert.equal(st.needed, needed, `${tag}: needed`);
     assert.equal(st.given, given, `${tag}: given`);
     if (status !== "ok") assert.ok(st.message.length > 10, `${tag}: says why`);
+  }
+});
+
+test("splitter, separator and heater take several inlets: the same as a mixer in front", () => {
+  const sys = system({ components: ["ethanol", "water"], model: "NRTL" });
+  const a = stream(sys, { flow_kmol_h: { ethanol: 30, water: 20 }, T_K: 300, P_kPa: 120 });
+  const b = stream(sys, { flow_kmol_h: { ethanol: 5, water: 45 }, T_K: 350, P_kPa: 101.325 });
+  const m = runUnit("mixer", { sys, inlets: { in: [a, b] } }).outlets.out;
+  const cases = [
+    ["separator", { fractions: { ethanol: [0.9, "rest"], water: [0.2, "rest"] } }],
+    ["splitter", { fractions: [0.3, "rest"] }],
+    ["heater", { T_K: 360 }],
+  ];
+  for (const [type, spec] of cases) {
+    const two = runUnit(type, { sys, inlets: { in: [a, b] }, spec }), one = runUnit(type, { sys, inlets: { in: m }, spec });
+    const outs = r => Object.values(r.outlets).flat();
+    outs(two).forEach((o, k) => {
+      o.flows.forEach((v, i) => close(v, outs(one)[k].flows[i], 1e-9, `${type} outlet ${k} flow ${i}`));
+      close(o.T_K, outs(one)[k].T_K, 1e-6, `${type} outlet ${k} T`);
+    });
+    close(two.duty_kW, one.duty_kW, 1e-6, `${type} duty`);
+    close(two.balance.energy_kW, 0, 1e-6, `${type} energy balance`);
   }
 });

@@ -101,3 +101,22 @@ test("deleting blocks, outlets and components keeps the flowsheet consistent", (
   assert.match(c.note, /Removed ethanol/);
   assert.equal(moveBlock(fs, "E1", 10.4, 20.6).blocks.find(b => b.id === "E1").x, 10);
 });
+
+test("a recycle back into a separator (feed → separator → drum → back to the separator) converges", () => {
+  let fs = base();
+  ({ fs } = addBlock(fs, "separator"));
+  ({ fs } = addFeedTo(fs, "X1.in"));
+  ({ fs } = addBlock(fs, "flash"));
+  const [top] = streamsOf(fs, "X1").out;
+  fs = connect(fs, top, "V1.in");
+  const liquid = streamsOf(fs, "V1").liquid[0];
+  assert.ok(openInlets(fs).includes("X1.in"), "the separator takes another inlet");
+  fs = connect(fs, liquid, "X1.in");
+  structureOk(fs);
+  fs = setSpec(fs, "F1", { flow_kmol_h: { ethanol: 30, water: 70 }, T_K: 300, P_kPa: 101.325 });
+  fs = setSpec(fs, "X1", { fractions: { ethanol: [0.9, "rest"], water: [0.3, "rest"] } });
+  fs = setSpec(fs, "V1", { T_K: 355, P_kPa: 101.325 });
+  const r = runFlowsheet(fs);
+  assert.equal(r.loops.length, 1);
+  for (const v of Object.values(r.balance.material_kmol_h)) assert.ok(Math.abs(v) < 1e-6, `balance ${v}`);
+});
