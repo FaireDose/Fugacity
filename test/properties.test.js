@@ -40,7 +40,7 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 49);
+  assert.equal(listComponents().length, 51);
   assert.equal(GASES.length, 16);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
@@ -161,8 +161,9 @@ test("props() returns liquid and vapour properties for every component at a typi
     // a property with an explicit "no open data" marker (propylene glycol: transport properties) is null, with
     // a note that says so; every other one has a value
     const none = new Set(Object.entries(components[id].properties).filter(([, r]) => r.available === false).map(([k]) => k));
+    // the enthalpy needs the ideal-gas heat capacity: without it (2-methoxyethanol, no open data) h is null too
     const recordOf_ = { rho_kg_m3: "liquidDensity", cp_J_molK: "liquidHeatCapacity", dHvap_J_mol: "heatOfVaporization",
-      mu_Pa_s: "liquidViscosity", k_W_mK: "liquidThermalConductivity" };
+      mu_Pa_s: "liquidViscosity", k_W_mK: "liquidThermalConductivity", h_J_mol: "idealGasHeatCapacity" };
     for (const k of ["rho_kg_m3", "cp_J_molK", "dHvap_J_mol", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       if (none.has(recordOf_[k])) { assert.equal(L[k], null, `${name} liquid ${k}`); assert.match(L.notes.join(" "), /No open data/); continue; }
       assert.ok(Number.isFinite(L[k]), `${name} liquid ${k}: ${L.notes.join(" ")}`);
@@ -170,7 +171,8 @@ test("props() returns liquid and vapour properties for every component at a typi
     // vapour: 10 K above the normal boiling point at 1 kPa
     const V = Tmid ? p.props(Tmid, p.psat(Tmid) / 100) : p.props(p.Tb_K + 10, 1);
     assert.equal(V.phase, "vapour", name);
-    const recordOfV = { mu_Pa_s: "vapourViscosity", k_W_mK: "vapourThermalConductivity" };
+    const recordOfV = { cp_J_molK: "idealGasHeatCapacity", mu_Pa_s: "vapourViscosity", k_W_mK: "vapourThermalConductivity",
+      h_J_mol: "idealGasHeatCapacity" };
     for (const k of ["cp_J_molK", "mu_Pa_s", "k_W_mK", ...hKeys]) {
       if (none.has(recordOfV[k])) { assert.equal(V[k], null, `${name} vapour ${k}`); continue; }
       assert.ok(Number.isFinite(V[k]), `${name} vapour ${k}: ${V.notes.join(" ")}`);

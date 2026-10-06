@@ -384,6 +384,17 @@
         "validation/data/ethanol_water_HE_nagamachi2006.json"
       ]
     },
+    "nist-thermoml-archive": {
+      "title": "NIST TRC ThermoML Archive (pure-component data sets of the cited articles)",
+      "authors": "NIST Thermodynamics Research Center",
+      "kind": "databank",
+      "url": "https://trc.nist.gov/ThermoML/",
+      "access": "Open: the archive is public, NIST open license (the articles themselves may be subscription-only)",
+      "note": "Values cited per article in each record and in validation/data/pure/measured/thermoml_<id>.json.",
+      "files": [
+        "validation/data/pure/measured/"
+      ]
+    },
     "nist-webbook": {
       "title": "NIST Chemistry WebBook, NIST Standard Reference Database 69",
       "kind": "databank",

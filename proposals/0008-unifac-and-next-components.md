@@ -129,9 +129,28 @@ Result: **41 of 46** have every record the pipeline needs (8 of them also have a
 reference equation of state, which comes first in the source chain). Notes:
 
 - **Not found in either source:** dichloromethane, 2-methoxyethanol, urea, phthalic anhydride
-  and caprolactam. They need a separate search, in the order of rule 1 (NIST Chemistry WebBook,
-  ThermoML Archive, open articles, free books). Until a source is found they stay out, with
-  "no open data" and the places searched.
+  and caprolactam. Searched next, in the order of rule 1 (2026-10-06): the NIST Chemistry WebBook
+  pages of each and the NIST TRC ThermoML Archive (full-text search, every record opened; pure
+  data sets and the pure end points of binary sets):
+  - **dichloromethane** and **2-methoxyethanol**: added, every record fitted to the measured
+    values (`validation/python/measured_components.py`, report in
+    [docs/PURE_DATA_MEASURED.md](../docs/PURE_DATA_MEASURED.md)). The open data are thinner
+    than ChemSep's correlations. Each record covers only the measured temperatures. Properties
+    without open measurements at the target accuracy are marked "no open data": for
+    dichloromethane, liquid heat capacity (values near 298 K only), the transport properties and
+    the surface tension; for 2-methoxyethanol, the ideal-gas heat capacity (so no enthalpy), the
+    thermal conductivities, the vapour viscosity and the surface tension (measured, but with
+    stated uncertainties above 1 %). Neither has UNIQUAC r and q (Part A).
+  - **caprolactam**: a measured critical point (Nikitin et al., Fluid Phase Equilib. 2018,
+    801 ± 8 K and 4.66 ± 0.14 MPa), liquid vapour pressures 343–372 K, liquid heat capacities
+    323–368 K, the triple point and the enthalpy of fusion (ThermoML), and enthalpies of
+    vaporization 360–560 K (Steele et al. 2002, WebBook). No liquid densities. It can follow
+    as a component once the solid-liquid work of proposal 0007 needs it.
+  - **urea** and **phthalic anhydride**: melting temperatures and enthalpies of fusion (WebBook,
+    ThermoML), sublimation pressures (urea) and one vapour-pressure equation (phthalic
+    anhydride, Stull 1947). No measured critical point, so not a vapour-liquid component
+    (urea decomposes before it boils). Their melting data are what proposal 0007 (step 4,
+    solid solubility) needs.
 - **New source:** `chemsep2.xml` is a second file of the same databank, with the same licence. It
   is used for N-methyl-2-pyrrolidone, formic acid and hydrogen peroxide. It needs its own entry in
   `src/data/sources.json` and `src/data/LICENSES.md` when the first of these is added.

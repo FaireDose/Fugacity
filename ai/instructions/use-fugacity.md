@@ -131,7 +131,7 @@ delete one (promises are fine). Only do this with storage the chat platform real
 otherwise leave it out and tell me to use File > Save or Copy.
 
 **Rules**
-- Version 0.3.0 holds 49 components: `Fugacity.listComponents()` lists them (water,
+- Version 0.3.0 holds 51 components: `Fugacity.listComponents()` lists them (water,
   alcohols, glycols, ketones, esters, aromatics, alkanes, light gases and more). Not every
   pair has parameters; the page names missing pairs. For other chemicals, say they are not
   in the databank yet and point me to

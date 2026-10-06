@@ -12672,6 +12672,912 @@
           ]
         }
       }
+    },
+    "dichloromethane": {
+      "name": "Dichloromethane",
+      "formula": "CH2Cl2",
+      "cas": "75-09-2",
+      "aliases": [
+        "methylene chloride",
+        "methylene dichloride",
+        "dcm"
+      ],
+      "MW": 84.93258,
+      "Tc_K": 508.0,
+      "Pc_Pa": 6355000.0,
+      "Tb_K": 313.1185,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 38.64661348,
+        "B": -4234.857869,
+        "C": -2.365930783,
+        "D": 3.157851682e-34,
+        "E": 11.99,
+        "Tmin_K": 233.0,
+        "Tmax_K": 508.0,
+        "tier": "fitted",
+        "source": "Measured vapour pressures (NIST TRC ThermoML Archive and NIST Chemistry WebBook): Vrbka and Dohnal, Fluid Phase Equilib. 411 (2016) 59-65, doi:10.1016/j.fluid.2015.11.037; Horstmann et al., J. Chem. Eng. Data 62 (2017) 2776-2786, doi:10.1021/acs.jced.7b00119; Pathare et al., J. Chem. Eng. Data 49 (2004) 510-513, doi:10.1021/je034153o; Ganeff and Jungers, 1948 (Antoine equation, NIST WebBook); Garcia-Sanchez, Romero-Martinez, et al., 1989 (critical point, NIST WebBook). 26 measured values (16 from the ThermoML Archive) and the critical point, 233.00-508.00 K, max deviation 0.79 %. Between 333.15 K and the critical point the curve is held only by the critical point.",
+        "source_ids": [
+          "nist-thermoml-archive",
+          "nist-webbook"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Mueller and Ignatowski, 1960, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4",
+            "T_range_K": [
+              303.14,
+              313.14
+            ],
+            "max_deviation_percent": -0.71
+          }
+        ],
+        "excluded": [
+          {
+            "T_K": 301.8,
+            "value": 67400.0,
+            "reference": "Molino Cornejo 2016",
+            "deviation_percent": -1.24,
+            "why": "stated uncertainty 4 % is above the 1 % target"
+          },
+          {
+            "T_K": 296.8,
+            "value": 55900.0,
+            "reference": "Molino Cornejo 2016",
+            "deviation_percent": -2.21,
+            "why": "stated uncertainty 4.1 % is above the 1 % target"
+          },
+          {
+            "T_K": 291.9,
+            "value": 45700.0,
+            "reference": "Molino Cornejo 2016",
+            "deviation_percent": -2.08,
+            "why": "stated uncertainty 4.2 % is above the 1 % target"
+          },
+          {
+            "T_K": 287.0,
+            "value": 37100.0,
+            "reference": "Molino Cornejo 2016",
+            "deviation_percent": -2.0,
+            "why": "stated uncertainty 4 % is above the 1 % target"
+          }
+        ]
+      },
+      "uniquac_missing": {
+        "searched": [
+          "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+          "thermo and chemicals libraries (no UNIQUAC r and q tables)"
+        ],
+        "note": "no open data: UNIQUAC r and q could be computed from UNIFAC group volumes and areas, but the licence of those group tables is the open question of roadmap A3 (proposal 0008, Part A, on hold); until it is settled the component has no activity-model data."
+      },
+      "omega": 0.226009,
+      "constants_source": "Tc and Pc: Garcia-Sanchez, Romero-Martinez, et al., 1989, NIST Chemistry WebBook (SRD 69), phase change data, https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4. MW, formula and CAS: chemicals library (MIT). Measured data only: not a CoolProp 8.0.0 fluid and not in the ChemSep databank (proposal 0008, Part B). Tb: where the vapour-pressure record reaches 101.325 kPa (313.118 K).",
+      "constants_source_ids": [
+        "nist-webbook"
+      ],
+      "omega_source": "From its definition, -log10(Psat(0.7 Tc)/Pc) - 1, with the vapour-pressure record (measured values of the NIST TRC ThermoML Archive and the NIST Chemistry WebBook; Psat at 355.60 K between the last measured value at 333.15 K and the critical point, so ω is less certain than the measured values).",
+      "omega_source_ids": [
+        "nist-thermoml-archive",
+        "nist-webbook"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 531.6599695,
+            "B": 0.4965044839,
+            "C": 508.0,
+            "D": 1.382368982
+          },
+          "units": "kg/m3",
+          "Tmin_K": 278.15,
+          "Tmax_K": 308.15,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured densities of the liquid at 0.1 MPa (NIST TRC ThermoML Archive)",
+            "reference": "Su and Wang, J. Chem. Thermodyn. 41 (2009) 315-322, doi:10.1016/j.jct.2008.08.013; Sun et al., J. Chem. Thermodyn. 41 (2009) 1154-1161, doi:10.1016/j.jct.2009.05.003; Gonzalez et al., J. Chem. Thermodyn. 47 (2012) 300-311, doi:10.1016/j.jct.2011.11.007; Zhang, J. Chem. Eng. Data 48 (2003) 52-55, doi:10.1021/je020067x; Wang et al., J. Chem. Eng. Data 51 (2006) 1686-1689, doi:10.1021/je060138i; Lehmann et al., J. Chem. Eng. Data 55 (2010) 4068-4074, doi:10.1021/je1002237; Guo and Wang, J. Chem. Eng. Data 55 (2010) 4709-4720, doi:10.1021/je100341q; Shekaari et al., J. Chem. Eng. Data 55 (2010) 5927-5931, doi:10.1021/je100369a; Carrera et al., J. Chem. Eng. Data 55 (2010) 609-615, doi:10.1021/je900502s",
+            "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not",
+            "fit": "26 measured values, 278.15-308.15 K, max deviation 0.32 %",
+            "notes": "DIPPR 105 with C fixed at the critical temperature 508.00 K (Garcia-Sanchez, Romero-Martinez, et al., 1989, NIST WebBook).",
+            "excluded": [
+              {
+                "T_K": 293.15,
+                "value": 1489.0,
+                "reference": "Sunder 2003",
+                "deviation_percent": -11.01,
+                "why": "stated uncertainty 6.7 % is above the 1 % target"
+              }
+            ]
+          },
+          "source_ids": [
+            "nist-thermoml-archive"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 41.19519638,
+            "B": 64.72004659,
+            "C": 724.6390069,
+            "D": -22.95217739,
+            "E": 866.4495356
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 298.0,
+          "Tmax_K": 1200.0,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=1",
+            "access": "free to read (NIST SRD 69)",
+            "reference": "Chase, 1998 (NIST-JANAF Thermochemical Tables, 4th ed., J. Phys. Chem. Ref. Data Monograph 9), Shomate equation as given in the NIST Chemistry WebBook (SRD 69); Data last reviewed in December, 1968",
+            "fit": "200 points sampled from the Shomate equation, 298.00-1200.00 K, max deviation 0.12 %"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ],
+          "note": "no open data over a temperature range: 292.50 K: 100.5 (Perlick, 1937 (NIST WebBook, DH)); 292.50 K: 100.8 (Perlick, 1937, 2 (NIST WebBook, DH)); 298.00 K: 129.3 (Kurbatov, 1948 (NIST WebBook, DH)); 298.00 K: 100 (Riedel, 1941 (NIST WebBook, DH)); 298.10 K: 100 (Riedel, 1940 (NIST WebBook, DH)); 298.15 K: 97.97 (Tjahjono 2008); 298.15 K: 95.61 (Tjahjono 2008); 298.15 K: 102.3 (Moseeva, Rabinovich, et al., 1978 (NIST WebBook, DH)); 303.20 K: 105.5 (Harrison and Moelwyn-Hughes, 1957 (NIST WebBook, DH))"
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 42039.87207,
+            "B": 0.4222256661
+          },
+          "units": "J/mol",
+          "Tmin_K": 298.15,
+          "Tmax_K": 313.0,
+          "Tc_K": 508.0,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured enthalpies of vaporization (NIST Chemistry WebBook; calorimetric and critically evaluated values)",
+            "reference": "Majer and Svoboda, 1985 (compilation, NIST WebBook); Majer and Svoboda, 1985 (ΔvapH° at 298.15 K, compilation, NIST WebBook); Manion, 2002 (ΔvapH° at 298.15 K, method Review, NIST WebBook); Majer, Sváb, et al., 1980 (ΔvapH° at 298.15 K, method C, NIST WebBook)",
+            "access": "free to read (NIST SRD 69) (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "fit": "4 measured values, 298.15-313.00 K, max deviation 0.50 %",
+            "notes": "DIPPR 106 with the critical temperature 508.00 K. Values derived from vapour pressures, compared with the record (not fitted): Ganeff and Jungers, 2010 at 248 K: +4.9 %; Stephenson and Malanowski, 1987 at 326 K: -6.0 %; Boublík and Aim, 1972 at 279 K: -0.9 %; Mueller and Ignatowski, 1960 at 308 K: -2.9 %.",
+            "excluded": [
+              {
+                "T_K": 298.15,
+                "value": 30600.0,
+                "reference": "An and Hu, 1989 (ΔvapH° at 298.15 K, method C, NIST WebBook)",
+                "deviation_percent": -5.41,
+                "why": "deviates most from a robust fit of the others"
+              }
+            ]
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "liquidViscosity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ],
+          "note": "no open data over a temperature range: 303.15 K: 0.0003929 (Zhang 2003)"
+        },
+        "vapourViscosity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ]
+        },
+        "surfaceTension": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
+          ]
+        }
+      }
+    },
+    "2-methoxyethanol": {
+      "name": "2-Methoxyethanol",
+      "formula": "C3H8O2",
+      "cas": "109-86-4",
+      "aliases": [
+        "methyl cellosolve",
+        "ethylene glycol monomethyl ether",
+        "egme",
+        "methoxyethanol"
+      ],
+      "MW": 76.09442,
+      "Tc_K": 597.6,
+      "Pc_Pa": 5285000.0,
+      "Tb_K": 397.6014,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 60.10276337,
+        "B": -6974.929832,
+        "C": -5.185170377,
+        "D": 9.667421418e-35,
+        "E": 11.99,
+        "Tmin_K": 329.3,
+        "Tmax_K": 597.6,
+        "tier": "fitted",
+        "source": "Measured vapour pressures (NIST TRC ThermoML Archive and NIST Chemistry WebBook): Lladosa et al., Fluid Phase Equilib. 262 (2007) 271-279, doi:10.1016/j.fluid.2007.09.014; Bejarano et al., J. Chem. Thermodyn. 53 (2012) 114-118, doi:10.1016/j.jct.2012.04.029; Jiang et al., J. Chem. Eng. Data 61 (2016) 336-341, doi:10.1021/acs.jced.5b00582; Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512, doi:10.1021/je400791n; Marrufo et al., J. Chem. Eng. Data 55 (2010) 62-68, doi:10.1021/je900259b; Pick, Fried, et al., 1956, 2 (Antoine equation, NIST WebBook); Wilson, Wilson, et al., 1996 (critical point, NIST WebBook). 83 measured values (73 from the ThermoML Archive) and the critical point, 329.30-597.60 K, max deviation 0.95 %. Between 416.60 K and the critical point the curve is held only by the critical point.",
+        "source_ids": [
+          "nist-thermoml-archive",
+          "nist-webbook"
+        ],
+        "excluded": [
+          {
+            "T_K": 336.18,
+            "value": 9930.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -1.34,
+            "why": "stated uncertainty 2 % is above the 1 % target"
+          },
+          {
+            "T_K": 340.22,
+            "value": 11930.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -1.24,
+            "why": "stated uncertainty 1.7 % is above the 1 % target"
+          },
+          {
+            "T_K": 343.74,
+            "value": 13910.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -0.94,
+            "why": "stated uncertainty 1.4 % is above the 1 % target"
+          },
+          {
+            "T_K": 346.79,
+            "value": 15850.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -0.73,
+            "why": "stated uncertainty 1.3 % is above the 1 % target"
+          },
+          {
+            "T_K": 349.63,
+            "value": 17880.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -0.67,
+            "why": "stated uncertainty 1.1 % is above the 1 % target"
+          },
+          {
+            "T_K": 352.13,
+            "value": 19870.0,
+            "reference": "Lladosa 2007",
+            "deviation_percent": -0.75,
+            "why": "stated uncertainty 1 % is above the 1 % target"
+          },
+          {
+            "T_K": 364.15,
+            "value": 28100.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 13.41,
+            "why": "stated uncertainty 21 % is above the 1 % target"
+          },
+          {
+            "T_K": 368.84,
+            "value": 34200.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 11.26,
+            "why": "stated uncertainty 18 % is above the 1 % target"
+          },
+          {
+            "T_K": 373.48,
+            "value": 41300.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 9.23,
+            "why": "stated uncertainty 15 % is above the 1 % target"
+          },
+          {
+            "T_K": 377.22,
+            "value": 47900.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 7.63,
+            "why": "stated uncertainty 13 % is above the 1 % target"
+          },
+          {
+            "T_K": 380.17,
+            "value": 53700.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 6.44,
+            "why": "stated uncertainty 11 % is above the 1 % target"
+          },
+          {
+            "T_K": 383.3,
+            "value": 60500.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 5.19,
+            "why": "stated uncertainty 9.9 % is above the 1 % target"
+          },
+          {
+            "T_K": 386.66,
+            "value": 68600.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 3.86,
+            "why": "stated uncertainty 8.7 % is above the 1 % target"
+          },
+          {
+            "T_K": 389.59,
+            "value": 76400.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 2.72,
+            "why": "stated uncertainty 7.9 % is above the 1 % target"
+          },
+          {
+            "T_K": 391.28,
+            "value": 81200.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 2.11,
+            "why": "stated uncertainty 7.4 % is above the 1 % target"
+          },
+          {
+            "T_K": 393.75,
+            "value": 88700.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 1.19,
+            "why": "stated uncertainty 6.8 % is above the 1 % target"
+          },
+          {
+            "T_K": 395.78,
+            "value": 95300.0,
+            "reference": "Reddy 2012",
+            "deviation_percent": 0.43,
+            "why": "stated uncertainty 6.3 % is above the 1 % target"
+          },
+          {
+            "T_K": 346.4,
+            "value": 15000.0,
+            "reference": "Bejarano 2012",
+            "deviation_percent": 3.15,
+            "why": "stated uncertainty 2 % is above the 1 % target"
+          },
+          {
+            "T_K": 356.9,
+            "value": 23500.0,
+            "reference": "Bejarano 2012",
+            "deviation_percent": 1.99,
+            "why": "stated uncertainty 1.7 % is above the 1 % target"
+          },
+          {
+            "T_K": 364.7,
+            "value": 32000.0,
+            "reference": "Bejarano 2012",
+            "deviation_percent": 1.71,
+            "why": "stated uncertainty 1.2 % is above the 1 % target"
+          },
+          {
+            "T_K": 397.67,
+            "value": 101300.0,
+            "reference": "Wang 2017",
+            "deviation_percent": 0.24,
+            "why": "stated uncertainty 1.5 % is above the 1 % target"
+          },
+          {
+            "T_K": 345.94,
+            "value": 14980.0,
+            "reference": "Marrufo 2010",
+            "deviation_percent": 1.25,
+            "why": "stated uncertainty 1.3 % is above the 1 % target"
+          },
+          {
+            "T_K": 349.54,
+            "value": 17510.0,
+            "reference": "Marrufo 2010",
+            "deviation_percent": 1.04,
+            "why": "stated uncertainty 1.1 % is above the 1 % target"
+          }
+        ]
+      },
+      "uniquac_missing": {
+        "searched": [
+          "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+          "thermo and chemicals libraries (no UNIQUAC r and q tables)"
+        ],
+        "note": "no open data: UNIQUAC r and q could be computed from UNIFAC group volumes and areas, but the licence of those group tables is the open question of roadmap A3 (proposal 0008, Part A, on hold); until it is settled the component has no activity-model data."
+      },
+      "omega": 0.453864,
+      "constants_source": "Tc and Pc: Wilson, Wilson, et al., 1996, NIST Chemistry WebBook (SRD 69), phase change data, https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4. MW, formula and CAS: chemicals library (MIT). Measured data only: not a CoolProp 8.0.0 fluid and not in the ChemSep databank (proposal 0008, Part B). Tb: where the vapour-pressure record reaches 101.325 kPa (397.601 K); measured normal boiling temperatures in the ThermoML Archive: 397.63 K (Zhao 2014); 397.60 K (Shen 2018).",
+      "constants_source_ids": [
+        "nist-webbook"
+      ],
+      "omega_source": "From its definition, -log10(Psat(0.7 Tc)/Pc) - 1, with the vapour-pressure record (measured values of the NIST TRC ThermoML Archive and the NIST Chemistry WebBook; Psat at 418.32 K between the last measured value at 416.60 K and the critical point, so ω is less certain than the measured values).",
+      "omega_source_ids": [
+        "nist-thermoml-archive",
+        "nist-webbook"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 95.0426265,
+            "B": 0.2823924764,
+            "C": 597.6,
+            "D": 0.2709848372
+          },
+          "units": "kg/m3",
+          "Tmin_K": 283.15,
+          "Tmax_K": 393.17,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured densities of the liquid at 0.1 MPa (NIST TRC ThermoML Archive)",
+            "reference": "Pal et al., Int. J. Thermophys. 27 (2006) 777-793, doi:10.1007/s10765-006-0047-0; Roy et al., Int. J. Thermophys. 31 (2010) 316-326, doi:10.1007/s10765-010-0719-7; Lladosa et al., Fluid Phase Equilib. 262 (2007) 271-279, doi:10.1016/j.fluid.2007.09.014; Pal and Kumar, Fluid Phase Equilib. 334 (2012) 157-165, doi:10.1016/j.fluid.2012.08.002; Reddy et al., Fluid Phase Equilib. 336 (2012) 52-58, doi:10.1016/j.fluid.2012.08.030; Zhao et al., Fluid Phase Equilib. 375 (2014) 37-44, doi:10.1016/j.fluid.2014.04.025; Wang and Bai, Fluid Phase Equilib. 380 (2014) 140-146, doi:10.1016/j.fluid.2014.07.041; You et al., Fluid Phase Equilib. 389 (2015) 9-15, doi:10.1016/j.fluid.2015.01.002; Wang et al., Fluid Phase Equilib. 452 (2017) 9-15, doi:10.1016/j.fluid.2017.08.016; Islam et al., J. Chem. Thermodyn. 36 (2004) 889-893, doi:10.1016/j.jct.2004.06.004; Kinart et al., J. Chem. Thermodyn. 37 (2005) 423-429, doi:10.1016/j.jct.2004.09.014; Minamihonoki et al., J. Chem. Thermodyn. 37 (2005) 1186-1195, doi:10.1016/j.jct.2005.02.011; Zarei and Jalili, J. Chem. Thermodyn. 39 (2007) 55-66, doi:10.1016/j.jct.2006.06.001; Kumar et al., J. Chem. Thermodyn. 40 (2008) 32-39, doi:10.1016/j.jct.2007.06.002; Singh and Kumar, J. Chem. Thermodyn. 40 (2008) 417-423, doi:10.1016/j.jct.2007.09.011; Dhondge et al., J. Chem. Thermodyn. 41 (2009) 577-585, doi:10.1016/j.jct.2009.01.010; Cwiklinska and Kinart, J. Chem. Thermodyn. 43 (2011) 420-429, doi:10.1016/j.jct.2010.10.016; Piekarski et al., J. Chem. Thermodyn. 43 (2011) 1375-1380, doi:10.1016/j.jct.2011.04.010; Dhondge et al., J. Chem. Thermodyn. 43 (2011) 1961-1968, doi:10.1016/j.jct.2011.07.008; Awasthi and Awasthi, J. Chem. Thermodyn. 53 (2012) 144-151, doi:10.1016/j.jct.2012.04.024; Raveendra et al., J. Chem. Thermodyn. 92 (2016) 97-107, doi:10.1016/j.jct.2015.08.040; Srilakshmi et al., J. Chem. Thermodyn. 105 (2017) 452-468, doi:10.1016/j.jct.2016.11.002; Guo et al., J. Chem. Thermodyn. 132 (2019) 155-163, doi:10.1016/j.jct.2018.12.028; Guo et al., J. Chem. Thermodyn. 137 (2019) 76-85, doi:10.1016/j.jct.2019.05.017; Awasthi and Awasthi, Thermochim. Acta 537 (2012) 57-64, doi:10.1016/j.tca.2012.03.001; Anila et al., Thermochim. Acta 620 (2015) 1-9, doi:10.1016/j.tca.2015.09.021; Srinivasa Reddy et al., Thermochim. Acta 630 (2016) 37-49, doi:10.1016/j.tca.2016.02.005; Tang et al., J. Chem. Eng. Data 61 (2016) 35-40, doi:10.1021/acs.jced.5b00122; Jiang et al., J. Chem. Eng. Data 61 (2016) 336-341, doi:10.1021/acs.jced.5b00582; Ghanta et al., J. Chem. Eng. Data 62 (2017) 3903-3914, doi:10.1021/acs.jced.7b00604; Shen et al., J. Chem. Eng. Data 63 (2018) 3345-3352, doi:10.1021/acs.jced.8b00225; Shi et al., J. Chem. Eng. Data 64 (2019) 3960-3970, doi:10.1021/acs.jced.9b00364; George and Sastry V., J. Chem. Eng. Data 48 (2003) 977-989, doi:10.1021/je034005y; Kinart et al., J. Chem. Eng. Data 49 (2004) 1425-1428, doi:10.1021/je040006u; Comunas et al., J. Chem. Eng. Data 49 (2004) 1344-1349, doi:10.1021/je049929f; Deng et al., J. Chem. Eng. Data 51 (2006) 725-729, doi:10.1021/je050484k; Bhattacharje and Roy, J. Chem. Eng. Data 55 (2010) 5914-5920, doi:10.1021/je100170v; Pal and Kumar, J. Chem. Eng. Data 57 (2012) 688-695, doi:10.1021/je2010209; Roy et al., J. Chem. Eng. Data 52 (2007) 1630-1637, doi:10.1021/je700026d; Mozo et al., J. Chem. Eng. Data 53 (2008) 1404-1410, doi:10.1021/je8000975; Sarkar and Roy, J. Chem. Eng. Data 54 (2009) 3307-3312, doi:10.1021/je900240s; Marrufo et al., J. Chem. Eng. Data 55 (2010) 62-68, doi:10.1021/je900259b; Dubey and Kumar, J. Chem. Eng. Data 55 (2010) 1700-1703, doi:10.1021/je9005344; Roy et al., J. Chem. Eng. Data 55 (2010) 1347-1353, doi:10.1021/je900656c",
+            "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not",
+            "fit": "181 measured values, 283.15-393.17 K, max deviation 0.52 %",
+            "notes": "DIPPR 105 with C fixed at the critical temperature 597.60 K (Wilson, Wilson, et al., 1996, NIST WebBook)."
+          },
+          "source_ids": [
+            "nist-thermoml-archive"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"2-methoxyethanol\", \"ethylene glycol monomethyl ether\"; 73 records opened)",
+            "NIST Chemistry WebBook, gas phase thermochemistry: no gas heat capacity",
+            "ThermoML Archive: no gas-phase heat capacity"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 75.24461384,
+            "B": 0.3337102826
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 298.0,
+          "Tmax_K": 330.0,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured heat capacities of the liquid (NIST TRC ThermoML Archive and NIST Chemistry WebBook)",
+            "reference": "Piekarski et al., J. Chem. Thermodyn. 43 (2011) 1375-1380, doi:10.1016/j.jct.2011.04.010; Kusano, Suurkuusk, et al., 1973 (NIST WebBook, DH); Svoboda, Zabransky, et al., 1991 (equation on the NIST WebBook page, 298-330 K)",
+            "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not; free to read (NIST SRD 69)",
+            "fit": "9 measured values, 298.00-330.00 K, max deviation 0.87 %",
+            "excluded": [
+              {
+                "T_K": 298.15,
+                "value": 175.32,
+                "reference": "Ghanta 2017",
+                "deviation_percent": -0.33,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 303.15,
+                "value": 176.9,
+                "reference": "Ghanta 2017",
+                "deviation_percent": -0.28,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 308.15,
+                "value": 178.41,
+                "reference": "Ghanta 2017",
+                "deviation_percent": -0.19,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 313.15,
+                "value": 179.96,
+                "reference": "Ghanta 2017",
+                "deviation_percent": -0.12,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 318.15,
+                "value": 181.45,
+                "reference": "Ghanta 2017",
+                "deviation_percent": -0.02,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 323.15,
+                "value": 183.02,
+                "reference": "Ghanta 2017",
+                "deviation_percent": 0.03,
+                "why": "stated uncertainty 3.9 % is above the 1 % target"
+              },
+              {
+                "T_K": 298.15,
+                "value": 176.6,
+                "reference": "Roux, Perron, et al., 1978 (NIST WebBook, DH)",
+                "deviation_percent": -1.05,
+                "why": "deviates most from a robust fit of the others"
+              }
+            ]
+          },
+          "source_ids": [
+            "nist-thermoml-archive",
+            "nist-webbook"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 62188.16228,
+            "B": 0.4617648376
+          },
+          "units": "J/mol",
+          "Tmin_K": 298.15,
+          "Tmax_K": 397.3,
+          "Tc_K": 597.6,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured enthalpies of vaporization (NIST Chemistry WebBook; calorimetric and critically evaluated values)",
+            "reference": "Majer and Svoboda, 1985 (compilation, NIST WebBook); Majer and Svoboda, 1985 (ΔvapH° at 298.15 K, compilation, NIST WebBook); Kusano, Wadsö, et al., 1971 (ΔvapH° at 298.15 K, method C, NIST WebBook)",
+            "access": "free to read (NIST SRD 69) (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "fit": "3 measured values, 298.15-397.30 K, max deviation 0.0001 %",
+            "notes": "DIPPR 106 with the critical temperature 597.60 K. Values derived from vapour pressures, compared with the record (not fitted): Marrufo, Loras, et al., 2010 at 361 K: -5.7 %; Stephenson and Malanowski, 1987 at 348 K: -2.9 %; Pick, Fried, et al., 1956 at 344 K: -2.4 %; Gallaugher and Hibbert, 1937 at 273 K: +13.6 %."
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": 2692.427508,
+            "B": -57347.36583,
+            "C": -566.6559595,
+            "D": 39.4993992,
+            "E": 0.51
+          },
+          "units": "Pa s",
+          "Tmin_K": 293.15,
+          "Tmax_K": 353.15,
+          "tier": "fitted",
+          "source": {
+            "name": "Measured values (NIST TRC ThermoML Archive)",
+            "reference": "Reghem et al., Fluid Phase Equilib. 236 (2005) 229-236, doi:10.1016/j.fluid.2005.02.009; Islam et al., J. Chem. Thermodyn. 36 (2004) 889-893, doi:10.1016/j.jct.2004.06.004; Cwiklinska and Kinart, J. Chem. Thermodyn. 43 (2011) 420-429, doi:10.1016/j.jct.2010.10.016; Awasthi and Awasthi, Thermochim. Acta 537 (2012) 57-64, doi:10.1016/j.tca.2012.03.001; Kinart et al., J. Chem. Eng. Data 48 (2003) 1037-1039, doi:10.1021/je030127e; George and Sastry V., J. Chem. Eng. Data 48 (2003) 977-989, doi:10.1021/je034005y; Roy et al., J. Chem. Eng. Data 52 (2007) 1630-1637, doi:10.1021/je700026d; Sarkar and Roy, J. Chem. Eng. Data 54 (2009) 3307-3312, doi:10.1021/je900240s; Dubey and Kumar, J. Chem. Eng. Data 55 (2010) 1700-1703, doi:10.1021/je9005344; Roy et al., J. Chem. Eng. Data 55 (2010) 1347-1353, doi:10.1021/je900656c",
+            "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not",
+            "fit": "28 measured values, 293.15-353.15 K, max deviation 2.8 %",
+            "excluded": [
+              {
+                "T_K": 293.15,
+                "value": 0.0016916,
+                "reference": "Guo 2019",
+                "deviation_percent": 1.55,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 298.15,
+                "value": 0.0015273,
+                "reference": "Guo 2019",
+                "deviation_percent": 1.58,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 303.15,
+                "value": 0.0013858,
+                "reference": "Guo 2019",
+                "deviation_percent": 1.14,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 308.15,
+                "value": 0.0012622,
+                "reference": "Guo 2019",
+                "deviation_percent": 0.5,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 313.15,
+                "value": 0.0011552,
+                "reference": "Guo 2019",
+                "deviation_percent": -0.34,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 318.15,
+                "value": 0.0010611,
+                "reference": "Guo 2019",
+                "deviation_percent": -1.13,
+                "why": "stated uncertainty 4.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 323.15,
+                "value": 0.0009781,
+                "reference": "Guo 2019",
+                "deviation_percent": -1.8,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 328.15,
+                "value": 0.000905,
+                "reference": "Guo 2019",
+                "deviation_percent": -2.27,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 333.15,
+                "value": 0.0008397,
+                "reference": "Guo 2019",
+                "deviation_percent": -2.38,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 338.15,
+                "value": 0.0007818,
+                "reference": "Guo 2019",
+                "deviation_percent": -2.15,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 343.15,
+                "value": 0.0007298,
+                "reference": "Guo 2019",
+                "deviation_percent": -1.41,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 348.15,
+                "value": 0.0006834,
+                "reference": "Guo 2019",
+                "deviation_percent": -0.17,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 353.15,
+                "value": 0.0006409,
+                "reference": "Guo 2019",
+                "deviation_percent": 1.82,
+                "why": "stated uncertainty 4.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 293.15,
+                "value": 0.0016855,
+                "reference": "Shi 2019",
+                "deviation_percent": 1.92,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 298.15,
+                "value": 0.0015218,
+                "reference": "Shi 2019",
+                "deviation_percent": 1.94,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 303.15,
+                "value": 0.0013805,
+                "reference": "Shi 2019",
+                "deviation_percent": 1.53,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 308.15,
+                "value": 0.0012578,
+                "reference": "Shi 2019",
+                "deviation_percent": 0.85,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 313.15,
+                "value": 0.001151,
+                "reference": "Shi 2019",
+                "deviation_percent": 0.03,
+                "why": "stated uncertainty 5 % is above the 3 % target"
+              },
+              {
+                "T_K": 318.15,
+                "value": 0.0010571,
+                "reference": "Shi 2019",
+                "deviation_percent": -0.76,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 323.15,
+                "value": 0.0009746,
+                "reference": "Shi 2019",
+                "deviation_percent": -1.44,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 328.15,
+                "value": 0.0009016,
+                "reference": "Shi 2019",
+                "deviation_percent": -1.9,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 333.15,
+                "value": 0.0008367,
+                "reference": "Shi 2019",
+                "deviation_percent": -2.03,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 338.15,
+                "value": 0.0007788,
+                "reference": "Shi 2019",
+                "deviation_percent": -1.77,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 343.15,
+                "value": 0.000727,
+                "reference": "Shi 2019",
+                "deviation_percent": -1.03,
+                "why": "stated uncertainty 5 % is above the 3 % target"
+              },
+              {
+                "T_K": 348.15,
+                "value": 0.000681,
+                "reference": "Shi 2019",
+                "deviation_percent": 0.19,
+                "why": "stated uncertainty 5.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 353.15,
+                "value": 0.0006397,
+                "reference": "Shi 2019",
+                "deviation_percent": 2.01,
+                "why": "stated uncertainty 5 % is above the 3 % target"
+              },
+              {
+                "T_K": 298.15,
+                "value": 0.001543,
+                "reference": "Bhattacharje 2010",
+                "deviation_percent": 0.54,
+                "why": "stated uncertainty 3.1 % is above the 3 % target"
+              },
+              {
+                "T_K": 308.15,
+                "value": 0.001256,
+                "reference": "Bhattacharje 2010",
+                "deviation_percent": 0.99,
+                "why": "stated uncertainty 3.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 318.15,
+                "value": 0.001047,
+                "reference": "Bhattacharje 2010",
+                "deviation_percent": 0.2,
+                "why": "stated uncertainty 3.2 % is above the 3 % target"
+              },
+              {
+                "T_K": 293.15,
+                "value": 0.001991,
+                "reference": "Islam 2004",
+                "deviation_percent": -13.72,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 323.15,
+                "value": 0.000757,
+                "reference": "Islam 2004",
+                "deviation_percent": 26.89,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 318.15,
+                "value": 0.000832,
+                "reference": "Islam 2004",
+                "deviation_percent": 26.09,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 313.15,
+                "value": 0.000942,
+                "reference": "Islam 2004",
+                "deviation_percent": 22.22,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 313.15,
+                "value": 0.001098,
+                "reference": "Cwiklinska 2011",
+                "deviation_percent": 4.86,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 308.15,
+                "value": 0.001126,
+                "reference": "Islam 2004",
+                "deviation_percent": 12.65,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 303.15,
+                "value": 0.0015496,
+                "reference": "Roy 2010",
+                "deviation_percent": -9.55,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 313.15,
+                "value": 0.0012883,
+                "reference": "Roy 2010",
+                "deviation_percent": -10.63,
+                "why": "deviates most from a robust fit of the others"
+              },
+              {
+                "T_K": 323.15,
+                "value": 0.0010824,
+                "reference": "Roy 2010",
+                "deviation_percent": -11.26,
+                "why": "deviates most from a robust fit of the others"
+              }
+            ]
+          },
+          "source_ids": [
+            "nist-thermoml-archive"
+          ]
+        },
+        "vapourViscosity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"2-methoxyethanol\", \"ethylene glycol monomethyl ether\"; 73 records opened)"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"2-methoxyethanol\", \"ethylene glycol monomethyl ether\"; 73 records opened)"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"2-methoxyethanol\", \"ethylene glycol monomethyl ether\"; 73 records opened)"
+          ]
+        },
+        "surfaceTension": {
+          "available": false,
+          "searched": [
+            "CoolProp 8.0.0 (not a fluid)",
+            "ChemSep v8.3 and v8.31 data 2 (compound not included)",
+            "NIST Chemistry WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4)",
+            "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"2-methoxyethanol\", \"ethylene glycol monomethyl ether\"; 73 records opened)"
+          ],
+          "note": "no open data at the 1 % target of the records: 13 measured values, 298.15-393.17 K, but their stated uncertainties (2.6-2.9 %) are larger than the target"
+        }
+      }
     }
   }
 }
