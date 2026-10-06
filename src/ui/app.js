@@ -214,11 +214,18 @@ export function app(target, cfg = {}) {
     } else restoreFocus(fk);
   }
 
-  /** Keep a copy of the open work in this browser a moment after it changes. */
+  /** Keep a copy of the open work in this browser a moment after it changes (and when the page is left). */
   function scheduleAutosave() {
     clearTimeout(autosaveTimer);
-    autosaveTimer = setTimeout(() => { previous = null; autosave(projectText(currentProject())); }, 800);
+    autosaveTimer = setTimeout(flushAutosave, 800);
   }
+  function flushAutosave() {
+    if (autosaveTimer == null) return;
+    clearTimeout(autosaveTimer); autosaveTimer = null;
+    previous = null;
+    autosave(projectText(currentProject()));
+  }
+  if (useAutosave && typeof window !== "undefined") window.addEventListener("pagehide", flushAutosave);
 
   // ---- controls
   function bigButton({ ico, label, pressed, title, onClick, fk, note }) {
@@ -749,6 +756,7 @@ export function app(target, cfg = {}) {
       style: "width:100%", "data-fk": "proj-name", "aria-describedby": `fa-pname-hint-${uid}`,
       on: { input: ev => {
         state = applyPatch(state, { title: ev.target.value.trim() || null }); api.state = state;
+        if (useAutosave) scheduleAutosave();
         nameHint.textContent = `File name: ${projectFileName(state)}`;
         renderCanvasBar();
       } } });
@@ -810,7 +818,7 @@ export function app(target, cfg = {}) {
   function storeSection(store) {
     const status = h("div", { class: "fug-foot", "aria-live": "polite" });
     const list = h("ul", { class: "fa-store-list" }, h("li", { class: "fa-empty" }, "Loading…"));
-    const name = () => (state.title || calculationName() || "Workbench").trim();
+    const name = () => (state.title || (state.components.length ? calculationName() : "") || "Untitled").trim();
     const refresh = () => store.list().then(items => {
       list.replaceChildren(...(items.length ? items.map(it => h("li", {},
         h("span", { class: "fa-store-name" }, it.name), it.saved_at ? h("small", {}, new Date(it.saved_at).toLocaleString()) : null,
