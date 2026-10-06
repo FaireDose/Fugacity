@@ -31,6 +31,7 @@ import {
 import { WORKSPACES, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView, sourcesPanel, saveText, copyText } from "./app-views.js";
+import { flowsheetRibbon, flowsheetInputs, ensureUi } from "./flowsheet-view.js";
 import { projectOf, projectText, projectFileName, stateFromProject } from "./project.js";
 import { FLASH_SPECS, FLOW_UNITS, feedComposition, convertBasis, flowIn } from "./flash-logic.js";
 import { pure } from "../thermo/pure.js";
@@ -330,6 +331,7 @@ export function app(target, cfg = {}) {
           group("Energy basis", seg("Energy basis", UNIT_CHOICES.basis, u.basis, b => set({ units: { basis: b } }))),
         ];
       }
+      case "flowsheet": return flowsheetRibbon({ state, set, ui, group, bigButton, smallButton });
       case "steam": return [
         group("Standard", h("div", { class: "fa-stack fa-about" },
           h("div", { class: "fa-theme" }, icon("dome", 18), "IAPWS-IF97 water and steam"),
@@ -480,6 +482,8 @@ export function app(target, cfg = {}) {
       secs.push(inputsSection("Component",
         h("p", { class: "fa-in-hint" }, "One pure component. Its constants and sources are listed under Results."),
         slotsInput("properties", check), problemsBox(check)));
+    } else if (state.workspace === "flowsheet") {
+      secs.push(...flowsheetInputs({ state, set, ui, uid, inputsSection }));
     } else if (state.workspace === "steam") {
       secs.push(inputsSection("Substance", h("div", { class: "fa-fixed" }, h("b", {}, "Water"), h("span", { class: "fa-chip-f" }, "H2O")),
         h("p", { class: "fa-in-hint" }, "IAPWS-IF97 covers water and steam only.")));
@@ -588,6 +592,7 @@ export function app(target, cfg = {}) {
   function renderStatus() {
     const st = ui.status, u = state.units, v = state.view;
     const model = v === "steam" ? "IAPWS-IF97" : v === "henry" ? "Henry's law" : v === "properties" ? "Pure-component data"
+      : v === "flowsheet" ? `Flowsheet: ${state.flowsheet.thermo.model}`
       : modelLabel(state);
     const fs = state.flash;
     const cond = v === "flash" ? { TP: `T ${fmtTemp(fs.T_K, u)}, P ${fmtP(fs.P_kPa, u)}`, PH: `P ${fmtP(fs.P_kPa, u)}, Q ${fs.Q_J_mol} J/mol`,
@@ -622,7 +627,7 @@ export function app(target, cfg = {}) {
 
   function renderCanvasBar() {
     const v = state.view, u = state.units, check = checkInputs(v, state.inputs[v], state.model);
-    const title = check.ok ? state.title || calculationName() : VIEWS[v].label;
+    const title = v === "flowsheet" ? state.title || "Flowsheet" : check.ok ? state.title || calculationName() : VIEWS[v].label;
     const prop = v === "properties" ? explorerProperties().find(p => p.key === state.property) : null;
     const ml = modelLabel(state);
     const sub = !check.ok ? `${needsOf(v, state.model)} needed: choose them in Inputs` : {
@@ -635,6 +640,9 @@ export function app(target, cfg = {}) {
       henry: `Solubility at ${fmtTemp(state.henryT_K, u)} and a gas partial pressure of ${fmtP(state.henryP_kPa, u)}, Henry's law`,
       properties: `${prop?.label ?? "Property"} against temperature, pure component`,
       steam: "Temperature–entropy chart with isobars, IAPWS-IF97",
+      flowsheet: state.flowsheet.components.length
+        ? `${state.flowsheet.components.map(nameOf).join(", ")}; ${state.flowsheet.thermo.model}${["PR", "SRK"].includes(state.flowsheet.thermo.model) ? "" : `, ${state.flowsheet.thermo.vapour} vapour`}`
+        : "Setup: components, then method, then blocks",
     }[v];
     const tog = (ico, label, pressed, onClick, fk) => h("button", { type: "button", class: "fa-icon-btn", "aria-pressed": String(pressed), title: label, "aria-label": label, "data-fk": fk, on: { click: onClick } }, icon(ico, 18));
     const ws = WORKSPACES.find(w => w.id === state.workspace);
@@ -658,6 +666,16 @@ export function app(target, cfg = {}) {
     const results = {};
     const rec = ui.records.flash;
     if (rec && rec.key === flashKey()) results.flash = rec.record;
+    // the solved flowsheet: its streams and energy streams as a record (never read back)
+    const fsc = ui.fs?.cache;
+    if (fsc?.result && fsc.key === JSON.stringify(state.flowsheet)) {
+      const r = fsc.result;
+      results.flowsheet = {
+        streams: Object.fromEntries(Object.entries(r.streams).map(([id, s]) => [id, { T_K: s.T_K, P_kPa: s.P_kPa, VF: s.VF, F_kmol_h: s.F_kmol_h, mass_kg_h: s.mass_kg_h, H_kW: s.H_kW, flow_kmol_h: s.flow_kmol_h }])),
+        energy: Object.fromEntries(Object.entries(r.energy).map(([id, q]) => [id, { block: q.block, duty_kW: q.duty_kW }])),
+        loops: r.loops,
+      };
+    }
     return projectOf(state, { version: pkg.version, results });
   }
   const flashKey = () => JSON.stringify([state.inputs.flash, state.flash, state.model, state.eos, state.vapour, state.units, state.sets, state.prefer]);
@@ -729,8 +747,9 @@ export function app(target, cfg = {}) {
       drawerSection("Save",
         h("label", { class: "fa-field fa-field-wide", for: nameInput.id }, h("span", {}, "Name"), nameInput),
         nameHint,
-        h("p", {}, "A small JSON file with the components, model and conditions of every workspace, the flash specification and feed, the parameter sets and the open view."
-          + (hasFlash ? " It also keeps the flash stream table (the mass balance) as calculated now." : " Open the Flash workspace before saving to keep its stream table (the mass balance) in the file too.")),
+        h("p", {}, "A small JSON file with the components, model and conditions of every workspace, the flash specification and feed, the flowsheet (setup, blocks, streams), the parameter sets and the open view."
+          + (hasFlash ? " It also keeps the flash stream table (the mass balance) as calculated now." : " Open the Flash workspace before saving to keep its stream table (the mass balance) in the file too.")
+          + (doc().results?.flowsheet ? " The solved flowsheet's streams and duties are kept as well." : "")),
         h("div", { class: "fa-in-actions" },
           h("button", { type: "button", class: "fa-mini", "data-fk": "proj-save", on: { click: () => { saveProject(); } } }, icon("download", 15), "Save…"),
           h("button", { type: "button", class: "fa-mini", "data-fk": "proj-copy",
@@ -836,7 +855,8 @@ export function app(target, cfg = {}) {
     return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.vapour, state.P_kPa, state.T_K,
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
       v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer,
-      v === "flash" ? state.flash : null]);
+      v === "flash" ? state.flash : null,
+      v === "flowsheet" ? [state.flowsheet, ensureUi(ui).sel, ui.fs.auto, ui.fs.solveKey] : null]);
   };
   let canvasRendered = false, token = 0;
   function renderCanvas(now = false) {

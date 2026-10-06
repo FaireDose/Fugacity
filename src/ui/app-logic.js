@@ -32,6 +32,7 @@ export const VIEWS = {
   pxy: { workspace: "equilibrium", diagram: true, label: "P-x-y diagram" },
   envelope: { workspace: "equilibrium", diagram: true, label: "Phase envelope" },
   flash: { workspace: "flash", label: "Flash" },
+  flowsheet: { workspace: "flowsheet", label: "Flowsheet" },
   henry: { workspace: "solubility", label: "Gas solubility" },
   properties: { workspace: "properties", label: "Property curves" },
   steam: { workspace: "steam", label: "Steam tables" },

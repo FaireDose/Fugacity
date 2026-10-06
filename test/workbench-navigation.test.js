@@ -12,9 +12,9 @@ import {
 const MAC = ["methanol", "acetone", "chloroform"];
 const go = (s, ...patches) => patches.reduce(applyPatch, s);
 
-test("one navigation: five task workspaces holding every view; three supporting panels", () => {
-  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "flash", "solubility", "properties", "steam"]);
-  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Flash", "Gas solubility", "Properties", "Steam"]);
+test("one navigation: six task workspaces holding every view; four supporting panels", () => {
+  assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "flash", "flowsheet", "solubility", "properties", "steam"]);
+  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Flash", "Flowsheet", "Gas solubility", "Properties", "Steam"]);
   assert.deepEqual(UTILITIES.map(u => u.id), ["project", "library", "sources", "settings"]);
   // every view is in exactly one workspace, and every workspace view has its inputs defined
   const all = WORKSPACES.flatMap(w => w.views);
@@ -25,7 +25,7 @@ test("one navigation: five task workspaces holding every view; three supporting 
     assert.ok(INPUTS[v], v);
   }
   assert.deepEqual(WORKSPACES.find(w => w.id === "equilibrium").views, ["txy", "ternary", "azeotropes", "pxy", "envelope"]);
-  assert.throws(() => workspaceOf("flowsheet"), /Unknown view/);
+  assert.throws(() => workspaceOf("column"), /Unknown view/);
 });
 
 test("each view asks for what it needs: one, two, three components, a list, or a gas and a solvent", () => {
@@ -148,7 +148,7 @@ test("the configuration keys of earlier versions still work; old start names map
   assert.equal(applyPatch(s, { tab: "components" }).panels.left, true);
   assert.equal(applyPatch(s, { tab: "library" }).utility, "library");
   // new keys are checked
-  assert.throws(() => applyPatch(s, { workspace: "flowsheet" }), /Unknown workspace/);
+  assert.throws(() => applyPatch(s, { workspace: "column" }), /Unknown workspace/);
   assert.throws(() => applyPatch(s, { utility: "help" }), /Unknown panel/);
   assert.throws(() => applyPatch(s, { inputs: { steam: ["water"] } }), /unknown view "steam"/);
   assert.throws(() => applyPatch(s, { view: "sankey" }), /Unknown view/);

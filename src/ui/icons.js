@@ -27,6 +27,17 @@ const P = {
   drum: '<rect x="8" y="3.5" width="8" height="17" rx="4"/><path d="M3 12h5"/><path d="M8.2 13.5h7.6" class="a"/><path d="M12 3.5V1.5M12 20.5v2"/>',
   // a sheet of paper with a folded corner (project files)
   file: '<path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4"/><path d="M9 12.5h6M9 16h6" class="a"/>',
+  // flowsheet blocks
+  flowsheet: '<rect x="3" y="9" width="5" height="6" rx="1"/><rect x="16" y="4" width="5" height="16" rx="2.5"/><path d="M8 12h8" class="a"/><path d="M21 7h1.5M21 17h1.5"/>',
+  feed: '<path d="M3 12h13"/><path d="m12 7.5 4.5 4.5-4.5 4.5" class="a"/><circle cx="19.5" cy="12" r="1.6"/>',
+  mixer: '<path d="M5 5v14l14-7z"/><path d="M2 8h3M2 16h3" class="a"/>',
+  splitter: '<path d="M19 5v14L5 12z"/><path d="M19 8h3M19 16h3" class="a"/>',
+  separator: '<rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="m6 17 12-10" class="a"/>',
+  heater: '<circle cx="12" cy="12" r="8"/><path d="M6.5 13.5 9 9l3 6 3-6 2.5 4.5" class="a"/>',
+  solve: '<path d="M7 5v14l11-7z" class="a"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  minus: '<path d="M5 12h14"/>',
+  trash: '<path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/><path d="M10.5 10.5v6M13.5 10.5v6" class="a"/>',
   download: '<path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5"/><path d="M4.5 16.5v3h15v-3" class="a"/>',
   copy: '<rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M15.5 8.5v-3a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" class="a"/>',
   table: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9h17M3.5 13.5h17M9.5 4.5v15" /><path d="M3.5 9h17" class="a"/>',

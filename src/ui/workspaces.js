@@ -17,6 +17,7 @@ export const WORKSPACES = [
   { id: "equilibrium", label: "Phase equilibrium", short: "Phase eq.", icon: "ternary",
     views: ["txy", "ternary", "azeotropes", "pxy", "envelope"], view: "ternary" },
   { id: "flash", label: "Flash", short: "Flash", icon: "drum", views: ["flash"], view: "flash" },
+  { id: "flowsheet", label: "Flowsheet", short: "Flowsheet", icon: "flowsheet", views: ["flowsheet"], view: "flowsheet" },
   { id: "solubility", label: "Gas solubility", short: "Solubility", icon: "henry", views: ["henry"], view: "henry" },
   { id: "properties", label: "Properties", short: "Properties", icon: "curves", views: ["properties"], view: "properties" },
   { id: "steam", label: "Steam", short: "Steam", icon: "dome", views: ["steam"], view: "steam" },
@@ -62,6 +63,7 @@ export const INPUTS = {
   henry: { kind: "henry", what: "a gas solubility" },
   properties: { kind: "slots", n: 1, liquid: false, what: "the property curves", roles: ["pure component"] },
   steam: { kind: "none", what: "the steam tables" },
+  flowsheet: { kind: "none", what: "the flowsheet" },   // its own setup: components and method of the flowsheet
 };
 
 const WORDS = ["no", "one", "two", "three", "four", "five", "six"];
@@ -181,6 +183,7 @@ export function seedInputs(components = [], { gas, solvent, propComponent, model
     henry: { gas: g, solvent: pickId(solvent) ?? solventsFor(g)[0] ?? "water" },
     properties: [pickId(propComponent) ?? ids[0] ?? "water"],
     steam: [],
+    flowsheet: [],
   };
 }
 
