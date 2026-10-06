@@ -76,7 +76,14 @@ test("start view and the equation-of-state model in the configuration", () => {
   assert.equal(initialState({ start: "ternary", components: ["ethanol", "water"] }).view, "txy");
   assert.equal(initialState({ start: "txy", components: ["oxygen", "nitrogen"] }).view, "txy", "with Peng–Robinson, gases have a T-x-y diagram");
   assert.equal(initialState({ start: "txy", components: ["oxygen", "nitrogen"], model: "NRTL" }).view, "envelope", "not with NRTL: the envelope explains why");
-  assert.equal(initialState({ components: [] }).view, "properties");
+  // without components the workbench opens empty: the wanted view (default T-x-y) asks for them
+  const empty = initialState({ components: [] });
+  assert.equal(empty.view, "txy");
+  assert.equal(empty.model, "NRTL");
+  assert.deepEqual(empty.components, []);
+  assert.deepEqual(empty.inputs.txy, [null, null]);
+  assert.equal(initialState({ start: "ternary", components: [] }).view, "ternary");
+  assert.equal(initialState({ start: "flash", components: [] }).workspace, "flash");
 });
 
 test("which views are enabled for which selection", () => {

@@ -155,11 +155,13 @@ function aliasOf(wanted) {
  * The first view that can run with a list of components and the model, preferring `wanted`
  * (resolves "eos" to P-x-y or the envelope). Without a wanted view: the ternary map for three
  * liquids, the T-x-y diagram for two, else P-x-y for two components and the phase envelope
- * for one or more than two (with an equation of state).
+ * for one or more than two (with an equation of state). Without components: the wanted view
+ * with empty inputs, or the T-x-y diagram (the workbench opens empty and asks for them).
  */
 export function resolveView(wanted, ids, model = "NRTL") {
   let v = aliasOf(wanted);
   if (v === "eos") v = ids.length === 2 ? "pxy" : "envelope";
+  if (!ids.length) return VIEWS[v] ? v : "txy";
   if (VIEWS[v] && viewAvailability(v, ids, model).enabled) return v;
   const liq = liquids(ids).length;
   if ((v === "pxy" || v === "envelope") && viewAvailability("envelope", ids, model).enabled) return "envelope";
@@ -206,7 +208,7 @@ export function initialState(cfg = {}) {
   if (!explicit) {
     const asked = cfg.eos != null || ["eos", "pxy", "envelope"].includes(start);
     const liquidView = resolveView(start === "sources" ? "" : start, components, model);
-    const needsEos = VIEWS[liquidView].diagram && !viewAvailability(liquidView, components, model).enabled;
+    const needsEos = components.length > 0 && VIEWS[liquidView].diagram && !viewAvailability(liquidView, components, model).enabled;
     if (asked || needsEos) model = eos;
   }
   const state = {

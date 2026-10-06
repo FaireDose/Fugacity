@@ -25,11 +25,16 @@ route is best and why, with every number traced to its source for an engineer to
 
 ## Try it in your chat (30 seconds)
 
-Paste one of these into an assistant that can open web links.
+Paste one of these into your assistant (the last two need one that can open web links).
 
-**Open the workbench:**
+**Load the workbench** (the assistant opens no link; the workbench opens empty and you choose the components):
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. Open the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
+> Load the Fugacity workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
+> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.2/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
+
+**Load it with your components:**
+
+> Read https://fairedose.github.io/Fugacity/use.md and follow it. Load the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
 
 **Ask for a property value:**
 
