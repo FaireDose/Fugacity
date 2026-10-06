@@ -127,11 +127,12 @@ export function flowsheetInputs({ state, set, ui, uid, inputsSection }) {
     t => { const v = num(t); if (v === undefined) return false; setS({ [key]: v }); }, { id: `${b.id}-${key}`, uid, unit, placeholder: ph });
   /** Choose which two (or one) state variables are given: keeps their values, drops the others. */
   const modeSeg = (modes, keys) => {
-    const cur = modes.find(([m]) => m.split("+").every(k => spec[k] != null) && keys.filter(k => !m.split("+").includes(k)).every(k => spec[k] == null))?.[0] ?? null;
+    const cur = modes.find(([m]) => m.split("+").every(k => spec[k] != null) && keys.filter(k => !m.split("+").includes(k)).every(k => spec[k] == null))?.[0]
+      ?? f.mode?.[b.id] ?? null;
     return segRow("Specification", modes.map(([m, l]) => [m, l]), cur, m => {
       const want = m.split("+");
+      f.mode = { ...(f.mode ?? {}), [b.id]: m };   // before the redraw, which shows this mode's fields
       setS(Object.fromEntries(keys.map(k => [k, want.includes(k) ? spec[k] ?? null : null])));
-      f.mode = { ...(f.mode ?? {}), [b.id]: m };
     }, `fs-mode-${b.id}`);
   };
   const shown = (modes, keys) => {
