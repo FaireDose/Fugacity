@@ -29,7 +29,7 @@ Peng–Robinson does not break the flash drum.
 | 2 | Equilibrium | Bubble and dew points, flash, azeotropes, phase stability, residue curves | `src/equilibrium/` | Bubble and dew T/P for every model, azeotropes, spinodal check, residue curves; tangent-plane stability test for PR/SRK; flash (T-P, P-H, P-VF, T-VF) with heat duty, with two liquids and vapour + two liquids for NRTL and UNIQUAC; errors with codes. **Two liquids with PR/SRK missing** |
 | 3 | Stream | T, P, component flows, phase split, enthalpy flow | `src/stream/` | `stream()`: a flash of component flows (kmol/h or kg/h) at T-P, P-H (enthalpy flow), P-VF or T-VF, with phase flows and enthalpy flow in kW (proposal 0006, step 1) |
 | 4 | Unit operations | Inlet streams + specifications → outlet streams + duties | `src/units/` | `registerUnit`, `runUnit` with port, specification and balance checks; feed, mixer, splitter, component separator, flash drum, heater/cooler, product (proposal 0006, step 2) |
-| 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | Not started |
+| 5 | Flowsheet | Connects units, orders the calculation, converges recycles | `src/flowsheet/` | `solveFlowsheet`: structure checks, loops (Tarjan), tear streams (chosen or marked), direct substitution then bounded Wegstein, overall balances; checked against an equation-oriented Python solution (proposal 0006, step 3). File format: step 4 |
 | 6 | Interface | Workbench, diagrams, flowsheet drawing, stream tables, controls | `src/ui/` | Workbench (`app`) with task workspaces (phase equilibrium, flash, gas solubility, properties, steam), per-workspace inputs and Library, Sources and Settings panels; one model choice for every diagram (activity model with a vapour model, or PR/SRK); T-x-y, P-x-y, ternary, azeotrope and envelope views in mole fraction or wt %; flash stream table with CSV export; property explorer; Henry and steam views |
 | 7 | Design studio | Cost engineering (sizing, capital and operating cost, cost of product) and agent-run studies that compare process routes from the literature; every result reproducible and sourced | `src/design/` | Not started; roadmap tracks E and G |
 
@@ -184,7 +184,9 @@ engine reads every older format version.
 ### Solver
 
 Sequential modular, as in most commercial simulators: order the units, choose tear
-streams to break recycles, and converge them with Wegstein acceleration. Design
+streams to break recycles, and converge them with Wegstein acceleration
+(`Fugacity.solveFlowsheet(sys, { blocks, streams, solver })`, `src/flowsheet/flowsheet.js`; a
+loop that does not converge throws NO_CONVERGENCE naming the loop and its tear streams). Design
 specifications ("adjust the reflux until the distillate purity is 99 %") are an outer
 loop. An equation-oriented mode can come later.
 

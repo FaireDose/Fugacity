@@ -28,6 +28,7 @@ import { henry, henryInfo, gasSolubility, HENRY_GASES } from "./thermo/henry.js"
 import { library } from "./thermo/library.js";
 import { stream, componentFlows, scaleStream, phaseStream } from "./stream/stream.js";
 import { registerUnit, runUnit, unitTypes, unitType } from "./units/units.js";
+import { solveFlowsheet, checkFlowsheet } from "./flowsheet/flowsheet.js";
 import pkg from "../package.json" with { type: "json" };
 
 export const version = pkg.version;
@@ -45,5 +46,6 @@ export {
   library,
   stream, componentFlows, scaleStream, phaseStream,
   registerUnit, runUnit, unitTypes, unitType,
+  solveFlowsheet, checkFlowsheet,
   FugacityError, ERROR_CODES, isFugacityError,
 };
