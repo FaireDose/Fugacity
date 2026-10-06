@@ -23,7 +23,9 @@ ln(P_calc / P_CoolProp), bubble pressures of the independent Python implementati
 eos_fit_kij.bubble_p_fresh). Pairs with a databank (ChemSep) value are not refitted; for them
 the same comparison is printed as a check.
 
-Usage: python validation/python/eos_kij_from_coolprop.py [--write]
+Usage: python validation/python/eos_kij_from_coolprop.py [--write] [--check]
+  --check also compares the databank k_ij of the other benchmark gas pairs with CoolProp
+  (slow); by default only the PAIRS below are fitted.
 """
 import itertools
 import json
@@ -53,6 +55,12 @@ CITE = {
 BENCH = ["hydrogen", "carbon-monoxide", "carbon-dioxide", "methane", "nitrogen", "methanol", "dimethyl-ether",
          "hydrogen-sulfide", "oxygen", "argon", "ethane", "ethylene", "propane", "propylene", "n-butane",
          "isobutane", "ammonia"]
+
+
+# priority-1 pairs of the gas benchmarks (docs/BENCHMARKS.md) with no databank k_ij and a fitted
+# CoolProp model; the other pairs of BENCH are only compared (--check)
+PAIRS = [("carbon-dioxide", "dimethyl-ether"), ("ethylene", "propane"), ("ethylene", "propylene"),
+         ("ethylene", "isobutane")]
 
 
 def coolprop_names():
@@ -126,7 +134,8 @@ def main(write):
            "source": {"citation": f"CoolProp {CoolProp.__version__} (open source, MIT), HEOS backend, multi-fluid mixture models; binary parameters per pair as named in `model`", "url": "https://github.com/CoolProp/CoolProp", "access": "Open source (MIT); the mixture models are published (Kunz and Wagner 2012; Bell and Lemmon 2016; Gernert 2013)"},
            "columns": ["T_K", "x_1", "P_kPa", "y_1"], "pairs": []}
     added = []
-    for a, b in itertools.combinations(BENCH, 2):
+    todo = list(itertools.combinations(BENCH, 2)) if "--check" in sys.argv else PAIRS
+    for a, b in todo:
         if a not in names or b not in names:
             continue
         pm = pair_model(a, b)
