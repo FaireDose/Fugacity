@@ -90,6 +90,17 @@ SEEDS = {
         "license": "Artistic License 2.0",
         "via": "DWSIM (DWSIM.Thermodynamics/Assets/Databases)",
     },
+    # validation/python/fit_properties.py (CHEMSEP2_REF): the compounds not in chemsep1.xml (N-methyl-2-pyrrolidone)
+    "chemsep-8.31-2": {
+        "title": "ChemSep pure component data 2, v8.31 (chemsep2.xml)",
+        "authors": "Harry Kooijman, Ross Taylor",
+        "year": 2022,
+        "kind": "databank",
+        "url": "https://github.com/DanWBR/dwsim",
+        "access": "Open: Artistic License 2.0",
+        "license": "Artistic License 2.0",
+        "via": "DWSIM (DWSIM.Thermodynamics/Assets/Databases)",
+    },
     # validation/data/iapws/coolprop_grid.json "source"; src/data/LICENSES.md (CoolProp rows)
     "coolprop": {
         "title": "CoolProp 8.0.0",
@@ -300,7 +311,8 @@ def text_rules(val):
     rules = [
         (r"ChemSep (?:NRTL|UNIQUAC) databank|ChemSep UNIQUAC T-x-y", "chemsep-ipd"),
         (r"ChemSep (?:pr|srk)\.ipd", "chemsep-eos-ipd"),
-        (r"ChemSep (?:pure-component database )?v8\.3", "chemsep-8.3"),
+        (r"ChemSep (?:pure-component database )?v8\.3(?!1)", "chemsep-8.3"),
+        (r"ChemSep (?:pure-component database )?v8\.31|ChemSep v8\.31 pure component data 2", "chemsep-8.31-2"),
         (r"CoolProp 8\.0\.0", "coolprop"),
         (r"open-source thermo library", "thermo-library"),
         (r"NIST Chemistry WebBook", "nist-webbook"),

@@ -235,5 +235,170 @@
     "comment": "Coefficents calculated by NIST from author's data."
    }
   ]
+ },
+ "mibk": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108101&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 294.9,
+    "Tmax_K": 389.3,
+    "A": 3.95298,
+    "B": 1254.095,
+    "C": -71.537,
+    "reference": "Fuge, Bowden, et al., 1952",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "cyclohexanone": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108941&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 362.78,
+    "Tmax_K": 438.92,
+    "A": 4.1033,
+    "B": 1495.51,
+    "C": -63.598,
+    "reference": "Meyer and Hotz, 1973",
+    "comment": ""
+   }
+  ]
+ },
+ "dmf": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C68122&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 303.0,
+    "Tmax_K": 363.0,
+    "A": 3.93068,
+    "B": 1337.716,
+    "C": -82.648,
+    "reference": "Gopal and Rizvi, 1968, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "dmso": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67685&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 325.49,
+    "Tmax_K": 442.09,
+    "A": 4.49107,
+    "B": 1807.002,
+    "C": -60.995,
+    "reference": "Jakli and van Hook, 1972",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 293.0,
+    "Tmax_K": 323.0,
+    "A": 5.23039,
+    "B": 2239.161,
+    "C": -29.215,
+    "reference": "Douglas, 1948, 3",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "nmp": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C872504&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
+ },
+ "sulfolane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C126330&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
+ },
+ "furfural": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98011&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 329.02,
+    "Tmax_K": 433.9,
+    "A": 4.09355,
+    "B": 1430.133,
+    "C": -84.449,
+    "reference": "Matthews, Sumner, et al., 1950, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "dioxane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C123911&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 293.0,
+    "Tmax_K": 378.0,
+    "A": 4.58135,
+    "B": 1570.093,
+    "C": -31.297,
+    "reference": "Crenshaw, Cope, et al., 1938",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "isobutanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78831&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 422.64,
+    "Tmax_K": 547.71,
+    "A": 4.40062,
+    "B": 1260.453,
+    "C": -92.588,
+    "reference": "Ambrose and Townsend, 1963, 3",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 353.36,
+    "Tmax_K": 388.77,
+    "A": 4.43126,
+    "B": 1236.991,
+    "C": -101.528,
+    "reference": "Biddiscombe, Collerson, et al., 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "2-butanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78922&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 422.11,
+    "Tmax_K": 535.9,
+    "A": 4.19827,
+    "B": 1094.254,
+    "C": -111.603,
+    "reference": "Ambrose and Townsend, 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 345.54,
+    "Tmax_K": 380.3,
+    "A": 4.32943,
+    "B": 1158.672,
+    "C": -104.683,
+    "reference": "Biddiscombe, Collerson, et al., 1963, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
  }
 }

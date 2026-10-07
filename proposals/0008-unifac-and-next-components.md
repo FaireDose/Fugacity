@@ -164,6 +164,21 @@ reference equation of state, which comes first in the source chain). Notes:
   formaldehyde and hydrogen peroxide (they react in water), and the amines with CO₂
   (electrolytes; only the molecular solvent properties are in scope).
 
+**Batch 1 (extraction solvents), done:** 1,2-dichloroethane (CoolProp), methyl isobutyl ketone,
+cyclohexanone, N,N-dimethylformamide, dimethyl sulfoxide, N-methyl-2-pyrrolidone (`chemsep2.xml`),
+sulfolane, furfural, 1,4-dioxane, isobutanol and 2-butanol (ChemSep). Every record of the batch was
+then compared with the measured values of the ThermoML Archive (11,133 values from 783 articles,
+`validation/python/check_measured.py`, report in
+[docs/MEASURED_CHECKS.md](../docs/MEASURED_CHECKS.md), checked by `test/measured-checks.test.js`).
+Four databank records missed the tolerances of the engineering report and were refitted to the
+measured values: the viscosity of N-methyl-2-pyrrolidone (ChemSep 9 % off), the thermal
+conductivities of dimethyl sulfoxide and sulfolane (16 and 19 % off) and the vapour pressure of
+2-butanol. The others above the tolerance (vapour pressures of 1,2-dichloroethane, cyclohexanone,
+N,N-dimethylformamide, N-methyl-2-pyrrolidone, furfural and 1,4-dioxane; heat capacities of
+N,N-dimethylformamide and N-methyl-2-pyrrolidone, 1-5 %) stay as they are and say so in the
+record: the measured values within the target do not cover 25 °C to 100 °C, so a refit would
+shorten the range, or the measured sets disagree among themselves.
+
 Batches, in the order of the process areas: 1. extraction solvents (11 found), 2. gas treating
 and acids/esters (14), 3. petrochemicals and nitrogen compounds (13), 4. solids (3). The five not
 found follow when a source is found.

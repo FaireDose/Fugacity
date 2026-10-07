@@ -72,7 +72,10 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "n-heptane", "n-octane",
        # proposal 0004, batch 3: solvents, alcohols, glycols and phenol
        "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "1-propanol", "2-propanol", "1-butanol", "2-butanone",
-       "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol"]
+       "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol",
+       # proposal 0008, Part B, batch 1: extraction solvents
+       "dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
+       "isobutanol", "2-butanol"]
 # components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
 # or from ChemSep for a component that is not a CoolProp fluid
 VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
@@ -81,7 +84,12 @@ VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
              "cyclohexane", "o-xylene", "m-xylene", "p-xylene", "ethylbenzene", "styrene", "n-pentane", "n-hexane",
              "n-heptane", "n-octane",
              "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "1-propanol", "2-propanol", "1-butanol",
-             "2-butanone", "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol"]
+             "2-butanone", "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol",
+             "dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
+             "isobutanol", "2-butanol"]
+# proposal 0008, Part B, batch 1 (the record notes name the proposal)
+BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
+       "isobutanol", "2-butanol"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -93,7 +101,7 @@ COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "ace
             "cyclohexane": "Cyclohexane", "o-xylene": "o-Xylene", "m-xylene": "m-Xylene", "p-xylene": "p-Xylene",
             "ethylbenzene": "EthylBenzene", "n-pentane": "n-Pentane", "n-hexane": "n-Hexane", "n-heptane": "n-Heptane",
             "n-octane": "n-Octane", "diethyl-ether": "DiethylEther", "propylene-glycol": "PropyleneGlycol",
-            "tetrahydrofuran": "Tetrahydrofuran"}
+            "tetrahydrofuran": "Tetrahydrofuran", "dichloroethane": "Dichloroethane"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -125,7 +133,8 @@ CHEMSEP_TAG = {"liquidDensity": "LiquidDensity", "idealGasHeatCapacity": "IdealG
 # ---------------------------------------------------------------------------------------------
 NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetate", "styrene", "1-propanol",
                    "2-propanol", "1-butanol", "2-butanone", "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe",
-                   "glycerol", "phenol"]
+                   "glycerol", "phenol", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural",
+                   "dioxane", "isobutanol", "2-butanol"]
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
@@ -138,6 +147,8 @@ COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in th
                          "surfaceTension"],
     "tetrahydrofuran": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
                         "surfaceTension"],
+    "dichloroethane": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
+                       "surfaceTension"],
 }
 
 # NIST WebBook fluid tables (step 3 of the chain) for properties in COOLPROP_GAPS, where the WebBook
@@ -184,17 +195,39 @@ WEBBOOK_DILUTE_MPa = 0.001   # the dilute-gas isobar, 1 kPa
 WEBBOOK_ANTOINE = {cid: "C" + cas.replace("-", "") for cid, cas in [
     ("styrene", "100-42-5"), ("1-propanol", "71-23-8"), ("2-propanol", "67-63-0"), ("1-butanol", "71-36-3"),
     ("2-butanone", "78-93-3"), ("methyl-acetate", "79-20-9"), ("n-butyl-acetate", "123-86-4"),
-    ("acetonitrile", "75-05-8"), ("mtbe", "1634-04-4"), ("glycerol", "56-81-5"), ("phenol", "108-95-2")]}
+    ("acetonitrile", "75-05-8"), ("mtbe", "1634-04-4"), ("glycerol", "56-81-5"), ("phenol", "108-95-2"),
+    # proposal 0008, Part B, batch 1
+    ("mibk", "108-10-1"), ("cyclohexanone", "108-94-1"), ("dmf", "68-12-2"), ("dmso", "67-68-5"), ("nmp", "872-50-4"),
+    ("sulfolane", "126-33-0"), ("furfural", "98-01-1"), ("dioxane", "123-91-1"), ("isobutanol", "78-83-1"),
+    ("2-butanol", "78-92-2")]}
 # Vapour pressures fitted to a WebBook Antoine set plus the critical point, where the ChemSep equation does not
 # reproduce the measured normal boiling point. Styrene: the ChemSep equation 101 gives 417.14 K at 101.325 kPa
 # against 418.31 K (ChemSep's own Tb, and the Antoine equation of Dreyer et al. (1955), measured to 417.92 K;
 # WebBook average of 18 measured Tb values: 419 +/- 2 K), and differs from Dreyer et al. by +6.7 % at 303 K.
 VP_FROM_ANTOINE = {"styrene": "Dreyer, Martin, et al., 1955"}
+# Vapour pressures fitted to the measured values of the ThermoML Archive (check_measured.py) and the ChemSep critical
+# point, where the ChemSep equation deviates from them by more than the 1 % tolerance of the engineering report
+# (docs/MEASURED_CHECKS.md, proposal 0008)
+# Records fitted to the measured values of the ThermoML Archive instead of the databank (docs/MEASURED_CHECKS.md).
+# The rule (proposal 0008, batch 1): a databank record is replaced when it misses the tolerance of the engineering
+# report (proposal 0002) and the measured values within the record's target cover the working range, from 25 degC
+# (or the melting point) to 100 degC (or the normal boiling point if lower); or, whatever the coverage, when it
+# misses three times the tolerance (then the record covers only the measured temperatures). The reason is stated
+# in each record.
+MEASURED_REFIT = {
+    "nmp": {"liquidViscosity": "the ChemSep v8.31 viscosity deviates from 22 articles by 9 % (median)"},
+    "2-butanol": {"vapourPressure": "the ChemSep vapour pressure deviates from 24 articles by 1.1 % (median)"},
+    "dmso": {"liquidThermalConductivity": "the ChemSep thermal conductivity deviates from the measured values by 16 %"},
+    "sulfolane": {"liquidThermalConductivity": "the ChemSep thermal conductivity deviates from the measured values by 19 %"},
+}
+VP_FROM_MEASURED = {cid for cid, props in MEASURED_REFIT.items() if "vapourPressure" in props}
 WEBBOOK_ANTOINE_FILE = Path(__file__).resolve().parents[2] / "validation" / "data" / "pure" / "measured" / "webbook_antoine.json"
 WEBBOOK_ANTOINE_URL = "https://webbook.nist.gov/cgi/cbook.cgi?ID={ID}&Units=SI&Mask=4"
 
 
 def chosen_source(cid, prop):
+    if prop in MEASURED_REFIT.get(cid, {}):
+        return "measured"
     if cid in COOLPROP and prop not in COOLPROP_GAPS.get(cid, []):
         return "coolprop"
     if prop == "idealGasHeatCapacity" and cid in WEBBOOK_CP0:
@@ -221,11 +254,14 @@ def chain_note(cid, prop):
             notes.append("NIST WebBook fluid tables (ethene): could not be opened in this session")
         elif cid in WEBBOOK_UNCITED and "Conductivity" in prop:
             notes.append(WEBBOOK_UNCITED[cid])
-        elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran"):
+        elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "dichloroethane"):
             notes.append("NIST WebBook: %s is not a WebBook fluid" % cid.replace("-", " "))
         elif cid == "styrene":
             notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST "
                          "WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page")
+        elif cid in WEBBOOK_ANTOINE and cid in BATCH_0008:
+            notes.append("ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked "
+                         "against the NIST WebBook where it has data: vapour pressure)")
         elif cid in WEBBOOK_ANTOINE:
             notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked "
                          "against the NIST WebBook where it has data: vapour pressure)")
@@ -317,6 +353,9 @@ def ev(eq, c, T, Tc=None):
         return A + B * s * s + D * h * h
     if eq == "CS16":  # ChemSep equation 16
         return A + np.exp(B / T + C + D * T + E * T ** 2)
+    if eq == "CS116":  # ChemSep equation 116, with Tr = T/Tc (DWSIM, PropertyPackage.vb, CalcCSTDepProp)
+        t = 1 - T / Tc
+        return A + B * t ** 0.35 + C * t ** (2 / 3) + D * t + E * t ** (4 / 3)
     if eq == "CS10":  # ChemSep equation 10 (Antoine form), as implemented in DWSIM, PropertyPackage.vb, CalcCSTDepProp
         return np.exp(A - B / (T + C))
     raise ValueError(eq)
@@ -701,15 +740,22 @@ class Bib:
 
 
 class ChemSep:
-    def __init__(self, path):
-        self.path = path
-        root = ET.parse(path).getroot()
-        self.header = root.get("library")
-        self.by_cas = {}
-        for c in root.findall("compound"):
-            cas = c.find("CAS")
-            if cas is not None:
-                self.by_cas[cas.get("value")] = c
+    """chemsep1.xml (v8.3) and, optionally, chemsep2.xml (v8.31 data 2, same databank and licence); a compound is
+    taken from the first file that has it."""
+    def __init__(self, paths):
+        self.by_cas, self.file_of = {}, {}
+        for i, path in enumerate(paths):
+            for c in ET.parse(path).getroot().findall("compound"):
+                cas = c.find("CAS")
+                if cas is not None and cas.get("value") not in self.by_cas and (i == 0 or cas.get("value") in CHEMSEP2_USE):
+                    self.by_cas[cas.get("value")] = c
+                    self.file_of[cas.get("value")] = i
+
+    def name(self, cas):
+        return CHEMSEP2_NAME if self.file_of.get(cas) == 1 else CHEMSEP_NAME
+
+    def ref(self, cas):
+        return CHEMSEP2_REF if self.file_of.get(cas) == 1 else CHEMSEP_REF
 
     def compound(self, cas):
         c = self.by_cas.get(cas)
@@ -737,7 +783,7 @@ class ChemSep:
     def value_si(self, cas, prop, T):
         """ChemSep correlation in Fugacity's record units (mol basis)."""
         d = self.corr(cas, prop)
-        eq = {10: "CS10", 16: "CS16", 100: "DIPPR100", 101: "DIPPR101", 102: "DIPPR102", 105: "DIPPR105",
+        eq = {10: "CS10", 16: "CS16", 116: "CS116", 100: "DIPPR100", 101: "DIPPR101", 102: "DIPPR102", 105: "DIPPR105",
               106: "DIPPR106", 107: "DIPPR107"}[d["eqno"]]
         y = ev(eq, d, T, self.const(cas, "CriticalTemperature"))
         return y * unit_factor(d["units"], prop, self.const(cas, "MolecularWeight"))
@@ -759,6 +805,12 @@ CHEMSEP_REF = ("Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), "
 CHEMSEP_REF_FULL = ("H. Kooijman, R. Taylor, ChemSep pure-component database v8.3, file chemsep1.xml (2021), "
                     "Artistic License 2.0, as redistributed in DWSIM, https://github.com/DanWBR/dwsim, "
                     "DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml")
+CHEMSEP2_NAME = "ChemSep v8.31 pure-component database, data file 2"
+# compounds taken from chemsep2.xml: N-methyl-2-pyrrolidone (proposal 0008). The file also has propylene glycol, whose
+# transport properties are "no open data" today; taking them from it is a separate change
+CHEMSEP2_USE = {"872-50-4"}
+CHEMSEP2_REF = ("Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), "
+                "via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)")
 CHEMSEP_ACCESS = "Artistic License 2.0"
 COOLPROP_ACCESS = "MIT (open source)"
 WEBBOOK_ACCESS = "free to read (NIST SRD 69)"
@@ -983,12 +1035,18 @@ class Builder:
                 conv += "Tmin raised to the triple point %.2f K (ChemSep: %.2f K). " % (Tt, d["Tmin"])
         target = 0.03 if prop in TRANSPORT else 0.01
         chain = chain_note(cid, prop)
-        if d["eqno"] in (101, 102, 105, 106):
+        if d["eqno"] in (100, 101, 102, 105, 106, 107):
             form = "DIPPR%d" % d["eqno"]
             c = {k: d[k] for k in "ABCDE"}
             if form in ("DIPPR102", "DIPPR105"):
                 c.pop("E")
-            if form == "DIPPR105":
+            if form == "DIPPR100" and f != 1:  # (chemsep2.xml: N-methyl-2-pyrrolidone)
+                c = {k: v * f for k, v in c.items()}
+                conv += "coefficients converted from J/kmol/K to J/mol/K."
+            elif form == "DIPPR107" and f != 1:
+                c.update({k: d[k] * f for k in "ABD"})
+                conv += "A, B and D converted from J/kmol/K to J/mol/K."
+            elif form == "DIPPR105":
                 c["A"] = d["A"] * f
                 conv += "A converted from kmol/m3 to kg/m3 with the ChemSep molar mass %.4f kg/kmol." % MW
             elif form == "DIPPR106":
@@ -1002,13 +1060,13 @@ class Builder:
             T = grid(Tmin, Tmax)
             y = self.cs.value_si(cas, prop, T)
             m = rel_dev(ev(form, c, T, Tc), y)
-            source = {"name": CHEMSEP_NAME, "reference": CHEMSEP_REF, "access": CHEMSEP_ACCESS,
+            source = {"name": self.cs.name(cas), "reference": self.cs.ref(cas), "access": CHEMSEP_ACCESS,
                       "fit": ("ChemSep equation %d coefficients taken over unchanged%s; reproduces ChemSep within "
                               "%s %% at %d points %.2f-%.2f K" % (d["eqno"], (" except: " + conv.strip()) if conv else "",
                                                                    pct(m), len(T), Tmin, Tmax)),
                       "chain": chain}
             return self._record(cid, prop, form, c, extra, Tmin, Tmax, "databank", source, T, y, m, target)
-        if d["eqno"] not in (10, 16):
+        if d["eqno"] not in (10, 16, 116):
             raise ValueError("ChemSep equation %d for %s %s" % (d["eqno"], cid, prop))
         form = FORM[prop]
         why = "ChemSep range" + (", Tmin raised to the triple point" if Tmin > d["Tmin"] else "")
@@ -1018,11 +1076,12 @@ class Builder:
         T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range(
             form, lambda T: self.cs.value_si(cas, prop, T), Tmin, Tmax, target, Tc,
             keep=keep_T(self.comps[cid]))
-        source = {"name": CHEMSEP_NAME, "reference": CHEMSEP_REF, "access": CHEMSEP_ACCESS,
+        source = {"name": self.cs.name(cas), "reference": self.cs.ref(cas), "access": CHEMSEP_ACCESS,
                   "fit": ("refitted in the %s form to ChemSep equation %s, %s, converted to the mol basis): %d points "
                           "%.2f-%.2f K (%s), max deviation %s %%%s"
-                          % (form, "16 (Y = A + exp(B/T + C + D T + E T^2)" if d["eqno"] == 16 else
-                             "10 (Y = exp(A - B/(T + C))", d["units"], len(T), Tmin, Tmax, why, pct(m),
+                          % (form, {16: "16 (Y = A + exp(B/T + C + D T + E T^2)",
+                                    116: "116 (Y = A + B t^0.35 + C t^(2/3) + D t + E t^(4/3), t = 1 - T/Tc",
+                                    10: "10 (Y = exp(A - B/(T + C))"}[d["eqno"]], d["units"], len(T), Tmin, Tmax, why, pct(m),
                              ("; " + narrowed) if narrowed else "")),
                   "chain": chain}
         return self._record(cid, prop, form, c, extra, Tmin, Tmax, "fitted", source, T, y, m, target)
@@ -1058,8 +1117,53 @@ class Builder:
             cid, prop, form, tier, Tmin, Tmax, pct(m), flag))
         return rec, pts
 
+    def from_measured(self, cid, prop):
+        """A record fitted to the measured values of the ThermoML Archive (MEASURED_REFIT), with the rules of
+        measured_components.py; the databank record it replaces is compared in the record."""
+        from measured_components import ThermoML, fit_measured_loose
+        tml = ThermoML(cid)
+        cas = self.comps[cid]["cas"]
+        Tc = self.coolprop(cid).Tc if cid in COOLPROP else self.cs.const(cas, "CriticalTemperature")
+        form = FORM[prop]
+        target = 0.03 if prop in TRANSPORT else 0.01
+        coeffs, use, kept, exc, m = fit_measured_loose(cid, prop, form, tml.values(prop), target, Tc=Tc)
+        T = np.array([p["T"] for p in use])
+        y = np.array([p["y"] for p in use])
+        Tall = [p["T"] for p in use + kept]
+        refs = []
+        for p in use + kept:
+            if tml.cite(p["doi"]) not in refs:
+                refs.append(tml.cite(p["doi"]))
+        old = None
+        if self.cs.corr(cas, prop):
+            d = self.cs.corr(cas, prop)
+            inside = (T >= d["Tmin"]) & (T <= d["Tmax"])
+            if inside.any():
+                dd = self.cs.value_si(cas, prop, T[inside]) / y[inside] - 1
+                old = "%+.1f %% (median, %+.1f %% at most)" % (100 * float(np.median(dd)), 100 * float(dd[np.argmax(np.abs(dd))]))
+        source = {"name": "Measured values (NIST TRC ThermoML Archive)", "reference": "; ".join(refs),
+                  "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not",
+                  "fit": "%d measured values with stated uncertainties within %g %% from %d articles, %.2f-%.2f K, max "
+                         "deviation %s %%%s" % (len(use), 100 * target, len({p["doi"] for p in use}), T.min(), T.max(), pct(m),
+                                               "; %d values with larger stated uncertainties agree within them" % len(kept)
+                                               if kept else ""),
+                  "notes": "Fitted to measured data instead of the databank: %s%s. Rules: "
+                           "validation/python/measured_components.py." % (
+                               MEASURED_REFIT[cid][prop], "; the databank record deviates from these values by %s" % old
+                               if old else ""),
+                  "chain": "Measured data (ThermoML Archive) above the databank: see docs/MEASURED_CHECKS.md"}
+        if exc:
+            source["excluded"] = [{"T_K": p["T"], "value": rnd(p["y"], 8), "reference": p["ref"],
+                                   "deviation_percent": p["deviation_percent"], "why": p["why"]} for p in exc]
+        extra = {"Tc_K": rnd(Tc, 10)} if form == "DIPPR106" else {}
+        rec, pts = self._record(cid, prop, form, coeffs, extra, min(Tall), max(Tall), "fitted", source, T, y, m, target,
+                                store_all=True)
+        return rec, pts
+
     def build(self, cid, prop):
         src = chosen_source(cid, prop)
+        if src == "measured":
+            return self.from_measured(cid, prop)
         if src == "coolprop":
             return self.from_coolprop(cid, prop)
         if src == "webbook":
@@ -1177,7 +1281,74 @@ class Builder:
             cid, "vapourPressure", "DIPPR101", "fitted", s["Tmin_K"], Tc, pct(m)))
         return rec, pts
 
+    def vapour_pressure_measured(self, cid):
+        """DIPPR101 fitted to the measured vapour pressures of the ThermoML Archive (validation/data/pure/measured/
+        thermoml_<id>.json, from check_measured.py) and the ChemSep critical point, with the rules of
+        measured_components.py; values whose stated uncertainty is above 1 % stay only where they agree within it."""
+        from measured_components import ThermoML, fit_measured_loose
+        tml = ThermoML(cid)
+        cas = self.comps[cid]["cas"]
+        Tc, Pc = self.cs.const(cas, "CriticalTemperature"), self.cs.const(cas, "CriticalPressure")
+        crit = {"T": Tc, "y": Pc, "u_rel": None, "ref": "%s critical point" % self.cs.name(cas), "doi": None}
+        coeffs, use, kept, exc, m = fit_measured_loose(cid, "vapourPressure", "DIPPR101", tml.values("vapourPressure"),
+                                                       0.01, fixed=[crit])
+        coeffs.setdefault("D", 0.0)
+        coeffs.setdefault("E", 0.0)
+        meas = [p for p in use if p is not crit]
+        Tmin = min(p["T"] for p in meas + kept)
+        Tdata = max(p["T"] for p in meas + kept)
+        refs = []
+        for p in meas + kept:
+            r = tml.cite(p["doi"])
+            if r not in refs:
+                refs.append(r)
+        cs_curve = self.cs.corr(cas, "vapourPressure")
+        Tq = np.array([p["T"] for p in meas])
+        dcs = self.cs.value_si(cas, "vapourPressure", Tq) / np.array([p["y"] for p in meas]) - 1
+        source = ("Fitted to measured vapour pressures (NIST TRC ThermoML Archive): %d values with stated uncertainties "
+                  "within 1 %% from %d articles, max deviation %s %%, and %d values with larger stated uncertainties, "
+                  "kept where the fit is within them (they extend the range to %.2f K); and the %s critical point "
+                  "(%.2f K, %.0f Pa). Between %.2f K and the critical point the curve is held only by the critical point. "
+                  "The ChemSep vapour-pressure equation was not used: it deviates from the values within 1 %% by "
+                  "%+.1f %% (median, %+.1f %% at most); see docs/MEASURED_CHECKS.md. Articles: %s. Rules: "
+                  "validation/python/measured_components.py (fit_measured_loose)."
+                  % (len(meas), len({p["doi"] for p in meas}), pct(m), len(kept), Tmin, self.cs.name(cas), Tc, Pc, Tdata,
+                     100 * float(np.median(dcs)), 100 * float(dcs[np.argmax(np.abs(dcs))]), "; ".join(refs)))
+        rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
+               **{k: coeffs[k] for k in "ABCDE"}, "Tmin_K": rnd(Tmin, 8), "Tmax_K": rnd(Tc, 8), "tier": "fitted",
+               "source": source}
+        checks = []
+        if WEBBOOK_ANTOINE_FILE.exists() and cid in json.loads(WEBBOOK_ANTOINE_FILE.read_text()):
+            W = json.loads(WEBBOOK_ANTOINE_FILE.read_text())[cid]
+            for st in W["sets"]:
+                Ta = np.linspace(st["Tmin_K"], st["Tmax_K"], 21)
+                dev = ev("DIPPR101", coeffs, Ta) / (1e5 * 10 ** (st["A"] - st["B"] / (Ta + st["C"]))) - 1
+                k = int(np.argmax(np.abs(dev)))
+                checks.append({"reference": st["reference"] + " (Antoine equation, NIST WebBook)", "url": W["url"],
+                               "T_range_K": [st["Tmin_K"], st["Tmax_K"]], "max_deviation_percent": round(100 * float(dev[k]), 2)})
+                self.log.append("  cross-check %s vapour pressure vs %s: max %+.2f %% at %.1f K" % (
+                    cid, st["reference"], 100 * dev[k], Ta[k]))
+        if checks:
+            rec["crossCheck"] = checks
+        if kept:
+            rec["looser"] = [{"T_K": p["T"], "value": rnd(p["y"], 8), "reference": p["ref"], "deviation_percent":
+                              p["deviation_percent"], "stated_uncertainty_percent": round(100 * p["u_rel"], 2)} for p in kept]
+        if exc:
+            rec["excluded"] = [{"T_K": p["T"], "value": rnd(p["y"], 8), "reference": p["ref"], "deviation_percent":
+                                p["deviation_percent"], "why": p["why"]} for p in exc]
+        order = sorted(range(len(use)), key=lambda i: use[i]["T"])
+        pts = {"units": "Pa", "source": {"name": "measured vapour pressures (NIST TRC ThermoML Archive) and the critical "
+                                                 "point", "fit": source},
+               "T_K": [rnd(use[i]["T"], 8) for i in order], "values": [rnd(use[i]["y"], 8) for i in order],
+               "Tb_K_at_101325Pa": self.comps[cid]["Tb_K"]}
+        self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%  (measured: %d + %d looser, %d left out; "
+                        "ChemSep median %+.1f %%)" % (cid, "vapourPressure", "DIPPR101", "fitted", Tmin, Tc, pct(m), len(meas),
+                                                     len(kept), len(exc), 100 * float(np.median(dcs))))
+        return rec, pts
+
     def vapour_pressure_chemsep(self, cid):
+        if cid in VP_FROM_MEASURED:
+            return self.vapour_pressure_measured(cid)
         if cid in VP_FROM_ANTOINE:
             return self.vapour_pressure_antoine(cid)
         cas = self.comps[cid]["cas"]
@@ -1205,12 +1376,12 @@ class Builder:
                            np.array([rnd(float(y[i]), 8) for i in idx])))
         source = ("%s, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; %.2f-%.2f K "
                   "(%s); reproduces ChemSep within %s %% at %d points. Not a CoolProp 8.0.0 fluid. %s"
-                  % (CHEMSEP_NAME, Tmin, Tmax, why, pct(m), len(T), CHEMSEP_ACCESS))
+                  % (self.cs.name(cas), Tmin, Tmax, why, pct(m), len(T), CHEMSEP_ACCESS))
         rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
                "A": c["A"], "B": c["B"], "C": c["C"], "D": c["D"], "E": c["E"],
                "Tmin_K": rnd(Tmin, 8), "Tmax_K": rnd(Tmax, 8), "tier": "databank", "source": source}
         idx = store_idx(len(T))
-        pts = {"units": "Pa", "source": {"name": CHEMSEP_NAME, "fit": source},
+        pts = {"units": "Pa", "source": {"name": self.cs.name(cas), "fit": source},
                "T_K": [rnd(float(T[i]), 8) for i in idx], "values": [rnd(float(y[i]), 8) for i in idx],
                "Tb_K_at_101325Pa": self.comps[cid]["Tb_K"]}
         self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%" % (
@@ -1377,8 +1548,8 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
                     src = builder.coolprop(cid).value(p, T)
                 elif s == "chemsep":
                     src = builder.chemsep_check(cid, p, T)
-                elif s == "webbook-fluid":
-                    src = None  # a table: the deviation over the tabulated points is in the record
+                elif s in ("webbook-fluid", "measured"):
+                    src = None  # tabulated or measured points: the deviation over them is in the record
                 else:
                     src = webbook_value(cid, T)
                 cs = builder.chemsep_check(cid, p, T) if s != "chemsep" else None
@@ -1492,6 +1663,36 @@ def add_measured(records):
     return out
 
 
+def add_measured_checks(records, vp_gas):
+    """For the components of check_measured.py: the comparison of each record with the measured values of the
+    ThermoML Archive, stated in the record ("measuredCheck"). Returns report lines."""
+    import check_measured as CM
+    out = []
+    for cid in CM.CHECKED:
+        f = CM.MEASURED_DIR / ("thermoml_%s.json" % cid)
+        if cid not in records or not f.exists():
+            continue
+        data = json.loads(f.read_text())
+        comp = {"vapourPressure": vp_gas[cid], "properties": records[cid]}
+        for prop in CM.TOLERANCE:
+            r = CM.compare(cid, comp, data, prop)
+            if r["status"] in ("no record", "too few values"):
+                continue
+            txt = ("NIST TRC ThermoML Archive (validation/python/check_measured.py): %d measured values from %d articles, "
+                   "%.1f-%.1f K; median deviation of the articles %.2f %%%s; largest single deviation %+.2f %% at %.1f K (%s); "
+                   "docs/MEASURED_CHECKS.md" % (
+                       r["n"], r["articles"], r["T"][0], r["T"][1], 100 * r["median"],
+                       "" if r["tol"] is None else (" (within the %g %% tolerance of the engineering report)" if r["status"] == "pass"
+                                                    else " (above the %g %% tolerance of the engineering report)") % (100 * r["tol"]),
+                       100 * r["max"], r["max_T"], r["max_ref"]))
+            if prop == "vapourPressure":
+                vp_gas[cid]["measuredCheck"] = txt
+            else:
+                records[cid][prop]["source"]["measuredCheck"] = txt
+            out.append("%s %s: %s" % (cid, prop, txt[:160]))
+    return out
+
+
 def fetch_webbook_fluid(cid):
     """Download the WebBook fluid tables of WEBBOOK_FLUID[cid] (saturation line and the dilute-gas
     isobar) as tab-delimited text and store them unchanged (numbers as given) for the fit."""
@@ -1544,13 +1745,24 @@ def fetch_webbook_antoine():
     import datetime
     import html as H
     import re
+    import urllib.error
     import urllib.request
     out = json.loads(WEBBOOK_ANTOINE_FILE.read_text()) if WEBBOOK_ANTOINE_FILE.exists() else {}
     for cid, ID in WEBBOOK_ANTOINE.items():
+        if cid in out:  # already downloaded (delete the entry to download it again)
+            continue
         url = WEBBOOK_ANTOINE_URL.format(ID=ID)
         req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
-        with urllib.request.urlopen(req, timeout=120) as f:
-            page = f.read().decode("utf-8")
+        for attempt in range(6):  # the WebBook gateway sometimes times out (HTTP 504)
+            try:
+                with urllib.request.urlopen(req, timeout=120) as f:
+                    page = f.read().decode("utf-8")
+                break
+            except urllib.error.HTTPError as e:
+                if e.code not in (502, 503, 504) or attempt == 5:
+                    raise
+                import time
+                time.sleep(5 * 2 ** attempt)
         if "Antoine Equation Parameters" not in page:
             out[cid] = {"url": url, "retrieved": datetime.date.today().isoformat(), "sets": []}
             print("fetched %s: no Antoine sets on the page" % cid)
@@ -1561,7 +1773,8 @@ def fetch_webbook_antoine():
         for row in re.findall(r"<tr[^>]*>(.*?)</tr>", seg, re.S)[1:]:
             cells = [H.unescape(re.sub(r"<[^>]+>", "", c)).strip() for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S)]
             lo, hi = (float(v) for v in cells[0].split(" to "))
-            sets.append({"Tmin_K": lo, "Tmax_K": hi, "A": float(cells[1]), "B": float(cells[2]), "C": float(cells[3]),
+            v = lambda c: float(c.split("±")[0])  # noqa: E731  (some sets print an uncertainty: "4.1033 ± 0.00099")
+            sets.append({"Tmin_K": lo, "Tmax_K": hi, "A": v(cells[1]), "B": v(cells[2]), "C": v(cells[3]),
                          "reference": cells[4], "comment": cells[5] if len(cells) > 5 else ""})
         out[cid] = {"url": url, "retrieved": datetime.date.today().isoformat(),
                     "equation": "log10(P/bar) = A - B / (T/K + C)", "sets": sets}
@@ -1572,7 +1785,8 @@ def fetch_webbook_antoine():
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fetch-webbook", action="store_true", help="download the WebBook fluid tables first")
-    ap.add_argument("--chemsep", required=True, help="path to ChemSep chemsep1.xml (v8.3)")
+    ap.add_argument("--chemsep", required=True, nargs="+",
+                    help="path to ChemSep chemsep1.xml (v8.3), and chemsep2.xml (v8.31 data 2) for the compounds not in it")
     ap.add_argument("--bib", help="CoolProp's CoolPropBibTeXLibrary.bib (v8.0.0) for full references "
                     "(https://github.com/CoolProp/CoolProp/blob/v8.0.0/CoolPropBibTeXLibrary.bib)")
     ap.add_argument("--write", action="store_true")
@@ -1583,7 +1797,8 @@ def main():
         raise SystemExit("CoolProp 8.0.0 is required (found %s)" % CoolProp.__version__)
     if args.fetch_webbook:
         for cid in WEBBOOK_FLUID:
-            fetch_webbook_fluid(cid)
+            if not (WEBBOOK_FLUID_DIR / ("%s.json" % cid)).exists():  # already downloaded: delete it to download again
+                fetch_webbook_fluid(cid)
         fetch_webbook_antoine()
     data = json.loads(COMP_FILE.read_text())
     comps = data["components"]
@@ -1619,6 +1834,7 @@ def main():
             vp_gas[cid] = rec
             points[cid]["vapourPressure"] = pts
     measured = add_measured(records)
+    measured += add_measured_checks(records, vp_gas)
     for cid, notes in RECORD_NOTES.items():
         for p, text in notes.items():
             records[cid][p]["source"]["notes"] = text

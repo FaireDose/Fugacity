@@ -55,6 +55,17 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | MTBE | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.015 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.67 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
 | Glycerol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.057 (f) | ChemSep 0.27 (f) | ChemSep 0.028 (f) | ChemSep 2.1 (f) | ChemSep 0.15 (f) |
 | Phenol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.93 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
+| 1,2-Dichloroethane | CoolProp 0.25 (f) | CoolProp 0.13 (f) | CoolProp 0.0001 (f) | CoolProp 0.70 (f) | CoolProp 0.22 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.53 (f) | ChemSep 0.0001 (d) | ChemSep 0.37 (f) |
+| Methyl isobutyl ketone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.33 (f) | ChemSep 0.050 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) |
+| Cyclohexanone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.13 (f) | ChemSep 0.016 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.39 (f) | ChemSep 0.0001 (d) | ChemSep 0.79 (f) |
+| N,N-Dimethylformamide | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.17 (f) | ChemSep 0.031 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.37 (f) | ChemSep 0.0001 (d) | ChemSep 0.087 (f) |
+| Dimethyl sulfoxide | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.38 (f) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 3 (f) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) |
+| N-Methyl-2-pyrrolidone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 3 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.50 (f) |
+| Sulfolane | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.091 (f) | ChemSep 0.0087 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 3 (f) | ChemSep 0.0001 (d) | ChemSep 0.34 (f) |
+| Furfural | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.57 (f) | ChemSep 0.057 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.68 (f) | ChemSep 0.0001 (d) | ChemSep 0.34 (f) |
+| 1,4-Dioxane | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.30 (f) | ChemSep 0.24 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.047 (f) | ChemSep 0.0001 (d) | ChemSep 0.60 (f) |
+| Isobutanol | ChemSep 0.00011 (d) | ChemSep 0.0001 (d) | ChemSep 0.12 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.49 (f) | ChemSep 0.0001 (d) | ChemSep 0.13 (f) |
+| 2-Butanol | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.63 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.58 (f) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -111,6 +122,17 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | MTBE | 164.55–497.1 | 200–1500 | 164.55–328.35 | 164.55–496.6 | 180–449.93 | 164.55–1000 | 164.55–460.87 | 164.55–1000 | 164.55–472.24 |
 | Glycerol | 291.33–850 | 273–1200.15 | 291.33–561 | 291.33–849.15 | 291.33–500 | 291.33–1000 | 293.15–550 | 274–1000 | 291.33–453.15 |
 | Phenol | 314.06–688.71 | 100–1500 | 314.06–655.37 | 314.06–674.24 | 314.06–690 | 199.82–1000 | 314.06–454.99 | 199.82–1000 | 314.06–659.53 |
+| 1,2-Dichloroethane | 237.52–533.5 | 237.52–1000 | 237.52–518.7 | 237.52–533.5 | 237.52–550 | 237.49–1000 | 244.26–499.82 | 237.49–1000 | 237.52–518.16 |
+| Methyl isobutyl ketone | 189.15–574.6 | 189.15–1500.15 | 189.15–450 | 189.15–574.02 | 189.15–474 | 189.15–1000 | 189.15–451.42 | 189.15–1000 | 189.15–545.87 |
+| Cyclohexanone | 242–631.37 | 200–1500 | 250.9–489.75 | 242–631.37 | 242–428.58 | 242–1000 | 242–428.58 | 242–1000 | 242–620.35 |
+| N,N-Dimethylformamide | 212.72–649.6 | 200–1500 | 273.82–466.44 | 212.72–648.95 | 240–550 | 212.72–1000 | 250–425.15 | 212.72–1000 | 212.72–617.12 |
+| Dimethyl sulfoxide | 291.67–705.98 | 200–1500 | 291.67–422.15 | 291.67–705.98 | 291.67–464 | 291.67–1000 | 294.83–339.35 | 291.67–1000 | 291.67–672.5 |
+| N-Methyl-2-pyrrolidone | 249.15–721.6 | 273–1500 | 306.45–541.35 | 249.15–721.6 | 283.15–353.15 | 249.15–1000 | 249.15–477.42 | 477.42–1000 | 249.15–667.67 |
+| Sulfolane | 300.55–853 | 273.15–1500 | 300.55–711.15 | 300.55–853 | 300.55–682.4 | 300.55–1000 | 303.15–353.15 | 300.55–1000 | 300.55–812.25 |
+| Furfural | 236.65–647.33 | 100–1500 | 246.56–471.95 | 236.65–647.33 | 236.65–536.12 | 236.65–1000 | 293.15–466.63 | 236.65–1000 | 236.65–636.64 |
+| 1,4-Dioxane | 284.95–587 | 200–1500 | 284.95–374.47 | 284.95–586.41 | 284.95–487 | 284.95–1000 | 284.95–374.47 | 284.95–768.01 | 284.95–557.65 |
+| Isobutanol | 165.15–547.78 | 255.37–1200 | 165.15–403.87 | 165.15–527.66 | 210.93–544.26 | 165.15–1000 | 165.15–488.71 | 165.15–1000 | 283.15–380.81 |
+| 2-Butanol | 158.45–516.32 | 150–1500 | 158.45–372.7 | 158.45–516.32 | 288.15–400 | 158.45–1000 | 200–398.15 | 255.928–992.7 | 273.15–372.7 |
 
 Temperatures in K.
 
@@ -843,6 +865,171 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 10.664 | 10.664 | 0.00 % | – |
 | σ | mN/m | – | – | – | – |
 
+### 1,2-Dichloroethane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 10.521 | 10.514 | 0.07 % | – |
+| ρL | kg/m³ | 1245.6 | 1245.4 | 0.02 % | 1246.4 |
+| cp° | J/(mol·K) | 82.161 | 82.161 | -0.00 % | 78.146 |
+| cpL | J/(mol·K) | 128.66 | 128.9 | -0.18 % | 128.82 |
+| ΔHvap | kJ/mol | 35.163 | 35.089 | 0.21 % | 35.075 |
+| μL | mPa·s | 0.78184 | 0.78184 | 0.00 % | – |
+| μV | μPa·s | 9.0553 | 9.0553 | 0.00 % | – |
+| kL | mW/(m·K) | 134.05 | 134.74 | -0.52 % | – |
+| kV | mW/(m·K) | 8.504 | 8.504 | 0.00 % | – |
+| σ | mN/m | 31.79 | 31.823 | -0.10 % | – |
+
+### Methyl isobutyl ketone, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 2.7149 | 2.7149 | 0.00 % | – |
+| ρL | kg/m³ | 796.53 | 796.53 | -0.00 % | – |
+| cp° | J/(mol·K) | 147.49 | 147.25 | 0.16 % | – |
+| cpL | J/(mol·K) | 212.51 | 212.53 | -0.01 % | – |
+| ΔHvap | kJ/mol | 41.092 | 41.092 | 0.00 % | – |
+| μL | mPa·s | 0.54125 | 0.54125 | 0.00 % | – |
+| μV | μPa·s | 6.4741 | 6.4741 | 0.00 % | – |
+| kL | mW/(m·K) | 141.76 | 141.53 | 0.17 % | – |
+| kV | mW/(m·K) | 10.751 | 10.751 | 0.00 % | – |
+| σ | mN/m | 23.557 | 23.58 | -0.10 % | – |
+
+### Cyclohexanone, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.53541 | 0.53541 | 0.00 % | – |
+| ρL | kg/m³ | 942.36 | 942.36 | 0.00 % | – |
+| cp° | J/(mol·K) | 111.68 | 111.57 | 0.09 % | – |
+| cpL | J/(mol·K) | 179.07 | 179.08 | -0.01 % | – |
+| ΔHvap | kJ/mol | 45.084 | 45.084 | 0.00 % | – |
+| μL | mPa·s | 2.0093 | 2.0093 | 0.00 % | – |
+| μV | μPa·s | 7.0777 | 7.0777 | 0.00 % | – |
+| kL | mW/(m·K) | 138.77 | 139.12 | -0.25 % | – |
+| kV | mW/(m·K) | 11.061 | 11.061 | 0.00 % | – |
+| σ | mN/m | 34.222 | 34.349 | -0.37 % | – |
+
+### N,N-Dimethylformamide, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.53972 | 0.53972 | 0.00 % | – |
+| ρL | kg/m³ | 949.56 | 949.56 | -0.00 % | – |
+| cp° | J/(mol·K) | 93.629 | 93.631 | -0.00 % | – |
+| cpL | J/(mol·K) | 151.63 | 151.67 | -0.03 % | – |
+| ΔHvap | kJ/mol | 47.121 | 47.121 | 0.00 % | – |
+| μL | mPa·s | 0.81844 | 0.81844 | 0.00 % | – |
+| μV | μPa·s | 6.0545 | 6.0545 | 0.00 % | – |
+| kL | mW/(m·K) | 186.03 | 186.15 | -0.06 % | – |
+| kV | mW/(m·K) | 10.118 | 10.118 | 0.00 % | – |
+| σ | mN/m | 34.478 | 34.498 | -0.06 % | – |
+
+### Dimethyl sulfoxide, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.077181 | 0.077181 | 0.00 % | – |
+| ρL | kg/m³ | 1096.1 | 1096.1 | 0.00 % | – |
+| cp° | J/(mol·K) | 89.555 | 89.546 | 0.01 % | – |
+| cpL | J/(mol·K) | 152.6 | 152.5 | 0.06 % | – |
+| ΔHvap | kJ/mol | 52.062 | 52.062 | 0.00 % | – |
+| μL | mPa·s | 2.0088 | 2.0088 | 0.00 % | – |
+| μV | μPa·s | 6.398 | 6.398 | 0.00 % | – |
+| kL | mW/(m·K) | 182.85 | (table) | – | 217.97 |
+| kV | mW/(m·K) | 9.868 | 9.868 | 0.00 % | – |
+| σ | mN/m | 43.319 | 43.091 | 0.53 % | – |
+
+### N-Methyl-2-pyrrolidone, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.045949 | 0.045949 | 0.00 % | – |
+| ρL | kg/m³ | 1026.1 | 1026.1 | -0.00 % | – |
+| cp° | J/(mol·K) | 103.51 | 103.93 | -0.41 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | 54.37 | 54.37 | 0.00 % | – |
+| μL | mPa·s | 1.6563 | (table) | – | 1.8903 |
+| μV | μPa·s | 6.8496 | 6.8496 | 0.00 % | – |
+| kL | mW/(m·K) | 133.99 | 133.99 | 0.00 % | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | 41.722 | 41.921 | -0.47 % | – |
+
+### Sulfolane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.00053601 | 0.00053601 | 0.00 % | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 118.5 | 118.39 | 0.09 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | – | – | – | – |
+
+### Furfural, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.37526 | 0.37526 | 0.00 % | – |
+| ρL | kg/m³ | 1154.6 | 1154.6 | 0.00 % | – |
+| cp° | J/(mol·K) | 98.106 | 98.293 | -0.19 % | – |
+| cpL | J/(mol·K) | 160.65 | 160.57 | 0.05 % | – |
+| ΔHvap | kJ/mol | 48.962 | 48.962 | 0.00 % | – |
+| μL | mPa·s | 1.5955 | 1.5955 | 0.00 % | – |
+| μV | μPa·s | 7.9977 | 7.9977 | 0.00 % | – |
+| kL | mW/(m·K) | 171.56 | 171.55 | 0.01 % | – |
+| kV | mW/(m·K) | 10.805 | 10.805 | 0.00 % | – |
+| σ | mN/m | 42.78 | 42.803 | -0.05 % | – |
+
+### 1,4-Dioxane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 5.0979 | 5.0979 | 0.00 % | – |
+| ρL | kg/m³ | 1029.7 | 1029.7 | 0.00 % | – |
+| cp° | J/(mol·K) | 93.703 | 93.54 | 0.17 % | – |
+| cpL | J/(mol·K) | 152.67 | 153 | -0.22 % | – |
+| ΔHvap | kJ/mol | 38.055 | 38.055 | 0.00 % | – |
+| μL | mPa·s | 1.1779 | 1.1779 | 0.00 % | – |
+| μV | μPa·s | 12.852 | 12.852 | 0.00 % | – |
+| kL | mW/(m·K) | 157.58 | 157.53 | 0.03 % | – |
+| kV | mW/(m·K) | 11.75 | 11.75 | 0.00 % | – |
+| σ | mN/m | 32.868 | 32.905 | -0.11 % | – |
+
+### Isobutanol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 1.4533 | 1.4533 | 0.00 % | – |
+| ρL | kg/m³ | 797.31 | 797.31 | -0.00 % | – |
+| cp° | J/(mol·K) | 110.26 | 110.36 | -0.09 % | – |
+| cpL | J/(mol·K) | 182.71 | 182.42 | 0.16 % | – |
+| ΔHvap | kJ/mol | 51.864 | 51.864 | 0.00 % | – |
+| μL | mPa·s | 3.3243 | 3.3243 | 0.00 % | – |
+| μV | μPa·s | 7.2454 | 7.2454 | 0.00 % | – |
+| kL | mW/(m·K) | 139.97 | 140.57 | -0.43 % | – |
+| kV | mW/(m·K) | 12.383 | 12.383 | 0.00 % | – |
+| σ | mN/m | 22.549 | 22.571 | -0.10 % | – |
+
+### 2-Butanol, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 2.347 | 2.4769 | -5.24 % | – |
+| ρL | kg/m³ | 806.25 | 806.25 | 0.00 % | – |
+| cp° | J/(mol·K) | 114.21 | 113.52 | 0.60 % | – |
+| cpL | J/(mol·K) | 196.01 | 195.76 | 0.13 % | – |
+| ΔHvap | kJ/mol | 49.486 | 49.486 | 0.00 % | – |
+| μL | mPa·s | 3.1498 | 3.1498 | 0.00 % | – |
+| μV | μPa·s | 7.4398 | 7.4398 | 0.00 % | – |
+| kL | mW/(m·K) | 136.31 | 136.14 | 0.13 % | – |
+| kV | mW/(m·K) | 13.265 | 13.265 | 0.00 % | – |
+| σ | mN/m | 22.995 | 23.024 | -0.13 % | – |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -862,6 +1049,50 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | Methanol | dHvap(337.7 K) 35.436 kJ/mol | +0.6 % vs 35.21 kJ/mol at 337.7 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Mask=4) |
 | Acetone | dHvap(329.3 K) 29.101 kJ/mol | +0.0 % vs 29.10 kJ/mol at 329.3 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Mask=4) |
 | Toluene | dHvap(383.8 K) 33.178 kJ/mol | -0.0 % vs 33.18 kJ/mol at 383.8 K (Majer and Svoboda 1985, via the NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4) |
+| 1,2-Dichloroethane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 6 articles, 298.1-355.2 K; median deviation of the articles 1.63 % (abo |
+| 1,2-Dichloroethane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 141 measured values from 41 articles, 283.1-333.1 K; median deviation of the articles 0.01 % (w |
+| 1,2-Dichloroethane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 20 measured values from 7 articles, 288.1-318.1 K; median deviation of the articles 1.22 % (wit |
+| 1,2-Dichloroethane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 1 articles, 293.1-313.1 K; median deviation of the articles 14.64 %; lar |
+| Methyl isobutyl ketone | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 112 measured values from 6 articles, 333.1-397.7 K; median deviation of the articles 0.35 % (wi |
+| Methyl isobutyl ketone | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 49 measured values from 30 articles, 283.1-323.1 K; median deviation of the articles 0.07 % (wi |
+| Methyl isobutyl ketone | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 4 articles, 283.1-323.1 K; median deviation of the articles 2.17 % (wit |
+| Cyclohexanone | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 3 articles, 353.1-428.6 K; median deviation of the articles 1.89 % (abo |
+| Cyclohexanone | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 58 measured values from 27 articles, 288.1-318.1 K; median deviation of the articles 0.07 % (wi |
+| Cyclohexanone | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 10 articles, 288.1-318.1 K; median deviation of the articles 1.38 % (wi |
+| N,N-Dimethylformamide | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 3 articles, 383.0-425.6 K; median deviation of the articles 1.01 % (abo |
+| N,N-Dimethylformamide | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 435 measured values from 111 articles, 273.1-403.1 K; median deviation of the articles 0.60 % ( |
+| N,N-Dimethylformamide | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 2 articles, 275.3-305.0 K; median deviation of the articles 3.94 % (abo |
+| N,N-Dimethylformamide | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 125 measured values from 32 articles, 273.1-363.1 K; median deviation of the articles 2.46 % (w |
+| N,N-Dimethylformamide | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 3 articles, 277.9-327.9 K; median deviation of the articles 1.26 %; lar |
+| Dimethyl sulfoxide | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 353 measured values from 93 articles, 293.1-373.1 K; median deviation of the articles 0.08 % (w |
+| Dimethyl sulfoxide | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 44 measured values from 5 articles, 293.1-418.1 K; median deviation of the articles 0.49 % (wit |
+| Dimethyl sulfoxide | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 105 measured values from 30 articles, 293.1-373.1 K; median deviation of the articles 1.79 % (w |
+| Dimethyl sulfoxide | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 1 articles, 294.8-339.4 K; median deviation of the articles 0.19 % (wit |
+| Dimethyl sulfoxide | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 29 measured values from 7 articles, 293.1-328.1 K; median deviation of the articles 1.77 %; lar |
+| N-Methyl-2-pyrrolidone | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 28 measured values from 3 articles, 373.1-475.7 K; median deviation of the articles 1.71 % (abo |
+| N-Methyl-2-pyrrolidone | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 220 measured values from 52 articles, 288.1-373.1 K; median deviation of the articles 0.15 % (w |
+| N-Methyl-2-pyrrolidone | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 2 articles, 306.6-352.5 K; median deviation of the articles 5.28 % (abo |
+| N-Methyl-2-pyrrolidone | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 128 measured values from 22 articles, 283.1-353.1 K; median deviation of the articles 0.75 % (w |
+| N-Methyl-2-pyrrolidone | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 17 measured values from 3 articles, 277.8-337.9 K; median deviation of the articles 1.76 %; lar |
+| Sulfolane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 61 measured values from 13 articles, 303.1-373.1 K; median deviation of the articles 0.09 % (wi |
+| Sulfolane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.86 % (with |
+| Sulfolane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 7 articles, 303.1-353.1 K; median deviation of the articles 1.75 % (wit |
+| Sulfolane | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.01 % (with |
+| Sulfolane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 1 articles, 303.1-343.1 K; median deviation of the articles 2.36 %; larg |
+| Furfural | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 9 measured values from 5 articles, 394.2-435.1 K; median deviation of the articles 1.49 % (abov |
+| Furfural | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 14 measured values from 6 articles, 283.1-318.2 K; median deviation of the articles 0.05 % (wit |
+| 1,4-Dioxane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 3 articles, 308.1-374.6 K; median deviation of the articles 1.78 % (abov |
+| 1,4-Dioxane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 146 measured values from 55 articles, 288.1-353.1 K; median deviation of the articles 0.17 % (w |
+| 1,4-Dioxane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 1 articles, 288.1-333.1 K; median deviation of the articles 1.92 % (wit |
+| 1,4-Dioxane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 63 measured values from 22 articles, 288.1-323.1 K; median deviation of the articles 1.59 % (wi |
+| Isobutanol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 54 measured values from 15 articles, 298.1-392.2 K; median deviation of the articles 0.94 % (wi |
+| Isobutanol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 218 measured values from 75 articles, 283.1-363.2 K; median deviation of the articles 0.08 % (w |
+| Isobutanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 95 measured values from 21 articles, 288.1-343.1 K; median deviation of the articles 2.09 % (wi |
+| 2-Butanol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 160 measured values from 24 articles, 293.1-473.5 K; median deviation of the articles 0.44 % (w |
+| 2-Butanol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 398 measured values from 124 articles, 273.1-363.1 K; median deviation of the articles 0.43 % ( |
+| 2-Butanol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 3 articles, 288.1-318.1 K; median deviation of the articles 0.71 % (with |
+| 2-Butanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 173 measured values from 43 articles, 288.1-353.1 K; median deviation of the articles 2.44 % (w |
+| 2-Butanol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 4 articles, 283.1-313.1 K; median deviation of the articles 0.53 %; lar |
 
 ## Range limits to note
 
@@ -874,6 +1105,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - Ethylene, kV: starts at 170 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 170 K have no value.
 - Dimethyl ether, μL: starts at 144.1 K, above the other liquid properties (131.66 K): range narrowed from 131.66-380.35 K (max deviation there 3.2 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (131.66 K)
 - n-Pentane, μL: starts at 173.75 K, above the other liquid properties (143.47 K): range narrowed from 143.47-446.21 K (max deviation there 17 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (143.47 K)
+- N-Methyl-2-pyrrolidone, kV: starts at 477.42 K, above the normal boiling point 477.144 K (ChemSep range); vapour states between Tb and 477.42 K have no value.
 
 ## Cross-checks
 
@@ -896,6 +1128,17 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - cross-check acetonitrile vapour pressure vs Putnam, McEachern, et al., 1965, 2, 280.41-300.53 K: max +3.00 % at 290.5 K
 - cross-check glycerol vapour pressure vs Richardson, 1886, 2, 456.40-533.60 K: max -10.13 % at 533.6 K
 - cross-check phenol vapour pressure vs Dreisbach and Shrader, 1949, 380.30-454.90 K: max -17.14 % at 380.3 K
+- cross-check mibk vapour pressure vs Fuge, Bowden, et al., 1952, 294.90-389.30 K: max +3.56 % at 294.9 K
+- cross-check cyclohexanone vapour pressure vs Meyer and Hotz, 1973, 362.78-438.92 K: max -2.50 % at 362.8 K
+- cross-check dmf vapour pressure vs Gopal and Rizvi, 1968, 2, 303.00-363.00 K: max -9.68 % at 363.0 K
+- cross-check dmso vapour pressure vs Jakli and van Hook, 1972, 325.49-442.09 K: max +4.66 % at 412.9 K
+- cross-check dmso vapour pressure vs Douglas, 1948, 3, 293.00-323.00 K: max -4.82 % at 293.0 K
+- cross-check furfural vapour pressure vs Matthews, Sumner, et al., 1950, 2, 329.02-433.90 K: max +15.41 % at 329.0 K
+- cross-check dioxane vapour pressure vs Crenshaw, Cope, et al., 1938, 293.00-378.00 K: max +2.48 % at 293.0 K
+- cross-check isobutanol vapour pressure vs Ambrose and Townsend, 1963, 3, 422.64-547.71 K: max +5.29 % at 547.7 K
+- cross-check isobutanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 353.36-388.77 K: max +1.15 % at 353.4 K
+- cross-check 2-butanol vapour pressure vs Ambrose and Townsend, 1963, 2: max +1.80 % at 439.2 K
+- cross-check 2-butanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2: max +0.42 % at 380.3 K
 
 ## Notes
 
@@ -967,6 +1210,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Thol-FPE-2019-alkanes-pentane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part I. n-Pentane, Fluid Phase Equilib.  ()
   - Thol-HTHP-2012: M. Thol et al., Equation of state for benzene for temperatures from the melting line up to 725 K with pressures up to 500 MPa, High Temperatures-High Pressures 41 (2012) 81-97
   - Thol-IJT-2014: Thol, Monika et al., A New Functional Form for Equations of State for Some Weakly Associating Fluids, Int. J. Thermophys. 35 (2014) 783-811, doi:10.1007/s10765-014-1633-1
+  - Thol-THESIS-2015: Monika Thol, Empirical Multiparameter Equations of State Based on Molecular Simulation and Hybrid Data Sets,  (2015)
   - Tufeu-BBPC-1984: R. Tufeu et al., Thermal Conductivity of Ammonia in a Large Temperature and Pressure Range Including the Critical Region, Bereicht der Bunsengesellschaft Phys. Chem. 88 (1984) 422-427, doi:10.1002/bbpc.19840880421
   - Vassiliou-JPCRD-2015-pentanes: Vassiliou, C-M et al., Reference Correlations of the Thermal Conductivity of Cyclopentane, iso-Pentane, and n-Pentane, Journal of Physical and Chemical Reference Data 44 (2015) 033102
   - Vogel-HTHP-1999: E. Vogel et al., Viscosity for n-Butane in the Fluid Region, High Temp. - High Pressures 31 (1999) 173-186, doi:10.1068/htrt154

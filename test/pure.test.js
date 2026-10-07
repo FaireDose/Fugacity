@@ -39,7 +39,7 @@ test("pure() vapour pressure and boiling point agree with the VLE data", () => {
 });
 
 test("every component has critical constants and an acentric factor", () => {
-  assert.equal(listComponents().length, 51);
+  assert.equal(listComponents().length, 62);
   for (const c of listComponents()) {
     const p = pure(c.id);
     for (const k of ["MW", "Tc_K", "Pc_kPa", "omega"]) assert.ok(Number.isFinite(p[k]), `${c.name} ${k}`);
