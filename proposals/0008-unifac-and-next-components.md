@@ -179,6 +179,19 @@ N,N-dimethylformamide and N-methyl-2-pyrrolidone, 1-5 %) stay as they are and sa
 record: the measured values within the target do not cover 25 °C to 100 °C, so a refit would
 shorten the range, or the measured sets disagree among themselves.
 
+**Batch 2 (gas treating, acids, esters and reaction work), done:** sulfur dioxide, nitrous oxide
+and ethylene oxide (CoolProp; the transport properties of the first two from the NIST WebBook
+fluid tables, Huber's models, NISTIR 8209), monoethanolamine, diethanolamine,
+methyldiethanolamine, propionic acid, acrylic acid, vinyl acetate, isopropyl acetate, propylene
+oxide and formaldehyde (ChemSep v8.3), formic acid and hydrogen peroxide (`chemsep2.xml`). The
+ThermoML comparison found no record three times off its tolerance; four vapour pressures are
+1.4-2.5 % off with two or three articles each (monoethanolamine, sulfur dioxide, propionic acid,
+vinyl acetate) and stay as they are, with the warning. The open archive has no pure-component
+values for formaldehyde and hydrogen peroxide, and few for acrylic acid and the oxides. Flagged
+as before: formic acid associates in the vapour (not modelled for it), formaldehyde and hydrogen
+peroxide react in water, and the amines with CO₂ form ions; only the molecular solvent
+properties are in scope.
+
 **The older components, checked the same way:** the 24 components of proposal 0004 and v0.1 whose
 records come from ChemSep (all of them, or the transport properties CoolProp does not model) were
 compared with 25,540 measured values from 2,046 articles. Most records are within the

@@ -88,6 +88,23 @@ BATCHES = {
         ("isobutanol", "Isobutanol", None, ["2-methyl-1-propanol", "2-methylpropan-1-ol", "isobutyl alcohol"]),
         ("2-butanol", "2-Butanol", None, ["sec-butanol", "butan-2-ol", "sec-butyl alcohol"]),
     ],
+    # proposal 0008, Part B, batch 2: gas treating, acids, esters and reaction work
+    5: [
+        ("mea", "Monoethanolamine", None, ["ethanolamine", "2-aminoethanol", "2-aminoethan-1-ol"]),
+        ("dea", "Diethanolamine", None, ["2,2'-iminodiethanol", "bis(2-hydroxyethyl)amine"]),
+        ("mdea", "Methyldiethanolamine", None, ["n-methyldiethanolamine", "2,2'-(methylimino)diethanol"]),
+        ("sulfur-dioxide", "Sulfur dioxide", "SulfurDioxide", ["so2", "sulphur dioxide"]),
+        ("nitrous-oxide", "Nitrous oxide", "NitrousOxide", ["n2o", "dinitrogen monoxide", "dinitrogen oxide"]),
+        ("formic-acid", "Formic acid", None, ["methanoic acid", "hcooh"]),
+        ("propionic-acid", "Propionic acid", None, ["propanoic acid"]),
+        ("acrylic-acid", "Acrylic acid", None, ["prop-2-enoic acid", "propenoic acid"]),
+        ("vinyl-acetate", "Vinyl acetate", None, ["ethenyl acetate", "vinyl ethanoate"]),
+        ("isopropyl-acetate", "Isopropyl acetate", None, ["propan-2-yl acetate", "1-methylethyl acetate"]),
+        ("ethylene-oxide", "Ethylene oxide", "EthyleneOxide", ["oxirane", "epoxyethane"]),
+        ("propylene-oxide", "Propylene oxide", None, ["methyloxirane", "1,2-epoxypropane"]),
+        ("formaldehyde", "Formaldehyde", None, ["methanal", "ch2o"]),
+        ("hydrogen-peroxide", "Hydrogen peroxide", None, ["h2o2"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
 CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",
@@ -96,7 +113,11 @@ CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67
                "phenol": "108-95-2",
                "mibk": "108-10-1", "cyclohexanone": "108-94-1", "dmf": "68-12-2", "dmso": "67-68-5", "nmp": "872-50-4",
                "sulfolane": "126-33-0", "furfural": "98-01-1", "dioxane": "123-91-1", "isobutanol": "78-83-1",
-               "2-butanol": "78-92-2"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+               "2-butanol": "78-92-2",
+               "mea": "141-43-5", "dea": "111-42-2", "mdea": "105-59-9", "formic-acid": "64-18-6",
+               "propionic-acid": "79-09-4", "acrylic-acid": "79-10-7", "vinyl-acetate": "108-05-4",
+               "isopropyl-acetate": "108-21-4", "propylene-oxide": "75-56-9", "formaldehyde": "50-00-0",
+               "hydrogen-peroxide": "7722-84-1"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
 # the second file of the same databank (as redistributed in DWSIM, same licence), for compounds not in chemsep1.xml
 CHEMSEP2_NAME = "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)"
 

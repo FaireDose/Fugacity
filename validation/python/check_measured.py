@@ -83,6 +83,21 @@ CHECKED = {
     "diethyl-ether": ["ethoxyethane", "diethyl ether"],
     "propylene-glycol": ["propane-1,2-diol", "propylene glycol"],
     "tetrahydrofuran": ["oxolane", "tetrahydrofuran"],
+    # proposal 0008, Part B, batch 2: gas treating, acids, esters and reaction work
+    "mea": ["2-aminoethanol", "monoethanolamine", "ethanolamine"],
+    "dea": ["diethanolamine", "2,2'-iminodiethanol"],
+    "mdea": ["N-methyldiethanolamine", "methyldiethanolamine"],
+    "sulfur-dioxide": ["sulfur dioxide"],
+    "nitrous-oxide": ["nitrous oxide", "dinitrogen monoxide"],
+    "formic-acid": ["formic acid", "methanoic acid"],
+    "propionic-acid": ["propanoic acid", "propionic acid"],
+    "acrylic-acid": ["acrylic acid", "prop-2-enoic acid"],
+    "vinyl-acetate": ["vinyl acetate", "ethenyl acetate"],
+    "isopropyl-acetate": ["isopropyl acetate", "propan-2-yl acetate"],
+    "ethylene-oxide": ["oxirane", "ethylene oxide"],
+    "propylene-oxide": ["methyloxirane", "propylene oxide"],
+    "formaldehyde": ["formaldehyde", "methanal"],
+    "hydrogen-peroxide": ["hydrogen peroxide"],
 }
 
 

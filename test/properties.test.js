@@ -16,7 +16,7 @@ const points = Object.fromEntries(readdirSync(POINTS_DIR).filter(f => f.endsWith
   .map(f => [f.replace(/\.json$/, ""), JSON.parse(readFileSync(new URL(f, POINTS_DIR)))]));
 
 // gases at 25 °C and 1 atm (normal boiling point below 298.15 K): their vapour-pressure records are fitted
-// with the other properties; the six of v0.2 and the ten of proposal 0004, batch 1
+// with the other properties; the six of v0.2, the ten of proposal 0004, batch 1, and four of proposal 0008, batch 2
 // (carbon dioxide has no normal boiling point: Tb_K is null, it has no liquid at 1 atm)
 const GASES = listComponents().map(c => c.id).filter(id => (components[id].Tb_K ?? 0) < 298.15);
 const TRANSPORT = new Set(["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"]);
@@ -40,8 +40,8 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 62);
-  assert.equal(GASES.length, 16);
+  assert.equal(listComponents().length, 76);
+  assert.equal(GASES.length, 20);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
     assert.ok(props, `${name}: no properties object`);
@@ -119,7 +119,8 @@ test("the gases' vapour pressures give their normal boiling points within 0.1 K"
     const p = pure(id);
     const vp = components[id].vapourPressure;
     assert.equal(vp.equation, "DIPPR101");
-    assert.equal(vp.tier, "fitted");
+    // fitted to CoolProp, or ChemSep's equation taken over unchanged (formaldehyde: "databank")
+    assert.ok(["fitted", "databank"].includes(vp.tier), `${id}: tier ${vp.tier}`);
     if (p.Tb_K == null) {
       // no liquid at 1 atm: the vapour-pressure curve starts above 101.325 kPa, and the record says why
       assert.ok(p.psat(vp.Tmin_K) > 101.325, p.name);
@@ -156,7 +157,11 @@ test("props() returns liquid and vapour properties for every component at a typi
     // 306.45 K; sulfolane: the measured thermal conductivity starts at 303.15 K)
     const liquidMin = ["liquidDensity", "liquidHeatCapacity", "heatOfVaporization", "liquidViscosity", "liquidThermalConductivity"]
       .map(n => components[id].properties[n]?.Tmin_K ?? 0);
-    const TL = Tmid ?? (isGas ? Math.max(p.Tb_K - 5, vp.Tmin_K + 1) : id === "acetic-acid" ? 303.15
+    // for a gas, the highest temperature up to Tb - 5 K at which all its liquid records apply (formaldehyde: the
+    // ChemSep liquid thermal conductivity ends at 234 K)
+    const liquidMax = ["liquidDensity", "liquidHeatCapacity", "heatOfVaporization", "liquidViscosity", "liquidThermalConductivity"]
+      .map(n => components[id].properties[n]?.Tmax_K ?? Infinity);
+    const TL = Tmid ?? (isGas ? Math.max(Math.min(p.Tb_K - 5, ...liquidMax), vp.Tmin_K + 1, ...liquidMin) : id === "acetic-acid" ? 303.15
       : Math.max(298.15, vp.Tmin_K, ...liquidMin));
     const L = p.props(TL, Tmid ? 2 * p.psat(Tmid) : 101.325);
     assert.equal(L.phase, "liquid", name);
@@ -172,7 +177,11 @@ test("props() returns liquid and vapour properties for every component at a typi
       assert.ok(Number.isFinite(L[k]), `${name} liquid ${k}: ${L.notes.join(" ")}`);
     }
     // vapour: 10 K above the normal boiling point at 1 kPa
-    const V = Tmid ? p.props(Tmid, p.psat(Tmid) / 100) : p.props(p.Tb_K + 10, 1);
+    // (or the lowest temperature at which all its vapour records apply: formic acid's vapour thermal conductivity
+    // in chemsep2.xml starts at 420 K)
+    const vapourMin = ["idealGasHeatCapacity", "vapourViscosity", "vapourThermalConductivity"]
+      .map(n => components[id].properties[n]?.Tmin_K ?? 0);
+    const V = Tmid ? p.props(Tmid, p.psat(Tmid) / 100) : p.props(Math.max(p.Tb_K + 10, ...vapourMin), 1);
     assert.equal(V.phase, "vapour", name);
     const recordOfV = { cp_J_molK: "idealGasHeatCapacity", mu_Pa_s: "vapourViscosity", k_W_mK: "vapourThermalConductivity",
       h_J_mol: "idealGasHeatCapacity" };

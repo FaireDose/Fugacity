@@ -1,0 +1,79 @@
+{
+ "component": "ethylene-oxide",
+ "cas": "75-21-8",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"oxirane\", \"ethylene oxide\"; 53 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1021/je050317k": {
+   "authors": [
+    "Giles, N. F.[Neil F.]",
+    "Wilson, G. M.[Grant M.]"
+   ],
+   "title": "Vapor-Liquid Equilibria on Seven Binary Systems: Ethylene Oxide + 2-Methylpropane; Acetophenone + Phenol; cis-1,3-Dichloropropene + 1,2-Dichloropropane; 1,5-Hexadiene + Allyl Chloride; Isopropyl Acetate + Acetonitrile; Vinyl Chloride + Methyl Chloride; and 1,4-Butanediol + c-Butyrolactone",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1954-1962"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.15,
+   "P_kPa": null,
+   "value": 174.71,
+   "uncertainty": 1.63,
+   "doi": "10.1021/je050317k",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 348.15,
+   "P_kPa": null,
+   "value": 766.7,
+   "uncertainty": 5.0,
+   "doi": "10.1021/je050317k",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.15,
+   "P_kPa": null,
+   "value": 174.71,
+   "uncertainty": 1.63,
+   "doi": "10.1021/je050317k",
+   "set": 15,
+   "binary_with": "2-methylpropane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 348.15,
+   "P_kPa": null,
+   "value": 766.7,
+   "uncertainty": 5.0,
+   "doi": "10.1021/je050317k",
+   "set": 15,
+   "binary_with": "2-methylpropane"
+  }
+ ]
+}

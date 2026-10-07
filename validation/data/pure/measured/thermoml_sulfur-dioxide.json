@@ -1,0 +1,207 @@
+{
+ "component": "sulfur-dioxide",
+ "cas": "7446-09-5",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"sulfur dioxide\"; 28 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2011.02.008": {
+   "authors": [
+    "Ahmar, E. E.[Elise El]",
+    "Creton, B.[Benoit]",
+    "Valtz, A.[Alain]",
+    "Coquelet, C.[Christophe]",
+    "Lachet, V.[Veronique]",
+    "Richon, D.[Dominique]",
+    "Ungerer, P.[Philippe]"
+   ],
+   "title": "Thermodynamic study of binary systems containing sulfur dioxide: measurements and molecular modelling",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "304",
+   "year": "2011",
+   "pages": "21-34"
+  },
+  "10.1016/j.fluid.2014.08.031": {
+   "authors": [
+    "Coquelet, C.[Christophe]",
+    "Arpentinier, P.[Philippe]"
+   ],
+   "title": "Thermodynamic Study of binary an ternary systems containing CO2 + impurities in the context of CO2 transportation",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "382",
+   "year": "2014",
+   "pages": "205-211"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.15,
+   "P_kPa": null,
+   "value": 1479.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.15,
+   "P_kPa": null,
+   "value": 1469.0,
+   "uncertainty": 24.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.15,
+   "P_kPa": null,
+   "value": 2883.0,
+   "uncertainty": 9.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 413.15,
+   "P_kPa": null,
+   "value": 5836.0,
+   "uncertainty": 18.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 413.15,
+   "P_kPa": null,
+   "value": 5978.0,
+   "uncertainty": 32.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.15,
+   "P_kPa": null,
+   "value": 1479.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 2,
+   "binary_with": "nitrogen"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.15,
+   "P_kPa": null,
+   "value": 2883.0,
+   "uncertainty": 9.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 2,
+   "binary_with": "nitrogen"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 413.15,
+   "P_kPa": null,
+   "value": 5836.0,
+   "uncertainty": 18.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 2,
+   "binary_with": "nitrogen"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.15,
+   "P_kPa": null,
+   "value": 1469.0,
+   "uncertainty": 24.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 4,
+   "binary_with": "oxygen"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 413.15,
+   "P_kPa": null,
+   "value": 5978.0,
+   "uncertainty": 32.0,
+   "doi": "10.1016/j.fluid.2011.02.008",
+   "set": 4,
+   "binary_with": "oxygen"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.21,
+   "P_kPa": null,
+   "value": 1105.0,
+   "uncertainty": 7.7,
+   "doi": "10.1016/j.fluid.2014.08.031",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.15,
+   "P_kPa": null,
+   "value": 104.1,
+   "uncertainty": 7.0,
+   "doi": "10.1016/j.fluid.2014.08.031",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  }
+ ]
+}

@@ -1,0 +1,88 @@
+{
+ "component": "acrylic-acid",
+ "cas": "79-10-7",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"acrylic acid\", \"prop-2-enoic acid\"; 41 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1021/je200655s": {
+   "authors": [
+    "Huang, G.[Guoqiang]",
+    "Yao, S.[Shuaipeng]",
+    "Zhao, Y.[Yuchen]",
+    "Liu, L.[Liyan]"
+   ],
+   "title": "Isobaric Vapor Liquid Equilibrium for Binary Systems of Toluene + Acrylic Acid, Toluene + Acetic Acid, and Cyclohexane + Acrylic Acid at 20 kPa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "56",
+   "year": "2011",
+   "pages": "3914-3919"
+  },
+  "10.1021/je201130h": {
+   "authors": [
+    "ATTIA, A.[Afef]",
+    "Mutelet, F.[Fabrice]",
+    "Solimando, R.[Roland]",
+    "JEDAY, M. R.[Med Razzak]"
+   ],
+   "title": "Evaluation of the Performance of Four Solvents for the Liquid Liquid Extraction of Acrylic Acid from Water",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "57",
+   "year": "2012",
+   "pages": "2114-2120"
+  },
+  "10.1021/je501085y": {
+   "authors": [
+    "Zhang, H.[Hongxun]"
+   ],
+   "title": "Measurements and Comparative Study of Ternary Liquid Liquid Equilibria for Water + Acrylic Acid + Cyclopentyl Methyl Ether at (293.15, 303.15, and 313.15) K and 100.249 kPa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "60",
+   "year": "2015",
+   "pages": "1371-1376"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 368.4,
+   "P_kPa": null,
+   "value": 20.0,
+   "uncertainty": 0.51,
+   "doi": "10.1021/je200655s",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 1059.17,
+   "uncertainty": 0.32,
+   "doi": "10.1021/je201130h",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1051.22,
+   "uncertainty": 0.1,
+   "doi": "10.1021/je501085y",
+   "set": 1,
+   "binary_with": null
+  }
+ ]
+}

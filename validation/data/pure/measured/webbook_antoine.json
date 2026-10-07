@@ -400,5 +400,175 @@
     "comment": "Coefficents calculated by NIST from author's data."
    }
   ]
+ },
+ "mea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141435&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 338.6,
+    "Tmax_K": 444.1,
+    "A": 4.29252,
+    "B": 1408.873,
+    "C": -116.093,
+    "reference": "Matthews, Sumner, et al., 1950, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "dea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111422&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 464.0,
+    "Tmax_K": 582.4,
+    "A": 5.26458,
+    "B": 2328.56,
+    "C": -98.751,
+    "reference": "McDonald, Shrader, et al., 1959, 2",
+    "comment": ""
+   },
+   {
+    "Tmin_K": 466.93,
+    "Tmax_K": 514.47,
+    "A": 5.19445,
+    "B": 2273.949,
+    "C": -103.362,
+    "reference": "McDonald, Shrader, et al., 1959, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "mdea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C105599&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
+ },
+ "formic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64186&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 273.7,
+    "Tmax_K": 307.4,
+    "A": 2.00121,
+    "B": 515.0,
+    "C": -139.408,
+    "reference": "Kahlbaum, 1894, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "propionic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79094&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 345.54,
+    "Tmax_K": 401.49,
+    "A": 4.74558,
+    "B": 1679.869,
+    "C": -59.832,
+    "reference": "Dreisbach and Shrader, 1949",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "acrylic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79107&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
+ },
+ "vinyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108054&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 340.0,
+    "Tmax_K": 355.0,
+    "A": 5.22841,
+    "B": 1807.332,
+    "C": 0.726,
+    "reference": "Swamy and Van Winkle, 1965",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 294.98,
+    "Tmax_K": 345.19,
+    "A": 4.34032,
+    "B": 1299.069,
+    "C": -46.183,
+    "reference": "Capková and Fried, 1963",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "isopropyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108214&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 234.9,
+    "Tmax_K": 362.0,
+    "A": 4.55172,
+    "B": 1490.877,
+    "C": -34.098,
+    "reference": "Stull, 1947",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "propylene-oxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75569&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 292.0,
+    "Tmax_K": 345.0,
+    "A": 3.55046,
+    "B": 802.487,
+    "C": -81.348,
+    "reference": "Bott and Sadler, 1966, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 199.7,
+    "Tmax_K": 307.38,
+    "A": 4.09487,
+    "B": 1065.27,
+    "C": -46.867,
+    "reference": "McDonald, Shrader, et al., 1959, 2",
+    "comment": ""
+   }
+  ]
+ },
+ "formaldehyde": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C50000&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 163.76,
+    "Tmax_K": 250.86,
+    "A": 4.28176,
+    "B": 959.43,
+    "C": -29.758,
+    "reference": "Spence and Wild, 1935, 3",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "hydrogen-peroxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7722841&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
  }
 }

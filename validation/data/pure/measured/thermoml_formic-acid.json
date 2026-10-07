@@ -1,0 +1,914 @@
+{
+ "component": "formic-acid",
+ "cas": "64-18-6",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"formic acid\", \"methanoic acid\"; 112 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2006.07.011": {
+   "authors": [
+    "Cehreli, S.[Suheyla]"
+   ],
+   "title": "Liquid liquid equilibria of ternary systems (water + carboxylic acid + cumene) at 298.15K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "248",
+   "year": "2006",
+   "pages": "24-28"
+  },
+  "10.1016/j.fluid.2008.04.014": {
+   "authors": [
+    "Ozmen, D.[Dilek]"
+   ],
+   "title": "Determination and correlation of liquid liquid equilibria for the (water + carboxylic acid + dimethyl maleate) ternary systems at T = 298.2K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "269",
+   "year": "2008",
+   "pages": "12-18"
+  },
+  "10.1016/j.fluid.2011.09.014": {
+   "authors": [
+    "Baslioglu, B.[Burcu]",
+    "Cehreli, S.[Sueheyla]"
+   ],
+   "title": "Quaternary phase equilibrium of water-carboxylic acid mixture (formic-propionic acid or acetic-propionic acid)-solvent liquid systems at 298.15 K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "312",
+   "year": "2011",
+   "pages": "85-92"
+  },
+  "10.1016/j.fluid.2012.06.020": {
+   "authors": [
+    "Gundogdu, T.[Tugba]",
+    "Cehreli, S.[Suheyla]"
+   ],
+   "title": "Ternary liquid-liquid phase equilibria of (water-carboxylic acid-1-undecanol)  systems at 298.15 K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "331",
+   "year": "2012",
+   "pages": "26-32"
+  },
+  "10.1016/j.fluid.2013.06.006": {
+   "authors": [
+    "Gilani, H. G.",
+    "Asan, S.[Sh.]"
+   ],
+   "title": "Liquid-liquid equilibrium data for systems containing of formic acid, water, and primary normal alcohols at T = 298.2 K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "354",
+   "year": "2013",
+   "pages": "24-28"
+  },
+  "10.1016/j.fluid.2013.07.015": {
+   "authors": [
+    "Demirel, C.[Cagla]",
+    "Cehreli, S.[Suheyla]"
+   ],
+   "title": "Phase equilibrium of (water + formic or acetic acid + ethyl heptanoate) ternary liquid systems at different temperatures",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "356",
+   "year": "2013",
+   "pages": "71-77"
+  },
+  "10.1016/j.fluid.2014.03.002": {
+   "authors": [
+    "Ince, E.[Erol]",
+    "Asci, Y. S.[Yavuz Selim]"
+   ],
+   "title": "(Liquid + liquid) equilibria of the (water + carboxylic acid + dibasic esters mixture (DBE-2)) ternary systems",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "370",
+   "year": "2014",
+   "pages": "19-23"
+  },
+  "10.1016/j.fluid.2016.08.041": {
+   "authors": [
+    "Senol, A.[Aynur]",
+    "Bilgin, M.[Mehmet]",
+    "Baslioglu, B.[Burcu]",
+    "Vakili-Nezhaad, G.[Gholamreza]"
+   ],
+   "title": "Modeling phase equilibria of ternary systems (water + formic acid + ester or alcohol) through UNIFAC-original, SERLAS, NRTL, NRTL-modified, and three-suffix Margules: Parameter estimation using genetic algorithm",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "429",
+   "year": "2016",
+   "pages": "254-265"
+  },
+  "10.1016/j.tca.2012.08.001": {
+   "authors": [
+    "Gilani, H. G.",
+    "Azadian, M."
+   ],
+   "title": "Tie-line data for water- formic acid-1-decanol ternary system at T = (298.2, 303.2, 313.2, 323.2)  K",
+   "journal": "Thermochim. Acta",
+   "volume": "547",
+   "year": "2012",
+   "pages": "141-5"
+  },
+  "10.1021/acs.jced.6b00112": {
+   "authors": [
+    "Seyed Saadat, S. L.[Seyedeh Laleh]",
+    "Ghanadzadeh Gilani, A.[Ali]",
+    "Gilani, H. G.[Hossein Ghanadzadeh]",
+    "Kashef, A.[Atefeh]",
+    "Fallahi, S.[Saeed]"
+   ],
+   "title": "Liquid Phase Equilibria of Aqueous Mixtures of Carboxylic Acids (C1-C4) with Ethylbenzene: Thermodynamic and Mathematical Modeling",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "61",
+   "year": "2016",
+   "pages": "3391-3397"
+  },
+  "10.1021/acs.jced.6b00139": {
+   "authors": [
+    "Sommer, T.[Tomas]",
+    "Trejbal, J.[Jiri]",
+    "Kopecky, D.[Daniel]"
+   ],
+   "title": "Isobaric and Isothermal Vapor Liquid Equilibria for the Binary System of Water + Formic Acid at 99.41 kPa, 388.15 K, and 398.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "61",
+   "year": "2016",
+   "pages": "3398-3405"
+  },
+  "10.1021/acs.jced.6b00867": {
+   "authors": [
+    "Havasi, D.[David]",
+    "Hajnal, A.[Adam]",
+    "Patzay, G.[Gyorgy]",
+    "Mika, L. T.[Laszlo T.]"
+   ],
+   "title": "Vapor Liquid Equilibrium of Gamma-Valerolactone and Formic Acid at p = 51 kPa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "62",
+   "year": "2017",
+   "pages": "1058-1062"
+  },
+  "10.1021/je060084c": {
+   "authors": [
+    "Granados, K.[Karla]",
+    "Gracia-Fadrique, J.",
+    "Amigo, A.[Alfredo]",
+    "Bravo, R.[Ramon]"
+   ],
+   "title": "Refractive Index, Surface Tension, and Density of Aqueous Mixtures of Carboxylic Acids at 298.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1356-1360"
+  },
+  "10.1021/je401095k": {
+   "authors": [
+    "Gilani, H. G.[Hossein Ghanadzadeh]",
+    "Gilani, A. G.[Ali Ghanadzadeh]",
+    "Saadat, S. L. S."
+   ],
+   "title": "Experimental and Correlational Study of Phase Equilibria in Aqueous Solutions of Formic and Butyric Acids with Isoamyl Acetate and Methyl Isoamyl Ketone at T = 298.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "59",
+   "year": "2014",
+   "pages": "917-925"
+  },
+  "10.1021/je500422t": {
+   "authors": [
+    "Ince, E.[Erol]",
+    "Lalikoolu, M.[Melisa]",
+    "Constantinescu, D.[Dana]"
+   ],
+   "title": "Liquid Phase Equilibria of Water + Formic Acid + Dimethyl Carbonate Ternary System at Several Temperatures",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "59",
+   "year": "2014",
+   "pages": "2781-2787"
+  },
+  "10.1021/je700206y": {
+   "authors": [
+    "Ince, E.[Erol]",
+    "Kirbaslar, S. I.",
+    "Sahin, S.[Selin]"
+   ],
+   "title": "Liquid-Liquid Equilibria for Ternary Systems of Water + Formic Acid + Dibasic Esters",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "52",
+   "year": "2007",
+   "pages": "1889-1893"
+  },
+  "10.1021/je700755t": {
+   "authors": [
+    "Yang, C.[Changsheng]",
+    "Wei, G.[Guanghui]",
+    "Li, Y.[Yonghong]"
+   ],
+   "title": "Densities and Viscosities of N,N-Dimethylformamide + Formic Acid, and + Acetic Acid in the Temperature Range from (303.15 to 353.15) K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "53",
+   "year": "2008",
+   "pages": "1211-1215"
+  },
+  "10.1021/je800568m": {
+   "authors": [
+    "Tamilarasan, R.",
+    "Prabu, A. A.",
+    "Raajenthiren, M.",
+    "Kumar, M. D.",
+    "Yoo, C. K.[Chang Kyoo]"
+   ],
+   "title": "Effect of Dissolved Salts on the Enthalpy of Mixing of the Methanol + Formic Acid System at 303.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "54",
+   "year": "2009",
+   "pages": "4-7"
+  }
+ },
+ "rows": [
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1218.5,
+   "uncertainty": 2.46,
+   "doi": "10.1016/j.fluid.2006.07.011",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.15,
+   "uncertainty": 1.0,
+   "doi": "10.1016/j.fluid.2008.04.014",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1221.1,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.fluid.2008.04.014",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.05,
+   "uncertainty": 0.2,
+   "doi": "10.1016/j.fluid.2011.09.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1218.5,
+   "uncertainty": 1.4,
+   "doi": "10.1016/j.fluid.2011.09.014",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.2,
+   "uncertainty": 1.02,
+   "doi": "10.1016/j.fluid.2012.06.020",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1218.5,
+   "uncertainty": 1.5,
+   "doi": "10.1016/j.fluid.2012.06.020",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.2,
+   "P_kPa": 101.325,
+   "value": 1219.5,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.fluid.2013.06.006",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 1218.5,
+   "uncertainty": 1.35,
+   "doi": "10.1016/j.fluid.2013.07.015",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.2,
+   "uncertainty": 1.09,
+   "doi": "10.1016/j.fluid.2013.07.015",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.2,
+   "P_kPa": 101.325,
+   "value": 1220.04,
+   "uncertainty": 6.12,
+   "doi": "10.1016/j.fluid.2014.03.002",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.2,
+   "P_kPa": 101.325,
+   "value": 1214.1,
+   "uncertainty": 0.51,
+   "doi": "10.1016/j.fluid.2016.08.041",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.2,
+   "P_kPa": 101.325,
+   "value": 1219.32,
+   "uncertainty": 0.61,
+   "doi": "10.1016/j.tca.2012.08.001",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 1219.5,
+   "uncertainty": 10.01,
+   "doi": "10.1021/acs.jced.6b00112",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 388.15,
+   "P_kPa": null,
+   "value": 153.7,
+   "uncertainty": 1.0,
+   "doi": "10.1021/acs.jced.6b00139",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 398.15,
+   "P_kPa": null,
+   "value": 200.6,
+   "uncertainty": 1.0,
+   "doi": "10.1021/acs.jced.6b00139",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 388.15,
+   "P_kPa": null,
+   "value": 153.7,
+   "uncertainty": 1.1,
+   "doi": "10.1021/acs.jced.6b00139",
+   "set": 4,
+   "binary_with": "water"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 398.15,
+   "P_kPa": null,
+   "value": 200.6,
+   "uncertainty": 1.3,
+   "doi": "10.1021/acs.jced.6b00139",
+   "set": 4,
+   "binary_with": "water"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 352.2,
+   "P_kPa": null,
+   "value": 51.0,
+   "uncertainty": 4.0,
+   "doi": "10.1021/acs.jced.6b00867",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 1211.29,
+   "uncertainty": 1.54,
+   "doi": "10.1021/je060084c",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.15,
+   "P_kPa": null,
+   "value": 0.03817,
+   "uncertainty": 0.00053,
+   "doi": "10.1021/je060084c",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.2,
+   "P_kPa": 101.325,
+   "value": 1219.5,
+   "uncertainty": 0.42,
+   "doi": "10.1021/je401095k",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.2,
+   "P_kPa": 101.325,
+   "value": 1220.04,
+   "uncertainty": 1.07,
+   "doi": "10.1021/je500422t",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.4,
+   "uncertainty": 1.1,
+   "doi": "10.1021/je500422t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 374.4,
+   "uncertainty": 0.2,
+   "doi": "10.1021/je700206y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.2,
+   "P_kPa": 101.325,
+   "value": 1220.04,
+   "uncertainty": 1.01,
+   "doi": "10.1021/je700206y",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 101.0,
+   "value": 0.001437,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 0.001205,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 0.001022,
+   "uncertainty": 1e-05,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.0,
+   "value": 0.000879,
+   "uncertainty": 9e-06,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 101.0,
+   "value": 0.000766,
+   "uncertainty": 9e-06,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 101.0,
+   "value": 0.000677,
+   "uncertainty": 8e-06,
+   "doi": "10.1021/je700755t",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 101.0,
+   "value": 1205.07,
+   "uncertainty": 0.96,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 1192.81,
+   "uncertainty": 0.92,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 1180.63,
+   "uncertainty": 0.89,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.0,
+   "value": 1167.44,
+   "uncertainty": 0.85,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 101.0,
+   "value": 1154.99,
+   "uncertainty": 0.82,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 101.0,
+   "value": 1142.08,
+   "uncertainty": 0.78,
+   "doi": "10.1021/je700755t",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 101.0,
+   "value": 0.001437,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 0.001205,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 0.001022,
+   "uncertainty": 1e-05,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.0,
+   "value": 0.000879,
+   "uncertainty": 9e-06,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 101.0,
+   "value": 0.000766,
+   "uncertainty": 9e-06,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 101.0,
+   "value": 0.000677,
+   "uncertainty": 8e-06,
+   "doi": "10.1021/je700755t",
+   "set": 9,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 101.0,
+   "value": 1205.07,
+   "uncertainty": 0.96,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 1192.81,
+   "uncertainty": 0.92,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 1180.63,
+   "uncertainty": 0.89,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.0,
+   "value": 1167.44,
+   "uncertainty": 0.85,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 101.0,
+   "value": 1154.99,
+   "uncertainty": 0.82,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 101.0,
+   "value": 1142.08,
+   "uncertainty": 0.78,
+   "doi": "10.1021/je700755t",
+   "set": 10,
+   "binary_with": "dimethylformamide"
+  },
+  {
+   "property": "Normal boiling temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 373.6,
+   "uncertainty": 0.4,
+   "doi": "10.1021/je800568m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 1221.0,
+   "uncertainty": 1.3,
+   "doi": "10.1021/je800568m",
+   "set": 4,
+   "binary_with": null
+  }
+ ]
+}

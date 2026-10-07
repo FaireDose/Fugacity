@@ -329,3 +329,106 @@ Rules: liquid values at 110 kPa or less, inside the record's temperature range, 
 | Liquid viscosity | 56 | 19 (15) | 283.1-323.1 | 1.93 % | +32.96 % at 303.1 K (Oswal 2009, doi:10.1016/j.tca.2009.07.008) | ✅ within 5 % |
 | Surface tension | 10 | 4 | 288.1-313.1 | 1.68 % | -2.41 % at 308.1 K (Ku 2008, doi:10.1021/je700626v) | reported (no tolerance) |
 
+## Monoethanolamine
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 5 | 2 (1) | 353.1-435.6 | 2.44 % | +5.64 % at 353.1 K (Belabbaci 2009, doi:10.1021/je800530u) | ⚠️ above 1 % |
+| Liquid density | 200 | 38 (38) | 285.1-373.1 | 0.04 % | +0.33 % at 293.1 K (Islam 2004, doi:10.1016/j.jct.2004.06.004) | ✅ within 1 % |
+| Liquid heat capacity | 11 | 1 (1) | 303.1-353.1 | 0.14 % | +0.67 % at 313.1 K (Mundhwa 2007, doi:10.1021/je0604232) | ✅ within 2 % |
+| Liquid viscosity | 79 | 16 (16) | 293.1-393.1 | 1.10 % | +9.84 % at 323.1 K (Islam 2004, doi:10.1016/j.jct.2004.06.004) | ✅ within 5 % |
+| Surface tension | 13 | 4 | 293.1-333.1 | 0.47 % | +3.31 % at 323.2 K (Fu 2018, doi:10.1016/j.jct.2017.08.024) | reported (no tolerance) |
+
+## Diethanolamine
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (6 measured in all) |
+| Liquid density | 66 | 11 (11) | 303.1-373.1 | 0.02 % | -0.14 % at 373.1 K (Aguila-Hernandez 2008, doi:10.1016/j.fluid.2008.02.023) | ✅ within 1 % |
+| Liquid viscosity | 15 | 5 (5) | 303.1-353.1 | 2.89 % | -9.64 % at 353.1 K (Haghtalab 2014, doi:10.1016/j.jct.2013.09.001) | ✅ within 5 % |
+| Surface tension | 6 | 2 | 303.1-323.2 | 1.87 % | -4.90 % at 323.1 K (Lopez 2013, doi:10.1016/j.jct.2013.01.020) | reported (no tolerance) |
+
+## Methyldiethanolamine
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 1 | | | | | too few values (31 measured in all) |
+| Liquid density | 185 | 31 (29) | 283.1-423.1 | 0.68 % | -2.75 % at 423.1 K (Jayarathna 2012, doi:10.1021/je300530z) | ✅ within 1 % |
+| Liquid heat capacity | 11 | 1 (1) | 303.1-353.1 | 1.12 % | -1.33 % at 343.1 K (Mundhwa 2007, doi:10.1021/je0604232) | ✅ within 2 % |
+| Liquid viscosity | 48 | 12 (7) | 283.1-363.1 | 4.05 % | +24.27 % at 363.1 K (Yusoff 2013, doi:10.1021/je300628e) | ✅ within 5 % |
+| Surface tension | 13 | 4 | 288.1-333.1 | 0.55 % | -2.29 % at 288.1 K (Alvarez 2008, doi:10.1021/je700647x) | reported (no tolerance) |
+
+## Sulfur dioxide
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 5 | 2 (1) | 333.2-413.1 | 1.38 % | -4.13 % at 343.1 K (Ahmar 2011, doi:10.1016/j.fluid.2011.02.008) | ⚠️ above 1 % |
+
+## Nitrous oxide
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 18 | 1 (1) | 219.2-273.1 | 0.11 % | -0.19 % at 273.1 K (Di Nicola 2004, doi:10.1021/je049842u) | ✅ within 1 % |
+
+## Formic acid
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 2 | | | | | too few values (3 measured in all) |
+| Liquid density | 21 | 16 (16) | 293.1-353.1 | 0.11 % | -0.60 % at 298.1 K (Tamilarasan 2009, doi:10.1021/je800568m) | ✅ within 1 % |
+| Liquid viscosity | 6 | 1 (1) | 303.1-353.1 | 0.77 % | +1.58 % at 303.1 K (Yang 2008, doi:10.1021/je700755t) | ✅ within 5 % |
+
+## Propionic acid
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 19 | 5 (2) | 373.1-417.6 | 1.43 % | -17.04 % at 393.8 K (Mohsen-Nia 2010, doi:10.1016/j.jct.2010.05.014) | ⚠️ above 1 % |
+| Liquid density | 74 | 34 (33) | 273.1-333.1 | 0.16 % | +2.16 % at 273.1 K (Ghanadzadeh 2008, doi:10.1016/j.jct.2008.01.001) | ✅ within 1 % |
+| Liquid viscosity | 2 | | | | | too few values (3 measured in all) |
+
+## Acrylic acid
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (1 measured in all) |
+| Liquid density | 2 | | | | | too few values (2 measured in all) |
+
+## Vinyl acetate
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 3 | 3 (0) | 345.8-346.1 | 2.48 % | +2.48 % at 346.1 K (Resa 2005, doi:10.1021/je049544x) | ⚠️ above 1 % |
+| Liquid density | 20 | 8 (7) | 293.1-313.1 | 0.36 % | +2.11 % at 313.1 K (Kapoor 2005, doi:10.1021/je050162g) | ✅ within 1 % |
+| Liquid viscosity | 6 | 2 (2) | 303.1-313.1 | 1.16 % | +4.80 % at 313.1 K (Kapoor 2005, doi:10.1021/je050162g) | ✅ within 5 % |
+
+## Isopropyl acetate
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 4 | 3 (2) | 361.4-453.1 | 0.81 % | +1.88 % at 453.1 K (Giles 2006, doi:10.1021/je050317k) | ✅ within 1 % |
+| Liquid density | 8 | 6 (6) | 298.0-313.1 | 0.32 % | +0.35 % at 298.0 K (Andreatta 2010, doi:10.1016/j.fluid.2009.09.015) | ✅ within 1 % |
+| Liquid viscosity | 2 | | | | | too few values (2 measured in all) |
+| Surface tension | 3 | 1 | 298.1-313.1 | 1.38 % | -1.55 % at 313.1 K (He 2008, doi:10.1021/je800046k) | reported (no tolerance) |
+
+## Ethylene oxide
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 2 | | | | | too few values (2 measured in all) |
+
+## Propylene oxide
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 1 | | | | | too few values (4 measured in all) |
+
+## Formaldehyde
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+
+## Hydrogen peroxide
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+
