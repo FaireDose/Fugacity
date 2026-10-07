@@ -25,7 +25,9 @@ const EQUATIONS = {
   // Y = A + B/T + C/T^3 + D/T^8 + E/T^9
   DIPPR104: (T, c) => c.A + c.B / T + c.C / T ** 3 + c.D / T ** 8 + c.E / T ** 9,
   // Y = A / B^(1 + (1 - T/C)^D)
-  DIPPR105: (T, c) => c.A / Math.pow(c.B, 1 + Math.pow(1 - T / c.C, c.D)),
+  // (1 - T/C) is clamped at 0 within rounding of C: a record may end at T = C, and its end point computed in floating
+  // point can exceed C by 1e-16 relative, where the power of a negative number would give NaN
+  DIPPR105: (T, c) => c.A / Math.pow(c.B, 1 + Math.pow(T > c.C && T - c.C <= 1e-9 * c.C ? 0 : 1 - T / c.C, c.D)),
   // Y = A (1 - Tr)^(B + C Tr + D Tr^2 + E Tr^3),  Tr = T/Tc
   DIPPR106: (T, c, Tc) => {
     const r = T / Tc;

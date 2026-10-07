@@ -1,0 +1,180 @@
+{
+ "component": "propylene-oxide",
+ "cas": "75-56-9",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"methyloxirane\", \"propylene oxide\"; 18 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.jct.2015.02.006": {
+   "authors": [
+    "Kim, H.[Hakmin]",
+    "Hyeong, S.[Seonghoon]",
+    "Hong, J. H.[Jung Hyun]",
+    "Kim, A. R.[Ah Reum]",
+    "Shin, M. S.[Moon Sam]",
+    "Kim, H.[Hwayong]"
+   ],
+   "title": "Isothermal (vapor + liquid) equilibria for the binary mixtures of (propylene oxide + ethanol) and (propylene oxide + 1-propanol) at several temperatures",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "86",
+   "year": "2015",
+   "pages": "1-5"
+  },
+  "10.1021/je034253u": {
+   "authors": [
+    "Horstmann, S.[Sven]",
+    "Wilken, M.[Michael]",
+    "Fischer, K.[Kai]",
+    "Gmehling, J."
+   ],
+   "title": "Isothermal Vapor-Liquid Equilibrium and Excess Enthalpy Data for the Binary Systems Propylene oxide + 2-Methylpentane and Difluoromethane (R32) + Pentafluoroethane (R125)",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "49",
+   "year": "2004",
+   "pages": "1504-1507"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 303.15,
+   "P_kPa": null,
+   "value": 86.9,
+   "uncertainty": 1.21,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 318.15,
+   "P_kPa": null,
+   "value": 147.85,
+   "uncertainty": 1.85,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.15,
+   "P_kPa": null,
+   "value": 237.88,
+   "uncertainty": 2.76,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 303.15,
+   "P_kPa": null,
+   "value": 86.9,
+   "uncertainty": 1.21,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 4,
+   "binary_with": "ethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 318.15,
+   "P_kPa": null,
+   "value": 147.85,
+   "uncertainty": 1.85,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 4,
+   "binary_with": "ethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.15,
+   "P_kPa": null,
+   "value": 237.88,
+   "uncertainty": 2.76,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 4,
+   "binary_with": "ethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 303.15,
+   "P_kPa": null,
+   "value": 86.9,
+   "uncertainty": 1.21,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 5,
+   "binary_with": "propan-1-ol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 318.15,
+   "P_kPa": null,
+   "value": 147.85,
+   "uncertainty": 1.85,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 5,
+   "binary_with": "propan-1-ol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.15,
+   "P_kPa": null,
+   "value": 237.88,
+   "uncertainty": 2.76,
+   "doi": "10.1016/j.jct.2015.02.006",
+   "set": 5,
+   "binary_with": "propan-1-ol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 323.15,
+   "P_kPa": null,
+   "value": 174.27,
+   "uncertainty": 0.76,
+   "doi": "10.1021/je034253u",
+   "set": 2,
+   "binary_with": "2-methylpentane"
+  }
+ ]
+}

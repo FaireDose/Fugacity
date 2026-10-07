@@ -66,6 +66,20 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | 1,4-Dioxane | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.30 (f) | ChemSep 0.24 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.047 (f) | ChemSep 0.0001 (d) | ChemSep 0.60 (f) |
 | Isobutanol | ChemSep 0.00011 (d) | ChemSep 0.0001 (d) | ChemSep 0.12 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.49 (f) | ChemSep 0.0001 (d) | ChemSep 0.13 (f) |
 | 2-Butanol | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.63 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.58 (f) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) |
+| Monoethanolamine | ChemSep 0.94 (f) | ChemSep 0.0001 (d) | ChemSep 0.30 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.36 (f) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) |
+| Diethanolamine | ChemSep 0.89 (f) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.48 (f) |
+| Methyldiethanolamine | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.084 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.0001 (d) | ChemSep 0.24 (f) |
+| Sulfur dioxide | CoolProp 0.13 (f) | CoolProp 0.28 (f) | CoolProp 0.00091 (f) | CoolProp 0.50 (f) | CoolProp 0.054 (f) | WebBook 0.36 (f) | WebBook 0.13 (f) | WebBook 0.18 (f) | WebBook 0.066 (f) | CoolProp 0.49 (f) |
+| Nitrous oxide | CoolProp 0.082 (f) | CoolProp 0.015 (f) | CoolProp 0.0048 (f) | CoolProp 0.74 (f) | CoolProp 0.11 (f) | WebBook 0.22 (f) | WebBook 0.11 (f) | WebBook 0.13 (f) | WebBook 0.44 (f) | CoolProp 0.00059 (f) |
+| Formic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.90 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) |
+| Propionic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) | ChemSep 0.17 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.51 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
+| Acrylic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.17 (f) | ChemSep 0.078 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.13 (f) | ChemSep 0.0001 (d) | ChemSep 0.50 (f) |
+| Vinyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.99 (f) | ChemSep 0.11 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.40 (f) | ChemSep 0.0001 (d) | ChemSep 0.80 (f) |
+| Isopropyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.43 (f) | ChemSep 0.13 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.32 (f) | ChemSep 0.0001 (d) | ChemSep 0.84 (f) |
+| Ethylene oxide | CoolProp 0.094 (f) | CoolProp 0.28 (f) | CoolProp 0.17 (f) | CoolProp 0.45 (f) | CoolProp 0.087 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.50 (f) | ChemSep 0.0001 (d) | ChemSep 0.71 (f) |
+| Propylene oxide | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.58 (f) | ChemSep 0.24 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.74 (f) | ChemSep 0.0001 (d) | ChemSep 0.56 (f) |
+| Formaldehyde | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) | ChemSep 0.071 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.031 (f) | ChemSep 0.0001 (d) | ChemSep 0.40 (f) |
+| Hydrogen peroxide | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.12 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -133,6 +147,20 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | 1,4-Dioxane | 284.95–587 | 200–1500 | 284.95–374.47 | 284.95–586.41 | 284.95–487 | 284.95–1000 | 284.95–374.47 | 284.95–768.01 | 284.95–557.65 |
 | Isobutanol | 165.15–547.78 | 255.37–1200 | 165.15–403.87 | 165.15–527.66 | 210.93–544.26 | 165.15–1000 | 165.15–488.71 | 165.15–1000 | 283.15–380.81 |
 | 2-Butanol | 158.45–516.32 | 150–1500 | 158.45–372.7 | 158.45–516.32 | 288.15–400 | 158.45–1000 | 200–398.15 | 255.928–992.7 | 273.15–372.7 |
+| Monoethanolamine | 283.65–671.4 | 273–1500 | 293.15–443.15 | 283.65–595.14 | 283.65–542.56 | 283.65–1000 | 283.65–583.15 | 283.65–1000 | 283.65–600 |
+| Diethanolamine | 301.15–736.6 | 273–1500.1 | 301.15–715 | 301.15–713.68 | 301.15–589.28 | 301.15–1000 | 301.15–673.15 | 301.15–1000 | 301.15–699.77 |
+| Methyldiethanolamine | 252.15–675 | 273–1500 | 290–506.25 | 252.15–675 | 252.15–642 | 252.15–1000 | 252.15–518 | 252.15–1000 | 252.15–704.8 |
+| Sulfur dioxide | 197.7–409.1 | 197.7–525 | 197.7–387.96 | 197.7–409.1 | 226.994–408.989 | 197.7–523.02 | 226.994–408.989 | 197.7–523.02 | 197.7–387.96 |
+| Nitrous oxide | 182.33–294.04 | 182.33–525 | 182.33–288.45 | 182.33–294.04 | 182.331–293.956 | 182.33–499.97 | 182.331–293.956 | 182.33–499.97 | 182.33–294.04 |
+| Formic acid | 281.45–588 | 50–1500 | 281.45–380 | 281.45–587.41 | 281.45–373.71 | 281.45–1000 | 281.45–373.71 | 420–470 | 281.45–558.6 |
+| Propionic acid | 252.45–604 | 252.45–1500 | 252.45–414.32 | 252.45–600.81 | 252.45–504 | 252.45–1000 | 252.45–543.15 | 252.45–616.15 | 252.45–573.79 |
+| Acrylic acid | 286.15–597.69 | 250–1500 | 286.15–375 | 286.15–615 | 286.15–554 | 286.15–1000 | 286.15–484.5 | 286.15–1000 | 286.15–582.11 |
+| Vinyl acetate | 180.35–501.45 | 100–1500 | 213.41–389.35 | 180.35–501.3 | 225–401 | 180.35–1000 | 180.35–410 | 180.35–1000 | 180.35–476.37 |
+| Isopropyl acetate | 199.75–514.51 | 199.75–1200.15 | 215.75–478.8 | 199.75–514.51 | 199.75–416 | 199.75–1000 | 199.75–421.4 | 199.75–1000 | 199.75–490.34 |
+| Ethylene oxide | 160.65–445.47 | 160.65–1000 | 160.65–416.98 | 160.65–445.47 | 160.65–469.15 | 160.65–1223.15 | 160.65–433.15 | 160.65–1000 | 160.65–445.69 |
+| Propylene oxide | 161.22–482.25 | 150–1500 | 161.22–433.15 | 161.22–481.76 | 200–382 | 161.22–1000 | 161.22–385.8 | 161.22–1000 | 161.22–458.13 |
+| Formaldehyde | 181.15–396.06 | 50–1500 | 204–304 | 181.15–396.06 | 181.15–308 | 181.15–1000 | 204–234 | 181.15–994.05 | 181.15–387.6 |
+| Hydrogen peroxide | 272.74–730.15 | 255–1500 | 272.74–547.61 | 272.74–729.41 | 272.74–584.12 | 272.74–1000 | 272.74–623.15 | 300–1200 | 272.74–729.41 |
 
 Temperatures in K.
 
@@ -1030,6 +1058,216 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 13.265 | 13.265 | 0.00 % | – |
 | σ | mN/m | 22.995 | 23.024 | -0.13 % | – |
 
+### Monoethanolamine, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.063991 | 0.064303 | -0.49 % | – |
+| ρL | kg/m³ | 1011.8 | 1011.8 | -0.00 % | – |
+| cp° | J/(mol·K) | 85.353 | 85.533 | -0.21 % | – |
+| cpL | J/(mol·K) | 166.03 | 166.03 | 0.00 % | – |
+| ΔHvap | kJ/mol | 62.527 | 62.527 | 0.00 % | – |
+| μL | mPa·s | 18.697 | 18.697 | 0.00 % | – |
+| μV | μPa·s | 6.786 | 6.786 | 0.00 % | – |
+| kL | mW/(m·K) | 239.71 | 239.04 | 0.28 % | – |
+| kV | mW/(m·K) | 14.077 | 14.077 | 0.00 % | – |
+| σ | mN/m | 48.397 | 48.416 | -0.04 % | – |
+
+### Diethanolamine, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 5.3006e-05 | (table) | – | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 141.27 | 141.56 | -0.20 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | – | – | – | – |
+
+### Methyldiethanolamine, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.0065263 | 0.0065263 | 0.00 % | – |
+| ρL | kg/m³ | 1033.5 | 1033.5 | -0.00 % | – |
+| cp° | J/(mol·K) | 160.99 | 161.11 | -0.08 % | – |
+| cpL | J/(mol·K) | 267.44 | 267.44 | -0.00 % | – |
+| ΔHvap | kJ/mol | 99.09 | 99.09 | 0.00 % | – |
+| μL | mPa·s | 74.354 | 74.354 | 0.00 % | – |
+| μV | μPa·s | 6.8783 | 6.8783 | 0.00 % | – |
+| kL | mW/(m·K) | 183.11 | 182.6 | 0.28 % | – |
+| kV | mW/(m·K) | 11.959 | 11.959 | 0.00 % | – |
+| σ | mN/m | 38.419 | 38.496 | -0.20 % | – |
+
+### Sulfur dioxide, T = 263.14 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 101.39 | 101.32 | 0.07 % | – |
+| ρL | kg/m³ | 1463.1 | 1461.6 | 0.10 % | 1462.3 |
+| cp° | J/(mol·K) | 38.627 | 38.626 | 0.00 % | 38.629 |
+| cpL | J/(mol·K) | 87.566 | 87.203 | 0.42 % | 86.995 |
+| ΔHvap | kJ/mol | 24.958 | 24.956 | 0.01 % | 24.845 |
+| μL | mPa·s | 0.41346 | (table) | – | 0.42863 |
+| μV | μPa·s | 11.342 | (table) | – | 11.347 |
+| kL | mW/(m·K) | 186.8 | (table) | – | 217.73 |
+| kV | mW/(m·K) | 8.217 | (table) | – | 8.0673 |
+| σ | mN/m | 28.391 | 28.503 | -0.39 % | 28.654 |
+
+### Nitrous oxide, T = 184.68 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 101.34 | 101.32 | 0.02 % | – |
+| ρL | kg/m³ | 1230.3 | 1230.4 | -0.01 % | 1245.8 |
+| cp° | J/(mol·K) | 32.682 | 32.681 | 0.00 % | 32.914 |
+| cpL | J/(mol·K) | 75.775 | 75.66 | 0.15 % | 77.618 |
+| ΔHvap | kJ/mol | 16.463 | 16.473 | -0.06 % | 16.989 |
+| μL | mPa·s | 0.30771 | (table) | – | – |
+| μV | μPa·s | 9.1314 | (table) | – | 9.0622 |
+| kL | mW/(m·K) | 204.14 | (table) | – | – |
+| kV | mW/(m·K) | 8.8136 | (table) | – | 8.7925 |
+| σ | mN/m | 23.75 | 23.75 | 0.00 % | 23.498 |
+
+### Formic acid, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 5.6882 | 5.6882 | 0.00 % | – |
+| ρL | kg/m³ | 1213.6 | 1213.6 | 0.00 % | – |
+| cp° | J/(mol·K) | 47.62 | 47.307 | 0.66 % | – |
+| cpL | J/(mol·K) | 99.39 | 99.39 | 0.00 % | – |
+| ΔHvap | kJ/mol | 19.952 | 19.952 | 0.00 % | – |
+| μL | mPa·s | 1.6103 | 1.6103 | 0.00 % | – |
+| μV | μPa·s | 9.1248 | 9.1248 | 0.00 % | – |
+| kL | mW/(m·K) | 269.8 | 269.8 | 0.00 % | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | 37.104 | 37.104 | 0.00 % | – |
+
+### Propionic acid, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.50594 | 0.50594 | 0.00 % | – |
+| ρL | kg/m³ | 989.24 | 989.24 | 0.00 % | – |
+| cp° | J/(mol·K) | 89.178 | 89.325 | -0.16 % | – |
+| cpL | J/(mol·K) | 152.09 | 152.31 | -0.15 % | – |
+| ΔHvap | kJ/mol | 30.749 | 30.749 | 0.00 % | – |
+| μL | mPa·s | 1.027 | 1.027 | 0.00 % | – |
+| μV | μPa·s | 6.7665 | 6.7665 | 0.00 % | – |
+| kL | mW/(m·K) | 147.84 | 148.56 | -0.49 % | – |
+| kV | mW/(m·K) | 10.86 | 10.86 | 0.00 % | – |
+| σ | mN/m | 26.251 | 26.22 | 0.12 % | – |
+
+### Acrylic acid, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.5353 | 0.5353 | 0.00 % | – |
+| ρL | kg/m³ | 1046.4 | 1046.4 | 0.00 % | – |
+| cp° | J/(mol·K) | 77.901 | 78.025 | -0.16 % | – |
+| cpL | J/(mol·K) | 147.8 | 147.92 | -0.08 % | – |
+| ΔHvap | kJ/mol | 28.326 | 28.326 | -0.00 % | – |
+| μL | mPa·s | 1.0946 | 1.0946 | 0.00 % | – |
+| μV | μPa·s | 8.0403 | 8.0403 | 0.00 % | – |
+| kL | mW/(m·K) | 157.44 | 157.43 | 0.01 % | – |
+| kV | mW/(m·K) | 11.667 | 11.667 | 0.00 % | – |
+| σ | mN/m | 28.5 | 28.476 | 0.08 % | – |
+
+### Vinyl acetate, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 14.995 | 14.995 | 0.00 % | – |
+| ρL | kg/m³ | 928.85 | 928.85 | 0.00 % | – |
+| cp° | J/(mol·K) | 99.527 | 99.404 | 0.12 % | – |
+| cpL | J/(mol·K) | 167.04 | 166.99 | 0.03 % | – |
+| ΔHvap | kJ/mol | 35.076 | 35.076 | 0.00 % | – |
+| μL | mPa·s | 0.40485 | 0.40485 | 0.00 % | – |
+| μV | μPa·s | 8.0203 | 8.0203 | 0.00 % | – |
+| kL | mW/(m·K) | 150.3 | 150.77 | -0.32 % | – |
+| kV | mW/(m·K) | 11.547 | 11.547 | 0.00 % | – |
+| σ | mN/m | 22.892 | 22.724 | 0.74 % | – |
+
+### Isopropyl acetate, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 8.0879 | 8.0879 | 0.00 % | – |
+| ρL | kg/m³ | 869.08 | 869.08 | 0.00 % | – |
+| cp° | J/(mol·K) | 131.62 | 131.3 | 0.25 % | – |
+| cpL | J/(mol·K) | 192.86 | 192.78 | 0.04 % | – |
+| ΔHvap | kJ/mol | 36.706 | 36.706 | -0.00 % | – |
+| μL | mPa·s | 0.50494 | 0.50494 | 0.00 % | – |
+| μV | μPa·s | 6.9718 | 6.9718 | 0.00 % | – |
+| kL | mW/(m·K) | 134.62 | 134.22 | 0.30 % | – |
+| kV | mW/(m·K) | 10.612 | 10.612 | 0.00 % | – |
+| σ | mN/m | 21.602 | 21.437 | 0.77 % | – |
+
+### Ethylene oxide, T = 283.66 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 101.36 | 101.32 | 0.04 % | – |
+| ρL | kg/m³ | 883.78 | 883.35 | 0.05 % | 887.67 |
+| cp° | J/(mol·K) | 45.977 | 45.939 | 0.08 % | 46.552 |
+| cpL | J/(mol·K) | 87.425 | 87.141 | 0.33 % | 86.851 |
+| ΔHvap | kJ/mol | 25.446 | 25.465 | -0.08 % | 25.52 |
+| μL | mPa·s | 0.28686 | 0.28686 | 0.00 % | – |
+| μV | μPa·s | 9.0195 | 9.0195 | 0.00 % | – |
+| kL | mW/(m·K) | 158.08 | 157.4 | 0.43 % | – |
+| kV | mW/(m·K) | 10.822 | 10.822 | 0.00 % | – |
+| σ | mN/m | 25.74 | 25.904 | -0.63 % | – |
+
+### Propylene oxide, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 72.248 | 72.248 | 0.00 % | – |
+| ρL | kg/m³ | 824.38 | 824.38 | 0.00 % | – |
+| cp° | J/(mol·K) | 73.523 | 73.106 | 0.57 % | – |
+| cpL | J/(mol·K) | 120.73 | 120.94 | -0.17 % | – |
+| ΔHvap | kJ/mol | 27.833 | 27.833 | 0.00 % | – |
+| μL | mPa·s | 0.29625 | 0.29625 | 0.00 % | – |
+| μV | μPa·s | 8.9894 | 8.9894 | 0.00 % | – |
+| kL | mW/(m·K) | 168.41 | 168.61 | -0.12 % | – |
+| kV | mW/(m·K) | 15.763 | 15.763 | 0.00 % | – |
+| σ | mN/m | 22.465 | 22.564 | -0.44 % | – |
+
+### Formaldehyde, T = 254.01 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 101.32 | 101.32 | 0.00 % | – |
+| ρL | kg/m³ | 813.5 | 813.5 | -0.00 % | – |
+| cp° | J/(mol·K) | 34.291 | 34.352 | -0.18 % | – |
+| cpL | J/(mol·K) | 68.375 | 68.409 | -0.05 % | – |
+| ΔHvap | kJ/mol | 23.134 | 23.134 | 0.00 % | – |
+| μL | mPa·s | 0.22099 | 0.22099 | 0.00 % | – |
+| μV | μPa·s | 10.081 | 10.081 | 0.00 % | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | 12.563 | 12.563 | 0.00 % | – |
+| σ | mN/m | 42.718 | 42.733 | -0.04 % | – |
+
+### Hydrogen peroxide, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.26006 | 0.26006 | 0.00 % | – |
+| ρL | kg/m³ | 1442.7 | 1442.7 | 0.00 % | – |
+| cp° | J/(mol·K) | 42.492 | 42.541 | -0.11 % | – |
+| cpL | J/(mol·K) | 89.062 | 89.062 | 0.00 % | – |
+| ΔHvap | kJ/mol | 52.008 | 52.008 | -0.00 % | – |
+| μL | mPa·s | 1.1512 | 1.1512 | 0.00 % | – |
+| μV | μPa·s | 9.6845 | 9.6845 | 0.00 % | – |
+| kL | mW/(m·K) | 488.32 | 488.32 | 0.00 % | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | 73.688 | 73.688 | 0.00 % | – |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -1182,6 +1420,30 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | Tetrahydrofuran | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 288.1-323.1 K; median deviation of the articles 2.08 % (abov |
 | Tetrahydrofuran | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 56 measured values from 19 articles, 283.1-323.1 K; median deviation of the articles 1.93 % (wi |
 | Tetrahydrofuran | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 288.1-313.1 K; median deviation of the articles 1.68 %; lar |
+| Monoethanolamine | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 353.1-435.6 K; median deviation of the articles 2.44 % (abov |
+| Monoethanolamine | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 200 measured values from 38 articles, 285.1-373.1 K; median deviation of the articles 0.04 % (w |
+| Monoethanolamine | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.14 % (wit |
+| Monoethanolamine | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 16 articles, 293.1-393.1 K; median deviation of the articles 1.10 % (wi |
+| Monoethanolamine | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 4 articles, 293.1-333.1 K; median deviation of the articles 0.47 %; lar |
+| Diethanolamine | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 66 measured values from 11 articles, 303.1-373.1 K; median deviation of the articles 0.02 % (wi |
+| Diethanolamine | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 15 measured values from 5 articles, 303.1-353.1 K; median deviation of the articles 2.89 % (wit |
+| Diethanolamine | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 303.1-323.2 K; median deviation of the articles 1.87 %; larg |
+| Methyldiethanolamine | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 185 measured values from 31 articles, 283.1-423.1 K; median deviation of the articles 0.68 % (w |
+| Methyldiethanolamine | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 1.12 % (wit |
+| Methyldiethanolamine | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 48 measured values from 12 articles, 283.1-363.1 K; median deviation of the articles 4.05 % (wi |
+| Methyldiethanolamine | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 4 articles, 288.1-333.1 K; median deviation of the articles 0.55 %; lar |
+| Sulfur dioxide | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 333.2-413.1 K; median deviation of the articles 1.38 % (abov |
+| Nitrous oxide | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 1 articles, 219.2-273.1 K; median deviation of the articles 0.11 % (wit |
+| Formic acid | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 16 articles, 293.1-353.1 K; median deviation of the articles 0.11 % (wi |
+| Formic acid | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.77 % (with |
+| Propionic acid | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 5 articles, 373.1-417.6 K; median deviation of the articles 1.43 % (abo |
+| Propionic acid | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 74 measured values from 34 articles, 273.1-333.1 K; median deviation of the articles 0.16 % (wi |
+| Vinyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 3 articles, 345.8-346.1 K; median deviation of the articles 2.48 % (abov |
+| Vinyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 20 measured values from 8 articles, 293.1-313.1 K; median deviation of the articles 0.36 % (wit |
+| Vinyl acetate | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 303.1-313.1 K; median deviation of the articles 1.16 % (with |
+| Isopropyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 3 articles, 361.4-453.1 K; median deviation of the articles 0.81 % (with |
+| Isopropyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 6 articles, 298.0-313.1 K; median deviation of the articles 0.32 % (with |
+| Isopropyl acetate | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 298.1-313.1 K; median deviation of the articles 1.38 %; larg |
 
 ## Range limits to note
 
@@ -1196,6 +1458,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - n-Pentane, μL: starts at 173.75 K, above the other liquid properties (143.47 K): range narrowed from 143.47-446.21 K (max deviation there 17 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (143.47 K)
 - Propylene glycol, σ: starts at 213.15 K, above the other liquid properties (213 K): range narrowed from 213.15-592.94 K (max deviation there 1.1 %) to meet the 1 % target
 - N-Methyl-2-pyrrolidone, kV: starts at 477.42 K, above the normal boiling point 477.144 K (ChemSep range); vapour states between Tb and 477.42 K have no value.
+- Formic acid, kV: starts at 420 K, above the normal boiling point 373.701 K (ChemSep range); vapour states between Tb and 420 K have no value.
 
 ## Cross-checks
 
@@ -1229,6 +1492,17 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - cross-check isobutanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 353.36-388.77 K: max +1.15 % at 353.4 K
 - cross-check 2-butanol vapour pressure vs Ambrose and Townsend, 1963, 2: max +1.80 % at 439.2 K
 - cross-check 2-butanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2: max +0.42 % at 380.3 K
+- cross-check mea vapour pressure vs Matthews, Sumner, et al., 1950, 2, 338.60-444.10 K: max +20.99 % at 338.6 K
+- cross-check dea vapour pressure vs McDonald, Shrader, et al., 1959, 2, 464.00-582.40 K: max +1.92 % at 464.0 K
+- cross-check dea vapour pressure vs McDonald, Shrader, et al., 1959, 2, 466.93-514.47 K: max +1.95 % at 466.9 K
+- cross-check formic-acid vapour pressure vs Kahlbaum, 1894, 2, 273.70-307.40 K: max +1.81 % at 307.4 K
+- cross-check propionic-acid vapour pressure vs Dreisbach and Shrader, 1949, 345.54-401.49 K: max -2.61 % at 348.3 K
+- cross-check vinyl-acetate vapour pressure vs Swamy and Van Winkle, 1965, 340.00-355.00 K: max -0.44 % at 355.0 K
+- cross-check vinyl-acetate vapour pressure vs Capková and Fried, 1963, 294.98-345.19 K: max -2.00 % at 300.0 K
+- cross-check isopropyl-acetate vapour pressure vs Stull, 1947, 234.90-362.00 K: max +1.21 % at 342.9 K
+- cross-check propylene-oxide vapour pressure vs Bott and Sadler, 1966, 2, 292.00-345.00 K: max +3.36 % at 345.0 K
+- cross-check propylene-oxide vapour pressure vs McDonald, Shrader, et al., 1959, 2, 199.70-307.38 K: max +16.70 % at 199.7 K
+- cross-check formaldehyde vapour pressure vs Spence and Wild, 1935, 3, 163.76-250.86 K: max +2.58 % at 163.8 K
 
 ## Notes
 
@@ -1258,6 +1532,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Fiedler-IJT-2023-THF: Felix Fiedler et al., Fundamental Equation of State for Fluid Tetrahydrofuran, International Journal of Thermophysics 44 (2023) 153
   - Friend-JPCRD-1989: Daniel G. Friend et al., Thermophysical Properties of Methane, J. Phys. Chem. Ref. Data 18 (1989) , doi:10.1063/1.555828
   - Friend-JPCRD-1991: Daniel G. Friend et al., Thermophysical Properties of Ethane, J. Phys. Chem. Ref. Data 20 (1991) 275-347, doi:10.1063/1.555881
+  - Gao-JCED-2016: Kehui Gao et al., A Helmholtz Energy Equation of State for Sulfur Dioxide, J. Chem. Eng. Data  (2016)
   - Gao-JPCRD-2020: K. Gao et al., Thermodynamic Properties of Ammonia for Temperatures from the Melting Line to 725 K and Pressures to 1000 MPa, J. Phys. Chem. Ref. Data  ()
   - Huber-FPE-2004: Marcia L. Huber et al., Viscosity correlations for minor constituent fluids in natural gas: n-octane, n-nonane and n-decane, Fluid Phase Equilib. 224 (2004) 263-270, doi:10.1016/j.fluid.2004.07.012
   - Huber-FPE-2005: M.L. Huber and R.A. Perkins, Thermal conductivity correlations for minor constituent fluids in natural gas: n-octane, n-nonane and n-decane, Fluid Phase Equilib. 227 (2005) 47-55, doi:10.1016/j.fluid.2004.10.031
@@ -1296,6 +1571,8 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Sykioti-JPCRD-2013-Methanol: E. A. Sykioti et al., Reference Correlation of the Thermal Conductivity of Methanol from the Triple Point to 660 K and up to 245 MPa, J. Phys. Chem. Ref. Data 42 (2013) 043101, doi:10.1063/1.4829449
   - Tariq-JPCRD-2014-Cyclohexane: U. Tariq et al., Reference Correlation of the Viscosity of Cyclohexane from the Triple Point to 700 K and up to 110 MPa, J. Phys. Chem. Ref. Data 43 (2014) 033101-1:18, doi:10.1063/1.4891103
   - Tegeler-JPCRD-1999: Ch. Tegeler et al., A New Equation of State for Argon Covering the Fluid Region for Temperatures From the Melting Line to 700 K at Pressures up to 1000 MPa, J. Phys. Chem. Ref. Data 28 (1999) 779-850, doi:10.1063/1.556037
+  - Thol-CES-2015: Monika Thol et al., Fundamental equation of state for ethylene oxide based on a hybrid dataset, Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051
+  - Thol-CES-2015-CORR: Monika Thol et al., Corrigendum to 'Fundamental equation of state for ethylene oxide based on a hybrid dataset', Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020
   - Thol-FPE-2019-alkanes-hexane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part II. n-Hexane, Fluid Phase Equilib.  ()
   - Thol-FPE-2019-alkanes-pentane: M. Thol et al., Fundamental Equations of State for Hydrocarbons. Part I. n-Pentane, Fluid Phase Equilib.  ()
   - Thol-HTHP-2012: M. Thol et al., Equation of state for benzene for temperatures from the melting line up to 725 K with pressures up to 500 MPa, High Temperatures-High Pressures 41 (2012) 81-97

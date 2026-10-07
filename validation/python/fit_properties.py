@@ -75,7 +75,10 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol",
        # proposal 0008, Part B, batch 1: extraction solvents
        "dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
-       "isobutanol", "2-butanol"]
+       "isobutanol", "2-butanol",
+       # proposal 0008, Part B, batch 2: gas treating, acids, esters and reaction work
+       "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
+       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
 # components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
 # or from ChemSep for a component that is not a CoolProp fluid
 VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
@@ -86,10 +89,14 @@ VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
              "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "1-propanol", "2-propanol", "1-butanol",
              "2-butanone", "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe", "glycerol", "phenol",
              "dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
-             "isobutanol", "2-butanol"]
-# proposal 0008, Part B, batch 1 (the record notes name the proposal)
+             "isobutanol", "2-butanol",
+             "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
+             "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
+# proposal 0008, Part B, batches 1 and 2 (the record notes name the proposal)
 BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
-       "isobutanol", "2-butanol"]
+       "isobutanol", "2-butanol",
+       "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
+       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -101,7 +108,8 @@ COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "ace
             "cyclohexane": "Cyclohexane", "o-xylene": "o-Xylene", "m-xylene": "m-Xylene", "p-xylene": "p-Xylene",
             "ethylbenzene": "EthylBenzene", "n-pentane": "n-Pentane", "n-hexane": "n-Hexane", "n-heptane": "n-Heptane",
             "n-octane": "n-Octane", "diethyl-ether": "DiethylEther", "propylene-glycol": "PropyleneGlycol",
-            "tetrahydrofuran": "Tetrahydrofuran", "dichloroethane": "Dichloroethane"}
+            "tetrahydrofuran": "Tetrahydrofuran", "dichloroethane": "Dichloroethane",
+            "sulfur-dioxide": "SulfurDioxide", "nitrous-oxide": "NitrousOxide", "ethylene-oxide": "EthyleneOxide"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -134,7 +142,9 @@ CHEMSEP_TAG = {"liquidDensity": "LiquidDensity", "idealGasHeatCapacity": "IdealG
 NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetate", "styrene", "1-propanol",
                    "2-propanol", "1-butanol", "2-butanone", "methyl-acetate", "n-butyl-acetate", "acetonitrile", "mtbe",
                    "glycerol", "phenol", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural",
-                   "dioxane", "isobutanol", "2-butanol"]
+                   "dioxane", "isobutanol", "2-butanol", "mea", "dea", "mdea", "formic-acid", "propionic-acid",
+                   "acrylic-acid", "vinyl-acetate", "isopropyl-acetate", "propylene-oxide", "formaldehyde",
+                   "hydrogen-peroxide"]
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
@@ -148,6 +158,10 @@ COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in th
     "tetrahydrofuran": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
                         "surfaceTension"],
     "dichloroethane": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
+                       "surfaceTension"],
+    "sulfur-dioxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+    "nitrous-oxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+    "ethylene-oxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
                        "surfaceTension"],
 }
 
@@ -182,6 +196,36 @@ WEBBOOK_FLUID = {
         "Tmax_vapour": 640.0,
     },
 }
+# proposal 0008, batch 2 (pages read 2026-10-07): sulfur dioxide and nitrous oxide name the transport model of
+# Huber, NISTIR 8209 (2018), with the uncertainties quoted below.
+WEBBOOK_FLUID.update({
+    "sulfur-dioxide": {
+        "ID": "C7446095",
+        "props": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+        "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected "
+                     "Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), "
+                     "doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, "
+                     "Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; "
+                     "as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+        "notes": "WebBook: estimated uncertainty of the viscosity and of the thermal conductivity 5 % in the liquid along "
+                 "the saturation boundary and in the gas; the equation of state is valid from the triple point "
+                 "(197.7 K) to 523 K.",
+        "Tmax_vapour": 523.0,
+    },
+    "nitrous-oxide": {
+        "ID": "C10024972",
+        "props": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+        "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected "
+                     "Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), "
+                     "doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, "
+                     "Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; "
+                     "as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+        "notes": "WebBook: estimated uncertainty of the viscosity 10 % (Lennard-Jones parameters from Reid, Prausnitz and "
+                 "Poling, 4th ed., 1987); no uncertainty stated for the thermal conductivity. Tables requested to 500 K; "
+                 "the WebBook limits them to the range of its models.",
+        "Tmax_vapour": 500.0,
+    },
+})
 WEBBOOK_UNCITED = {"hydrogen-sulfide": "NIST WebBook fluid tables: thermal conductivity values given without a "
                                       "cited model, so not used"}
 WEBBOOK_FLUID_DIR = Path(__file__).resolve().parents[2] / "validation" / "data" / "pure" / "webbook_fluid"
@@ -199,7 +243,12 @@ WEBBOOK_ANTOINE = {cid: "C" + cas.replace("-", "") for cid, cas in [
     # proposal 0008, Part B, batch 1
     ("mibk", "108-10-1"), ("cyclohexanone", "108-94-1"), ("dmf", "68-12-2"), ("dmso", "67-68-5"), ("nmp", "872-50-4"),
     ("sulfolane", "126-33-0"), ("furfural", "98-01-1"), ("dioxane", "123-91-1"), ("isobutanol", "78-83-1"),
-    ("2-butanol", "78-92-2")]}
+    ("2-butanol", "78-92-2"),
+    # proposal 0008, Part B, batch 2
+    ("mea", "141-43-5"), ("dea", "111-42-2"), ("mdea", "105-59-9"), ("formic-acid", "64-18-6"),
+    ("propionic-acid", "79-09-4"), ("acrylic-acid", "79-10-7"), ("vinyl-acetate", "108-05-4"),
+    ("isopropyl-acetate", "108-21-4"), ("propylene-oxide", "75-56-9"), ("formaldehyde", "50-00-0"),
+    ("hydrogen-peroxide", "7722-84-1")]}
 # Vapour pressures fitted to a WebBook Antoine set plus the critical point, where the ChemSep equation does not
 # reproduce the measured normal boiling point. Styrene: the ChemSep equation 101 gives 417.14 K at 101.325 kPa
 # against 418.31 K (ChemSep's own Tb, and the Antoine equation of Dreyer et al. (1955), measured to 417.92 K;
@@ -264,7 +313,8 @@ def chain_note(cid, prop):
             notes.append("NIST WebBook fluid tables (ethene): could not be opened in this session")
         elif cid in WEBBOOK_UNCITED and "Conductivity" in prop:
             notes.append(WEBBOOK_UNCITED[cid])
-        elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "dichloroethane"):
+        elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "dichloroethane",
+                     "ethylene-oxide"):
             notes.append("NIST WebBook: %s is not a WebBook fluid" % cid.replace("-", " "))
         elif cid == "styrene":
             notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST "
@@ -788,6 +838,11 @@ class ChemSep:
             d[k] = float(e.get("value")) if e is not None else 0.0
         d["Tmin"] = float(el.find("Tmin").get("value"))
         d["Tmax"] = float(el.find("Tmax").get("value"))
+        if d["eqno"] <= 4:
+            # ChemSep equations 1-4 are polynomials of degree eqno - 1 (DWSIM, PropertyPackage.vb, CalcCSTDepProp): the
+            # file may still carry higher coefficients (monoethanolamine, equation 4, has an E), which they do not use
+            for k in "ABCDE"[d["eqno"]:]:
+                d[k] = 0.0
         return d
 
     def value_si(self, cas, prop, T):
@@ -819,7 +874,7 @@ CHEMSEP2_NAME = "ChemSep v8.31 pure-component database, data file 2"
 # compounds taken from chemsep2.xml: N-methyl-2-pyrrolidone (proposal 0008), and propylene glycol, a CoolProp fluid
 # whose viscosities, thermal conductivities and surface tension CoolProp 8.0.0 does not model (chemsep1.xml does not
 # have it)
-CHEMSEP2_USE = {"872-50-4", "57-55-6"}
+CHEMSEP2_USE = {"872-50-4", "57-55-6", "64-18-6", "7722-84-1"}  # and formic acid, hydrogen peroxide (batch 2)
 CHEMSEP2_REF = ("Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), "
                 "via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)")
 CHEMSEP_ACCESS = "Artistic License 2.0"
@@ -1071,8 +1126,23 @@ class Builder:
             extra = {"Tc_K": Tc} if form == "DIPPR106" else {}
             if form == "DIPPR106" and Tmax >= Tc:
                 Tmax = math.floor(0.999 * Tc * 100) / 100
+            if form == "DIPPR105" and Tmax > c["C"]:
+                # the equation's own critical temperature C is below the end of its ChemSep range (hydrogen peroxide,
+                # chemsep2.xml): (1 - T/C) is negative beyond it
+                Tmax = math.floor(0.999 * c["C"] * 100) / 100
+                conv += "Tmax lowered to %.2f K, below the equation's C = %.2f K (ChemSep range to %.2f K). " % (
+                    Tmax, c["C"], d["Tmax"])
             T = grid(Tmin, Tmax)
             y = self.cs.value_si(cas, prop, T)
+            if form == "DIPPR100" and np.any(y <= 0):
+                # a polynomial that reaches zero inside its ChemSep range (formic acid surface tension, chemsep2.xml,
+                # near the critical point): the record ends at 0.95 times the temperature where it first does
+                T0 = float(T[np.argmax(y <= 0)])
+                Tmax = math.floor(0.95 * T0 * 100) / 100
+                conv += ("Tmax lowered to %.2f K: the ChemSep polynomial reaches zero at %.1f K (ChemSep range to %.2f K). "
+                         % (Tmax, T0, d["Tmax"]))
+                T = grid(Tmin, Tmax)
+                y = self.cs.value_si(cas, prop, T)
             m = rel_dev(ev(form, c, T, Tc), y)
             source = {"name": self.cs.name(cas), "reference": self.cs.ref(cas), "access": CHEMSEP_ACCESS,
                       "fit": ("ChemSep equation %d coefficients taken over unchanged%s; reproduces ChemSep within "
@@ -1371,6 +1441,46 @@ class Builder:
                                                      len(kept), len(exc), 100 * float(np.median(dcs))))
         return rec, pts
 
+    def vapour_pressure_chemsep10(self, cid, d):
+        """ChemSep equation 10 (P = exp(A - B/(T + C)), monoethanolamine, diethanolamine) refitted in the DIPPR 101
+        form over its range, up to the critical temperature, narrowed if needed to meet the 1 % target."""
+        cas = self.comps[cid]["cas"]
+        Tc = self.cs.const(cas, "CriticalTemperature")
+        Tmin, Tmax = d["Tmin"], min(d["Tmax"], math.floor(0.999 * Tc * 100) / 100)
+        sample = lambda T: self.cs.value_si(cas, "vapourPressure", T)  # noqa: E731
+        T, y, c, extra, m, Tmin, Tmax, narrowed = fit_range("DIPPR101", sample, Tmin, Tmax, 0.01,
+                                                             keep=keep_T(self.comps[cid]))
+        coeffs = {k: rnd(v) for k, v in c.items()}
+        coeffs.setdefault("D", 0.0)
+        coeffs.setdefault("E", 0.0)
+        m = max(m, rel_dev(ev("DIPPR101", coeffs, T), y))
+        source = ("%s, vapour pressure: ChemSep equation 10 (P = exp(A - B/(T + C)), Pa) refitted in the DIPPR 101 form, "
+                  "%d points %.2f-%.2f K, max deviation %s %%%s. Not a CoolProp 8.0.0 fluid. %s"
+                  % (self.cs.name(cas), len(T), Tmin, Tmax, pct(m), ("; " + narrowed) if narrowed else "", CHEMSEP_ACCESS))
+        rec = {"equation": "DIPPR101", "form": "ln(P/Pa) = A + B/T + C ln T + D T^E", "units": "Pa",
+               **{k: coeffs[k] for k in "ABCDE"}, "Tmin_K": rnd(Tmin, 8), "Tmax_K": rnd(Tmax, 8), "tier": "fitted",
+               "source": source}
+        if WEBBOOK_ANTOINE_FILE.exists() and cid in json.loads(WEBBOOK_ANTOINE_FILE.read_text()):
+            W = json.loads(WEBBOOK_ANTOINE_FILE.read_text())[cid]
+            checks = []
+            for st in W["sets"]:
+                Tq = np.linspace(max(st["Tmin_K"], Tmin), min(st["Tmax_K"], Tmax), 21)
+                dev = ev("DIPPR101", coeffs, Tq) / (1e5 * 10 ** (st["A"] - st["B"] / (Tq + st["C"]))) - 1
+                k = int(np.argmax(np.abs(dev)))
+                checks.append({"reference": st["reference"] + " (Antoine equation, NIST WebBook)", "url": W["url"],
+                               "T_range_K": [st["Tmin_K"], st["Tmax_K"]], "max_deviation_percent": round(100 * float(dev[k]), 2)})
+                self.log.append("  cross-check %s vapour pressure vs %s, %.2f-%.2f K: max %+.2f %% at %.1f K" % (
+                    cid, st["reference"], st["Tmin_K"], st["Tmax_K"], 100 * dev[k], Tq[k]))
+            if checks:
+                rec["crossCheck"] = checks
+        idx = store_idx(len(T))
+        pts = {"units": "Pa", "source": {"name": self.cs.name(cas), "fit": source},
+               "T_K": [rnd(float(T[i]), 8) for i in idx], "values": [rnd(float(y[i]), 8) for i in idx],
+               "Tb_K_at_101325Pa": self.comps[cid]["Tb_K"]}
+        self.log.append("%-16s %-27s %-9s %-8s %7.2f-%7.2f K  max dev %8s %%" % (
+            cid, "vapourPressure", "DIPPR101", "fitted", Tmin, Tmax, pct(m)))
+        return rec, pts
+
     def vapour_pressure_chemsep(self, cid):
         if cid in VP_FROM_MEASURED:
             return self.vapour_pressure_measured(cid)
@@ -1378,8 +1488,10 @@ class Builder:
             return self.vapour_pressure_antoine(cid)
         cas = self.comps[cid]["cas"]
         d = self.cs.corr(cas, "vapourPressure")
+        if d is not None and d["eqno"] == 10 and d["units"] == "Pa":
+            return self.vapour_pressure_chemsep10(cid, d)
         if d is None or d["eqno"] != 101 or d["units"] != "Pa":
-            raise ValueError("%s: ChemSep vapour pressure is not equation 101 in Pa" % cid)
+            raise ValueError("%s: ChemSep vapour pressure is not equation 101 or 10 in Pa" % cid)
         Tmin, Tmax = d["Tmin"], d["Tmax"]
         c = {k: d[k] for k in "ABCDE"}
         Tc, Pc = self.cs.const(cas, "CriticalTemperature"), self.cs.const(cas, "CriticalPressure")

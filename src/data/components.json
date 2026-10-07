@@ -20805,6 +20805,3805 @@
           ]
         }
       }
+    },
+    "mea": {
+      "name": "Monoethanolamine",
+      "formula": "C2H7NO",
+      "cas": "141-43-5",
+      "aliases": [
+        "ethanolamine",
+        "2-aminoethanol",
+        "2-aminoethan-1-ol"
+      ],
+      "MW": 61.08308,
+      "Tc_K": 671.4,
+      "Pc_Pa": 8030000.0,
+      "Tb_K": 443.1371,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 224.8343475,
+        "B": -13286.31373,
+        "C": -36.63424221,
+        "D": 1.784197382,
+        "E": 0.51,
+        "Tmin_K": 283.65,
+        "Tmax_K": 670.72,
+        "tier": "fitted",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 10 (P = exp(A - B/(T + C)), Pa) refitted in the DIPPR 101 form, 200 points 283.65-670.72 K, max deviation 0.94 %. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Matthews, Sumner, et al., 1950, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141435&Units=SI&Mask=4",
+            "T_range_K": [
+              338.6,
+              444.1
+            ],
+            "max_deviation_percent": 20.99
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 353.1-435.6 K; median deviation of the articles 2.44 % (above the 1 % tolerance of the engineering report); largest single deviation +5.64 % at 353.1 K (Belabbaci 2009, doi:10.1021/je800530u); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 3.0436,
+        "q": 2.976,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.550815,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (443.137 K); ChemSep lists 444.15 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 39.58183584,
+            "B": 0.18183,
+            "C": 678.21,
+            "D": 0.17947
+          },
+          "units": "kg/m3",
+          "Tmin_K": 283.65,
+          "Tmax_K": 671.4,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 671.40 K (ChemSep: 678.20 K). Tmin raised to the triple point 283.65 K (ChemSep: 283.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 61.0831 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 283.65-671.40 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 200 measured values from 38 articles, 285.1-373.1 K; median deviation of the articles 0.04 % (within the 1 % tolerance of the engineering report); largest single deviation +0.33 % at 293.1 K (Islam 2004, doi:10.1016/j.jct.2004.06.004); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 67.06628816,
+            "B": 180.5356654,
+            "C": 815.5819965,
+            "D": -86.48991711,
+            "E": 1004.564118
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 273.00-1500.00 K (ChemSep range), max deviation 0.30 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 78.65342,
+            "B": 0.3114162,
+            "C": -6.07137e-05,
+            "D": -2.713217e-09,
+            "E": 0.0
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 293.15,
+          "Tmax_K": 443.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 4 coefficients taken over unchanged except: ChemSep equation 4 is DIPPR 100 with the higher coefficients zero. coefficients converted from J/kmol/K to J/mol/K.; reproduces ChemSep within 0.0001 % at 200 points 293.15-443.15 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.14 % (within the 2 % tolerance of the engineering report); largest single deviation +0.67 % at 313.1 K (Mundhwa 2007, doi:10.1021/je0604232); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 101203.1,
+            "B": 1.976961,
+            "C": -4.399887,
+            "D": 4.906054,
+            "E": -1.945886
+          },
+          "units": "J/mol",
+          "Tmin_K": 283.65,
+          "Tmax_K": 595.14,
+          "Tc_K": 671.4,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 283.65-595.14 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -370.3,
+            "B": 17780.0,
+            "C": 54.624,
+            "D": -5.1065e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 283.65,
+          "Tmax_K": 542.56,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 283.65-542.56 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 16 articles, 293.1-393.1 K; median deviation of the articles 1.10 % (within the 5 % tolerance of the engineering report); largest single deviation +9.84 % at 323.1 K (Islam 2004, doi:10.1016/j.jct.2004.06.004); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 5.78881e-08,
+            "B": 0.876532,
+            "C": 75.00276,
+            "D": 628.0161
+          },
+          "units": "Pa s",
+          "Tmin_K": 283.65,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 283.65-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -0.02772770169,
+            "B": 0.001571147031,
+            "C": -2.26114956e-06
+          },
+          "units": "W/m/K",
+          "Tmin_K": 283.65,
+          "Tmax_K": 583.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 283.65-583.15 K (ChemSep range), max deviation 0.36 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -9539.9,
+            "B": 0.39852,
+            "C": -1743300000.0,
+            "D": -63715000000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 283.65,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 283.65-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.0594465797,
+            "B": -0.5282466878,
+            "C": 2.528287552,
+            "D": -1.238546927
+          },
+          "units": "N/m",
+          "Tmin_K": 283.65,
+          "Tmax_K": 600.0,
+          "Tc_K": 671.4,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 283.65-600.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.19 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 4 articles, 293.1-333.1 K; median deviation of the articles 0.47 %; largest single deviation +3.31 % at 323.2 K (Fu 2018, doi:10.1016/j.jct.2017.08.024); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "dea": {
+      "name": "Diethanolamine",
+      "formula": "C4H11NO2",
+      "cas": "111-42-2",
+      "aliases": [
+        "2,2'-iminodiethanol",
+        "bis(2-hydroxyethyl)amine"
+      ],
+      "MW": 105.1356,
+      "Tc_K": 736.6,
+      "Pc_Pa": 4720000.0,
+      "Tb_K": 541.0734,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 328.3238918,
+        "B": -20358.06201,
+        "C": -54.08115617,
+        "D": 2.470139985,
+        "E": 0.51,
+        "Tmin_K": 344.63,
+        "Tmax_K": 735.86,
+        "tier": "fitted",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 10 (P = exp(A - B/(T + C)), Pa) refitted in the DIPPR 101 form, 200 points 344.63-735.86 K, max deviation 0.89 %; range narrowed from 301.15-735.86 K (max deviation there 2.3 %) to meet the 1 % target. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "McDonald, Shrader, et al., 1959, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111422&Units=SI&Mask=4",
+            "T_range_K": [
+              464.0,
+              582.4
+            ],
+            "max_deviation_percent": 1.92
+          },
+          {
+            "reference": "McDonald, Shrader, et al., 1959, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111422&Units=SI&Mask=4",
+            "T_range_K": [
+              466.93,
+              514.47
+            ],
+            "max_deviation_percent": 1.95
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 5.2302,
+        "q": 4.956,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.991515,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (541.073 K); ChemSep lists 542 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 55.20670356,
+            "B": 0.20924,
+            "C": 736.61,
+            "D": 0.18363
+          },
+          "units": "kg/m3",
+          "Tmin_K": 301.15,
+          "Tmax_K": 736.6,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 301.15 K (ChemSep: 283.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 105.1356 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 301.15-736.60 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 66 measured values from 11 articles, 303.1-373.1 K; median deviation of the articles 0.02 % (within the 1 % tolerance of the engineering report); largest single deviation -0.14 % at 373.1 K (Aguila-Hernandez 2008, doi:10.1016/j.fluid.2008.02.023); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 112.7171761,
+            "B": 303.5621523,
+            "C": 839.0162835,
+            "D": -132.1997321,
+            "E": 1030.785649
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.0,
+          "Tmax_K": 1500.1,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 273.00-1500.10 K (ChemSep range), max deviation 0.31 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 88.23468,
+            "B": 0.4832566,
+            "C": 0.000294569,
+            "D": -2.14761e-07,
+            "E": 0.0
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 301.15,
+          "Tmax_K": 715.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 4 coefficients taken over unchanged except: Tmin raised to the triple point 301.15 K (ChemSep: 200.00 K). ChemSep equation 4 is DIPPR 100 with the higher coefficients zero. coefficients converted from J/kmol/K to J/mol/K.; reproduces ChemSep within 0.0001 % at 200 points 301.15-715.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 79013.4,
+            "B": -1.865152,
+            "C": 6.820965,
+            "D": -7.963053,
+            "E": 3.251551
+          },
+          "units": "J/mol",
+          "Tmin_K": 301.15,
+          "Tmax_K": 713.68,
+          "Tc_K": 736.6,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 301.15-713.68 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -0.28702,
+            "B": 6080.5,
+            "C": -3.8708,
+            "D": 1.517e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 301.15,
+          "Tmax_K": 589.28,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 301.15 K (ChemSep: 293.15 K).; reproduces ChemSep within 0.0001 % at 200 points 301.15-589.28 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 15 measured values from 5 articles, 303.1-353.1 K; median deviation of the articles 2.89 % (within the 5 % tolerance of the engineering report); largest single deviation -9.64 % at 353.1 K (Haghtalab 2014, doi:10.1016/j.jct.2013.09.001); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 4.7852e-08,
+            "B": 0.89857,
+            "C": 99.058,
+            "D": -7265.2
+          },
+          "units": "Pa s",
+          "Tmin_K": 301.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 301.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.04065340925,
+            "B": 0.0009513109172,
+            "C": -1.274133587e-06
+          },
+          "units": "W/m/K",
+          "Tmin_K": 301.15,
+          "Tmax_K": 673.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 301.15-673.15 K (ChemSep range), max deviation 0.16 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -10221.0,
+            "B": 0.42596,
+            "C": -2517200000.0,
+            "D": -79932000000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 301.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 301.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.1655614429,
+            "B": 4.4093675,
+            "C": -7.246848935,
+            "D": 6.977276374,
+            "E": -2.909731568
+          },
+          "units": "N/m",
+          "Tmin_K": 301.15,
+          "Tmax_K": 699.77,
+          "Tc_K": 736.6,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 301.15-699.77 K (ChemSep range, limited to 0.95 Tc), max deviation 0.48 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 303.1-323.2 K; median deviation of the articles 1.87 %; largest single deviation -4.90 % at 323.1 K (Lopez 2013, doi:10.1016/j.jct.2013.01.020); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "mdea": {
+      "name": "Methyldiethanolamine",
+      "formula": "C5H13NO2",
+      "cas": "105-59-9",
+      "aliases": [
+        "n-methyldiethanolamine",
+        "2,2'-(methylimino)diethanol"
+      ],
+      "MW": 119.1622,
+      "Tc_K": 741.9,
+      "Pc_Pa": 4160000.0,
+      "Tb_K": 514.4482,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": -0.352098,
+        "B": -4812.65,
+        "C": 3.121045,
+        "D": 6.605463e-06,
+        "E": 2.0,
+        "Tmin_K": 252.15,
+        "Tmax_K": 678.0,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 252.15-678.00 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "NIST Chemistry WebBook: no Antoine equation on the page",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C105599&Units=SI&Mask=4"
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 5.8841,
+        "q": 5.5,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 1.1649,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (514.448 K); ChemSep lists 520.15 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 82.38278697,
+            "B": 0.25418,
+            "C": 675.0,
+            "D": 0.2857
+          },
+          "units": "kg/m3",
+          "Tmin_K": 252.15,
+          "Tmax_K": 675.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 119.1622 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 252.15-675.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 185 measured values from 31 articles, 283.1-423.1 K; median deviation of the articles 0.68 % (within the 1 % tolerance of the engineering report); largest single deviation -2.75 % at 423.1 K (Jayarathna 2012, doi:10.1021/je300530z); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 112.1375805,
+            "B": 339.4377039,
+            "C": 713.2129275,
+            "D": -133.5047886,
+            "E": 808.0234828
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 273.00-1500.00 K (ChemSep range), max deviation 0.084 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 181.326,
+            "B": 0.02621689,
+            "C": 0.000880838,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 290.0,
+          "Tmax_K": 506.25,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 4 coefficients taken over unchanged except: ChemSep equation 4 is DIPPR 100 with the higher coefficients zero. coefficients converted from J/kmol/K to J/mol/K.; reproduces ChemSep within 0.0001 % at 200 points 290.00-506.25 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 1.12 % (within the 2 % tolerance of the engineering report); largest single deviation -1.33 % at 343.1 K (Mundhwa 2007, doi:10.1021/je0604232); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 140201.0,
+            "B": 0.632751,
+            "C": 0.350924,
+            "D": -0.633597,
+            "E": 0.0584955
+          },
+          "units": "J/mol",
+          "Tmin_K": 252.15,
+          "Tmax_K": 675.0,
+          "Tc_K": 741.9,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 252.15-675.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -162.0804,
+            "B": 9995.149,
+            "C": 22.49076,
+            "D": -3.61184e-05,
+            "E": 1.932506
+          },
+          "units": "Pa s",
+          "Tmin_K": 252.15,
+          "Tmax_K": 642.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 252.15-642.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 48 measured values from 12 articles, 283.1-363.1 K; median deviation of the articles 4.05 % (within the 5 % tolerance of the engineering report); largest single deviation +24.27 % at 363.1 K (Yusoff 2013, doi:10.1021/je300628e); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 7.7364e-08,
+            "B": 0.84268,
+            "C": 140.24,
+            "D": -9063.1
+          },
+          "units": "Pa s",
+          "Tmin_K": 252.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 252.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2631684482,
+            "B": -0.00036479134,
+            "C": 3.229521267e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 252.15,
+          "Tmax_K": 518.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 252.15-518.00 K (ChemSep range), max deviation 0.31 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.00016443,
+            "B": 0.97072,
+            "C": 595.54,
+            "D": 41960.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 252.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 252.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.04683132434,
+            "B": -0.2106770961,
+            "C": 1.716729933,
+            "D": -0.581791493
+          },
+          "units": "N/m",
+          "Tmin_K": 252.15,
+          "Tmax_K": 704.8,
+          "Tc_K": 741.9,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 252.15-704.80 K (ChemSep range, limited to 0.95 Tc), max deviation 0.24 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 4 articles, 288.1-333.1 K; median deviation of the articles 0.55 %; largest single deviation -2.29 % at 288.1 K (Alvarez 2008, doi:10.1021/je700647x); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "sulfur-dioxide": {
+      "name": "Sulfur dioxide",
+      "formula": "O2S",
+      "cas": "7446-09-5",
+      "aliases": [
+        "so2",
+        "sulphur dioxide"
+      ],
+      "MW": 64.0638,
+      "Tc_K": 430.64,
+      "Pc_Pa": 7886579.0,
+      "Tb_K": 263.137,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 66.04493078,
+        "B": -4677.070793,
+        "C": -6.631003932,
+        "D": 1.144553251e-08,
+        "E": 3.0,
+        "Tmin_K": 197.7,
+        "Tmax_K": 430.64,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (SulfurDioxide: equation of state Gao-JCED-2016; Gao et al., J. Chem. Eng. Data  (2016)); 200 points 197.700-430.640 K (triple point to critical point), max deviation 0.13 %.",
+        "source_ids": [
+          "coolprop"
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 333.2-413.1 K; median deviation of the articles 1.38 % (above the 1 % tolerance of the engineering report); largest single deviation -4.13 % at 343.1 K (Ahmar 2011, doi:10.1016/j.fluid.2011.02.008); docs/MEASURED_CHECKS.md"
+      },
+      "omega": 0.25613,
+      "constants_source": "CoolProp 8.0.0 (SulfurDioxide: equation of state Gao-JCED-2016); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
+      "constants_source_ids": [
+        "coolprop"
+      ],
+      "omega_source": "CoolProp 8.0.0 (SulfurDioxide: equation of state Gao-JCED-2016); open source, MIT.",
+      "omega_source_ids": [
+        "coolprop"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 224.8945973,
+            "B": 0.3318190825,
+            "C": 420.8124954,
+            "D": 0.366935796
+          },
+          "units": "kg/m3",
+          "Tmin_K": 197.7,
+          "Tmax_K": 409.1,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (SulfurDioxide: Gao-JCED-2016)",
+            "reference": "Gao et al., J. Chem. Eng. Data  (2016)",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 197.70-409.10 K (triple point to 0.95 Tc), max deviation 0.28 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.48033681,
+            "B": 25.38254227,
+            "C": 439.0525762,
+            "D": -16.52159377,
+            "E": 466.9360607
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 197.7,
+          "Tmax_K": 525.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (SulfurDioxide: Gao-JCED-2016)",
+            "reference": "Gao et al., J. Chem. Eng. Data  (2016)",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 197.70-525.00 K (triple point to the upper limit of the equation of state), max deviation 0.00091 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 686.4771469,
+            "B": -8.89112633,
+            "C": 0.04937509038,
+            "D": -0.0001220805128,
+            "E": 1.139226182e-07
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 197.7,
+          "Tmax_K": 387.96,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (SulfurDioxide: Gao-JCED-2016)",
+            "reference": "Gao et al., J. Chem. Eng. Data  (2016)",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 197.70-387.96 K, max deviation 0.50 %; range narrowed from 197.70-409.10 K (max deviation there 2.9 %) to meet the 1 % target"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 40131.55203,
+            "B": 0.8275122324,
+            "C": -0.7385999887,
+            "D": 0.3396133687
+          },
+          "units": "J/mol",
+          "Tmin_K": 197.7,
+          "Tmax_K": 409.1,
+          "Tc_K": 430.64,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (SulfurDioxide: Gao-JCED-2016)",
+            "reference": "Gao et al., J. Chem. Eng. Data  (2016)",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 197.70-409.10 K (triple point to 0.95 Tc), max deviation 0.054 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": 1.811282579,
+            "B": 265.43644,
+            "C": -1.903383753,
+            "D": -2.536635658e-27,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 226.9937,
+          "Tmax_K": 408.98934,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (saturated liquid)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7446095&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=SatT&TLow=197.7&THigh=409.1&TInc=1.762",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "416 tabulated points 226.99-408.99 K, max deviation 0.36 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity and of the thermal conductivity 5 % in the liquid along the saturation boundary and in the gas; the equation of state is valid from the triple point (197.7 K) to 523 K. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/sulfur-dioxide.json).",
+            "chain": "CoolProp 8.0.0: no viscosity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.6916779e-06,
+            "B": 0.5184228195,
+            "C": 523.6425614,
+            "D": -21398.13887
+          },
+          "units": "Pa s",
+          "Tmin_K": 197.7,
+          "Tmax_K": 523.02,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (dilute gas, 1 kPa isobar)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7446095&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=IsoBar&P=0.001&TLow=197.7&THigh=523&TInc=2.711",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "121 tabulated points 197.70-523.02 K, max deviation 0.13 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity and of the thermal conductivity 5 % in the liquid along the saturation boundary and in the gas; the equation of state is valid from the triple point (197.7 K) to 523 K. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/sulfur-dioxide.json).",
+            "chain": "CoolProp 8.0.0: no viscosity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2390502734,
+            "B": 8.146817571e-05,
+            "C": -1.064247996e-06
+          },
+          "units": "W/m/K",
+          "Tmin_K": 226.9937,
+          "Tmax_K": 408.98934,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (saturated liquid)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7446095&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=SatT&TLow=197.7&THigh=409.1&TInc=1.762",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "416 tabulated points 226.99-408.99 K, max deviation 0.18 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity and of the thermal conductivity 5 % in the liquid along the saturation boundary and in the gas; the equation of state is valid from the triple point (197.7 K) to 523 K. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/sulfur-dioxide.json).",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0009232912003,
+            "B": 0.7242993871,
+            "C": 1879.11436,
+            "D": -123223.8991
+          },
+          "units": "W/m/K",
+          "Tmin_K": 197.7,
+          "Tmax_K": 523.02,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (dilute gas, 1 kPa isobar)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C7446095&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=IsoBar&P=0.001&TLow=197.7&THigh=523&TInc=2.711",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "121 tabulated points 197.70-523.02 K, max deviation 0.066 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity and of the thermal conductivity 5 % in the liquid along the saturation boundary and in the gas; the equation of state is valid from the triple point (197.7 K) to 523 K. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/sulfur-dioxide.json).",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.006049800399,
+            "B": -15.15640197,
+            "C": 43.94993517,
+            "D": -47.78195737,
+            "E": 19.74322564
+          },
+          "units": "N/m",
+          "Tmin_K": 197.7,
+          "Tmax_K": 387.96,
+          "Tc_K": 430.64,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (SulfurDioxide: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 197.70-387.96 K, max deviation 0.49 %; range narrowed from 197.70-409.10 K (max deviation there 4.0 %) to meet the 1 % target"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        }
+      }
+    },
+    "nitrous-oxide": {
+      "name": "Nitrous oxide",
+      "formula": "N2O",
+      "cas": "10024-97-2",
+      "aliases": [
+        "n2o",
+        "dinitrogen monoxide",
+        "dinitrogen oxide"
+      ],
+      "MW": 44.0128,
+      "Tc_K": 309.5207,
+      "Pc_Pa": 7244817.0,
+      "Tb_K": 184.6839,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 42.03611266,
+        "B": -2603.321509,
+        "C": -3.147107454,
+        "D": 2.484217774e-16,
+        "E": 6.0,
+        "Tmin_K": 182.33,
+        "Tmax_K": 309.52,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (NitrousOxide: equation of state Lemmon-JCED-2006; Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n); 200 points 182.330-309.520 K (triple point to critical point), max deviation 0.082 %.",
+        "source_ids": [
+          "coolprop"
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 1 articles, 219.2-273.1 K; median deviation of the articles 0.11 % (within the 1 % tolerance of the engineering report); largest single deviation -0.19 % at 273.1 K (Di Nicola 2004, doi:10.1021/je049842u); docs/MEASURED_CHECKS.md"
+      },
+      "omega": 0.1613,
+      "constants_source": "CoolProp 8.0.0 (NitrousOxide: equation of state Lemmon-JCED-2006); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
+      "constants_source_ids": [
+        "coolprop"
+      ],
+      "omega_source": "CoolProp 8.0.0 (NitrousOxide: equation of state Lemmon-JCED-2006); open source, MIT.",
+      "omega_source_ids": [
+        "coolprop"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 127.7908818,
+            "B": 0.2760715291,
+            "C": 309.52068,
+            "D": 0.3029656263
+          },
+          "units": "kg/m3",
+          "Tmin_K": 182.33,
+          "Tmax_K": 294.04,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (NitrousOxide: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 182.33-294.04 K (triple point to 0.95 Tc), max deviation 0.015 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 29.32370595,
+            "B": 31.03331588,
+            "C": 485.2405581,
+            "D": -14.50000512,
+            "E": 568.0412897
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 182.33,
+          "Tmax_K": 525.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (NitrousOxide: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 182.33-525.00 K (triple point to the upper limit of the equation of state), max deviation 0.0048 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 3765.182452,
+            "B": -67.20205494,
+            "C": 0.4571031679,
+            "D": -0.001378373648,
+            "E": 1.558818431e-06
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 182.33,
+          "Tmax_K": 288.45,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (NitrousOxide: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 182.33-288.45 K, max deviation 0.74 %; range narrowed from 182.33-294.04 K (max deviation there 1.7 %) to meet the 1 % target"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 21223.59954,
+            "B": 0.1524237221,
+            "C": 0.2133840546
+          },
+          "units": "J/mol",
+          "Tmin_K": 182.33,
+          "Tmax_K": 294.04,
+          "Tc_K": 309.52068,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (NitrousOxide: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 182.33-294.04 K (triple point to 0.95 Tc), max deviation 0.11 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -14.16591579,
+            "B": 702.2778828,
+            "C": 0.4368879222,
+            "D": -6.48406914e-26,
+            "E": 10.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 182.3305,
+          "Tmax_K": 293.95601,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (saturated liquid)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C10024972&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=SatT&TLow=182.33&THigh=294.04&TInc=0.931",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "425 tabulated points 182.33-293.96 K, max deviation 0.22 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity 10 % (Lennard-Jones parameters from Reid, Prausnitz and Poling, 4th ed., 1987); no uncertainty stated for the thermal conductivity. Tables requested to 500 K; the WebBook limits them to the range of its models. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/nitrous-oxide.json).",
+            "chain": "CoolProp 8.0.0: no viscosity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 7.80034627e-06,
+            "B": 0.3021466054,
+            "C": 583.0784113,
+            "D": -790.3439516
+          },
+          "units": "Pa s",
+          "Tmin_K": 182.33,
+          "Tmax_K": 499.97,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (dilute gas, 1 kPa isobar)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C10024972&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=IsoBar&P=0.001&TLow=182.33&THigh=500&TInc=2.647",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "121 tabulated points 182.33-499.97 K, max deviation 0.11 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity 10 % (Lennard-Jones parameters from Reid, Prausnitz and Poling, 4th ed., 1987); no uncertainty stated for the thermal conductivity. Tables requested to 500 K; the WebBook limits them to the range of its models. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/nitrous-oxide.json).",
+            "chain": "CoolProp 8.0.0: no viscosity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.471329216,
+            "B": -0.001639774716,
+            "C": 1.04533114e-06
+          },
+          "units": "W/m/K",
+          "Tmin_K": 182.3305,
+          "Tmax_K": 293.95601,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (saturated liquid)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C10024972&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=SatT&TLow=182.33&THigh=294.04&TInc=0.931",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "425 tabulated points 182.33-293.96 K, max deviation 0.13 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity 10 % (Lennard-Jones parameters from Reid, Prausnitz and Poling, 4th ed., 1987); no uncertainty stated for the thermal conductivity. Tables requested to 500 K; the WebBook limits them to the range of its models. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/nitrous-oxide.json).",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0005193584958,
+            "B": 0.7913605539,
+            "C": 543.9410895,
+            "D": -9615.591145
+          },
+          "units": "W/m/K",
+          "Tmin_K": 182.33,
+          "Tmax_K": 499.97,
+          "tier": "fitted",
+          "source": {
+            "name": "NIST Chemistry WebBook, fluid tables (dilute gas, 1 kPa isobar)",
+            "reference": "Huber M.L., Models for the Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0, NISTIR 8209, NIST, Boulder (2018), doi:10.6028/NIST.IR.8209; thermal conductivity critical enhancement: Perkins, Sengers, Abdulagatov, Huber, Int. J. Thermophys. 34 (2013) 191-212, doi:10.1007/s10765-013-1409-z; as computed by the NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
+            "url": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C10024972&Digits=8&RefState=DEF&TUnit=K&PUnit=MPa&DUnit=mol%2Fl&HUnit=kJ%2Fmol&WUnit=m%2Fs&VisUnit=Pa*s&STUnit=N%2Fm&Type=IsoBar&P=0.001&TLow=182.33&THigh=500&TInc=2.647",
+            "access": "free to read (NIST SRD 69)",
+            "fit": "121 tabulated points 182.33-499.97 K, max deviation 0.44 %",
+            "notes": "WebBook: estimated uncertainty of the viscosity 10 % (Lennard-Jones parameters from Reid, Prausnitz and Poling, 4th ed., 1987); no uncertainty stated for the thermal conductivity. Tables requested to 500 K; the WebBook limits them to the range of its models. Tables downloaded 2026-10-07 (validation/data/pure/webbook_fluid/nitrous-oxide.json).",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model"
+          },
+          "source_ids": [
+            "nist-webbook"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.07087153511,
+            "B": 1.204022058
+          },
+          "units": "N/m",
+          "Tmin_K": 182.33,
+          "Tmax_K": 294.04,
+          "Tc_K": 309.52068,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (NitrousOxide: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 182.33-294.04 K (triple point to 0.95 Tc), max deviation 0.00059 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        }
+      }
+    },
+    "formic-acid": {
+      "name": "Formic acid",
+      "formula": "CH2O2",
+      "cas": "64-18-6",
+      "aliases": [
+        "methanoic acid",
+        "hcooh"
+      ],
+      "MW": 46.0257,
+      "Tc_K": 588.0,
+      "Pc_Pa": 5810000.0,
+      "Tb_K": 373.7006,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 43.807,
+        "B": -5131.0,
+        "C": -3.1878,
+        "D": 2.3782e-06,
+        "E": 2.0,
+        "Tmin_K": 281.45,
+        "Tmax_K": 588.0,
+        "tier": "databank",
+        "source": "ChemSep v8.31 pure-component database, data file 2, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 281.45-588.00 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.31-2",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Kahlbaum, 1894, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64186&Units=SI&Mask=4",
+            "T_range_K": [
+              273.7,
+              307.4
+            ],
+            "max_deviation_percent": 1.81
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 1.528,
+        "q": 1.532,
+        "source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
+      },
+      "omega": 0.312521,
+      "constants_source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (373.701 K); ChemSep lists 373.71 K.",
+      "constants_source_ids": [
+        "chemsep-8.31-2"
+      ],
+      "omega_source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.31-2"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 89.1978066,
+            "B": 0.24225,
+            "C": 588.0,
+            "D": 0.24435
+          },
+          "units": "kg/m3",
+          "Tmin_K": 281.45,
+          "Tmax_K": 588.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 46.0257 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 281.45-588.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 16 articles, 293.1-353.1 K; median deviation of the articles 0.11 % (within the 1 % tolerance of the engineering report); largest single deviation -0.60 % at 298.1 K (Tamilarasan 2009, doi:10.1021/je800568m); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 32.28362379,
+            "B": 76.05479745,
+            "C": 1192.85946,
+            "D": 38.74925774,
+            "E": 515.8147022
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 50.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 50.00-1500.00 K (ChemSep range), max deviation 0.90 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 78.06,
+            "B": 0.07154,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 281.45,
+          "Tmax_K": 380.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged except: coefficients converted from J/kmol/K to J/mol/K.; reproduces ChemSep within 0.0001 % at 200 points 281.45-380.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 23195.0,
+            "B": 1.9091,
+            "C": -5.0003,
+            "D": 3.2641,
+            "E": 0.0
+          },
+          "units": "J/mol",
+          "Tmin_K": 281.45,
+          "Tmax_K": 587.41,
+          "Tc_K": 588.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: Tmin raised to the triple point 281.45 K (ChemSep: 250.00 K). A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 281.45-587.41 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -48.529,
+            "B": 3394.7,
+            "C": 5.3903,
+            "D": 0.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 281.45,
+          "Tmax_K": 373.71,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 281.45-373.71 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 303.1-353.1 K; median deviation of the articles 0.77 % (within the 5 % tolerance of the engineering report); largest single deviation +1.58 % at 303.1 K (Yang 2008, doi:10.1021/je700755t); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 5.0702e-08,
+            "B": 0.9114,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 281.45,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 281.45-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.302,
+            "B": -0.000108,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 281.45,
+          "Tmax_K": 373.71,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 281.45-373.71 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -0.8303,
+            "B": 0.0046141,
+            "C": -5.7466e-06,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 420.0,
+          "Tmax_K": 470.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 420.00-470.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.057265,
+            "B": -2.8788e-05,
+            "C": -1.4411e-07,
+            "D": 4.6524e-11,
+            "E": 0.0
+          },
+          "units": "N/m",
+          "Tmin_K": 281.45,
+          "Tmax_K": 558.6,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged except: Tmax lowered to 558.60 K: the ChemSep polynomial reaches zero at 588.0 K (ChemSep range to 588.00 K).; reproduces ChemSep within 0.0001 % at 200 points 281.45-558.60 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        }
+      }
+    },
+    "propionic-acid": {
+      "name": "Propionic acid",
+      "formula": "C3H6O2",
+      "cas": "79-09-4",
+      "aliases": [
+        "propanoic acid"
+      ],
+      "MW": 74.07854,
+      "Tc_K": 604.0,
+      "Pc_Pa": 4530000.0,
+      "Tb_K": 414.2573,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 58.42,
+        "B": -7261.2,
+        "C": -4.9024,
+        "D": 1.0406e-06,
+        "E": 2.0,
+        "Tmin_K": 252.45,
+        "Tmax_K": 600.81,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 252.45-600.81 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Dreisbach and Shrader, 1949 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79094&Units=SI&Mask=4",
+            "T_range_K": [
+              345.54,
+              401.49
+            ],
+            "max_deviation_percent": -2.61
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 5 articles, 373.1-417.6 K; median deviation of the articles 1.43 % (above the 1 % tolerance of the engineering report); largest single deviation -17.04 % at 393.8 K (Mohsen-Nia 2010, doi:10.1016/j.jct.2010.05.014); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 2.9,
+        "q": 2.58,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.544,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (414.257 K); ChemSep lists 414.31 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 65.2654161,
+            "B": 0.22848,
+            "C": 612.66,
+            "D": 0.25898
+          },
+          "units": "kg/m3",
+          "Tmin_K": 252.45,
+          "Tmax_K": 604.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 604.00 K (ChemSep: 612.65 K). Tmin raised to the triple point 252.45 K (ChemSep: 233.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 74.0785 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 252.45-604.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 74 measured values from 34 articles, 273.1-333.1 K; median deviation of the articles 0.16 % (within the 1 % tolerance of the engineering report); largest single deviation +2.16 % at 273.1 K (Ghanadzadeh 2008, doi:10.1016/j.jct.2008.01.001); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 62.78148927,
+            "B": 181.4090816,
+            "C": 711.3180012,
+            "D": -81.65089634,
+            "E": 840.4438074
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 252.45,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 252.45-1500.00 K (ChemSep range), max deviation 0.18 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 214.0140392,
+            "B": -0.7004251686,
+            "C": 0.001652653202
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 252.45,
+          "Tmax_K": 414.32,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 252.45-414.32 K (ChemSep range), max deviation 0.17 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 48878.0,
+            "B": 3.7167,
+            "C": -10.822,
+            "D": 11.498,
+            "E": -4.1176
+          },
+          "units": "J/mol",
+          "Tmin_K": 252.45,
+          "Tmax_K": 600.81,
+          "Tc_K": 604.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 252.45-600.81 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -53.41646,
+            "B": 2724.985,
+            "C": 6.7143,
+            "D": -9.670276e-06,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 252.45,
+          "Tmax_K": 504.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 252.45-504.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.6155e-08,
+            "B": 1.0459,
+            "C": -115.32,
+            "D": 27680.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 252.45,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 252.45-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2133768111,
+            "B": -0.00025089186,
+            "C": 1.042687289e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 252.45,
+          "Tmax_K": 543.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 252.45-543.15 K (ChemSep range), max deviation 0.51 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -0.00163685,
+            "B": 2.07415e-05,
+            "C": 7.101384e-08,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 252.45,
+          "Tmax_K": 616.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 3 coefficients taken over unchanged except: ChemSep equation 3 is DIPPR 100 with the higher coefficients zero.; reproduces ChemSep within 0.0001 % at 200 points 252.45-616.15 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.1112780207,
+            "B": 5.167127292,
+            "C": -10.68955851,
+            "D": 11.4473794,
+            "E": -4.633326501
+          },
+          "units": "N/m",
+          "Tmin_K": 252.45,
+          "Tmax_K": 573.79,
+          "Tc_K": 604.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 252.45-573.79 K (ChemSep range, limited to 0.95 Tc), max deviation 0.14 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "acrylic-acid": {
+      "name": "Acrylic acid",
+      "formula": "C3H4O2",
+      "cas": "79-10-7",
+      "aliases": [
+        "prop-2-enoic acid",
+        "propenoic acid"
+      ],
+      "MW": 72.06266,
+      "Tc_K": 654.15,
+      "Pc_Pa": 5664070.0,
+      "Tb_K": 414.3342,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 55.86645,
+        "B": -7062.889,
+        "C": -4.564151,
+        "D": 1.238643e-06,
+        "E": 2.0,
+        "Tmin_K": 276.65,
+        "Tmax_K": 615.0,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 276.65-615.00 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "NIST Chemistry WebBook: no Antoine equation on the page",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79107&Units=SI&Mask=4"
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 2.6467,
+        "q": 2.4,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.220736,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (414.334 K); ChemSep lists 414.15 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 8.312427831,
+            "B": 0.078693,
+            "C": 654.15,
+            "D": 0.16945
+          },
+          "units": "kg/m3",
+          "Tmin_K": 286.15,
+          "Tmax_K": 597.69,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 286.15 K (ChemSep: 285.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 72.0627 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 286.15-597.69 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 57.8336146,
+            "B": 138.296945,
+            "C": 722.7125162,
+            "D": -50.88534264,
+            "E": 835.7525303
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 250.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 250.00-1500.00 K (ChemSep range), max deviation 0.17 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 1433.682328,
+            "B": -12.27010537,
+            "C": 0.03822919231,
+            "D": -3.870682767e-05
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 286.15,
+          "Tmax_K": 375.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 286.15-375.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.078 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 69258.0,
+            "B": 1.9796,
+            "C": 2.7587,
+            "D": -12.283,
+            "E": 8.2823
+          },
+          "units": "J/mol",
+          "Tmin_K": 286.15,
+          "Tmax_K": 615.0,
+          "Tc_K": 654.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 286.15-615.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -113.67,
+            "B": 5526.6,
+            "C": 15.75,
+            "D": -1.5983e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 286.15,
+          "Tmax_K": 554.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 286.15-554.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.4666e-07,
+            "B": 0.69704,
+            "C": 207.66,
+            "D": -6104.4
+          },
+          "units": "Pa s",
+          "Tmin_K": 286.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 286.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1942287172,
+            "B": -2.32118476e-05,
+            "C": -3.360430715e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 286.15,
+          "Tmax_K": 484.5,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 286.15-484.50 K (ChemSep range, Tmin raised to the triple point), max deviation 0.13 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.00092475,
+            "B": 0.70367,
+            "C": 626.1,
+            "D": 112700.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 286.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 286.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 7862.772203,
+            "B": 73.15271147,
+            "C": -189.9632959,
+            "D": 199.8441229,
+            "E": -79.15669598
+          },
+          "units": "N/m",
+          "Tmin_K": 286.15,
+          "Tmax_K": 582.11,
+          "Tc_K": 654.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 286.15-582.11 K (ChemSep range), max deviation 0.50 %; range narrowed from 286.15-615.00 K (max deviation there 3.5 %) to meet the 1 % target",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "vinyl-acetate": {
+      "name": "Vinyl acetate",
+      "formula": "C4H6O2",
+      "cas": "108-05-4",
+      "aliases": [
+        "ethenyl acetate",
+        "vinyl ethanoate"
+      ],
+      "MW": 86.08924,
+      "Tc_K": 501.45,
+      "Pc_Pa": 4150000.0,
+      "Tb_K": 345.3993,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": -28.90631,
+        "B": -2451.071,
+        "C": 8.43748,
+        "D": -1.4969e-05,
+        "E": 2.0,
+        "Tmin_K": 180.35,
+        "Tmax_K": 476.37,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 180.35-476.37 K (ChemSep range, ending at 0.95 Tc: near the critical point the equation overshoots (2.96e+06 Pa at 501.45 K against the critical pressure 4.15e+06 Pa at 501.45 K)); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Swamy and Van Winkle, 1965 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108054&Units=SI&Mask=4",
+            "T_range_K": [
+              340.0,
+              355.0
+            ],
+            "max_deviation_percent": -0.44
+          },
+          {
+            "reference": "Capková and Fried, 1963 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108054&Units=SI&Mask=4",
+            "T_range_K": [
+              294.98,
+              345.19
+            ],
+            "max_deviation_percent": -2.0
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 3 articles, 345.8-346.1 K; median deviation of the articles 2.48 % (above the 1 % tolerance of the engineering report); largest single deviation +2.48 % at 346.1 K (Resa 2005, doi:10.1021/je049544x); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 3.2485,
+        "q": 2.904,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.529352,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (345.399 K); ChemSep lists 345.65 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 69.59195894,
+            "B": 0.2388,
+            "C": 524.34,
+            "D": 0.25151
+          },
+          "units": "kg/m3",
+          "Tmin_K": 180.35,
+          "Tmax_K": 501.45,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 501.45 K (ChemSep: 524.33 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 86.0892 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 180.35-501.45 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 20 measured values from 8 articles, 293.1-313.1 K; median deviation of the articles 0.36 % (within the 1 % tolerance of the engineering report); largest single deviation +2.11 % at 313.1 K (Kapoor 2005, doi:10.1021/je050162g); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 52.79651696,
+            "B": 206.4739871,
+            "C": 1084.362313,
+            "D": 97.67743489,
+            "E": 455.925598
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 100.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 100.00-1500.00 K (ChemSep range), max deviation 0.99 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 114.292633,
+            "B": -0.0275809344,
+            "C": 0.0006859103869
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 213.41,
+          "Tmax_K": 389.35,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 213.41-389.35 K (ChemSep range), max deviation 0.11 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 51784.11,
+            "B": 1.329393,
+            "C": -3.127105,
+            "D": 3.542901,
+            "E": -1.384803
+          },
+          "units": "J/mol",
+          "Tmin_K": 180.35,
+          "Tmax_K": 501.3,
+          "Tc_K": 501.45,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 180.35-501.30 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -20.187,
+            "B": 1398.0,
+            "C": 1.3362,
+            "D": 8.2076e-07,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 225.0,
+          "Tmax_K": 401.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 225.00-401.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 303.1-313.1 K; median deviation of the articles 1.16 % (within the 5 % tolerance of the engineering report); largest single deviation +4.80 % at 313.1 K (Kapoor 2005, doi:10.1021/je050162g); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.4727e-07,
+            "B": 0.76076,
+            "C": 119.27,
+            "D": 67.359
+          },
+          "units": "Pa s",
+          "Tmin_K": 180.35,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 180.35-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2570175431,
+            "B": -0.0003579488447
+          },
+          "units": "W/m/K",
+          "Tmin_K": 180.35,
+          "Tmax_K": 410.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 180.35-410.00 K (ChemSep range), max deviation 0.40 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -5281900.0,
+            "B": -0.16154,
+            "C": 2841900000.0,
+            "D": -17045000000000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 180.35,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 180.35-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.2813386738,
+            "B": 11.5258421,
+            "C": -30.06720153,
+            "D": 34.29168698,
+            "E": -14.2372751
+          },
+          "units": "N/m",
+          "Tmin_K": 180.35,
+          "Tmax_K": 476.37,
+          "Tc_K": 501.45,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 180.35-476.37 K (ChemSep range, limited to 0.95 Tc), max deviation 0.80 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "isopropyl-acetate": {
+      "name": "Isopropyl acetate",
+      "formula": "C5H10O2",
+      "cas": "108-21-4",
+      "aliases": [
+        "propan-2-yl acetate",
+        "1-methylethyl acetate"
+      ],
+      "MW": 102.1317,
+      "Tc_K": 516.15,
+      "Pc_Pa": 3495640.0,
+      "Tb_K": 361.7114,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 53.596,
+        "B": -5675.5,
+        "C": -4.5065,
+        "D": 1.2831e-06,
+        "E": 2.0,
+        "Tmin_K": 199.75,
+        "Tmax_K": 490.34,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 199.75-490.34 K (ChemSep range, ending at 0.95 Tc: near the critical point the equation overshoots (2.66e+06 Pa at 516.15 K against the critical pressure 3.5e+06 Pa at 516.15 K)); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Stull, 1947 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108214&Units=SI&Mask=4",
+            "T_range_K": [
+              234.9,
+              362.0
+            ],
+            "max_deviation_percent": 1.21
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 3 articles, 361.4-453.1 K; median deviation of the articles 0.81 % (within the 1 % tolerance of the engineering report); largest single deviation +1.88 % at 453.1 K (Giles 2006, doi:10.1021/je050317k); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 4.1522,
+        "q": 3.652,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.542817,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (361.711 K); ChemSep lists 361.65 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 178.189177,
+            "B": 0.38746,
+            "C": 516.15,
+            "D": 0.46246
+          },
+          "units": "kg/m3",
+          "Tmin_K": 199.75,
+          "Tmax_K": 514.51,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 102.1317 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 199.75-514.51 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 6 articles, 298.0-313.1 K; median deviation of the articles 0.32 % (within the 1 % tolerance of the engineering report); largest single deviation +0.35 % at 298.0 K (Andreatta 2010, doi:10.1016/j.fluid.2009.09.015); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 68.59604891,
+            "B": 303.1513548,
+            "C": 619.5250523,
+            "D": -134.8863977,
+            "E": 754.0028879
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 199.75,
+          "Tmax_K": 1200.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 199.75-1200.15 K (ChemSep range), max deviation 0.43 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 200.0212686,
+            "B": -0.739369475,
+            "C": 0.00313457188,
+            "D": -2.466147835e-06
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 215.75,
+          "Tmax_K": 478.8,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 215.75-478.80 K (ChemSep range), max deviation 0.13 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 48528.74,
+            "B": 0.139799,
+            "C": 0.87492,
+            "D": -1.379465,
+            "E": 0.721356
+          },
+          "units": "J/mol",
+          "Tmin_K": 199.75,
+          "Tmax_K": 514.51,
+          "Tc_K": 516.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 199.75-514.51 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -10.895,
+            "B": 1115.7,
+            "C": -0.084451,
+            "D": 4.8399e-07,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 199.75,
+          "Tmax_K": 416.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 199.75-416.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.7177e-07,
+            "B": 0.62086,
+            "C": 249.31,
+            "D": -266.55
+          },
+          "units": "Pa s",
+          "Tmin_K": 199.75,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 199.75-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2260167373,
+            "B": -0.0003065458341
+          },
+          "units": "W/m/K",
+          "Tmin_K": 199.75,
+          "Tmax_K": 421.4,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 199.75-421.40 K (ChemSep range, Tmin raised to the triple point), max deviation 0.32 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -5913400.0,
+            "B": -0.12076,
+            "C": 3699200000.0,
+            "D": -25996000000000.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 199.75,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 199.75-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.2749121495,
+            "B": 11.93148952,
+            "C": -30.58540384,
+            "D": 34.07183856,
+            "E": -13.91283583
+          },
+          "units": "N/m",
+          "Tmin_K": 199.75,
+          "Tmax_K": 490.34,
+          "Tc_K": 516.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 199.75-490.34 K (ChemSep range, limited to 0.95 Tc), max deviation 0.84 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 298.1-313.1 K; median deviation of the articles 1.38 %; largest single deviation -1.55 % at 313.1 K (He 2008, doi:10.1021/je800046k); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "ethylene-oxide": {
+      "name": "Ethylene oxide",
+      "formula": "C2H4O",
+      "cas": "75-21-8",
+      "aliases": [
+        "oxirane",
+        "epoxyethane"
+      ],
+      "MW": 44.05256,
+      "Tc_K": 468.92,
+      "Pc_Pa": 7304687.0,
+      "Tb_K": 283.6595,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 69.26411068,
+        "B": -4856.287531,
+        "C": -7.31325853,
+        "D": 8.527228321e-06,
+        "E": 2.0,
+        "Tmin_K": 160.65,
+        "Tmax_K": 468.92,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (EthyleneOxide: equation of state Thol-CES-2015, Thol-CES-2015-CORR, Thol-THESIS-2015; Thol et al., Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051; Thol et al., Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020; Thol,  (2015)); 200 points 160.650-468.920 K (triple point to critical point), max deviation 0.094 %.",
+        "source_ids": [
+          "coolprop"
+        ]
+      },
+      "omega": 0.210195,
+      "constants_source": "CoolProp 8.0.0 (EthyleneOxide: equation of state Thol-CES-2015,Thol-CES-2015-CORR,Thol-THESIS-2015); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
+      "constants_source_ids": [
+        "coolprop"
+      ],
+      "omega_source": "CoolProp 8.0.0 (EthyleneOxide: equation of state Thol-CES-2015,Thol-CES-2015-CORR,Thol-THESIS-2015); open source, MIT.",
+      "omega_source_ids": [
+        "coolprop"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 105.9711428,
+            "B": 0.295575862,
+            "C": 462.4745417,
+            "D": 0.316545848
+          },
+          "units": "kg/m3",
+          "Tmin_K": 160.65,
+          "Tmax_K": 445.47,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (EthyleneOxide: Thol-CES-2015, Thol-CES-2015-CORR, Thol-THESIS-2015)",
+            "reference": "Thol et al., Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051; Thol et al., Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020; Thol,  (2015)",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 160.65-445.47 K (triple point to 0.95 Tc), max deviation 0.28 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.46548096,
+            "B": 114.6419206,
+            "C": 1467.457497,
+            "D": 72.57999397,
+            "E": 708.052504
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 160.65,
+          "Tmax_K": 1000.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (EthyleneOxide: Thol-CES-2015, Thol-CES-2015-CORR, Thol-THESIS-2015)",
+            "reference": "Thol et al., Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051; Thol et al., Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020; Thol,  (2015)",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 160.65-1000.00 K (triple point to the upper limit of the equation of state), max deviation 0.17 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 275.5853424,
+            "B": -2.930342625,
+            "C": 0.01613108042,
+            "D": -3.889902953e-05,
+            "E": 3.597951084e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 160.65,
+          "Tmax_K": 416.98,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (EthyleneOxide: Thol-CES-2015, Thol-CES-2015-CORR, Thol-THESIS-2015)",
+            "reference": "Thol et al., Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051; Thol et al., Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020; Thol,  (2015)",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 160.65-416.98 K, max deviation 0.45 %; range narrowed from 160.65-445.47 K (max deviation there 3.3 %) to meet the 1 % target"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 40501.31259,
+            "B": 0.8834299438,
+            "C": -0.9042127807,
+            "D": 0.4482461707
+          },
+          "units": "J/mol",
+          "Tmin_K": 160.65,
+          "Tmax_K": 445.47,
+          "Tc_K": 468.92001,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (EthyleneOxide: Thol-CES-2015, Thol-CES-2015-CORR, Thol-THESIS-2015)",
+            "reference": "Thol et al., Chem. Eng. Sci. 121 (2015) 87-99, doi:10.1016/j.ces.2014.07.051; Thol et al., Chem. Eng. Sci. 134 (2015) 887-890, doi:10.1016/j.ces.2015.06.020; Thol,  (2015)",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 160.65-445.47 K (triple point to 0.95 Tc), max deviation 0.087 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -8.5785,
+            "B": 634.7,
+            "C": -0.32031,
+            "D": -8.1095e-08,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 160.65,
+          "Tmax_K": 469.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 160.65-469.15 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: ethylene oxide is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.0777e-06,
+            "B": 0.52994,
+            "C": 452.12,
+            "D": -16957.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 160.65,
+          "Tmax_K": 1223.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 160.65-1223.15 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: ethylene oxide is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2662700799,
+            "B": -0.0003814076946
+          },
+          "units": "W/m/K",
+          "Tmin_K": 160.65,
+          "Tmax_K": 433.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 160.65-433.15 K (ChemSep range), max deviation 0.50 %",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: ethylene oxide is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": -0.00032904,
+            "B": 1.1711,
+            "C": -7027.1,
+            "D": 89001.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 160.65,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 160.65-1000.00 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: ethylene oxide is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.06307671617,
+            "B": -0.2933469975,
+            "C": 4.650790775,
+            "D": -5.793619495,
+            "E": 2.557374536
+          },
+          "units": "N/m",
+          "Tmin_K": 160.65,
+          "Tmax_K": 445.69,
+          "Tc_K": 469.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 160.65-445.69 K (ChemSep range, limited to 0.95 Tc), max deviation 0.71 %",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: ethylene oxide is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "propylene-oxide": {
+      "name": "Propylene oxide",
+      "formula": "C3H6O",
+      "cas": "75-56-9",
+      "aliases": [
+        "methyloxirane",
+        "1,2-epoxypropane"
+      ],
+      "MW": 58.07804,
+      "Tc_K": 482.25,
+      "Pc_Pa": 4920000.0,
+      "Tb_K": 307.2443,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 83.693,
+        "B": -5715.8,
+        "C": -9.522,
+        "D": 1.033e-05,
+        "E": 2.0,
+        "Tmin_K": 161.22,
+        "Tmax_K": 482.25,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 161.22-482.25 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Bott and Sadler, 1966, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75569&Units=SI&Mask=4",
+            "T_range_K": [
+              292.0,
+              345.0
+            ],
+            "max_deviation_percent": 3.36
+          },
+          {
+            "reference": "McDonald, Shrader, et al., 1959, 2 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75569&Units=SI&Mask=4",
+            "T_range_K": [
+              199.7,
+              307.38
+            ],
+            "max_deviation_percent": 16.7
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 2.2663,
+        "q": 1.856,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.268304,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (307.244 K); ChemSep lists 307.05 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 91.58326128,
+            "B": 0.28598,
+            "C": 482.25,
+            "D": 0.29139
+          },
+          "units": "kg/m3",
+          "Tmin_K": 161.22,
+          "Tmax_K": 482.25,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 58.0780 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 161.22-482.25 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 44.62887232,
+            "B": 173.023379,
+            "C": 1308.955098,
+            "D": 91.31318038,
+            "E": 583.4407325
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 150.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 150.00-1500.00 K (ChemSep range), max deviation 0.58 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 138.0298295,
+            "B": -0.3063483924,
+            "C": 0.000832849031
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 161.22,
+          "Tmax_K": 433.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 161.22-433.15 K (ChemSep range), max deviation 0.24 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 52413.05,
+            "B": 1.339985,
+            "C": -1.496096,
+            "D": 0.72766,
+            "E": -0.151947
+          },
+          "units": "J/mol",
+          "Tmin_K": 161.22,
+          "Tmax_K": 481.76,
+          "Tc_K": 482.25,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 161.22-481.76 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": 20.905,
+            "B": 283.5,
+            "C": -5.5156,
+            "D": 1.6261e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 200.0,
+          "Tmax_K": 382.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 200.00-382.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.1059e-07,
+            "B": 0.81831,
+            "C": 109.91,
+            "D": -5863.4
+          },
+          "units": "Pa s",
+          "Tmin_K": 161.22,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 161.22-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.3073711074,
+            "B": -0.0004660666707
+          },
+          "units": "W/m/K",
+          "Tmin_K": 161.22,
+          "Tmax_K": 385.8,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 161.22-385.80 K (ChemSep range), max deviation 0.74 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.00022671,
+            "B": 0.95467,
+            "C": 579.31,
+            "D": 32798.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 161.22,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 161.22-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.08845221745,
+            "B": 2.225675701,
+            "C": -2.146015696,
+            "D": 1.688773869,
+            "E": -0.5129657512
+          },
+          "units": "N/m",
+          "Tmin_K": 161.22,
+          "Tmax_K": 458.13,
+          "Tc_K": 482.25,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 161.22-458.13 K (ChemSep range, limited to 0.95 Tc), max deviation 0.56 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "formaldehyde": {
+      "name": "Formaldehyde",
+      "formula": "CH2O",
+      "cas": "50-00-0",
+      "aliases": [
+        "methanal",
+        "ch2o"
+      ],
+      "MW": 30.02598,
+      "Tc_K": 408.0,
+      "Pc_Pa": 6590000.0,
+      "Tb_K": 254.01,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 62.07923,
+        "B": -4207.675,
+        "C": -6.202287,
+        "D": 5.521233e-06,
+        "E": 2.0,
+        "Tmin_K": 163.7,
+        "Tmax_K": 387.6,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 163.70-387.60 K (ChemSep range, ending at 0.95 Tc: near the critical point the equation overshoots (4.89e+06 Pa at 408.00 K against the critical pressure 6.59e+06 Pa at 408.00 K)); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Spence and Wild, 1935, 3 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C50000&Units=SI&Mask=4",
+            "T_range_K": [
+              163.76,
+              250.86
+            ],
+            "max_deviation_percent": 2.58
+          }
+        ]
+      },
+      "omega": 0.281846,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (254.01 K); ChemSep lists 254.05 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 58.28943497,
+            "B": 0.22308,
+            "C": 408.0,
+            "D": 0.28569
+          },
+          "units": "kg/m3",
+          "Tmin_K": 181.15,
+          "Tmax_K": 396.06,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 30.0260 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 181.15-396.06 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 33.27490184,
+            "B": 49.19482806,
+            "C": 900.0818653,
+            "D": -23.25461632,
+            "E": 886.2991695
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 50.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 50.00-1500.00 K (ChemSep range), max deviation 0.19 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 38.85135718,
+            "B": 0.243524452,
+            "C": -0.0005011337465
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 204.0,
+          "Tmax_K": 304.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 204.00-304.00 K (ChemSep range), max deviation 0.071 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 30902.0,
+            "B": 0.29722,
+            "C": -0.051281,
+            "D": 0.13234,
+            "E": -0.080686
+          },
+          "units": "J/mol",
+          "Tmin_K": 181.15,
+          "Tmax_K": 396.06,
+          "Tc_K": 408.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 181.15-396.06 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -11.303,
+            "B": 753.06,
+            "C": -0.013733,
+            "D": -4.6837e-08,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 181.15,
+          "Tmax_K": 308.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 181.15-308.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 8.1997e-07,
+            "B": 0.57256,
+            "C": 258.17,
+            "D": -5091.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 181.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 181.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.3729900712,
+            "B": -0.0006485989496
+          },
+          "units": "W/m/K",
+          "Tmin_K": 204.0,
+          "Tmax_K": 234.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 204.00-234.00 K (ChemSep range), max deviation 0.031 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 44.841,
+            "B": -0.71285,
+            "C": -3466.2,
+            "D": 5262100.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 181.15,
+          "Tmax_K": 994.05,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 181.15-994.05 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.9244318605,
+            "B": 11.54349839,
+            "C": -25.93971688,
+            "D": 26.46729427,
+            "E": -10.34930147
+          },
+          "units": "N/m",
+          "Tmin_K": 181.15,
+          "Tmax_K": 387.6,
+          "Tc_K": 408.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 181.15-387.60 K (ChemSep range, limited to 0.95 Tc), max deviation 0.40 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      }
+    },
+    "hydrogen-peroxide": {
+      "name": "Hydrogen peroxide",
+      "formula": "H2O2",
+      "cas": "7722-84-1",
+      "aliases": [
+        "h2o2"
+      ],
+      "MW": 34.0147,
+      "Tc_K": 730.15,
+      "Pc_Pa": 21700000.0,
+      "Tb_K": 423.2744,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 112.63,
+        "B": -9455.5,
+        "C": -13.826,
+        "D": 0.01147,
+        "E": 1.0,
+        "Tmin_K": 272.74,
+        "Tmax_K": 730.15,
+        "tier": "databank",
+        "source": "ChemSep v8.31 pure-component database, data file 2, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 272.74-730.15 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.31-2",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "NIST Chemistry WebBook: no Antoine equation on the page",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7722841&Units=SI&Mask=4"
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 2.0,
+        "q": 2.4,
+        "source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
+      },
+      "omega": 0.358233,
+      "constants_source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (423.274 K); ChemSep lists 423.35 K.",
+      "constants_source_ids": [
+        "chemsep-8.31-2"
+      ],
+      "omega_source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.31-2"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 109.360662,
+            "B": 0.24982,
+            "C": 730.15,
+            "D": 0.2877
+          },
+          "units": "kg/m3",
+          "Tmin_K": 272.74,
+          "Tmax_K": 730.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 34.0147 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 272.74-730.15 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 38.7804916,
+            "B": 37.90266344,
+            "C": 809.9677829,
+            "D": -16.6528955,
+            "E": 937.2772378
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 255.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 255.00-1500.00 K (ChemSep range), max deviation 0.12 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 147.44,
+            "B": -0.37266,
+            "C": 0.00059319,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 272.74,
+          "Tmax_K": 547.61,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged except: coefficients converted from J/kmol/K to J/mol/K.; reproduces ChemSep within 0.0001 % at 200 points 272.74-547.61 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 61522.0,
+            "B": 0.3201,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "J/mol",
+          "Tmin_K": 272.74,
+          "Tmax_K": 729.41,
+          "Tc_K": 730.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 272.74-729.41 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -11.807,
+            "B": 1502.7,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 272.74,
+          "Tmax_K": 584.12,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 272.74 K (ChemSep: 272.73 K).; reproduces ChemSep within 0.0001 % at 200 points 272.74-584.12 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 7.0287e-08,
+            "B": 0.89481,
+            "C": 56.158,
+            "D": 0.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 272.74,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 272.74-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -0.1697,
+            "B": 0.0032525,
+            "C": -3.5066e-06,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 272.74,
+          "Tmax_K": 623.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 100 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 272.74-623.15 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.006194,
+            "B": 0.4666,
+            "C": 1114.9,
+            "D": 41100.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 300.0,
+          "Tmax_K": 1200.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 300.00-1200.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.14479,
+            "B": 1.287,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "N/m",
+          "Tmin_K": 272.74,
+          "Tmax_K": 729.41,
+          "Tc_K": 730.15,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 272.74-729.41 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
+          ]
+        }
+      }
     }
   }
 }
