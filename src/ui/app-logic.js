@@ -451,6 +451,42 @@ export function filterComponents(list, query) {
   return list.filter(c => [c.name, c.id, c.formula, c.cas].some(v => String(v ?? "").toLowerCase().includes(q)));
 }
 
+/**
+ * Components that match what a person typed, best first: a name, an alias, a formula, a CAS number or an id.
+ * Case, spaces and hyphens do not matter ("7732185" finds 7732-18-5, "methyl ethyl" finds 2-butanone through its
+ * alias). Order: an exact match, then names that start with the text, then a word in them that starts with it, then
+ * names that contain it (at each level the component's own name before its aliases), then formulas and CAS numbers
+ * that contain it; alphabetical within each.
+ * An empty text gives the whole list in its order.
+ * @param {{id:string,name:string,formula?:string,cas?:string,aliases?:string[]}[]} list
+ * @param {string} query
+ */
+export function searchComponents(list, query) {
+  const q = String(query ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+  if (!q) return list.slice();
+  const tight = v => String(v ?? "").toLowerCase().replace(/[\s\-,()']/g, "");
+  const qt = tight(q);
+  const words = v => v.split(/[\s\-,()]+/);
+  const score = c => {
+    const name = c.name.toLowerCase();
+    const other = [c.id.replace(/-/g, " "), ...(c.aliases ?? [])].map(v => String(v ?? "").toLowerCase());
+    const codes = [c.formula, c.cas].map(v => String(v ?? "").toLowerCase());
+    const all = [name, ...other, ...codes];
+    if (all.some(v => v === q) || (qt && all.some(v => tight(v) === qt))) return name === q ? 0 : 0.5;
+    // the component's own name ranks before its aliases at each level
+    if (name.startsWith(q)) return 1;
+    if (other.some(v => v.startsWith(q))) return 1.5;
+    if (words(name).some(w => w.startsWith(q))) return 2;
+    if (other.some(v => words(v).some(w => w.startsWith(q)))) return 2.5;
+    if (name.includes(q) || (qt && tight(name).includes(qt))) return 3;
+    if (other.some(v => v.includes(q) || (qt && tight(v).includes(qt)))) return 3.5;
+    if (qt && codes.some(v => tight(v).includes(qt))) return 4;
+    return -1;
+  };
+  return list.map(c => [score(c), c]).filter(([k]) => k >= 0)
+    .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).map(([, c]) => c);
+}
+
 /** Mole fractions for n components, normalized; null or a wrong length gives an equimolar mixture. */
 export function normalizeComposition(z, n) {
   if (!Array.isArray(z) || z.length !== n) return Array.from({ length: n }, () => 1 / n);

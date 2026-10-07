@@ -10,6 +10,7 @@
 import { h, s as svgEl } from "./dom.js";
 import { icon } from "./icons.js";
 import { listComponents } from "../thermo/system.js";
+import { componentPicker } from "./component-picker.js";
 import { unitType } from "../units/units.js";
 import { flowsheetDocStatus, runFlowsheet } from "../flowsheet/document.js";
 import {
@@ -277,9 +278,15 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
   const eos = ["PR", "SRK"].includes(fs.thermo.model);
   const usable = all.filter(c => eos || c.activity);
   const changeComps = ids => { const r = setComponents(fs, ids); f.note = r.note; set({ flowsheet: r.fs }); };
-  const add = h("select", { "data-fk": "fs-addcomp", "aria-label": "Add a component", on: { change: ev => { if (ev.target.value) changeComps([...fs.components, ev.target.value]); } } },
-    h("option", { value: "" }, fs.components.length ? "Add a component…" : "Choose a component…"),
-    ...usable.filter(c => !fs.components.includes(c.id)).map(c => h("option", { value: c.id }, `${c.name} (${c.formula})`)));
+  // type a name, formula or CAS number (component-picker.js); gases need an equation of state
+  const add = componentPicker({
+    id: `fa-fs-addcomp-${uid}`, fk: "fs-addcomp", label: "Add a component", clearOnPick: true,
+    components: all.filter(c => !fs.components.includes(c.id)),
+    status: c => (usable.includes(c) ? {} : { disabled: true, note: "gas: choose Peng–Robinson or SRK" }),
+    group: c => (c.activity ? "Liquids" : "Gases"),
+    placeholder: fs.components.length ? "Add: name, formula, CAS…" : "Choose: name, formula, CAS…",
+    onPick: id => { if (id) changeComps([...fs.components, id]); },
+  });
   const chips = fs.components.map(c => h("li", { class: "fa-chip" }, h("span", {}, nameOf(c)),
     h("button", { type: "button", class: "fa-chip-x", "aria-label": `Remove ${nameOf(c)}`, "data-fk": `fs-rm-${c}`, on: { click: () => changeComps(fs.components.filter(x => x !== c)) } }, "×")));
   const setThermo = patch => {
@@ -294,7 +301,7 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
   secs.push(inputsSection("1. Components",
     h("p", { class: "fa-in-hint" }, "The components of the whole simulation. Every feed lists exactly these."),
     chips.length ? h("ol", { class: "fa-chips", "aria-label": "Components of the flowsheet" }, ...chips) : h("div", { class: "fa-empty" }, "None chosen yet."),
-    h("label", { class: "fa-add" }, h("span", { class: "fa-visually-hidden" }, "Add a component"), add)));
+    h("div", { class: "fa-add" }, add)));
   secs.push(inputsSection("2. Method",
     h("p", { class: "fa-in-hint" }, "One property method for every block and stream."),
     h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "Activity model"),

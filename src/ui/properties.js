@@ -12,6 +12,7 @@ import { h } from "./dom.js";
 import { drawPlot } from "./plot.js";
 import { pure, PROPERTIES } from "../thermo/pure.js";
 import { listComponents, findComponent } from "../thermo/system.js";
+import { componentPicker } from "./component-picker.js";
 import {
   normalizeUnits, UNIT_CHOICES, toDisplay, unitLabel, tToDisplay, tFromDisplay, pToDisplay, pFromDisplay,
   parsePressures, explorerProperties, findExplorerProperty, STATE_PROPERTIES, sampleTemperatureProperty,
@@ -80,8 +81,8 @@ export function mountProperties(target, cfg = {}) {
     const tU = unitLabel("temperature", u);
 
     // ---- header and controls
-    const compSel = h("select", { id: `fug-pc-${uid}`, on: { change: ev => { state.component = ev.target.value; state.T_K = null; state.title = undefined; render(); } } },
-      ...components.map(c => h("option", { value: c.id, selected: c.id === p.id }, c.name)));
+    const compSel = componentPicker({ id: `fug-pc-${uid}`, label: "Component", components, value: p.id,
+      onPick: v => { if (v) { state.component = v; state.T_K = null; state.title = undefined; render(); } } });
     const groups = [["state", "Depend on T and P"], ["T", "Depend on T only (correlations)"]];
     const propSel = h("select", { id: `fug-pp-${uid}`, on: { change: ev => { state.property = ev.target.value; state.T_K = null; state.logScale = null; render(); } } },
       ...groups.map(([kind, label]) => h("optgroup", { label },
@@ -101,7 +102,7 @@ export function mountProperties(target, cfg = {}) {
         `ω = ${fmtNum(p.omega, 3)}`,
       ].join(" · ")));
     const controls = h("div", { class: "fug-controls" },
-      h("label", { for: compSel.id }, "Component", compSel), h("label", { for: propSel.id }, "Property", propSel));
+      h("div", { class: "fug-pick-field" }, h("label", { for: `fug-pc-${uid}` }, "Component"), compSel), h("label", { for: propSel.id }, "Property", propSel));
     const units = h("div", { class: "fug-controls", "aria-label": "Units" },
       h("span", { class: "fug-sub" }, "Units"), seg("T", "Temperature unit"), seg("P", "Pressure unit"),
       seg("basis", "Energy basis"), seg("viscosity", "Viscosity unit"));

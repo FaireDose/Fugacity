@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import * as Fugacity from "../src/index.js";
 import {
   LEGACY_TABS, VIEWS, PRESETS, MAX_COMPONENTS, initialState, applyPatch, viewAvailability, resolveView, toggleComponent, rotate,
-  filterComponents, normalizeComposition, knownIssuesFor, tierCounts, tierSummary, fmtP, fmtTemp, parseP, parseT, interpolate,
+  filterComponents, searchComponents, normalizeComposition, knownIssuesFor, tierCounts, tierSummary, fmtP, fmtTemp, parseP, parseT, interpolate,
   normalizeComponents, liquids, henryGases, autoTemperature, pxyTemperature,
 } from "../src/ui/app-logic.js";
 import { pure, listComponents, findComponent, HENRY_GASES } from "../src/index.js";
@@ -211,6 +211,33 @@ test("selection helpers: toggle, rotate, search", () => {
   assert.deepEqual(filterComponents(all, "7732-18-5").map(c => c.id), ["water"]);
   assert.deepEqual(filterComponents(all, "chcl3").map(c => c.id), ["chloroform"]);
   assert.deepEqual(filterComponents(all, "zzz"), []);
+});
+
+test("component search: name, alias, formula or CAS number, best match first", () => {
+  const all = listComponents();
+  const ids = q => searchComponents(all, q).map(c => c.id);
+  assert.equal(ids("").length, all.length);
+  // CAS number with or without hyphens, formula in any case, aliases
+  assert.deepEqual(ids("7732-18-5"), ["water"]);
+  assert.deepEqual(ids("7732185"), ["water"]);
+  assert.equal(ids("h2o")[0], "water");
+  assert.equal(ids("CO2")[0], "carbon-dioxide");
+  assert.equal(ids("ipa")[0], "2-propanol");
+  assert.equal(ids("mek")[0], "2-butanone");
+  assert.equal(ids("methyl ethyl ketone")[0], "2-butanone");
+  // names that start with the text come first, the component's own name before an alias
+  assert.deepEqual(ids("meth").slice(0, 2), ["methane", "methanol"]);
+  assert.deepEqual(ids("butanol").slice(0, 3).sort(), ["1-butanol", "2-butanol", "isobutanol"]);
+  // a word inside the name ("Ethyl acetate" for "acetate") ranks before a match inside a word
+  assert.ok(ids("acetate").indexOf("ethyl-acetate") < ids("acetate").indexOf("acetic-acid") || !ids("acetate").includes("acetic-acid"));
+  assert.deepEqual(ids("zzz"), []);
+  // every component can be found by its CAS number and by its name
+  for (const c of all) {
+    assert.equal(ids(c.cas)[0], c.id, c.cas);
+    assert.equal(ids(c.name)[0], c.id, c.name);
+  }
+  // listComponents carries the aliases for the search
+  assert.ok(all.find(c => c.id === "2-propanol").aliases.includes("ipa"));
 });
 
 test("units: display, parsing, exact definitions", () => {

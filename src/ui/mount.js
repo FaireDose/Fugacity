@@ -1,6 +1,8 @@
 import { injectStyles } from "./styles.js";
 import { h } from "./dom.js";
-import { createSystem, listComponents, findComponent } from "../thermo/system.js";
+import { listComponents, findComponent } from "../thermo/system.js";
+import { system } from "../system.js";
+import { componentPicker } from "./component-picker.js";
 import { renderTxy } from "./txy.js";
 import { renderTernary } from "./ternary.js";
 import { pure } from "../thermo/pure.js";
@@ -61,26 +63,26 @@ export function mount(target, cfg = {}) {
 
   function picker() {
     const ids = state.components.map(c => { try { return findComponent(c); } catch { return null; } });
-    const sel = (k, allowNone) => {
-      const el = h("select", { id: `fug-c${k}-${uid}`, "aria-label": `Component ${k + 1}`, on: { change: ev => {
-        const v = ev.target.value;
-        const next = ids.slice();
-        if (v === "") next.splice(k, 1);
-        else {
-          const other = next.indexOf(v);
-          if (other >= 0 && other !== k) next[other] = next[k];   // picking a component already shown swaps the two
-          next[k] = v;
-        }
-        state.components = next.filter(Boolean);
-        state.title = undefined;
-        render();
-      } } },
-        allowNone ? h("option", { value: "" }, "(none)") : null,
-        ...all.map(c => h("option", { value: c.id, selected: ids[k] === c.id }, c.name)));
-      if (allowNone && !ids[k]) el.value = "";
-      return el;
+    const choose = (k, v) => {
+      const next = ids.slice();
+      if (!v) next.splice(k, 1);
+      else {
+        const other = next.indexOf(v);
+        if (other >= 0 && other !== k) next[other] = next[k];   // picking a component already shown swaps the two
+        next[k] = v;
+      }
+      state.components = next.filter(Boolean);
+      state.title = undefined;
+      render();
     };
-    return h("div", { class: "fug-controls" }, h("span", { class: "fug-sub" }, "Components"), sel(0), sel(1), sel(2, true));
+    // type a name, formula or CAS number (component-picker.js); the third component is optional
+    const sel = (k, optional) => h("div", { class: "fug-pick-slot" },
+      componentPicker({ id: `fug-c${k}-${uid}`, label: `Component ${k + 1}${optional ? " (optional)" : ""}`, components: all,
+        value: ids[k] ?? null, allowClear: optional, placeholder: optional ? "Third component (optional)…" : undefined,
+        onPick: v => choose(k, v) }),
+      optional && ids[k] ? h("button", { type: "button", class: "fug-pick-clear", "aria-label": `Remove component ${k + 1}`,
+        title: "Remove", on: { click: () => choose(k, null) } }, "×") : null);
+    return h("div", { class: "fug-controls fug-pick-row" }, h("span", { class: "fug-sub" }, "Components"), sel(0), sel(1), sel(2, true));
   }
 
   function render() {
@@ -100,7 +102,8 @@ export function mount(target, cfg = {}) {
 
     let sys, error = null;
     try {
-      sys = createSystem({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) });
+      // the public system (src/system.js): it adds bubbleT and the diagrams, which the ternary view needs
+      sys = system({ components: state.components, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) });
     } catch (e) {
       error = e.message.startsWith("No ") && e.message.includes("parameters for")
         ? e.message.split(". Pass")[0] + ". Pick other components, or suggest these pairs for the databank."
@@ -147,7 +150,7 @@ export function mount(target, cfg = {}) {
     try {
       if (n === 2) renderTxy(plot, side, sys, state.P, view);
       else if (n === 3) renderTernary(plot, side, sys, state.P, {
-        ...state, ...view, makePairSystem: ids => createSystem({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) }),
+        ...state, ...view, makePairSystem: ids => system({ components: ids, model: state.model, allowMissingPairs: state.allowMissingPairs, ...setsFor(state, state.model) }),
       });
       else throw new Error("The interface shows 2 or 3 components so far. Use the calculation functions for more.");
     } catch (e) {

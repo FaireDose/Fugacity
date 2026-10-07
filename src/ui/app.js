@@ -21,6 +21,7 @@
 import { injectAppStyles } from "./app-styles.js";
 import { h } from "./dom.js";
 import { icon } from "./icons.js";
+import { componentPicker } from "./component-picker.js";
 import { listComponents } from "../thermo/system.js";
 import { HENRY_GASES } from "../thermo/henry.js";
 import { system } from "../system.js";
@@ -386,21 +387,6 @@ export function app(target, cfg = {}) {
   }
 
   // ---- Inputs panel: what the current view needs, each with its role
-  function optionsFor(view, current, slot) {
-    const spec = needsFor(view, state.model), value = state.inputs[view];
-    const usedElsewhere = new Map((Array.isArray(value) ? value : []).map((id, i) => [id, i]).filter(([id, i]) => id && i !== slot));
-    const opt = c => {
-      const bad = spec.liquid && !c.activity;
-      const other = usedElsewhere.get(c.id);
-      return h("option", { value: c.id, selected: c.id === current, disabled: bad && c.id !== current },
-        other != null ? `${c.name}, also component ${other + 1}` : `${c.name} (${c.formula})${bad ? ", gas: equation of state only" : ""}`);
-    };
-    return [
-      h("optgroup", { label: "Liquids" }, ...all.filter(c => c.activity).map(opt)),
-      h("optgroup", { label: spec.liquid ? "Gases (need an equation of state)" : "Gases" }, ...all.filter(c => !c.activity).map(opt)),
-    ];
-  }
-
   /** True while no component is chosen for a view that takes them (the workbench opened empty):
    *  the inputs then show a neutral start hint instead of problems. */
   function blank(view) {
@@ -408,21 +394,35 @@ export function app(target, cfg = {}) {
     return Array.isArray(value) && view !== "steam" && !value.some(Boolean);
   }
 
+  /** How a component appears in the pickers of a view: a note, and whether it can be chosen (liquids only). */
+  function pickStatus(view, slot) {
+    const spec = needsFor(view, state.model), value = state.inputs[view];
+    const usedElsewhere = new Map((Array.isArray(value) ? value : []).map((id, i) => [id, i]).filter(([id, i]) => id && i !== slot));
+    return c => {
+      const bad = spec.liquid && !c.activity;
+      const other = usedElsewhere.get(c.id);
+      return { disabled: bad, note: bad ? "gas: equation of state only" : other != null ? `also component ${other + 1}` : null };
+    };
+  }
+  const pickGroup = view => c => (c.activity ? "Liquids" : needsFor(view, state.model).liquid ? "Gases (need an equation of state)" : "Gases");
+
   function slotsInput(view, check) {
     const spec = needsFor(view, state.model), value = state.inputs[view];
     const bad = new Map(blank(view) ? [] : check.problems.filter(p => p.slot != null).map(p => [p.slot, p.message]));
     return h("div", { class: "fa-slots" }, ...value.map((id, i) => {
       const sid = `fa-slot-${view}-${i}-${uid}`;
-      const sel = h("select", { id: sid, "data-fk": `slot-${view}-${i}`, "aria-invalid": bad.has(i) ? "true" : undefined,
-        "aria-describedby": bad.has(i) ? `fa-problems-${uid}` : undefined,
-        on: { change: ev => { const next = value.slice(); next[i] = ev.target.value || null; set({ inputs: { [view]: next } }); } } },
-        h("option", { value: "", selected: !id }, spec.liquid ? "Choose a liquid…" : "Choose a component…"), ...optionsFor(view, id, i));
+      const picker = componentPicker({
+        id: sid, fk: `slot-${view}-${i}`, label: spec.n > 1 ? `Component ${i + 1}` : "Component", components: all, value: id,
+        placeholder: spec.liquid ? "Liquid: name, formula, CAS…" : "Name, formula, CAS…",
+        status: pickStatus(view, i), group: pickGroup(view), invalid: bad.has(i), describedBy: bad.has(i) ? `fa-problems-${uid}` : undefined,
+        onPick: pid => { if (!pid) return; const next = value.slice(); next[i] = pid; set({ inputs: { [view]: next } }); },
+      });
       return h("div", { class: "fa-slot" + (bad.has(i) ? " is-bad" : "") + (spec.n === 1 ? " is-single" : "") },
         h("label", { for: sid },
           spec.n > 1 ? h("span", { class: "fa-chip-n", "aria-hidden": "true" }, String(i + 1)) : null,
           h("span", { class: "fa-slot-name" }, spec.n > 1 ? `Component ${i + 1}` : "Component"),
           spec.n > 1 ? h("span", { class: "fa-slot-role" }, spec.roles[i]) : null),
-        sel);
+        picker);
     }));
   }
 
@@ -436,13 +436,15 @@ export function app(target, cfg = {}) {
         on: { click: () => set({ inputs: { [view]: value.filter((_, k) => k !== i) } }) } }, icon("close", 14))));
     const full = value.length >= spec.max;
     const addId = `fa-add-${view}-${uid}`;
-    const add = h("select", { id: addId, "data-fk": `add-${view}`, disabled: full,
-      on: { change: ev => { if (ev.target.value) set({ inputs: { [view]: [...value, ev.target.value] } }); } } },
-      h("option", { value: "" }, full ? `Full: at most ${spec.max}` : spec.liquid ? "Add a liquid…" : "Add a component…"),
-      ...optionsFor(view, null, -1).map(g => { for (const o of [...g.children]) if (value.includes(o.value)) o.remove(); return g; }));
+    const add = componentPicker({
+      id: addId, fk: `add-${view}`, label: "Add a component", disabled: full, clearOnPick: true,
+      components: all.filter(c => !value.includes(c.id)), status: pickStatus(view, -1), group: pickGroup(view),
+      placeholder: full ? `Full: at most ${spec.max}` : spec.liquid ? "Add a liquid: name, formula, CAS…" : "Add: name, formula, CAS…",
+      onPick: pid => { if (pid) set({ inputs: { [view]: [...value, pid] } }); },
+    });
     return h("div", { class: "fa-list" },
       value.length ? h("ol", { class: "fa-chips", "aria-label": "Chosen components" }, ...chips) : h("div", { class: "fa-empty" }, "None chosen yet."),
-      h("label", { class: "fa-add", for: addId }, h("span", { class: "fa-visually-hidden" }, "Add a component"), add));
+      h("div", { class: "fa-add" }, h("label", { class: "fa-visually-hidden", for: addId }, "Add a component"), add));
   }
 
   function problemsBox(check) {
@@ -500,15 +502,21 @@ export function app(target, cfg = {}) {
     } else if (state.workspace === "solubility") {
       const { gas, solvent } = state.inputs.henry;
       const bad = new Map(check.problems.map(p => [p.slot, p.message]));
-      const gasSel = h("select", { id: `fa-gas-${uid}`, "data-fk": "gas", "aria-invalid": bad.has(0) ? "true" : undefined,
-        on: { change: ev => set({ gas: ev.target.value }) } },
-        ...(gas && !HENRY_GASES.includes(gas) ? [h("option", { value: gas, selected: true, disabled: true }, `${nameOf(gas)} (no Henry's law constant)`)] : []),
-        ...HENRY_GASES.map(g => h("option", { value: g, selected: g === gas }, `${nameOf(g)} (${byId.get(g)?.formula ?? ""})`)));
+      // every component is listed; those without a Henry's law constant (for this gas) say so and cannot be picked
+      const gasSel = componentPicker({
+        id: `fa-gas-${uid}`, fk: "gas", label: "Gas", components: all, value: gas, invalid: bad.has(0),
+        status: c => (HENRY_GASES.includes(c.id) ? {} : { disabled: true, note: "no Henry's law constant" }),
+        group: c => (HENRY_GASES.includes(c.id) ? "With Henry's law constants" : "Others"),
+        onPick: g => { if (g) set({ gas: g }); },
+      });
       const solvents = solventsFor(HENRY_GASES.includes(gas) ? gas : null);
-      const solvSel = h("select", { id: `fa-solv-${uid}`, "data-fk": "solvent", "aria-invalid": bad.has(1) ? "true" : undefined,
-        on: { change: ev => set({ solvent: ev.target.value }) } },
-        ...(solvent && !solvents.includes(solvent) ? [h("option", { value: solvent, selected: true, disabled: true }, `${nameOf(solvent)} (no constant for this gas)`)] : []),
-        ...solvents.map(s => h("option", { value: s, selected: s === solvent }, nameOf(s))));
+      const solvSel = componentPicker({
+        id: `fa-solv-${uid}`, fk: "solvent", label: "Solvent", components: all.filter(c => c.activity || solvents.includes(c.id)), value: solvent,
+        invalid: bad.has(1),
+        status: c => (solvents.includes(c.id) ? {} : { disabled: true, note: "no constant for this gas" }),
+        group: c => (solvents.includes(c.id) ? "With a constant for this gas" : "Others"),
+        onPick: v => { if (v) set({ solvent: v }); },
+      });
       secs.push(inputsSection("Gas and solvent",
         h("div", { class: "fa-slots" },
           h("div", { class: "fa-slot is-single" + (bad.has(0) ? " is-bad" : "") }, h("label", { for: gasSel.id }, h("span", { class: "fa-slot-name" }, "Gas"), h("span", { class: "fa-slot-role" }, "dissolved")), gasSel),

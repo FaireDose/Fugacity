@@ -7,13 +7,14 @@ import componentData from "../data/components.json" with { type: "json" };
 import { fail } from "../util/errors.js";
 
 /**
- * All components in the databank, as { id, name, formula, cas, activity }.
+ * All components in the databank, as { id, name, formula, cas, aliases, activity }.
  * `activity` is true when the component has the data for activity-coefficient (NRTL,
  * UNIQUAC) vapour-liquid equilibria; light gases are described by equations of state.
+ * `aliases` are other names it is known by (lower case), for searching.
  */
 export function listComponents() {
   return Object.entries(componentData.components).map(([id, c]) => ({
-    id, name: c.name, formula: c.formula, cas: c.cas, activity: Boolean(c.uniquac && c.vapourPressure),
+    id, name: c.name, formula: c.formula, cas: c.cas, aliases: c.aliases ?? [], activity: Boolean(c.uniquac && c.vapourPressure),
   }));
 }
 

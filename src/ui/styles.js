@@ -31,6 +31,28 @@ export const CSS = `
 .fug label{display:inline-flex; gap:6px; align-items:center; font-size:.85rem; color:var(--fug-fg2)}
 .fug select{font:inherit; font-size:.85rem; padding:4px 6px; border:1px solid var(--fug-rule); border-radius:6px; background:var(--fug-bg); color:var(--fug-fg); max-width:100%}
 .fug select:focus-visible{outline:2px solid var(--fug-accent); outline-offset:2px}
+/* component picker (component-picker.js): a field you type into, with the matches listed under it */
+.fug-pick{position:relative; display:grid; min-width:0}
+.fug .fug-pick-in{width:100%; font:inherit; font-size:.85rem; padding:5px 8px; border:1px solid var(--fug-rule); border-radius:6px;
+  background:var(--fug-bg); color:var(--fug-fg); min-width:12em}
+.fug .fug-pick.is-bad .fug-pick-in{border-color:var(--fa-bad, #c0392b)}
+.fug .fug-pick-in:focus-visible{outline:2px solid var(--fug-accent); outline-offset:1px}
+.fug-pick-list{list-style:none; margin:4px 0 0; padding:3px; max-height:240px; overflow:auto; border:1px solid var(--fug-rule);
+  border-radius:6px; background:var(--fug-bg); box-shadow:0 4px 14px rgba(0,0,0,.08); font-size:.85rem}
+.fug-pick-opt{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 8px; padding:4px 7px; border-radius:4px; cursor:pointer}
+.fug-pick-opt[aria-selected="true"]{background:var(--fug-accent); color:var(--fug-on-accent)}
+.fug-pick-opt[aria-selected="true"] .fug-pick-meta,.fug-pick-opt[aria-selected="true"] .fug-pick-note{color:inherit; opacity:.85}
+.fug-pick-opt[aria-disabled="true"]{cursor:default; color:var(--fug-muted)}
+.fug-pick-name{font-weight:500}
+.fug-pick-meta{font-size:.78rem; color:var(--fug-muted); font-variant-numeric:tabular-nums}
+.fug-pick-note{flex-basis:100%; font-size:.75rem; color:var(--fug-muted)}
+.fug-pick-group{padding:6px 7px 2px; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--fug-muted)}
+.fug-pick-none{padding:6px 7px; color:var(--fug-muted)}
+.fug-pick-row{align-items:flex-start}
+.fug-pick-slot{display:flex; align-items:flex-start; gap:4px}
+.fug-pick-clear{border:1px solid var(--fug-rule); background:var(--fug-bg); color:var(--fug-fg2); border-radius:6px; padding:3px 8px; cursor:pointer; font:inherit}
+.fug-pick-field{display:inline-flex; gap:6px; align-items:flex-start; font-size:.85rem; color:var(--fug-fg2)}
+.fug-pick-field > label{padding-top:5px}
 .fug input[type=number]{width:6.5em; font:inherit; font-variant-numeric:tabular-nums; padding:4px 6px; border:1px solid var(--fug-rule); border-radius:6px; background:var(--fug-bg); color:var(--fug-fg)}
 .fug button:focus-visible,.fug input:focus-visible{outline:2px solid var(--fug-accent); outline-offset:2px}
 .fug-main{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start}

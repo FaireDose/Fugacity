@@ -292,7 +292,7 @@ export const APP_CSS = `
 .fa-slot{display:grid; gap:3px; background:var(--fug-bg); border:1px solid var(--fug-rule); border-radius:7px; padding:6px 7px 7px}
 .fa-slot label{display:flex; align-items:center; gap:7px; font-size:12px; color:var(--fug-fg); font-weight:500}
 .fa-slot-role{margin-left:auto; font-weight:400; font-size:11px; color:var(--fug-muted); text-align:right}
-.fug-app .fa-slot select{width:100%; font-size:13px; padding:4px 6px}
+.fug-app .fa-slot select,.fug-app .fa-slot .fug-pick-in{width:100%; font-size:13px; padding:4px 6px}
 .fa-slot.is-bad{border-color:var(--fa-bad)}
 .fa-slot.is-bad label{color:var(--fa-bad)}
 .fug-app .fa-slot.is-bad select{border-color:var(--fa-bad)}
