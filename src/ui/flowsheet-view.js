@@ -725,19 +725,24 @@ function csvTools(ctx, fs, res, u) {
     "Energy stream,Block,Duty kW", ...Object.values(res.energy).map(e => [e.id, e.block, q(e.duty_kW)].join(","))];
   const csv = lines.join("\r\n") + "\r\n";
   const status = h("div", { class: "fug-foot", "aria-live": "polite" }), box = h("div");
-  const excel = () => {
+  const excel = concept => () => {
     try {
-      const bytes = flowsheetXlsx(fs, res, { version: pkg.version });
-      const name = `${(ctx.state.title || "flowsheet").replace(/[\\/:*?"<>|]+/g, "-")}.xlsx`;
+      const bytes = flowsheetXlsx(fs, res, { version: pkg.version, concept });
+      const name = `${(ctx.state.title || "flowsheet").replace(/[\\/:*?"<>|]+/g, "-")}${concept ? " - concept model" : ""}.xlsx`;
       const url = URL.createObjectURL(new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
       const a = h("a", { href: url, download: name, style: "display:none" });
       document.body.append(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 2000);
-      status.textContent = `Saved ${name}: blue cells are inputs, black cells formulas, grey cells values from Fugacity (see its About sheet). If nothing was downloaded, the page does not allow downloads.`;
+      status.textContent = concept
+        ? `Saved ${name}: every flow is a formula, the flash drums included (an approximation for concept design: constant activity coefficients at the drum's T and P; see its About sheet). If nothing was downloaded, the page does not allow downloads.`
+        : `Saved ${name}: blue cells are inputs, black cells formulas, grey cells values from Fugacity (see its About sheet). If nothing was downloaded, the page does not allow downloads.`;
     } catch (e) { status.textContent = `The Excel file could not be made: ${e.message}`; }
   };
   return [h("div", { class: "fa-in-actions" },
-    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx", title: "An Excel workbook with the balances as formulas", on: { click: excel } }, icon("table", 15), "Download Excel"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx", title: "An Excel workbook with the balances as formulas; the flash drum outlets as values from Fugacity", on: { click: excel(false) } }, icon("table", 15), "Download Excel"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx-concept",
+      title: "An Excel workbook where the flash drums are formulas too (K = γ·Psat/P, Rachford-Rice), so the whole mass balance recalculates when you change feeds, splits, or a drum's T and P: an approximation for concept design",
+      on: { click: excel(true) } }, icon("table", 15), "Excel concept model"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv", on: { click: () => ctx.saveText(csv, "fugacity-flowsheet-streams.csv", "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv-copy", on: { click: () => ctx.copyText(csv, status, box) } }, icon("copy", 15), "Copy CSV")), status, box];
 }

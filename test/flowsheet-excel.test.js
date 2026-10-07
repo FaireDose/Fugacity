@@ -60,3 +60,43 @@ test("a recycle flowsheet: formulas for the balances, values for the drum, itera
   assert.match(q[2].f, /^Streams!/);
   assert.ok(Math.abs(q[2].v - res.energy["Q-V1"].duty_kW) < 1e-9);
 });
+
+test("the concept model: drums as formulas (K = γ Psat / P, Rachford-Rice), recycles solved by passes, no circular reference", () => {
+  const p = JSON.parse(readFileSync(new URL("../examples/flowsheet-recycle.fugacity.json", import.meta.url)));
+  const fs = normalizeFlowsheet(p.flowsheet), res = runFlowsheet(fs);
+  const w = flowsheetSheets(fs, res, { concept: true });
+  assert.equal(w.circular, false);
+  const files = unzip(flowsheetXlsx(fs, res, { concept: true }));
+  assert.ok(!files["xl/workbook.xml"].includes('iterate="1"'), "no iterative calculation needed");
+  const sheet = name => w.sheets.find(s => s.name === name);
+  const streams = sheet("Streams"), header = streams.rows[0].map(c => c?.v ?? c);
+  const cell = (label, sid) => streams.rows.find(r => r?.[0] === label)[header.indexOf(sid)];
+  // the drum outlets (S3 vapour, S4 liquid) are formulas on the Flash models sheet; the tear stream comes from the last pass
+  assert.match(cell("Flow Ethanol", "S3").f, /^'Flash models'!N\d+$/);
+  assert.match(cell("Flow Water", "S4").f, /^'Flash models'!O\d+$/);
+  assert.match(cell("Temperature", "S3").f, /^'Flash models'!B\d+$/);
+  const tear = res.loops[0].tears[0];
+  assert.match(cell("Flow Ethanol", tear).f, /^'Recycle passes'!/);
+  // Flash models: Psat as the DIPPR 101 formula, K = γ Psat / P, and γ chosen so that K is Fugacity's y / x
+  const fm = sheet("Flash models").rows;
+  const eth = fm.find(r => r?.[0] === "Ethanol");
+  assert.match(eth[8].f, /^EXP\(D\d+\+E\d+\/\$B\$\d+\+F\d+\*LN\(\$B\$\d+\)\+G\d+\*\$B\$\d+\^H\d+\)\/1000$/);
+  assert.match(eth[10].f, /^J\d+\*I\d+\/\$B\$\d+$/);
+  const [A, B, C, D, E] = eth.slice(3, 8).map(c => c.v);
+  const T = res.blocks.V1.state.T_K, P = res.blocks.V1.state.P_kPa;
+  const psat = Math.exp(A + B / T + C * Math.log(T) + D * T ** E) / 1000;
+  const y = res.streams.S3.z[0], x = res.streams.S4.z[0];
+  assert.ok(Math.abs(eth[9].v * psat / P / (y / x) - 1) < 1e-12, "γ reproduces Fugacity's K");
+  assert.equal(eth[9].s, "input");
+  // the vapour fraction: bisection rows; cached value Fugacity's
+  const vfRow = fm.find(r => r?.[0] === "Vapour fraction VF");
+  assert.ok(Math.abs(vfRow[1].v - res.blocks.V1.state.VF) < 1e-12);
+  assert.ok(fm.filter(r => /^step \d+$/.test(r?.[0] ?? "")).length === 50);
+  // recycle passes: direct substitution, then bounded Wegstein
+  const passes = sheet("Recycle passes").rows;
+  assert.ok(passes.some(r => r?.some(c => /^MAX\(0,[A-Z]+\d+\*[A-Z]+\d+\+\(1-[A-Z]+\d+\)\*[A-Z]+\d+\)$/.test(c?.f ?? ""))), "Wegstein step");
+  assert.ok(passes.some(r => r?.some(c => /MIN\(0,MAX\(-5,/.test(c?.f ?? ""))), "q bounded to [-5, 0]");
+  // the export without the concept model is unchanged: drum outlets are values, iterative calculation on
+  assert.equal(flowsheetSheets(fs, res).circular, true);
+  assert.ok(!flowsheetSheets(fs, res).sheets.some(s => s.name === "Flash models"));
+});
