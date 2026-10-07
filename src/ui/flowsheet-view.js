@@ -44,7 +44,8 @@ const COMING = [
 ];
 const SIZE = { feed: [44, 26], mixer: [40, 44], splitter: [40, 44], separator: [46, 62], flash: [34, 72], heater: [40, 40], product: [0, 0] };
 
-export const ensureUi = ui => (ui.fs ??= { sel: null, auto: true, solveKey: null, cache: null, note: "" });
+// setup: which setup page the Inputs panel shows while nothing is selected ("components" or "method")
+export const ensureUi = ui => (ui.fs ??= { sel: null, setup: "components", auto: true, solveKey: null, cache: null, note: "" });
 
 /** Delete what is selected (a block, or a stream as far as the flowsheet allows) and say what happened. */
 export function deleteSelected(state, set, ui) {
@@ -96,11 +97,12 @@ export function flowsheetRibbon({ state, set, ui, group, bigButton, smallButton 
   const method = fs.thermo.model + (["PR", "SRK"].includes(fs.thermo.model) || fs.thermo.vapour === "ideal" ? "" : ` + ${fs.thermo.vapour}`);
   return [
     group("Setup",
-      bigButton({ ico: "flask", label: "Components", fk: "fs-setup", pressed: !f.sel && !ready,
-        title: "1. Choose the components of the simulation", note: ready ? `${fs.components.length} chosen` : "start here",
-        onClick: () => { f.sel = null; set({}); } }),
-      bigButton({ ico: "cubic", label: "Method", fk: "fs-method", title: "2. The property method of the whole flowsheet", note: method,
-        onClick: () => { f.sel = null; set({}); } })),
+      bigButton({ ico: "flask", label: "Components", fk: "fs-setup", pressed: !f.sel && f.setup !== "method",
+        title: "1. Choose the components of the simulation (and see the status of the flowsheet)", note: ready ? `${fs.components.length} chosen` : "start here",
+        onClick: () => { f.sel = null; f.setup = "components"; set({}); } }),
+      bigButton({ ico: "cubic", label: "Method", fk: "fs-method", pressed: !f.sel && f.setup === "method",
+        title: "2. The property method of the whole flowsheet, and the recycle solver", note: method,
+        onClick: () => { f.sel = null; f.setup = "method"; set({}); } })),
     group("Blocks", ...PALETTE.map(type => {
       const b = bigButton({ ico: type === "flash" ? "drum" : type, label: LABEL[type].replace(" / cooler", ""), fk: `fs-add-${type}`,
         title: ready ? `Place a ${LABEL[type].toLowerCase()}: ${HINT[type]}` : "Choose the components first", onClick: place(type) });
@@ -296,37 +298,49 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
     f.note = dropped.length ? `${dropped.map(nameOf).join(", ")} need${dropped.length === 1 ? "s" : ""} an equation of state (no activity-model data); keep Peng–Robinson or SRK, or remove ${dropped.length === 1 ? "it" : "them"}.` : "";
     set({ flowsheet: { ...fs, thermo } });
   };
+  if (f.setup === "method") {
+    // the Method page: the property method and the recycle solver
+    return [methodSection({ fs, eos, setThermo, inputsSection }), ...solverSection({ fs, set, uid, inputsSection })];
+  }
   const secs = [];
 
   secs.push(inputsSection("1. Components",
     h("p", { class: "fa-in-hint" }, "The components of the whole simulation. Every feed lists exactly these."),
     chips.length ? h("ol", { class: "fa-chips", "aria-label": "Components of the flowsheet" }, ...chips) : h("div", { class: "fa-empty" }, "None chosen yet."),
-    h("div", { class: "fa-add" }, add)));
-  secs.push(inputsSection("2. Method",
-    h("p", { class: "fa-in-hint" }, "One property method for every block and stream."),
-    h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "Activity model"),
-      segRow("Activity model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : fs.thermo.model, m => setThermo({ model: m }), "fs-model")),
-    eos ? null : h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "with vapour"),
-      segRow("Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], fs.thermo.vapour ?? "ideal", v => setThermo({ vapour: v }), "fs-vap")),
-    h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "or an equation of state"),
-      segRow("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? fs.thermo.model : null, m => setThermo({ model: m }), "fs-model"))));
+    h("div", { class: "fa-add" }, add),
+    h("p", { class: "fa-in-hint" }, "Property method: ",
+      h("button", { type: "button", class: "fa-link", "data-fk": "fs-go-method", title: "Change it on the Method page",
+        on: { click: () => { f.setup = "method"; set({}); } } },
+        fs.thermo.model + (eos || (fs.thermo.vapour ?? "ideal") === "ideal" ? "" : ` + ${fs.thermo.vapour}`)),
+      " (Method in the toolbar).")));
   const units = fs.blocks.filter(b => b.type !== "product");
-  secs.push(inputsSection("3. Flowsheet",
+  secs.push(inputsSection("Flowsheet status",
     !fs.components.length ? h("p", { class: "fa-in-hint" }, "Choose the components first; then place blocks from the toolbar.")
       : !units.length ? h("p", { class: "fa-in-hint" }, "Place a block from the toolbar (for example a Flash drum), then add a feed to it. Its outlets leave the flowsheet until you connect them: drag from an outlet dot (●) to another block's inlet ring (○).")
         : h("div", {}, st ? h("div", { class: `fa-dof ${st.ready ? "is-ok" : "is-bad"}`, role: "status" }, st.message) : null,
           h("ul", { class: "fa-dof-list" }, ...(st ? [...st.structure.map(p => h("li", {}, p.message)),
             ...Object.entries(st.blocks).filter(([, b]) => !b.ok).map(([id, b]) => h("li", {}, h("button", { type: "button", class: "fa-link", "data-fk": `fs-go-${id}`,
               on: { click: () => { f.sel = { kind: "block", id }; set({}); } } }, id), ": ", b.message.replace(/^[^:]+: /, "")))] : [])))));
-  if (fs.components.length) secs.push(...solverSection({ fs, set, uid, inputsSection }));
   return secs;
+}
+
+/** The property method of the whole flowsheet: an activity model with a vapour model, or an equation of state. */
+function methodSection({ fs, eos, setThermo, inputsSection }) {
+  return inputsSection("2. Method",
+    h("p", { class: "fa-in-hint" }, "One property method for every block and stream."),
+    h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "Activity model"),
+      segRow("Activity model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : fs.thermo.model, m => setThermo({ model: m }), "fs-model")),
+    eos ? null : h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "with vapour"),
+      segRow("Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], fs.thermo.vapour ?? "ideal", v => setThermo({ vapour: v }), "fs-vap")),
+    h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "or an equation of state"),
+      segRow("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? fs.thermo.model : null, m => setThermo({ model: m }), "fs-model")));
 }
 
 /** The solver settings of the flowsheet: method, tolerance, maximum iterations. */
 function solverSection({ fs, set, uid, inputsSection }) {
   const sv = { method: "wegstein", tolerance: 1e-8, maxIterations: 50, ...(fs.solver ?? {}) };
   const put = patch => set({ flowsheet: { ...fs, solver: { ...(fs.solver ?? {}), ...patch } } });
-  return [inputsSection("4. Recycle solver",
+  return [inputsSection("Recycle solver",
     h("p", { class: "fa-in-hint" }, "Recycles are solved by tearing them: the solver picks the fewest streams that break every loop (or the ones you mark as tear streams), guesses them (no flow at first), and calculates around the loop until they stop changing."),
     segRow("Method", [["wegstein", "Wegstein"], ["direct", "Direct substitution"]], sv.method, m => put({ method: m }), "fs-solver-method"),
     h("p", { class: "fa-in-hint" }, sv.method === "wegstein" ? "Wegstein: two plain steps, then each flow is extrapolated from its last two values (bounded). Usually much faster." : "Direct substitution: the next guess is the last result. Slower, but it never overshoots."),
