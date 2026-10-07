@@ -88,7 +88,7 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Isooctane | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.46 (f) | ChemSep 0.18 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.52 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
 | 1-Butene | CoolProp 0.88 (f) | CoolProp 0.57 (f) | CoolProp 0.72 (f) | CoolProp 0.85 (f) | CoolProp 0.23 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.69 (f) | ChemSep 0.0001 (d) | CoolProp 0.00017 (f) |
 | Isoprene | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.34 (f) | ChemSep 0.18 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.60 (f) | ChemSep 0.0001 (d) | ChemSep 0.33 (f) |
-| ETBE | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.38 (f) | ChemSep 0.022 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.24 (f) |
+| ETBE | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.38 (f) | ChemSep 0.022 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.24 (f) |
 | Pyridine | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.59 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.15 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
 | Aniline | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.34 (f) | ChemSep 0.20 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.29 (f) | ChemSep 0.0001 (d) | ChemSep 0.17 (f) |
 | Acrylonitrile | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) | ChemSep 0.050 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.28 (f) | ChemSep 0.0001 (d) | ChemSep 0.100 (f) |
@@ -1418,7 +1418,7 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
-| Psat | kPa | 15.476 | 15.476 | 0.00 % | – |
+| Psat | kPa | 16.623 | 15.476 | 7.42 % | – |
 | ρL | kg/m³ | 736.77 | 736.77 | -0.00 % | – |
 | cp° | J/(mol·K) | 158.49 | 157.92 | 0.36 % | – |
 | cpL | J/(mol·K) | 213.19 | 213.15 | 0.02 % | – |
@@ -1665,6 +1665,44 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | Isopropyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 3 articles, 361.4-453.1 K; median deviation of the articles 0.81 % (with |
 | Isopropyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 6 articles, 298.0-313.1 K; median deviation of the articles 0.32 % (with |
 | Isopropyl acetate | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 298.1-313.1 K; median deviation of the articles 1.38 %; larg |
+| Cumene | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 22 measured values from 11 articles, 293.1-413.1 K; median deviation of the articles 0.28 % (wi |
+| Cumene | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 4 articles, 298.1-313.1 K; median deviation of the articles 0.17 % (with |
+| Cumene | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 15 measured values from 1 articles, 261.1-329.8 K; median deviation of the articles 3.60 % (wit |
+| Mesitylene | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 69 measured values from 22 articles, 288.1-343.1 K; median deviation of the articles 0.01 % (wi |
+| Mesitylene | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 29 measured values from 6 articles, 278.1-335.1 K; median deviation of the articles 14.34 % (ab |
+| Mesitylene | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 15 measured values from 1 articles, 258.7-332.3 K; median deviation of the articles 1.27 % (wit |
+| Mesitylene | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 5 articles, 298.1-313.1 K; median deviation of the articles 0.86 %; lar |
+| n-Nonane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 150 measured values from 10 articles, 333.1-466.6 K; median deviation of the articles 0.25 % (w |
+| n-Nonane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 201 measured values from 54 articles, 233.2-373.1 K; median deviation of the articles 0.11 % (w |
+| n-Nonane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 288.1-303.1 K; median deviation of the articles 0.47 % (with |
+| n-Nonane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 59 measured values from 11 articles, 273.1-358.1 K; median deviation of the articles 5.40 % (ab |
+| n-Decane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 77 measured values from 4 articles, 386.9-475.4 K; median deviation of the articles 0.27 % (wit |
+| n-Decane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 257 measured values from 79 articles, 273.1-423.1 K; median deviation of the articles 0.07 % (w |
+| n-Decane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 2 articles, 283.1-308.1 K; median deviation of the articles 1.59 % (with |
+| n-Decane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 85 measured values from 23 articles, 278.1-373.1 K; median deviation of the articles 0.55 % (wi |
+| n-Decane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 2 articles, 293.1-343.1 K; median deviation of the articles 0.84 %; lar |
+| n-Dodecane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 2 articles, 453.7-488.5 K; median deviation of the articles 0.64 % (with |
+| n-Dodecane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 245 measured values from 68 articles, 278.1-473.1 K; median deviation of the articles 0.03 % (w |
+| n-Dodecane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 37 measured values from 3 articles, 283.1-438.1 K; median deviation of the articles 0.26 % (wit |
+| n-Dodecane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 105 measured values from 20 articles, 293.1-373.1 K; median deviation of the articles 0.81 % (w |
+| n-Dodecane | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 318.2-352.8 K; median deviation of the articles 2.90 % (with |
+| n-Dodecane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 5 articles, 293.1-448.3 K; median deviation of the articles 0.25 %; lar |
+| Isooctane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 67 measured values from 23 articles, 313.1-508.2 K; median deviation of the articles 0.45 % (wi |
+| Isooctane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 167 measured values from 58 articles, 278.1-343.1 K; median deviation of the articles 0.46 % (w |
+| Isooctane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 63 measured values from 15 articles, 288.1-353.1 K; median deviation of the articles 0.45 % (wi |
+| Isooctane | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 3 articles, 254.6-334.5 K; median deviation of the articles 3.36 % (wit |
+| Isooctane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 15 measured values from 5 articles, 288.1-323.1 K; median deviation of the articles 0.27 %; lar |
+| 1-Butene | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 36 measured values from 9 articles, 289.4-415.4 K; median deviation of the articles 0.63 % (wit |
+| ETBE | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 55 measured values from 11 articles, 298.2-346.3 K; median deviation of the articles 0.25 % (wi |
+| ETBE | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 44 measured values from 8 articles, 283.1-333.1 K; median deviation of the articles 0.15 % (wit |
+| ETBE | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 293.1-303.1 K; median deviation of the articles 27.43 % (abo |
+| Pyridine | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 115 measured values from 29 articles, 288.1-353.1 K; median deviation of the articles 0.09 % (w |
+| Pyridine | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 3 articles, 293.1-308.1 K; median deviation of the articles 1.13 % (wit |
+| Pyridine | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 3 articles, 288.1-333.1 K; median deviation of the articles 1.86 % (wit |
+| Aniline | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 89 measured values from 29 articles, 288.1-333.1 K; median deviation of the articles 0.47 % (wi |
+| Aniline | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 293.1-308.1 K; median deviation of the articles 0.34 % (with |
+| Aniline | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 17 measured values from 3 articles, 288.1-333.1 K; median deviation of the articles 2.20 % (wit |
+| Acrylonitrile | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 5 articles, 293.1-318.1 K; median deviation of the articles 0.10 % (with |
 
 ## Range limits to note
 

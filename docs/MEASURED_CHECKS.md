@@ -432,3 +432,119 @@ Rules: liquid values at 110 kPa or less, inside the record's temperature range, 
 | Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
 |---|---|---|---|---|---|---|
 
+## Cumene
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 1 | | | | | too few values (1 measured in all) |
+| Liquid density | 22 | 11 (11) | 293.1-413.1 | 0.28 % | -0.48 % at 298.1 K (Cehreli 2006, doi:10.1016/j.fluid.2006.07.011) | ✅ within 1 % |
+| Liquid heat capacity | 1 | | | | | too few values (1 measured in all) |
+| Liquid viscosity | 8 | 4 (4) | 298.1-313.1 | 0.17 % | -0.45 % at 308.1 K (Rathnam 2010, doi:10.1021/je900689m) | ✅ within 5 % |
+| Liquid thermal conductivity | 15 | 1 (1) | 261.1-329.8 | 3.60 % | +4.09 % at 261.5 K (Watanabe 2004, doi:10.1021/je034162x) | ✅ within 5 % |
+
+## Mesitylene
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 1 | | | | | too few values (1 measured in all) |
+| Liquid density | 69 | 22 (22) | 288.1-343.1 | 0.01 % | +0.72 % at 313.1 K (Abu-Daabes 2009, doi:10.1016/j.jct.2008.07.009) | ✅ within 1 % |
+| Liquid heat capacity | 1 | | | | | too few values (1 measured in all) |
+| Liquid viscosity | 29 | 6 (0) | 278.1-335.1 | 14.34 % | +25.55 % at 278.1 K (Szwajczak 2009, doi:10.1021/je800439e) | ⚠️ above 5 % |
+| Liquid thermal conductivity | 15 | 1 (1) | 258.7-332.3 | 1.27 % | +1.91 % at 332.3 K (Watanabe 2004, doi:10.1021/je034162x) | ✅ within 5 % |
+| Surface tension | 11 | 5 | 298.1-313.1 | 0.86 % | +4.55 % at 298.1 K (Pan 2004, doi:10.1021/je0497294) | reported (no tolerance) |
+
+## n-Nonane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 150 | 10 (9) | 333.1-466.6 | 0.25 % | -5.41 % at 353.1 K (Chen 2010, doi:10.1016/j.fluid.2009.09.024) | ✅ within 1 % |
+| Liquid density | 201 | 54 (54) | 233.2-373.1 | 0.11 % | +1.27 % at 313.1 K (Azizian 2006, doi:10.1021/je050159x) | ✅ within 1 % |
+| Liquid heat capacity | 5 | 2 (2) | 288.1-303.1 | 0.47 % | -0.69 % at 288.1 K (Pardo 2005, doi:10.1016/j.tca.2004.11.022) | ✅ within 2 % |
+| Liquid viscosity | 59 | 11 (5) | 273.1-358.1 | 5.40 % | -8.29 % at 313.1 K (Zhang 2011, doi:10.1021/je200757a) | ⚠️ above 5 % |
+| Surface tension | 2 | | | | | too few values (2 measured in all) |
+
+## n-Decane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 77 | 4 (3) | 386.9-475.4 | 0.27 % | +1.89 % at 386.9 K (Fernandez 2010, doi:10.1021/je100832h) | ✅ within 1 % |
+| Liquid density | 257 | 79 (79) | 273.1-423.1 | 0.07 % | +1.35 % at 333.1 K (Sato 2010, doi:10.1007/s10765-008-0542-6) | ✅ within 1 % |
+| Liquid heat capacity | 8 | 2 (2) | 283.1-308.1 | 1.59 % | -1.93 % at 288.1 K (Valencia 2005, doi:10.1016/j.fluid.2005.03.026) | ✅ within 2 % |
+| Heat of vaporization | 0 | | | | | too few values (3 measured in all) |
+| Liquid viscosity | 85 | 23 (23) | 278.1-373.1 | 0.55 % | -12.41 % at 313.1 K (Yang 2008, doi:10.1021/je800348s) | ✅ within 5 % |
+| Surface tension | 12 | 2 | 293.1-343.1 | 0.84 % | -2.20 % at 343.1 K (Queimada 2005, doi:10.1021/je050024r) | reported (no tolerance) |
+
+## n-Dodecane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 8 | 2 (2) | 453.7-488.5 | 0.64 % | -1.47 % at 488.5 K (Sapei 2011, doi:10.1016/j.fluid.2011.04.024) | ✅ within 1 % |
+| Liquid density | 245 | 68 (68) | 278.1-473.1 | 0.03 % | +0.52 % at 298.1 K (Gonzalez 2015, doi:10.1016/j.fluid.2015.01.026) | ✅ within 1 % |
+| Liquid heat capacity | 37 | 3 (3) | 283.1-438.1 | 0.26 % | +1.79 % at 403.1 K (Regueira 2017, doi:10.1016/j.jct.2017.03.034) | ✅ within 2 % |
+| Liquid viscosity | 105 | 20 (20) | 293.1-373.1 | 0.81 % | +3.30 % at 293.1 K (Gonzalez 2004, doi:10.1016/j.jct.2003.12.005) | ✅ within 5 % |
+| Liquid thermal conductivity | 8 | 1 (1) | 318.2-352.8 | 2.90 % | -3.30 % at 328.1 K (Fleming 2018, doi:10.1016/j.fluid.2018.08.016) | ✅ within 5 % |
+| Surface tension | 12 | 5 | 293.1-448.3 | 0.25 % | +6.64 % at 298.2 K (Zhao 2019, doi:10.1016/j.jct.2019.02.025) | reported (no tolerance) |
+
+## Isooctane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 67 | 23 (20) | 313.1-508.2 | 0.45 % | -4.67 % at 388.0 K (Liebergesell 2015, doi:10.1016/j.fluid.2015.05.002) | ✅ within 1 % |
+| Liquid density | 167 | 58 (58) | 278.1-343.1 | 0.46 % | +0.88 % at 303.1 K (Gomez-Diaz 2006, doi:10.1021/je050333h) | ✅ within 1 % |
+| Liquid viscosity | 63 | 15 (14) | 288.1-353.1 | 0.45 % | -45.03 % at 298.1 K (Alonso 2008, doi:10.1021/je800071q) | ✅ within 5 % |
+| Liquid thermal conductivity | 21 | 3 (3) | 254.6-334.5 | 3.36 % | +5.27 % at 334.5 K (Wang 2019, doi:10.1021/acs.jced.9b00628) | ✅ within 5 % |
+| Surface tension | 15 | 5 | 288.1-323.1 | 0.27 % | -0.84 % at 293.1 K (Zhang 2015, doi:10.1021/acs.jced.5b00105) | reported (no tolerance) |
+
+## 1-Butene
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 36 | 9 (8) | 289.4-415.4 | 0.63 % | -1.53 % at 312.6 K (Haimi 2008, doi:10.1016/j.fluid.2008.01.030) | ✅ within 1 % |
+
+## Isoprene
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (1 measured in all) |
+
+## ETBE
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 55 | 11 (11) | 298.2-346.3 | 0.25 % | +0.79 % at 343.0 K (Haimi 2010, doi:10.1016/j.fluid.2010.09.023) | ✅ within 1 % (record fitted to these values) |
+| Liquid density | 44 | 8 (8) | 283.1-333.1 | 0.15 % | +0.28 % at 288.1 K (Gonzalez-Olmos 2008, doi:10.1016/j.fluid.2008.03.004) | ✅ within 1 % |
+| Liquid viscosity | 3 | 1 (0) | 293.1-303.1 | 27.43 % | -27.91 % at 303.1 K (Cwiklinska 2007, doi:10.1016/j.jct.2007.01.010) | ⚠️ above 5 % |
+| Surface tension | 1 | | | | | too few values (1 measured in all) |
+
+## Pyridine
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (25 measured in all) |
+| Liquid density | 115 | 29 (29) | 288.1-353.1 | 0.09 % | -0.39 % at 298.1 K (Domanska 2015, doi:10.1016/j.fluid.2015.03.027) | ✅ within 1 % |
+| Liquid heat capacity | 10 | 3 (3) | 293.1-308.1 | 1.13 % | +1.32 % at 293.1 K (Sharma 2013, doi:10.1021/je301353z) | ✅ within 2 % |
+| Liquid viscosity | 21 | 3 (3) | 288.1-333.1 | 1.86 % | -4.77 % at 318.1 K (Zivkovic 2016, doi:10.1016/j.fluid.2016.02.031) | ✅ within 5 % |
+| Surface tension | 1 | | | | | too few values (1 measured in all) |
+
+## Aniline
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 1 | | | | | too few values (10 measured in all) |
+| Liquid density | 89 | 29 (29) | 288.1-333.1 | 0.47 % | -0.62 % at 288.1 K (Soldatovic 2017, doi:10.1016/j.jct.2017.02.007) | ✅ within 1 % |
+| Liquid heat capacity | 4 | 1 (1) | 293.1-308.1 | 0.34 % | +1.19 % at 293.1 K (Sharma 2014, doi:10.1021/je401098b) | ✅ within 2 % |
+| Liquid viscosity | 17 | 3 (3) | 288.1-333.1 | 2.20 % | -3.95 % at 333.1 K (Soldatovic 2017, doi:10.1016/j.jct.2017.02.007) | ✅ within 5 % |
+
+## Acrylonitrile
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (4 measured in all) |
+| Liquid density | 7 | 5 (5) | 293.1-318.1 | 0.10 % | +0.89 % at 298.1 K (Roy 2008, doi:10.1021/je7006742) | ✅ within 1 % |
+| Liquid viscosity | 0 | | | | | too few values (3 measured in all) |
+
+## Methylamine
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+

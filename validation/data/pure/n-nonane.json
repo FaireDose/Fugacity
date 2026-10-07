@@ -10,7 +10,8 @@
     "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 219.70-564.82 K (triple point to 0.95 Tc), max deviation 0.34 %"
+    "fit": "200 points 219.70-564.82 K (triple point to 0.95 Tc), max deviation 0.34 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 201 measured values from 54 articles, 233.2-373.1 K; median deviation of the articles 0.11 % (within the 1 % tolerance of the engineering report); largest single deviation +1.27 % at 313.1 K (Azizian 2006, doi:10.1021/je050159x); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     219.7,
@@ -202,7 +203,8 @@
     "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 219.70-547.56 K, max deviation 0.33 %; range narrowed from 219.70-564.82 K (max deviation there 1.1 %) to meet the 1 % target"
+    "fit": "200 points 219.70-547.56 K, max deviation 0.33 %; range narrowed from 219.70-564.82 K (max deviation there 1.1 %) to meet the 1 % target",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 2 articles, 288.1-303.1 K; median deviation of the articles 0.47 % (within the 2 % tolerance of the engineering report); largest single deviation -0.69 % at 288.1 K (Pardo 2005, doi:10.1016/j.tca.2004.11.022); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     219.7,
@@ -394,7 +396,8 @@
     "reference": "Huber et al., Fluid Phase Equilib. 224 (2004) 263-270, doi:10.1016/j.fluid.2004.07.012",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 219.70-564.82 K (triple point to 0.95 Tc), max deviation 2.9 %"
+    "fit": "200 points 219.70-564.82 K (triple point to 0.95 Tc), max deviation 2.9 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 59 measured values from 11 articles, 273.1-358.1 K; median deviation of the articles 5.40 % (above the 5 % tolerance of the engineering report); largest single deviation -8.29 % at 313.1 K (Zhang 2011, doi:10.1021/je200757a); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     219.7,

@@ -10,7 +10,8 @@
     "reference": "Lemmon and Huber, Energy & Fuels 18 (2004) 960-967, doi:10.1021/ef0341062",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.31 %"
+    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.31 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 245 measured values from 68 articles, 278.1-473.1 K; median deviation of the articles 0.03 % (within the 1 % tolerance of the engineering report); largest single deviation +0.52 % at 298.1 K (Gonzalez 2015, doi:10.1016/j.fluid.2015.01.026); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     263.61,
@@ -202,7 +203,8 @@
     "reference": "Lemmon and Huber, Energy & Fuels 18 (2004) 960-967, doi:10.1021/ef0341062",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.60 %"
+    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.60 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 37 measured values from 3 articles, 283.1-438.1 K; median deviation of the articles 0.26 % (within the 2 % tolerance of the engineering report); largest single deviation +1.79 % at 403.1 K (Regueira 2017, doi:10.1016/j.jct.2017.03.034); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     263.61,
@@ -394,7 +396,8 @@
     "reference": "Huber et al., Energy & Fuels 18 (2004) 968-975, doi:10.1021/ef034109e",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 1.1 %"
+    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 1.1 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 105 measured values from 20 articles, 293.1-373.1 K; median deviation of the articles 0.81 % (within the 5 % tolerance of the engineering report); largest single deviation +3.30 % at 293.1 K (Gonzalez 2004, doi:10.1016/j.jct.2003.12.005); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     263.61,
@@ -586,7 +589,8 @@
     "reference": "Huber et al., Energy & Fuels 18 (2004) 968-975, doi:10.1021/ef034109e",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.26 %"
+    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.26 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 318.2-352.8 K; median deviation of the articles 2.90 % (within the 5 % tolerance of the engineering report); largest single deviation -3.30 % at 328.1 K (Fleming 2018, doi:10.1016/j.fluid.2018.08.016); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     263.61,
@@ -778,7 +782,8 @@
     "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
     "access": "MIT (open source)",
     "quantity": "surface tension",
-    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.19 %"
+    "fit": "200 points 263.61-625.19 K (triple point to 0.95 Tc), max deviation 0.19 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 5 articles, 293.1-448.3 K; median deviation of the articles 0.25 %; largest single deviation +6.64 % at 298.2 K (Zhao 2019, doi:10.1016/j.jct.2019.02.025); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     263.61,
