@@ -105,6 +105,22 @@ BATCHES = {
         ("formaldehyde", "Formaldehyde", None, ["methanal", "ch2o"]),
         ("hydrogen-peroxide", "Hydrogen peroxide", None, ["h2o2"]),
     ],
+    # proposal 0008, Part B, batch 3: petrochemicals and fuels, nitrogen compounds
+    6: [
+        ("cumene", "Cumene", None, ["isopropylbenzene", "(1-methylethyl)benzene", "propan-2-ylbenzene"]),
+        ("mesitylene", "Mesitylene", None, ["1,3,5-trimethylbenzene"]),
+        ("n-nonane", "n-Nonane", "n-Nonane", ["nonane"]),
+        ("n-decane", "n-Decane", "n-Decane", ["decane"]),
+        ("n-dodecane", "n-Dodecane", "n-Dodecane", ["dodecane"]),
+        ("isooctane", "Isooctane", None, ["2,2,4-trimethylpentane"]),
+        ("1-butene", "1-Butene", "1-Butene", ["but-1-ene", "1-butylene", "butene-1"]),
+        ("isoprene", "Isoprene", None, ["2-methyl-1,3-butadiene", "2-methylbuta-1,3-diene"]),
+        ("etbe", "ETBE", None, ["ethyl tert-butyl ether", "2-ethoxy-2-methylpropane"]),
+        ("pyridine", "Pyridine", None, ["azine", "azabenzene"]),
+        ("aniline", "Aniline", None, ["aminobenzene", "phenylamine", "benzenamine"]),
+        ("acrylonitrile", "Acrylonitrile", None, ["prop-2-enenitrile", "vinyl cyanide", "propenenitrile"]),
+        ("methylamine", "Methylamine", None, ["methanamine", "monomethylamine", "mma"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
 CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",
@@ -117,7 +133,10 @@ CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67
                "mea": "141-43-5", "dea": "111-42-2", "mdea": "105-59-9", "formic-acid": "64-18-6",
                "propionic-acid": "79-09-4", "acrylic-acid": "79-10-7", "vinyl-acetate": "108-05-4",
                "isopropyl-acetate": "108-21-4", "propylene-oxide": "75-56-9", "formaldehyde": "50-00-0",
-               "hydrogen-peroxide": "7722-84-1"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+               "hydrogen-peroxide": "7722-84-1",
+               "cumene": "98-82-8", "mesitylene": "108-67-8", "isooctane": "540-84-1", "isoprene": "78-79-5",
+               "etbe": "637-92-3", "pyridine": "110-86-1", "aniline": "62-53-3", "acrylonitrile": "107-13-1",
+               "methylamine": "74-89-5"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
 # the second file of the same databank (as redistributed in DWSIM, same licence), for compounds not in chemsep1.xml
 CHEMSEP2_NAME = "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)"
 

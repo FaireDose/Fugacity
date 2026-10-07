@@ -570,5 +570,165 @@
   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7722841&Units=SI&Mask=4",
   "retrieved": "2026-10-07",
   "sets": []
+ },
+ "cumene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98828&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 343.17,
+    "Tmax_K": 426.52,
+    "A": 4.05419,
+    "B": 1455.811,
+    "C": -65.948,
+    "reference": "Williamham, Taylor, et al., 1945",
+    "comment": ""
+   }
+  ]
+ },
+ "mesitylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108678&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 354.64,
+    "Tmax_K": 438.87,
+    "A": 4.19927,
+    "B": 1569.622,
+    "C": -63.572,
+    "reference": "Forziati, Norris, et al., 1949, 2",
+    "comment": ""
+   }
+  ]
+ },
+ "isooctane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C540841&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 194.64,
+    "Tmax_K": 298.44,
+    "A": 3.94736,
+    "B": 1282.332,
+    "C": -48.444,
+    "reference": "Milazzo, 1956, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 297.51,
+    "Tmax_K": 373.28,
+    "A": 3.93679,
+    "B": 1257.84,
+    "C": -52.415,
+    "reference": "Williamham, Taylor, et al., 1945",
+    "comment": ""
+   }
+  ]
+ },
+ "isoprene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78795&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 215.6,
+    "Tmax_K": 234.92,
+    "A": 4.08822,
+    "B": 1108.151,
+    "C": -35.731,
+    "reference": "Osborn and Douslin, 1969",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 289.9,
+    "Tmax_K": 307.0,
+    "A": 3.21586,
+    "B": 706.92,
+    "C": -87.046,
+    "reference": "Gubkov, Fermor, et al., 1964",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "etbe": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C637923&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "sets": []
+ },
+ "pyridine": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110861&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 340.5,
+    "Tmax_K": 426.04,
+    "A": 4.16272,
+    "B": 1371.358,
+    "C": -58.496,
+    "reference": "McCullough, Douslin, et al., 1957, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "aniline": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C62533&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 304.0,
+    "Tmax_K": 457.0,
+    "A": 4.34541,
+    "B": 1661.858,
+    "C": -74.048,
+    "reference": "Hatton, Hildenbrand, et al., 1962, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "acrylonitrile": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107131&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 293.0,
+    "Tmax_K": 343.0,
+    "A": 2.69607,
+    "B": 621.275,
+    "C": -121.929,
+    "reference": "Gubkov, Fermor, et al., 1964, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 222.0,
+    "Tmax_K": 351.0,
+    "A": 4.06661,
+    "B": 1255.939,
+    "C": -41.853,
+    "reference": "Sevrugova, Sokorskii, et al., 1964, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "methylamine": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74895&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 190.06,
+    "Tmax_K": 266.92,
+    "A": 4.52,
+    "B": 1034.977,
+    "C": -37.574,
+    "reference": "Aston, Siller, et al., 1937, 2",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
  }
 }

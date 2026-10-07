@@ -16,7 +16,7 @@ const points = Object.fromEntries(readdirSync(POINTS_DIR).filter(f => f.endsWith
   .map(f => [f.replace(/\.json$/, ""), JSON.parse(readFileSync(new URL(f, POINTS_DIR)))]));
 
 // gases at 25 °C and 1 atm (normal boiling point below 298.15 K): their vapour-pressure records are fitted
-// with the other properties; the six of v0.2, the ten of proposal 0004, batch 1, and four of proposal 0008, batch 2
+// with the other properties; the six of v0.2, the ten of proposal 0004, batch 1, four of proposal 0008, batch 2, and two of batch 3
 // (carbon dioxide has no normal boiling point: Tb_K is null, it has no liquid at 1 atm)
 const GASES = listComponents().map(c => c.id).filter(id => (components[id].Tb_K ?? 0) < 298.15);
 const TRANSPORT = new Set(["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"]);
@@ -40,8 +40,8 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 76);
-  assert.equal(GASES.length, 20);
+  assert.equal(listComponents().length, 89);
+  assert.equal(GASES.length, 22);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
     assert.ok(props, `${name}: no properties object`);

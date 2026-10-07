@@ -98,6 +98,20 @@ CHECKED = {
     "propylene-oxide": ["methyloxirane", "propylene oxide"],
     "formaldehyde": ["formaldehyde", "methanal"],
     "hydrogen-peroxide": ["hydrogen peroxide"],
+    # proposal 0008, Part B, batch 3: petrochemicals and fuels, nitrogen compounds
+    "cumene": ["(1-methylethyl)benzene", "isopropylbenzene", "cumene"],
+    "mesitylene": ["1,3,5-trimethylbenzene", "mesitylene"],
+    "n-nonane": ["nonane"],
+    "n-decane": ["decane"],
+    "n-dodecane": ["dodecane"],
+    "isooctane": ["2,2,4-trimethylpentane", "isooctane"],
+    "1-butene": ["1-butene", "but-1-ene"],
+    "isoprene": ["2-methyl-1,3-butadiene", "isoprene"],
+    "etbe": ["2-ethoxy-2-methylpropane", "ethyl tert-butyl ether"],
+    "pyridine": ["pyridine"],
+    "aniline": ["aniline", "benzenamine"],
+    "acrylonitrile": ["2-propenenitrile", "acrylonitrile"],
+    "methylamine": ["methanamine", "methylamine"],
 }
 
 
