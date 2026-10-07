@@ -1,4 +1,4 @@
-"""Proposal 0004, step 2: new components, with their constants from CoolProp.
+"""Proposal 0004, step 2 (and proposal 0008, Part B): new components, with their constants from CoolProp.
 
 Adds (or updates) the records of the components in BATCHES to src/data/components.json:
 name, formula and CAS (from the open `chemicals` library, MIT), aliases, and the constants
@@ -7,7 +7,8 @@ MW, Tc_K, Pc_Pa, Tb_K and omega
     `constants_source` for each fluid; Tb is the saturation temperature of that equation of
     state at 101.325 kPa;
   - for a component that is not a CoolProp fluid (fluid None in BATCHES), from the ChemSep
-    pure-component database v8.3 (Artistic License 2.0), as proposal 0004 says for those 13;
+    pure-component database v8.3 (Artistic License 2.0), as proposal 0004 says for those 13, or from
+    the second file of the same databank, chemsep2.xml (v8.31), for a compound not in the first;
 and, for liquids (normal boiling point above 298.15 K), the UNIQUAC r and q from ChemSep, which
 the activity-coefficient models need (as for the liquids of v0.1). Values are rounded to 7
 significant digits (omega to 6), as for the components added earlier.
@@ -72,25 +73,54 @@ BATCHES = {
         ("glycerol", "Glycerol", None, ["glycerine", "propane-1,2,3-triol"]),
         ("phenol", "Phenol", None, ["hydroxybenzene", "carbolic acid"]),
     ],
+    # proposal 0008, Part B, batch 1: extraction solvents (proposal 0007). Dichloromethane and 2-methoxyethanol
+    # are in neither source: they are built from measured data by measured_components.py
+    4: [
+        ("dichloroethane", "1,2-Dichloroethane", "Dichloroethane", ["1,2-dichloroethane", "ethylene dichloride", "edc"]),
+        ("mibk", "Methyl isobutyl ketone", None, ["4-methyl-2-pentanone", "4-methylpentan-2-one", "methyl isobutyl ketone"]),
+        ("cyclohexanone", "Cyclohexanone", None, ["c6h10o", "pimelic ketone"]),
+        ("dmf", "N,N-Dimethylformamide", None, ["dimethylformamide", "n,n-dimethylformamide"]),
+        ("dmso", "Dimethyl sulfoxide", None, ["dimethyl sulphoxide", "methylsulfinylmethane"]),
+        ("nmp", "N-Methyl-2-pyrrolidone", None, ["n-methylpyrrolidone", "1-methyl-2-pyrrolidinone", "n-methyl-2-pyrrolidinone"]),
+        ("sulfolane", "Sulfolane", None, ["tetramethylene sulfone", "tetrahydrothiophene 1,1-dioxide"]),
+        ("furfural", "Furfural", None, ["2-furaldehyde", "furan-2-carbaldehyde"]),
+        ("dioxane", "1,4-Dioxane", None, ["1,4-dioxane", "p-dioxane", "dioxan"]),
+        ("isobutanol", "Isobutanol", None, ["2-methyl-1-propanol", "2-methylpropan-1-ol", "isobutyl alcohol"]),
+        ("2-butanol", "2-Butanol", None, ["sec-butanol", "butan-2-ol", "sec-butyl alcohol"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
 CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",
                "2-butanone": "78-93-3", "methyl-acetate": "79-20-9", "n-butyl-acetate": "123-86-4",
                "acetonitrile": "75-05-8", "mtbe": "1634-04-4", "glycerol": "56-81-5",
-               "phenol": "108-95-2"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+               "phenol": "108-95-2",
+               "mibk": "108-10-1", "cyclohexanone": "108-94-1", "dmf": "68-12-2", "dmso": "67-68-5", "nmp": "872-50-4",
+               "sulfolane": "126-33-0", "furfural": "98-01-1", "dioxane": "123-91-1", "isobutanol": "78-83-1",
+               "2-butanol": "78-92-2"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+# the second file of the same databank (as redistributed in DWSIM, same licence), for compounds not in chemsep1.xml
+CHEMSEP2_NAME = "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)"
 
 
 class ChemSep:
-    def __init__(self, path):
+    """chemsep1.xml (v8.3) and, optionally, chemsep2.xml (v8.31 data 2); a compound is taken from the first file
+    that has it."""
+    def __init__(self, paths):
         import xml.etree.ElementTree as ET
-        self.root = ET.parse(path).getroot()
+        self.by_cas = {}
+        for i, path in enumerate(paths):
+            for c in ET.parse(path).getroot():
+                e = c.find("CAS")
+                if e is not None and e.get("value") not in self.by_cas:
+                    self.by_cas[e.get("value")] = (c, i)
 
     def compound(self, cas):
-        for c in self.root:
-            e = c.find("CAS")
-            if e is not None and e.get("value") == cas:
-                return c
-        raise SystemExit("ChemSep has no compound with CAS %s" % cas)
+        if cas not in self.by_cas:
+            raise SystemExit("ChemSep has no compound with CAS %s" % cas)
+        return self.by_cas[cas][0]
+
+    def name(self, cas):
+        """(source name, source id) of the file the compound comes from."""
+        return (CHEMSEP_NAME, "chemsep-8.3") if self.by_cas[cas][1] == 0 else (CHEMSEP2_NAME, "chemsep-8.31-2")
 
     def value(self, cas, tag):
         e = self.compound(cas).find(tag)
@@ -112,8 +142,8 @@ def uniquac(cs, cas):
     r, q = cs.value(cas, "UniquacR"), cs.value(cas, "UniquacQ")
     if r is None or q is None:
         raise SystemExit("ChemSep has no UNIQUAC r and q for %s" % cas)
-    return {"r": r, "q": q, "source": CHEMSEP_NAME + ", UNIQUAC r and q; Artistic License 2.0.",
-            "source_ids": ["chemsep-8.3"]}
+    db, sid = cs.name(cas)
+    return {"r": r, "q": q, "source": db + ", UNIQUAC r and q; Artistic License 2.0.", "source_ids": [sid]}
 
 
 def record_chemsep(cid, name, aliases, cs):
@@ -123,15 +153,16 @@ def record_chemsep(cid, name, aliases, cs):
     if meta.CASs != cas:
         raise SystemExit("%s: CAS %s does not match chemicals (%s)" % (cid, cas, meta.CASs))
     v = lambda tag: cs.value(cas, tag)  # noqa: E731
-    src = (CHEMSEP_NAME + " (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); "
+    db, sid = cs.name(cas)
+    src = (db + " (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); "
            "Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT).")
     return {
         "name": name, "formula": meta.formula, "cas": cas, "aliases": aliases,
         "MW": sig(v("MolecularWeight")), "Tc_K": sig(v("CriticalTemperature")), "Pc_Pa": sig(v("CriticalPressure")),
         "Tb_K": sig(v("NormalBoilingPointTemperature")), "omega": sig(v("AcentricityFactor"), 6),
-        "constants_source": src, "constants_source_ids": ["chemsep-8.3"],
-        "omega_source": CHEMSEP_NAME + ", AcentricityFactor; Artistic License 2.0.",
-        "omega_source_ids": ["chemsep-8.3"],
+        "constants_source": src, "constants_source_ids": [sid],
+        "omega_source": db + ", AcentricityFactor; Artistic License 2.0.",
+        "omega_source_ids": [sid],
     }
 
 
@@ -175,7 +206,8 @@ def record(cid, name, fluid, aliases):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--batch", type=int, required=True, choices=sorted(BATCHES))
-    ap.add_argument("--chemsep", required=True, help="path to ChemSep chemsep1.xml (v8.3)")
+    ap.add_argument("--chemsep", required=True, nargs="+",
+                    help="path to ChemSep chemsep1.xml (v8.3), and optionally chemsep2.xml (v8.31 data 2)")
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
     import CoolProp

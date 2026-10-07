@@ -100,6 +100,16 @@
       "license": "Artistic License 2.0",
       "via": "DWSIM (DWSIM.Thermodynamics/Assets/Databases)"
     },
+    "chemsep-8.31-2": {
+      "title": "ChemSep pure component data 2, v8.31 (chemsep2.xml)",
+      "authors": "Harry Kooijman, Ross Taylor",
+      "year": 2022,
+      "kind": "databank",
+      "url": "https://github.com/DanWBR/dwsim",
+      "access": "Open: Artistic License 2.0",
+      "license": "Artistic License 2.0",
+      "via": "DWSIM (DWSIM.Thermodynamics/Assets/Databases)"
+    },
     "chemsep-eos-ipd": {
       "title": "ChemSep interaction parameter files pr.ipd and srk.ipd (DECHEMA Peng-Robinson / Soave-Redlich-Kwong EOS data)",
       "authors": "library created by A. L. Dill (1996) and J. A. Clark (2014), updated by H. Kooijman",

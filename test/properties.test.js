@@ -40,7 +40,7 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 51);
+  assert.equal(listComponents().length, 62);
   assert.equal(GASES.length, 16);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;
@@ -151,10 +151,13 @@ test("props() returns liquid and vapour properties for every component at a typi
     // for a gas, Tb - 5 K, but at least 1 K above the triple point (argon: Tb is only 3.5 K above it); for a
     // liquid, 25 °C, or the lowest temperature of its vapour-pressure and liquid-density records when they start
     // above it: styrene (303.07 K: below it there is no open measured vapour pressure, and props() says so) and
-    // phenol (a solid at 25 °C; its liquid records start at the triple point, 314.06 K)
-    const rhoL = components[id].properties.liquidDensity;
+    // phenol (a solid at 25 °C; its liquid records start at the triple point, 314.06 K); in general the lowest
+    // temperature at which all its liquid records apply (N-methyl-2-pyrrolidone: the ChemSep heat capacity starts at
+    // 306.45 K; sulfolane: the measured thermal conductivity starts at 303.15 K)
+    const liquidMin = ["liquidDensity", "liquidHeatCapacity", "heatOfVaporization", "liquidViscosity", "liquidThermalConductivity"]
+      .map(n => components[id].properties[n]?.Tmin_K ?? 0);
     const TL = Tmid ?? (isGas ? Math.max(p.Tb_K - 5, vp.Tmin_K + 1) : id === "acetic-acid" ? 303.15
-      : Math.max(298.15, vp.Tmin_K, rhoL.Tmin_K ?? 0));
+      : Math.max(298.15, vp.Tmin_K, ...liquidMin));
     const L = p.props(TL, Tmid ? 2 * p.psat(Tmid) : 101.325);
     assert.equal(L.phase, "liquid", name);
     const hKeys = ENTHALPY_NOT_CONSISTENT.has(id) ? [] : ["h_J_mol"];

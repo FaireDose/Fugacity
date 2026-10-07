@@ -1,6 +1,6 @@
 # Fugacity
 
-> Open-source chemical-engineering thermodynamics that runs in the browser and inside AI chat pages. Phase equilibria (NRTL, UNIQUAC, Peng–Robinson, SRK, residue curves, azeotropes), pure-component properties for 51 components and IAPWS-IF97 steam tables and a workbench interface with flash and a first flowsheet with recycles today; more unit operations, cost engineering and agent-run process-route comparison planned. Every parameter has an open source and a quality tier. Contributions come mainly through AI assistants such as ChatGPT, Claude or Gemini.
+> Open-source chemical-engineering thermodynamics that runs in the browser and inside AI chat pages. Phase equilibria (NRTL, UNIQUAC, Peng–Robinson, SRK, residue curves, azeotropes), pure-component properties for 62 components and IAPWS-IF97 steam tables and a workbench interface with flash and a first flowsheet with recycles today; more unit operations, cost engineering and agent-run process-route comparison planned. Every parameter has an open source and a quality tier. Contributions come mainly through AI assistants such as ChatGPT, Claude or Gemini.
 
 ## For AI assistants
 

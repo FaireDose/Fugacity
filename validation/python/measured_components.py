@@ -175,10 +175,11 @@ def norm_inchi(s):
     return (s or "").replace("InChI=", "").replace("1S/", "")
 
 
-def fetch_thermoml(cid, cache):
-    """Every pure-component value of the compound in the archive, and the pure end points of binary sets."""
+def fetch_thermoml(cid, cache, C=None):
+    """Every pure-component value of the compound in the archive, and the pure end points of binary sets.
+    C: {"cas", "thermoml_queries"} (default: COMPONENTS[cid]); also used by check_measured.py."""
     from chemicals.identifiers import search_chemical
-    C = COMPONENTS[cid]
+    C = C or COMPONENTS[cid]
     meta = search_chemical(C["cas"])
     if meta.CASs != C["cas"]:
         raise SystemExit("%s: CAS %s does not match chemicals (%s)" % (cid, C["cas"], meta.CASs))
@@ -447,6 +448,26 @@ def fit_measured(cid, prop, form, pts, target, Tc=None, fixed=()):
     for p in excluded:
         p["deviation_percent"] = round(100 * float(ev(form, coeffs, np.array([p["T"]]), Tc)[0] / p["y"] - 1), 2)
     return coeffs, use, excluded, m
+
+
+def fit_measured_loose(cid, prop, form, pts, target, Tc=None, fixed=()):
+    """As fit_measured, which fits only the values whose stated uncertainty is within the target. The values with
+    larger stated uncertainties are then compared with the fit: those it meets within their own uncertainty are kept
+    as confirmation (they may extend the range of the record beyond the better values), the others are listed as left
+    out. Returns coeffs, the values within the target (`use`, checked against the stated maximum deviation), the
+    looser values kept, the values left out, and the maximum deviation."""
+    coeffs, use, exc, m = fit_measured(cid, prop, form, pts, target, Tc, fixed)
+    kept, out = [], []
+    for p in exc:
+        p["deviation_percent"] = round(100 * float(ev(form, coeffs, np.array([p["T"]]), Tc)[0] / p["y"] - 1), 2)
+        if p["u_rel"] is not None and p["u_rel"] > target and abs(p["deviation_percent"]) <= 100 * p["u_rel"]:
+            kept.append(p)
+        elif p["u_rel"] is not None and p["u_rel"] > target:
+            out.append(dict(p, why="stated uncertainty %.2g %% is above the target, and the value deviates by more than it"
+                            % (100 * p["u_rel"])))
+        else:
+            out.append(p)
+    return coeffs, use, kept, out, m
 
 
 def record(prop, form, coeffs, use, excluded, m, Tc, source_text, references, access, notes=None, tier="fitted"):
