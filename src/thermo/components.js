@@ -15,6 +15,8 @@ import { fail } from "../util/errors.js";
 export function listComponents() {
   return Object.entries(componentData.components).map(([id, c]) => ({
     id, name: c.name, formula: c.formula, cas: c.cas, aliases: c.aliases ?? [], activity: Boolean(c.uniquac && c.vapourPressure),
+    // melting temperature and enthalpy of fusion (solid-liquid equilibrium)
+    fusion: Boolean(c.fusion && c.fusion.available !== false),
   }));
 }
 

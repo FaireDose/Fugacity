@@ -43,12 +43,13 @@ const PROPERTY_GLYPHS = [
   ["density", () => "ρ", "Density"], ["enthalpy", () => "h", "Enthalpy"], ["cp", () => ["c", h("sub", {}, "p")], "Heat capacity"],
   ["viscosity", () => "μ", "Viscosity"], ["conductivity", () => "k", "Conductivity"], ["vapourPressure", () => ["P", h("sup", {}, "sat")], "Vapour pressure"],
 ];
-const VIEW_ICON = { flash: "drum", txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", properties: "curves", steam: "dome" };
+const VIEW_ICON = { flash: "drum", txy: "txy", ternary: "ternary", azeotropes: "azeo", pxy: "pxy", envelope: "envelope", henry: "henry", solid: "flask", sle: "azeo", properties: "curves", steam: "dome" };
 /** A label inside a sentence: "Ternary map" → "ternary map", but "T-x-y diagram" stays. */
 const lower = s => (/^[A-Z]-/.test(s) ? s : s[0].toLowerCase() + s.slice(1));
 const NEEDS_ACTIVITY = {
   txy: "Two liquids", ternary: "Three liquids", azeotropes: "Two to four liquids", pxy: "Two liquids",
   envelope: "Two to six liquids", flash: "Two to six liquids", henry: "A gas and a solvent", properties: "One component", steam: "Water",
+  solid: "A solid and a solvent", sle: "Two components with melting data",
 };
 const NEEDS_EOS = {
   ...NEEDS_ACTIVITY, txy: "Two components", ternary: "Three components", azeotropes: "Two to four components", pxy: "Two components",
@@ -72,9 +73,12 @@ const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY
  *
  * @param {string|HTMLElement} target  element or CSS selector
  * @param {object} [cfg]
- * @param {"ternary"|"txy"|"azeotropes"|"eos"|"pxy"|"envelope"|"henry"|"properties"|"steam"|"sources"} [cfg.start]
- *   first view (default: ternary for three liquids, T-x-y for two); "henry" opens Gas solubility,
- *   "sources" (or "library") opens the Sources panel over the first workspace
+ * @param {"ternary"|"txy"|"azeotropes"|"eos"|"pxy"|"envelope"|"henry"|"solid"|"sle"|"properties"|"steam"|"sources"} [cfg.start]
+ *   first view (default: ternary for three liquids, T-x-y for two); "henry" opens the gas
+ *   solubility, "solid" a solid in a solvent and "sle" the solid-liquid diagram (Solubility
+ *   workspace; their components are set with update({ inputs: { solid: [solid, solvent], sle: [a, b] } }),
+ *   the readout temperature with `sleT_K`), "sources" (or "library") opens the Sources panel over the
+ *   first workspace
  * @param {string[]} [cfg.components]   up to six names, ids, formulas or CAS numbers
  *   (default methanol, acetone, chloroform)
  * @param {"NRTL"|"UNIQUAC"|"ideal"|"PR"|"SRK"} [cfg.model="NRTL"]  model of every phase-equilibrium diagram
@@ -353,14 +357,24 @@ export function app(target, cfg = {}) {
         modelGroup(),
         group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
       ];
-      case "solubility": return [
-        group("Model", h("div", { class: "fa-stack fa-about" },
-          h("div", { class: "fa-theme" }, icon("henry", 18), "Henry's law, x = p / H"),
-          h("div", { class: "fa-hint" }, "Dilute solutions at low to moderate pressure"))),
-        group("Display", stack(
-          smallButton({ ico: "curves", label: "Compare with the other gases", pressed: state.compareGases, fk: "compare",
-            title: "Also draw the other gases with a Henry's law constant in the same solvent", onClick: () => set({ compareGases: !state.compareGases }) }), bg)),
-      ];
+      case "solubility": {
+        const views = group("Views", diagramButton("henry", "Gas"), diagramButton("solid", "Solid"), diagramButton("sle", "Solid-liquid"));
+        if (v === "henry") return [views,
+          group("Model", h("div", { class: "fa-stack fa-about" },
+            h("div", { class: "fa-theme" }, icon("henry", 18), "Henry's law, x = p / H"),
+            h("div", { class: "fa-hint" }, "Dilute solutions at low to moderate pressure"))),
+          group("Display", stack(
+            smallButton({ ico: "curves", label: "Compare with the other gases", pressed: state.compareGases, fk: "compare",
+              title: "Also draw the other gases with a Henry's law constant in the same solvent", onClick: () => set({ compareGases: !state.compareGases }) }), bg)),
+        ];
+        // solids: a pure solid in equilibrium with the liquid; γ from an activity model (or 1: the ideal solubility)
+        return [views,
+          group("Liquid model", h("div", { class: "fa-stack" },
+            seg("Liquid model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], isEosModel(state.model) ? null : state.model, m => set({ model: m })),
+            h("div", { class: "fa-hint" }, "ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m); pure solid, ΔCp = 0"))),
+          group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
+        ];
+      }
       case "properties": {
         const more = explorerProperties().filter(p => !PROPERTY_GLYPHS.some(g => g[0] === p.key));
         return [
@@ -400,8 +414,9 @@ export function app(target, cfg = {}) {
     const usedElsewhere = new Map((Array.isArray(value) ? value : []).map((id, i) => [id, i]).filter(([id, i]) => id && i !== slot));
     return c => {
       const bad = spec.liquid && !c.activity;
+      const noMelt = !bad && spec.solid?.includes(slot) && !c.fusion;
       const other = usedElsewhere.get(c.id);
-      return { disabled: bad, note: bad ? "gas: equation of state only" : other != null ? `also component ${other + 1}` : null };
+      return { disabled: bad || noMelt, note: bad ? "gas: equation of state only" : noMelt ? "no melting data" : other != null ? `also component ${other + 1}` : null };
     };
   }
   const pickGroup = view => c => (c.activity ? "Liquids" : needsFor(view, state.model).liquid ? "Gases (need an equation of state)" : "Gases");
@@ -498,6 +513,19 @@ export function app(target, cfg = {}) {
           on: { change: ev => { const p = examplesFor("flash", PRESETS, state.model)[+ev.target.value]; if (p) set({ inputs: { flash: p.components } }); } } },
           h("option", { value: "" }, "Examples…"), ...examplesFor("flash", PRESETS, state.model).map((p, i) => h("option", { value: i }, p.label)))) : null));
       if (check.ok) secs.push(feedSection(check.use), specSection());
+      if (check.ok) { const pairs = pairRows(check.use); if (pairs) secs.push(pairs); }
+    } else if (state.workspace === "solubility" && (v === "solid" || v === "sle")) {
+      secs.push(inputsSection(v === "solid" ? "Solid and solvent" : "Components",
+        h("p", { class: "fa-in-hint" }, v === "solid"
+          ? "The solid that dissolves (it needs a melting temperature and enthalpy of fusion) and the liquid solvent."
+          : "Two components that crystallize as pure solids (both need melting data); x is the mole fraction of the first."),
+        slotsInput(v, check), problemsBox(check),
+        h("div", { class: "fa-in-actions" }, h("button", { type: "button", class: "fa-mini", "data-fk": "act-order", title: "Swap the two components",
+          on: { click: () => set({ inputs: { [v]: rotateInputs(state.inputs[v]) } }) } }, icon("swap", 15), "Swap"))));
+      secs.push(inputsSection("Conditions",
+        field(`Temperature, ${u.T === "K" ? "K" : "°C"}`, String(+tToDisplay(state.sleT_K, u).toFixed(2)),
+          t => { const val = parseT(t, u); if (val == null) return false; set({ sleT_K: val }); },
+          { id: "slet", title: v === "solid" ? "Temperature of the readout: the solubility there" : "Temperature of the readout: the liquid compositions where each solid starts to crystallize" })));
       if (check.ok) { const pairs = pairRows(check.use); if (pairs) secs.push(pairs); }
     } else if (state.workspace === "solubility") {
       const { gas, solvent } = state.inputs.henry;
@@ -649,6 +677,7 @@ export function app(target, cfg = {}) {
     const cond = v === "flash" ? { TP: `T ${fmtTemp(fs.T_K, u)}, P ${fmtP(fs.P_kPa, u)}`, PH: `P ${fmtP(fs.P_kPa, u)}, Q ${fs.Q_J_mol} J/mol`,
       PVF: `P ${fmtP(fs.P_kPa, u)}, VF ${fs.VF}`, TVF: `T ${fmtTemp(fs.T_K, u)}, VF ${fs.VF}` }[fs.spec]
       : v === "pxy" ? `T ${fmtTemp(pxyTemperature(state), u)}` : v === "henry" ? `${fmtTemp(state.henryT_K, u)}, p gas ${fmtP(state.henryP_kPa, u)}`
+      : v === "solid" || v === "sle" ? `T ${fmtTemp(state.sleT_K, u)}`
       : VIEWS[v].diagram && v !== "envelope" ? `P ${fmtP(state.P_kPa, u)}` : v === "envelope" ? "Feed under Results" : null;
     const cell = (cls, ...c) => h("span", { class: `fa-cell ${cls}` }, ...c);
     const rule = ruleOf(state.prefer), hand = Object.keys(state.sets).length;
@@ -672,6 +701,7 @@ export function app(target, cfg = {}) {
       const { gas, solvent } = state.inputs.henry;
       return gas && solvent ? `${nameOf(gas)} in ${nameOf(solvent).toLowerCase()}` : VIEWS[v].label;
     }
+    if (v === "solid" && state.components.length === 2) return `${nameOf(state.components[0])} in ${nameOf(state.components[1]).toLowerCase()}`;
     const names = state.components.map(nameOf);
     return names.length ? names.map((n, i) => (i ? n.toLowerCase() : n)).join(", ").replace(/, ([^,]*)$/, " and $1") : VIEWS[v].label;
   }
@@ -689,6 +719,8 @@ export function app(target, cfg = {}) {
       envelope: `Bubble and dew points of the feed, ${ml}`,
       flash: `${FLASH_SPECS.find(f => f.id === state.flash.spec).title} flash, ${ml}`,
       henry: `Solubility at ${fmtTemp(state.henryT_K, u)} and a gas partial pressure of ${fmtP(state.henryP_kPa, u)}, Henry's law`,
+      solid: `Solubility of the solid against temperature, ${ml}`,
+      sle: `Solid-liquid diagram with the eutectic, ${ml}`,
       properties: `${prop?.label ?? "Property"} against temperature, pure component`,
       steam: "Temperature–entropy chart with isobars, IAPWS-IF97",
       flowsheet: state.flowsheet.components.length
@@ -963,7 +995,8 @@ export function app(target, cfg = {}) {
     const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
     return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.vapour, state.P_kPa, state.T_K,
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
-      v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null, state.steamP_kPa, state.sets, state.prefer,
+      v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null,
+      v === "solid" || v === "sle" ? state.sleT_K : null, state.steamP_kPa, state.sets, state.prefer,
       v === "flash" ? state.flash : null,
       v === "flowsheet" ? [state.flowsheet, ensureUi(ui).sel, ui.fs.auto, ui.fs.solveKey, ui.fs.zoom] : null]);
   };

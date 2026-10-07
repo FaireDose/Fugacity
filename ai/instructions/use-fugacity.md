@@ -36,7 +36,7 @@ name components, a diagram or conditions, pass them:
 
 ```js
 Fugacity.app("#app", {
-  start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "properties", "steam"
+  start: "ternary",          // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "solid", "sle", "properties", "steam"
   components: ["methanol", "acetone", "chloroform"],
   model: "NRTL",             // "NRTL", "UNIQUAC", "ideal", "PR" or "SRK"
   P_kPa: 101.325

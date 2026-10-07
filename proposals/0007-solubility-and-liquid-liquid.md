@@ -158,4 +158,11 @@ measured solubility sets of naphthalene, benzoic acid and salicylic acid in 26 s
 ThermoML Archive (`validation/python/fetch_sle.py`, report in
 [docs/SLE_CHECKS.md](../docs/SLE_CHECKS.md)): the ideal solubility is within 10 % where the
 solvent is chemically close to the solid, and 10–300 times too high in water and alkanes, where
-solid-liquid parameters (not yet fitted) are needed. The workbench views come next.
+solid-liquid parameters (not yet fitted) are needed.
+
+**Step 4, second part, done:** the workbench views, in the Solubility workspace (formerly "Gas
+solubility"; views Gas, Solid, Solid-liquid): the solubility of a solid in a solvent against
+temperature, with the ideal solubility for comparison and the readout at a chosen temperature
+(mole and mass fraction, grams per 100 g of solvent, γ); and the solid-liquid diagram of a binary
+with both liquidus curves and the eutectic. Where the pair has no parameters for the chosen model
+(most solid-solvent pairs), the views show the ideal solubility and say so.
