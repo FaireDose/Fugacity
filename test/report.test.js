@@ -141,6 +141,26 @@ test("comparison: within tolerance, out of tolerance, new, changed, lost, no ref
   assert.ok(top.includes("⚠️ lost"));
 });
 
+test("a known issue is marked, listed with its reason, and only while it is out of tolerance", () => {
+  const cases = { tolerances, groups: [{ id: "g", title: "G", cases: [
+    { id: "k", type: "normalBoilingPoint", component: "water", P_kPa: 101.325, quantities: [{ key: "T_C", tol: "abs05" }], known: "a stated reason" },
+    { id: "m", type: "normalBoilingPoint", component: "ethanol", P_kPa: 101.325, quantities: [{ key: "T_C", tol: "abs05" }], known: "fixed since" },
+  ] }] };
+  const refs = { values: { k: { T_C: { value: 99.97 } }, m: { T_C: { value: 78.42 } } } };
+  const ok = v => ({ status: "ok", value: v });
+  const res = { results: { k: { T_C: ok(101) }, m: { T_C: ok(78.4) } } };
+  const { groups, summary } = compare(cases, refs, res, res);
+  const row = id => groups[0].rows.find(r => r.id === id);
+  assert.equal(row("k").status, "out");
+  assert.equal(row("k").known, "a stated reason");
+  assert.equal(row("m").known, null, "within tolerance: no longer a known issue");
+  const md = renderMarkdown({ groups, summary });
+  assert.match(md, /### Known issues/);
+  assert.match(md, /a stated reason/);
+  assert.doesNotMatch(md, /fixed since/);
+  assert.match(md, /⚠️ as on main \(known issue\)/);
+});
+
 test("the Markdown report stays under the comment size limit", () => {
   const rows = Array.from({ length: 3000 }, (_, i) => ({ id: "x" + i, key: "rho_kg_m3", property: "A long property name " + i,
     conditions: "25 °C, 1.01325 bar, saturated liquid", unit: "kg/m³", base: { status: "ok", value: 1 }, head: { status: "ok", value: 2 },

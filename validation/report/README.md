@@ -55,6 +55,11 @@ hand except the NIST WebBook spot values, which are listed with their page and t
   this PR, reference, deviation (this PR minus reference; relative for properties, absolute
   for temperatures and compositions), status. "⚠️ as on main" marks a result that was
   already out of tolerance on main and did not change.
+- **Known issues** are results out of tolerance that the project has decided to leave as
+  they are for now, with the reason (a case's `"known"` field in `cases.json`; for the
+  measured-data group, `KNOWN` in `validation/python/check_measured.py`). They keep their ⚠️,
+  are marked "(known issue)", and are listed with their reason under "Known issues" in the
+  comment. The mark disappears by itself once the result is back within tolerance.
 - **"not available"** means the version under test has no function or no data for that
   result (for example steam tables before they exist). It is not a failure.
 - The **HTML report** (artifact `engineering-report` of the workflow run, linked from the

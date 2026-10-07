@@ -160,7 +160,7 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 76
+- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 89
   components (water, alcohols, glycols, ketones, esters, aromatics, alkanes, light gases
   and more). Not every pair has parameters: the widget names missing pairs, and equation-of-state results carry
   `warnings` for pairs without k_ij. If the user asks for other chemicals or pairs, say

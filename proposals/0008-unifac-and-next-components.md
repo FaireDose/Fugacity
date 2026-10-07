@@ -192,6 +192,19 @@ as before: formic acid associates in the vapour (not modelled for it), formaldeh
 peroxide react in water, and the amines with CO₂ form ions; only the molecular solvent
 properties are in scope.
 
+**Batch 3 (petrochemicals, fuels and nitrogen compounds), done:** n-nonane, n-decane, n-dodecane
+and 1-butene (CoolProp; the viscosities and thermal conductivities of 1-butene from ChemSep, as
+CoolProp 8.0.0 has no model for them and the NIST WebBook has no fluid tables for it), cumene,
+mesitylene, isooctane, isoprene, ethyl tert-butyl ether, pyridine, aniline, acrylonitrile and
+methylamine (ChemSep v8.3). The ThermoML comparison found one record three times off its tolerance:
+the ETBE vapour pressure (ChemSep 4.6 % below 11 articles), refitted to the measured values. Three
+stay with the warning, as the rule says (the measured values do not cover 25-100 °C and the
+deviation is below three times the tolerance, or comes from one article): the mesitylene liquid
+viscosity (ChemSep 14 % above 6 articles at 278-350 K), the n-nonane liquid viscosity (5.4 %
+below 11 articles: CoolProp's model 2-3 % and the fitted record another 2-3 %), and the ETBE liquid
+viscosity (27 % from one article at 293-303 K). The open archive has no pure-component values for
+methylamine and few for isoprene and acrylonitrile.
+
 **The older components, checked the same way:** the 24 components of proposal 0004 and v0.1 whose
 records come from ChemSep (all of them, or the transport properties CoolProp does not model) were
 compared with 25,540 measured values from 2,046 articles. Most records are within the

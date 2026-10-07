@@ -1,0 +1,42 @@
+{
+ "component": "isoprene",
+ "cas": "78-79-5",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"2-methyl-1,3-butadiene\", \"isoprene\"; 1 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1021/acs.jced.6b00180": {
+   "authors": [
+    "Li, Y.[Ye]",
+    "Zhong, L.[Lei]",
+    "Li, W.[Weisong]",
+    "Zhang, L.[Long]",
+    "Zhang, X.[Xubin]",
+    "Xu, C.[Chunjian]",
+    "Cai, W.[Wangfeng]"
+   ],
+   "title": "Isobaric Vapor Liquid Equilibrium for Nine Binary Systems of Cracking C5 Fraction at 250 kPa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "61",
+   "year": "2016",
+   "pages": "2481-2492"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 336.35,
+   "P_kPa": null,
+   "value": 250.0,
+   "uncertainty": 13.0,
+   "doi": "10.1021/acs.jced.6b00180",
+   "set": 12,
+   "binary_with": null
+  }
+ ]
+}

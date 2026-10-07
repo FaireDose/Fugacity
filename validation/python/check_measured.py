@@ -42,6 +42,14 @@ LABEL = {"vapourPressure": "Vapour pressure", "liquidDensity": "Liquid density",
          "heatOfVaporization": "Heat of vaporization", "liquidViscosity": "Liquid viscosity",
          "liquidThermalConductivity": "Liquid thermal conductivity", "surfaceTension": "Surface tension"}
 
+# known issues: records above the tolerance that stay as they are for now, with the reason (also shown in the
+# engineering report: validation/report/make_measured_cases.py reads this)
+KNOWN = {
+    ("mesitylene", "liquidViscosity"):
+        "the ChemSep v8.3 viscosity is 10-20 % above all six articles (278-350 K); a refit to them would cover only "
+        "278-350 K instead of 228-550 K, so the record stays for now (proposal 0008, batch 3)",
+}
+
 # the components checked, and the names searched in the archive (its full-text search finds the compound
 # names of the records; the compound itself is then matched by its InChI)
 CHECKED = {
@@ -98,6 +106,20 @@ CHECKED = {
     "propylene-oxide": ["methyloxirane", "propylene oxide"],
     "formaldehyde": ["formaldehyde", "methanal"],
     "hydrogen-peroxide": ["hydrogen peroxide"],
+    # proposal 0008, Part B, batch 3: petrochemicals and fuels, nitrogen compounds
+    "cumene": ["(1-methylethyl)benzene", "isopropylbenzene", "cumene"],
+    "mesitylene": ["1,3,5-trimethylbenzene", "mesitylene"],
+    "n-nonane": ["nonane"],
+    "n-decane": ["decane"],
+    "n-dodecane": ["dodecane"],
+    "isooctane": ["2,2,4-trimethylpentane", "isooctane"],
+    "1-butene": ["1-butene", "but-1-ene"],
+    "isoprene": ["2-methyl-1,3-butadiene", "isoprene"],
+    "etbe": ["2-ethoxy-2-methylpropane", "ethyl tert-butyl ether"],
+    "pyridine": ["pyridine"],
+    "aniline": ["aniline", "benzenamine"],
+    "acrylonitrile": ["2-propenenitrile", "acrylonitrile"],
+    "methylamine": ["methanamine", "methylamine"],
 }
 
 
@@ -201,7 +223,8 @@ def report():
                 r["T"][0], r["T"][1], 100 * r["median"], 100 * r["max"], r["max_T"], r["max_ref"],
                 ("reported (no tolerance)" if r["tol"] is None else
                  {"pass": "✅ within %g %%", "warn": "⚠️ above %g %%", "FAIL": "❌ above 3 × %g %%"}[r["status"]] % (100 * r["tol"]))
-                + (" (record fitted to these values)" if fitted_here(comps[cid], prop) else "")))
+                + (" (record fitted to these values)" if fitted_here(comps[cid], prop) else "")
+                + (" — known issue: " + KNOWN[(cid, prop)] if (cid, prop) in KNOWN and r["status"] != "pass" else "")))
             if r["status"] in ("warn", "FAIL"):
                 fails.append((cid, prop, round(100 * r["median"], 2), r["status"]))
         L.append("")

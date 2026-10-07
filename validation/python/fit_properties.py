@@ -78,7 +78,10 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "isobutanol", "2-butanol",
        # proposal 0008, Part B, batch 2: gas treating, acids, esters and reaction work
        "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
-       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
+       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
+       # proposal 0008, Part B, batch 3: petrochemicals and fuels, nitrogen compounds
+       "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
+       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
 # components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
 # or from ChemSep for a component that is not a CoolProp fluid
 VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
@@ -91,12 +94,16 @@ VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
              "dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
              "isobutanol", "2-butanol",
              "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
-             "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
-# proposal 0008, Part B, batches 1 and 2 (the record notes name the proposal)
+             "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
+             "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
+             "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
+# proposal 0008, Part B, batches 1 to 3 (the record notes name the proposal)
 BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
        "isobutanol", "2-butanol",
        "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
-       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide"]
+       "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
+       "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
+       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -109,7 +116,8 @@ COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "ace
             "ethylbenzene": "EthylBenzene", "n-pentane": "n-Pentane", "n-hexane": "n-Hexane", "n-heptane": "n-Heptane",
             "n-octane": "n-Octane", "diethyl-ether": "DiethylEther", "propylene-glycol": "PropyleneGlycol",
             "tetrahydrofuran": "Tetrahydrofuran", "dichloroethane": "Dichloroethane",
-            "sulfur-dioxide": "SulfurDioxide", "nitrous-oxide": "NitrousOxide", "ethylene-oxide": "EthyleneOxide"}
+            "sulfur-dioxide": "SulfurDioxide", "nitrous-oxide": "NitrousOxide", "ethylene-oxide": "EthyleneOxide",
+            "n-nonane": "n-Nonane", "n-decane": "n-Decane", "n-dodecane": "n-Dodecane", "1-butene": "1-Butene"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -144,7 +152,8 @@ NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetat
                    "glycerol", "phenol", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural",
                    "dioxane", "isobutanol", "2-butanol", "mea", "dea", "mdea", "formic-acid", "propionic-acid",
                    "acrylic-acid", "vinyl-acetate", "isopropyl-acetate", "propylene-oxide", "formaldehyde",
-                   "hydrogen-peroxide"]
+                   "hydrogen-peroxide", "cumene", "mesitylene", "isooctane", "isoprene", "etbe", "pyridine", "aniline",
+                   "acrylonitrile", "methylamine"]
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
@@ -163,6 +172,7 @@ COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in th
     "nitrous-oxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene-oxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
                        "surfaceTension"],
+    "1-butene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
 }
 
 # NIST WebBook fluid tables (step 3 of the chain) for properties in COOLPROP_GAPS, where the WebBook
@@ -248,7 +258,11 @@ WEBBOOK_ANTOINE = {cid: "C" + cas.replace("-", "") for cid, cas in [
     ("mea", "141-43-5"), ("dea", "111-42-2"), ("mdea", "105-59-9"), ("formic-acid", "64-18-6"),
     ("propionic-acid", "79-09-4"), ("acrylic-acid", "79-10-7"), ("vinyl-acetate", "108-05-4"),
     ("isopropyl-acetate", "108-21-4"), ("propylene-oxide", "75-56-9"), ("formaldehyde", "50-00-0"),
-    ("hydrogen-peroxide", "7722-84-1")]}
+    ("hydrogen-peroxide", "7722-84-1"),
+    # proposal 0008, Part B, batch 3 (the components that are not CoolProp fluids)
+    ("cumene", "98-82-8"), ("mesitylene", "108-67-8"), ("isooctane", "540-84-1"), ("isoprene", "78-79-5"),
+    ("etbe", "637-92-3"), ("pyridine", "110-86-1"), ("aniline", "62-53-3"), ("acrylonitrile", "107-13-1"),
+    ("methylamine", "74-89-5")]}
 # Vapour pressures fitted to a WebBook Antoine set plus the critical point, where the ChemSep equation does not
 # reproduce the measured normal boiling point. Styrene: the ChemSep equation 101 gives 417.14 K at 101.325 kPa
 # against 418.31 K (ChemSep's own Tb, and the Antoine equation of Dreyer et al. (1955), measured to 417.92 K;
@@ -278,6 +292,10 @@ MEASURED_REFIT = {
                                  "articles) and by up to 32 % below 400 K"},
     "1-butanol": {"vapourPressure": "the ChemSep vapour pressure deviates from 25 articles by 1.8 % (median)"},
     "acetonitrile": {"vapourPressure": "the ChemSep vapour pressure deviates from 8 articles by 1.2 % (median)"},
+    # proposal 0008, batch 3
+    # (the ETBE viscosity, 27 % off one article at 293-303 K, stays: one article over 10 K cannot replace a record
+    # to 450 K; the warning stays in docs/MEASURED_CHECKS.md)
+    "etbe": {"vapourPressure": "the ChemSep vapour pressure deviates from 11 articles by 4.6 % (median)"},
 }
 VP_FROM_MEASURED = {cid for cid, props in MEASURED_REFIT.items() if "vapourPressure" in props}
 WEBBOOK_ANTOINE_FILE = Path(__file__).resolve().parents[2] / "validation" / "data" / "pure" / "measured" / "webbook_antoine.json"
@@ -314,8 +332,8 @@ def chain_note(cid, prop):
         elif cid in WEBBOOK_UNCITED and "Conductivity" in prop:
             notes.append(WEBBOOK_UNCITED[cid])
         elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "dichloroethane",
-                     "ethylene-oxide"):
-            notes.append("NIST WebBook: %s is not a WebBook fluid" % cid.replace("-", " "))
+                     "ethylene-oxide", "1-butene"):
+            notes.append("NIST WebBook: %s is not a WebBook fluid" % ("1-butene" if cid == "1-butene" else cid.replace("-", " ")))
         elif cid == "styrene":
             notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST "
                          "WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page")
