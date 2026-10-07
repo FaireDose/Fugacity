@@ -16,6 +16,7 @@ the pull request and with `main`, and compared with independent references (prop
 | Pure-component properties | Vapour pressure, liquid density, liquid cp, heat of vaporization, liquid viscosity and thermal conductivity at 25 °C and at the normal boiling point; ideal-gas cp at 25 °C; gas density at 300 K and 1, 10, 50 bar | CoolProp 8.0.0 (reference equations of state and the transport models CoolProp cites); NIST WebBook liquid cp at 25 °C for the four components CoolProp does not have |
 | Steam tables | Saturation at 100–300 °C (P, ρ′, ρ″, h′, h″, Δh); superheated steam 10 bar/300 °C and 100 bar/500 °C; compressed water 100 bar/100 °C (ρ, h, s, cp, μ, λ) | CoolProp 8.0.0: IAPWS-95, with the viscosity and thermal-conductivity correlations CoolProp cites for water (Huber et al., J. Phys. Chem. Ref. Data 2009 and 2012) |
 | Equation of state | Peng–Robinson densities of air, natural gas and hydrogen + methane; methane + ethane bubble points | CoolProp 8.0.0 multi-fluid mixture model (GERG-2008 form) |
+| Records against measured data | For each component with measured data in `validation/data/pure/measured/thermoml_<id>.json`: vapour pressure, liquid density, liquid cp, heat of vaporization, liquid viscosity and thermal conductivity, as the median over the articles of each article's median deviation from the measured values, inside the record's range (`validation/python/check_measured.py`, `docs/MEASURED_CHECKS.md`) | NIST TRC ThermoML Archive (2003–2019, open data); the reference is zero deviation. Cases and references: `make_measured_cases.py` |
 
 The cases are in `cases.json` (written by `make_cases.py`); the references are in
 `reference/*.json` (written by `make_reference.py`), each value with its source and, where
@@ -42,6 +43,7 @@ hand except the NIST WebBook spot values, which are listed with their page and t
 | Dew T, liquid x | 1 K, 0.03 | Chosen for this report (not in proposal 0002) |
 | Flash vapour fraction and compositions; flash temperature | 0.001; 0.01 K | Same model in independent code: differences only from solver tolerances |
 | Excess enthalpy, data used in the fit (acetic acid + ethylene glycol) | 50 J/mol, report only | Consistency check: the parameters were fitted to these data |
+| Records against measured data | 1 % (vapour pressure, density), 2 % (heat capacity, heat of vaporization), 5 % (viscosity, thermal conductivity), as a median deviation of the articles | Proposal 0002 tolerances; values whose stated uncertainty is larger than the tolerance are not used |
 | Excess enthalpy predicted from vapour-liquid parameters (water + ethanol at 423.2 K) | 25 %, report only | Independent check of a prediction outside the parameters' temperature range; a ⚠️ shows its size and does not block |
 
 ## How to read the comment

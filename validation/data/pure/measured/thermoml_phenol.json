@@ -1,0 +1,680 @@
+{
+ "component": "phenol",
+ "cas": "108-95-2",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"phenol\"; 195 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2007.05.026": {
+   "authors": [
+    "Yang, C.[Chufen]",
+    "Qian, Y.[Yu]",
+    "Jiang, Y.[Yanbin]",
+    "Zhang, L.[Lijuan]"
+   ],
+   "title": "Liquid liquid equilibria for the quaternary system methyl  isobutyl ketone water phenol hydroquinone",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "258",
+   "year": "2007",
+   "pages": "73-77"
+  },
+  "10.1016/j.fluid.2014.05.033": {
+   "authors": [
+    "Shin, S.-H.[Sang-Hong]",
+    "Jeong, I.-Y.[In-Yong]",
+    "Jeong, Y.-S.[Yeong-Seok]",
+    "Park, S.-J.[So-Jin]"
+   ],
+   "title": "Solid-liquid equilibria and the physical properties of binary systems of diphenyl carbonate, dimethyl carbonate, methyl phenyl carbonate, anisole, methanol and phenol",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "376",
+   "year": "2014",
+   "pages": "105-110"
+  },
+  "10.1016/j.fluid.2014.07.004": {
+   "authors": [
+    "Jeong, I.-Y.[In-Yong]",
+    "You, S.-H.[Soo-Hyun]",
+    "Park, S.-J.[So-Jin]"
+   ],
+   "title": "Ternary liquid-liquid equilibria and binary excess and deviation properties at constant temperature for mixtures of dimethyl carbonate, anisole, methanol, phenol and water",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "378",
+   "year": "2014",
+   "pages": "93-101"
+  },
+  "10.1016/j.fluid.2014.09.024": {
+   "authors": [
+    "You, S.-H.[Soo-Hyun]",
+    "Jeong, I.-Y.[In-Yong]",
+    "Hwang, I.-C.[In-Chan]",
+    "Park, S.-J.[So-Jin]"
+   ],
+   "title": "The solid-liquid equilitbrium, excess molar volume and refractive deviation properties of binary systems containing dimethyl carbonate, anisole and phenol",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "383",
+   "year": "2014",
+   "pages": "21-26"
+  },
+  "10.1016/j.fluid.2017.05.009": {
+   "authors": [
+    "Abbott, Andrew P.",
+    "Ahmed, Essa I.",
+    "Prasad, Kamalesh",
+    "Qader, Idrees B.",
+    "Ryder, Karl S."
+   ],
+   "title": "Liquid pharmaceuticals formulation by eutectic formation",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "448",
+   "year": "2017",
+   "pages": "2-8"
+  },
+  "10.1021/acs.jced.5b00918": {
+   "authors": [
+    "Wang, H.[Huimin]",
+    "Wang, Z.[Zhuo]",
+    "Li, L.[Libo]",
+    "Chen, Y.[Yun]"
+   ],
+   "title": "Ternary and Quaternary Liquid-Liquid Equilibria for Systems of Methyl Butyl Ketone + Water + Hydroquinone + Phenol at 313.2 K and Atmospheric Pressure",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "61",
+   "year": "2016",
+   "pages": "1540-1546"
+  },
+  "10.1021/je025566c": {
+   "authors": [
+    "Chylinski, K.[Krzysztof]",
+    "Fras, Z.[Zbigniew]",
+    "Malanowski, S. K.[Stanislaw]"
+   ],
+   "title": "Vapor-Liquid Equilibrium for Phenol + r-Methyl Benzyl Alcohol and 2-Ethoxyethanol + n-Butyl Formate",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "49",
+   "year": "2004",
+   "pages": "2-6"
+  },
+  "10.1021/je050317k": {
+   "authors": [
+    "Giles, N. F.[Neil F.]",
+    "Wilson, G. M.[Grant M.]"
+   ],
+   "title": "Vapor-Liquid Equilibria on Seven Binary Systems: Ethylene Oxide + 2-Methylpropane; Acetophenone + Phenol; cis-1,3-Dichloropropene + 1,2-Dichloropropane; 1,5-Hexadiene + Allyl Chloride; Isopropyl Acetate + Acetonitrile; Vinyl Chloride + Methyl Chloride; and 1,4-Butanediol + c-Butyrolactone",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1954-1962"
+  },
+  "10.1021/je050327l": {
+   "authors": [
+    "Giles, N. F.[Neil F.]",
+    "Wilson, G. M.[Grant M.]"
+   ],
+   "title": "Vapor-Liquid Equilibria on Four Binary Systems: 2-Phenylpropionaldehyde + Phenol, Propylene Glycol Monomethyl Ether + Nitroethane, Dimethyl Ether + Propylene, and N-Butyric Acid + Propionic Acid",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1966-1972"
+  },
+  "10.1021/je0604380": {
+   "authors": [
+    "Nikitin, E. D.[Eugene D.]",
+    "Popov, A. P.[Alexander P.]",
+    "Yatluk, Y. G.[Yuri G.]"
+   ],
+   "title": "Vapor-Liquid Critical Properties of Phenol and (C8 to C10) Phenylalkanols",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "52",
+   "year": "2007",
+   "pages": "315-317"
+  },
+  "10.1021/je100069q": {
+   "authors": [
+    "Martin, A.[Antje]",
+    "Klauck, M.[Mandy]",
+    "Taubert, K.[Klaus]",
+    "Precht, A.[Annett]",
+    "Meinhardt, R.[Rene]",
+    "Schmelzer, J.[Jurgen]"
+   ],
+   "title": "Liquid-Liquid Equilibria in Ternary Systems of Aromatic Hydrocarbons (Toluene or Ethylbenzene) + Phenols + Water",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "56",
+   "year": "2011",
+   "pages": "733-740"
+  },
+  "10.1021/je1007923": {
+   "authors": [
+    "Martin, A.[Antje]",
+    "Klauck, M.[Mandy]",
+    "Grenner, A.[Andreas]",
+    "Meinhardt, R.[Rene]",
+    "Martin, D.[Diana]",
+    "Schmelzer, J.[Jurgen]"
+   ],
+   "title": "Liquid-Liquid(-Liquid) Equilibria in Ternary Systems of Aliphatic Hydrocarbons (Heptane or Octane) + Phenols + Water",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "56",
+   "year": "2011",
+   "pages": "741-749"
+  },
+  "10.1021/je100888h": {
+   "authors": [
+    "Martin, A.[Antje]",
+    "Klauck, M.[Mandy]",
+    "Grenner, A.[Andreas]",
+    "Meinhardt, R.[Rene]",
+    "Taubert, K.[Klaus]",
+    "Precht, A.[Annett]",
+    "Martin, D.[Diana]",
+    "Schmelzer, J.[Jurgen]"
+   ],
+   "title": "Vapor-Liquid Equilibria in Ternary Systems of Toluene or Octane + Phenols + Water",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "56",
+   "year": "2011",
+   "pages": "1869-1874"
+  },
+  "10.1021/je4003256": {
+   "authors": [
+    "Cunha, D. L.[Deivisson L.]",
+    "Coutinho, J. A. P.[Joao A. P.]",
+    "Daridon, J. L.[Jean Luc]",
+    "Reis, R. A.[Rodrigo A.]",
+    "Paredes, M. L. L.[Marcio L. L.]"
+   ],
+   "title": "Experimental Densities and Speeds of Sound of Substituted Phenols and Their Modeling with the Prigogine Flory Patterson Model",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "58",
+   "year": "2013",
+   "pages": "2925-2931"
+  },
+  "10.1021/je400776b": {
+   "authors": [
+    "Park, S.-J.[So-Jin]",
+    "Hwang, I.-C.[In-Chan]",
+    "Shin, S.-H.[Shang-Hong]"
+   ],
+   "title": "Liquid Liquid Equilibria for Ternary Mixtures of Methylphenyl Carbonate, Dimethyl Carbonate, Diphenyl Carbonate, Anisole, Methanol, Phenol, and Water at Several Temperatures",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "59",
+   "year": "2014",
+   "pages": "323-328"
+  }
+ },
+ "rows": [
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.45,
+   "P_kPa": 101.325,
+   "value": 1061.0,
+   "uncertainty": 1.0,
+   "doi": "10.1016/j.fluid.2007.05.026",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.325,
+   "value": 1058.51,
+   "uncertainty": 0.06,
+   "doi": "10.1016/j.fluid.2014.05.033",
+   "set": 20,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 1058.51,
+   "uncertainty": 0.06,
+   "doi": "10.1016/j.fluid.2014.07.004",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 1058.51,
+   "uncertainty": 0.28,
+   "doi": "10.1016/j.fluid.2014.09.024",
+   "set": 8,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 1049.8,
+   "uncertainty": 0.27,
+   "doi": "10.1016/j.fluid.2014.09.024",
+   "set": 8,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 1049.79,
+   "uncertainty": 0.27,
+   "doi": "10.1016/j.fluid.2014.09.024",
+   "set": 17,
+   "binary_with": "dimethyl carbonate"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.0,
+   "value": 1049.8,
+   "uncertainty": 0.27,
+   "doi": "10.1016/j.fluid.2014.09.024",
+   "set": 22,
+   "binary_with": "anisole"
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 298.0,
+   "P_kPa": 101.325,
+   "value": 127.2,
+   "uncertainty": 13.5,
+   "doi": "10.1016/j.fluid.2017.05.009",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.5,
+   "P_kPa": 101.325,
+   "value": 1058.1,
+   "uncertainty": 0.3,
+   "doi": "10.1021/acs.jced.5b00918",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 353.15,
+   "P_kPa": null,
+   "value": 2.037,
+   "uncertainty": 0.041,
+   "doi": "10.1021/je025566c",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.15,
+   "P_kPa": null,
+   "value": 5.541,
+   "uncertainty": 0.042,
+   "doi": "10.1021/je025566c",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 393.15,
+   "P_kPa": null,
+   "value": 13.154,
+   "uncertainty": 0.045,
+   "doi": "10.1021/je025566c",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 353.15,
+   "P_kPa": null,
+   "value": 2.037,
+   "uncertainty": 0.158,
+   "doi": "10.1021/je025566c",
+   "set": 5,
+   "binary_with": "1-phenylethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.15,
+   "P_kPa": null,
+   "value": 5.541,
+   "uncertainty": 0.164,
+   "doi": "10.1021/je025566c",
+   "set": 5,
+   "binary_with": "1-phenylethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 393.15,
+   "P_kPa": null,
+   "value": 13.154,
+   "uncertainty": 0.175,
+   "doi": "10.1021/je025566c",
+   "set": 5,
+   "binary_with": "1-phenylethanol"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.1,
+   "P_kPa": null,
+   "value": 5.506,
+   "uncertainty": 0.116,
+   "doi": "10.1021/je050317k",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 433.15,
+   "P_kPa": null,
+   "value": 53.234,
+   "uncertainty": 0.37,
+   "doi": "10.1021/je050317k",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.1,
+   "P_kPa": null,
+   "value": 5.506,
+   "uncertainty": 0.116,
+   "doi": "10.1021/je050317k",
+   "set": 16,
+   "binary_with": "acetophenone"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 433.15,
+   "P_kPa": null,
+   "value": 53.234,
+   "uncertainty": 0.37,
+   "doi": "10.1021/je050317k",
+   "set": 16,
+   "binary_with": "acetophenone"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.1,
+   "P_kPa": null,
+   "value": 5.529,
+   "uncertainty": 0.106,
+   "doi": "10.1021/je050327l",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 423.15,
+   "P_kPa": null,
+   "value": 39.182,
+   "uncertainty": 0.202,
+   "doi": "10.1021/je050327l",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.1,
+   "P_kPa": null,
+   "value": 5.529,
+   "uncertainty": 0.106,
+   "doi": "10.1021/je050327l",
+   "set": 9,
+   "binary_with": "2-phenylpropanal"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 423.15,
+   "P_kPa": null,
+   "value": 39.182,
+   "uncertainty": 0.202,
+   "doi": "10.1021/je050327l",
+   "set": 9,
+   "binary_with": "2-phenylpropanal"
+  },
+  {
+   "property": "Critical pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 5670.0,
+   "uncertainty": 340.0,
+   "doi": "10.1021/je0604380",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Critical temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 695.0,
+   "uncertainty": 14.0,
+   "doi": "10.1021/je0604380",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.325,
+   "value": 1058.3,
+   "uncertainty": 0.35,
+   "doi": "10.1021/je100069q",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.325,
+   "value": 1058.3,
+   "uncertainty": 0.11,
+   "doi": "10.1021/je1007923",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.0,
+   "value": 1058.3,
+   "uncertainty": 0.25,
+   "doi": "10.1021/je100888h",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 318.15,
+   "P_kPa": 101.325,
+   "value": 1054.097,
+   "uncertainty": 0.273,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.325,
+   "value": 1049.814,
+   "uncertainty": 0.269,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 328.15,
+   "P_kPa": 101.325,
+   "value": 1045.499,
+   "uncertainty": 0.266,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.325,
+   "value": 1041.158,
+   "uncertainty": 0.262,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 338.15,
+   "P_kPa": 101.325,
+   "value": 1036.792,
+   "uncertainty": 0.259,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 101.325,
+   "value": 1032.398,
+   "uncertainty": 0.255,
+   "doi": "10.1021/je4003256",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.325,
+   "value": 1058.51,
+   "uncertainty": 0.06,
+   "doi": "10.1021/je400776b",
+   "set": 5,
+   "binary_with": null
+  }
+ ]
+}

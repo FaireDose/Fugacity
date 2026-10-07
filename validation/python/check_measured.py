@@ -17,7 +17,8 @@ liquid density 1 %, heat capacity 2 %, heat of vaporization 2 %, viscosity 5 %, 
 5 %; surface tension has none, so it is reported only). Each article counts once (the median of its
 deviations), so that neither an article with many values nor one wrong value decides; the median of
 the articles' deviations is compared with the tolerance: ✅ within it, ⚠️ above it (as in the
-engineering report: a warning for the reviewer), ❌ above three times it (the test fails). The largest
+engineering report: a warning for the reviewer), ❌ above three times it with at least three articles
+(the test fails; with fewer, the median cannot single out a discordant article). The largest
 single deviation is reported with its article, so that a reader can see which data sets disagree.
 """
 import argparse
@@ -56,6 +57,32 @@ CHECKED = {
     "dioxane": ["1,4-dioxane"],
     "isobutanol": ["2-methyl-1-propanol", "isobutanol"],
     "2-butanol": ["2-butanol", "butan-2-ol"],
+    # proposal 0004 and v0.1: the components whose records come from ChemSep, all of them or the transport
+    # properties CoolProp does not model (the CoolProp records are reference equations of state)
+    "acetic-acid": ["acetic acid"],
+    "ethylene-glycol": ["ethane-1,2-diol", "ethylene glycol"],
+    "chloroform": ["trichloromethane", "chloroform"],
+    "ethyl-acetate": ["ethyl acetate"],
+    "styrene": ["ethenylbenzene", "styrene"],
+    "1-propanol": ["propan-1-ol", "1-propanol"],
+    "2-propanol": ["propan-2-ol", "2-propanol"],
+    "1-butanol": ["butan-1-ol", "1-butanol"],
+    "2-butanone": ["butan-2-one", "2-butanone"],
+    "methyl-acetate": ["methyl acetate"],
+    "n-butyl-acetate": ["butyl acetate"],
+    "acetonitrile": ["acetonitrile"],
+    "mtbe": ["2-methoxy-2-methylpropane", "methyl tert-butyl ether"],
+    "glycerol": ["propane-1,2,3-triol", "glycerol"],
+    "phenol": ["phenol"],
+    "acetone": ["acetone", "propan-2-one"],
+    "ethylene": ["ethene", "ethylene"],
+    "carbon-monoxide": ["carbon monoxide"],
+    "hydrogen-sulfide": ["hydrogen sulfide"],
+    "dimethyl-ether": ["methoxymethane", "dimethyl ether"],
+    "cyclohexane": ["cyclohexane"],
+    "diethyl-ether": ["ethoxyethane", "diethyl ether"],
+    "propylene-glycol": ["propane-1,2-diol", "propylene glycol"],
+    "tetrahydrofuran": ["oxolane", "tetrahydrofuran"],
 }
 
 
@@ -109,7 +136,8 @@ def compare(cid, comp, data, prop):
     within = int(np.sum(np.abs(art) <= tol)) if tol else None
     k = int(np.argmax(np.abs(d)))
     a = data["articles"][used[k][3]]
-    status = "reported" if tol is None else ("pass" if med <= tol else ("warn" if med <= 3 * tol else "FAIL"))
+    # with fewer than three articles the median cannot single out a discordant article: a warning, not a failure
+    status = "reported" if tol is None else ("pass" if med <= tol else ("warn" if med <= 3 * tol or len(per) < 3 else "FAIL"))
     return {"status": status, "n_all": len(vals), "n": len(used), "articles": len(per), "within": within,
             "T": [float(T.min()), float(T.max())], "median": med, "max": float(d[k]), "max_T": float(T[k]),
             "max_ref": "%s %s, doi:%s" % (a["authors"][0].split(",")[0], a["year"], used[k][3]), "tol": tol}
@@ -136,7 +164,8 @@ def report():
          "density 1 %, heat capacity 2 %, heat of vaporization 2 %, viscosity 5 %, thermal conductivity 5 %; surface "
          "tension has none and is reported only. Each article counts once (the median of its deviations); the median "
          "of the articles is compared with the tolerance: ✅ within it, ⚠️ above it (a warning, as in the engineering "
-         "report), ❌ above three times it (the test fails). The largest single deviation and its article show which "
+         "report), ❌ above three times it with at least three articles (the test fails; with fewer articles the median "
+         "cannot single out a discordant one, so it stays a warning). The largest single deviation and its article show which "
          "data sets disagree. For a record fitted to these values (marked) the comparison only confirms the fit.", ""]
     fails = []
     for cid in CHECKED:

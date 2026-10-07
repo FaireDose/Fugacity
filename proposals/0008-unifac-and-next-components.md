@@ -179,6 +179,17 @@ N,N-dimethylformamide and N-methyl-2-pyrrolidone, 1-5 %) stay as they are and sa
 record: the measured values within the target do not cover 25 °C to 100 °C, so a refit would
 shorten the range, or the measured sets disagree among themselves.
 
+**The older components, checked the same way:** the 24 components of proposal 0004 and v0.1 whose
+records come from ChemSep (all of them, or the transport properties CoolProp does not model) were
+compared with 25,540 measured values from 2,046 articles. Most records are within the
+tolerances. Refitted to the measured values: the vapour pressure of glycerol (ChemSep 7 % off;
+one of the two articles, with 2 points, still disagrees with the other's 88), phenol (ChemSep up
+to 32 % off below 400 K, also against the 1949 Antoine equation on the WebBook), 1-butanol and
+acetonitrile, and the viscosity of glycerol (ChemSep 38 % off). Propylene glycol's viscosities,
+thermal conductivities, surface tension and UNIQUAC r and q now come from `chemsep2.xml`. Since
+then the engineering report of every pull request lists these comparisons ("Records against
+measured data"), for `main` and for the pull request.
+
 Batches, in the order of the process areas: 1. extraction solvents (11 found), 2. gas treating
 and acids/esters (14), 3. petrochemicals and nitrogen compounds (13), 4. solids (3). The five not
 found follow when a source is found.

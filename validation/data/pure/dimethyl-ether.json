@@ -778,7 +778,8 @@
     "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
     "access": "MIT (open source)",
     "quantity": "surface tension",
-    "fit": "200 points 131.66-380.35 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+    "fit": "200 points 131.66-380.35 K (triple point to 0.95 Tc), max deviation 0.0001 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 39 measured values from 2 articles, 214.0-380.0 K; median deviation of the articles 3.84 %; largest single deviation -5.54 % at 355.0 K (Baidakov 2016, doi:10.1016/j.fluid.2016.01.001); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     131.66,

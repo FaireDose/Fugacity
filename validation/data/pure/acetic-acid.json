@@ -10,7 +10,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 594.45 K (ChemSep: 594.75 K). Tmin raised to the triple point 289.81 K (ChemSep: 273.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0520 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 289.81-594.45 K",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 92 measured values from 48 articles, 293.0-353.1 K; median deviation of the articles 0.14 % (within the 1 % tolerance of the engineering report); largest single deviation -0.67 % at 293.1 K (Mohsen-Nia 2013, doi:10.1016/j.jct.2012.08.009); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     289.81,
@@ -355,7 +356,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 289.81 K (ChemSep: 288.15 K).; reproduces ChemSep within 0.0001 % at 200 points 289.81-474.00 K",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 6 articles, 293.1-373.1 K; median deviation of the articles 0.60 % (within the 5 % tolerance of the engineering report); largest single deviation -2.52 % at 373.1 K (Fang 2008, doi:10.1021/je800635g); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     289.81,

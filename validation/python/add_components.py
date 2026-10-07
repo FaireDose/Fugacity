@@ -208,6 +208,7 @@ def main():
     ap.add_argument("--batch", type=int, required=True, choices=sorted(BATCHES))
     ap.add_argument("--chemsep", required=True, nargs="+",
                     help="path to ChemSep chemsep1.xml (v8.3), and optionally chemsep2.xml (v8.31 data 2)")
+    ap.add_argument("--only", nargs="+", help="only these components of the batch")
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
     import CoolProp
@@ -217,6 +218,8 @@ def main():
     comps = data["components"]
     cs = ChemSep(args.chemsep)
     for cid, name, fluid, aliases in BATCHES[args.batch]:
+        if args.only and cid not in args.only:
+            continue
         rec = record(cid, name, fluid, aliases) if fluid else record_chemsep(cid, name, aliases, cs)
         if rec["Tb_K"] is not None and rec["Tb_K"] > 298.15:
             # a liquid at 25 degC: UNIQUAC r and q for the activity-coefficient models, after Tb (as in v0.1);

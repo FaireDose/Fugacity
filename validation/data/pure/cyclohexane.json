@@ -10,7 +10,8 @@
     "reference": "Zhou et al., J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.16 %"
+    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.16 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 263 measured values from 116 articles, 283.1-358.1 K; median deviation of the articles 0.03 % (within the 1 % tolerance of the engineering report); largest single deviation -0.76 % at 298.1 K (Yang 2010, doi:10.1021/je900669t); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     279.48,
@@ -202,7 +203,8 @@
     "reference": "Zhou et al., J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 279.48-513.59 K, max deviation 0.42 %; range narrowed from 279.48-525.92 K (max deviation there 1.1 %) to meet the 1 % target"
+    "fit": "200 points 279.48-513.59 K, max deviation 0.42 %; range narrowed from 279.48-525.92 K (max deviation there 1.1 %) to meet the 1 % target",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 4 articles, 293.1-333.1 K; median deviation of the articles 0.37 % (within the 2 % tolerance of the engineering report); largest single deviation +3.43 % at 298.1 K (Tjahjono 2008, doi:10.1016/j.jct.2008.06.008); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     279.48,
@@ -394,7 +396,8 @@
     "reference": "Tariq et al., J. Phys. Chem. Ref. Data 43 (2014) 033101-1:18, doi:10.1063/1.4891103",
     "access": "MIT (open source)",
     "quantity": "saturated liquid",
-    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.61 %"
+    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.61 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 77 measured values from 24 articles, 283.1-333.1 K; median deviation of the articles 0.61 % (within the 5 % tolerance of the engineering report); largest single deviation +4.87 % at 321.1 K (Hammami 2014, doi:10.1016/j.fluid.2014.10.013); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     279.48,
@@ -588,7 +591,8 @@
     "access": "free to read (NIST SRD 69)",
     "fit": "422 tabulated points 279.86-525.82 K, max deviation 0.065 %",
     "notes": "WebBook: estimated uncertainty 4 % for the compressed liquid, 2.5 % for the low-pressure gas (280-680 K). Tables downloaded 2026-10-03 (validation/data/pure/webbook_fluid/cyclohexane.json).",
-    "chain": "CoolProp 8.0.0: no thermal conductivity model"
+    "chain": "CoolProp 8.0.0: no thermal conductivity model",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 1 articles, 280.8-318.9 K; median deviation of the articles 0.16 % (within the 5 % tolerance of the engineering report); largest single deviation +0.51 % at 281.1 K (Watanabe 2004, doi:10.1021/je034162x); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     279.86016,
@@ -1704,7 +1708,8 @@
     "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
     "access": "MIT (open source)",
     "quantity": "surface tension",
-    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.023 %"
+    "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.023 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 22 measured values from 6 articles, 282.8-337.9 K; median deviation of the articles 1.10 %; largest single deviation -2.19 % at 328.1 K (Wang 2011, doi:10.1021/je200349t); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     279.48,

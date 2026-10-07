@@ -10,7 +10,8 @@
     "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.31 %"
+    "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.31 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 147 measured values from 64 articles, 278.1-333.1 K; median deviation of the articles 0.11 % (within the 1 % tolerance of the engineering report); largest single deviation -1.17 % at 303.0 K (Nath 2013, doi:10.1007/s10765-013-1527-7); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     178.5,
@@ -396,7 +397,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 190.00-408.00 K",
-    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid"
+    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 9 articles, 278.1-318.1 K; median deviation of the articles 0.41 % (within the 5 % tolerance of the engineering report); largest single deviation -5.52 % at 313.1 K (Yang 2010, doi:10.1021/je900535d); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     190.0,
@@ -780,7 +782,8 @@
     "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
     "access": "MIT (open source)",
     "quantity": "surface tension",
-    "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+    "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.0001 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 7 articles, 287.8-328.1 K; median deviation of the articles 1.54 %; largest single deviation -5.43 % at 298.1 K (Ouyang 2004, doi:10.1021/je0341763); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     178.5,

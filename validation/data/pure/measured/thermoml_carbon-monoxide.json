@@ -1,0 +1,600 @@
+{
+ "component": "carbon-monoxide",
+ "cas": "630-08-0",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"carbon monoxide\"; 37 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1007/s10765-012-1185-1": {
+   "authors": [
+    "Vogel, E.[Eckhard]"
+   ],
+   "title": "Towards Reference Viscosities of Carbon Monoxide and Nitrogen at Low Density Using Measurements between 290K and 680K as well as Theoretically Calculated Viscosities",
+   "journal": "Int. J. Thermophys.",
+   "volume": "33",
+   "year": "2012",
+   "pages": "741-757"
+  },
+  "10.1021/acs.jced.7b00782": {
+   "authors": [
+    "Zhang, Fan",
+    "Ahmar, Elise El",
+    "Valtz, Alain",
+    "Boonaert, Eric",
+    "Coquelet, Christophe",
+    "Chapoy, Antonin"
+   ],
+   "title": "Phase Equilibrium of Three Binary Mixtures Containing NO and Components Present in Ambient Air",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "63",
+   "year": "2018",
+   "pages": "1021-1026"
+  }
+ },
+ "rows": [
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 292.39,
+   "P_kPa": null,
+   "value": 1.7497e-05,
+   "uncertainty": 1.24e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 296.81,
+   "P_kPa": null,
+   "value": 1.7702e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 323.95,
+   "P_kPa": null,
+   "value": 1.8936e-05,
+   "uncertainty": 1.33e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 350.09,
+   "P_kPa": null,
+   "value": 2.0072e-05,
+   "uncertainty": 1.39e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 377.81,
+   "P_kPa": null,
+   "value": 2.1231e-05,
+   "uncertainty": 1.46e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 297.19,
+   "P_kPa": null,
+   "value": 1.7715e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 405.55,
+   "P_kPa": null,
+   "value": 2.2357e-05,
+   "uncertainty": 1.52e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 433.45,
+   "P_kPa": null,
+   "value": 2.3445e-05,
+   "uncertainty": 1.59e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 298.58,
+   "P_kPa": null,
+   "value": 1.7776e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 461.45,
+   "P_kPa": null,
+   "value": 2.451e-05,
+   "uncertainty": 1.65e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 489.81,
+   "P_kPa": null,
+   "value": 2.5571e-05,
+   "uncertainty": 1.71e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 298.54,
+   "P_kPa": null,
+   "value": 1.7779e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 518.44,
+   "P_kPa": null,
+   "value": 2.6602e-05,
+   "uncertainty": 1.77e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 542.05,
+   "P_kPa": null,
+   "value": 2.7437e-05,
+   "uncertainty": 1.82e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 299.09,
+   "P_kPa": null,
+   "value": 1.7804e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 299.27,
+   "P_kPa": null,
+   "value": 1.7811e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 593.37,
+   "P_kPa": null,
+   "value": 2.919e-05,
+   "uncertainty": 1.92e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 622.5,
+   "P_kPa": null,
+   "value": 3.0145e-05,
+   "uncertainty": 1.97e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 296.74,
+   "P_kPa": null,
+   "value": 1.7691e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 651.68,
+   "P_kPa": null,
+   "value": 3.1102e-05,
+   "uncertainty": 2.03e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 681.07,
+   "P_kPa": null,
+   "value": 3.2029e-05,
+   "uncertainty": 2.08e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 288.72,
+   "P_kPa": null,
+   "value": 1.732e-05,
+   "uncertainty": 1.23e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 296.53,
+   "P_kPa": null,
+   "value": 1.7698e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 323.27,
+   "P_kPa": null,
+   "value": 1.89e-05,
+   "uncertainty": 1.33e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 349.98,
+   "P_kPa": null,
+   "value": 2.0068e-05,
+   "uncertainty": 1.39e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 377.57,
+   "P_kPa": null,
+   "value": 2.1229e-05,
+   "uncertainty": 1.46e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 405.3,
+   "P_kPa": null,
+   "value": 2.2351e-05,
+   "uncertainty": 1.52e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 433.29,
+   "P_kPa": null,
+   "value": 2.345e-05,
+   "uncertainty": 1.59e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 296.67,
+   "P_kPa": null,
+   "value": 1.7699e-05,
+   "uncertainty": 1.26e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 461.39,
+   "P_kPa": null,
+   "value": 2.4521e-05,
+   "uncertainty": 1.65e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 489.68,
+   "P_kPa": null,
+   "value": 2.5576e-05,
+   "uncertainty": 1.71e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 518.13,
+   "P_kPa": null,
+   "value": 2.6594e-05,
+   "uncertainty": 1.77e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 542.09,
+   "P_kPa": null,
+   "value": 2.7443e-05,
+   "uncertainty": 1.82e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 564.73,
+   "P_kPa": null,
+   "value": 2.8219e-05,
+   "uncertainty": 1.86e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 593.52,
+   "P_kPa": null,
+   "value": 2.9198e-05,
+   "uncertainty": 1.92e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 622.67,
+   "P_kPa": null,
+   "value": 3.016e-05,
+   "uncertainty": 1.98e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 651.51,
+   "P_kPa": null,
+   "value": 3.1102e-05,
+   "uncertainty": 2.03e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 680.94,
+   "P_kPa": null,
+   "value": 3.2026e-05,
+   "uncertainty": 2.08e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 288.91,
+   "P_kPa": null,
+   "value": 1.7335e-05,
+   "uncertainty": 1.24e-07,
+   "doi": "10.1007/s10765-012-1185-1",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 105.89,
+   "P_kPa": null,
+   "value": 830.0,
+   "uncertainty": 40.0,
+   "doi": "10.1021/acs.jced.7b00782",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 127.32,
+   "P_kPa": null,
+   "value": 2682.0,
+   "uncertainty": 40.1,
+   "doi": "10.1021/acs.jced.7b00782",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 105.89,
+   "P_kPa": null,
+   "value": 830.0,
+   "uncertainty": 40.0,
+   "doi": "10.1021/acs.jced.7b00782",
+   "set": 7,
+   "binary_with": "nitrogen oxide (NO)"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 127.32,
+   "P_kPa": null,
+   "value": 2682.0,
+   "uncertainty": 40.7,
+   "doi": "10.1021/acs.jced.7b00782",
+   "set": 7,
+   "binary_with": "nitrogen oxide (NO)"
+  }
+ ]
+}

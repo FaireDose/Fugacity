@@ -10,7 +10,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 116.1583 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 199.65-575.40 K",
-    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 115 measured values from 41 articles, 288.1-393.1 K; median deviation of the articles 0.09 % (within the 1 % tolerance of the engineering report); largest single deviation -1.38 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     199.65,
@@ -394,7 +395,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 250.00-399.26 K",
-    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 32 measured values from 12 articles, 293.1-343.1 K; median deviation of the articles 1.23 % (within the 5 % tolerance of the engineering report); largest single deviation +4.71 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     250.0,

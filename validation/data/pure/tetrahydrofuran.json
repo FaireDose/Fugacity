@@ -10,7 +10,8 @@
     "reference": "Fiedler et al., International Journal of Thermophysics 44 (2023) 153",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 164.76-513.18 K (triple point to 0.95 Tc), max deviation 0.27 %"
+    "fit": "200 points 164.76-513.18 K (triple point to 0.95 Tc), max deviation 0.27 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 171 measured values from 61 articles, 278.1-333.1 K; median deviation of the articles 0.06 % (within the 1 % tolerance of the engineering report); largest single deviation -1.94 % at 328.1 K (Bandres 2008, doi:10.1016/j.jct.2008.03.017); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     164.76,
@@ -202,7 +203,8 @@
     "reference": "Fiedler et al., International Journal of Thermophysics 44 (2023) 153",
     "access": "MIT (open source)",
     "quantity": "cp of the saturated liquid",
-    "fit": "200 points 164.76-495.75 K, max deviation 0.79 %; range narrowed from 164.76-513.18 K (max deviation there 2.5 %) to meet the 1 % target"
+    "fit": "200 points 164.76-495.75 K, max deviation 0.79 %; range narrowed from 164.76-513.18 K (max deviation there 2.5 %) to meet the 1 % target",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 288.1-323.1 K; median deviation of the articles 2.08 % (above the 2 % tolerance of the engineering report); largest single deviation -3.46 % at 323.1 K (Francesconi 2006, doi:10.1016/j.tca.2006.05.010); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     164.76,
@@ -394,7 +396,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 164.76 K (ChemSep: 164.65 K).; reproduces ChemSep within 0.0001 % at 200 points 164.76-440.00 K",
-    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid"
+    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 56 measured values from 19 articles, 283.1-323.1 K; median deviation of the articles 1.93 % (within the 5 % tolerance of the engineering report); largest single deviation +32.96 % at 303.1 K (Oswal 2009, doi:10.1016/j.tca.2009.07.008); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     164.76,
@@ -778,7 +781,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 164.76-513.19 K (ChemSep range, Tmin raised to the triple point, limited to 0.95 Tc), max deviation 0.56 %",
-    "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid"
+    "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 288.1-313.1 K; median deviation of the articles 1.68 %; largest single deviation -2.41 % at 308.1 K (Ku 2008, doi:10.1021/je700626v); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     164.76,
