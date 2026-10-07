@@ -449,7 +449,7 @@ Rules: liquid values at 110 kPa or less, inside the record's temperature range, 
 | Vapour pressure | 1 | | | | | too few values (1 measured in all) |
 | Liquid density | 69 | 22 (22) | 288.1-343.1 | 0.01 % | +0.72 % at 313.1 K (Abu-Daabes 2009, doi:10.1016/j.jct.2008.07.009) | ✅ within 1 % |
 | Liquid heat capacity | 1 | | | | | too few values (1 measured in all) |
-| Liquid viscosity | 29 | 6 (0) | 278.1-335.1 | 14.34 % | +25.55 % at 278.1 K (Szwajczak 2009, doi:10.1021/je800439e) | ⚠️ above 5 % |
+| Liquid viscosity | 29 | 6 (0) | 278.1-335.1 | 14.34 % | +25.55 % at 278.1 K (Szwajczak 2009, doi:10.1021/je800439e) | ⚠️ above 5 % — known issue: the ChemSep v8.3 viscosity is 10-20 % above all six articles (278-350 K); a refit to them would cover only 278-350 K instead of 228-550 K, so the record stays for now (proposal 0008, batch 3) |
 | Liquid thermal conductivity | 15 | 1 (1) | 258.7-332.3 | 1.27 % | +1.91 % at 332.3 K (Watanabe 2004, doi:10.1021/je034162x) | ✅ within 5 % |
 | Surface tension | 11 | 5 | 298.1-313.1 | 0.86 % | +4.55 % at 298.1 K (Pan 2004, doi:10.1021/je0497294) | reported (no tolerance) |
 

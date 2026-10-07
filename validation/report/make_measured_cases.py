@@ -13,9 +13,12 @@ values, in percent (the rules of check_measured.py and test/measured-checks.test
 scripts/engineering-report.mjs). Its reference is zero deviation; its tolerance that of proposal 0002.
 """
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "validation/python"))
+from check_measured import KNOWN  # noqa: E402  (known issues: records out of tolerance that stay for now)
 CASES = ROOT / "validation/report/cases.json"
 REF = ROOT / "validation/report/reference/measured.json"
 comp = json.loads((ROOT / "src/data/components.json").read_text())["components"]
@@ -54,7 +57,8 @@ def main():
     ids = [c for c in ids if c in comp and "Measured data only" not in comp[c].get("constants_source", "")]
     cases = [{"id": f"measured/{c}/{prop}", "type": "measuredSet", "component": c, "name": comp[c]["name"], "property": prop,
               "data": f"validation/data/pure/measured/thermoml_{c}.json",
-              "quantities": [{"key": "medianDev_pct", "tol": tol}]} for c in ids for prop, tol in PROPS.items()]
+              "quantities": [{"key": "medianDev_pct", "tol": tol}],
+              **({"known": KNOWN[(c, prop)]} if (c, prop) in KNOWN else {})} for c in ids for prop, tol in PROPS.items()]
     group = {"id": "measured", "title": "Records against measured data (NIST ThermoML Archive)", "cases": cases}
     out["groups"] = [g for g in out["groups"] if g["id"] != "measured"] + [group]
     out["tolerances"].update(TOL)

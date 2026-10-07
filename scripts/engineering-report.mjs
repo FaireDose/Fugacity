@@ -640,8 +640,10 @@ export function compare(cases, refs, base, head) {
         if (changed) summary.changed++;
         const show = changed || newer || lost || status === "error" || status === "out" || status === "outInfo";
         const asOnMain = !changed && b.status === "ok" && withinTolerance(baseDev, tol) === false;
+        // a known issue (cases.json "known"): a stated reason why the result stays out of tolerance for now
+        const known = (status === "out" || status === "outInfo") && cs.known ? cs.known : null;
         rows.push({ id: cs.id, key: q.key, ...describe(cs, q.key), unit: QUANTITIES[q.key]?.unit ?? "",
-          base: b, head: h, ref, dev, baseDev, tol, inTol, status, changed, newer, lost, asOnMain, show });
+          base: b, head: h, ref, dev, baseDev, tol, inTol, status, changed, newer, lost, asOnMain, show, known });
       }
     }
     groups.push({ id: g.id, title: g.title, rows });
@@ -681,6 +683,7 @@ function statusText(row) {
   if (row.newer && row.status !== "na") t = `🆕 ${t}`;
   else if (row.changed) t = `✏️ ${t}`;
   else if (row.asOnMain && (row.status === "out" || row.status === "outInfo")) t += " as on main";
+  if (row.known) t += " (known issue)";
   return t;
 }
 
@@ -720,6 +723,12 @@ export function renderMarkdown(cmp, meta = {}) {
       ? `> ℹ️ This pull request adds the engineering report itself; there is no earlier report to compare with.`
       : `> ⚠️ **This pull request changes the report itself** (${m.changed.map(f => "`" + esc(f) + "`").join(", ")}). Check those changes (cases, references, tolerances, script) before relying on the ✅ marks.`, ``);
   }
+  // known issues first, so that a long list of changes never pushes them out of the comment
+  const known = cmp.groups.flatMap(g => g.rows.filter(r => r.known));
+  if (known.length) {
+    head.push(`### Known issues`, ``, `Out of tolerance, with a stated reason; left as they are for now.`, ``,
+      ...known.map(r => `- **${esc(r.property)}** (${formatDeviation(r.dev, r.tol, r.key)}): ${esc(r.known)}`), ``);
+  }
   const changes = [];
   for (const g of cmp.groups) {
     const rows = g.rows.filter(r => r.show);
@@ -727,6 +736,7 @@ export function renderMarkdown(cmp, meta = {}) {
     changes.push(`### ${g.title}`, ``, MD_HEAD, ...rows.map(mdRow), ``);
   }
   if (!changes.length) changes.push(`No result changed and every result with a reference is within tolerance.`, ``);
+
   const legend = [
     `<sub>Deviation = this PR minus reference (relative for properties, absolute for temperatures and compositions). ` +
     `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = informational, does not block (an equation of state against a reference equation of state, or an excess enthalpy compared with data the fit used or predicted outside the fitted range). ` +
@@ -857,7 +867,8 @@ function htmlTable(rows, refs) {
       ? `<td class="n" title="${h(x.method ?? "")}">${fmtValue(r.key, x.value)}</td>`
       : `<td class="n na" title="${h(x.reason ?? "")}">${x.status === "na" ? "n/a" : "error"}</td>`;
     return `<tr class="st-${r.status}"><td>${h(r.property)}</td><td>${h(r.conditions)}</td><td>${h(r.unit)}</td>${tdv(r.base)}${tdv(r.head)}` +
-      `<td class="n" title="${h(refTitle)}">${ref}</td><td class="n">${formatDeviation(r.dev, r.tol, r.key)}</td><td class="n tol">${h(tolText(r.tol))}</td><td>${statusText(r)}</td></tr>`;
+      `<td class="n" title="${h(refTitle)}">${ref}</td><td class="n">${formatDeviation(r.dev, r.tol, r.key)}</td><td class="n tol">${h(tolText(r.tol))}</td>` +
+      `<td${r.known ? ` title="${h(r.known)}"` : ""}>${statusText(r)}</td></tr>`;
   };
   return `<div class="tw"><table><thead><tr><th>Property</th><th>Conditions</th><th>Unit</th><th>main</th><th>this PR</th><th>Reference</th><th>Deviation</th><th>Tolerance</th><th></th></tr></thead><tbody>${rows.map(tr).join("")}</tbody></table></div>`;
 }
