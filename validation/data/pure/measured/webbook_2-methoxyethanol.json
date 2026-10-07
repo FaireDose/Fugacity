@@ -1,0 +1,327 @@
+{
+ "component": "2-methoxyethanol",
+ "retrieved": "2026-10-06",
+ "pages": {
+  "gas phase thermochemistry": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=1",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "ΔfH°gas",
+       "-376.9 ± 8.1",
+       "kJ/mol",
+       "Cm",
+       "Guthrie, 1977",
+       "Hydrolysis; ALS"
+      ],
+      [
+       "ΔfH°gas",
+       "-395.9",
+       "kJ/mol",
+       "N/A",
+       "Simonetta, 1947",
+       "Value computed using ΔfHliquid° value of -441.0 kj/mol from  Simonetta, 1947 and ΔvapH° value of 45.1 kj/mol from  Guthrie, 1977.; DRB"
+      ]
+     ]
+    }
+   ]
+  },
+  "condensed phase thermochemistry": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=2",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "ΔfH°liquid",
+       "-422.0 ± 7.6",
+       "kJ/mol",
+       "Cm",
+       "Guthrie, 1977",
+       "Hydrolysis; ALS"
+      ],
+      [
+       "ΔfH°liquid",
+       "-441.0",
+       "kJ/mol",
+       "Ccb",
+       "Simonetta, 1947",
+       "Author value for hf298-condensed=-123 kcal/mol; ALS"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "ΔcH°liquid",
+       "-1880.",
+       "kJ/mol",
+       "Ccb",
+       "Simonetta, 1947",
+       "Author value for hf298-condensed=-123 kcal/mol; Corresponding ΔfHºliquid = -439. kJ/mol (simple calculation by NIST; no Washburn corrections); ALS"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Cp,liquid (J/mol*K)",
+      "Temperature (K)",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "175.38",
+       "298.15",
+       "Svoboda, Zabransky, et al., 1991",
+       "T = 298 to 330 K. Cp(liq) = 84.235 + 0.3057(T/K) J/mol*K. Cp value calculated from equation.; DH"
+      ],
+      [
+       "176.6",
+       "298.15",
+       "Roux, Perron, et al., 1978",
+       "DH"
+      ],
+      [
+       "174.9",
+       "298.15",
+       "Kusano, Suurkuusk, et al., 1973",
+       "DH"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Cp,liquid",
+      "Constant pressure heat capacity of liquid"
+     ],
+     "rows": [
+      [
+       "ΔcH°liquid",
+       "Enthalpy of combustion of liquid at standard conditions"
+      ],
+      [
+       "ΔfH°liquid",
+       "Enthalpy of formation of liquid at standard conditions"
+      ]
+     ]
+    }
+   ]
+  },
+  "phase change": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "Tboil",
+       "397.5 ± 0.3",
+       "K",
+       "AVG",
+       "N/A",
+       "Average of 8 values; Individual data points"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "Tc",
+       "597.6",
+       "K",
+       "N/A",
+       "Wilson, Wilson, et al., 1996",
+       "Uncertainty assigned by TRC =  0.2 K; by a static method; TRC"
+      ],
+      [
+       "Tc",
+       "571.",
+       "K",
+       "N/A",
+       "Steele, Chirico, et al., 1994",
+       "Uncertainty assigned by TRC =  2. K; TRC"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "Pc",
+       "52.85",
+       "bar",
+       "N/A",
+       "Wilson, Wilson, et al., 1996",
+       "Uncertainty assigned by TRC =  0.20 bar; by a static method; TRC"
+      ],
+      [
+       "Pc",
+       "36.00",
+       "bar",
+       "N/A",
+       "Steele, Chirico, et al., 1994",
+       "Uncertainty assigned by TRC =  0.05 bar; TRC"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "ρc",
+       "3.80",
+       "mol/l",
+       "N/A",
+       "Wilson, Wilson, et al., 1996",
+       "Uncertainty assigned by TRC =  0.09 mol/l; TRC"
+      ],
+      [
+       "ρc",
+       "4.03",
+       "mol/l",
+       "N/A",
+       "Steele, Chirico, et al., 1994",
+       "Uncertainty assigned by TRC =  0.04 mol/l; TRC"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "ΔvapH°",
+       "45.2",
+       "kJ/mol",
+       "N/A",
+       "Majer and Svoboda, 1985",
+       ""
+      ],
+      [
+       "ΔvapH°",
+       "45.1",
+       "kJ/mol",
+       "N/A",
+       "Guthrie, 1977",
+       "DRB"
+      ],
+      [
+       "ΔvapH°",
+       "45.2 ± 0.2",
+       "kJ/mol",
+       "C",
+       "Kusano, Wadsö, et al., 1971",
+       "AC"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "ΔvapH (kJ/mol)",
+      "Temperature (K)",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "37.54",
+       "397.3",
+       "N/A",
+       "Majer and Svoboda, 1985",
+       ""
+      ],
+      [
+       "43.0",
+       "361.",
+       "N/A",
+       "Marrufo, Loras, et al., 2010",
+       "Based on data from 346. to 397. K.; AC"
+      ],
+      [
+       "42.8",
+       "348.",
+       "A",
+       "Stephenson and Malanowski, 1987",
+       "Based on data from 333. to 423. K.; AC"
+      ],
+      [
+       "42.9",
+       "344.",
+       "N/A",
+       "Pick, Fried, et al., 1956",
+       "Based on data from 329. to 396. K.; AC"
+      ],
+      [
+       "41.3",
+       "273.",
+       "V",
+       "Gallaugher and Hibbert, 1937",
+       "ALS"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Temperature (K)",
+      "A",
+      "B",
+      "C",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "329.3 to 396.7",
+       "5.06386",
+       "1853.556",
+       "-30.838",
+       "Pick, Fried, et al., 1956, 2",
+       "Coefficents calculated by NIST from author's data."
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

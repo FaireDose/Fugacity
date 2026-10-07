@@ -1,0 +1,523 @@
+{
+ "component": "dichloromethane",
+ "retrieved": "2026-10-06",
+ "pages": {
+  "gas phase thermochemistry": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=1",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "ΔfH°gas",
+       "-95.52",
+       "kJ/mol",
+       "Review",
+       "Chase, 1998",
+       "Data last reviewed in December, 1968"
+      ],
+      [
+       "ΔfH°gas",
+       "-95.1 ± 2.5",
+       "kJ/mol",
+       "Review",
+       "Manion, 2002",
+       "derived from recommended ΔfHliquid° and ΔvapH°; DRB"
+      ],
+      [
+       "ΔfH°gas",
+       "-95.7 ± 1.3",
+       "kJ/mol",
+       "Chyd",
+       "Lacher, Amador, et al., 1967",
+       "Reanalyzed by  Cox and Pilcher, 1970, Original value = -96.0 ± 1.3  kJ/mol; At 250 C; ALS"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "S°gas,1 bar",
+       "270.28",
+       "J/mol*K",
+       "Review",
+       "Chase, 1998",
+       "Data last reviewed in December, 1968"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Temperature (K)",
+      "298. to 1200.",
+      "1200. to 6000."
+     ],
+     "rows": [
+      [
+       "A",
+       "19.17351",
+       "95.12993"
+      ],
+      [
+       "B",
+       "136.8444",
+       "6.721722"
+      ],
+      [
+       "C",
+       "-95.12993",
+       "-1.288196"
+      ],
+      [
+       "D",
+       "26.03105",
+       "0.085646"
+      ],
+      [
+       "E",
+       "-0.119405",
+       "-14.93885"
+      ],
+      [
+       "F",
+       "-106.9338",
+       "-157.3506"
+      ],
+      [
+       "G",
+       "256.0144",
+       "340.5412"
+      ],
+      [
+       "H",
+       "-95.52114",
+       "-95.52114"
+      ],
+      [
+       "Reference",
+       "Chase, 1998",
+       "Chase, 1998"
+      ],
+      [
+       "Comment",
+       "Data last reviewed in December, 1968",
+       "Data last reviewed in December, 1968"
+      ]
+     ]
+    }
+   ]
+  },
+  "condensed phase thermochemistry": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=2",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "ΔfH°liquid",
+       "-124.1 ± 2.5",
+       "kJ/mol",
+       "Review",
+       "Manion, 2002",
+       "adopted combustion calorimetry data of  Hu and Sinke, 1969 with increased uncertainty to reflect other data; DRB"
+      ],
+      [
+       "ΔfH°liquid",
+       "-124.3",
+       "kJ/mol",
+       "Ccr",
+       "Hu and Sinke, 1969, 2",
+       "ALS"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "ΔcH°liquid",
+       "-602.50",
+       "kJ/mol",
+       "Ccr",
+       "Hu and Sinke, 1969, 2",
+       "ALS"
+      ],
+      [
+       "ΔcH°liquid",
+       "-605.8 ± 8.4",
+       "kJ/mol",
+       "Ccb",
+       "Smith, Bjellerup, et al., 1953",
+       "Reanalyzed by  Cox and Pilcher, 1970, Original value = -605. ± 4.  kJ/mol; ALS"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "S°liquid",
+       "174.5",
+       "J/mol*K",
+       "N/A",
+       "Moseeva, Rabinovich, et al., 1978",
+       "DH"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Cp,liquid (J/mol*K)",
+      "Temperature (K)",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "102.3",
+       "298.15",
+       "Moseeva, Rabinovich, et al., 1978",
+       "T = 5 to 300 K.; DH"
+      ],
+      [
+       "105.5",
+       "303.2",
+       "Harrison and Moelwyn-Hughes, 1957",
+       "T = 244 to 303 K. Unsmoothed experimental datum.; DH"
+      ],
+      [
+       "129.3",
+       "298.",
+       "Kurbatov, 1948",
+       "T = -76 to 41°C. Mean Cp, four temperatures.; DH"
+      ],
+      [
+       "100.0",
+       "298.",
+       "Riedel, 1941",
+       "T = -47 to 41°C.; DH"
+      ],
+      [
+       "100.0",
+       "298.1",
+       "Riedel, 1940",
+       "T = -47 to 41°C.; DH"
+      ],
+      [
+       "100.5",
+       "292.5",
+       "Perlick, 1937",
+       "T = -58 to 19°C. Value is unsmoothed experimental datum.; DH"
+      ],
+      [
+       "100.8",
+       "292.5",
+       "Perlick, 1937, 2",
+       "T = -58 to 19°C. Value is unsmoothed experimental datum.; DH"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Cp,liquid",
+      "Constant pressure heat capacity of liquid"
+     ],
+     "rows": [
+      [
+       "S°liquid",
+       "Entropy of liquid at standard conditions"
+      ],
+      [
+       "ΔcH°liquid",
+       "Enthalpy of combustion of liquid at standard conditions"
+      ],
+      [
+       "ΔfH°liquid",
+       "Enthalpy of formation of liquid at standard conditions"
+      ]
+     ]
+    }
+   ]
+  },
+  "phase change": {
+   "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4",
+   "tables": [
+    {
+     "header": [
+      "Quantity",
+      "Value",
+      "Units",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "Tboil",
+       "313. ± 1.",
+       "K",
+       "AVG",
+       "N/A",
+       "Average of 12 values; Individual data points"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "Tfus",
+       "198.06",
+       "K",
+       "N/A",
+       "Timmermans, 1952",
+       "Uncertainty assigned by TRC =  0.4 K; TRC"
+      ],
+      [
+       "Tfus",
+       "176.",
+       "K",
+       "N/A",
+       "Van de Vloed, 1939",
+       "Uncertainty assigned by TRC =  1.5 K; TRC"
+      ],
+      [
+       "Tfus",
+       "177.",
+       "K",
+       "N/A",
+       "Timmermans, 1935",
+       "Uncertainty assigned by TRC =  2. K; TRC"
+      ],
+      [
+       "Tfus",
+       "176.65",
+       "K",
+       "N/A",
+       "Timmermans, 1934",
+       "Uncertainty assigned by TRC =  0.4 K; TRC"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "Tc",
+       "508.",
+       "K",
+       "N/A",
+       "Garcia-Sanchez, Romero-Martinez, et al., 1989",
+       "Uncertainty assigned by TRC =  0.2 K; mean of 5 determinations, direct observation of meniscus; TRC"
+      ],
+      [
+       "Tc",
+       "510.",
+       "K",
+       "N/A",
+       "Majer and Svoboda, 1985",
+       ""
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "Pc",
+       "63.55",
+       "bar",
+       "N/A",
+       "Garcia-Sanchez, Romero-Martinez, et al., 1989",
+       "Uncertainty assigned by TRC =  0.15 bar; mean of 5 determinations, measurement of P at Tc; TRC"
+      ],
+      [
+       "Quantity",
+       "Value",
+       "Units",
+       "Method",
+       "Reference",
+       "Comment"
+      ],
+      [
+       "ΔvapH°",
+       "29.",
+       "kJ/mol",
+       "N/A",
+       "Majer and Svoboda, 1985",
+       ""
+      ],
+      [
+       "ΔvapH°",
+       "29.03 ± 0.08",
+       "kJ/mol",
+       "Review",
+       "Manion, 2002",
+       "adopted  Majer, Svab, et al., 1980 value plus a correction for non-ideality; DRB"
+      ],
+      [
+       "ΔvapH°",
+       "30.6 ± 0.1",
+       "kJ/mol",
+       "C",
+       "An and Hu, 1989",
+       "AC"
+      ],
+      [
+       "ΔvapH°",
+       "28.8",
+       "kJ/mol",
+       "C",
+       "Majer, Sváb, et al., 1980",
+       "AC"
+      ],
+      [
+       "ΔvapH°",
+       "28.5 ± 0.42",
+       "kJ/mol",
+       "V",
+       "Mathews, 1926",
+       "Reanalyzed by  Pedley, Naylor, et al., 1986, Original value = 27.7 ± 0.96  kJ/mol; ALS"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "ΔvapH (kJ/mol)",
+      "Temperature (K)",
+      "Method",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "28.06",
+       "313.",
+       "N/A",
+       "Majer and Svoboda, 1985",
+       ""
+      ],
+      [
+       "30.2",
+       "248.",
+       "N/A",
+       "Ganeff and Jungers, 2010",
+       "Based on data from 233. to 313. K.; AC"
+      ],
+      [
+       "29.0",
+       "326.",
+       "A",
+       "Stephenson and Malanowski, 1987",
+       "Based on data from 311. to 383. K.; AC"
+      ],
+      [
+       "30.3",
+       "279.",
+       "EB",
+       "Boublík and Aim, 1972",
+       "Based on data from 264. to 311. K.; AC"
+      ],
+      [
+       "29.2",
+       "308.",
+       "N/A",
+       "Mueller and Ignatowski, 1960",
+       "Based on data from 303. to 313. K.; AC"
+      ],
+      [
+       "29.4",
+       "186. to 312.",
+       "N/A",
+       "Perry, 1926",
+       "AC"
+      ]
+     ]
+    },
+    {
+     "header": [
+      "Temperature (K)",
+      "A",
+      "B",
+      "C",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "303.14 to 313.14",
+       "3.97323",
+       "1016.865",
+       "-56.623",
+       "Mueller and Ignatowski, 1960, 2",
+       "Coefficents calculated by NIST from author's data."
+      ],
+      [
+       "233. to 313.",
+       "4.53691",
+       "1327.016",
+       "-20.474",
+       "Ganeff and Jungers, 1948",
+       "Coefficents calculated by NIST from author's data."
+      ]
+     ]
+    },
+    {
+     "header": [
+      "ΔfusH (kJ/mol)",
+      "Temperature (K)",
+      "Reference",
+      "Comment"
+     ],
+     "rows": [
+      [
+       "6.160",
+       "178.22",
+       "Moseeva, Rabinovich, et al., 1978",
+       "DH"
+      ],
+      [
+       "6.16",
+       "178.2",
+       "Domalski and Hearing, 1996",
+       "AC"
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -119,6 +119,17 @@ SEEDS = {
         "note": "Values cited per record, not redistributed as a database.",
         "files": ["validation/report/reference/"],
     },
+    # validation/python/thermoml_read.py docstring ("the archive is public, NIST open license"); the
+    # pure-component values of validation/python/measured_components.py (proposal 0008, Part B)
+    "nist-thermoml-archive": {
+        "title": "NIST TRC ThermoML Archive (pure-component data sets of the cited articles)",
+        "authors": "NIST Thermodynamics Research Center",
+        "kind": "databank",
+        "url": "https://trc.nist.gov/ThermoML/",
+        "access": "Open: the archive is public, NIST open license (the articles themselves may be subscription-only)",
+        "note": "Values cited per article in each record and in validation/data/pure/measured/thermoml_<id>.json.",
+        "files": ["validation/data/pure/measured/"],
+    },
     # src/thermo/iapws/if97.js header; src/data/LICENSES.md (IAPWS row)
     "iapws-r7-97": {
         "title": "IAPWS R7-97(2012), Revised Release on the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam",
@@ -293,6 +304,7 @@ def text_rules(val):
         (r"CoolProp 8\.0\.0", "coolprop"),
         (r"open-source thermo library", "thermo-library"),
         (r"NIST Chemistry WebBook", "nist-webbook"),
+        (r"NIST TRC ThermoML Archive", "nist-thermoml-archive"),
         (r"IAPWS G7-04", "iapws-g7-04"),
         (r"iapws Python package", "iapws-python"),
         (r"Sander, Compilation of Henry's law constants", "sander2023-henry"),
