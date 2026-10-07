@@ -730,5 +730,62 @@
     "comment": "Coefficents calculated by NIST from author's data."
    }
   ]
+ },
+ "naphthalene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C91203&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 353.48,
+    "Tmax_K": 452.3,
+    "A": 4.27117,
+    "B": 1831.571,
+    "C": -61.329,
+    "reference": "Fowler, Trump, et al., 1968",
+    "comment": "Coefficents calculated by NIST from author's data."
+   },
+   {
+    "Tmin_K": 399.47,
+    "Tmax_K": 491.79,
+    "A": 3.97067,
+    "B": 1606.529,
+    "C": -85.923,
+    "reference": "Camin and Rossini, 1955",
+    "comment": ""
+   }
+  ]
+ },
+ "benzoic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C65850&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 369.0,
+    "Tmax_K": 522.4,
+    "A": 4.47834,
+    "B": 1771.357,
+    "C": -127.484,
+    "reference": "Stull, 1947",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
+ },
+ "salicylic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C69727&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "equation": "log10(P/bar) = A - B / (T/K + C)",
+  "sets": [
+   {
+    "Tmin_K": 386.8,
+    "Tmax_K": 529.0,
+    "A": 3.57377,
+    "B": 1126.012,
+    "C": -212.625,
+    "reference": "Stull, 1947",
+    "comment": "Coefficents calculated by NIST from author's data."
+   }
+  ]
  }
 }

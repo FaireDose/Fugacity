@@ -205,6 +205,14 @@ below 11 articles: CoolProp's model 2-3 % and the fitted record another 2-3 %), 
 viscosity (27 % from one article at 293-303 K). The open archive has no pure-component values for
 methylamine and few for isoprene and acrylonitrile.
 
+**Batch 4 (solids), done in part:** naphthalene, benzoic acid and salicylic acid (ChemSep v8.3;
+their liquid records start at the melting point), with the melting data of proposal 0007, step 4.
+ThermoML: the liquid records are within tolerance where there are values, except the benzoic acid
+viscosity (6 % from one article, kept with the warning); benzoic acid dimerizes in the vapour like
+acetic acid, which is not modelled for it. Urea, phthalic anhydride and caprolactam stay out (see
+above: no open data for a vapour-liquid component); their melting data can follow when a
+solid-only component is needed.
+
 **The older components, checked the same way:** the 24 components of proposal 0004 and v0.1 whose
 records come from ChemSep (all of them, or the transport properties CoolProp does not model) were
 compared with 25,540 measured values from 2,046 articles. Most records are within the

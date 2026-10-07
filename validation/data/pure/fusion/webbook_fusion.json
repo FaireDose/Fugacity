@@ -1,0 +1,4888 @@
+{
+ "1-butanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71363&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 188.0,
+     "uncertainty": 9.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 184.54,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 184.51,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Counsell, Hales, et al., 1965",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 183.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, 1925",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.372,
+    "T_K": 184.5,
+    "method": "",
+    "reference": "Counsell, Hales, et al., 1965, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.28,
+    "T_K": 183.9,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 9.28,
+    "T_K": 183.9,
+    "method": "",
+    "reference": "Parks, 1925, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "1-butene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106989&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [
+    {
+     "value": 87.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Takeda, Yamamuro, et al., 1991",
+     "comment": "Uncertainty assigned by TRC = 0.005 K; TRC"
+    },
+    {
+     "value": 87.82,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Chao, Hall, et al., 1983",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 87.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Aston, Finke, et al., 1946",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 87.83,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Aston, Finke, et al., 1946",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 3.9586,
+    "T_K": 87.81,
+    "method": "",
+    "reference": "Takeda, Yamamuro, et al., 1991, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.848,
+    "T_K": 87.82,
+    "method": "",
+    "reference": "Chao, Hall, et al., 1983, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.849,
+    "T_K": 87.82,
+    "method": "",
+    "reference": "Aston, Fink, et al., 1946",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.85,
+    "T_K": 87.8,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "1-propanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71238&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 146.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Tschamler, Richter, et al., 1949",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 147.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1935",
+     "comment": "Uncertainty assigned by TRC = 3. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 148.75,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 148.75,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Counsell, Lees, et al., 1968",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 147.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Huffman, 1926",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 5.372,
+    "T_K": 148.75,
+    "method": "",
+    "reference": "Counsell, Lees, et al., 1968, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.4,
+    "T_K": 148.7,
+    "method": "",
+    "reference": "van Miltenburg and van den Berg, 2004",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 5.37,
+    "T_K": 148.8,
+    "method": "",
+    "reference": "Counsell, Lees, et al., 1968",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 5.192,
+    "T_K": 147.0,
+    "method": "",
+    "reference": "Parks and Huffman, 1926, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "2-butanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78922&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [
+    {
+     "value": 184.73,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 184.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Andon, Connett, et al., 1971",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.0,
+    "T_K": 177.38,
+    "method": "",
+    "reference": "Andon, Connett, et al., 1971, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.97,
+    "T_K": 184.7,
+    "method": "",
+    "reference": "Andon, Connett, et al., 1971, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.97,
+    "T_K": 184.7,
+    "method": "",
+    "reference": "Andon, Connett, et al., 1971, 3",
+    "comment": "AC"
+   }
+  ]
+ },
+ "2-butanone": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78933&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 186.4,
+     "uncertainty": 0.5,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 186.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 186.47,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Andon, Counsell, et al., 1968",
+     "comment": "Uncertainty assigned by TRC = 0.04 K; TRC"
+    },
+    {
+     "value": 186.4,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Sinke and Oetting, 1964",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; measured for the sample, 1/f = 1.00; TRC"
+    },
+    {
+     "value": 186.48,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Sinke and Oetting, 1964",
+     "comment": "Uncertainty assigned by TRC = 0.03 K; measured for the sample, 1/f = 1.00; TRC"
+    },
+    {
+     "value": 186.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, Kennedy, et al., 1956",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.385,
+    "T_K": 186.47,
+    "method": "",
+    "reference": "Andon, Counsell, et al., 1968, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.4387,
+    "T_K": 186.48,
+    "method": "",
+    "reference": "Sinke and Oetting, 1964, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.44,
+    "T_K": 186.5,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 8.485,
+    "T_K": 186.1,
+    "method": "",
+    "reference": "Parks, Kennedy, et al., 1956, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "2-methoxyethanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "2-propanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 185.75,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Ogimachi, Corcoran, et al., 1961",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 185.35,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Anonymous, 1958",
+     "comment": "TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 184.9,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 5.41,
+    "T_K": 185.2,
+    "method": "",
+    "reference": "Andon, Counsell, et al., 1963",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.372,
+    "T_K": 184.67,
+    "method": "",
+    "reference": "Kelley, 1929",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.41,
+    "T_K": 185.2,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 5.301,
+    "T_K": 184.6,
+    "method": "",
+    "reference": "Parks and Kelley, 1928",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.297,
+    "T_K": 184.6,
+    "method": "",
+    "reference": "Parks and Kelley, 1925",
+    "comment": "DH"
+   }
+  ]
+ },
+ "acetic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 289.6,
+     "uncertainty": 0.5,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 289.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 289.69,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Martin and Andon, 1982",
+     "comment": "Uncertainty assigned by TRC = 0.04 K; TRC"
+    },
+    {
+     "value": 289.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Kelley, 1925",
+     "comment": "Uncertainty assigned by TRC = 0.15 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 11.72,
+    "T_K": 298.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Martin and Andon, 1982, 2.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 11.728,
+    "T_K": 289.9,
+    "method": "",
+    "reference": "Parks and Kelley, 1925, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.83,
+    "T_K": 289.8,
+    "method": "",
+    "reference": "Louguinine and Dupont, 1911",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 11.52,
+    "T_K": 283.7,
+    "method": "",
+    "reference": "Meyer, 1910",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 11.126,
+    "T_K": 290.06,
+    "method": "",
+    "reference": "Pickering, 1895",
+    "comment": "DH"
+   }
+  ]
+ },
+ "acetone": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 178.7,
+     "uncertainty": 0.9,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 11 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 178.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 176.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kelley, 1929",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.15 K; deduced from appearance of a small maximum in heat capacity; TRC"
+    },
+    {
+     "value": 177.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Kelley, 1928",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 177.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Kelley, 1925",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 5.715,
+    "T_K": 176.62,
+    "method": "",
+    "reference": "Kelley, 1929, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.72,
+    "T_K": 176.6,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 5.69,
+    "T_K": 177.6,
+    "method": "",
+    "reference": "Parks and Kelley, 1928, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.77,
+    "T_K": 178.5,
+    "method": "",
+    "reference": "Maass and Walbauer, 1925",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.69,
+    "T_K": 177.6,
+    "method": "",
+    "reference": "Parks and Kelley, 1925, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "acetonitrile": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75058&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 228.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 14 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 229.32,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Putnam, McEachern, et al., 1965",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.17,
+    "T_K": 229.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "acrylic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79107&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 285.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Karabaev, Saidov, et al., 1985",
+     "comment": "DH"
+    },
+    {
+     "value": 285.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Karabaev, Abduzhaminov, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 285.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Anonymous, 1957",
+     "comment": "Uncertainty assigned by TRC = 0.6 K; TRC"
+    },
+    {
+     "value": 285.45,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Moureu and Boutaric, 1920",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 290.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Riiber and Schetelig, 1904",
+     "comment": "Uncertainty assigned by TRC = 1. K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.5097,
+    "T_K": 285.7,
+    "method": "",
+    "reference": "Karabaev, Abduzhaminov, et al., 1985, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 11.16,
+    "T_K": 285.5,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   }
+  ]
+ },
+ "acrylonitrile": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107131&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 189.47,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Witschonke, 1954",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 189.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Witschonke, 1954",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 191.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1922",
+     "comment": "Uncertainty assigned by TRC = 2. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 189.63,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Finke, Messerly, et al., 1972",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.23,
+    "T_K": 189.6,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "ammonia": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7664417&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 194.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1921",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "aniline": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C62533&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 267.0,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 19 out of 24 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 267.13,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Hatton, Hildenbrand, et al., 1962",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; from plot of 1/f vs T; TRC"
+    },
+    {
+     "value": 267.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Ziegler and Andrews, 1942",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 266.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, Huffman, et al., 1933",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 10.539,
+    "T_K": 267.13,
+    "method": "",
+    "reference": "Hatton, Hildenbrand, et al., 1962, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.54,
+    "T_K": 267.1,
+    "method": "",
+    "reference": "Ahmed and Eades, 1972",
+    "comment": "See also Domalski and Hearing, 1996.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 10.92,
+    "T_K": 267.3,
+    "method": "",
+    "reference": "Ziegler and Andrews, 1942, 2",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 10.556,
+    "T_K": 266.8,
+    "method": "",
+    "reference": "Parks, Huffman, et al., 1933, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "argon": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440371&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 83.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Van't Zelfde, Omar, et al., 1968",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 87.78,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Angus, Armstrong, et al., 1972",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 83.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Gosman, McCarty, et al., 1969",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 83.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Ziegler, Mullins, et al., 1962",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 83.78,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clark, Din, et al., 1951",
+     "comment": "Uncertainty assigned by TRC = 0.04 K; TRC"
+    },
+    {
+     "value": 83.78,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clusius and Weigand, 1940",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; See property X for dP/dT at triple point; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "benzene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71432&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 278.64,
+     "uncertainty": 0.08,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 57 out of 69 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 278.5,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.8663,
+    "T_K": 278.69,
+    "method": "N/A",
+    "reference": "Oliver, Eaton, et al., 1948",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.916,
+    "T_K": 278.65,
+    "method": "N/A",
+    "reference": "Ziegler and Andrews, 1942",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.87,
+    "T_K": 278.7,
+    "method": "C",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Andrews, Lynn, et al., 1926 and Ziegler and Andrews, 1942.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 9.3,
+    "T_K": 279.1,
+    "method": "N/A",
+    "reference": "Smith, 1979",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.95,
+    "T_K": 278.8,
+    "method": "N/A",
+    "reference": "Pacor, 1967",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.937,
+    "T_K": 278.6,
+    "method": "N/A",
+    "reference": "Tschamler, 1948",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.803,
+    "T_K": 278.6,
+    "method": "N/A",
+    "reference": "Huffman, Parks, et al., 1930",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.875,
+    "T_K": 278.55,
+    "method": "N/A",
+    "reference": "Andrews, Lynn, et al., 1926",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.0,
+    "T_K": 278.64,
+    "method": "N/A",
+    "reference": "Maass and Walbauer, 1925",
+    "comment": "DH"
+   }
+  ]
+ },
+ "benzoic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C65850&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 395.2,
+     "uncertainty": 0.7,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 18 out of 20 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 395.52,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Marsh, 1987",
+     "comment": "Uncertainty assigned by TRC = 0.005 K; recommended as calibration standard; TRC"
+    },
+    {
+     "value": 395.52,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Andon and Connett, 1980",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 395.52,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Ginnings and Furukawa, 1953",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 395.52,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Furukawa, McCoskey, et al., 1951",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 18.006,
+    "T_K": 395.52,
+    "method": "N/A",
+    "reference": "Ginnings and Furukawa, 1953, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.0,
+    "T_K": 395.52,
+    "method": "N/A",
+    "reference": "Furukawa, McCoskey, et al., 1951, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 16.99,
+    "T_K": 396.9,
+    "method": "DSC",
+    "reference": "Brittain, 2009",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 17.3,
+    "T_K": 394.4,
+    "method": "DSC",
+    "reference": "Sharma, Kant, et al., 2003",
+    "comment": "See also Sharma, Jamwal, et al., 2004.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 17.1,
+    "T_K": 395.4,
+    "method": "DSC",
+    "reference": "Roy, Riga, et al., 2002",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 17.99,
+    "T_K": 395.5,
+    "method": "N/A",
+    "reference": "Pitzer, Peiper, et al., 1984",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 16.23,
+    "T_K": 395.0,
+    "method": "N/A",
+    "reference": "Pacor, 1967",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 17.32,
+    "T_K": 395.0,
+    "method": "N/A",
+    "reference": "Andrews, Lynn, et al., 1926",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 17.4,
+    "T_K": 395.0,
+    "method": "N/A",
+    "reference": "David, 1964",
+    "comment": "Temperature not measured.; DH"
+   }
+  ]
+ },
+ "carbon-dioxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [
+    {
+     "value": 216.58,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Marsh, 1987",
+     "comment": "Uncertainty assigned by TRC = 0.008 K; recommended as fixed point for thermometery; TRC"
+    },
+    {
+     "value": 216.58,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Angus, Armstrong, et al., 1976",
+     "comment": "Uncertainty assigned by TRC = 0.03 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "carbon-monoxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C630080&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [
+    {
+     "value": 67.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Gill and Morrison, 1966",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.06 K; TRC"
+    },
+    {
+     "value": 68.12,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Mullins, Kirk, et al., 1963",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 68.09,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clayton and Giauque, 1932",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.07 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "chloroform": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 210.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 14 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 209.61,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Stull, 1937",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.8,
+    "T_K": 209.6,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   }
+  ]
+ },
+ "cumene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98828&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 177.0,
+     "uncertainty": 0.7,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 13 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 177.13,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kishimoto, Suga, et al., 1973",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 7.326,
+    "T_K": 177.13,
+    "method": "",
+    "reference": "Kishimoto, Suga, et al., 1973, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 7.32,
+    "T_K": 177.1,
+    "method": "",
+    "reference": "Kishimoto, Suga, et al., 1973, 2",
+    "comment": "AC"
+   }
+  ]
+ },
+ "cyclohexane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110827&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 279.6,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 38 out of 47 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 279.7,
+     "uncertainty": 0.4,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 2.68,
+    "T_K": 279.8,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "cyclohexanone": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108941&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 243.0,
+     "uncertainty": 10.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 245.21,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Nakamura, Suga, et al., 1980",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 242.4,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wuerflinger and Kreutzenbeck, 1978",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.5 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 1.33,
+    "T_K": 245.2,
+    "method": "",
+    "reference": "Nakamura, Suga, et al., 1980, 2",
+    "comment": "AC"
+   }
+  ]
+ },
+ "dea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111422&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 301.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McDonald, Shrader, et al., 1959",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "dichloroethane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107062&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 230.0,
+     "uncertainty": 40.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 237.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Knauth and Sabbah, 1990",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 237.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Pitzer, 1940",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.8366,
+    "T_K": 237.2,
+    "method": "",
+    "reference": "Pitzer, 1940, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.83,
+    "T_K": 237.2,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "dichloromethane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 198.06,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1952",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 176.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Van de Vloed, 1939",
+     "comment": "Uncertainty assigned by TRC = 1.5 K; TRC"
+    },
+    {
+     "value": 177.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1935",
+     "comment": "Uncertainty assigned by TRC = 2. K; TRC"
+    },
+    {
+     "value": 176.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1934",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.16,
+    "T_K": 178.22,
+    "method": "",
+    "reference": "Moseeva, Rabinovich, et al., 1978",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.16,
+    "T_K": 178.2,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "diethyl-ether": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 154.0,
+     "uncertainty": 7.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 13 out of 14 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 156.92,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 149.86,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Counsell, Lee, et al., 1971",
+     "comment": "Crystal phase 2 phase; Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 156.92,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Counsell, Lee, et al., 1971",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 156.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Huffman, 1926",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 7.19,
+    "T_K": 156.9,
+    "method": "",
+    "reference": "Counsell, Lee, et al., 1971, 2",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 7.301,
+    "T_K": 156.8,
+    "method": "",
+    "reference": "Parks and Huffman, 1926, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "dimethyl-ether": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C115106&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 135.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Maass and Boomer, 1922",
+     "comment": "Uncertainty assigned by TRC = 2. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 131.64,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 131.66,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kennedy, Sagenkahn, et al., 1941",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 4.9363,
+    "T_K": 131.66,
+    "method": "",
+    "reference": "Kennedy, Sagenkahn, et al., 1941, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.94,
+    "T_K": 131.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "dioxane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C123911&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 285.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 17 out of 18 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 284.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Jacobs and Parks, 1934",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 12.84,
+    "T_K": 284.1,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 11.88,
+    "T_K": 283.2,
+    "method": "",
+    "reference": "Roth and Meyer, 1933",
+    "comment": "DH"
+   }
+  ]
+ },
+ "dmf": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C68122&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 212.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Dreisbach, 1955",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.95,
+    "T_K": 212.85,
+    "method": "N/A",
+    "reference": "Karyakin, Rabinovich, et al., 1978",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.95,
+    "T_K": 212.9,
+    "method": "AC",
+    "reference": "Smirnova, Tsvetkova, et al., 2007",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 8.95,
+    "T_K": 212.9,
+    "method": "N/A",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "dmso": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67685&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 291.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Lindberg and Stenholm, 1966",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 291.57,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Douglas, 1948",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 291.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Douglas, 1946",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 291.59,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clever and Westrum, 1970",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 291.67,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clever and Westrum, 1970",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 14.368,
+    "T_K": 291.67,
+    "method": "",
+    "reference": "Clever and Westrum, 1970, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.37,
+    "T_K": 291.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "etbe": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C637923&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 179.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Olson, Hipsher, et al., 1947",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "ethane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74840&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 101.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 1. K; TRC"
+    },
+    {
+     "value": 89.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1935",
+     "comment": "Uncertainty assigned by TRC = 1.5 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 91.0,
+     "uncertainty": 6.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 10 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 0.583,
+    "T_K": 90.341,
+    "method": "",
+    "reference": "Atake and Chihara, 1976",
+    "comment": "Triple point.; DH"
+   },
+   {
+    "Hfus_kJ_mol": 2.79,
+    "T_K": 89.5,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 0.58,
+    "T_K": 90.3,
+    "method": "",
+    "reference": "Atake and Chihara, 1976",
+    "comment": "AC"
+   }
+  ]
+ },
+ "ethanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 159.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 11 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 150.0,
+     "uncertainty": 20.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 4.973,
+    "T_K": 159.0,
+    "method": "",
+    "reference": "Yoshida, 1944",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.021,
+    "T_K": 158.5,
+    "method": "",
+    "reference": "Kelley, 1929",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.626,
+    "T_K": 156.2,
+    "method": "",
+    "reference": "Gibson, Parks, et al., 1920",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.64,
+    "T_K": 158.8,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 4.962,
+    "T_K": 158.7,
+    "method": "",
+    "reference": "Parks, 1925",
+    "comment": "DH"
+   }
+  ]
+ },
+ "ethyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 190.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 189.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 189.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, Huffman, et al., 1933",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 10.48,
+    "T_K": 189.3,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 10.481,
+    "T_K": 189.3,
+    "method": "",
+    "reference": "Parks, Huffman, et al., 1933, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "ethylbenzene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C100414&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 179.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 15 out of 16 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 178.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Scott and Brickwedde, 1945",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 178.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Huffman, Parks, et al., 1930",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.1818,
+    "T_K": 178.15,
+    "method": "",
+    "reference": "Scott and Brickwedde, 1945, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.163,
+    "T_K": 178.17,
+    "method": "",
+    "reference": "Guthrie, Spitzer, et al., 1944",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.16,
+    "T_K": 178.2,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 9.163,
+    "T_K": 178.0,
+    "method": "",
+    "reference": "Huffman, Parks, et al., 1930, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "ethylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74851&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 103.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 103.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kistiakowsky, Romeyn, et al., 1935",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 103.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Huffman, 1931",
+     "comment": "Uncertainty assigned by TRC = 1. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 104.0,
+     "uncertainty": 0.1,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 3.351,
+    "T_K": 103.97,
+    "method": "",
+    "reference": "Chao, Hall, et al., 1983",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.351,
+    "T_K": 103.95,
+    "method": "",
+    "reference": "Egan and Kemp, 1937",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.35,
+    "T_K": 104.0,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "ethylene-glycol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 261.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 256.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Knauth and Sabbah, 1990",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 260.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 260.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Nikolaev and Rabinovich, 1967",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 260.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Kelley, 1925",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.958,
+    "T_K": 260.6,
+    "method": "",
+    "reference": "Nikolaev and Rabinovich, 1967, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 11.623,
+    "T_K": 260.8,
+    "method": "",
+    "reference": "Parks and Kelley, 1925, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "ethylene-oxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75218&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 160.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McDonald, Shrader, et al., 1959",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    },
+    {
+     "value": 161.45,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans and Hennaut-Roland, 1937",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 161.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Maass and Boomer, 1922",
+     "comment": "Uncertainty assigned by TRC = 0.6 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 160.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 160.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Giauque and Gordon, 1949",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 5.1731,
+    "T_K": 160.65,
+    "method": "",
+    "reference": "Giauque and Gordon, 1949, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 5.17,
+    "T_K": 160.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "formaldehyde": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C50000&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 181.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Anonymous, 1958",
+     "comment": "Uncertainty assigned by TRC = 4. K; TRC"
+    },
+    {
+     "value": 181.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Harries, 1901",
+     "comment": "Uncertainty assigned by TRC = 6. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 155.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Spence and Wild, 1935",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 7.53,
+    "T_K": 155.0,
+    "method": "",
+    "reference": "Vasil'ev and Lebedev, 1998",
+    "comment": "AC"
+   }
+  ]
+ },
+ "formic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64186&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 281.5,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 281.45,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 281.4,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Stout and Fisher, 1941",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 12.678,
+    "T_K": 281.4,
+    "method": "",
+    "reference": "Stout and Fisher, 1941, 3",
+    "comment": "DH"
+   }
+  ]
+ },
+ "furfural": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98011&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 234.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1922",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 235.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Miller, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 14.37,
+    "T_K": 235.1,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 14.368,
+    "T_K": 235.1,
+    "method": "",
+    "reference": "Miller, 1935",
+    "comment": "DH"
+   }
+  ]
+ },
+ "glycerol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C56815&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 290.0,
+     "uncertainty": 5.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 291.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 291.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Gibson and Giauque, 1923",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 18.303,
+    "T_K": 292.0,
+    "method": "",
+    "reference": "Yoshida, 1944",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.285,
+    "T_K": 291.0,
+    "method": "",
+    "reference": "Gibson and Giauque, 1923",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.28,
+    "T_K": 293.0,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 18.476,
+    "T_K": 291.75,
+    "method": "",
+    "reference": "Volmer and Marder, 1931",
+    "comment": "DH"
+   }
+  ]
+ },
+ "hydrogen": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1333740&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [
+    {
+     "value": 0.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Roder, Childs, et al., 1973",
+     "comment": "TRC"
+    },
+    {
+     "value": 13.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clusius and Weigand, 1940",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; see property X for dP/dT for c-l equil.; TRC"
+    },
+    {
+     "value": 13.96,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Henning and Otto, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; temperature measured with He gas thermometer; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "hydrogen-peroxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7722841&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 272.26,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Cuthbertson, Matheson, et al., 1928",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "hydrogen-sulfide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7783064&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 190.85,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Beckmann and Waentig, 1910",
+     "comment": "Uncertainty assigned by TRC = 1.5 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 187.66,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Goodwin, 1983",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; TRC"
+    },
+    {
+     "value": 187.61,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Giauque and Blue, 1936",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.03 K; temp. scale for transition tempertures, T0 = 273.10 K Nature of transition C2 - C1 not definitely established; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "isobutane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75285&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 140.0,
+     "uncertainty": 100.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 113.55,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Younglove and Ely, 1987",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 113.55,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Goodwin and Haynes, 1982",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 113.74,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Aston, Kennedy, et al., 1940",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    },
+    {
+     "value": 113.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, Shomate, et al., 1937",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 4.54,
+    "T_K": 113.74,
+    "method": "",
+    "reference": "Aston, Kennedy, et al., 1940, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.49,
+    "T_K": 113.7,
+    "method": "",
+    "reference": "Perkins and Magee, 2009",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 4.56,
+    "T_K": 113.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 4.498,
+    "T_K": 113.2,
+    "method": "",
+    "reference": "Parks, Shomate, et al., 1937, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "isobutanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78831&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 165.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Anonymous, 1958",
+     "comment": "TRC"
+    },
+    {
+     "value": 169.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kanda, Otsubo, et al., 1950",
+     "comment": "Uncertainty assigned by TRC = 2. K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 171.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 171.18,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Counsell, Lees, et al., 1968",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; IPTS-48; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.322,
+    "T_K": 171.18,
+    "method": "",
+    "reference": "Counsell, Lees, et al., 1968, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.32,
+    "T_K": 171.2,
+    "method": "",
+    "reference": "Counsell, Lees, et al., 1968",
+    "comment": "AC"
+   }
+  ]
+ },
+ "isooctane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C540841&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 165.77,
+     "uncertainty": 0.06,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 37 out of 44 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 165.76,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streiff, 1959",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 165.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks, Huffman, et al., 1930",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.2115,
+    "T_K": 165.79,
+    "method": "",
+    "reference": "Pitzer K.S., 1940",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 9.04,
+    "T_K": 165.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 9.042,
+    "T_K": 165.3,
+    "method": "",
+    "reference": "Parks, Huffman, et al., 1930, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "isoprene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78795&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 131.0,
+     "uncertainty": 20.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 127.27,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Messerly, Todd, et al., 1970",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 126.4,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Bekkedahl and Wood, 1937",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 4.9246,
+    "T_K": 127.27,
+    "method": "",
+    "reference": "Messerly, Todd, et al., 1970, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.83,
+    "T_K": 126.4,
+    "method": "",
+    "reference": "Warfield and Petree, 1965",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.83,
+    "T_K": 126.4,
+    "method": "",
+    "reference": "Bekkedahl and Wood, 1937, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 4.92,
+    "T_K": 127.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "isopropyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108214&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 241.85,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1952",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 346.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1922",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "m-xylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108383&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 225.0,
+     "uncertainty": 4.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 219.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Huffman, Parks, et al., 1930",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 11.569,
+    "T_K": 225.27,
+    "method": "",
+    "reference": "Pitzer and Scott, 1943",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 11.59,
+    "T_K": 225.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "mdea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C105599&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "mea": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141435&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 283.46,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McDonald, Shrader, et al., 1959",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "mesitylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108678&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 225.0,
+     "uncertainty": 8.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 21 out of 22 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 228.42,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Taylor and Kilpatrick, 1955",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 9.51,
+    "T_K": 228.4,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Radomska and Radomski, 1991.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 9.51,
+    "T_K": 228.4,
+    "method": "",
+    "reference": "Radomska and Radomski, 1991",
+    "comment": "AC"
+   }
+  ]
+ },
+ "methane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 85.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 90.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Van't Zelfde, Omar, et al., 1968",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 91.2,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1935",
+     "comment": "Uncertainty assigned by TRC = 2. K; TRC"
+    },
+    {
+     "value": 90.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Clusius, 1929",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 90.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Eucken and Karwat, 1924",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 90.67,
+     "uncertainty": 0.03,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 25 out of 32 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "methanol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 176.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 13 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 175.5,
+     "uncertainty": 0.5,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 3.18,
+    "T_K": 175.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 2.196,
+    "T_K": 176.0,
+    "method": "",
+    "reference": "Maass and Walbauer, 1925",
+    "comment": "DH"
+   }
+  ]
+ },
+ "methyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79209&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 175.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans and Hennaut-Roland, 1955",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 175.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1911",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 174.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Okamoto, Oguni, et al., 1992",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 7.486,
+    "T_K": 174.897,
+    "method": "",
+    "reference": "Okamoto, Oguni, et al., 1992, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 7.49,
+    "T_K": 174.9,
+    "method": "",
+    "reference": "Okamoto, Oguni, et al., 1992, 2",
+    "comment": "AC"
+   }
+  ]
+ },
+ "methylamine": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74895&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 180.05,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Roberts, Emeleus, et al., 1939",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 180.05,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Emeleus and Briscoe, 1937",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 179.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McNeight and Smyth, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 179.7,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Aston, Siller, et al., 1937",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; T0/K=273.16; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.134,
+    "T_K": 179.7,
+    "method": "",
+    "reference": "Aston, Siller, et al., 1937, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.13,
+    "T_K": 179.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "mibk": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108101&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "mtbe": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1634044&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 164.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Olson, Hipsher, et al., 1947",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 164.56,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Andon and Martin, 1975",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 7.6,
+    "T_K": 164.56,
+    "method": "",
+    "reference": "Andon and Martin, 1975, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 7.6,
+    "T_K": 164.6,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "n-butane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106978&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 136.0,
+     "uncertainty": 3.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 134.6,
+     "uncertainty": 0.7,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 4.66,
+    "T_K": 134.9,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "n-butyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C123864&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 196.35,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1921",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 196.03,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Balakina, Petrova, et al., 1979",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 196.12,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Balakina, Petrova, et al., 1979",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "n-decane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C124185&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 243.3,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 23 out of 25 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 243.4,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 28.715,
+    "T_K": 243.51,
+    "method": "N/A",
+    "reference": "Finke, Gross, et al., 1954",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 27.6,
+    "T_K": 243.0,
+    "method": "DSC",
+    "reference": "Marti, Kaisersberger, et al., 2004",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 28.7,
+    "T_K": 243.5,
+    "method": "N/A",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 28.778,
+    "T_K": 243.1,
+    "method": "N/A",
+    "reference": "Huffman, Parks, et al., 1931",
+    "comment": "DH"
+   }
+  ]
+ },
+ "n-dodecane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C112403&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 263.5,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 35 out of 45 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 263.57,
+     "uncertainty": 0.05,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 36.836,
+    "T_K": 263.59,
+    "method": "N/A",
+    "reference": "Finke, Gross, et al., 1954",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 35.7,
+    "T_K": 263.1,
+    "method": "DSC",
+    "reference": "Mondieig, Rajabalee, et al., 2004",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 36.82,
+    "T_K": 263.6,
+    "method": "N/A",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 36.581,
+    "T_K": 263.5,
+    "method": "N/A",
+    "reference": "Huffman, Parks, et al., 1931",
+    "comment": "DH"
+   }
+  ]
+ },
+ "n-heptane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C142825&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 182.6,
+     "uncertainty": 0.4,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 51 out of 52 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 182.56,
+     "uncertainty": 0.03,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 26 out of 31 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 13.99,
+    "T_K": 182.57,
+    "method": "",
+    "reference": "Van Miltenburg, Van den Berg, et al., 1987",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.053,
+    "T_K": 182.59,
+    "method": "",
+    "reference": "Schaake, Offringa, et al., 1979",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.037,
+    "T_K": 182.55,
+    "method": "",
+    "reference": "Huffman, Gross, et al., 1961",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.037,
+    "T_K": 182.55,
+    "method": "",
+    "reference": "McCullough and Messerly, 1961",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.022,
+    "T_K": 182.56,
+    "method": "",
+    "reference": "Douglas, Furukawa, et al., 1954",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.022,
+    "T_K": 182.56,
+    "method": "",
+    "reference": "Ginnings and Furukawa, 1953",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.0407,
+    "T_K": 182.52,
+    "method": "",
+    "reference": "Pitzer K.S., 1940",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.059,
+    "T_K": 182.7,
+    "method": "",
+    "reference": "Meijer, Blok, et al., 1977",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.061,
+    "T_K": 182.56,
+    "method": "",
+    "reference": "Van Miltenburg, 1972",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.0306,
+    "T_K": 182.56,
+    "method": "",
+    "reference": "Oetting F.L., 1963",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.04,
+    "T_K": 182.6,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 14.163,
+    "T_K": 182.2,
+    "method": "",
+    "reference": "Huffman, Parks, et al., 1930",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 14.163,
+    "T_K": 182.2,
+    "method": "",
+    "reference": "Parks, Huffman, et al., 1930",
+    "comment": "DH"
+   }
+  ]
+ },
+ "n-hexane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110543&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 178.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 32 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 178.0,
+     "uncertainty": 0.5,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 13.079,
+    "T_K": 177.84,
+    "method": "",
+    "reference": "Douslin and Huffman, 1946",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 13.08,
+    "T_K": 177.8,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 12.343,
+    "T_K": 177.9,
+    "method": "",
+    "reference": "Stull, 1937",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 13.033,
+    "T_K": 177.9,
+    "method": "",
+    "reference": "Huffman, Parks, et al., 1931",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 12.581,
+    "T_K": 178.6,
+    "method": "",
+    "reference": "Parks, Huffman, et al., 1930",
+    "comment": "DH"
+   }
+  ]
+ },
+ "n-nonane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111842&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 219.5,
+     "uncertainty": 0.5,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 24 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 219.6,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 15.0,
+    "T_K": 219.5,
+    "method": "DSC",
+    "reference": "Mondieig, Rajabalee, et al., 2004",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 15.48,
+    "T_K": 219.7,
+    "method": "N/A",
+    "reference": "Acree, 1991",
+    "comment": "See also Domalski and Hearing, 1996.; AC"
+   }
+  ]
+ },
+ "n-octane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111659&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 216.3,
+     "uncertainty": 0.3,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 39 out of 41 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 216.2,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 9 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 20.74,
+    "T_K": 216.38,
+    "method": "N/A",
+    "reference": "Finke, Gross, et al., 1954",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 21.8,
+    "T_K": 216.6,
+    "method": "DSC",
+    "reference": "Mondieig, Rajabalee, et al., 2004",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 20.74,
+    "T_K": 216.4,
+    "method": "N/A",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 20.652,
+    "T_K": 215.8,
+    "method": "N/A",
+    "reference": "Huffman, Parks, et al., 1931",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 20.092,
+    "T_K": 215.6,
+    "method": "N/A",
+    "reference": "Parks, Huffman, et al., 1930",
+    "comment": "DH"
+   }
+  ]
+ },
+ "n-pentane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109660&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 143.4,
+     "uncertainty": 0.7,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 30 out of 31 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 143.46,
+     "uncertainty": 0.05,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.401,
+    "T_K": 143.47,
+    "method": "",
+    "reference": "Messerly, Guthrie, et al., 1967",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.4149,
+    "T_K": 143.46,
+    "method": "",
+    "reference": "Messerly and Kennedy, 1940",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.4,
+    "T_K": 143.5,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 8.376,
+    "T_K": 143.4,
+    "method": "",
+    "reference": "Parks and Huffman, 1930",
+    "comment": "DH"
+   }
+  ]
+ },
+ "naphthalene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C91203&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 353.2,
+     "uncertainty": 0.7,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 55 out of 57 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 353.39,
+     "uncertainty": 0.09,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 18.811,
+    "T_K": 353.44,
+    "method": "N/A",
+    "reference": "Mastrangelo, 1957",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.226,
+    "T_K": 353.43,
+    "method": "N/A",
+    "reference": "McCullough, Finke, et al., 1957",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.2,
+    "T_K": 353.0,
+    "method": "N/A",
+    "reference": "Spaght, Thomas, et al., 1932",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.1,
+    "T_K": 353.5,
+    "method": "DSC",
+    "reference": "Sharma, Gupta, et al., 2008",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 16.44,
+    "T_K": 353.8,
+    "method": "DSC",
+    "reference": "Hafsaoui and Mahmoud, 2007",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 19.55,
+    "T_K": 354.7,
+    "method": "DSC",
+    "reference": "Khimeche and Dahmani, 2006",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 19.55,
+    "T_K": 354.7,
+    "method": "DSC",
+    "reference": "Khimeche and Dahmani, 2006, 2",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 19.0,
+    "T_K": 353.4,
+    "method": "AC",
+    "reference": "Chirico, Knipmeyer, et al., 2002",
+    "comment": "Based on data from 5. to 440. K.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 19.1,
+    "T_K": 353.4,
+    "method": "N/A",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 19.02,
+    "T_K": 354.1,
+    "method": "N/A",
+    "reference": "Syunyaev, Tumanyan, et al., 1984",
+    "comment": "Relative error in determination ± 5%.; DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.1,
+    "T_K": 353.5,
+    "method": "N/A",
+    "reference": "Rastogi and Bassi, 1964",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.785,
+    "T_K": 353.0,
+    "method": "N/A",
+    "reference": "Ueberreiter and Orthmann, 1950",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 18.79,
+    "T_K": 353.4,
+    "method": "N/A",
+    "reference": "Eibert, 1944",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.04,
+    "T_K": 353.4,
+    "method": "N/A",
+    "reference": "Schmidt, 1941",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.0,
+    "T_K": 353.1,
+    "method": "N/A",
+    "reference": "Andrews, Lynn, et al., 1926",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 19.25,
+    "T_K": 353.0,
+    "method": "N/A",
+    "reference": "David, 1964",
+    "comment": "Temperature not measured.; DH"
+   }
+  ]
+ },
+ "nitrogen": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7727379&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 63.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 63.14,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Jacobsen, Stewart, et al., 1986",
+     "comment": "TRC"
+    },
+    {
+     "value": 63.14,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Angus, de Reuck, et al., 1979",
+     "comment": "Uncertainty assigned by TRC = 0.005 K; TRC"
+    },
+    {
+     "value": 63.14,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Henning and Otto, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; temperature measured with He gas thermometer; TRC"
+    },
+    {
+     "value": 63.13,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Giauque and Clayton, 1933",
+     "comment": "Crystal phase 1 phase; Uncertainty assigned by TRC = 0.06 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "nitrous-oxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C10024972&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.5,
+    "T_K": 182.4,
+    "method": "",
+    "reference": "Atake and Chihara, 1974",
+    "comment": "AC"
+   }
+  ]
+ },
+ "nmp": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C872504&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 18.1,
+    "T_K": 248.5,
+    "method": "",
+    "reference": "Lisicki and Jamróz, 2000",
+    "comment": "AC"
+   }
+  ]
+ },
+ "o-xylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C95476&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 248.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 12 out of 13 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 247.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Huffman, Parks, et al., 1930",
+     "comment": "Uncertainty assigned by TRC = 0.25 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 13.598,
+    "T_K": 247.82,
+    "method": "",
+    "reference": "Pitzer and Scott, 1943",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 13.6,
+    "T_K": 247.8,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "oxygen": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7782447&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 54.8,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 54.33,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Henning and Otto, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; temperature measured with He gas thermometer; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "p-xylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106423&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 286.3,
+     "uncertainty": 0.2,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 18 out of 21 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 286.4,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Messerly, Finke, et al., 1988",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    },
+    {
+     "value": 286.3,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Huffman, Parks, et al., 1930",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 17.11746,
+    "T_K": 286.405,
+    "method": "",
+    "reference": "Messerly, Finke, et al., 1988, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 17.1,
+    "T_K": 286.3,
+    "method": "",
+    "reference": "Corruccini and Ginnings, 1947",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 17.113,
+    "T_K": 286.39,
+    "method": "",
+    "reference": "Pitzer and Scott, 1943",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 17.11,
+    "T_K": 286.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 16.933,
+    "T_K": 286.3,
+    "method": "",
+    "reference": "Huffman, Parks, et al., 1930, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "phenol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108952&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 314.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 60 out of 61 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 314.06,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Andon, Counsell, et al., 1963",
+     "comment": "Uncertainty assigned by TRC = 0.01 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 11.514,
+    "T_K": 314.06,
+    "method": "",
+    "reference": "Andon, Counsell, et al., 1963, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 12.125,
+    "T_K": 314.13,
+    "method": "",
+    "reference": "Mastrangelo, 1957",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 11.51,
+    "T_K": 314.0,
+    "method": "",
+    "reference": "Inozemtsev, Liakumovich, et al., 1972",
+    "comment": "See also Domalski and Hearing, 1996.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 10.581,
+    "T_K": 312.7,
+    "method": "",
+    "reference": "Eykman, 1889",
+    "comment": "DH"
+   }
+  ]
+ },
+ "propane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74986&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 85.5,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 85.46,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Klipping and Schmidt, 1965",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 83.25,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Harteck and Edse, 1938",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 86.05,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Hicks-Brunn and Bruun, 1936",
+     "comment": "Uncertainty assigned by TRC = 0.15 K; TRC"
+    },
+    {
+     "value": 85.35,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Timmermans, 1921",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 85.0,
+     "uncertainty": 3.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 3.51,
+    "T_K": 85.5,
+    "method": "AC",
+    "reference": "Perkins, Ochoa, et al., 2009",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 3.52,
+    "T_K": 85.5,
+    "method": "N/A",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   }
+  ]
+ },
+ "propionic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79094&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 252.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 8 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 252.65,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Martin and Andon, 1982",
+     "comment": "Uncertainty assigned by TRC = 0.06 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 10.66,
+    "T_K": 252.7,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Martin and Andon, 1982, 2.; AC"
+   }
+  ]
+ },
+ "propylene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C115071&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 88.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Streng, 1971",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    },
+    {
+     "value": 87.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Haselden and Snowden, 1962",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    },
+    {
+     "value": 88.25,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Parks and Huffman, 1931",
+     "comment": "Uncertainty assigned by TRC = 1. K; TRC"
+    },
+    {
+     "value": 87.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Coffin and Maass, 1927",
+     "comment": "Uncertainty assigned by TRC = 0.6 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 87.8,
+     "uncertainty": 0.8,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 6 values; Individual data points"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 3.003,
+    "T_K": 87.85,
+    "method": "",
+    "reference": "Chao, Hall, et al., 1983",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.002,
+    "T_K": 87.85,
+    "method": "",
+    "reference": "Powell and Giauque, 1939",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 2.933,
+    "T_K": 88.2,
+    "method": "",
+    "reference": "Huffman, Parks, et al., 1931",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 2.93,
+    "T_K": 88.2,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "propylene-glycol": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C57556&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "propylene-oxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75569&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 161.02,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McDonald, Shrader, et al., 1959",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 161.22,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 161.25,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Beaumont, Clegg, et al., 1966",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 161.22,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Oetting, 1964",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.5329,
+    "T_K": 161.22,
+    "method": "",
+    "reference": "Oetting F.L., 1964",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.57,
+    "T_K": 161.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 6.569,
+    "T_K": 161.25,
+    "method": "",
+    "reference": "Beaumont, Clegg, et al., 1966, 2",
+    "comment": "DH"
+   }
+  ]
+ },
+ "pyridine": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110861&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 232.0,
+     "uncertainty": 2.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 26 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 231.48,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Helm, Lanum, et al., 1958",
+     "comment": "Uncertainty assigned by TRC = 0.03 K; measured in calorimeter at USBM, Bartlesville, OK; TRC"
+    },
+    {
+     "value": 231.48,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "McCullough, Douslin, et al., 1957",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; by extrapolation of 1/f to zero; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.2785,
+    "T_K": 231.49,
+    "method": "",
+    "reference": "McCullough, Douslin, et al., 1957, 2",
+    "comment": "Includes energy of anomaly at about 210 K.; DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.28,
+    "T_K": 231.5,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 8.272,
+    "T_K": 231.1,
+    "method": "",
+    "reference": "Parks, Todd, et al., 1936",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 3.1,
+    "T_K": 230.38,
+    "method": "",
+    "reference": "Pearce and Bakke, 1936",
+    "comment": "DH"
+   }
+  ]
+ },
+ "salicylic-acid": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C69727&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 432.0,
+     "uncertainty": 1.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 7 values; Individual data points"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 24.6,
+    "T_K": 431.8,
+    "method": "N/A",
+    "reference": "Rabinovich, Sheiman, et al., 1986",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 27.1,
+    "T_K": 434.1,
+    "method": "DSC",
+    "reference": "Good and Rodriguez-Hornedo, 2009",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 23.05,
+    "T_K": 432.5,
+    "method": "DSC",
+    "reference": "Peña, Escalera, et al., 2009",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 24.45,
+    "T_K": 431.1,
+    "method": "N/A",
+    "reference": "Pinto, Diogo, et al., 2005",
+    "comment": "See also Mota, Queimada, et al., 2008.; AC"
+   },
+   {
+    "Hfus_kJ_mol": 24.6,
+    "T_K": 431.8,
+    "method": "N/A",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Sabbah and Le, 1993.; AC"
+   }
+  ]
+ },
+ "styrene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C100425&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 240.0,
+     "uncertainty": 30.0,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 10 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 242.47,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Pitzer, Guttman, et al., 1946",
+     "comment": "Uncertainty assigned by TRC = 0.07 K; TRC"
+    },
+    {
+     "value": 242.47,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Guttman, Westrum, et al., 1943",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 242.47,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Guttman, 1943",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; temperature scale based on To = 273.16 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 10.964,
+    "T_K": 242.27,
+    "method": "",
+    "reference": "Warfield and Petree, 1961",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.949,
+    "T_K": 242.27,
+    "method": "",
+    "reference": "Pitzer, Guttman, et al., 1946, 3",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.95,
+    "T_K": 242.47,
+    "method": "",
+    "reference": "Guttman and Westrum, 1943",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.95,
+    "T_K": 242.47,
+    "method": "",
+    "reference": "Lebedev, Lebedev, et al., 1985",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 10.96,
+    "T_K": 242.3,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "sulfolane": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C126330&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 301.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Lee, 1986",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 301.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Jannelli and Pansini, 1985",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 301.61,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Jannelli and Pansini, 1985, 2",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    },
+    {
+     "value": 301.61,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Lopez, Jannelli, et al., 1983",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 301.6,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Sacco and Jannelli, 1972",
+     "comment": "Uncertainty assigned by TRC = 0.1 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 1.37,
+    "T_K": 301.7,
+    "method": "",
+    "reference": "Ahlers, Lohmann, et al., 1999",
+    "comment": "AC"
+   },
+   {
+    "Hfus_kJ_mol": 1.43,
+    "T_K": 301.6,
+    "method": "",
+    "reference": "Domanska, Moollan, et al., 1996",
+    "comment": "AC"
+   }
+  ]
+ },
+ "sulfur-dioxide": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7446095&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 200.75,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Hoffman and Vanderwerf, 1946",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 197.64,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Giauque and Stephenson, 1938",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; Temp. Scale based on T0 = 273.10 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ },
+ "tetrahydrofuran": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109999&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 165.1,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Hayduk, Laudie, et al., 1973",
+     "comment": "Uncertainty assigned by TRC = 0.5 K; TRC"
+    },
+    {
+     "value": 164.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Brooks and Pilcher, 1959",
+     "comment": "Uncertainty assigned by TRC = 1. K; TRC"
+    },
+    {
+     "value": 164.63,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Boord, Greenlee, et al., 1946",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 164.05,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Dolliver, Gresham, et al., 1938",
+     "comment": "Uncertainty assigned by TRC = 0.4 K; TRC"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 164.76,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Wilhoit, Chao, et al., 1985",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 164.76,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Lebedev, Lityagov, et al., 1979",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    },
+    {
+     "value": 164.76,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Lebedev, Rabinovich, et al., 1978",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.54,
+    "T_K": 164.76,
+    "method": "",
+    "reference": "Lebedev, Rabinovich, et al., 1978, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.54,
+    "T_K": 164.76,
+    "method": "",
+    "reference": "Lebedev and Lityagov, 1977",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 8.54,
+    "T_K": 164.8,
+    "method": "",
+    "reference": "Acree, 1991",
+    "comment": "AC"
+   }
+  ]
+ },
+ "toluene": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 178.1,
+     "uncertainty": 0.6,
+     "units": "K",
+     "method": "AVG",
+     "reference": "N/A",
+     "comment": "Average of 24 out of 25 values; Individual data points"
+    }
+   ],
+   "Ttriple": [
+    {
+     "value": 178.15,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Scott, Guthrie, et al., 1962",
+     "comment": "Uncertainty assigned by TRC = 0.05 K; TRC"
+    },
+    {
+     "value": 178.0,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Ziegler and Andrews, 1942",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 177.9,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Stull, 1937",
+     "comment": "Uncertainty assigned by TRC = 0.2 K; TRC"
+    },
+    {
+     "value": 177.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Kelley, 1929",
+     "comment": "Uncertainty assigned by TRC = 0.02 K; TRC"
+    }
+   ],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 6.636,
+    "T_K": 178.15,
+    "method": "",
+    "reference": "Scott, Guthrie, et al., 1962, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.619,
+    "T_K": 177.95,
+    "method": "",
+    "reference": "Kelley, 1929, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.548,
+    "T_K": 178.0,
+    "method": "",
+    "reference": "Ziegler and Andrews, 1942, 2",
+    "comment": "DH"
+   },
+   {
+    "Hfus_kJ_mol": 6.61,
+    "T_K": 178.0,
+    "method": "",
+    "reference": "Domalski and Hearing, 1996",
+    "comment": "See also Southard and Andrews, 1930.; AC"
+   }
+  ]
+ },
+ "vinyl-acetate": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108054&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [
+    {
+     "value": 172.95,
+     "uncertainty": null,
+     "units": "K",
+     "method": "N/A",
+     "reference": "Dolliver, Gresham, et al., 1938",
+     "comment": "Uncertainty assigned by TRC = 0.3 K; TRC"
+    }
+   ],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": [
+   {
+    "Hfus_kJ_mol": 8.46,
+    "T_K": 180.6,
+    "method": "",
+    "reference": "Kulagina and Lebedev, 1997",
+    "comment": "AC"
+   }
+  ]
+ },
+ "water": {
+  "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Units=SI&Mask=4",
+  "retrieved": "2026-10-07",
+  "one_dimensional": {
+   "Tfus": [],
+   "Ttriple": [],
+   "ΔfusH": []
+  },
+  "enthalpy_of_fusion": []
+ }
+}

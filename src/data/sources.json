@@ -402,7 +402,8 @@
       "access": "Open: the archive is public, NIST open license (the articles themselves may be subscription-only)",
       "note": "Values cited per article in each record and in validation/data/pure/measured/thermoml_<id>.json.",
       "files": [
-        "validation/data/pure/measured/"
+        "validation/data/pure/measured/",
+        "validation/data/sle/"
       ]
     },
     "nist-webbook": {
@@ -412,6 +413,7 @@
       "access": "Free to read online (NIST); an allowed source under AGENTS.md rule 1",
       "note": "Values cited per record, not redistributed as a database.",
       "files": [
+        "validation/data/pure/fusion/webbook_fusion.json",
         "validation/data/pure/measured/webbook.json",
         "validation/report/reference/"
       ]

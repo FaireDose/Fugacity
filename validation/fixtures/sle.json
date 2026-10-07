@@ -1,0 +1,444 @@
+{
+ "_about": "Reference values for test/sle.test.js, from validation/python/reference_sle.py (chemicals.solubility_eutectic, reference_model.System, scipy brentq). Do not edit by hand.",
+ "equation": [
+  {
+   "T_K": 260.0,
+   "Tm_K": 278.68,
+   "Hfus_J_mol": 9952.0,
+   "dCp_J_molK": 0,
+   "gamma": 3.0176,
+   "x": 0.2434007130748926
+  },
+  {
+   "T_K": 298.15,
+   "Tm_K": 353.39,
+   "Hfus_J_mol": 19030.0,
+   "dCp_J_molK": 0,
+   "gamma": 1.0,
+   "x": 0.30120423412524844
+  },
+  {
+   "T_K": 298.15,
+   "Tm_K": 353.39,
+   "Hfus_J_mol": 19030.0,
+   "dCp_J_molK": 30.0,
+   "gamma": 1.0,
+   "x": 0.3183001229857997
+  },
+  {
+   "T_K": 250.0,
+   "Tm_K": 395.52,
+   "Hfus_J_mol": 17320.0,
+   "dCp_J_molK": 0,
+   "gamma": 2.5,
+   "x": 0.018648705050657254
+  },
+  {
+   "T_K": 300.0,
+   "Tm_K": 432.0,
+   "Hfus_J_mol": 24600.0,
+   "dCp_J_molK": 70.0,
+   "gamma": 0.7,
+   "x": 0.13233995958195235
+  },
+  {
+   "T_K": 150.0,
+   "Tm_K": 178.0,
+   "Hfus_J_mol": 6614.5,
+   "dCp_J_molK": 0,
+   "gamma": 1.3,
+   "x": 0.3339914160228433
+  }
+ ],
+ "solubility": [
+  {
+   "model": "ideal",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "solute": "naphthalene",
+   "T_K": 260.0,
+   "x": 0.09765031209893174
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "solute": "naphthalene",
+   "T_K": 298.15,
+   "x": 0.30120423412524844
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "solute": "naphthalene",
+   "T_K": 330.0,
+   "x": 0.6318792167322148
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "benzoic-acid",
+    "ethanol"
+   ],
+   "solute": "benzoic-acid",
+   "T_K": 298.15,
+   "x": 0.17906106809865016
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "benzoic-acid",
+    "ethanol"
+   ],
+   "solute": "benzoic-acid",
+   "T_K": 320.0,
+   "x": 0.28852882143455516
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "phenol",
+    "water"
+   ],
+   "solute": "phenol",
+   "T_K": 300.0,
+   "x": 0.7903370391987071
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "phenol",
+    "water"
+   ],
+   "solute": "phenol",
+   "T_K": 310.0,
+   "x": 0.9418139693948628
+  },
+  {
+   "model": "UNIQUAC",
+   "components": [
+    "phenol",
+    "water"
+   ],
+   "solute": "phenol",
+   "T_K": 305.0,
+   "x": 0.8740798181192925
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "water"
+   ],
+   "solute": "acetic-acid",
+   "T_K": 270.0,
+   "x": 0.698446947200921
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "water"
+   ],
+   "solute": "acetic-acid",
+   "T_K": 285.0,
+   "x": 0.924448638532263
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "water",
+    "ethylene-glycol"
+   ],
+   "solute": "water",
+   "T_K": 250.0,
+   "x": 0.8002721321854862
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "water",
+    "ethylene-glycol"
+   ],
+   "solute": "water",
+   "T_K": 265.0,
+   "x": 0.9239686775276519
+  }
+ ],
+ "eutectic": [
+  {
+   "model": "ideal",
+   "components": [
+    "benzene",
+    "naphthalene"
+   ],
+   "x1": 0.8669345426774627,
+   "T_K": 269.47265153295024
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "x1": 0.001681063066154162,
+   "T_K": 177.90803605485328
+  },
+  {
+   "model": "ideal",
+   "components": [
+    "benzene",
+    "p-xylene"
+   ],
+   "x1": 0.6316982642039575,
+   "T_K": 251.4069995154165
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "acetic-acid",
+    "water"
+   ],
+   "x1": 0.3734943077178575,
+   "T_K": 246.96675066415543
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "water",
+    "ethylene-glycol"
+   ],
+   "x1": 0.5609081803758811,
+   "T_K": 212.45272692163695
+  },
+  {
+   "model": "UNIQUAC",
+   "components": [
+    "water",
+    "ethylene-glycol"
+   ],
+   "x1": 0.5751755789708147,
+   "T_K": 212.41768992316602
+  }
+ ],
+ "measured_summary": {
+  "naphthalene": {
+   "1-butanol": {
+    "ratio": 2.2339365881885396,
+    "articles": 1,
+    "values": 17
+   },
+   "acetone": {
+    "ratio": 1.2936588088928387,
+    "articles": 2,
+    "values": 28
+   },
+   "cyclohexane": {
+    "ratio": 1.5260487633685993,
+    "articles": 1,
+    "values": 5
+   },
+   "ethanol": {
+    "ratio": 5.30513733414719,
+    "articles": 1,
+    "values": 19
+   },
+   "ethyl-acetate": {
+    "ratio": 1.068403640590366,
+    "articles": 1,
+    "values": 10
+   },
+   "dmf": {
+    "ratio": 1.0718589011338309,
+    "articles": 1,
+    "values": 9
+   },
+   "n-heptane": {
+    "ratio": 2.9713071379679996,
+    "articles": 1,
+    "values": 21
+   },
+   "nmp": {
+    "ratio": 0.8154189804621615,
+    "articles": 1,
+    "values": 10
+   },
+   "tetrahydrofuran": {
+    "ratio": 0.8960743595898922,
+    "articles": 1,
+    "values": 12
+   },
+   "toluene": {
+    "ratio": 1.0428225037053356,
+    "articles": 1,
+    "values": 12
+   },
+   "water": {
+    "ratio": 35936.46504634682,
+    "articles": 1,
+    "values": 8
+   }
+  },
+  "benzoic-acid": {
+   "1-butanol": {
+    "ratio": 1.000939077592219,
+    "articles": 1,
+    "values": 9
+   },
+   "1-propanol": {
+    "ratio": 1.0305596207827816,
+    "articles": 1,
+    "values": 10
+   },
+   "2-butanone": {
+    "ratio": 0.9326431604263974,
+    "articles": 1,
+    "values": 9
+   },
+   "2-propanol": {
+    "ratio": 0.9415679151262505,
+    "articles": 4,
+    "values": 29
+   },
+   "acetic-acid": {
+    "ratio": 1.521698016787326,
+    "articles": 2,
+    "values": 19
+   },
+   "acetone": {
+    "ratio": 0.9301873667462346,
+    "articles": 3,
+    "values": 21
+   },
+   "chloroform": {
+    "ratio": 1.3525210363321958,
+    "articles": 2,
+    "values": 14
+   },
+   "cyclohexane": {
+    "ratio": 10.779289363030493,
+    "articles": 2,
+    "values": 18
+   },
+   "ethanol": {
+    "ratio": 0.9968607444027444,
+    "articles": 5,
+    "values": 29
+   },
+   "ethyl-acetate": {
+    "ratio": 1.093913734434365,
+    "articles": 1,
+    "values": 11
+   },
+   "isooctane": {
+    "ratio": 18.686242064283874,
+    "articles": 1,
+    "values": 10
+   },
+   "isopropyl-acetate": {
+    "ratio": 1.2018537967330152,
+    "articles": 1,
+    "values": 5
+   },
+   "methanol": {
+    "ratio": 1.1355122509769346,
+    "articles": 1,
+    "values": 8
+   },
+   "methyl-acetate": {
+    "ratio": 0.9551257480295852,
+    "articles": 1,
+    "values": 10
+   },
+   "mibk": {
+    "ratio": 1.0343681187117153,
+    "articles": 1,
+    "values": 10
+   },
+   "n-heptane": {
+    "ratio": 14.673038793863887,
+    "articles": 1,
+    "values": 6
+   },
+   "n-hexane": {
+    "ratio": 14.03946402451486,
+    "articles": 1,
+    "values": 9
+   },
+   "n-pentane": {
+    "ratio": 24.693657736594048,
+    "articles": 1,
+    "values": 4
+   },
+   "toluene": {
+    "ratio": 2.3307652782052153,
+    "articles": 13,
+    "values": 95
+   },
+   "water": {
+    "ratio": 304.1945486366548,
+    "articles": 12,
+    "values": 114
+   }
+  },
+  "salicylic-acid": {
+   "1-butanol": {
+    "ratio": 0.31134868665065907,
+    "articles": 1,
+    "values": 9
+   },
+   "1-propanol": {
+    "ratio": 0.529727595562447,
+    "articles": 3,
+    "values": 19
+   },
+   "2-propanol": {
+    "ratio": 0.4991075033334038,
+    "articles": 1,
+    "values": 5
+   },
+   "acetic-acid": {
+    "ratio": 0.8994028584946647,
+    "articles": 1,
+    "values": 5
+   },
+   "acetone": {
+    "ratio": 0.29876398973954804,
+    "articles": 4,
+    "values": 19
+   },
+   "acetonitrile": {
+    "ratio": 1.5806162486360138,
+    "articles": 1,
+    "values": 9
+   },
+   "ethanol": {
+    "ratio": 0.3908025017819744,
+    "articles": 2,
+    "values": 20
+   },
+   "ethyl-acetate": {
+    "ratio": 0.394271611380701,
+    "articles": 4,
+    "values": 26
+   },
+   "methanol": {
+    "ratio": 0.3904758372715646,
+    "articles": 3,
+    "values": 15
+   },
+   "water": {
+    "ratio": 168.15266424273247,
+    "articles": 4,
+    "values": 26
+   }
+  }
+ }
+}

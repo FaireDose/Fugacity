@@ -548,3 +548,25 @@ Rules: liquid values at 110 kPa or less, inside the record's temperature range, 
 | Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
 |---|---|---|---|---|---|---|
 
+## Naphthalene
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 21 | 1 (1) | 367.2-452.4 | 0.67 % | -1.04 % at 367.2 K (Berg 2015, doi:10.1021/acs.jced.5b00752) | ✅ within 1 % |
+| Heat of vaporization | 0 | | | | | too few values (1 measured in all) |
+
+## Benzoic acid
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (2 measured in all) |
+| Liquid density | 6 | 1 (1) | 401.3-447.1 | 0.72 % | -0.89 % at 401.3 K (Sun 2004, doi:10.1021/je0497247) | ✅ within 1 % |
+| Liquid heat capacity | 0 | | | | | too few values (16 measured in all) |
+| Liquid viscosity | 6 | 1 (0) | 400.3-447.1 | 6.14 % | -10.55 % at 447.1 K (Sun 2004, doi:10.1021/je0497247) | ⚠️ above 5 % |
+| Liquid thermal conductivity | 4 | 1 (1) | 406.8-465.1 | 2.19 % | +4.23 % at 406.8 K (Sun 2004, doi:10.1021/je0497247) | ✅ within 5 % |
+
+## Salicylic acid
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+

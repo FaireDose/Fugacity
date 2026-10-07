@@ -81,7 +81,9 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
        # proposal 0008, Part B, batch 3: petrochemicals and fuels, nitrogen compounds
        "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
-       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
+       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
+       # proposal 0008, Part B, batch 4: solids at 25 degC
+       "naphthalene", "benzoic-acid", "salicylic-acid"]
 # components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
 # or from ChemSep for a component that is not a CoolProp fluid
 VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
@@ -96,14 +98,18 @@ VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
              "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
              "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
              "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
-             "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
+             "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
+       # proposal 0008, Part B, batch 4: solids at 25 degC
+       "naphthalene", "benzoic-acid", "salicylic-acid"]
 # proposal 0008, Part B, batches 1 to 3 (the record notes name the proposal)
 BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
        "isobutanol", "2-butanol",
        "mea", "dea", "mdea", "sulfur-dioxide", "nitrous-oxide", "formic-acid", "propionic-acid", "acrylic-acid",
        "vinyl-acetate", "isopropyl-acetate", "ethylene-oxide", "propylene-oxide", "formaldehyde", "hydrogen-peroxide",
        "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
-       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine"]
+       "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
+       # proposal 0008, Part B, batch 4: solids at 25 degC
+       "naphthalene", "benzoic-acid", "salicylic-acid"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -153,7 +159,7 @@ NOT_IN_COOLPROP = ["acetic-acid", "ethylene-glycol", "chloroform", "ethyl-acetat
                    "dioxane", "isobutanol", "2-butanol", "mea", "dea", "mdea", "formic-acid", "propionic-acid",
                    "acrylic-acid", "vinyl-acetate", "isopropyl-acetate", "propylene-oxide", "formaldehyde",
                    "hydrogen-peroxide", "cumene", "mesitylene", "isooctane", "isoprene", "etbe", "pyridine", "aniline",
-                   "acrylonitrile", "methylamine"]
+                   "acrylonitrile", "methylamine", "naphthalene", "benzoic-acid", "salicylic-acid"]
 COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in this script)
     "acetone": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
     "ethylene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
@@ -262,7 +268,9 @@ WEBBOOK_ANTOINE = {cid: "C" + cas.replace("-", "") for cid, cas in [
     # proposal 0008, Part B, batch 3 (the components that are not CoolProp fluids)
     ("cumene", "98-82-8"), ("mesitylene", "108-67-8"), ("isooctane", "540-84-1"), ("isoprene", "78-79-5"),
     ("etbe", "637-92-3"), ("pyridine", "110-86-1"), ("aniline", "62-53-3"), ("acrylonitrile", "107-13-1"),
-    ("methylamine", "74-89-5")]}
+    ("methylamine", "74-89-5"),
+    # proposal 0008, Part B, batch 4
+    ("naphthalene", "91-20-3"), ("benzoic-acid", "65-85-0"), ("salicylic-acid", "69-72-7")]}
 # Vapour pressures fitted to a WebBook Antoine set plus the critical point, where the ChemSep equation does not
 # reproduce the measured normal boiling point. Styrene: the ChemSep equation 101 gives 417.14 K at 101.325 kPa
 # against 418.31 K (ChemSep's own Tb, and the Antoine equation of Dreyer et al. (1955), measured to 417.92 K;

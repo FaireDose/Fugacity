@@ -163,5 +163,8 @@ export function createSystem(cfg) {
   };
 
   const phaseMethods = activityPhaseMethods({ ids, comps, n, model, gammas, psat, cubicVapour, assoc: dimerizing, warnings });
-  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, lnKValues, info, warnings, ...phaseMethods };
+  // melting temperature and enthalpy of fusion (solid-liquid equilibrium, src/equilibrium/sle.js); null: no open data
+  const fusion = comps.map(c => (c.fusion && c.fusion.available !== false
+    ? { Tm_K: c.fusion.Tm_K, Hfus_J_mol: c.fusion.Hfus_J_mol, tier: c.fusion.tier, source: c.fusion.source } : null));
+  return { ids, names: comps.map(c => c.name), n, model, vapour: vapourModel, gammas, psat, equilibrium, lnKValues, info, warnings, fusion, ...phaseMethods };
 }

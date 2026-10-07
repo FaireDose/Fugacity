@@ -262,6 +262,9 @@ export function pure(key, opts = {}) {
   const base = {
     id, name: c.name, formula: c.formula, cas: c.cas,
     MW: c.MW, Tc_K: c.Tc_K, Pc_kPa: c.Pc_Pa / 1000, omega: c.omega, Tb_K: c.Tb_K,
+    // melting (triple-point) temperature and enthalpy of fusion with their source, or null (no open data)
+    fusion: c.fusion && c.fusion.available !== false
+      ? { Tm_K: c.fusion.Tm_K, Hfus_J_mol: c.fusion.Hfus_J_mol, tier: c.fusion.tier, source: c.fusion.source } : null,
     has, record, property, psat, tsat, hIdealGas, props, liquidEnthalpy, saturation,
     /** Names of the properties with data, and those marked "no open data". */
     available() {
