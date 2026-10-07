@@ -26,7 +26,7 @@ What it does (only standard library; safe to run again, it changes nothing the s
        (tested in test/eos.test.js) stays where it is and gets "set" and "source_ids";
      - src/data/henry.json: "set", "default", "source_ids" (inserted into the hand-formatted
        file without reformatting it);
-     - src/data/components.json: "source_ids" on vapour-pressure, UNIQUAC, association and
+     - src/data/components.json: "source_ids" on vapour-pressure, UNIQUAC, association, fusion and
        property records, "constants_source_ids" and "omega_source_ids" next to the text;
      - src/data/known-issues.json: "source_ids".
    A record whose text matches no source stops the script with a list (fail loudly).
@@ -128,7 +128,7 @@ SEEDS = {
         "url": "https://webbook.nist.gov/chemistry/",
         "access": "Free to read online (NIST); an allowed source under AGENTS.md rule 1",
         "note": "Values cited per record, not redistributed as a database.",
-        "files": ["validation/report/reference/"],
+        "files": ["validation/report/reference/", "validation/data/pure/fusion/webbook_fusion.json"],
     },
     # validation/python/thermoml_read.py docstring ("the archive is public, NIST open license"); the
     # pure-component values of validation/python/measured_components.py (proposal 0008, Part B)
@@ -139,7 +139,7 @@ SEEDS = {
         "url": "https://trc.nist.gov/ThermoML/",
         "access": "Open: the archive is public, NIST open license (the articles themselves may be subscription-only)",
         "note": "Values cited per article in each record and in validation/data/pure/measured/thermoml_<id>.json.",
-        "files": ["validation/data/pure/measured/"],
+        "files": ["validation/data/pure/measured/", "validation/data/sle/"],
     },
     # src/thermo/iapws/if97.js header; src/data/LICENSES.md (IAPWS row)
     "iapws-r7-97": {
@@ -476,7 +476,7 @@ def annotate_henry_text(text, rules, unmapped):
     return text
 
 
-PROPERTY_SOURCE_KEYS = ("vapourPressure", "uniquac", "association")
+PROPERTY_SOURCE_KEYS = ("vapourPressure", "uniquac", "association", "fusion")
 
 
 def annotate_components(doc, rules, unmapped):
@@ -524,6 +524,7 @@ def annotate_known_issues(doc, rules, unmapped):
 # Who uses each source (for LICENSES.md; the engine computes the same at run time)
 
 PROPERTY_LABELS = {"vapourPressure": "vapour pressure", "uniquac": "UNIQUAC r and q", "association": "vapour association",
+                   "fusion": "melting temperature and enthalpy of fusion",
                    "constants_source": "critical constants and normal boiling point", "omega_source": "acentric factor"}
 
 

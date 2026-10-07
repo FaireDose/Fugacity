@@ -1,0 +1,1071 @@
+{
+ "solid": "salicylic-acid",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"2-hydroxybenzoic acid\", \"salicylic acid\"; 50 records opened",
+ "about": "Solubility of the solid as the mole fraction of the solid in the saturated liquid (x_solute), converted from the stored quantity where needed (validation/python/fetch_sle.py); binary sets with a Fugacity component as the solvent, at 110 kPa or less.",
+ "articles": {
+  "10.1016/j.jct.2012.09.006": {
+   "authors": [
+    "Lim, J.[Junhyuk]",
+    "Jang, S.[Sunghyun]",
+    "Cho, K.[Kyoung]",
+    "Shin, M. S.[Moon Sam]",
+    "Kim, H.[Hwayong]"
+   ],
+   "title": "Solubility of salicylic acid in pure alcohols at different temperatures",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "57",
+   "year": "2013",
+   "pages": "295-300"
+  },
+  "10.1021/acs.jced.6b00957": {
+   "authors": [
+    "Wang, Yuyan",
+    "Chen, Yanxin",
+    "Zhu, Peipei",
+    "Bao, Ying",
+    "Xie, Chuang",
+    "Gong, Junbo",
+    "Jiang, Xiaobin",
+    "Hou, Baohong",
+    "Chen, Wei"
+   ],
+   "title": "Measurement and Correlation of the Solubility of 2,6-Dihydroxybenzoic Acid in Alcohols and Binary Solvents",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "62",
+   "year": "2017",
+   "pages": "3009-3014"
+  },
+  "10.1021/acs.jced.7b00238": {
+   "authors": [
+    "Yang, Yang",
+    "Tang, Weiwei",
+    "Li, Xiaona",
+    "Han, Dandan",
+    "Liu, Yumin",
+    "Du, Shichao",
+    "Zhang, Teng",
+    "Liu, Shiyuan",
+    "Gong, Junbo"
+   ],
+   "title": "Solubility of Benzoin in Six Monosolvents and in Some Binary Solvent Mixtures at Various Temperatures",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "62",
+   "year": "2017",
+   "pages": "3071-3083"
+  },
+  "10.1021/acs.jced.7b00665": {
+   "authors": [
+    "Li, Si",
+    "Wang, Lingyu",
+    "Zhu, Minghe",
+    "Han, Dandan",
+    "Liu, Ya",
+    "Chen, Mingyang",
+    "Hou, Jie",
+    "Gong, Junbo"
+   ],
+   "title": "Determination and Correlation of Solubility and Thermodynamic Properties of trans-Cinnamyl Alcohol in Pure and Binary Solvents from 253.15 K to 293.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "63",
+   "year": "2018",
+   "pages": "77-88"
+  },
+  "10.1021/je060134d": {
+   "authors": [
+    "Nordstrom, F. L.[Fredrik L.]",
+    "Rasmuson, A. C.[Ake C.]"
+   ],
+   "title": "Solubility and Melting Properties of Salicylic Acid",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1668-1671"
+  },
+  "10.1021/je300980k": {
+   "authors": [
+    "Fakhree, M. A. A.[Mohammad A. A.]",
+    "Ahmadian, S.[Somaieh]",
+    "Panahi-Azar, V.[Vahid]",
+    "Acree, Jr., W. E.[William E.]",
+    "Jouyban, A.[Abolghasem]"
+   ],
+   "title": "Solubility of 2-Hydroxybenzoic Acid in Water, 1-Propanol, 2-Propanol, and 2-Propanone at (298.2 to 338.2) K and Their Aqueous Binary Mixtures at 298.2 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "57",
+   "year": "2012",
+   "pages": "3303-3307"
+  },
+  "10.1021/je7004962": {
+   "authors": [
+    "Shalmashi, A.[Anvar]",
+    "Eliassi, A.[Ali]"
+   ],
+   "title": "Solubility of Salicylic Acid in Water, Ethanol, Carbon Tetrachloride, Ethyl Acetate, and Xylene",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "53",
+   "year": "2008",
+   "pages": "199-200"
+  }
+ },
+ "sets": [
+  {
+   "solvent": "ethanol",
+   "doi": "10.1016/j.jct.2012.09.006",
+   "set": 3,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 278.15,
+     "x_solute": 0.1084,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 283.15,
+     "x_solute": 0.1169,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.1255,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.1358,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.1455,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.1566,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.1697,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.1821,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.1969,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "1-propanol",
+   "doi": "10.1016/j.jct.2012.09.006",
+   "set": 4,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 278.15,
+     "x_solute": 0.1017,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 283.15,
+     "x_solute": 0.1108,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.1204,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.1314,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.1428,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.1543,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.168,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.1806,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.196,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "1-butanol",
+   "doi": "10.1016/j.jct.2012.09.006",
+   "set": 5,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 278.15,
+     "x_solute": 0.1063,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 283.15,
+     "x_solute": 0.1158,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.1255,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.1367,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.1484,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.1597,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.1736,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.1863,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.2012,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "1-propanol",
+   "doi": "10.1021/acs.jced.6b00957",
+   "set": 10,
+   "P_kPa": 101.3,
+   "rows": [
+    {
+     "T_K": 298.2,
+     "x_solute": 0.1265,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.2,
+     "x_solute": 0.1576,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.2,
+     "x_solute": 0.1588,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 328.2,
+     "x_solute": 0.1883,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 338.2,
+     "x_solute": 0.1901,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "methanol",
+   "doi": "10.1021/acs.jced.7b00238",
+   "set": 13,
+   "P_kPa": null,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.119,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "ethyl-acetate",
+   "doi": "10.1021/acs.jced.7b00238",
+   "set": 14,
+   "P_kPa": null,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.146,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetone",
+   "doi": "10.1021/acs.jced.7b00238",
+   "set": 15,
+   "P_kPa": null,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.178,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "water",
+   "doi": "10.1021/acs.jced.7b00238",
+   "set": 16,
+   "P_kPa": null,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.00024,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "methanol",
+   "doi": "10.1021/acs.jced.7b00665",
+   "set": 16,
+   "P_kPa": 100.0,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.12324,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.13718,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.15007,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.16333,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.17234,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetic-acid",
+   "doi": "10.1021/acs.jced.7b00665",
+   "set": 17,
+   "P_kPa": 100.0,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.05306,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.06168,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.07089,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.07849,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.09029,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetone",
+   "doi": "10.1021/acs.jced.7b00665",
+   "set": 18,
+   "P_kPa": 100.0,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.17501,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.19589,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.20314,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.21814,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.23071,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "ethyl-acetate",
+   "doi": "10.1021/acs.jced.7b00665",
+   "set": 19,
+   "P_kPa": 100.0,
+   "rows": [
+    {
+     "T_K": 298.15,
+     "x_solute": 0.12998,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.14009,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.15413,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.16518,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.17861,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "methanol",
+   "doi": "10.1021/je060134d",
+   "set": 3,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 283.1,
+     "x_solute": 0.09935,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.10781,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.11772,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.12802,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.13937,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.15053,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.16359,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.17681,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 323.15,
+     "x_solute": 0.19168,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetonitrile",
+   "doi": "10.1021/je060134d",
+   "set": 4,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 283.1,
+     "x_solute": 0.01917,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.02229,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.02549,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.02944,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.03443,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.03896,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.0453,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.05242,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 323.15,
+     "x_solute": 0.05937,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetone",
+   "doi": "10.1021/je060134d",
+   "set": 6,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 283.1,
+     "x_solute": 0.14625,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.15685,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.16804,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.17924,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.19185,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.20238,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.21504,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.22801,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 323.15,
+     "x_solute": 0.24128,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "ethyl-acetate",
+   "doi": "10.1021/je060134d",
+   "set": 7,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 283.1,
+     "x_solute": 0.10908,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.11647,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.12514,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.13571,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.14517,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.15656,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.16752,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.17988,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 323.15,
+     "x_solute": 0.19215,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "water",
+   "doi": "10.1021/je060134d",
+   "set": 8,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 283.1,
+     "x_solute": 0.00016,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 288.15,
+     "x_solute": 0.00018,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 293.15,
+     "x_solute": 0.00021,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 298.15,
+     "x_solute": 0.00025,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 303.15,
+     "x_solute": 0.0003,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.15,
+     "x_solute": 0.00037,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 313.15,
+     "x_solute": 0.00045,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.15,
+     "x_solute": 0.00055,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 323.15,
+     "x_solute": 0.00068,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "water",
+   "doi": "10.1021/je300980k",
+   "set": 2,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.2,
+     "x_solute": 0.000295,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.2,
+     "x_solute": 0.000355,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.2,
+     "x_solute": 0.000507,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 328.2,
+     "x_solute": 0.000699,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 338.2,
+     "x_solute": 0.000944,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "1-propanol",
+   "doi": "10.1021/je300980k",
+   "set": 4,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.2,
+     "x_solute": 0.132,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.2,
+     "x_solute": 0.15,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.2,
+     "x_solute": 0.163,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 328.2,
+     "x_solute": 0.179,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 338.2,
+     "x_solute": 0.195,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "2-propanol",
+   "doi": "10.1021/je300980k",
+   "set": 6,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.2,
+     "x_solute": 0.144,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.2,
+     "x_solute": 0.161,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.2,
+     "x_solute": 0.173,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 328.2,
+     "x_solute": 0.195,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 338.2,
+     "x_solute": 0.214,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "acetone",
+   "doi": "10.1021/je300980k",
+   "set": 8,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.2,
+     "x_solute": 0.137,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 308.2,
+     "x_solute": 0.139,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 318.2,
+     "x_solute": 0.156,
+     "quantity": "Mole fraction"
+    },
+    {
+     "T_K": 328.2,
+     "x_solute": 0.196,
+     "quantity": "Mole fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "water",
+   "doi": "10.1021/je7004962",
+   "set": 1,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.0,
+     "x_solute": 0.00028749913988910603,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 303.0,
+     "x_solute": 0.000381829284955714,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 308.0,
+     "x_solute": 0.0004579036196090399,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 313.0,
+     "x_solute": 0.0005379959230591935,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 318.0,
+     "x_solute": 0.0007050193544757931,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 323.0,
+     "x_solute": 0.0008222883235719735,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 328.0,
+     "x_solute": 0.0009767288523154676,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 333.0,
+     "x_solute": 0.0012560508513105785,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 338.0,
+     "x_solute": 0.0015337460476375902,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 343.0,
+     "x_solute": 0.0018378515441053052,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 348.0,
+     "x_solute": 0.0022640428647390585,
+     "quantity": "Mass fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "ethanol",
+   "doi": "10.1021/je7004962",
+   "set": 2,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.0,
+     "x_solute": 0.1385774634264155,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 303.0,
+     "x_solute": 0.15622573447429786,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 308.0,
+     "x_solute": 0.17281170710709215,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 313.0,
+     "x_solute": 0.1853556504824021,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 318.0,
+     "x_solute": 0.19933323361619523,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 323.0,
+     "x_solute": 0.2136410732669911,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 328.0,
+     "x_solute": 0.23386439015640284,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 333.0,
+     "x_solute": 0.24979989053124543,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 338.0,
+     "x_solute": 0.26950125898467714,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 343.0,
+     "x_solute": 0.2841513260752452,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 348.0,
+     "x_solute": 0.30638235803870606,
+     "quantity": "Mass fraction"
+    }
+   ]
+  },
+  {
+   "solvent": "ethyl-acetate",
+   "doi": "10.1021/je7004962",
+   "set": 4,
+   "P_kPa": 101.0,
+   "rows": [
+    {
+     "T_K": 298.0,
+     "x_solute": 0.13810152230376158,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 303.0,
+     "x_solute": 0.15088700518178602,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 308.0,
+     "x_solute": 0.1644708542547994,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 313.0,
+     "x_solute": 0.17724401127526393,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 318.0,
+     "x_solute": 0.19029735397831307,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 323.0,
+     "x_solute": 0.2034800296794198,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 328.0,
+     "x_solute": 0.21550726074811205,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 333.0,
+     "x_solute": 0.22926194548334844,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 338.0,
+     "x_solute": 0.24299457273703895,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 343.0,
+     "x_solute": 0.25692634625820004,
+     "quantity": "Mass fraction"
+    },
+    {
+     "T_K": 348.0,
+     "x_solute": 0.27186027747609376,
+     "quantity": "Mass fraction"
+    }
+   ]
+  }
+ ]
+}

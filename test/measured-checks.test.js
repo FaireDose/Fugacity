@@ -53,6 +53,7 @@ test("databank and equation-of-state records agree with the measured data of the
         if (!["vapourPressure", "heatOfVaporization"].includes(name) && (r.phases.includes("Gas") || (r.P_kPa ?? 0) > 110)) continue;
         if (r.T_K < rec.Tmin_K - 1e-6 || r.T_K > rec.Tmax_K + 1e-6) continue;
         if (r.uncertainty && r.uncertainty / r.value > tol) continue;
+        if (!(r.value > 0)) continue;   // a value stored as 0 cannot be compared
         const key = `${r.doi}|${r.T_K}|${r.value}`;
         if (seen.has(key)) continue;
         seen.add(key);

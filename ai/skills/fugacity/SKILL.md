@@ -135,7 +135,17 @@ s.txy(101.325, 51);               // [{ x, T, y }, ...]
 s.azeotropes(101.325);            // binary: [{ x, T, type }]
 s.residueCurve([0.3, 0.3, 0.4], 101.325);
 Fugacity.listComponents();        // what the databank holds
+// solid-liquid equilibrium (a pure solid; model "ideal", "NRTL" or "UNIQUAC"): solubility at T, curve, eutectic
+const sl = Fugacity.system({ components: ["benzoic acid", "ethanol"], model: "ideal" });
+sl.solidSolubility("benzoic acid", 298.15);   // { xSolute, x, gamma, xIdeal, Tm_K, Hfus_J_mol, splits, notes }
+sl.solubilityCurve("benzoic acid", { T_from: 280, T_to: 340, n: 31 });
+Fugacity.system({ components: ["benzene", "naphthalene"], model: "ideal" }).sleDiagram();   // liquidus and eutectic
 ```
+
+The ideal solubility (model "ideal") is close to measured data only where the solvent is chemically
+similar to the solid (naphthalene in toluene, benzoic acid in alcohols and ketones; docs/SLE_CHECKS.md).
+In water or alkanes it can be 10-300 times too high, and there are no fitted solid-liquid parameters
+yet: say so to the user.
 
 ## Properties, steam and gases
 
@@ -160,7 +170,7 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 89
+- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 92
   components (water, alcohols, glycols, ketones, esters, aromatics, alkanes, light gases
   and more). Not every pair has parameters: the widget names missing pairs, and equation-of-state results carry
   `warnings` for pairs without k_ij. If the user asks for other chemicals or pairs, say

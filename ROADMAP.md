@@ -99,7 +99,7 @@ one-line setup, document what works, and fix or report what doesn't.
 | **D2** | Fit the *databank only* and *missing* pairs in [DATA_WANTED.md](docs/DATA_WANTED.md) to open experimental data | Open, many items |
 | **D3** | One common format for all files in `validation/data/` | Open |
 | **D4** | Ideal-gas heat capacity and heat of vaporization for all components (needed by A1) | Done (0.2.0) |
-| **D5** | Grow to about 50 components: common solvents, alcohols, acids, esters, hydrocarbons, with pairs, chosen by benchmark processes ([proposal 0004](proposals/0004-first-50-components.md)) | Accepted proposal; step 1 in [docs/BENCHMARKS.md](docs/BENCHMARKS.md); step 2: 33 of the 34 new components from CoolProp and ChemSep; dichloromethane (with 2-methoxyethanol of proposal 0008) fitted to measured data of the NIST WebBook and the ThermoML Archive, the 11 extraction solvents of proposal 0008 batch 1, the 14 of batch 2 and the 13 of batch 3, 89 in all; step 3: pairs of the ethanol dehydration benchmark |
+| **D5** | Grow to about 50 components: common solvents, alcohols, acids, esters, hydrocarbons, with pairs, chosen by benchmark processes ([proposal 0004](proposals/0004-first-50-components.md)) | Accepted proposal; step 1 in [docs/BENCHMARKS.md](docs/BENCHMARKS.md); step 2: 33 of the 34 new components from CoolProp and ChemSep; dichloromethane (with 2-methoxyethanol of proposal 0008) fitted to measured data of the NIST WebBook and the ThermoML Archive, the 11 extraction solvents of proposal 0008 batch 1, the 14 of batch 2, the 13 of batch 3 and the 3 solids of batch 4, 92 in all; step 3: pairs of the ethanol dehydration benchmark |
 | **D6** | Liquid-liquid data for partly miscible pairs (water with benzene, toluene, chloroform, ethyl acetate) | Started: water + ethyl acetate |
 | **D7** | Ternary VLE data to check ternary predictions, starting with the systems whose ternary azeotropes are tested (methanol + acetone + chloroform, ethanol + water + ethyl acetate) | Open |
 | **D8** | Reaction data from open sources: heats of formation, equilibrium constants, kinetics for common reactions (esterification, hydrogenation, reforming), needed by reactors and route comparison | Open |
@@ -195,6 +195,7 @@ Needs A4, A5 and D6; B1, B2.
 - [x] Stream object with flows (A5; [proposal 0006](proposals/0006-first-flowsheet.md), step 1)
 - [ ] Export of the diagrams (SVG, PNG) and of the other tables (CSV), and share-by-link in the workbench
 - [ ] Liquid-liquid and vapour-liquid-liquid equilibria
+- [x] Solid solubility, liquidus and eutectic of a pure solid in a liquid (`solidSolubility`, `sleDiagram`), with melting data for 90 components ([proposal 0007](proposals/0007-solubility-and-liquid-liquid.md), step 4: engine and data; the workbench views next)
 
 ### v0.4 – Flowsheets (first part in 0.3.0)
 

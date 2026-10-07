@@ -67,7 +67,11 @@ views, each reached from its second-row tab:
 - The solubility of a solid in a liquid from the standard solid-liquid equilibrium condition
   (the pure solid in equilibrium with the solution, no solid solution):
 
-  ln(x γ) = (ΔH_fus / R T)(1 − T / T_m) − (ΔC_p / R T)(T_m − T) + (ΔC_p / R) ln(T_m / T)
+  ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m) + (ΔC_p / R T)(T_m − T) − (ΔC_p / R) ln(T_m / T)
+
+  (Corrected in step 4: the first draft copied the signs of the `chemicals` docstring, which
+  are all reversed; its code, its worked example and Gmehling et al. use the form above, which
+  gives x < 1 below the melting point.)
 
   with the melting temperature T_m and enthalpy of fusion ΔH_fus of the solid, the activity
   coefficient γ of the solute in the liquid from NRTL or UNIQUAC (or 1: the ideal solubility),
@@ -143,3 +147,15 @@ views, each reached from its second-row tab:
 | 3 | Liquid-liquid views: binary vs T, ternary with tie lines and distribution coefficient, solvent screening table | interface checks; numbers from step 2 |
 | 4 | Solids: T_m and ΔH_fus (NIST WebBook) for the first solids, `sys.solidSolubility`, the solid views | against `chemicals.solubility_eutectic` and measured solubilities |
 | 5 | Gases in other solvents with an equation of state and fitted k_ij | against ThermoML solubility data |
+
+**Step 4, first part, done:** the engine (`src/equilibrium/sle.js`: `sys.solidSolubility`,
+`sys.solubilityCurve`, `sys.liquidusT`, `sys.sleDiagram`) and the melting data: the melting
+(triple-point) temperature and enthalpy of fusion of 90 of the 92 components, from the NIST
+WebBook phase-change data (median of the measured values) or, where the WebBook has none,
+ChemSep v8.3 (`validation/python/fusion_data.py`). Checked against `chemicals.solubility_eutectic`
+and the independent Python NRTL/UNIQUAC (`validation/python/reference_sle.py`), and against 91
+measured solubility sets of naphthalene, benzoic acid and salicylic acid in 26 solvents from the
+ThermoML Archive (`validation/python/fetch_sle.py`, report in
+[docs/SLE_CHECKS.md](../docs/SLE_CHECKS.md)): the ideal solubility is within 10 % where the
+solvent is chemically close to the solid, and 10–300 times too high in water and alkanes, where
+solid-liquid parameters (not yet fitted) are needed. The workbench views come next.

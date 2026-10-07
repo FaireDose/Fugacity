@@ -512,6 +512,48 @@
     "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_aniline.json"
    }
   },
+  "measured/benzoic-acid/vapourPressure": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
+  "measured/benzoic-acid/liquidDensity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
+  "measured/benzoic-acid/liquidHeatCapacity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
+  "measured/benzoic-acid/heatOfVaporization": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
+  "measured/benzoic-acid/liquidViscosity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
+  "measured/benzoic-acid/liquidThermalConductivity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_benzoic-acid.json"
+   }
+  },
   "measured/carbon-monoxide/vapourPressure": {
    "medianDev_pct": {
     "value": 0.0,
@@ -2108,6 +2150,48 @@
     "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_n-nonane.json"
    }
   },
+  "measured/naphthalene/vapourPressure": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
+  "measured/naphthalene/liquidDensity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
+  "measured/naphthalene/liquidHeatCapacity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
+  "measured/naphthalene/heatOfVaporization": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
+  "measured/naphthalene/liquidViscosity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
+  "measured/naphthalene/liquidThermalConductivity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_naphthalene.json"
+   }
+  },
   "measured/nitrous-oxide/vapourPressure": {
    "medianDev_pct": {
     "value": 0.0,
@@ -2400,6 +2484,48 @@
     "value": 0.0,
     "source": "thermoml-measured",
     "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_pyridine.json"
+   }
+  },
+  "measured/salicylic-acid/vapourPressure": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
+   }
+  },
+  "measured/salicylic-acid/liquidDensity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
+   }
+  },
+  "measured/salicylic-acid/liquidHeatCapacity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
+   }
+  },
+  "measured/salicylic-acid/heatOfVaporization": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
+   }
+  },
+  "measured/salicylic-acid/liquidViscosity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
+   }
+  },
+  "measured/salicylic-acid/liquidThermalConductivity": {
+   "medianDev_pct": {
+    "value": 0.0,
+    "source": "thermoml-measured",
+    "detail": "zero deviation from the measured values in validation/data/pure/measured/thermoml_salicylic-acid.json"
    }
   },
   "measured/styrene/vapourPressure": {

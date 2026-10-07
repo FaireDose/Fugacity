@@ -120,6 +120,10 @@ CHECKED = {
     "aniline": ["aniline", "benzenamine"],
     "acrylonitrile": ["2-propenenitrile", "acrylonitrile"],
     "methylamine": ["methanamine", "methylamine"],
+    # proposal 0008, Part B, batch 4: solids at 25 degC (liquid records from the melting point up)
+    "naphthalene": ["naphthalene"],
+    "benzoic-acid": ["benzoic acid", "benzenecarboxylic acid"],
+    "salicylic-acid": ["2-hydroxybenzoic acid", "salicylic acid"],
 }
 
 
@@ -140,6 +144,8 @@ def measured(rows, prop):
         if not spec or spec[0] != prop or r["T_K"] is None or "Liquid" not in r["phases"] or "Crystal" in r["phases"]:
             continue
         if prop not in ("vapourPressure", "heatOfVaporization") and ("Gas" in r["phases"] or (r["P_kPa"] or 0) > 110):
+            continue
+        if not r["value"] > 0:  # a value stored as 0 (a pressure below the article's resolution): not comparable
             continue
         key = (r["doi"], r["T_K"], r["value"])
         if key in seen:

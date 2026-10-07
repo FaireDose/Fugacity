@@ -1,0 +1,5074 @@
+{
+ "component": "naphthalene",
+ "cas": "91-20-3",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"naphthalene\"; 122 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2006.06.011": {
+   "authors": [
+    "Harris, R. A.[Roger A.]",
+    "Wilken, M.[Michael]",
+    "Fischer, K.[Kai]",
+    "Letcher, T. M.[Trevor M.]",
+    "Raal, J. D.[J. David]",
+    "Ramjugernath, D.[Deresh]"
+   ],
+   "title": "High pressure vapor liquid equilibrium measurements of carbon dioxide with naphthalene and benzoic acid",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "260",
+   "year": "2007",
+   "pages": "60-64"
+  },
+  "10.1016/j.fluid.2010.09.006": {
+   "authors": [
+    "Hua, D.[Dan]",
+    "Hong, J.[Jindui]",
+    "Hu, X.[Xiaohui]",
+    "Hong, Y.[Yanzhen]",
+    "Li, J.[Jun]"
+   ],
+   "title": "Solid liquid gas equilibrium of the naphthalene biphenyl CO2 system: Measurement and modeling",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "299",
+   "year": "2010",
+   "pages": "109-115"
+  },
+  "10.1016/j.fluid.2014.11.026": {
+   "authors": [
+    "Zaitsau, D. H.[Dzmitry H.]",
+    "Verevkin, S. P.[Sergey P.]",
+    "Sazonova, A. Y.[Aleksandra Yu.]"
+   ],
+   "title": "Vapor pressures and vaporization enthalpies of 5-nonanone, linalool and 6-methyl-5-hepten-2-one. Data evaluation",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "386",
+   "year": "2015",
+   "pages": "140-148"
+  },
+  "10.1016/j.jct.2016.05.014": {
+   "authors": [
+    "Yan, B.[Biao]",
+    "Li, J.[Jie]",
+    "Li, H.-Y.[Hong-Ya]",
+    "Gao, J.[Jing]",
+    "Wang, A.-M.[Ai-Min]",
+    "Ren, G.-Y.[Guo-Yu]",
+    "Ma, H.-X.[Hai-Xia]"
+   ],
+   "title": "Crystal structure and thermodynamic properties of myclobutanil",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "101",
+   "year": "2016",
+   "pages": "44-48"
+  },
+  "10.1016/j.tca.2018.07.026": {
+   "authors": [
+    "Nagrimanov, Ruslan N.",
+    "Samatov, Aizat A.",
+    "Buzyurov, Aleksey V.",
+    "Kurshev, Andrey G.",
+    "Ziganshin, Marat A.",
+    "Zaitsau, Dzmitry H.",
+    "Solomonov, Boris N."
+   ],
+   "title": "Thermochemical properties of mono- and di-cyano-aromatic compounds at 298.15 K",
+   "journal": "Thermochim. Acta",
+   "volume": "668",
+   "year": "2018",
+   "pages": "152-158"
+  },
+  "10.1021/acs.jced.5b00752": {
+   "authors": [
+    "Berg, R. F.[Robert F.]"
+   ],
+   "title": "Apparatus to measure the vapor pressure of slowly decomposing compounds from 1 Pa to 105 Pa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "60",
+   "year": "2015",
+   "pages": "3496-3505"
+  },
+  "10.1021/acs.jced.6b00483": {
+   "authors": [
+    "Muravyev, N. V.[Nikita V.]",
+    "Pivkina, A. N.[Alla N.]",
+    "Kiselev, V. G.[Vitaly G.]"
+   ],
+   "title": "Comment on Studies on Thermodynamic Properties of FOX-7 and Its Five Closed-Loop Derivatives ",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "62",
+   "year": "2017",
+   "pages": "575-576"
+  },
+  "10.1021/acs.jced.6b00523": {
+   "authors": [
+    "Stejfa, V.[Vojtech]",
+    "Fulem, M.[Michal]",
+    "Ruzicka, K.[Kvetoslav]",
+    "Moravek, P.[Pavel]"
+   ],
+   "title": "New Static Apparatus for Vapor Pressure Measurements: Reconciled Thermophysical Data for Benzophenone",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "61",
+   "year": "2016",
+   "pages": "3627-3639"
+  },
+  "10.1021/je050216m": {
+   "authors": [
+    "Ruzicka, K.[Kvetoslav]",
+    "Fulem, M.[Michal]",
+    "Ruzicka, V.[Vlastimil]"
+   ],
+   "title": "Recommended Vapor Pressure of Solid Naphthalene",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "50",
+   "year": "2005",
+   "pages": "1956-1970"
+  },
+  "10.1021/je050502y": {
+   "authors": [
+    "Monte, M. J. S.[Manuel J. S.]",
+    "Santos, L. M. N. B. F.[Luis M. N. B. F.]",
+    "Fulem, M.[Michal]",
+    "Fonseca, J. M. S.[Jose M.S.]",
+    "Sousa, C. A. D.[Carlos A. D.]"
+   ],
+   "title": "New Static Apparatus and Vapor Pressure of Reference Materials: Naphthalene, Benzoic Acid, Benzophenone, and Ferrocene",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "757-766"
+  },
+  "10.1021/je060088h": {
+   "authors": [
+    "VonNiederhausern, D. M.[David M.]",
+    "Wilson, G. M.[Grant M.]",
+    "Giles, N. F.[Neil F.]"
+   ],
+   "title": "Critical Point and Vapor Pressure Measurements for Seven Compounds by a Low Residence Time Flow Method",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "51",
+   "year": "2006",
+   "pages": "1982-1985"
+  },
+  "10.1021/je800091s": {
+   "authors": [
+    "Zhao, H.[Hui]",
+    "Unhannanant, P.[Patamaporn]",
+    "Hanshaw, W.[William]",
+    "Chickos, J. S.[James S.]"
+   ],
+   "title": "Enthalpies of Vaporization and Vapor Pressures of Some Deuterated Hydrocarbons. Liquid-Vapor Pressure Isotope Effects",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "53",
+   "year": "2008",
+   "pages": "1545-1556"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 403.85,
+   "P_kPa": null,
+   "value": 10.0,
+   "uncertainty": 10.0,
+   "doi": "10.1016/j.fluid.2006.06.011",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 430.65,
+   "P_kPa": null,
+   "value": 20.0,
+   "uncertainty": 10.0,
+   "doi": "10.1016/j.fluid.2006.06.011",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 351.4,
+   "P_kPa": null,
+   "value": 100.0,
+   "uncertainty": null,
+   "doi": "10.1016/j.fluid.2010.09.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 345.7,
+   "P_kPa": null,
+   "value": 3000.0,
+   "uncertainty": null,
+   "doi": "10.1016/j.fluid.2010.09.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 341.4,
+   "P_kPa": null,
+   "value": 6000.0,
+   "uncertainty": null,
+   "doi": "10.1016/j.fluid.2010.09.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.8,
+   "P_kPa": null,
+   "value": 8000.0,
+   "uncertainty": null,
+   "doi": "10.1016/j.fluid.2010.09.006",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 297.72,
+   "P_kPa": null,
+   "value": 0.01042,
+   "uncertainty": 0.00045,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 300.06,
+   "P_kPa": null,
+   "value": 0.0131,
+   "uncertainty": 0.00054,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 302.47,
+   "P_kPa": null,
+   "value": 0.01651,
+   "uncertainty": 0.0006,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 304.88,
+   "P_kPa": null,
+   "value": 0.02077,
+   "uncertainty": 0.00068,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 307.27,
+   "P_kPa": null,
+   "value": 0.02598,
+   "uncertainty": 0.00078,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 309.69,
+   "P_kPa": null,
+   "value": 0.03247,
+   "uncertainty": 0.00091,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.35,
+   "P_kPa": null,
+   "value": 0.04107,
+   "uncertainty": 0.00107,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 314.78,
+   "P_kPa": null,
+   "value": 0.05102,
+   "uncertainty": 0.00126,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 317.21,
+   "P_kPa": null,
+   "value": 0.06281,
+   "uncertainty": 0.00148,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 319.66,
+   "P_kPa": null,
+   "value": 0.0774,
+   "uncertainty": 0.00176,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 322.08,
+   "P_kPa": null,
+   "value": 0.0949,
+   "uncertainty": 0.00209,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 324.51,
+   "P_kPa": null,
+   "value": 0.1161,
+   "uncertainty": 0.0025,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 326.97,
+   "P_kPa": null,
+   "value": 0.1415,
+   "uncertainty": 0.0027,
+   "doi": "10.1016/j.fluid.2014.11.026",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 101.325,
+   "value": 158.4,
+   "uncertainty": 3.9,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 288.15,
+   "P_kPa": 101.325,
+   "value": 161.6,
+   "uncertainty": 4.0,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 164.8,
+   "uncertainty": 4.1,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 168.0,
+   "uncertainty": 4.2,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 101.325,
+   "value": 171.2,
+   "uncertainty": 4.2,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 308.15,
+   "P_kPa": 101.325,
+   "value": 174.5,
+   "uncertainty": 4.3,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 101.325,
+   "value": 177.8,
+   "uncertainty": 4.4,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 318.15,
+   "P_kPa": 101.325,
+   "value": 181.1,
+   "uncertainty": 4.5,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 101.325,
+   "value": 184.5,
+   "uncertainty": 4.6,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 328.15,
+   "P_kPa": 101.325,
+   "value": 187.9,
+   "uncertainty": 4.7,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Molar heat capacity at constant pressure, J/K/mol",
+   "phases": [
+    "Crystal"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 101.325,
+   "value": 191.3,
+   "uncertainty": 4.7,
+   "doi": "10.1016/j.jct.2016.05.014",
+   "set": 4,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.2,
+   "P_kPa": null,
+   "value": 0.00418,
+   "uncertainty": 0.00021,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 290.7,
+   "P_kPa": null,
+   "value": 0.00548,
+   "uncertainty": 0.00028,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.2,
+   "P_kPa": null,
+   "value": 0.00698,
+   "uncertainty": 0.00035,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.2,
+   "P_kPa": null,
+   "value": 0.01114,
+   "uncertainty": 0.00054,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.2,
+   "P_kPa": null,
+   "value": 0.01811,
+   "uncertainty": 0.00088,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.0,
+   "P_kPa": null,
+   "value": 0.02903,
+   "uncertainty": 0.00138,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.1,
+   "P_kPa": null,
+   "value": 0.04408,
+   "uncertainty": 0.00206,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 318.2,
+   "P_kPa": null,
+   "value": 0.0671,
+   "uncertainty": 0.00314,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 323.1,
+   "P_kPa": null,
+   "value": 0.102,
+   "uncertainty": 0.00476,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 328.1,
+   "P_kPa": null,
+   "value": 0.1538,
+   "uncertainty": 0.00705,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 330.5,
+   "P_kPa": null,
+   "value": 0.18668,
+   "uncertainty": 0.00858,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 333.0,
+   "P_kPa": null,
+   "value": 0.22352,
+   "uncertainty": 0.01013,
+   "doi": "10.1016/j.tca.2018.07.026",
+   "set": 7,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.203,
+   "P_kPa": null,
+   "value": 0.04084,
+   "uncertainty": 0.00113,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.205,
+   "P_kPa": null,
+   "value": 0.04083,
+   "uncertainty": 0.00113,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 317.21,
+   "P_kPa": null,
+   "value": 0.06326,
+   "uncertainty": 0.00149,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 322.21,
+   "P_kPa": null,
+   "value": 0.09622,
+   "uncertainty": 0.00202,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 327.211,
+   "P_kPa": null,
+   "value": 0.14465,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 332.21,
+   "P_kPa": null,
+   "value": 0.21532,
+   "uncertainty": 0.00324,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.206,
+   "P_kPa": null,
+   "value": 0.31504,
+   "uncertainty": 0.0043,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.207,
+   "P_kPa": null,
+   "value": 0.31543,
+   "uncertainty": 0.00431,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 342.185,
+   "P_kPa": null,
+   "value": 0.45565,
+   "uncertainty": 0.0058,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 347.186,
+   "P_kPa": null,
+   "value": 0.65104,
+   "uncertainty": 0.00791,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 347.187,
+   "P_kPa": null,
+   "value": 0.65096,
+   "uncertainty": 0.00791,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 352.194,
+   "P_kPa": null,
+   "value": 0.92131,
+   "uncertainty": 0.01078,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 357.19,
+   "P_kPa": null,
+   "value": 1.2003,
+   "uncertainty": 0.0138,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 357.191,
+   "P_kPa": null,
+   "value": 1.1997,
+   "uncertainty": 0.0138,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 362.196,
+   "P_kPa": null,
+   "value": 1.5207,
+   "uncertainty": 0.0156,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 367.209,
+   "P_kPa": null,
+   "value": 1.9152,
+   "uncertainty": 0.0186,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 367.209,
+   "P_kPa": null,
+   "value": 1.9138,
+   "uncertainty": 0.0186,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 372.218,
+   "P_kPa": null,
+   "value": 2.3935,
+   "uncertainty": 0.0223,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 377.219,
+   "P_kPa": null,
+   "value": 2.9662,
+   "uncertainty": 0.0269,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 377.221,
+   "P_kPa": null,
+   "value": 2.9669,
+   "uncertainty": 0.0269,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 377.223,
+   "P_kPa": null,
+   "value": 2.9662,
+   "uncertainty": 0.0269,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 382.22,
+   "P_kPa": null,
+   "value": 3.6566,
+   "uncertainty": 0.0325,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 387.227,
+   "P_kPa": null,
+   "value": 4.4747,
+   "uncertainty": 0.0384,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 387.232,
+   "P_kPa": null,
+   "value": 4.4749,
+   "uncertainty": 0.0384,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 387.233,
+   "P_kPa": null,
+   "value": 4.4758,
+   "uncertainty": 0.0384,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 392.242,
+   "P_kPa": null,
+   "value": 5.4504,
+   "uncertainty": 0.0462,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 397.269,
+   "P_kPa": null,
+   "value": 6.5926,
+   "uncertainty": 0.0554,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 397.269,
+   "P_kPa": null,
+   "value": 6.5931,
+   "uncertainty": 0.0554,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 397.271,
+   "P_kPa": null,
+   "value": 6.5956,
+   "uncertainty": 0.0555,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 402.368,
+   "P_kPa": null,
+   "value": 7.9615,
+   "uncertainty": 0.0665,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 407.325,
+   "P_kPa": null,
+   "value": 9.5024,
+   "uncertainty": 0.079,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 412.397,
+   "P_kPa": null,
+   "value": 11.329,
+   "uncertainty": 0.094,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 422.548,
+   "P_kPa": null,
+   "value": 15.876,
+   "uncertainty": 0.131,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 432.579,
+   "P_kPa": null,
+   "value": 21.747,
+   "uncertainty": 0.179,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 442.461,
+   "P_kPa": null,
+   "value": 29.184,
+   "uncertainty": 0.239,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 452.367,
+   "P_kPa": null,
+   "value": 38.569,
+   "uncertainty": 0.315,
+   "doi": "10.1021/acs.jced.5b00752",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Molar enthalpy of vaporization or sublimation, kJ/mol",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 339.15,
+   "P_kPa": null,
+   "value": 71.0,
+   "uncertainty": 1.9,
+   "doi": "10.1021/acs.jced.6b00483",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.36,
+   "P_kPa": null,
+   "value": 0.006861,
+   "uncertainty": 0.000291,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.4,
+   "P_kPa": null,
+   "value": 0.006871,
+   "uncertainty": 0.000291,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.38,
+   "P_kPa": null,
+   "value": 0.006881,
+   "uncertainty": 0.000291,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 296.91,
+   "P_kPa": null,
+   "value": 0.009768,
+   "uncertainty": 0.000395,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 296.91,
+   "P_kPa": null,
+   "value": 0.009773,
+   "uncertainty": 0.000395,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 296.92,
+   "P_kPa": null,
+   "value": 0.009786,
+   "uncertainty": 0.000396,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 302.6,
+   "P_kPa": null,
+   "value": 0.01691,
+   "uncertainty": 0.00057,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 302.6,
+   "P_kPa": null,
+   "value": 0.01691,
+   "uncertainty": 0.00057,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 302.6,
+   "P_kPa": null,
+   "value": 0.01696,
+   "uncertainty": 0.00057,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.22,
+   "P_kPa": null,
+   "value": 0.02834,
+   "uncertainty": 0.00076,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.22,
+   "P_kPa": null,
+   "value": 0.02835,
+   "uncertainty": 0.00076,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.22,
+   "P_kPa": null,
+   "value": 0.02835,
+   "uncertainty": 0.00076,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.85,
+   "P_kPa": null,
+   "value": 0.04691,
+   "uncertainty": 0.00108,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.85,
+   "P_kPa": null,
+   "value": 0.04691,
+   "uncertainty": 0.00108,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.85,
+   "P_kPa": null,
+   "value": 0.04691,
+   "uncertainty": 0.00108,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 319.43,
+   "P_kPa": null,
+   "value": 0.07588,
+   "uncertainty": 0.00158,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 319.43,
+   "P_kPa": null,
+   "value": 0.07592,
+   "uncertainty": 0.00158,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 319.43,
+   "P_kPa": null,
+   "value": 0.07592,
+   "uncertainty": 0.00158,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 324.99,
+   "P_kPa": null,
+   "value": 0.12059,
+   "uncertainty": 0.00236,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 325.0,
+   "P_kPa": null,
+   "value": 0.12059,
+   "uncertainty": 0.00236,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 325.01,
+   "P_kPa": null,
+   "value": 0.12062,
+   "uncertainty": 0.00236,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 330.59,
+   "P_kPa": null,
+   "value": 0.18858,
+   "uncertainty": 0.00299,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 330.6,
+   "P_kPa": null,
+   "value": 0.18866,
+   "uncertainty": 0.00299,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 330.6,
+   "P_kPa": null,
+   "value": 0.18868,
+   "uncertainty": 0.00299,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 336.07,
+   "P_kPa": null,
+   "value": 0.28802,
+   "uncertainty": 0.00419,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 336.07,
+   "P_kPa": null,
+   "value": 0.28806,
+   "uncertainty": 0.00419,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 336.07,
+   "P_kPa": null,
+   "value": 0.28811,
+   "uncertainty": 0.00419,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 341.45,
+   "P_kPa": null,
+   "value": 0.43053,
+   "uncertainty": 0.00593,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 341.46,
+   "P_kPa": null,
+   "value": 0.43058,
+   "uncertainty": 0.00593,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 341.46,
+   "P_kPa": null,
+   "value": 0.43063,
+   "uncertainty": 0.00593,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 346.83,
+   "P_kPa": null,
+   "value": 0.63466,
+   "uncertainty": 0.00841,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 346.84,
+   "P_kPa": null,
+   "value": 0.63466,
+   "uncertainty": 0.00841,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 346.84,
+   "P_kPa": null,
+   "value": 0.63471,
+   "uncertainty": 0.00841,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 352.18,
+   "P_kPa": null,
+   "value": 0.9195,
+   "uncertainty": 0.01191,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 352.18,
+   "P_kPa": null,
+   "value": 0.91953,
+   "uncertainty": 0.01191,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 352.18,
+   "P_kPa": null,
+   "value": 0.91956,
+   "uncertainty": 0.01191,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.04,
+   "P_kPa": null,
+   "value": 0.005878,
+   "uncertainty": 0.000257,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.05,
+   "P_kPa": null,
+   "value": 0.005881,
+   "uncertainty": 0.000257,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.05,
+   "P_kPa": null,
+   "value": 0.005889,
+   "uncertainty": 0.000258,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.67,
+   "P_kPa": null,
+   "value": 0.01833,
+   "uncertainty": 0.0006,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.67,
+   "P_kPa": null,
+   "value": 0.01835,
+   "uncertainty": 0.0006,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.67,
+   "P_kPa": null,
+   "value": 0.01835,
+   "uncertainty": 0.0006,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 315.09,
+   "P_kPa": null,
+   "value": 0.05173,
+   "uncertainty": 0.00116,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 315.09,
+   "P_kPa": null,
+   "value": 0.05173,
+   "uncertainty": 0.00116,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 315.09,
+   "P_kPa": null,
+   "value": 0.05174,
+   "uncertainty": 0.00116,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 326.36,
+   "P_kPa": null,
+   "value": 0.13378,
+   "uncertainty": 0.00234,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 326.37,
+   "P_kPa": null,
+   "value": 0.1338,
+   "uncertainty": 0.00234,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 326.37,
+   "P_kPa": null,
+   "value": 0.1338,
+   "uncertainty": 0.00234,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.45,
+   "P_kPa": null,
+   "value": 0.31843,
+   "uncertainty": 0.00456,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.46,
+   "P_kPa": null,
+   "value": 0.31847,
+   "uncertainty": 0.00456,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 337.46,
+   "P_kPa": null,
+   "value": 0.31848,
+   "uncertainty": 0.00456,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 348.58,
+   "P_kPa": null,
+   "value": 0.71429,
+   "uncertainty": 0.00941,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 348.58,
+   "P_kPa": null,
+   "value": 0.71446,
+   "uncertainty": 0.00941,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 348.58,
+   "P_kPa": null,
+   "value": 0.71478,
+   "uncertainty": 0.00942,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 276.72,
+   "P_kPa": null,
+   "value": 0.001118,
+   "uncertainty": 0.000119,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 276.74,
+   "P_kPa": null,
+   "value": 0.001118,
+   "uncertainty": 0.000119,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 276.73,
+   "P_kPa": null,
+   "value": 0.001122,
+   "uncertainty": 0.000119,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 280.12,
+   "P_kPa": null,
+   "value": 0.001625,
+   "uncertainty": 0.00013,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 280.15,
+   "P_kPa": null,
+   "value": 0.001634,
+   "uncertainty": 0.00013,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 280.17,
+   "P_kPa": null,
+   "value": 0.001644,
+   "uncertainty": 0.00013,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.27,
+   "P_kPa": null,
+   "value": 0.002321,
+   "uncertainty": 0.000147,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.27,
+   "P_kPa": null,
+   "value": 0.002329,
+   "uncertainty": 0.000147,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.27,
+   "P_kPa": null,
+   "value": 0.002333,
+   "uncertainty": 0.000147,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 286.33,
+   "P_kPa": null,
+   "value": 0.003264,
+   "uncertainty": 0.000174,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 286.33,
+   "P_kPa": null,
+   "value": 0.003275,
+   "uncertainty": 0.000174,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 286.34,
+   "P_kPa": null,
+   "value": 0.003276,
+   "uncertainty": 0.000174,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 289.39,
+   "P_kPa": null,
+   "value": 0.004482,
+   "uncertainty": 0.000211,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 289.39,
+   "P_kPa": null,
+   "value": 0.004484,
+   "uncertainty": 0.000211,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 289.39,
+   "P_kPa": null,
+   "value": 0.004493,
+   "uncertainty": 0.000212,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.0,
+   "P_kPa": null,
+   "value": 0.005885,
+   "uncertainty": 0.000257,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.0,
+   "P_kPa": null,
+   "value": 0.005899,
+   "uncertainty": 0.000258,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 292.0,
+   "P_kPa": null,
+   "value": 0.005902,
+   "uncertainty": 0.000258,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 294.94,
+   "P_kPa": null,
+   "value": 0.007905,
+   "uncertainty": 0.000327,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 294.91,
+   "P_kPa": null,
+   "value": 0.007907,
+   "uncertainty": 0.000327,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 294.96,
+   "P_kPa": null,
+   "value": 0.007922,
+   "uncertainty": 0.000327,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 297.67,
+   "P_kPa": null,
+   "value": 0.01039,
+   "uncertainty": 0.00042,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 297.67,
+   "P_kPa": null,
+   "value": 0.0104,
+   "uncertainty": 0.00042,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 297.68,
+   "P_kPa": null,
+   "value": 0.01041,
+   "uncertainty": 0.00042,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 300.93,
+   "P_kPa": null,
+   "value": 0.01426,
+   "uncertainty": 0.00053,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 300.95,
+   "P_kPa": null,
+   "value": 0.01427,
+   "uncertainty": 0.00053,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 300.95,
+   "P_kPa": null,
+   "value": 0.01428,
+   "uncertainty": 0.00053,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 306.52,
+   "P_kPa": null,
+   "value": 0.02413,
+   "uncertainty": 0.00069,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 306.6,
+   "P_kPa": null,
+   "value": 0.02433,
+   "uncertainty": 0.0007,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 306.65,
+   "P_kPa": null,
+   "value": 0.02446,
+   "uncertainty": 0.0007,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.83,
+   "P_kPa": null,
+   "value": 0.04277,
+   "uncertainty": 0.00101,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.84,
+   "P_kPa": null,
+   "value": 0.04281,
+   "uncertainty": 0.00101,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 312.85,
+   "P_kPa": null,
+   "value": 0.04282,
+   "uncertainty": 0.00101,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 317.19,
+   "P_kPa": null,
+   "value": 0.06259,
+   "uncertainty": 0.00135,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 317.19,
+   "P_kPa": null,
+   "value": 0.06261,
+   "uncertainty": 0.00135,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 317.19,
+   "P_kPa": null,
+   "value": 0.06262,
+   "uncertainty": 0.00135,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 324.1,
+   "P_kPa": null,
+   "value": 0.11235,
+   "uncertainty": 0.00221,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 324.1,
+   "P_kPa": null,
+   "value": 0.11239,
+   "uncertainty": 0.00221,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 324.1,
+   "P_kPa": null,
+   "value": 0.1124,
+   "uncertainty": 0.00221,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 328.22,
+   "P_kPa": null,
+   "value": 0.15668,
+   "uncertainty": 0.00261,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 328.22,
+   "P_kPa": null,
+   "value": 0.15669,
+   "uncertainty": 0.00261,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 328.22,
+   "P_kPa": null,
+   "value": 0.15671,
+   "uncertainty": 0.00261,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 335.27,
+   "P_kPa": null,
+   "value": 0.27226,
+   "uncertainty": 0.00399,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 335.28,
+   "P_kPa": null,
+   "value": 0.27261,
+   "uncertainty": 0.004,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 335.31,
+   "P_kPa": null,
+   "value": 0.27323,
+   "uncertainty": 0.004,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 339.09,
+   "P_kPa": null,
+   "value": 0.36244,
+   "uncertainty": 0.00509,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 339.09,
+   "P_kPa": null,
+   "value": 0.36262,
+   "uncertainty": 0.0051,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 339.09,
+   "P_kPa": null,
+   "value": 0.36276,
+   "uncertainty": 0.0051,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 355.35,
+   "P_kPa": null,
+   "value": 1.098,
+   "uncertainty": 0.0141,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 355.35,
+   "P_kPa": null,
+   "value": 1.0981,
+   "uncertainty": 0.0141,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 355.35,
+   "P_kPa": null,
+   "value": 1.0982,
+   "uncertainty": 0.0141,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 358.34,
+   "P_kPa": null,
+   "value": 1.2662,
+   "uncertainty": 0.0161,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 358.36,
+   "P_kPa": null,
+   "value": 1.267,
+   "uncertainty": 0.0162,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 358.38,
+   "P_kPa": null,
+   "value": 1.2686,
+   "uncertainty": 0.0162,
+   "doi": "10.1021/acs.jced.6b00523",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.48,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.48,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.48,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.48,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.49,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.49,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.49,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 258.49,
+   "P_kPa": null,
+   "value": 0.00011,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.48,
+   "P_kPa": null,
+   "value": 0.00022,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.48,
+   "P_kPa": null,
+   "value": 0.00022,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.48,
+   "P_kPa": null,
+   "value": 0.00022,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.48,
+   "P_kPa": null,
+   "value": 0.00022,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.49,
+   "P_kPa": null,
+   "value": 0.00023,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.49,
+   "P_kPa": null,
+   "value": 0.00023,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.49,
+   "P_kPa": null,
+   "value": 0.00023,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.49,
+   "P_kPa": null,
+   "value": 0.00023,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.48,
+   "P_kPa": null,
+   "value": 0.00042,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.48,
+   "P_kPa": null,
+   "value": 0.00041,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.48,
+   "P_kPa": null,
+   "value": 0.00043,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.48,
+   "P_kPa": null,
+   "value": 0.00042,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.48,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.48,
+   "P_kPa": null,
+   "value": 0.00077,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.48,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.48,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.49,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.49,
+   "P_kPa": null,
+   "value": 0.00077,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.49,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.49,
+   "P_kPa": null,
+   "value": 0.00078,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.0008,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.00081,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.0008,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.00081,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.0008,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.68,
+   "P_kPa": null,
+   "value": 0.00081,
+   "uncertainty": 0.0001,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.48,
+   "P_kPa": null,
+   "value": 0.00137,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.48,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.48,
+   "P_kPa": null,
+   "value": 0.00137,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.48,
+   "P_kPa": null,
+   "value": 0.00137,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00139,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00139,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00136,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00137,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00138,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.49,
+   "P_kPa": null,
+   "value": 0.00137,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.49,
+   "P_kPa": null,
+   "value": 0.00241,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.49,
+   "P_kPa": null,
+   "value": 0.00241,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.49,
+   "P_kPa": null,
+   "value": 0.00241,
+   "uncertainty": 0.00012,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.49,
+   "P_kPa": null,
+   "value": 0.00411,
+   "uncertainty": 0.00014,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.49,
+   "P_kPa": null,
+   "value": 0.0041,
+   "uncertainty": 0.00014,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.49,
+   "P_kPa": null,
+   "value": 0.0041,
+   "uncertainty": 0.00014,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.49,
+   "P_kPa": null,
+   "value": 0.00688,
+   "uncertainty": 0.00016,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.49,
+   "P_kPa": null,
+   "value": 0.00688,
+   "uncertainty": 0.00016,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.49,
+   "P_kPa": null,
+   "value": 0.00688,
+   "uncertainty": 0.00016,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.49,
+   "P_kPa": null,
+   "value": 0.0114,
+   "uncertainty": 0.00022,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.49,
+   "P_kPa": null,
+   "value": 0.0114,
+   "uncertainty": 0.00022,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.49,
+   "P_kPa": null,
+   "value": 0.0113,
+   "uncertainty": 0.00022,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.49,
+   "P_kPa": null,
+   "value": 0.0114,
+   "uncertainty": 0.00022,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.49,
+   "P_kPa": null,
+   "value": 0.0113,
+   "uncertainty": 0.00022,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.5,
+   "P_kPa": null,
+   "value": 0.0183,
+   "uncertainty": 0.00029,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.5,
+   "P_kPa": null,
+   "value": 0.0183,
+   "uncertainty": 0.00029,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.5,
+   "P_kPa": null,
+   "value": 0.0182,
+   "uncertainty": 0.00029,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.5,
+   "P_kPa": null,
+   "value": 0.0183,
+   "uncertainty": 0.00029,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.5,
+   "P_kPa": null,
+   "value": 0.0182,
+   "uncertainty": 0.00029,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.51,
+   "P_kPa": null,
+   "value": 0.029,
+   "uncertainty": 0.00041,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.51,
+   "P_kPa": null,
+   "value": 0.029,
+   "uncertainty": 0.00041,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.51,
+   "P_kPa": null,
+   "value": 0.029,
+   "uncertainty": 0.00041,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.51,
+   "P_kPa": null,
+   "value": 0.029,
+   "uncertainty": 0.00041,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.52,
+   "P_kPa": null,
+   "value": 0.0454,
+   "uncertainty": 0.00058,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.52,
+   "P_kPa": null,
+   "value": 0.0454,
+   "uncertainty": 0.00058,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.52,
+   "P_kPa": null,
+   "value": 0.0454,
+   "uncertainty": 0.00058,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.52,
+   "P_kPa": null,
+   "value": 0.0455,
+   "uncertainty": 0.00058,
+   "doi": "10.1021/je050216m",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 262.24,
+   "P_kPa": null,
+   "value": 0.000182,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 262.25,
+   "P_kPa": null,
+   "value": 0.000181,
+   "uncertainty": 2.2e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.24,
+   "P_kPa": null,
+   "value": 0.000213,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 263.24,
+   "P_kPa": null,
+   "value": 0.000213,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 264.23,
+   "P_kPa": null,
+   "value": 0.000241,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 264.23,
+   "P_kPa": null,
+   "value": 0.000244,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 264.24,
+   "P_kPa": null,
+   "value": 0.000244,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 265.22,
+   "P_kPa": null,
+   "value": 0.000279,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 265.22,
+   "P_kPa": null,
+   "value": 0.000277,
+   "uncertainty": 2.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 266.21,
+   "P_kPa": null,
+   "value": 0.000315,
+   "uncertainty": 2.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 266.21,
+   "P_kPa": null,
+   "value": 0.000314,
+   "uncertainty": 2.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 266.21,
+   "P_kPa": null,
+   "value": 0.000313,
+   "uncertainty": 2.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 267.16,
+   "P_kPa": null,
+   "value": 0.000359,
+   "uncertainty": 2.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 267.16,
+   "P_kPa": null,
+   "value": 0.000355,
+   "uncertainty": 2.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.15,
+   "P_kPa": null,
+   "value": 0.000407,
+   "uncertainty": 2.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 268.17,
+   "P_kPa": null,
+   "value": 0.000407,
+   "uncertainty": 2.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 269.18,
+   "P_kPa": null,
+   "value": 0.000464,
+   "uncertainty": 2.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 269.18,
+   "P_kPa": null,
+   "value": 0.000462,
+   "uncertainty": 2.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 270.16,
+   "P_kPa": null,
+   "value": 0.000517,
+   "uncertainty": 2.6e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 270.16,
+   "P_kPa": null,
+   "value": 0.000519,
+   "uncertainty": 2.6e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 270.17,
+   "P_kPa": null,
+   "value": 0.000525,
+   "uncertainty": 2.6e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 271.2,
+   "P_kPa": null,
+   "value": 0.000591,
+   "uncertainty": 2.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 271.2,
+   "P_kPa": null,
+   "value": 0.000592,
+   "uncertainty": 2.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 272.17,
+   "P_kPa": null,
+   "value": 0.000663,
+   "uncertainty": 2.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 272.2,
+   "P_kPa": null,
+   "value": 0.000667,
+   "uncertainty": 2.8e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.17,
+   "P_kPa": null,
+   "value": 0.000751,
+   "uncertainty": 2.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.17,
+   "P_kPa": null,
+   "value": 0.000748,
+   "uncertainty": 2.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 273.17,
+   "P_kPa": null,
+   "value": 0.000746,
+   "uncertainty": 2.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 274.18,
+   "P_kPa": null,
+   "value": 0.000843,
+   "uncertainty": 3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 274.19,
+   "P_kPa": null,
+   "value": 0.000842,
+   "uncertainty": 3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 275.19,
+   "P_kPa": null,
+   "value": 0.000959,
+   "uncertainty": 3.1e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 276.14,
+   "P_kPa": null,
+   "value": 0.001061,
+   "uncertainty": 3.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 276.15,
+   "P_kPa": null,
+   "value": 0.001059,
+   "uncertainty": 3.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 277.17,
+   "P_kPa": null,
+   "value": 0.001191,
+   "uncertainty": 3.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 277.19,
+   "P_kPa": null,
+   "value": 0.0012,
+   "uncertainty": 3.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.14,
+   "P_kPa": null,
+   "value": 0.001331,
+   "uncertainty": 3.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.15,
+   "P_kPa": null,
+   "value": 0.001338,
+   "uncertainty": 3.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.17,
+   "P_kPa": null,
+   "value": 0.001334,
+   "uncertainty": 3.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 278.19,
+   "P_kPa": null,
+   "value": 0.001331,
+   "uncertainty": 3.7e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 279.19,
+   "P_kPa": null,
+   "value": 0.00149,
+   "uncertainty": 3.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 279.19,
+   "P_kPa": null,
+   "value": 0.00149,
+   "uncertainty": 3.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 280.19,
+   "P_kPa": null,
+   "value": 0.001671,
+   "uncertainty": 4.2e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 280.19,
+   "P_kPa": null,
+   "value": 0.001668,
+   "uncertainty": 4.2e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 281.19,
+   "P_kPa": null,
+   "value": 0.00186,
+   "uncertainty": 4.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 281.2,
+   "P_kPa": null,
+   "value": 0.001862,
+   "uncertainty": 4.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 281.21,
+   "P_kPa": null,
+   "value": 0.00186,
+   "uncertainty": 4.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 282.17,
+   "P_kPa": null,
+   "value": 0.002078,
+   "uncertainty": 4.8e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 282.19,
+   "P_kPa": null,
+   "value": 0.002083,
+   "uncertainty": 4.9e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.18,
+   "P_kPa": null,
+   "value": 0.002367,
+   "uncertainty": 5.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.19,
+   "P_kPa": null,
+   "value": 0.002342,
+   "uncertainty": 5.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.19,
+   "P_kPa": null,
+   "value": 0.002318,
+   "uncertainty": 5.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.19,
+   "P_kPa": null,
+   "value": 0.00236,
+   "uncertainty": 5.4e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 283.2,
+   "P_kPa": null,
+   "value": 0.002323,
+   "uncertainty": 5.3e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.14,
+   "P_kPa": null,
+   "value": 0.003968,
+   "uncertainty": 8.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.15,
+   "P_kPa": null,
+   "value": 0.003972,
+   "uncertainty": 8.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.15,
+   "P_kPa": null,
+   "value": 0.00401,
+   "uncertainty": 8.6e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.17,
+   "P_kPa": null,
+   "value": 0.00398,
+   "uncertainty": 8.5e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 288.19,
+   "P_kPa": null,
+   "value": 0.003992,
+   "uncertainty": 8.6e-05,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.18,
+   "P_kPa": null,
+   "value": 0.006699,
+   "uncertainty": 0.000138,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.2,
+   "P_kPa": null,
+   "value": 0.006768,
+   "uncertainty": 0.00014,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 293.2,
+   "P_kPa": null,
+   "value": 0.006757,
+   "uncertainty": 0.000139,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.18,
+   "P_kPa": null,
+   "value": 0.0111,
+   "uncertainty": 0.000224,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.19,
+   "P_kPa": null,
+   "value": 0.01116,
+   "uncertainty": 0.000225,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.19,
+   "P_kPa": null,
+   "value": 0.01109,
+   "uncertainty": 0.000224,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 298.2,
+   "P_kPa": null,
+   "value": 0.0112,
+   "uncertainty": 0.000226,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.15,
+   "P_kPa": null,
+   "value": 0.01794,
+   "uncertainty": 0.000357,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.15,
+   "P_kPa": null,
+   "value": 0.01797,
+   "uncertainty": 0.000357,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.16,
+   "P_kPa": null,
+   "value": 0.01798,
+   "uncertainty": 0.000358,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 303.18,
+   "P_kPa": null,
+   "value": 0.01797,
+   "uncertainty": 0.000357,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.14,
+   "P_kPa": null,
+   "value": 0.02868,
+   "uncertainty": 0.000564,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.15,
+   "P_kPa": null,
+   "value": 0.02864,
+   "uncertainty": 0.000564,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 308.27,
+   "P_kPa": null,
+   "value": 0.0289,
+   "uncertainty": 0.000568,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.15,
+   "P_kPa": null,
+   "value": 0.04503,
+   "uncertainty": 0.000884,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.15,
+   "P_kPa": null,
+   "value": 0.04508,
+   "uncertainty": 0.000885,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 313.18,
+   "P_kPa": null,
+   "value": 0.04501,
+   "uncertainty": 0.000883,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 318.21,
+   "P_kPa": null,
+   "value": 0.0697,
+   "uncertainty": 0.001363,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 318.22,
+   "P_kPa": null,
+   "value": 0.06962,
+   "uncertainty": 0.001361,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 318.25,
+   "P_kPa": null,
+   "value": 0.06975,
+   "uncertainty": 0.001364,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 323.19,
+   "P_kPa": null,
+   "value": 0.1058,
+   "uncertainty": 0.002062,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Gas"
+   ],
+   "T_K": 323.24,
+   "P_kPa": null,
+   "value": 0.1059,
+   "uncertainty": 0.002064,
+   "doi": "10.1021/je050502y",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Critical pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 4130.0,
+   "uncertainty": 170.0,
+   "doi": "10.1021/je060088h",
+   "set": 16,
+   "binary_with": null
+  },
+  {
+   "property": "Critical temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 750.0,
+   "uncertainty": 4.0,
+   "doi": "10.1021/je060088h",
+   "set": 17,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 502.2,
+   "P_kPa": null,
+   "value": 128.9,
+   "uncertainty": 5.2,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 552.2,
+   "P_kPa": null,
+   "value": 337.8,
+   "uncertainty": 13.6,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 646.6,
+   "P_kPa": null,
+   "value": 1338.0,
+   "uncertainty": 54.0,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 731.8,
+   "P_kPa": null,
+   "value": 3445.0,
+   "uncertainty": 138.0,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 741.5,
+   "P_kPa": null,
+   "value": 3793.0,
+   "uncertainty": 152.0,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 745.9,
+   "P_kPa": null,
+   "value": 3958.0,
+   "uncertainty": 158.0,
+   "doi": "10.1021/je060088h",
+   "set": 18,
+   "binary_with": null
+  },
+  {
+   "property": "Molar enthalpy of vaporization or sublimation, kJ/mol",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.0,
+   "P_kPa": null,
+   "value": 54.64,
+   "uncertainty": 3.01,
+   "doi": "10.1021/je800091s",
+   "set": 23,
+   "binary_with": null
+  }
+ ]
+}

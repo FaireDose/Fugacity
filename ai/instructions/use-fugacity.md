@@ -69,6 +69,9 @@ Fugacity.listComponents();        // what the databank holds
 Fugacity.pure("benzene").props(298.15, 101.325);   // density, cp, enthalpy, viscosity, ...
 Fugacity.steam(573.15, 1000);                      // steam tables (IAPWS-IF97)
 Fugacity.system({ components: ["methane", "ethane"], model: "PR" }).bubbleP([0.3, 0.7], 200);
+// solubility of a solid (pure solid + liquid; melting data from the databank), and a binary's eutectic
+Fugacity.system({ components: ["naphthalene", "toluene"], model: "ideal" }).solidSolubility("naphthalene", 298.15);
+Fugacity.system({ components: ["benzene", "naphthalene"], model: "ideal" }).sleDiagram();   // { branches, eutectic }
 ```
 
 For pure-component properties or steam, a page can also show the property explorer:
@@ -131,7 +134,7 @@ delete one (promises are fine). Only do this with storage the chat platform real
 otherwise leave it out and tell me to use File > Save or Copy.
 
 **Rules**
-- Version 0.3.0 holds 89 components: `Fugacity.listComponents()` lists them (water,
+- Version 0.3.0 holds 92 components: `Fugacity.listComponents()` lists them (water,
   alcohols, glycols, ketones, esters, aromatics, alkanes, light gases and more). Not every
   pair has parameters; the page names missing pairs. For other chemicals, say they are not
   in the databank yet and point me to

@@ -40,7 +40,7 @@ function statedMaxDeviation(rec) {
 }
 
 test("every component has every property, as a record or an explicit 'no open data' marker", () => {
-  assert.equal(listComponents().length, 89);
+  assert.equal(listComponents().length, 92);
   assert.equal(GASES.length, 22);
   for (const { id, name } of listComponents()) {
     const props = components[id].properties;

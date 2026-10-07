@@ -289,6 +289,7 @@ function measuredSet(ctx, cs) {
     if (r.property !== propName || r.T_K == null || !r.phases.includes("Liquid") || r.phases.includes("Crystal")) continue;
     if (!isVP && cs.property !== "heatOfVaporization" && (r.phases.includes("Gas") || (r.P_kPa ?? 0) > 110)) continue;
     if (r.uncertainty && r.uncertainty / r.value > tol) continue;
+    if (!(r.value > 0)) continue;   // a value stored as 0 cannot be compared
     const key = `${r.doi}|${r.T_K}|${r.value}`;
     if (seen.has(key)) continue;
     seen.add(key);

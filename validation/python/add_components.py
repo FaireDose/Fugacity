@@ -121,6 +121,13 @@ BATCHES = {
         ("acrylonitrile", "Acrylonitrile", None, ["prop-2-enenitrile", "vinyl cyanide", "propenenitrile"]),
         ("methylamine", "Methylamine", None, ["methanamine", "monomethylamine", "mma"]),
     ],
+    # proposal 0008, Part B, batch 4: solids at 25 degC (proposal 0007, step 4: solid-liquid equilibrium); urea,
+    # phthalic anhydride and caprolactam are in neither source (proposal 0008, scan of the sources)
+    7: [
+        ("naphthalene", "Naphthalene", None, ["c10h8"]),
+        ("benzoic-acid", "Benzoic acid", None, ["benzenecarboxylic acid", "carboxybenzene"]),
+        ("salicylic-acid", "Salicylic acid", None, ["2-hydroxybenzoic acid", "o-hydroxybenzoic acid"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
 CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",
@@ -136,7 +143,7 @@ CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67
                "hydrogen-peroxide": "7722-84-1",
                "cumene": "98-82-8", "mesitylene": "108-67-8", "isooctane": "540-84-1", "isoprene": "78-79-5",
                "etbe": "637-92-3", "pyridine": "110-86-1", "aniline": "62-53-3", "acrylonitrile": "107-13-1",
-               "methylamine": "74-89-5"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
+               "methylamine": "74-89-5", "naphthalene": "91-20-3", "benzoic-acid": "65-85-0", "salicylic-acid": "69-72-7"}   # CAS of the components taken from ChemSep (checked against `chemicals`)
 # the second file of the same databank (as redistributed in DWSIM, same licence), for compounds not in chemsep1.xml
 CHEMSEP2_NAME = "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)"
 

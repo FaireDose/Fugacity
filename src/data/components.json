@@ -255,6 +255,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 273.16,
+        "Hfus_J_mol": 6001.7,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "acetic-acid": {
@@ -528,6 +542,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 289.8,
+        "Hfus_J_mol": 11126.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64197&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Louguinine and Dupont, 1911; Parks and Kelley, 1925, 2; Pickering, 1895",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Martin and Andon, 1982; Parks and Kelley, 1925); enthalpy of fusion: median of 3 measured values (10.83-11.728 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 289.81 K (+0.01 K), enthalpy of fusion 11730 J/mol (+5.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ethylene-glycol": {
@@ -792,6 +822,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 260.6,
+        "Hfus_J_mol": 9958.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Nikolaev and Rabinovich, 1967, 2; Parks and Kelley, 1925, 2",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Knauth and Sabbah, 1990; Wilhoit, Chao, et al., 1985; Nikolaev and Rabinovich, 1967; Parks and Kelley, 1925); enthalpy of fusion: one of 2 measured values (9.958-11.623 kJ/mol) within 3 K of it; the two measured values disagree; the one closer to the independent ChemSep v8.3 value (9958 J/mol) is taken",
+          "crossCheck": "ChemSep v8.3: triple point 260.15 K (-0.45 K), enthalpy of fusion 9958 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "methanol": {
@@ -1049,6 +1095,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 175.5,
+        "Hfus_J_mol": 3180.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67561&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Maass and Walbauer, 1925",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 8 values; Individual data points); enthalpy of fusion: one of 2 measured values (2.196-3.18 kJ/mol) within 3 K of it; the two measured values disagree; the one closer to the independent ChemSep v8.3 value (3215 J/mol) is taken",
+          "Tm_uncertainty_K": 0.5,
+          "crossCheck": "ChemSep v8.3: triple point 175.47 K (-0.03 K), enthalpy of fusion 3215 J/mol (+1.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ethanol": {
@@ -1306,6 +1369,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 159.05,
+        "Hfus_J_mol": 4931.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "acetone": {
@@ -1564,6 +1641,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 177.6,
+        "Hfus_J_mol": 5690.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67641&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Kelley, 1929, 2; Maass and Walbauer, 1925; Parks and Kelley, 1925, 2; Parks and Kelley, 1928, 2",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Kelley, 1929; Parks and Kelley, 1928; Parks and Kelley, 1925); enthalpy of fusion: median of 5 measured values (4.77-5.72 kJ/mol) within 3 K of it; the measured values disagree by 17 % of the median: the enthalpy of fusion is uncertain",
+          "crossCheck": "ChemSep v8.3: triple point 178.45 K (+0.85 K), enthalpy of fusion 5774 J/mol (+1.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "chloroform": {
@@ -1824,6 +1917,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 209.61,
+        "Hfus_J_mol": 8800.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Stull, 1937); enthalpy of fusion: the only one of 1 measured value (8.8-8.8 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 209.63 K (+0.02 K), enthalpy of fusion 9540 J/mol (+8.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "benzene": {
@@ -2077,6 +2186,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 278.5,
+        "Hfus_J_mol": 9870.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71432&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andrews, Lynn, et al., 1926; Domalski and Hearing, 1996; Huffman, Parks, et al., 1930; Maass and Walbauer, 1925; Oliver, Eaton, et al., 1948; Pacor, 1967; Smith, 1979; Tschamler, 1948; Ziegler and Andrews, 1942",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 9 values; Individual data points); enthalpy of fusion: median of 9 measured values (8.95-10.0 kJ/mol) within 3 K of it; the measured values disagree by 11 % of the median: the enthalpy of fusion is uncertain",
+          "Tm_uncertainty_K": 0.6,
+          "crossCheck": "ChemSep v8.3: triple point 278.68 K (+0.18 K), enthalpy of fusion 9866 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "toluene": {
@@ -2332,6 +2458,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 177.975,
+        "Hfus_J_mol": 6614.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Kelley, 1929, 2; Scott, Guthrie, et al., 1962, 2; Ziegler and Andrews, 1942, 2",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Scott, Guthrie, et al., 1962; Ziegler and Andrews, 1942; Stull, 1937; Kelley, 1929); enthalpy of fusion: median of 4 measured values (6.548-6.636 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 178.18 K (+0.21 K), enthalpy of fusion 6636 J/mol (+0.3 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ethyl-acetate": {
@@ -2596,6 +2738,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 189.3,
+        "Hfus_J_mol": 10480.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141786&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Parks, Huffman, et al., 1933, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Parks, Huffman, et al., 1933); enthalpy of fusion: median of 2 measured values (10.48-10.481 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 189.60 K (+0.30 K), enthalpy of fusion 10480 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "oxygen": {
@@ -2844,6 +3002,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 54.361,
+        "Hfus_J_mol": 444.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7782447&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "nitrogen": {
@@ -3092,6 +3264,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 63.149,
+        "Hfus_J_mol": 720.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7727379&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "hydrogen": {
@@ -3345,6 +3531,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 13.95,
+        "Hfus_J_mol": 117.1,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C1333740&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "methane": {
@@ -3595,6 +3795,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 90.694,
+        "Hfus_J_mol": 941.4,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "ethane": {
@@ -3847,6 +4061,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 91.0,
+        "Hfus_J_mol": 2790.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74840&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Atake and Chihara, 1976; Domalski and Hearing, 1996",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 10 values; Individual data points); enthalpy of fusion: one of 2 measured values (0.583-2.79 kJ/mol) within 3 K of it; the two measured values disagree; the one closer to the independent ChemSep v8.3 value (2859 J/mol) is taken",
+          "Tm_uncertainty_K": 6.0,
+          "crossCheck": "ChemSep v8.3: triple point 90.35 K (-0.65 K), enthalpy of fusion 2859 J/mol (+2.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ethylene": {
@@ -4098,6 +4329,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 104.0,
+        "Hfus_J_mol": 3351.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74851&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Chao, Hall, et al., 1983; Domalski and Hearing, 1996; Egan and Kemp, 1937",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 9 values; Individual data points); enthalpy of fusion: median of 3 measured values (3.35-3.351 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.1,
+          "crossCheck": "ChemSep v8.3: triple point 104.00 K (+0.00 K), enthalpy of fusion 3351 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "carbon-monoxide": {
@@ -4354,6 +4602,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 68.15,
+        "Hfus_J_mol": 841.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C630080&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "carbon-dioxide": {
@@ -4600,6 +4862,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 216.58,
+        "Hfus_J_mol": 9019.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "hydrogen-sulfide": {
@@ -4850,6 +5126,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 187.68,
+        "Hfus_J_mol": 2376.5,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7783064&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "argon": {
@@ -5095,6 +5385,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 83.8,
+        "Hfus_J_mol": 1184.9,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440371&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "propane": {
@@ -5349,6 +5653,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 85.0,
+        "Hfus_J_mol": 3515.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74986&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Perkins, Ochoa, et al., 2009",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 7 values; Individual data points); enthalpy of fusion: median of 2 measured values (3.51-3.52 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 3.0,
+          "crossCheck": "ChemSep v8.3: triple point 85.47 K (+0.47 K), enthalpy of fusion 3524 J/mol (+0.3 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "propylene": {
@@ -5599,6 +5920,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 87.8,
+        "Hfus_J_mol": 2967.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C115071&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Chao, Hall, et al., 1983; Domalski and Hearing, 1996; Huffman, Parks, et al., 1931; Powell and Giauque, 1939",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 6 values; Individual data points); enthalpy of fusion: median of 4 measured values (2.93-3.003 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.8,
+          "crossCheck": "ChemSep v8.3: triple point 87.89 K (+0.09 K), enthalpy of fusion 2936 J/mol (-1.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-butane": {
@@ -5849,6 +6187,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 134.6,
+        "Hfus_J_mol": 4660.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106978&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 6 values; Individual data points); enthalpy of fusion: the only one of 1 measured value (4.66-4.66 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.7,
+          "crossCheck": "ChemSep v8.3: triple point 134.86 K (+0.26 K), enthalpy of fusion 4661 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "isobutane": {
@@ -6102,6 +6457,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 113.55,
+        "Hfus_J_mol": 4519.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75285&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Aston, Kennedy, et al., 1940, 2; Domalski and Hearing, 1996; Parks, Shomate, et al., 1937, 2; Perkins and Magee, 2009",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Younglove and Ely, 1987; Goodwin and Haynes, 1982; Aston, Kennedy, et al., 1940; Parks, Shomate, et al., 1937); enthalpy of fusion: median of 4 measured values (4.49-4.56 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 113.54 K (-0.01 K), enthalpy of fusion 4540 J/mol (+0.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ammonia": {
@@ -6354,6 +6725,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 195.41,
+        "Hfus_J_mol": 5657.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7664417&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "dimethyl-ether": {
@@ -6605,6 +6990,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 131.64999999999998,
+        "Hfus_J_mol": 4938.2,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C115106&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Kennedy, Sagenkahn, et al., 1941, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Kennedy, Sagenkahn, et al., 1941); enthalpy of fusion: median of 2 measured values (4.9363-4.94 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 131.65 K (+0.00 K), enthalpy of fusion 4937 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "cyclohexane": {
@@ -6873,6 +7274,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 279.7,
+        "Hfus_J_mol": 2680.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110827&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 8 values; Individual data points); enthalpy of fusion: the only one of 1 measured value (2.68-2.68 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.4,
+          "crossCheck": "ChemSep v8.3: triple point 279.69 K (-0.01 K), enthalpy of fusion 2740 J/mol (+2.2 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "o-xylene": {
@@ -7132,6 +7550,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 247.8,
+        "Hfus_J_mol": 13599.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C95476&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Pitzer and Scott, 1943",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Huffman, Parks, et al., 1930); enthalpy of fusion: median of 2 measured values (13.598-13.6 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 247.98 K (+0.18 K), enthalpy of fusion 13600 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "m-xylene": {
@@ -7391,6 +7825,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 225.3,
+        "Hfus_J_mol": 11570.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C108383&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "p-xylene": {
@@ -7649,6 +8097,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 286.35,
+        "Hfus_J_mol": 17110.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106423&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Corruccini and Ginnings, 1947; Domalski and Hearing, 1996; Huffman, Parks, et al., 1930, 2; Messerly, Finke, et al., 1988, 2; Pitzer and Scott, 1943",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Messerly, Finke, et al., 1988; Huffman, Parks, et al., 1930); enthalpy of fusion: median of 5 measured values (16.933-17.11746 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 286.41 K (+0.06 K), enthalpy of fusion 17110 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "ethylbenzene": {
@@ -7909,6 +8373,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 178.075,
+        "Hfus_J_mol": 9163.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C100414&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Guthrie, Spitzer, et al., 1944; Huffman, Parks, et al., 1930, 2; Scott and Brickwedde, 1945, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Scott and Brickwedde, 1945; Huffman, Parks, et al., 1930); enthalpy of fusion: median of 4 measured values (9.16-9.1818 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 178.20 K (+0.12 K), enthalpy of fusion 9180 J/mol (+0.2 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "styrene": {
@@ -8191,6 +8671,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 242.47,
+        "Hfus_J_mol": 10950.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C100425&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Guttman and Westrum, 1943; Lebedev, Lebedev, et al., 1985; Pitzer, Guttman, et al., 1946, 3; Warfield and Petree, 1961",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Pitzer, Guttman, et al., 1946; Guttman, Westrum, et al., 1943; Guttman, 1943); enthalpy of fusion: median of 5 measured values (10.949-10.964 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 242.54 K (+0.07 K), enthalpy of fusion 10950 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-pentane": {
@@ -8451,6 +8947,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 143.46,
+        "Hfus_J_mol": 8400.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109660&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Messerly and Kennedy, 1940; Messerly, Guthrie, et al., 1967; Parks and Huffman, 1930",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 6 values; Individual data points); enthalpy of fusion: median of 4 measured values (8.376-8.4149 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.05,
+          "crossCheck": "ChemSep v8.3: triple point 143.42 K (-0.04 K), enthalpy of fusion 8402 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-hexane": {
@@ -8710,6 +9223,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 178.0,
+        "Hfus_J_mol": 13033.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110543&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Douslin and Huffman, 1946; Huffman, Parks, et al., 1931; Parks, Huffman, et al., 1930; Stull, 1937",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 9 values; Individual data points); enthalpy of fusion: median of 5 measured values (12.343-13.08 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.5,
+          "crossCheck": "ChemSep v8.3: triple point 177.83 K (-0.17 K), enthalpy of fusion 13080 J/mol (+0.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-heptane": {
@@ -8970,6 +9500,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 182.56,
+        "Hfus_J_mol": 14040.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C142825&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Douglas, Furukawa, et al., 1954; Ginnings and Furukawa, 1953; Huffman, Gross, et al., 1961; Huffman, Parks, et al., 1930; McCullough and Messerly, 1961; Meijer, Blok, et al., 1977; Oetting F.L., 1963; Parks, Huffman, et al., 1930; Pitzer K.S., 1940; Schaake, Offringa, et al., 1979; Van Miltenburg, 1972; Van Miltenburg, Van den Berg, et al., 1987",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 26 out of 31 values; Individual data points); enthalpy of fusion: median of 13 measured values (13.99-14.163 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.03,
+          "crossCheck": "ChemSep v8.3: triple point 182.57 K (+0.01 K), enthalpy of fusion 14050 J/mol (+0.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-octane": {
@@ -9230,6 +9777,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 216.2,
+        "Hfus_J_mol": 20740.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111659&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Finke, Gross, et al., 1954; Huffman, Parks, et al., 1931; Mondieig, Rajabalee, et al., 2004; Parks, Huffman, et al., 1930",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 9 values; Individual data points); enthalpy of fusion: median of 5 measured values (20.092-21.8 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.6,
+          "crossCheck": "ChemSep v8.3: triple point 216.38 K (+0.18 K), enthalpy of fusion 20740 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "diethyl-ether": {
@@ -9492,6 +10056,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 156.86,
+        "Hfus_J_mol": 7245.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Counsell, Lee, et al., 1971, 2; Parks and Huffman, 1926, 2",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Counsell, Lee, et al., 1971; Counsell, Lee, et al., 1971; Parks and Huffman, 1926); enthalpy of fusion: median of 2 measured values (7.19-7.301 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 156.85 K (-0.01 K), enthalpy of fusion 7190 J/mol (-0.8 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "propylene-glycol": {
@@ -9761,6 +10341,20 @@
             "chemsep-8.31-2"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 213.15,
+        "Hfus_J_mol": 7570.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C57556&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
       }
     },
     "tetrahydrofuran": {
@@ -10026,6 +10620,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 164.76,
+        "Hfus_J_mol": 8540.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109999&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Lebedev and Lityagov, 1977; Lebedev, Rabinovich, et al., 1978, 2",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Lebedev, Lityagov, et al., 1979; Lebedev, Rabinovich, et al., 1978); enthalpy of fusion: median of 3 measured values (8.54-8.54 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 164.65 K (-0.11 K), enthalpy of fusion 8540 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "1-propanol": {
@@ -10321,6 +10931,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 148.75,
+        "Hfus_J_mol": 5371.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71238&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Counsell, Lees, et al., 1968; Counsell, Lees, et al., 1968, 2; Parks and Huffman, 1926, 2; van Miltenburg and van den Berg, 2004",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Counsell, Lees, et al., 1968; Parks and Huffman, 1926); enthalpy of fusion: median of 4 measured values (5.192-5.4 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 146.95 K (-1.80 K), enthalpy of fusion 5372 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "2-propanol": {
@@ -10608,6 +11234,23 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 184.9,
+        "Hfus_J_mol": 5391.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andon, Counsell, et al., 1963; Domalski and Hearing, 1996; Kelley, 1929; Parks and Kelley, 1928",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 6 values; Individual data points); enthalpy of fusion: median of 4 measured values (5.301-5.41 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.6,
+          "crossCheck": "ChemSep v8.3: triple point 185.28 K (+0.38 K), enthalpy of fusion 5410 J/mol (+0.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "1-butanol": {
@@ -12219,6 +12862,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 184.51,
+        "Hfus_J_mol": 9280.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71363&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Counsell, Hales, et al., 1965, 2; Parks, 1925, 2",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Counsell, Hales, et al., 1965; Parks, 1925); enthalpy of fusion: median of 3 measured values (9.28-9.372 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 184.51 K (+0.00 K), enthalpy of fusion 9372 J/mol (+1.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "2-butanone": {
@@ -12494,6 +13153,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 186.47,
+        "Hfus_J_mol": 8439.4,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78933&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Andon, Counsell, et al., 1968, 2; Parks, Kennedy, et al., 1956, 2; Sinke and Oetting, 1964, 2",
+          "selection": "melting temperature: median of 5 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Andon, Counsell, et al., 1968; Sinke and Oetting, 1964; Sinke and Oetting, 1964; Parks, Kennedy, et al., 1956); enthalpy of fusion: median of 4 measured values (8.385-8.485 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 186.48 K (+0.01 K), enthalpy of fusion 8385 J/mol (-0.6 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "methyl-acetate": {
@@ -12767,6 +13442,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 174.9,
+        "Hfus_J_mol": 7486.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79209&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Okamoto, Oguni, et al., 1992, 2",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Okamoto, Oguni, et al., 1992); enthalpy of fusion: the only one of 1 measured value (7.486-7.486 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 175.15 K (+0.25 K), enthalpy of fusion 7970 J/mol (+6.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-butyl-acetate": {
@@ -13043,6 +13734,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 199.65,
+        "Hfus_J_mol": 14400.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C123864&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "acetonitrile": {
@@ -13663,6 +14368,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 229.32,
+        "Hfus_J_mol": 8170.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75058&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Putnam, McEachern, et al., 1965); enthalpy of fusion: the only one of 1 measured value (8.17-8.17 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 229.32 K (+0.00 K), enthalpy of fusion 8167 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "mtbe": {
@@ -13934,6 +14655,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 164.56,
+        "Hfus_J_mol": 7600.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1634044&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andon and Martin, 1975, 2; Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Andon and Martin, 1975); enthalpy of fusion: median of 2 measured values (7.6-7.6 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 164.55 K (-0.01 K), enthalpy of fusion 7600 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "glycerol": {
@@ -14731,6 +15468,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 291.4,
+        "Hfus_J_mol": 18294.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C56815&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Gibson and Giauque, 1923; Volmer and Marder, 1931; Yoshida, 1944",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Gibson and Giauque, 1923); enthalpy of fusion: median of 4 measured values (18.28-18.476 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 291.33 K (-0.07 K), enthalpy of fusion 18310 J/mol (+0.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "phenol": {
@@ -15027,6 +15780,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 314.06,
+        "Hfus_J_mol": 11512.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108952&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andon, Counsell, et al., 1963, 2; Eykman, 1889; Inozemtsev, Liakumovich, et al., 1972; Mastrangelo, 1957",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Andon, Counsell, et al., 1963); enthalpy of fusion: median of 4 measured values (10.581-12.125 kJ/mol) within 3 K of it; the measured values disagree by 13 % of the median: the enthalpy of fusion is uncertain",
+          "crossCheck": "ChemSep v8.3: triple point 314.06 K (+0.00 K), enthalpy of fusion 11510 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "dichloromethane": {
@@ -15262,6 +16031,21 @@
             "NIST TRC ThermoML Archive (ThermoML-API full-text search for \"dichloromethane\", \"methylene chloride\"; 139 records opened)"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 176.825,
+        "Hfus_J_mol": 6160.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Moseeva, Rabinovich, et al., 1978",
+          "selection": "melting temperature: median of 4 WebBook melting temperatures (Tfus); enthalpy of fusion: median of 2 measured values (6.16-6.16 kJ/mol) within 3 K of it"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "2-methoxyethanol": {
@@ -15933,6 +16717,13 @@
           ],
           "note": "no open data at the 1 % target of the records: 13 measured values, 298.15-393.17 K, but their stated uncertainties (2.6-2.9 %) are larger than the target"
         }
+      },
+      "fusion": {
+        "available": false,
+        "searched": [
+          "NIST Chemistry WebBook, phase change data (https://webbook.nist.gov/cgi/cbook.cgi?ID=C109864&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page",
+          "ChemSep v8.3: no value"
+        ]
       }
     },
     "dichloroethane": {
@@ -16197,6 +16988,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 237.39999999999998,
+        "Hfus_J_mol": 8833.3,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107062&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Pitzer, 1940, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Knauth and Sabbah, 1990; Pitzer, 1940); enthalpy of fusion: median of 2 measured values (8.83-8.8366 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 237.49 K (+0.09 K), enthalpy of fusion 8830 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "mibk": {
@@ -16474,6 +17281,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 189.15,
+        "Hfus_J_mol": 9710.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C108101&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "cyclohexanone": {
@@ -16750,6 +17571,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 243.805,
+        "Hfus_J_mol": 1330.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108941&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Nakamura, Suga, et al., 1980, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Nakamura, Suga, et al., 1980; Wuerflinger and Kreutzenbeck, 1978); enthalpy of fusion: the only one of 1 measured value (1.33-1.33 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 242.00 K (-1.81 K), enthalpy of fusion 1190 J/mol (-10.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "dmf": {
@@ -17027,6 +17864,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 212.7,
+        "Hfus_J_mol": 8950.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C68122&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Karyakin, Rabinovich, et al., 1978; Smirnova, Tsvetkova, et al., 2007",
+          "selection": "melting temperature: median of 1 WebBook melting temperatures (Tfus); enthalpy of fusion: median of 3 measured values (8.95-8.95 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 212.72 K (+0.02 K), enthalpy of fusion 16150 J/mol (+80.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "dmso": {
@@ -17312,6 +18165,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 291.63,
+        "Hfus_J_mol": 14369.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67685&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Clever and Westrum, 1970, 2; Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Clever and Westrum, 1970; Clever and Westrum, 1970); enthalpy of fusion: median of 2 measured values (14.368-14.37 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 291.67 K (+0.04 K), enthalpy of fusion 13930 J/mol (-3.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "nmp": {
@@ -17767,6 +18636,20 @@
             "chemsep-8.31-2"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 249.15,
+        "Hfus_J_mol": 9106.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C872504&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
       }
     },
     "sulfolane": {
@@ -18038,6 +18921,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 301.6,
+        "Hfus_J_mol": 1400.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C126330&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Ahlers, Lohmann, et al., 1999; Domanska, Moollan, et al., 1996",
+          "selection": "melting temperature: median of 5 WebBook melting temperatures (Tfus); enthalpy of fusion: median of 2 measured values (1.37-1.43 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 300.55 K (-1.05 K), enthalpy of fusion 1373 J/mol (-1.9 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "furfural": {
@@ -18314,6 +19213,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 235.1,
+        "Hfus_J_mol": 14369.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98011&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Miller, 1935",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Miller, 1936); enthalpy of fusion: median of 2 measured values (14.368-14.37 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 236.65 K (+1.55 K), enthalpy of fusion 14400 J/mol (+0.2 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "dioxane": {
@@ -18591,6 +19506,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 284.1,
+        "Hfus_J_mol": 12360.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C123911&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Roth and Meyer, 1933",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Jacobs and Parks, 1934); enthalpy of fusion: median of 2 measured values (11.88-12.84 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 284.95 K (+0.85 K), enthalpy of fusion 12840 J/mol (+3.9 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "isobutanol": {
@@ -18877,6 +19808,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 171.19,
+        "Hfus_J_mol": 6321.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78831&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Counsell, Lees, et al., 1968; Counsell, Lees, et al., 1968, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Counsell, Lees, et al., 1968); enthalpy of fusion: median of 2 measured values (6.32-6.322 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 165.15 K (-6.04 K), enthalpy of fusion 6322 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "2-butanol": {
@@ -20804,6 +21751,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 184.71499999999997,
+        "Hfus_J_mol": 5970.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78922&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andon, Connett, et al., 1971, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Andon, Connett, et al., 1971); enthalpy of fusion: the only one of 1 measured value (5.97-5.97 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 158.45 K (-26.26 K), enthalpy of fusion 5971 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "mea": {
@@ -21083,6 +22046,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 283.65,
+        "Hfus_J_mol": 20496.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C141435&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "dea": {
@@ -21369,6 +22346,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 301.15,
+        "Hfus_J_mol": 25104.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C111422&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "mdea": {
@@ -21641,6 +22632,13 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "available": false,
+        "searched": [
+          "NIST Chemistry WebBook, phase change data (https://webbook.nist.gov/cgi/cbook.cgi?ID=C105599&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page",
+          "ChemSep v8.3: no enthalpy of fusion"
+        ]
       }
     },
     "sulfur-dioxide": {
@@ -21903,6 +22901,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 197.67,
+        "Hfus_J_mol": 7401.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7446095&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "nitrous-oxide": {
@@ -22162,6 +23174,20 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 182.3,
+        "Hfus_J_mol": 6539.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C10024972&Units=SI&Mask=4): no melting or triple-point temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "formic-acid": {
@@ -22439,6 +23465,22 @@
             "chemsep-8.31-2"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 281.42499999999995,
+        "Hfus_J_mol": 12678.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C64186&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Stout and Fisher, 1941, 3",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Stout and Fisher, 1941); enthalpy of fusion: the only one of 1 measured value (12.678-12.678 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 281.45 K (+0.03 K), enthalpy of fusion 12700 J/mol (+0.2 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "propionic-acid": {
@@ -22713,6 +23755,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 252.65,
+        "Hfus_J_mol": 10660.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79094&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Martin and Andon, 1982); enthalpy of fusion: the only one of 1 measured value (10.66-10.66 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 252.45 K (-0.20 K), enthalpy of fusion 10660 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "acrylic-acid": {
@@ -22981,6 +24039,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 285.7,
+        "Hfus_J_mol": 11160.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C79107&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Karabaev, Abduzhaminov, et al., 1985, 2",
+          "selection": "melting temperature: median of 5 WebBook melting temperatures (Tfus); enthalpy of fusion: one of 2 measured values (9.5097-11.16 kJ/mol) within 3 K of it; the two measured values disagree; the one closer to the independent ChemSep v8.3 value (11170 J/mol) is taken",
+          "crossCheck": "ChemSep v8.3: triple point 286.15 K (+0.45 K), enthalpy of fusion 11170 J/mol (+0.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "vinyl-acetate": {
@@ -23264,6 +24338,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 180.35,
+        "Hfus_J_mol": 5370.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C108054&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "isopropyl-acetate": {
@@ -23539,6 +24627,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 199.75,
+        "Hfus_J_mol": 8880.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C108214&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "ethylene-oxide": {
@@ -23791,6 +24893,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 160.65,
+        "Hfus_J_mol": 5171.6,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75218&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Giauque and Gordon, 1949, 2",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Giauque and Gordon, 1949); enthalpy of fusion: median of 2 measured values (5.17-5.1731 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 160.65 K (+0.00 K), enthalpy of fusion 5171 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "propylene-oxide": {
@@ -24071,6 +25189,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 161.22,
+        "Hfus_J_mol": 6569.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C75569&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Beaumont, Clegg, et al., 1966, 2; Domalski and Hearing, 1996; Oetting F.L., 1964",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Wilhoit, Chao, et al., 1985; Beaumont, Clegg, et al., 1966; Oetting, 1964); enthalpy of fusion: median of 3 measured values (6.5329-6.57 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 161.22 K (+0.00 K), enthalpy of fusion 6531 J/mol (-0.6 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "formaldehyde": {
@@ -24334,6 +25468,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 155.1,
+        "Hfus_J_mol": 7530.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C50000&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Vasil'ev and Lebedev, 1998",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Spence and Wild, 1935); enthalpy of fusion: the only one of 1 measured value (7.53-7.53 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 181.15 K (+26.05 K), enthalpy of fusion 7050 J/mol (-6.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "hydrogen-peroxide": {
@@ -24603,6 +25753,20 @@
             "chemsep-8.31-2"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 272.74,
+        "Hfus_J_mol": 12220.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C7722841&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
       }
     },
     "cumene": {
@@ -24881,6 +26045,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 177.13,
+        "Hfus_J_mol": 7326.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C98828&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Kishimoto, Suga, et al., 1973, 2",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Kishimoto, Suga, et al., 1973); enthalpy of fusion: the only one of 1 measured value (7.326-7.326 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 177.14 K (+0.01 K), enthalpy of fusion 7326 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "mesitylene": {
@@ -25156,6 +26336,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 228.42,
+        "Hfus_J_mol": 9510.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108678&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Radomska and Radomski, 1991",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Taylor and Kilpatrick, 1955); enthalpy of fusion: median of 2 measured values (9.51-9.51 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 228.42 K (+0.00 K), enthalpy of fusion 9514 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-nonane": {
@@ -25418,6 +26614,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 219.6,
+        "Hfus_J_mol": 15240.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C111842&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Mondieig, Rajabalee, et al., 2004",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 7 values; Individual data points); enthalpy of fusion: median of 2 measured values (15.0-15.48 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.3,
+          "crossCheck": "ChemSep v8.3: triple point 219.66 K (+0.06 K), enthalpy of fusion 15470 J/mol (+1.5 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-decane": {
@@ -25680,6 +26893,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 243.4,
+        "Hfus_J_mol": 28707.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C124185&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Finke, Gross, et al., 1954; Huffman, Parks, et al., 1931; Marti, Kaisersberger, et al., 2004",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 9 values; Individual data points); enthalpy of fusion: median of 4 measured values (27.6-28.778 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.3,
+          "crossCheck": "ChemSep v8.3: triple point 243.51 K (+0.11 K), enthalpy of fusion 28710 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "n-dodecane": {
@@ -25945,6 +27175,23 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 263.57,
+        "Hfus_J_mol": 36700.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C112403&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Finke, Gross, et al., 1954; Huffman, Parks, et al., 1931; Mondieig, Rajabalee, et al., 2004",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 7 values; Individual data points); enthalpy of fusion: median of 4 measured values (35.7-36.836 kJ/mol) within 3 K of it",
+          "Tm_uncertainty_K": 0.05,
+          "crossCheck": "ChemSep v8.3: triple point 263.57 K (-0.00 K), enthalpy of fusion 36840 J/mol (+0.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "isooctane": {
@@ -26230,6 +27477,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 165.53,
+        "Hfus_J_mol": 9042.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C540841&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Parks, Huffman, et al., 1930, 2; Pitzer K.S., 1940",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Streiff, 1959; Parks, Huffman, et al., 1930); enthalpy of fusion: median of 3 measured values (9.04-9.2115 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 165.78 K (+0.25 K), enthalpy of fusion 9196 J/mol (+1.7 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "1-butene": {
@@ -26484,6 +27747,22 @@
             "coolprop"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 87.81,
+        "Hfus_J_mol": 3849.5,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106989&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Aston, Fink, et al., 1946; Chao, Hall, et al., 1983, 2; Domalski and Hearing, 1996; Takeda, Yamamuro, et al., 1991, 2",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Takeda, Yamamuro, et al., 1991; Chao, Hall, et al., 1983; Aston, Finke, et al., 1946; Aston, Finke, et al., 1946); enthalpy of fusion: median of 4 measured values (3.848-3.9586 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 87.80 K (-0.01 K), enthalpy of fusion 3848 J/mol (-0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "isoprene": {
@@ -26765,6 +28044,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 126.83500000000001,
+        "Hfus_J_mol": 4875.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78795&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Bekkedahl and Wood, 1937, 2; Domalski and Hearing, 1996; Messerly, Todd, et al., 1970, 2; Warfield and Petree, 1965",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Messerly, Todd, et al., 1970; Bekkedahl and Wood, 1937); enthalpy of fusion: median of 4 measured values (4.83-4.9246 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 127.27 K (+0.43 K), enthalpy of fusion 4925 J/mol (+1.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "etbe": {
@@ -27171,6 +28466,20 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 179.15,
+        "Hfus_J_mol": 9530.0,
+        "tier": "databank",
+        "source": {
+          "name": "ChemSep pure-component database v8.3 (Kooijman & Taylor)",
+          "reference": "Kooijman and Taylor, ChemSep pure-component database (TriplePointTemperature or NormalMeltingPointTemperature, HeatOfFusionAtMeltingPoint)",
+          "access": "Artistic License 2.0",
+          "selection": "ChemSep triple point and enthalpy of fusion; NIST WebBook (https://webbook.nist.gov/cgi/cbook.cgi?ID=C637923&Units=SI&Mask=4): no enthalpy of fusion within 3 K of the melting temperature on the WebBook page"
+        },
+        "source_ids": [
+          "chemsep-8.3"
+        ]
       }
     },
     "pyridine": {
@@ -27447,6 +28756,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 231.48,
+        "Hfus_J_mol": 8275.2,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C110861&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; McCullough, Douslin, et al., 1957, 2; Parks, Todd, et al., 1936; Pearce and Bakke, 1936",
+          "selection": "melting temperature: median of 2 WebBook triple-point temperatures (Helm, Lanum, et al., 1958; McCullough, Douslin, et al., 1957); enthalpy of fusion: median of 4 measured values (3.1-8.28 kJ/mol) within 3 K of it; the measured values disagree by 63 % of the median: the enthalpy of fusion is uncertain",
+          "crossCheck": "ChemSep v8.3: triple point 231.51 K (+0.03 K), enthalpy of fusion 8280 J/mol (+0.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "aniline": {
@@ -27722,6 +29047,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 267.13,
+        "Hfus_J_mol": 10548.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C62533&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Ahmed and Eades, 1972; Hatton, Hildenbrand, et al., 1962, 2; Parks, Huffman, et al., 1933, 2; Ziegler and Andrews, 1942, 2",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Hatton, Hildenbrand, et al., 1962; Ziegler and Andrews, 1942; Parks, Huffman, et al., 1933); enthalpy of fusion: median of 4 measured values (10.539-10.92 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 267.13 K (+0.00 K), enthalpy of fusion 10540 J/mol (-0.1 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "acrylonitrile": {
@@ -28003,6 +29344,22 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 189.63,
+        "Hfus_J_mol": 6230.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C107131&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Finke, Messerly, et al., 1972); enthalpy of fusion: the only one of 1 measured value (6.23-6.23 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 189.63 K (+0.00 K), enthalpy of fusion 6230 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     },
     "methylamine": {
@@ -28269,6 +29626,895 @@
             "chemsep-8.3"
           ]
         }
+      },
+      "fusion": {
+        "Tm_K": 179.7,
+        "Hfus_J_mol": 6132.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74895&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Aston, Siller, et al., 1937, 2; Domalski and Hearing, 1996",
+          "selection": "melting temperature: median of 1 WebBook triple-point temperatures (Aston, Siller, et al., 1937); enthalpy of fusion: median of 2 measured values (6.13-6.134 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 179.69 K (-0.01 K), enthalpy of fusion 6134 J/mol (+0.0 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
+      }
+    },
+    "naphthalene": {
+      "name": "Naphthalene",
+      "formula": "C10H8",
+      "cas": "91-20-3",
+      "aliases": [
+        "c10h8"
+      ],
+      "MW": 128.1705,
+      "Tc_K": 748.4,
+      "Pc_Pa": 4050000.0,
+      "Tb_K": 491.2584,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 93.15947,
+        "B": -9448.063,
+        "C": -10.23844,
+        "D": 4.335455e-06,
+        "E": 2.0,
+        "Tmin_K": 353.15,
+        "Tmax_K": 748.4,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 353.15-748.40 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Fowler, Trump, et al., 1968 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C91203&Units=SI&Mask=4",
+            "T_range_K": [
+              353.48,
+              452.3
+            ],
+            "max_deviation_percent": -1.69
+          },
+          {
+            "reference": "Camin and Rossini, 1955 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C91203&Units=SI&Mask=4",
+            "T_range_K": [
+              399.47,
+              491.79
+            ],
+            "max_deviation_percent": 1.23
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 367.2-452.4 K; median deviation of the articles 0.67 % (within the 1 % tolerance of the engineering report); largest single deviation -1.04 % at 367.2 K (Berg 2015, doi:10.1021/acs.jced.5b00752); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 4.920237,
+        "q": 3.368,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.304,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (491.258 K); ChemSep lists 491.16 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 58.03816581,
+            "B": 0.21953,
+            "C": 748.4,
+            "D": 0.23236
+          },
+          "units": "kg/m3",
+          "Tmin_K": 353.43,
+          "Tmax_K": 748.35,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 353.43 K (ChemSep: 333.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 128.1705 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 353.43-748.35 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 63.11075173,
+            "B": 355.1534479,
+            "C": 622.8181059,
+            "D": -144.472307,
+            "E": 703.2638598
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 200.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 200.00-1500.00 K (ChemSep range), max deviation 0.33 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 124.6813215,
+            "B": 0.08711071283,
+            "C": 0.0004999995053
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 353.43,
+          "Tmax_K": 491.14,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 353.43-491.14 K (ChemSep range), max deviation 0.12 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 77328.22,
+            "B": 1.116621,
+            "C": -1.313575,
+            "D": 0.672121,
+            "E": -0.00584514
+          },
+          "units": "J/mol",
+          "Tmin_K": 353.43,
+          "Tmax_K": 747.65,
+          "Tc_K": 748.4,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 748.40 K (ChemSep: 749.42 K). A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 353.43-747.65 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -8.2151,
+            "B": 1338.2,
+            "C": -0.46592,
+            "D": 1.35e-06,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 353.43,
+          "Tmax_K": 673.56,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 353.43 K (ChemSep: 353.15 K).; reproduces ChemSep within 0.0001 % at 200 points 353.43-673.56 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.2323e-08,
+            "B": 1.0475,
+            "C": -162.06,
+            "D": 35144.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 325.8,
+          "Tmax_K": 1266.41,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 325.80-1266.41 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1537051493,
+            "B": -2.943772927e-05,
+            "C": -7.104278704e-08
+          },
+          "units": "W/m/K",
+          "Tmin_K": 353.43,
+          "Tmax_K": 694.96,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 353.43-694.96 K (ChemSep range), max deviation 0.66 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.7754e-05,
+            "B": 1.2123,
+            "C": 69.759,
+            "D": 78517.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 353.43,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 353.43-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 1.082417264,
+            "B": 16.40038693,
+            "C": -38.58527268,
+            "D": 39.77873952,
+            "E": -15.64330358
+          },
+          "units": "N/m",
+          "Tmin_K": 353.43,
+          "Tmax_K": 710.97,
+          "Tc_K": 748.4,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 353.43-710.97 K (ChemSep range, limited to 0.95 Tc), max deviation 0.61 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      },
+      "fusion": {
+        "Tm_K": 353.39,
+        "Hfus_J_mol": 19030.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C91203&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Acree, 1991; Andrews, Lynn, et al., 1926; Chirico, Knipmeyer, et al., 2002; David, 1964; Eibert, 1944; Hafsaoui and Mahmoud, 2007; Khimeche and Dahmani, 2006; Khimeche and Dahmani, 2006, 2; Mastrangelo, 1957; McCullough, Finke, et al., 1957; Rastogi and Bassi, 1964; Schmidt, 1941; Sharma, Gupta, et al., 2008; Spaght, Thomas, et al., 1932; Syunyaev, Tumanyan, et al., 1984; Ueberreiter and Orthmann, 1950",
+          "selection": "melting temperature: WebBook average of the triple-point temperatures (Ttriple, Average of 6 values; Individual data points); enthalpy of fusion: median of 16 measured values (16.44-19.55 kJ/mol) within 3 K of it; the measured values disagree by 16 % of the median: the enthalpy of fusion is uncertain",
+          "Tm_uncertainty_K": 0.09,
+          "crossCheck": "ChemSep v8.3: triple point 353.43 K (+0.04 K), enthalpy of fusion 18980 J/mol (-0.3 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
+      }
+    },
+    "benzoic-acid": {
+      "name": "Benzoic acid",
+      "formula": "C7H6O2",
+      "cas": "65-85-0",
+      "aliases": [
+        "benzenecarboxylic acid",
+        "carboxybenzene"
+      ],
+      "MW": 122.1213,
+      "Tc_K": 751.0,
+      "Pc_Pa": 4470000.0,
+      "Tb_K": 522.7499,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 444.4847,
+        "B": -30166.81,
+        "C": -61.25117,
+        "D": 2.9739e-05,
+        "E": 2.0,
+        "Tmin_K": 373.15,
+        "Tmax_K": 713.45,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 373.15-713.45 K (ChemSep range, ending at 0.95 Tc: near the critical point the equation overshoots (5.5e+06 Pa at 751.00 K against the critical pressure 4.47e+06 Pa at 751.00 K)); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Stull, 1947 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C65850&Units=SI&Mask=4",
+            "T_range_K": [
+              369.0,
+              522.4
+            ],
+            "max_deviation_percent": -15.5
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 4.323,
+        "q": 3.344,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.602794,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (522.75 K); ChemSep lists 523.15 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 87.28009311,
+            "B": 0.24811,
+            "C": 751.0,
+            "D": 0.28445
+          },
+          "units": "kg/m3",
+          "Tmin_K": 395.45,
+          "Tmax_K": 751.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 395.45 K (ChemSep: 394.65 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 122.1213 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 395.45-751.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 401.3-447.1 K; median deviation of the articles 0.72 % (within the 1 % tolerance of the engineering report); largest single deviation -0.89 % at 401.3 K (Sun 2004, doi:10.1021/je0497247); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 74.48633505,
+            "B": 262.1769953,
+            "C": 785.3788386,
+            "D": -73.65138645,
+            "E": 842.4227702
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 200.0,
+          "Tmax_K": 1500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 200.00-1500.00 K (ChemSep range), max deviation 0.46 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": -5.158887754,
+            "B": 0.646631185
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 395.45,
+          "Tmax_K": 450.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 395.45-450.00 K (ChemSep range), max deviation 0.065 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 67437.0,
+            "B": 0.13946,
+            "C": -2.3071,
+            "D": 5.0416,
+            "E": -2.5138
+          },
+          "units": "J/mol",
+          "Tmin_K": 395.45,
+          "Tmax_K": 750.24,
+          "Tc_K": 751.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 395.45-750.24 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -204.19,
+            "B": 11713.0,
+            "C": 28.642,
+            "D": -2.0228e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 395.52,
+          "Tmax_K": 600.8,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 395.52-600.80 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 400.3-447.1 K; median deviation of the articles 6.14 % (above the 5 % tolerance of the engineering report); largest single deviation -10.55 % at 447.1 K (Sun 2004, doi:10.1021/je0497247); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 7.426e-08,
+            "B": 0.8289,
+            "C": 91.171,
+            "D": 5.6616
+          },
+          "units": "Pa s",
+          "Tmin_K": 395.45,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 395.45-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2383473003,
+            "B": -0.0002297614701
+          },
+          "units": "W/m/K",
+          "Tmin_K": 395.45,
+          "Tmax_K": 596.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 395.45-596.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.35 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 406.8-465.1 K; median deviation of the articles 2.19 % (within the 5 % tolerance of the engineering report); largest single deviation +4.23 % at 406.8 K (Sun 2004, doi:10.1021/je0497247); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.1559e-05,
+            "B": 1.1593,
+            "C": 126.16,
+            "D": 64371.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 274.0,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 274.00-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.2499545629,
+            "B": 8.448367373,
+            "C": -19.83298793,
+            "D": 21.81084192,
+            "E": -8.97316564
+          },
+          "units": "N/m",
+          "Tmin_K": 395.45,
+          "Tmax_K": 713.45,
+          "Tc_K": 751.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 395.45-713.45 K (ChemSep range, limited to 0.95 Tc), max deviation 0.27 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      },
+      "fusion": {
+        "Tm_K": 395.52,
+        "Hfus_J_mol": 17320.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C65850&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Andrews, Lynn, et al., 1926; Brittain, 2009; David, 1964; Furukawa, McCoskey, et al., 1951, 2; Ginnings and Furukawa, 1953, 2; Pacor, 1967; Pitzer, Peiper, et al., 1984; Roy, Riga, et al., 2002; Sharma, Kant, et al., 2003",
+          "selection": "melting temperature: median of 4 WebBook triple-point temperatures (Marsh, 1987; Andon and Connett, 1980; Ginnings and Furukawa, 1953; Furukawa, McCoskey, et al., 1951); enthalpy of fusion: median of 9 measured values (16.23-18.006 kJ/mol) within 3 K of it; the measured values disagree by 10 % of the median: the enthalpy of fusion is uncertain",
+          "crossCheck": "ChemSep v8.3: triple point 395.45 K (-0.07 K), enthalpy of fusion 18070 J/mol (+4.3 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
+      }
+    },
+    "salicylic-acid": {
+      "name": "Salicylic acid",
+      "formula": "C7H6O3",
+      "cas": "69-72-7",
+      "aliases": [
+        "2-hydroxybenzoic acid",
+        "o-hydroxybenzoic acid"
+      ],
+      "MW": 138.1207,
+      "Tc_K": 739.0,
+      "Pc_Pa": 5180000.0,
+      "Tb_K": 528.5111,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 252.5417,
+        "B": -21148.9,
+        "C": -32.63925,
+        "D": 1.30693e-05,
+        "E": 2.0,
+        "Tmin_K": 429.95,
+        "Tmax_K": 739.0,
+        "tier": "databank",
+        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 429.95-739.00 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "source_ids": [
+          "chemsep-8.3",
+          "coolprop"
+        ],
+        "crossCheck": [
+          {
+            "reference": "Stull, 1947 (Antoine equation, NIST WebBook)",
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C69727&Units=SI&Mask=4",
+            "T_range_K": [
+              386.8,
+              529.0
+            ],
+            "max_deviation_percent": -5.82
+          }
+        ]
+      },
+      "uniquac": {
+        "r": 4.6869,
+        "q": 3.624,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.851182,
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (528.511 K); ChemSep lists 529 K.",
+      "constants_source_ids": [
+        "chemsep-8.3"
+      ],
+      "omega_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), AcentricityFactor; Artistic License 2.0.",
+      "omega_source_ids": [
+        "chemsep-8.3"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 116.4633742,
+            "B": 0.27522,
+            "C": 739.0,
+            "D": 0.28574
+          },
+          "units": "kg/m3",
+          "Tmin_K": 431.75,
+          "Tmax_K": 722.53,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 431.75 K (ChemSep: 426.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 138.1207 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 431.75-722.53 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 91.10113592,
+            "B": 260.7068491,
+            "C": 1623.238364,
+            "D": 216.4912313,
+            "E": 773.6235683
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 273.0,
+          "Tmax_K": 1000.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR107 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 273.00-1000.15 K (ChemSep range), max deviation 0.11 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 55.60489915,
+            "B": 0.4867904079
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 431.75,
+          "Tmax_K": 551.75,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 431.75-551.75 K (ChemSep range), max deviation 0.036 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 133250.0,
+            "B": -0.11849,
+            "C": 3.6062,
+            "D": -5.1635,
+            "E": 2.13
+          },
+          "units": "J/mol",
+          "Tmin_K": 431.75,
+          "Tmax_K": 722.83,
+          "Tc_K": 739.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 106 coefficients taken over unchanged except: A converted from J/kmol to J/mol.; reproduces ChemSep within 0.0001 % at 200 points 431.75-722.83 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -50.743,
+            "B": 5203.6,
+            "C": 5.2837,
+            "D": 2.047e-08,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 431.75,
+          "Tmax_K": 639.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 431.75 K (ChemSep: 426.15 K).; reproduces ChemSep within 0.0001 % at 200 points 431.75-639.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 1.0029e-07,
+            "B": 0.78423,
+            "C": 131.87,
+            "D": -154.53
+          },
+          "units": "Pa s",
+          "Tmin_K": 431.75,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 431.75-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.2145119718,
+            "B": -0.0002173705919
+          },
+          "units": "W/m/K",
+          "Tmin_K": 431.75,
+          "Tmax_K": 529.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 431.75-529.00 K (ChemSep range), max deviation 0.054 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.8337e-05,
+            "B": 1.1043,
+            "C": 106.43,
+            "D": 67783.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 274.0,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 274.00-1000.00 K",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.09184792465,
+            "B": 1.458353443,
+            "C": -0.4507129759,
+            "D": 0.1456671832
+          },
+          "units": "N/m",
+          "Tmin_K": 431.75,
+          "Tmax_K": 702.05,
+          "Tc_K": 739.0,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 431.75-702.05 K (ChemSep range, limited to 0.95 Tc), max deviation 0.19 %",
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0008 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        }
+      },
+      "fusion": {
+        "Tm_K": 432.0,
+        "Hfus_J_mol": 24600.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C69727&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Good and Rodriguez-Hornedo, 2009; Peña, Escalera, et al., 2009; Pinto, Diogo, et al., 2005; Rabinovich, Sheiman, et al., 1986",
+          "selection": "melting temperature: WebBook average of the measured melting temperatures (Tfus, Average of 7 values; Individual data points); enthalpy of fusion: median of 5 measured values (23.05-27.1 kJ/mol) within 3 K of it; the measured values disagree by 16 % of the median: the enthalpy of fusion is uncertain",
+          "Tm_uncertainty_K": 1.0,
+          "crossCheck": "ChemSep v8.3: triple point 431.75 K (-0.25 K), enthalpy of fusion 19590 J/mol (-20.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
       }
     }
   }

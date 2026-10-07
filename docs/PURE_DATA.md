@@ -93,6 +93,9 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Aniline | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.34 (f) | ChemSep 0.20 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.29 (f) | ChemSep 0.0001 (d) | ChemSep 0.17 (f) |
 | Acrylonitrile | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) | ChemSep 0.050 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.28 (f) | ChemSep 0.0001 (d) | ChemSep 0.100 (f) |
 | Methylamine | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.65 (f) | ChemSep 0.057 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 1.2 (f) | ChemSep 0.0001 (d) | ChemSep 1.00 (f) |
+| Naphthalene | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.33 (f) | ChemSep 0.12 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.66 (f) | ChemSep 0.0001 (d) | ChemSep 0.61 (f) |
+| Benzoic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.46 (f) | ChemSep 0.065 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.35 (f) | ChemSep 0.0001 (d) | ChemSep 0.27 (f) |
+| Salicylic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.11 (f) | ChemSep 0.036 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.054 (f) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -187,6 +190,9 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Aniline | 267.13–699 | 200–1500 | 267.13–457.15 | 267.13–698.3 | 267.13–559.2 | 267.13–1000 | 267.13–633.15 | 267.13–1000 | 267.13–664.05 |
 | Acrylonitrile | 189.63–535 | 200–1500 | 189.63–400 | 189.63–534.46 | 220–435 | 189.63–1000 | 189.63–350.5 | 189.63–990.5 | 189.63–508.25 |
 | Methylamine | 179.69–430 | 150–1500 | 179.69–266.82 | 179.69–416.87 | 179.69–373 | 179.69–1000 | 179.69–393.15 | 179.69–650 | 179.69–408.5 |
+| Naphthalene | 353.43–748.35 | 200–1500 | 353.43–491.14 | 353.43–747.65 | 353.43–673.56 | 325.8–1266.41 | 353.43–694.96 | 353.43–1000 | 353.43–710.97 |
+| Benzoic acid | 395.45–751 | 200–1500 | 395.45–450 | 395.45–750.24 | 395.52–600.8 | 395.45–1000 | 395.45–596 | 274–1000 | 395.45–713.45 |
+| Salicylic acid | 431.75–722.53 | 273–1000.15 | 431.75–551.75 | 431.75–722.83 | 431.75–639 | 431.75–1000 | 431.75–529 | 274–1000 | 431.75–702.05 |
 
 Temperatures in K.
 
@@ -1489,6 +1495,51 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 12.761 | 12.761 | 0.00 % | – |
 | σ | mN/m | 25.23 | 25.315 | -0.34 % | – |
 
+### Naphthalene, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.033832 | (table) | – | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 132.9 | 132.62 | 0.21 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | – | – | – | – |
+| σ | mN/m | – | – | – | – |
+
+### Benzoic acid, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 4.802e-05 | (table) | – | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 104.16 | 104.32 | -0.16 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | 7.4191 | 7.4191 | 0.00 % | – |
+| σ | mN/m | – | – | – | – |
+
+### Salicylic acid, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 4.0943e-05 | (table) | – | – |
+| ρL | kg/m³ | – | – | – | – |
+| cp° | J/(mol·K) | 123.82 | 123.92 | -0.08 % | – |
+| cpL | J/(mol·K) | – | – | – | – |
+| ΔHvap | kJ/mol | – | – | – | – |
+| μL | mPa·s | – | – | – | – |
+| μV | μPa·s | – | – | – | – |
+| kL | mW/(m·K) | – | – | – | – |
+| kV | mW/(m·K) | 7.2217 | 7.2217 | 0.00 % | – |
+| σ | mN/m | – | – | – | – |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -1703,6 +1754,10 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | Aniline | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 293.1-308.1 K; median deviation of the articles 0.34 % (with |
 | Aniline | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 17 measured values from 3 articles, 288.1-333.1 K; median deviation of the articles 2.20 % (wit |
 | Acrylonitrile | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 5 articles, 293.1-318.1 K; median deviation of the articles 0.10 % (with |
+| Naphthalene | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 367.2-452.4 K; median deviation of the articles 0.67 % (wit |
+| Benzoic acid | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 401.3-447.1 K; median deviation of the articles 0.72 % (with |
+| Benzoic acid | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 400.3-447.1 K; median deviation of the articles 6.14 % (abov |
+| Benzoic acid | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 406.8-465.1 K; median deviation of the articles 2.19 % (with |
 
 ## Range limits to note
 
@@ -1774,6 +1829,10 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - cross-check acrylonitrile vapour pressure vs Gubkov, Fermor, et al., 1964, 2, 293.00-343.00 K: max +8.09 % at 343.0 K
 - cross-check acrylonitrile vapour pressure vs Sevrugova, Sokorskii, et al., 1964, 2, 222.00-351.00 K: max -28.45 % at 222.0 K
 - cross-check methylamine vapour pressure vs Aston, Siller, et al., 1937, 2, 190.06-266.92 K: max +0.96 % at 190.1 K
+- cross-check naphthalene vapour pressure vs Fowler, Trump, et al., 1968, 353.48-452.30 K: max -1.69 % at 353.5 K
+- cross-check naphthalene vapour pressure vs Camin and Rossini, 1955, 399.47-491.79 K: max +1.23 % at 399.5 K
+- cross-check benzoic-acid vapour pressure vs Stull, 1947, 369.00-522.40 K: max -15.50 % at 373.1 K
+- cross-check salicylic-acid vapour pressure vs Stull, 1947, 386.80-529.00 K: max -5.82 % at 479.5 K
 
 ## Notes
 
