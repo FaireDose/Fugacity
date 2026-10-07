@@ -284,7 +284,8 @@
         "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG).",
         "source_ids": [
           "thermo-library"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 4 articles, 323.1-391.0 K; median deviation of the articles 0.27 % (within the 1 % tolerance of the engineering report); largest single deviation -3.19 % at 368.1 K (Fele 2003, doi:10.1021/je020117y); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.23,
@@ -329,7 +330,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 594.45 K (ChemSep: 594.75 K). Tmin raised to the triple point 289.81 K (ChemSep: 273.15 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0520 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 289.81-594.45 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 92 measured values from 48 articles, 293.0-353.1 K; median deviation of the articles 0.14 % (within the 1 % tolerance of the engineering report); largest single deviation -0.67 % at 293.1 K (Mohsen-Nia 2013, doi:10.1016/j.jct.2012.08.009); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -429,7 +431,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 289.81 K (ChemSep: 288.15 K).; reproduces ChemSep within 0.0001 % at 200 points 289.81-474.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 6 articles, 293.1-373.1 K; median deviation of the articles 0.60 % (within the 5 % tolerance of the engineering report); largest single deviation -2.52 % at 373.1 K (Fang 2008, doi:10.1021/je800635g); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -556,7 +559,8 @@
         "source": "Fitted to values from the open-source thermo library (IAPWS-95 for water, Wagner-McGarry for acetic acid, HEOS fit for EG).",
         "source_ids": [
           "thermo-library"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 4 articles, 405.9-470.2 K; median deviation of the articles 0.40 % (within the 1 % tolerance of the engineering report); largest single deviation -3.42 % at 469.1 K (Yin 2010, doi:10.1021/je100081v); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.41,
@@ -589,7 +593,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 62.0678 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 260.15-695.80 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 378 measured values from 75 articles, 273.1-473.1 K; median deviation of the articles 0.02 % (within the 1 % tolerance of the engineering report); largest single deviation +0.93 % at 353.1 K (Yang 2003, doi:10.1021/je020140j); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -637,7 +642,8 @@
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 260.15-493.15 K (ChemSep range), max deviation 0.22 %",
             "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: measured values at single temperatures only, not a correlation over the liquid range; where available they are compared with this record in `measured`",
-            "measured": "-0.1 % vs the mean (149.57 J/mol/K) of 3 measured values at 298.15 K, 1970 or later, range 149.30-149.80 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2)"
+            "measured": "-0.1 % vs the mean (149.57 J/mol/K) of 3 measured values at 298.15 K, 1970 or later, range 149.30-149.80 (NIST WebBook, https://webbook.nist.gov/cgi/cbook.cgi?ID=C107211&Mask=2)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 42 measured values from 1 articles, 293.1-353.1 K; median deviation of the articles 0.61 % (within the 2 % tolerance of the engineering report); largest single deviation -1.15 % at 353.1 K (Goralski 2008, doi:10.1021/je800356x); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -686,7 +692,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 260.15-576.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 135 measured values from 25 articles, 288.1-464.4 K; median deviation of the articles 1.19 % (within the 5 % tolerance of the engineering report); largest single deviation +52.11 % at 308.1 K (Nayak 2003, doi:10.1021/je030107c); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -731,7 +738,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 260.15-470.45 K (ChemSep range), max deviation 0.19 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 7 articles, 293.1-338.3 K; median deviation of the articles 1.69 % (within the 5 % tolerance of the engineering report); largest single deviation +5.01 % at 298.1 K (Zyla 2016, doi:10.1016/j.tca.2016.05.006); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -777,7 +785,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 260.15-470.45 K (ChemSep range), max deviation 0.095 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 20 measured values from 4 articles, 293.1-323.1 K; median deviation of the articles 0.59 %; largest single deviation -1.57 % at 298.1 K (Azizian 2003, doi:10.1021/je025639s); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -1325,7 +1334,8 @@
         "source": "Fitted to values from the open-source thermo library (HEOS_FIT correlation); max deviation 0.05 % in range.",
         "source_ids": [
           "thermo-library"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 54 measured values from 16 articles, 297.6-373.1 K; median deviation of the articles 0.39 % (within the 1 % tolerance of the engineering report); largest single deviation +1.17 % at 329.6 K (Ma 2018, doi:10.1016/j.jct.2018.03.019); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.5735,
@@ -1358,7 +1368,8 @@
             "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
             "access": "MIT (open source)",
             "quantity": "saturated liquid density",
-            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.31 %"
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.31 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 147 measured values from 64 articles, 278.1-333.1 K; median deviation of the articles 0.11 % (within the 1 % tolerance of the engineering report); largest single deviation -1.17 % at 303.0 K (Nath 2013, doi:10.1007/s10765-013-1527-7); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -1456,7 +1467,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 190.00-408.00 K",
-            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid"
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: acetone is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 9 articles, 278.1-318.1 K; median deviation of the articles 0.41 % (within the 5 % tolerance of the engineering report); largest single deviation -5.52 % at 313.1 K (Yang 2010, doi:10.1021/je900535d); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -1545,7 +1557,8 @@
             "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
             "access": "MIT (open source)",
             "quantity": "surface tension",
-            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+            "fit": "200 points 178.50-482.69 K (triple point to 0.95 Tc), max deviation 0.0001 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 7 articles, 287.8-328.1 K; median deviation of the articles 1.54 %; largest single deviation -5.43 % at 298.1 K (Ouyang 2004, doi:10.1021/je0341763); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -1578,7 +1591,8 @@
         "source": "Fitted to values from the open-source thermo library (WAGNER_MCGARRY correlation); max deviation 0.12 % in range.",
         "source_ids": [
           "thermo-library"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 3 articles, 303.1-342.0 K; median deviation of the articles 0.01 % (within the 1 % tolerance of the engineering report); largest single deviation -0.32 % at 303.1 K (Pathare 2004, doi:10.1021/je034153o); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.7,
@@ -1611,7 +1625,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmin raised to the triple point 209.63 K (ChemSep: 209.00 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 119.3776 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 209.63-535.95 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 107 measured values from 32 articles, 273.1-323.1 K; median deviation of the articles 0.85 % (within the 1 % tolerance of the engineering report); largest single deviation +1.49 % at 298.1 K (Shekaari 2010, doi:10.1021/je100369a); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -1710,7 +1725,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 209.63-436.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 11 articles, 273.1-318.1 K; median deviation of the articles 0.93 % (within the 5 % tolerance of the engineering report); largest single deviation -8.82 % at 318.1 K (Clara 2010, doi:10.1021/je100821g); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -2344,7 +2360,8 @@
         "source": "Fitted to the Wagner-McGarry correlation (via the open-source thermo library); max deviation 0.13 % in range.",
         "source_ids": [
           "thermo-library"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 117 measured values from 19 articles, 297.2-462.8 K; median deviation of the articles 0.33 % (within the 1 % tolerance of the engineering report); largest single deviation -1.35 % at 349.8 K (Alvarez 2013, doi:10.1016/j.jct.2013.02.022); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 3.48,
@@ -2377,7 +2394,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 523.20 K (ChemSep: 523.25 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 88.1051 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 189.60-523.20 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 177 measured values from 71 articles, 278.1-348.1 K; median deviation of the articles 0.08 % (within the 1 % tolerance of the engineering report); largest single deviation -2.30 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -2477,7 +2495,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 220.00-473.15 K",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 42 measured values from 19 articles, 293.1-343.1 K; median deviation of the articles 1.06 % (within the 5 % tolerance of the engineering report); largest single deviation +7.55 % at 303.1 K (Syeda 2010, doi:10.1021/je900525f); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -2521,7 +2540,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 189.60-350.21 K (ChemSep range), max deviation 0.55 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 249.1-348.5 K; median deviation of the articles 2.09 % (within the 5 % tolerance of the engineering report); largest single deviation +2.82 % at 345.4 K (Song 2019, doi:10.1016/j.jct.2019.06.014); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -2569,7 +2589,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 189.60-497.04 K (ChemSep range, limited to 0.95 Tc), max deviation 0.39 %",
-            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+            "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 3 articles, 295.1-315.1 K; median deviation of the articles 2.29 %; largest single deviation -4.01 % at 315.1 K (Khosroshahi 2016, doi:10.1016/j.fluid.2016.04.007); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -3855,7 +3876,8 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000; Smukala et al., J. Phys. Chem. Ref. Data 29 (2000) 1053-1121, doi:10.1063/1.1329318); 200 points 103.989-282.350 K (triple point to critical point), max deviation 0.12 %.",
         "source_ids": [
           "coolprop"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 4 articles, 233.7-281.0 K; median deviation of the articles 0.07 % (within the 1 % tolerance of the engineering report); largest single deviation +0.24 % at 273.1 K (Nelson 2017, doi:10.1016/j.fluid.2017.08.005); docs/MEASURED_CHECKS.md"
       },
       "omega": 0.0866,
       "constants_source": "CoolProp 8.0.0 (Ethylene: equation of state Smukala-JPCRD-2000); open source, MIT. Tb at 101.325 kPa from the same equation of state.",
@@ -4607,7 +4629,8 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (HydrogenSulfide: equation of state Lemmon-JCED-2006; Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n); 200 points 187.700-373.100 K (triple point to critical point), max deviation 0.11 %.",
         "source_ids": [
           "coolprop"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 28 measured values from 2 articles, 223.2-363.2 K; median deviation of the articles 0.38 % (within the 1 % tolerance of the engineering report); largest single deviation -2.34 % at 313.0 K (Chapoy 2013, doi:10.1016/j.fluid.2013.07.050); docs/MEASURED_CHECKS.md"
       },
       "omega": 0.1005,
       "constants_source": "CoolProp 8.0.0 (HydrogenSulfide: equation of state Lemmon-JCED-2006); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
@@ -6360,7 +6383,8 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (DimethylEther: equation of state Wu-JPCRD-2011; Wu et al., J. Phys. Chem. Ref. Data 40 (2011) 023104-1:16, doi:10.1063/1.3582533); 200 points 131.660-400.377 K (triple point to critical point), max deviation 0.25 %.",
         "source_ids": [
           "coolprop"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 236 measured values from 17 articles, 253.1-399.6 K; median deviation of the articles 0.41 % (within the 1 % tolerance of the engineering report); largest single deviation -3.41 % at 258.2 K (Wu 2004, doi:10.1021/je0340046); docs/MEASURED_CHECKS.md"
       },
       "omega": 0.196,
       "constants_source": "CoolProp 8.0.0 (DimethylEther: equation of state Wu-JPCRD-2011); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
@@ -6574,7 +6598,8 @@
             "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
             "access": "MIT (open source)",
             "quantity": "surface tension",
-            "fit": "200 points 131.66-380.35 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+            "fit": "200 points 131.66-380.35 K (triple point to 0.95 Tc), max deviation 0.0001 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 39 measured values from 2 articles, 214.0-380.0 K; median deviation of the articles 3.84 %; largest single deviation -5.54 % at 355.0 K (Baidakov 2016, doi:10.1016/j.fluid.2016.01.001); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -6608,7 +6633,8 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Cyclohexane: equation of state Zhou-JPCRD-2014; Zhou et al., J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538); 200 points 279.470-553.600 K (triple point to critical point), max deviation 0.13 %.",
         "source_ids": [
           "coolprop"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 25 articles, 283.1-363.1 K; median deviation of the articles 0.07 % (within the 1 % tolerance of the engineering report); largest single deviation -1.06 % at 323.2 K (Ben-makhlouf-Hakem 2014, doi:10.1016/j.fluid.2014.04.004); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 4.0464,
@@ -6645,7 +6671,8 @@
             "reference": "Zhou et al., J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538",
             "access": "MIT (open source)",
             "quantity": "saturated liquid density",
-            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.16 %"
+            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.16 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 263 measured values from 116 articles, 283.1-358.1 K; median deviation of the articles 0.03 % (within the 1 % tolerance of the engineering report); largest single deviation -0.76 % at 298.1 K (Yang 2010, doi:10.1021/je900669t); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -6693,7 +6720,8 @@
             "reference": "Zhou et al., J. Phys. Chem. Ref. Data 43 (2014) 043105-1:12, doi:10.1063/1.4900538",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 279.48-513.59 K, max deviation 0.42 %; range narrowed from 279.48-525.92 K (max deviation there 1.1 %) to meet the 1 % target"
+            "fit": "200 points 279.48-513.59 K, max deviation 0.42 %; range narrowed from 279.48-525.92 K (max deviation there 1.1 %) to meet the 1 % target",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 4 articles, 293.1-333.1 K; median deviation of the articles 0.37 % (within the 2 % tolerance of the engineering report); largest single deviation +3.43 % at 298.1 K (Tjahjono 2008, doi:10.1016/j.jct.2008.06.008); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -6741,7 +6769,8 @@
             "reference": "Tariq et al., J. Phys. Chem. Ref. Data 43 (2014) 033101-1:18, doi:10.1063/1.4891103",
             "access": "MIT (open source)",
             "quantity": "saturated liquid",
-            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.61 %"
+            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.61 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 77 measured values from 24 articles, 283.1-333.1 K; median deviation of the articles 0.61 % (within the 5 % tolerance of the engineering report); largest single deviation +4.87 % at 321.1 K (Hammami 2014, doi:10.1016/j.fluid.2014.10.013); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -6789,7 +6818,8 @@
             "access": "free to read (NIST SRD 69)",
             "fit": "422 tabulated points 279.86-525.82 K, max deviation 0.065 %",
             "notes": "WebBook: estimated uncertainty 4 % for the compressed liquid, 2.5 % for the low-pressure gas (280-680 K). Tables downloaded 2026-10-03 (validation/data/pure/webbook_fluid/cyclohexane.json).",
-            "chain": "CoolProp 8.0.0: no thermal conductivity model"
+            "chain": "CoolProp 8.0.0: no thermal conductivity model",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 1 articles, 280.8-318.9 K; median deviation of the articles 0.16 % (within the 5 % tolerance of the engineering report); largest single deviation +0.51 % at 281.1 K (Watanabe 2004, doi:10.1021/je034162x); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "nist-webbook"
@@ -6836,7 +6866,8 @@
             "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
             "access": "MIT (open source)",
             "quantity": "surface tension",
-            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.023 %"
+            "fit": "200 points 279.48-525.92 K (triple point to 0.95 Tc), max deviation 0.023 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 22 measured values from 6 articles, 282.8-337.9 K; median deviation of the articles 1.10 %; largest single deviation -2.19 % at 328.1 K (Wang 2011, doi:10.1021/je200349t); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -7928,7 +7959,8 @@
             ],
             "max_deviation_percent": -98.8
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 2 articles, 348.1-373.4 K; median deviation of the articles 1.09 % (above the 1 % tolerance of the engineering report); largest single deviation -1.90 % at 348.1 K (Aucejo 2006, doi:10.1021/je050523s); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 4.37,
@@ -7965,7 +7997,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 636.00 K (ChemSep: 640.76 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 104.1490 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 242.54-636.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 36 measured values from 10 articles, 293.1-363.1 K; median deviation of the articles 0.19 % (within the 1 % tolerance of the engineering report); largest single deviation -0.29 % at 363.1 K (Yang 2005, doi:10.1021/je049572f); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -8060,7 +8093,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 242.54-508.80 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 2 articles, 293.1-363.1 K; median deviation of the articles 0.45 % (within the 5 % tolerance of the engineering report); largest single deviation -2.08 % at 363.1 K (Yang 2005, doi:10.1021/je049572f); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -9262,7 +9296,8 @@
             "reference": "Thol et al., Int. J. Thermophys. 35 (2014) 783-811, doi:10.1007/s10765-014-1633-1",
             "access": "MIT (open source)",
             "quantity": "saturated liquid density",
-            "fit": "200 points 270.00-444.50 K (triple point to 0.95 Tc), max deviation 0.054 %"
+            "fit": "200 points 270.00-444.50 K (triple point to 0.95 Tc), max deviation 0.054 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 4 articles, 273.1-298.1 K; median deviation of the articles 0.07 % (within the 1 % tolerance of the engineering report); largest single deviation -0.14 % at 293.1 K (Meng 2008, doi:10.1016/j.fluid.2008.06.014); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -9358,7 +9393,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 270.00 K (ChemSep: 200.00 K).; reproduces ChemSep within 0.0001 % at 200 points 270.00-373.15 K",
-            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: diethyl ether is not a WebBook fluid"
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: diethyl ether is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 2 articles, 273.1-298.1 K; median deviation of the articles 4.98 % (within the 5 % tolerance of the engineering report); largest single deviation -8.64 % at 298.1 K (Sah 2010, doi:10.1021/je100594u); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -9402,7 +9438,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 270.00-433.15 K (ChemSep range, Tmin raised to the triple point), max deviation 0.46 %",
-            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: diethyl ether is not a WebBook fluid"
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: diethyl ether is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 274.7-296.0 K; median deviation of the articles 4.37 % (within the 5 % tolerance of the engineering report); largest single deviation +5.12 % at 274.7 K (Li 2010, doi:10.1021/je900615b); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -9484,14 +9521,16 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (PropyleneGlycol: equation of state Eisenbach-JPCRD-2021; Eisenbach et al., J. Phys. Chem. Ref. Data 50 (2021)); 200 points 293.000-673.999 K (narrowed: from the triple point (213.00 K, where the pressure is 2.7e-08 Pa) one DIPPR 101 curve does not meet the 1 % target; it starts at 293.00 K), max deviation 0.64 %.",
         "source_ids": [
           "coolprop"
-        ]
-      },
-      "uniquac_missing": {
-        "searched": [
-          "ChemSep pure-component database v8.3 (Kooijman & Taylor) (compound not included)",
-          "thermo and chemicals libraries (no UNIQUAC r and q tables)"
         ],
-        "note": "no open data: UNIQUAC r and q could be computed from UNIFAC group volumes and areas, but the licence of those group tables is the open question of roadmap A3; until it is settled the component has no activity-model data."
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 29 measured values from 5 articles, 375.1-460.8 K; median deviation of the articles 0.87 % (within the 1 % tolerance of the engineering report); largest single deviation -4.26 % at 423.3 K (Chylinski 2004, doi:10.1021/je034096z); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 4.0224,
+        "q": 4.016,
+        "source": "ChemSep pure-component database v8.31, data file 2 (chemsep2.xml, Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.31-2"
+        ]
       },
       "omega": 0.326839,
       "constants_source": "CoolProp 8.0.0 (PropyleneGlycol: equation of state Eisenbach-JPCRD-2021); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
@@ -9520,7 +9559,8 @@
             "reference": "Eisenbach et al., J. Phys. Chem. Ref. Data 50 (2021)",
             "access": "MIT (open source)",
             "quantity": "saturated liquid density",
-            "fit": "200 points 213.00-640.29 K (triple point to 0.95 Tc), max deviation 0.25 %"
+            "fit": "200 points 213.00-640.29 K (triple point to 0.95 Tc), max deviation 0.25 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 287 measured values from 44 articles, 253.2-463.1 K; median deviation of the articles 0.05 % (within the 1 % tolerance of the engineering report); largest single deviation -0.84 % at 298.1 K (Zhang 2013, doi:10.1021/je4004993); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -9568,7 +9608,8 @@
             "reference": "Eisenbach et al., J. Phys. Chem. Ref. Data 50 (2021)",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 213.00-618.92 K, max deviation 0.92 %; range narrowed from 213.00-640.29 K (max deviation there 2.3 %) to meet the 1 % target"
+            "fit": "200 points 213.00-618.92 K, max deviation 0.92 %; range narrowed from 213.00-640.29 K (max deviation there 2.3 %) to meet the 1 % target",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 2 articles, 298.1-353.1 K; median deviation of the articles 0.49 % (within the 2 % tolerance of the engineering report); largest single deviation -0.84 % at 298.1 K (Pietrzak 2015, doi:10.1016/j.fluid.2015.05.016); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -9599,43 +9640,125 @@
           ]
         },
         "liquidViscosity": {
-          "available": false,
-          "searched": [
-            "CoolProp 8.0.0 (no model for this property)",
-            "NIST Chemistry WebBook (not a WebBook fluid)",
-            "ChemSep v8.3 pure-component database (compound not included)"
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -804.54,
+            "B": 30487.0,
+            "C": 130.79,
+            "D": -0.15449,
+            "E": 1.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 213.15,
+          "Tmax_K": 500.8,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 213.15-500.80 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: propylene glycol is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 103 measured values from 16 articles, 288.1-458.9 K; median deviation of the articles 2.92 % (within the 5 % tolerance of the engineering report); largest single deviation +19.14 % at 318.1 K (George 2003, doi:10.1021/je0340755); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
           ]
         },
         "vapourViscosity": {
-          "available": false,
-          "searched": [
-            "CoolProp 8.0.0 (no model for this property)",
-            "NIST Chemistry WebBook (not a WebBook fluid)",
-            "ChemSep v8.3 pure-component database (compound not included)"
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 4.543e-08,
+            "B": 0.9173,
+            "C": 61.0,
+            "D": 0.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 213.15,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 213.15-1000.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: propylene glycol is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
           ]
         },
         "liquidThermalConductivity": {
-          "available": false,
-          "searched": [
-            "CoolProp 8.0.0 (no model for this property)",
-            "NIST Chemistry WebBook (not a WebBook fluid)",
-            "ChemSep v8.3 pure-component database (compound not included)"
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.211,
+            "B": -3.7e-05,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 213.15,
+          "Tmax_K": 460.75,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 2 coefficients taken over unchanged except: ChemSep equation 2 is DIPPR 100 with the higher coefficients zero.; reproduces ChemSep within 0.0001 % at 200 points 213.15-460.75 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: propylene glycol is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 9 measured values from 1 articles, 299.1-450.8 K; median deviation of the articles 2.25 % (within the 5 % tolerance of the engineering report); largest single deviation +6.19 % at 450.8 K (Sun 2004, doi:10.1021/je049960h); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
           ]
         },
         "vapourThermalConductivity": {
-          "available": false,
-          "searched": [
-            "CoolProp 8.0.0 (no model for this property)",
-            "NIST Chemistry WebBook (not a WebBook fluid)",
-            "ChemSep v8.3 pure-component database (compound not included)"
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.0001666,
+            "B": 0.9765,
+            "C": 706.0,
+            "D": 0.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 460.75,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 460.75-1000.00 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: propylene glycol is not a WebBook fluid"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
           ]
         },
         "surfaceTension": {
-          "available": false,
-          "searched": [
-            "CoolProp 8.0.0 (no model for this property)",
-            "NIST Chemistry WebBook (not a WebBook fluid)",
-            "ChemSep v8.3 pure-component database (compound not included)"
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.1274319627,
+            "B": 5.503719228,
+            "C": -13.12550249,
+            "D": 15.06421406,
+            "E": -6.445138082
+          },
+          "units": "N/m",
+          "Tmin_K": 213.15,
+          "Tmax_K": 573.95,
+          "Tc_K": 624.15,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.31 pure-component database, data file 2",
+            "reference": "Kooijman and Taylor, ChemSep v8.31 pure component data 2, chemsep2.xml (2022), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 213.15-573.95 K (ChemSep range, limited to 0.95 Tc), max deviation 0.31 %; range narrowed from 213.15-592.94 K (max deviation there 1.1 %) to meet the 1 % target",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: propylene glycol is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 298.1-328.1 K; median deviation of the articles 3.27 %; largest single deviation -5.99 % at 328.1 K (Chang 2015, doi:10.1016/j.fluid.2014.12.040); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.31-2"
           ]
         }
       }
@@ -9667,7 +9790,8 @@
         "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Tetrahydrofuran: equation of state Fiedler-IJT-2023-THF; Fiedler et al., International Journal of Thermophysics 44 (2023) 153); 200 points 164.760-540.199 K (triple point to critical point), max deviation 0.34 %.",
         "source_ids": [
           "coolprop"
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 63 measured values from 7 articles, 276.0-353.1 K; median deviation of the articles 0.46 % (within the 1 % tolerance of the engineering report); largest single deviation +5.15 % at 276.0 K (Safarov 2012, doi:10.1016/j.jct.2011.09.022); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.94,
@@ -9704,7 +9828,8 @@
             "reference": "Fiedler et al., International Journal of Thermophysics 44 (2023) 153",
             "access": "MIT (open source)",
             "quantity": "saturated liquid density",
-            "fit": "200 points 164.76-513.18 K (triple point to 0.95 Tc), max deviation 0.27 %"
+            "fit": "200 points 164.76-513.18 K (triple point to 0.95 Tc), max deviation 0.27 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 171 measured values from 61 articles, 278.1-333.1 K; median deviation of the articles 0.06 % (within the 1 % tolerance of the engineering report); largest single deviation -1.94 % at 328.1 K (Bandres 2008, doi:10.1016/j.jct.2008.03.017); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -9752,7 +9877,8 @@
             "reference": "Fiedler et al., International Journal of Thermophysics 44 (2023) 153",
             "access": "MIT (open source)",
             "quantity": "cp of the saturated liquid",
-            "fit": "200 points 164.76-495.75 K, max deviation 0.79 %; range narrowed from 164.76-513.18 K (max deviation there 2.5 %) to meet the 1 % target"
+            "fit": "200 points 164.76-495.75 K, max deviation 0.79 %; range narrowed from 164.76-513.18 K (max deviation there 2.5 %) to meet the 1 % target",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 288.1-323.1 K; median deviation of the articles 2.08 % (above the 2 % tolerance of the engineering report); largest single deviation -3.46 % at 323.1 K (Francesconi 2006, doi:10.1016/j.tca.2006.05.010); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "coolprop"
@@ -9800,7 +9926,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 164.76 K (ChemSep: 164.65 K).; reproduces ChemSep within 0.0001 % at 200 points 164.76-440.00 K",
-            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid"
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 56 measured values from 19 articles, 283.1-323.1 K; median deviation of the articles 1.93 % (within the 5 % tolerance of the engineering report); largest single deviation +32.96 % at 303.1 K (Oswal 2009, doi:10.1016/j.tca.2009.07.008); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -9892,7 +10019,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 164.76-513.19 K (ChemSep range, Tmin raised to the triple point, limited to 0.95 Tc), max deviation 0.56 %",
-            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid"
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: tetrahydrofuran is not a WebBook fluid",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 288.1-313.1 K; median deviation of the articles 1.68 %; largest single deviation -2.41 % at 308.1 K (Ku 2008, doi:10.1021/je700626v); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -9958,7 +10086,8 @@
             ],
             "max_deviation_percent": 3.27
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 130 measured values from 32 articles, 298.1-469.5 K; median deviation of the articles 0.83 % (within the 1 % tolerance of the engineering report); largest single deviation -4.61 % at 346.5 K (Tebbal 2014, doi:10.1021/je500237g); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.78,
@@ -9995,7 +10124,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0950 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 146.95-536.65 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 800 measured values from 260 articles, 278.1-363.1 K; median deviation of the articles 0.14 % (within the 1 % tolerance of the engineering report); largest single deviation -0.86 % at 333.1 K (Kermanpour 2012, doi:10.1016/j.tca.2011.10.030); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10042,7 +10172,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 146.95-400.00 K (ChemSep range), max deviation 0.18 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 100 measured values from 4 articles, 153.0-350.0 K; median deviation of the articles 0.49 % (within the 2 % tolerance of the engineering report); largest single deviation -2.66 % at 350.0 K (van Miltenburg 2004, doi:10.1021/je0499768); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10091,7 +10222,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 146.95-523.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 269 measured values from 63 articles, 278.1-363.1 K; median deviation of the articles 1.85 % (within the 5 % tolerance of the engineering report); largest single deviation +55.93 % at 333.1 K (Kermanpour 2012, doi:10.1016/j.tca.2011.10.030); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10182,7 +10314,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 283.15-370.35 K (ChemSep range), max deviation 0.22 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 52 measured values from 12 articles, 283.1-348.1 K; median deviation of the articles 0.27 %; largest single deviation +5.92 % at 318.1 K (Fang 2019, doi:10.1016/j.tca.2019.178383); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10240,7 +10373,8 @@
             ],
             "max_deviation_percent": 0.92
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 220 measured values from 36 articles, 313.1-503.1 K; median deviation of the articles 0.53 % (within the 1 % tolerance of the engineering report); largest single deviation +2.49 % at 313.1 K (Villamanan 2010, doi:10.1021/je900977e); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.78,
@@ -10277,7 +10411,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 60.0950 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 185.28-508.30 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 534 measured values from 190 articles, 263.1-353.1 K; median deviation of the articles 0.12 % (within the 1 % tolerance of the engineering report); largest single deviation +14.78 % at 298.1 K (Sarkar 2009, doi:10.1021/je900240s); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10325,7 +10460,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 185.28-480.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.24 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 2 articles, 190.0-330.0 K; median deviation of the articles 0.88 % (within the 2 % tolerance of the engineering report); largest single deviation -2.98 % at 220.0 K (Zhelezny 2019, doi:10.1016/j.tca.2019.05.011); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10374,7 +10510,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 187.35-408.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 49 articles, 283.1-343.1 K; median deviation of the articles 0.54 % (within the 5 % tolerance of the engineering report); largest single deviation +638.90 % at 298.1 K (Sarkar 2009, doi:10.1021/je900240s); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10464,7 +10601,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 273.15-355.41 K (ChemSep range), max deviation 0.16 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 60 measured values from 15 articles, 288.1-338.1 K; median deviation of the articles 0.58 %; largest single deviation +6.03 % at 313.1 K (Fang 2019, doi:10.1016/j.tca.2019.178383); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10484,23 +10622,24 @@
       "MW": 74.1216,
       "Tc_K": 563.05,
       "Pc_Pa": 4423000.0,
-      "Tb_K": 391.3056,
+      "Tb_K": 390.7421,
       "vapourPressure": {
         "equation": "DIPPR101",
         "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
         "units": "Pa",
-        "A": 94.3424,
-        "B": -9140.942,
-        "C": -10.0038,
-        "D": 1.706963e-06,
-        "E": 2.0,
-        "Tmin_K": 184.51,
-        "Tmax_K": 563.0,
-        "tier": "databank",
-        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 184.51-563.00 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "A": 94.99966563,
+        "B": -9328.63216,
+        "C": -9.986651938,
+        "D": 1.156426605e-34,
+        "E": 11.99,
+        "Tmin_K": 278.15,
+        "Tmax_K": 563.05,
+        "tier": "fitted",
+        "source": "Fitted to measured vapour pressures (NIST TRC ThermoML Archive): 93 values with stated uncertainties within 1 % from 22 articles, max deviation 0.97 %, and 161 values with larger stated uncertainties, kept where the fit is within them (they extend the range to 278.15 K); and the ChemSep v8.3 pure-component database critical point (563.05 K, 4423000 Pa). Between 559.33 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it deviates from the values within 1 % by -1.3 % (median, -2.9 % at most); see docs/MEASURED_CHECKS.md. Articles: Pena-Tejedor et al., Fluid Phase Equilib. 230 (2005) 197-203, doi:10.1016/j.fluid.2005.02.015; Lladosa et al., Fluid Phase Equilib. 247 (2006) 47-53, doi:10.1016/j.fluid.2006.06.017; Rasulov et al., Fluid Phase Equilib. 337 (2013) 323-353, doi:10.1016/j.fluid.2012.09.026; Ghezouali et al., Fluid Phase Equilib. 386 (2015) 1-6, doi:10.1016/j.fluid.2014.11.010; Villamanan et al., J. Chem. Thermodyn. 38 (2006) 547-553, doi:10.1016/j.jct.2005.07.004; Mohsen-Nia and Memarzadeh, J. Chem. Thermodyn. 42 (2010) 792-796, doi:10.1016/j.jct.2010.02.001; Ghellai et al., J. Chem. Thermodyn. 63 (2013) 164-168, doi:10.1016/j.jct.2013.04.003; Mahdoui et al., J. Chem. Thermodyn. 139 (2019) 105884, doi:10.1016/j.jct.2019.105884; Mahdoui et al., J. Chem. Eng. Data 62 (2017) 2037-2043, doi:10.1021/acs.jced.7b00078; Song et al., J. Chem. Eng. Data 62 (2017) 2443-2449, doi:10.1021/acs.jced.7b00377; Vasanta, J. Chem. Eng. Data 63 (2018) 3215-3226, doi:10.1021/acs.jced.7b01128; Mavalal et al., J. Chem. Eng. Data 64 (2019) 2649-2656, doi:10.1021/acs.jced.9b00100; Nasirzadeh et al., J. Chem. Eng. Data 49 (2004) 607-612, doi:10.1021/je034197x; Hyeong et al., J. Chem. Eng. Data 56 (2011) 5028-5035, doi:10.1021/je2008236; Belabbaci et al., J. Chem. Eng. Data 57 (2012) 114-119, doi:10.1021/je200840e; Ngema et al., J. Chem. Eng. Data 57 (2012) 2053-2058, doi:10.1021/je300347z; Zawadzki et al., J. Chem. Eng. Data 57 (2012) 2520-2527, doi:10.1021/je3004194; Sundberg et al., J. Chem. Eng. Data 57 (2012) 3502-3509, doi:10.1021/je300670n; Camacho et al., J. Chem. Eng. Data 57 (2012) 3198-3202, doi:10.1021/je300835h; Cai et al., J. Chem. Eng. Data 59 (2014) 2171-2176, doi:10.1021/je5000296; Uno et al., J. Chem. Eng. Data 53 (2008) 2066-2071, doi:10.1021/je800145h; Mohsen-Nia and Memarzadeh, J. Chem. Eng. Data 55 (2010) 2140-2144, doi:10.1021/je9006629; Rattam et al., Int. J. Thermophys. 27 (2006) 85-91, doi:10.1007/s10765-006-0018-5; Susial et al., Int. J. Thermophys. 34 (2013) 1906-1917, doi:10.1007/s10765-013-1483-2; Prasad et al., Fluid Phase Equilib. 244 (2006) 86-98, doi:10.1016/j.fluid.2006.03.018; Dell'Era et al., Fluid Phase Equilib. 254 (2007) 49-59, doi:10.1016/j.fluid.2007.02.028; Reddy and Rao, Fluid Phase Equilib. 264 (2008) 76-85, doi:10.1016/j.fluid.2007.11.002; Martinez et al., Fluid Phase Equilib. 277 (2009) 49-54, doi:10.1016/j.fluid.2008.11.012; Hector and Gmehling, Fluid Phase Equilib. 371 (2014) 82-92, doi:10.1016/j.fluid.2014.03.006; Maken et al., J. Chem. Thermodyn. 36 (2004) 309-315, doi:10.1016/j.jct.2004.01.001; Prasad et al., J. Chem. Thermodyn. 38 (2006) 769-772, doi:10.1016/j.jct.2005.08.011; Prasad et al., J. Chem. Thermodyn. 38 (2006) 1696-1700, doi:10.1016/j.jct.2006.03.006; Prasad et al., J. Chem. Thermodyn. 39 (2007) 202-205, doi:10.1016/j.jct.2006.07.014; Domanska et al., J. Chem. Thermodyn. 41 (2009) 932-938, doi:10.1016/j.jct.2009.03.008; Martinez et al., J. Chem. Thermodyn. 41 (2009) 1030-1034, doi:10.1016/j.jct.2009.04.005; Teodorescu, J. Chem. Thermodyn. 87 (2015) 58-64, doi:10.1016/j.jct.2015.03.023; Bahadur et al., J. Chem. Thermodyn. 90 (2015) 92-99, doi:10.1016/j.jct.2015.06.023; Parker and Babas, Thermochim. Acta 595 (2014) 67-73, doi:10.1016/j.tca.2014.09.011; Casimiro et al., J. Chem. Eng. Data 60 (2015) 3181-3186, doi:10.1021/acs.jced.5b00360; Yang et al., J. Chem. Eng. Data 61 (2016) 3034-3040, doi:10.1021/acs.jced.6b00088; Yang et al., J. Chem. Eng. Data 62 (2017) 148-155, doi:10.1021/acs.jced.6b00517; Song et al., J. Chem. Eng. Data 63 (2018) 138-146, doi:10.1021/acs.jced.7b00740; Alinejhad et al., J. Chem. Eng. Data 63 (2018) 965-971, doi:10.1021/acs.jced.7b00766; Suaza et al., J. Chem. Eng. Data 63 (2018) 1946-1954, doi:10.1021/acs.jced.7b01064; Santaella et al., J. Chem. Eng. Data 63 (2018) 3252-3262, doi:10.1021/acs.jced.8b00064; Badajoz et al., J. Chem. Eng. Data 63 (2018) 2228-2242, doi:10.1021/acs.jced.8b00182; Man et al., J. Chem. Eng. Data 63 (2018) 3851-3859, doi:10.1021/acs.jced.8b00499; Wang et al., J. Chem. Eng. Data 64 (2019) 4142-4147, doi:10.1021/acs.jced.9b00535; Vittal Prasad et al., J. Chem. Eng. Data 49 (2004) 744-745, doi:10.1021/je030131q; Prasad et al., J. Chem. Eng. Data 49 (2004) 746-749, doi:10.1021/je030141r; Ahmad et al., J. Chem. Eng. Data 49 (2004) 826-831, doi:10.1021/je030222n; Kim et al., J. Chem. Eng. Data 50 (2005) 1520-1524, doi:10.1021/je049894j; Park et al., J. Chem. Eng. Data 52 (2007) 230-234, doi:10.1021/je0603574; Gimeno et al., J. Chem. Eng. Data 56 (2011) 2443-2448, doi:10.1021/je200011e; Yang et al., J. Chem. Eng. Data 57 (2012) 18-25, doi:10.1021/je201053v; McDougal et al., J. Chem. Eng. Data 59 (2014) 1069-1085, doi:10.1021/je400885z; Hirawan et al., J. Chem. Eng. Data 59 (2014) 1643-1650, doi:10.1021/je500092v; Cripwell et al., J. Chem. Eng. Data 60 (2015) 602-611, doi:10.1021/je500731x; Kuitunen et al., J. Chem. Eng. Data 53 (2008) 2454-2461, doi:10.1021/je8004672. Rules: validation/python/measured_components.py (fit_measured_loose).",
         "source_ids": [
+          "nist-thermoml-archive",
           "chemsep-8.3",
-          "coolprop"
+          "park2007-dimethyl-ether-methanol"
         ],
         "crossCheck": [
           {
@@ -10510,7 +10649,7 @@
               295.8,
               391.0
             ],
-            "max_deviation_percent": 6.34
+            "max_deviation_percent": 3.3
           },
           {
             "reference": "Hessel and Geiseler, 1965 (Antoine equation, NIST WebBook)",
@@ -10519,7 +10658,7 @@
               391.0,
               479.0
             ],
-            "max_deviation_percent": 1.74
+            "max_deviation_percent": 2.58
           },
           {
             "reference": "Ambrose and Townsend, 1963, 2 (Antoine equation, NIST WebBook)",
@@ -10528,7 +10667,7 @@
               419.34,
               562.98
             ],
-            "max_deviation_percent": -2.16
+            "max_deviation_percent": 1.36
           },
           {
             "reference": "Biddiscombe, Collerson, et al., 1963, 2 (Antoine equation, NIST WebBook)",
@@ -10537,9 +10676,1316 @@
               362.36,
               398.84
             ],
-            "max_deviation_percent": -1.58
+            "max_deviation_percent": 0.54
           }
-        ]
+        ],
+        "looser": [
+          {
+            "T_K": 389.5,
+            "value": 97300.0,
+            "reference": "Rattam 2006",
+            "deviation_percent": -0.38,
+            "stated_uncertainty_percent": 1.64
+          },
+          {
+            "T_K": 425.39,
+            "value": 300000.0,
+            "reference": "Susial 2013",
+            "deviation_percent": 1.32,
+            "stated_uncertainty_percent": 2.0
+          },
+          {
+            "T_K": 389.45,
+            "value": 95760.0,
+            "reference": "Prasad 2006",
+            "deviation_percent": 1.04,
+            "stated_uncertainty_percent": 5.02
+          },
+          {
+            "T_K": 351.18,
+            "value": 20000.0,
+            "reference": "Lladosa 2006",
+            "deviation_percent": -0.19,
+            "stated_uncertainty_percent": 5.0
+          },
+          {
+            "T_K": 364.5,
+            "value": 36900.0,
+            "reference": "Dell'Era 2007",
+            "deviation_percent": -1.51,
+            "stated_uncertainty_percent": 3.79
+          },
+          {
+            "T_K": 363.15,
+            "value": 34120.0,
+            "reference": "Reddy 2008",
+            "deviation_percent": 0.5,
+            "stated_uncertainty_percent": 1.67
+          },
+          {
+            "T_K": 351.01,
+            "value": 20000.0,
+            "reference": "Martinez 2009",
+            "deviation_percent": -0.99,
+            "stated_uncertainty_percent": 5.0
+          },
+          {
+            "T_K": 353.15,
+            "value": 21820.0,
+            "reference": "Hector 2014",
+            "deviation_percent": 0.34,
+            "stated_uncertainty_percent": 1.1
+          },
+          {
+            "T_K": 308.15,
+            "value": 1790.0,
+            "reference": "Maken 2004",
+            "deviation_percent": 0.74,
+            "stated_uncertainty_percent": 9.11
+          },
+          {
+            "T_K": 389.15,
+            "value": 94950.0,
+            "reference": "Prasad 2006",
+            "deviation_percent": 0.8,
+            "stated_uncertainty_percent": 5.02
+          },
+          {
+            "T_K": 389.35,
+            "value": 95500.0,
+            "reference": "Prasad 2006",
+            "deviation_percent": 0.95,
+            "stated_uncertainty_percent": 5.24
+          },
+          {
+            "T_K": 389.15,
+            "value": 94830.0,
+            "reference": "Prasad 2007",
+            "deviation_percent": 0.93,
+            "stated_uncertainty_percent": 5.27
+          },
+          {
+            "T_K": 373.15,
+            "value": 52000.0,
+            "reference": "Domanska 2009",
+            "deviation_percent": 0.1,
+            "stated_uncertainty_percent": 1.15
+          },
+          {
+            "T_K": 298.15,
+            "value": 910.0,
+            "reference": "Martinez 2009",
+            "deviation_percent": -0.2,
+            "stated_uncertainty_percent": 1.32
+          },
+          {
+            "T_K": 363.15,
+            "value": 33800.0,
+            "reference": "Teodorescu 2015",
+            "deviation_percent": 1.46,
+            "stated_uncertainty_percent": 2.19
+          },
+          {
+            "T_K": 373.15,
+            "value": 51730.0,
+            "reference": "Teodorescu 2015",
+            "deviation_percent": 0.62,
+            "stated_uncertainty_percent": 2.13
+          },
+          {
+            "T_K": 363.2,
+            "value": 34470.0,
+            "reference": "Bahadur 2015",
+            "deviation_percent": -0.3,
+            "stated_uncertainty_percent": 1.57
+          },
+          {
+            "T_K": 303.15,
+            "value": 1225.0,
+            "reference": "Mahdoui 2019",
+            "deviation_percent": 5.2,
+            "stated_uncertainty_percent": 16.57
+          },
+          {
+            "T_K": 323.15,
+            "value": 4505.0,
+            "reference": "Mahdoui 2019",
+            "deviation_percent": 1.51,
+            "stated_uncertainty_percent": 5.28
+          },
+          {
+            "T_K": 343.39,
+            "value": 14440.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -5.33,
+            "stated_uncertainty_percent": 10.04
+          },
+          {
+            "T_K": 343.36,
+            "value": 13710.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -0.44,
+            "stated_uncertainty_percent": 9.99
+          },
+          {
+            "T_K": 343.2,
+            "value": 13520.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.15,
+            "stated_uncertainty_percent": 10.06
+          },
+          {
+            "T_K": 352.7,
+            "value": 21030.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.95,
+            "stated_uncertainty_percent": 9.99
+          },
+          {
+            "T_K": 360.58,
+            "value": 32090.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -4.48,
+            "stated_uncertainty_percent": 10.0
+          },
+          {
+            "T_K": 323.9,
+            "value": 4740.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.79,
+            "stated_uncertainty_percent": 9.92
+          },
+          {
+            "T_K": 324.8,
+            "value": 4950.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.68,
+            "stated_uncertainty_percent": 10.1
+          },
+          {
+            "T_K": 334.32,
+            "value": 8380.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.98,
+            "stated_uncertainty_percent": 10.02
+          },
+          {
+            "T_K": 333.51,
+            "value": 8090.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.13,
+            "stated_uncertainty_percent": 10.01
+          },
+          {
+            "T_K": 324.91,
+            "value": 4980.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.71,
+            "stated_uncertainty_percent": 10.04
+          },
+          {
+            "T_K": 314.81,
+            "value": 2610.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 5.88,
+            "stated_uncertainty_percent": 9.96
+          },
+          {
+            "T_K": 314.76,
+            "value": 2600.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 5.96,
+            "stated_uncertainty_percent": 11.54
+          },
+          {
+            "T_K": 314.75,
+            "value": 2670.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 3.12,
+            "stated_uncertainty_percent": 10.11
+          },
+          {
+            "T_K": 310.26,
+            "value": 1960.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 5.59,
+            "stated_uncertainty_percent": 10.2
+          },
+          {
+            "T_K": 310.29,
+            "value": 1900.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 9.14,
+            "stated_uncertainty_percent": 10.53
+          },
+          {
+            "T_K": 305.59,
+            "value": 1460.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 4.17,
+            "stated_uncertainty_percent": 10.27
+          },
+          {
+            "T_K": 310.16,
+            "value": 1920.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 7.09,
+            "stated_uncertainty_percent": 9.9
+          },
+          {
+            "T_K": 301.02,
+            "value": 1090.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 2.03,
+            "stated_uncertainty_percent": 10.09
+          },
+          {
+            "T_K": 310.29,
+            "value": 1910.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 8.56,
+            "stated_uncertainty_percent": 9.95
+          },
+          {
+            "T_K": 323.5,
+            "value": 4620.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.03,
+            "stated_uncertainty_percent": 9.96
+          },
+          {
+            "T_K": 324.57,
+            "value": 4910.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.15,
+            "stated_uncertainty_percent": 9.98
+          },
+          {
+            "T_K": 324.59,
+            "value": 4870.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 2.1,
+            "stated_uncertainty_percent": 10.06
+          },
+          {
+            "T_K": 341.78,
+            "value": 12790.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -1.44,
+            "stated_uncertainty_percent": 10.01
+          },
+          {
+            "T_K": 322.58,
+            "value": 4480.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -1.27,
+            "stated_uncertainty_percent": 10.04
+          },
+          {
+            "T_K": 324.28,
+            "value": 4850.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.7,
+            "stated_uncertainty_percent": 10.1
+          },
+          {
+            "T_K": 322.69,
+            "value": 4520.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -1.51,
+            "stated_uncertainty_percent": 9.96
+          },
+          {
+            "T_K": 322.07,
+            "value": 4330.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -0.87,
+            "stated_uncertainty_percent": 9.93
+          },
+          {
+            "T_K": 323.67,
+            "value": 4690.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.51,
+            "stated_uncertainty_percent": 10.02
+          },
+          {
+            "T_K": 323.78,
+            "value": 4750.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -0.12,
+            "stated_uncertainty_percent": 10.11
+          },
+          {
+            "T_K": 323.14,
+            "value": 4540.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.67,
+            "stated_uncertainty_percent": 9.91
+          },
+          {
+            "T_K": 321.34,
+            "value": 4150.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -0.94,
+            "stated_uncertainty_percent": 10.12
+          },
+          {
+            "T_K": 321.34,
+            "value": 4190.0,
+            "reference": "Parker 2014",
+            "deviation_percent": -1.88,
+            "stated_uncertainty_percent": 10.02
+          },
+          {
+            "T_K": 323.09,
+            "value": 4540.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 0.38,
+            "stated_uncertainty_percent": 9.91
+          },
+          {
+            "T_K": 314.76,
+            "value": 2500.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 10.2,
+            "stated_uncertainty_percent": 12.0
+          },
+          {
+            "T_K": 324.18,
+            "value": 4790.0,
+            "reference": "Parker 2014",
+            "deviation_percent": 1.37,
+            "stated_uncertainty_percent": 10.02
+          },
+          {
+            "T_K": 390.69,
+            "value": 101470.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": -0.33,
+            "stated_uncertainty_percent": 3.0
+          },
+          {
+            "T_K": 397.19,
+            "value": 127020.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": -0.16,
+            "stated_uncertainty_percent": 2.42
+          },
+          {
+            "T_K": 402.79,
+            "value": 152420.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": 0.31,
+            "stated_uncertainty_percent": 2.07
+          },
+          {
+            "T_K": 407.58,
+            "value": 177830.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": 0.34,
+            "stated_uncertainty_percent": 1.83
+          },
+          {
+            "T_K": 411.88,
+            "value": 203230.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": 0.43,
+            "stated_uncertainty_percent": 1.65
+          },
+          {
+            "T_K": 415.88,
+            "value": 228640.0,
+            "reference": "Casimiro 2015",
+            "deviation_percent": 0.82,
+            "stated_uncertainty_percent": 1.48
+          },
+          {
+            "T_K": 360.31,
+            "value": 30000.0,
+            "reference": "Yang 2016",
+            "deviation_percent": 0.96,
+            "stated_uncertainty_percent": 3.33
+          },
+          {
+            "T_K": 372.46,
+            "value": 50000.0,
+            "reference": "Yang 2016",
+            "deviation_percent": 1.25,
+            "stated_uncertainty_percent": 2.0
+          },
+          {
+            "T_K": 381.07,
+            "value": 70000.0,
+            "reference": "Yang 2016",
+            "deviation_percent": 1.39,
+            "stated_uncertainty_percent": 1.43
+          },
+          {
+            "T_K": 367.03,
+            "value": 40000.0,
+            "reference": "Yang 2017",
+            "deviation_percent": 1.16,
+            "stated_uncertainty_percent": 5.0
+          },
+          {
+            "T_K": 381.07,
+            "value": 70000.0,
+            "reference": "Yang 2017",
+            "deviation_percent": 1.39,
+            "stated_uncertainty_percent": 2.86
+          },
+          {
+            "T_K": 390.78,
+            "value": 100000.0,
+            "reference": "Yang 2017",
+            "deviation_percent": 1.46,
+            "stated_uncertainty_percent": 2.0
+          },
+          {
+            "T_K": 390.92,
+            "value": 101330.0,
+            "reference": "Song 2018",
+            "deviation_percent": 0.63,
+            "stated_uncertainty_percent": 1.01
+          },
+          {
+            "T_K": 385.75,
+            "value": 85000.0,
+            "reference": "Alinejhad 2018",
+            "deviation_percent": -0.51,
+            "stated_uncertainty_percent": 1.18
+          },
+          {
+            "T_K": 298.15,
+            "value": 840.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 8.11,
+            "stated_uncertainty_percent": 9.52
+          },
+          {
+            "T_K": 303.15,
+            "value": 1230.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 4.77,
+            "stated_uncertainty_percent": 9.76
+          },
+          {
+            "T_K": 308.15,
+            "value": 1760.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 2.46,
+            "stated_uncertainty_percent": 10.23
+          },
+          {
+            "T_K": 313.15,
+            "value": 2440.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 2.04,
+            "stated_uncertainty_percent": 9.84
+          },
+          {
+            "T_K": 318.15,
+            "value": 3330.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 1.94,
+            "stated_uncertainty_percent": 9.91
+          },
+          {
+            "T_K": 323.15,
+            "value": 4350.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 5.13,
+            "stated_uncertainty_percent": 10.11
+          },
+          {
+            "T_K": 353.15,
+            "value": 21730.0,
+            "reference": "Vasanta 2018",
+            "deviation_percent": 0.75,
+            "stated_uncertainty_percent": 1.66
+          },
+          {
+            "T_K": 363.15,
+            "value": 34130.0,
+            "reference": "Vasanta 2018",
+            "deviation_percent": 0.47,
+            "stated_uncertainty_percent": 1.11
+          },
+          {
+            "T_K": 366.75,
+            "value": 39990.0,
+            "reference": "Vasanta 2018",
+            "deviation_percent": -0.0,
+            "stated_uncertainty_percent": 1.13
+          },
+          {
+            "T_K": 333.2,
+            "value": 8100.0,
+            "reference": "Santaella 2018",
+            "deviation_percent": -0.67,
+            "stated_uncertainty_percent": 7.53
+          },
+          {
+            "T_K": 348.2,
+            "value": 17500.0,
+            "reference": "Santaella 2018",
+            "deviation_percent": -1.06,
+            "stated_uncertainty_percent": 3.49
+          },
+          {
+            "T_K": 402.59,
+            "value": 150000.0,
+            "reference": "Badajoz 2018",
+            "deviation_percent": 1.27,
+            "stated_uncertainty_percent": 2.0
+          },
+          {
+            "T_K": 390.9,
+            "value": 101300.0,
+            "reference": "Man 2018",
+            "deviation_percent": 0.59,
+            "stated_uncertainty_percent": 1.09
+          },
+          {
+            "T_K": 342.95,
+            "value": 13400.0,
+            "reference": "Mavalal 2019",
+            "deviation_percent": -0.21,
+            "stated_uncertainty_percent": 1.79
+          },
+          {
+            "T_K": 352.65,
+            "value": 21400.0,
+            "reference": "Mavalal 2019",
+            "deviation_percent": -0.05,
+            "stated_uncertainty_percent": 1.12
+          },
+          {
+            "T_K": 390.75,
+            "value": 101300.0,
+            "reference": "Wang 2019",
+            "deviation_percent": 0.05,
+            "stated_uncertainty_percent": 2.96
+          },
+          {
+            "T_K": 389.45,
+            "value": 95800.0,
+            "reference": "Vittal Prasad 2004",
+            "deviation_percent": 0.99,
+            "stated_uncertainty_percent": 1.57
+          },
+          {
+            "T_K": 389.45,
+            "value": 95800.0,
+            "reference": "Prasad 2004",
+            "deviation_percent": 0.99,
+            "stated_uncertainty_percent": 10.02
+          },
+          {
+            "T_K": 314.19,
+            "value": 2700.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": -1.54,
+            "stated_uncertainty_percent": 15.19
+          },
+          {
+            "T_K": 323.2,
+            "value": 4490.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": 2.15,
+            "stated_uncertainty_percent": 9.58
+          },
+          {
+            "T_K": 338.21,
+            "value": 10380.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": 1.1,
+            "stated_uncertainty_percent": 4.34
+          },
+          {
+            "T_K": 342.17,
+            "value": 12890.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": -0.26,
+            "stated_uncertainty_percent": 4.27
+          },
+          {
+            "T_K": 352.81,
+            "value": 21440.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": 0.51,
+            "stated_uncertainty_percent": 2.94
+          },
+          {
+            "T_K": 361.24,
+            "value": 31520.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": 0.11,
+            "stated_uncertainty_percent": 2.66
+          },
+          {
+            "T_K": 371.94,
+            "value": 49260.0,
+            "reference": "Ahmad 2004",
+            "deviation_percent": 0.62,
+            "stated_uncertainty_percent": 1.87
+          },
+          {
+            "T_K": 298.15,
+            "value": 1003.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -9.46,
+            "stated_uncertainty_percent": 19.94
+          },
+          {
+            "T_K": 303.15,
+            "value": 1317.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -2.15,
+            "stated_uncertainty_percent": 15.19
+          },
+          {
+            "T_K": 308.15,
+            "value": 1841.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -2.05,
+            "stated_uncertainty_percent": 10.86
+          },
+          {
+            "T_K": 313.15,
+            "value": 2544.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -2.13,
+            "stated_uncertainty_percent": 7.86
+          },
+          {
+            "T_K": 318.15,
+            "value": 3453.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -1.69,
+            "stated_uncertainty_percent": 5.79
+          },
+          {
+            "T_K": 323.15,
+            "value": 4648.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -1.61,
+            "stated_uncertainty_percent": 4.3
+          },
+          {
+            "T_K": 328.15,
+            "value": 6171.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -1.3,
+            "stated_uncertainty_percent": 3.26
+          },
+          {
+            "T_K": 333.15,
+            "value": 8103.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -0.98,
+            "stated_uncertainty_percent": 2.48
+          },
+          {
+            "T_K": 338.15,
+            "value": 10559.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -0.92,
+            "stated_uncertainty_percent": 1.9
+          },
+          {
+            "T_K": 343.15,
+            "value": 13596.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -0.66,
+            "stated_uncertainty_percent": 1.49
+          },
+          {
+            "T_K": 348.15,
+            "value": 17369.0,
+            "reference": "Nasirzadeh 2004",
+            "deviation_percent": -0.55,
+            "stated_uncertainty_percent": 1.17
+          },
+          {
+            "T_K": 483.15,
+            "value": 1182000.0,
+            "reference": "Kim 2005",
+            "deviation_percent": 0.58,
+            "stated_uncertainty_percent": 3.13
+          },
+          {
+            "T_K": 498.15,
+            "value": 1558000.0,
+            "reference": "Kim 2005",
+            "deviation_percent": 1.36,
+            "stated_uncertainty_percent": 3.08
+          },
+          {
+            "T_K": 513.15,
+            "value": 2027000.0,
+            "reference": "Kim 2005",
+            "deviation_percent": 1.24,
+            "stated_uncertainty_percent": 3.11
+          },
+          {
+            "T_K": 323.15,
+            "value": 4610.0,
+            "reference": "Park 2007",
+            "deviation_percent": -0.8,
+            "stated_uncertainty_percent": 1.08
+          },
+          {
+            "T_K": 278.15,
+            "value": 200.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -4.23,
+            "stated_uncertainty_percent": 10.5
+          },
+          {
+            "T_K": 283.15,
+            "value": 306.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -5.28,
+            "stated_uncertainty_percent": 6.86
+          },
+          {
+            "T_K": 288.15,
+            "value": 452.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -4.63,
+            "stated_uncertainty_percent": 4.87
+          },
+          {
+            "T_K": 303.15,
+            "value": 1316.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -2.07,
+            "stated_uncertainty_percent": 2.13
+          },
+          {
+            "T_K": 308.15,
+            "value": 1831.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -1.52,
+            "stated_uncertainty_percent": 1.8
+          },
+          {
+            "T_K": 313.15,
+            "value": 2526.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -1.43,
+            "stated_uncertainty_percent": 1.54
+          },
+          {
+            "T_K": 318.15,
+            "value": 3435.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -1.17,
+            "stated_uncertainty_percent": 1.37
+          },
+          {
+            "T_K": 323.15,
+            "value": 4545.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": 0.62,
+            "stated_uncertainty_percent": 1.12
+          },
+          {
+            "T_K": 390.85,
+            "value": 101330.0,
+            "reference": "Yang 2012",
+            "deviation_percent": 0.38,
+            "stated_uncertainty_percent": 1.25
+          },
+          {
+            "T_K": 337.2,
+            "value": 10000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.45,
+            "stated_uncertainty_percent": 6.2
+          },
+          {
+            "T_K": 351.1,
+            "value": 20000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.56,
+            "stated_uncertainty_percent": 3.15
+          },
+          {
+            "T_K": 360.0,
+            "value": 30000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.41,
+            "stated_uncertainty_percent": 2.17
+          },
+          {
+            "T_K": 366.7,
+            "value": 40000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.24,
+            "stated_uncertainty_percent": 1.72
+          },
+          {
+            "T_K": 372.1,
+            "value": 50000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.22,
+            "stated_uncertainty_percent": 1.44
+          },
+          {
+            "T_K": 376.6,
+            "value": 60000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.49,
+            "stated_uncertainty_percent": 1.28
+          },
+          {
+            "T_K": 380.5,
+            "value": 70000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.79,
+            "stated_uncertainty_percent": 1.16
+          },
+          {
+            "T_K": 384.0,
+            "value": 80000.0,
+            "reference": "Ngema 2012",
+            "deviation_percent": -0.93,
+            "stated_uncertainty_percent": 1.06
+          },
+          {
+            "T_K": 337.2,
+            "value": 10000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.45,
+            "stated_uncertainty_percent": 6.2
+          },
+          {
+            "T_K": 351.1,
+            "value": 20000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.56,
+            "stated_uncertainty_percent": 3.15
+          },
+          {
+            "T_K": 353.2,
+            "value": 21840.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": 0.48,
+            "stated_uncertainty_percent": 2.93
+          },
+          {
+            "T_K": 360.0,
+            "value": 30000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.41,
+            "stated_uncertainty_percent": 2.17
+          },
+          {
+            "T_K": 363.2,
+            "value": 34500.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.39,
+            "stated_uncertainty_percent": 1.94
+          },
+          {
+            "T_K": 366.7,
+            "value": 40000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.24,
+            "stated_uncertainty_percent": 1.72
+          },
+          {
+            "T_K": 366.8,
+            "value": 40000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": 0.19,
+            "stated_uncertainty_percent": 2.5
+          },
+          {
+            "T_K": 372.1,
+            "value": 50000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.22,
+            "stated_uncertainty_percent": 1.46
+          },
+          {
+            "T_K": 373.2,
+            "value": 52310.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.29,
+            "stated_uncertainty_percent": 1.43
+          },
+          {
+            "T_K": 376.6,
+            "value": 60000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.49,
+            "stated_uncertainty_percent": 1.28
+          },
+          {
+            "T_K": 380.5,
+            "value": 70000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.79,
+            "stated_uncertainty_percent": 1.16
+          },
+          {
+            "T_K": 384.0,
+            "value": 80000.0,
+            "reference": "Zawadzki 2012",
+            "deviation_percent": -0.93,
+            "stated_uncertainty_percent": 1.06
+          },
+          {
+            "T_K": 345.91,
+            "value": 15600.0,
+            "reference": "Sundberg 2012",
+            "deviation_percent": -0.71,
+            "stated_uncertainty_percent": 2.56
+          },
+          {
+            "T_K": 358.05,
+            "value": 27400.0,
+            "reference": "Sundberg 2012",
+            "deviation_percent": -0.04,
+            "stated_uncertainty_percent": 1.46
+          },
+          {
+            "T_K": 359.46,
+            "value": 29400.0,
+            "reference": "Sundberg 2012",
+            "deviation_percent": -0.78,
+            "stated_uncertainty_percent": 1.36
+          },
+          {
+            "T_K": 366.26,
+            "value": 39300.0,
+            "reference": "Sundberg 2012",
+            "deviation_percent": -0.33,
+            "stated_uncertainty_percent": 1.02
+          },
+          {
+            "T_K": 333.15,
+            "value": 8390.0,
+            "reference": "McDougal 2014",
+            "deviation_percent": -4.36,
+            "stated_uncertainty_percent": 12.04
+          },
+          {
+            "T_K": 393.15,
+            "value": 110260.0,
+            "reference": "McDougal 2014",
+            "deviation_percent": 0.05,
+            "stated_uncertainty_percent": 1.5
+          },
+          {
+            "T_K": 355.78,
+            "value": 25000.0,
+            "reference": "Hirawan 2014",
+            "deviation_percent": -1.14,
+            "stated_uncertainty_percent": 1.75
+          },
+          {
+            "T_K": 371.94,
+            "value": 50000.0,
+            "reference": "Hirawan 2014",
+            "deviation_percent": -0.86,
+            "stated_uncertainty_percent": 1.55
+          },
+          {
+            "T_K": 390.49,
+            "value": 101300.0,
+            "reference": "Cripwell 2015",
+            "deviation_percent": -0.87,
+            "stated_uncertainty_percent": 1.45
+          },
+          {
+            "T_K": 318.35,
+            "value": 3900.0,
+            "reference": "Kuitunen 2008",
+            "deviation_percent": -11.89,
+            "stated_uncertainty_percent": 20.51
+          },
+          {
+            "T_K": 318.35,
+            "value": 3600.0,
+            "reference": "Kuitunen 2008",
+            "deviation_percent": -4.55,
+            "stated_uncertainty_percent": 22.22
+          },
+          {
+            "T_K": 318.4,
+            "value": 3600.0,
+            "reference": "Kuitunen 2008",
+            "deviation_percent": -4.26,
+            "stated_uncertainty_percent": 16.67
+          },
+          {
+            "T_K": 364.52,
+            "value": 36300.0,
+            "reference": "Kuitunen 2008",
+            "deviation_percent": 0.21,
+            "stated_uncertainty_percent": 3.86
+          },
+          {
+            "T_K": 356.35,
+            "value": 25300.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.26,
+            "stated_uncertainty_percent": 2.37
+          },
+          {
+            "T_K": 359.45,
+            "value": 29300.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": -0.49,
+            "stated_uncertainty_percent": 2.05
+          },
+          {
+            "T_K": 362.95,
+            "value": 33500.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 1.48,
+            "stated_uncertainty_percent": 2.09
+          },
+          {
+            "T_K": 368.6,
+            "value": 42800.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.96,
+            "stated_uncertainty_percent": 1.64
+          },
+          {
+            "T_K": 373.45,
+            "value": 52500.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.35,
+            "stated_uncertainty_percent": 1.52
+          },
+          {
+            "T_K": 373.85,
+            "value": 53300.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.44,
+            "stated_uncertainty_percent": 1.5
+          },
+          {
+            "T_K": 377.3,
+            "value": 61200.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.28,
+            "stated_uncertainty_percent": 1.31
+          },
+          {
+            "T_K": 381.9,
+            "value": 72800.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.61,
+            "stated_uncertainty_percent": 1.24
+          },
+          {
+            "T_K": 386.05,
+            "value": 84900.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.72,
+            "stated_uncertainty_percent": 1.18
+          },
+          {
+            "T_K": 387.75,
+            "value": 91300.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": -0.34,
+            "stated_uncertainty_percent": 1.1
+          },
+          {
+            "T_K": 391.95,
+            "value": 105300.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 0.43,
+            "stated_uncertainty_percent": 1.04
+          }
+        ],
+        "excluded": [
+          {
+            "T_K": 391.55,
+            "value": 95230.0,
+            "reference": "Prasad 2006",
+            "deviation_percent": 9.49,
+            "why": "stated uncertainty 5 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 353.15,
+            "value": 21190.0,
+            "reference": "Teodorescu 2015",
+            "deviation_percent": 3.32,
+            "why": "stated uncertainty 2.3 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 293.15,
+            "value": 560.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 12.6,
+            "why": "stated uncertainty 11 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 328.15,
+            "value": 5330.0,
+            "reference": "Suaza 2018",
+            "deviation_percent": 14.27,
+            "why": "stated uncertainty 9.9 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 468.15,
+            "value": 833000.0,
+            "reference": "Kim 2005",
+            "deviation_percent": 4.76,
+            "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 293.15,
+            "value": 664.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -5.03,
+            "why": "stated uncertainty 3.5 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 298.15,
+            "value": 939.0,
+            "reference": "Gimeno 2011",
+            "deviation_percent": -3.28,
+            "why": "stated uncertainty 2.7 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 337.8,
+            "value": 10000.0,
+            "reference": "Hirawan 2014",
+            "deviation_percent": 2.73,
+            "why": "stated uncertainty 2.4 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 390.46,
+            "value": 101300.0,
+            "reference": "Lladosa 2008",
+            "deviation_percent": -0.98,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 531.38,
+            "value": 2776000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -0.83,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 556.16,
+            "value": 3963000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": 0.28,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 550.45,
+            "value": 3647000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": 0.39,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 555.7,
+            "value": 3941000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": 0.18,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 507.01,
+            "value": 1854000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -0.33,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 367.1,
+            "value": 40000.0,
+            "reference": "Tebbal 2014",
+            "deviation_percent": 1.46,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 546.79,
+            "value": 3456000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": 0.44,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 390.57,
+            "value": 101300.0,
+            "reference": "Martinez 2009",
+            "deviation_percent": -0.59,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 555.6,
+            "value": 3945000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -0.07,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 543.89,
+            "value": 3315000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": 0.34,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 313.15,
+            "value": 2547.0,
+            "reference": "Belabbaci 2012",
+            "deviation_percent": -2.24,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 542.81,
+            "value": 3295000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -0.65,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 555.53,
+            "value": 3983000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -1.12,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 390.65,
+            "value": 101300.0,
+            "reference": "Tian 2013",
+            "deviation_percent": -0.3,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 533.03,
+            "value": 2834000.0,
+            "reference": "Rasulov 2013",
+            "deviation_percent": -0.35,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 362.95,
+            "value": 33500.0,
+            "reference": "Mohsen-Nia 2010",
+            "deviation_percent": 1.48,
+            "why": "deviates most from a robust fit of the others"
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 110 measured values from 26 articles, 313.1-559.3 K; median deviation of the articles 0.39 % (within the 1 % tolerance of the engineering report); largest single deviation -2.24 % at 313.1 K (Belabbaci 2012, doi:10.1021/je200840e); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 3.4543,
@@ -10550,7 +11996,7 @@
         ]
       },
       "omega": 0.591,
-      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (391.306 K); ChemSep lists 390.88 K.",
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (390.742 K); ChemSep lists 390.88 K.",
       "constants_source_ids": [
         "chemsep-8.3"
       ],
@@ -10576,7 +12022,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 74.1216 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 184.51-543.08 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 764 measured values from 240 articles, 273.1-383.1 K; median deviation of the articles 0.04 % (within the 1 % tolerance of the engineering report); largest single deviation +1.01 % at 298.1 K (Domanska 2012, doi:10.1016/j.jct.2012.04.017); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10624,7 +12071,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 184.51-390.81 K (ChemSep range), max deviation 0.076 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 55 measured values from 5 articles, 273.1-353.1 K; median deviation of the articles 0.44 % (within the 2 % tolerance of the engineering report); largest single deviation +3.10 % at 288.1 K (Rubini 2007, doi:10.1016/j.tca.2006.10.025); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10673,7 +12121,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 190.00-473.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 329 measured values from 69 articles, 273.1-363.1 K; median deviation of the articles 1.53 % (within the 5 % tolerance of the engineering report); largest single deviation +28.46 % at 323.1 K (Awwad 2008, doi:10.1021/je8003194); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10763,7 +12212,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 273.15-413.15 K (ChemSep range), max deviation 0.085 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 33 measured values from 13 articles, 283.1-333.2 K; median deviation of the articles 1.28 %; largest single deviation +6.48 % at 328.1 K (Bagheri 2013, doi:10.1016/j.jct.2013.04.009); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10811,7 +12261,8 @@
             ],
             "max_deviation_percent": 2.94
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 8 articles, 309.6-413.2 K; median deviation of the articles 0.79 % (within the 1 % tolerance of the engineering report); largest single deviation +7.23 % at 319.9 K (Lladosa 2011, doi:10.1016/j.fluid.2011.05.004); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 3.25,
@@ -10848,7 +12299,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 72.1057 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 186.48-535.50 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 181 measured values from 67 articles, 283.1-333.1 K; median deviation of the articles 0.33 % (within the 1 % tolerance of the engineering report); largest single deviation -1.66 % at 313.1 K (Mehta 2007, doi:10.1016/j.fluid.2007.08.006); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -10943,7 +12395,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 186.48-535.50 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 22 articles, 283.1-333.1 K; median deviation of the articles 2.55 % (within the 5 % tolerance of the engineering report); largest single deviation +12.61 % at 308.1 K (Bachu 2008, doi:10.1021/je8003723); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11081,7 +12534,8 @@
             ],
             "max_deviation_percent": -0.51
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 91 measured values from 12 articles, 304.0-436.1 K; median deviation of the articles 0.66 % (within the 1 % tolerance of the engineering report); largest single deviation -1.90 % at 330.4 K (Ortega 2004, doi:10.1021/je034290l); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 2.8,
@@ -11118,7 +12572,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 506.80 K (ChemSep: 506.85 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 74.0785 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 175.15-506.80 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 67 measured values from 36 articles, 278.1-323.1 K; median deviation of the articles 0.07 % (within the 1 % tolerance of the engineering report); largest single deviation +1.29 % at 298.1 K (Tian 2008, doi:10.1021/je8001128); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11214,7 +12669,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 250.00-473.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 14 measured values from 7 articles, 293.1-308.1 K; median deviation of the articles 1.54 % (within the 5 % tolerance of the engineering report); largest single deviation -6.33 % at 308.1 K (Sastry 2003, doi:10.1021/je0340248); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11352,7 +12808,8 @@
             ],
             "max_deviation_percent": 1.81
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 130 measured values from 6 articles, 347.8-531.5 K; median deviation of the articles 0.26 % (within the 1 % tolerance of the engineering report); largest single deviation +19.34 % at 531.5 K (Badajoz 2017, doi:10.1021/acs.jced.7b00141); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 4.8274,
@@ -11389,7 +12846,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 116.1583 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 199.65-575.40 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 115 measured values from 41 articles, 288.1-393.1 K; median deviation of the articles 0.09 % (within the 1 % tolerance of the engineering report); largest single deviation -1.38 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11485,7 +12943,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 250.00-399.26 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 32 measured values from 12 articles, 293.1-343.1 K; median deviation of the articles 1.23 % (within the 5 % tolerance of the engineering report); largest single deviation +4.71 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11597,23 +13056,23 @@
       "MW": 41.05192,
       "Tc_K": 545.5,
       "Pc_Pa": 4830000.0,
-      "Tb_K": 354.4911,
+      "Tb_K": 354.8169,
       "vapourPressure": {
         "equation": "DIPPR101",
         "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
         "units": "Pa",
-        "A": 63.90188,
-        "B": -5635.018,
-        "C": -6.338065,
-        "D": 5.801644e-06,
-        "E": 2.0,
-        "Tmin_K": 226.15,
+        "A": 174.6829456,
+        "B": -8006.768135,
+        "C": -30.36537286,
+        "D": 2.001553992,
+        "E": 0.5,
+        "Tmin_K": 277.922,
         "Tmax_K": 545.5,
-        "tier": "databank",
-        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 226.15-545.50 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "tier": "fitted",
+        "source": "Fitted to measured vapour pressures (NIST TRC ThermoML Archive): 148 values with stated uncertainties within 1 % from 8 articles, max deviation 0.96 %, and 34 values with larger stated uncertainties, kept where the fit is within them (they extend the range to 277.92 K); and the ChemSep v8.3 pure-component database critical point (545.50 K, 4830000 Pa). Between 535.03 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it deviates from the values within 1 % by +1.8 % (median, +5.3 % at most); see docs/MEASURED_CHECKS.md. Articles: Horstmann et al., J. Chem. Thermodyn. 36 (2004) 1015-1018, doi:10.1016/j.jct.2004.07.014; Safarov et al., J. Chem. Thermodyn. 47 (2012) 56-61, doi:10.1016/j.jct.2011.09.022; Antosik et al., J. Chem. Eng. Data 49 (2004) 11-17, doi:10.1021/je025660t; Ewing and Ochoa, J. Chem. Eng. Data 49 (2004) 486-491, doi:10.1021/je034144f; Giles and Wilson, J. Chem. Eng. Data 51 (2006) 1954-1962, doi:10.1021/je050317k; Fang et al., J. Chem. Eng. Data 58 (2013) 1483-1489, doi:10.1021/je3009792; Laavi et al., J. Chem. Eng. Data 58 (2013) 943-950, doi:10.1021/je301238f; Compostizo et al., J. Chem. Eng. Data 54 (2009) 613-618, doi:10.1021/je800535c; Zhu et al., Fluid Phase Equilib. 425 (2016) 289-296, doi:10.1016/j.fluid.2016.06.022; Prasad et al., J. Chem. Thermodyn. 39 (2007) 202-205, doi:10.1016/j.jct.2006.07.014; Prasad et al., J. Chem. Thermodyn. 39 (2007) 1458-1462, doi:10.1016/j.jct.2007.03.007; Xin et al., J. Chem. Thermodyn. 132 (2019) 83-92, doi:10.1016/j.jct.2018.12.016; Sharma et al., J. Chem. Eng. Data 63 (2018) 2921-2930, doi:10.1021/acs.jced.8b00228; Jia et al., J. Chem. Eng. Data 64 (2019) 2963-2972, doi:10.1021/acs.jced.9b00015; Harris et al., J. Chem. Eng. Data 48 (2003) 341-343, doi:10.1021/je020130i; Zhang et al., J. Chem. Eng. Data 58 (2013) 3364-3369, doi:10.1021/je400531a; Kurzin et al., J. Chem. Eng. Data 54 (2009) 1049-1051, doi:10.1021/je800557h. Rules: validation/python/measured_components.py (fit_measured_loose).",
         "source_ids": [
-          "chemsep-8.3",
-          "coolprop"
+          "nist-thermoml-archive",
+          "chemsep-8.3"
         ],
         "crossCheck": [
           {
@@ -11623,7 +13082,7 @@
               288.3,
               362.3
             ],
-            "max_deviation_percent": 3.64
+            "max_deviation_percent": 0.79
           },
           {
             "reference": "Putnam, McEachern, et al., 1965, 2 (Antoine equation, NIST WebBook)",
@@ -11632,9 +13091,343 @@
               280.41,
               300.53
             ],
-            "max_deviation_percent": 3.0
+            "max_deviation_percent": -1.52
           }
-        ]
+        ],
+        "looser": [
+          {
+            "T_K": 354.65,
+            "value": 101300.0,
+            "reference": "Zhu 2016",
+            "deviation_percent": -0.49,
+            "stated_uncertainty_percent": 1.1
+          },
+          {
+            "T_K": 305.51,
+            "value": 16470.0,
+            "reference": "Horstmann 2004",
+            "deviation_percent": 0.05,
+            "stated_uncertainty_percent": 1.34
+          },
+          {
+            "T_K": 352.25,
+            "value": 94830.0,
+            "reference": "Prasad 2007",
+            "deviation_percent": -1.42,
+            "stated_uncertainty_percent": 5.27
+          },
+          {
+            "T_K": 352.15,
+            "value": 95500.0,
+            "reference": "Prasad 2007",
+            "deviation_percent": -2.43,
+            "stated_uncertainty_percent": 4.19
+          },
+          {
+            "T_K": 352.55,
+            "value": 95500.0,
+            "reference": "Prasad 2007",
+            "deviation_percent": -1.18,
+            "stated_uncertainty_percent": 4.19
+          },
+          {
+            "T_K": 298.15,
+            "value": 11812.0,
+            "reference": "Xin 2019",
+            "deviation_percent": 0.25,
+            "stated_uncertainty_percent": 1.34
+          },
+          {
+            "T_K": 354.7,
+            "value": 101320.0,
+            "reference": "Sharma 2018",
+            "deviation_percent": -0.36,
+            "stated_uncertainty_percent": 1.02
+          },
+          {
+            "T_K": 354.74,
+            "value": 101300.0,
+            "reference": "Jia 2019",
+            "deviation_percent": -0.21,
+            "stated_uncertainty_percent": 1.09
+          },
+          {
+            "T_K": 363.15,
+            "value": 131210.0,
+            "reference": "Harris 2003",
+            "deviation_percent": -0.54,
+            "stated_uncertainty_percent": 1.3
+          },
+          {
+            "T_K": 333.15,
+            "value": 49155.0,
+            "reference": "Giles 2006",
+            "deviation_percent": -0.02,
+            "stated_uncertainty_percent": 1.08
+          },
+          {
+            "T_K": 317.53,
+            "value": 27190.0,
+            "reference": "Laavi 2013",
+            "deviation_percent": 0.11,
+            "stated_uncertainty_percent": 1.32
+          },
+          {
+            "T_K": 308.32,
+            "value": 18590.0,
+            "reference": "Laavi 2013",
+            "deviation_percent": 0.08,
+            "stated_uncertainty_percent": 1.88
+          },
+          {
+            "T_K": 307.22,
+            "value": 18080.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.84,
+            "stated_uncertainty_percent": 5.53
+          },
+          {
+            "T_K": 311.3,
+            "value": 21450.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.62,
+            "stated_uncertainty_percent": 4.66
+          },
+          {
+            "T_K": 314.05,
+            "value": 24000.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.48,
+            "stated_uncertainty_percent": 4.17
+          },
+          {
+            "T_K": 316.73,
+            "value": 26730.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.38,
+            "stated_uncertainty_percent": 3.78
+          },
+          {
+            "T_K": 320.8,
+            "value": 31350.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.21,
+            "stated_uncertainty_percent": 3.22
+          },
+          {
+            "T_K": 323.52,
+            "value": 34820.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -1.2,
+            "stated_uncertainty_percent": 2.9
+          },
+          {
+            "T_K": 325.8,
+            "value": 37880.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.97,
+            "stated_uncertainty_percent": 2.67
+          },
+          {
+            "T_K": 328.95,
+            "value": 42590.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.95,
+            "stated_uncertainty_percent": 2.37
+          },
+          {
+            "T_K": 330.5,
+            "value": 45060.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.9,
+            "stated_uncertainty_percent": 2.24
+          },
+          {
+            "T_K": 333.02,
+            "value": 49340.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.86,
+            "stated_uncertainty_percent": 2.07
+          },
+          {
+            "T_K": 335.2,
+            "value": 53310.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.84,
+            "stated_uncertainty_percent": 1.91
+          },
+          {
+            "T_K": 338.45,
+            "value": 59680.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.77,
+            "stated_uncertainty_percent": 1.71
+          },
+          {
+            "T_K": 341.17,
+            "value": 65470.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.71,
+            "stated_uncertainty_percent": 1.56
+          },
+          {
+            "T_K": 343.43,
+            "value": 70590.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.62,
+            "stated_uncertainty_percent": 1.46
+          },
+          {
+            "T_K": 346.6,
+            "value": 78430.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.65,
+            "stated_uncertainty_percent": 1.31
+          },
+          {
+            "T_K": 350.67,
+            "value": 89460.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.63,
+            "stated_uncertainty_percent": 1.16
+          },
+          {
+            "T_K": 354.75,
+            "value": 101640.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.52,
+            "stated_uncertainty_percent": 1.02
+          },
+          {
+            "T_K": 354.75,
+            "value": 101300.0,
+            "reference": "Zhang 2013",
+            "deviation_percent": -0.18,
+            "stated_uncertainty_percent": 1.09
+          },
+          {
+            "T_K": 313.15,
+            "value": 22758.0,
+            "reference": "Compostizo 2009",
+            "deviation_percent": 0.12,
+            "stated_uncertainty_percent": 1.73
+          },
+          {
+            "T_K": 318.15,
+            "value": 27891.0,
+            "reference": "Compostizo 2009",
+            "deviation_percent": 0.03,
+            "stated_uncertainty_percent": 1.47
+          },
+          {
+            "T_K": 328.15,
+            "value": 40946.0,
+            "reference": "Compostizo 2009",
+            "deviation_percent": 0.03,
+            "stated_uncertainty_percent": 1.1
+          },
+          {
+            "T_K": 323.15,
+            "value": 33860.0,
+            "reference": "Kurzin 2009",
+            "deviation_percent": 0.17,
+            "stated_uncertainty_percent": 1.12
+          }
+        ],
+        "excluded": [
+          {
+            "T_K": 354.25,
+            "value": 101320.0,
+            "reference": "Zhang 2016",
+            "deviation_percent": -1.75,
+            "why": "stated uncertainty 1 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 295.25,
+            "value": 10000.0,
+            "reference": "Altuntepe 2017",
+            "deviation_percent": 3.41,
+            "why": "stated uncertainty 3 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 295.4,
+            "value": 10000.0,
+            "reference": "Altuntepe 2017",
+            "deviation_percent": 4.15,
+            "why": "stated uncertainty 3 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 323.15,
+            "value": 33092.0,
+            "reference": "Compostizo 2009",
+            "deviation_percent": 2.5,
+            "why": "stated uncertainty 1.3 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 298.3,
+            "value": 12050.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": -1.05,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 278.98,
+            "value": 4513.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": 0.78,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 297.48,
+            "value": 11599.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": -1.03,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 283.17,
+            "value": 5637.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": 0.75,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 279.81,
+            "value": 4732.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": 0.5,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 293.92,
+            "value": 9820.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": -1.14,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 306.04,
+            "value": 16957.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": -0.55,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 348.2,
+            "value": 83700.0,
+            "reference": "Narasigadu 2013",
+            "deviation_percent": -1.91,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 292.48,
+            "value": 9163.0,
+            "reference": "Safarov 2012",
+            "deviation_percent": -1.13,
+            "why": "deviates most from a robust fit of the others"
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 9 articles, 277.9-535.0 K; median deviation of the articles 0.22 % (within the 1 % tolerance of the engineering report); largest single deviation -1.91 % at 348.2 K (Narasigadu 2013, doi:10.1016/j.fluid.2012.11.008); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 1.87,
@@ -11645,7 +13438,7 @@
         ]
       },
       "omega": 0.337886,
-      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (354.491 K); ChemSep lists 354.75 K.",
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (354.817 K); ChemSep lists 354.75 K.",
       "constants_source_ids": [
         "chemsep-8.3"
       ],
@@ -11671,7 +13464,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 41.0519 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 229.32-545.50 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 334 measured values from 86 articles, 278.1-343.1 K; median deviation of the articles 0.03 % (within the 1 % tolerance of the engineering report); largest single deviation -1.96 % at 328.1 K (Gonzalez 2012, doi:10.1016/j.jct.2011.11.007); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11717,7 +13511,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), J/kmol/K, converted to the mol basis): 200 points 229.32-354.75 K (ChemSep range), max deviation 0.0018 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 6 articles, 283.1-328.1 K; median deviation of the articles 0.78 % (within the 2 % tolerance of the engineering report); largest single deviation +3.25 % at 298.1 K (Tjahjono 2008, doi:10.1016/j.jct.2008.06.008); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11766,7 +13561,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 229.32-436.40 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 21 articles, 288.1-343.1 K; median deviation of the articles 0.92 % (within the 5 % tolerance of the engineering report); largest single deviation +32.61 % at 313.1 K (Iqbal 2009, doi:10.1021/je8003595); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11812,7 +13608,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 229.32-383.15 K (ChemSep range), max deviation 0.27 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 273.1-313.1 K; median deviation of the articles 3.78 % (within the 5 % tolerance of the engineering report); largest single deviation +6.37 % at 313.1 K (Hulse 2004, doi:10.1021/je0498661); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11859,7 +13656,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 229.32-518.22 K (ChemSep range, limited to 0.95 Tc), max deviation 0.18 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 5 articles, 278.1-313.1 K; median deviation of the articles 1.24 %; largest single deviation +3.36 % at 298.1 K (Rafati 2010, doi:10.1021/je1001329); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -11901,7 +13699,8 @@
             "reference": "NIST Chemistry WebBook: no Antoine equation on the page",
             "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1634044&Units=SI&Mask=4"
           }
-        ]
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 60 measured values from 10 articles, 263.1-373.2 K; median deviation of the articles 0.25 % (within the 1 % tolerance of the engineering report); largest single deviation -1.04 % at 324.4 K (Zaitseva 2015, doi:10.1021/acs.jced.5b00300); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 4.0678,
@@ -11938,7 +13737,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 497.10 K (ChemSep: 513.94 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 88.1482 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 164.55-497.10 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 126 measured values from 36 articles, 273.1-328.1 K; median deviation of the articles 0.23 % (within the 1 % tolerance of the engineering report); largest single deviation -1.91 % at 303.1 K (Prasad 2007, doi:10.1016/j.jct.2007.03.007); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12033,7 +13833,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 180.00-449.93 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 4 articles, 273.1-313.1 K; median deviation of the articles 3.12 % (within the 5 % tolerance of the engineering report); largest single deviation +15.41 % at 273.1 K (Clara 2010, doi:10.1021/je100821g); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12126,7 +13927,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 164.55-472.24 K (ChemSep range, limited to 0.95 Tc), max deviation 0.14 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 3 articles, 298.1-303.1 K; median deviation of the articles 3.46 %; largest single deviation -3.46 % at 303.1 K (Mejia 2008, doi:10.1016/j.fluid.2008.08.012); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12145,23 +13947,23 @@
       "MW": 92.09382,
       "Tc_K": 850.0,
       "Pc_Pa": 6660000.0,
-      "Tb_K": 563.5962,
+      "Tb_K": 563.7994,
       "vapourPressure": {
         "equation": "DIPPR101",
         "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
         "units": "Pa",
-        "A": 99.57469,
-        "B": -13673.87,
-        "C": -10.07,
-        "D": 1.227718e-11,
-        "E": 2.0,
-        "Tmin_K": 291.33,
-        "Tmax_K": 807.5,
-        "tier": "databank",
-        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 291.33-807.50 K (ChemSep range, ending at 0.95 Tc: near the critical point the equation overshoots (5.74e+06 Pa at 850.00 K against the critical pressure 6.66e+06 Pa at 850.00 K)); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "A": 133.0818944,
+        "B": -15042.36388,
+        "C": -15.45863904,
+        "D": 0.005410361422,
+        "E": 1.0,
+        "Tmin_K": 303.59,
+        "Tmax_K": 850.0,
+        "tier": "fitted",
+        "source": "Fitted to measured vapour pressures (NIST TRC ThermoML Archive): 88 values with stated uncertainties within 1 % from 1 articles, max deviation 0.64 %, and 35 values with larger stated uncertainties, kept where the fit is within them (they extend the range to 303.59 K); and the ChemSep v8.3 pure-component database critical point (850.00 K, 6660000 Pa). Between 547.25 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it deviates from the values within 1 % by +4.4 % (median, +14.4 % at most); see docs/MEASURED_CHECKS.md. Articles: Verevkin et al., Fluid Phase Equilib. 397 (2015) 87-94, doi:10.1016/j.fluid.2015.03.038; Veneral et al., J. Chem. Thermodyn. 58 (2013) 398-404, doi:10.1016/j.jct.2012.09.032; Zaoui-Djelloul-Daouadji et al., J. Chem. Thermodyn. 69 (2014) 165-171, doi:10.1016/j.jct.2013.09.046; Aniya et al., J. Chem. Eng. Data 61 (2016) 1850-1863, doi:10.1021/acs.jced.5b01080; Mokbel et al., J. Chem. Eng. Data 57 (2012) 284-289, doi:10.1021/je200766t; Yan and Suppes, J. Chem. Eng. Data 53 (2008) 2033-2040, doi:10.1021/je800070y. Rules: validation/python/measured_components.py (fit_measured_loose).",
         "source_ids": [
-          "chemsep-8.3",
-          "coolprop"
+          "nist-thermoml-archive",
+          "chemsep-8.3"
         ],
         "crossCheck": [
           {
@@ -12171,9 +13973,385 @@
               456.4,
               533.6
             ],
-            "max_deviation_percent": -10.13
+            "max_deviation_percent": -10.96
           }
-        ]
+        ],
+        "looser": [
+          {
+            "T_K": 352.6,
+            "value": 5.28,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.57,
+            "stated_uncertainty_percent": 1.4
+          },
+          {
+            "T_K": 357.42,
+            "value": 7.82,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.69,
+            "stated_uncertainty_percent": 1.1
+          },
+          {
+            "T_K": 359.8,
+            "value": 9.38,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.02,
+            "stated_uncertainty_percent": 1.0
+          },
+          {
+            "T_K": 354.98,
+            "value": 6.39,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.16,
+            "stated_uncertainty_percent": 1.3
+          },
+          {
+            "T_K": 352.57,
+            "value": 5.26,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.44,
+            "stated_uncertainty_percent": 1.5
+          },
+          {
+            "T_K": 357.39,
+            "value": 7.77,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.29,
+            "stated_uncertainty_percent": 1.11
+          },
+          {
+            "T_K": 359.82,
+            "value": 9.39,
+            "reference": "Verevkin 2015",
+            "deviation_percent": 0.03,
+            "stated_uncertainty_percent": 1.0
+          },
+          {
+            "T_K": 354.99,
+            "value": 6.41,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.39,
+            "stated_uncertainty_percent": 1.29
+          },
+          {
+            "T_K": 352.58,
+            "value": 5.27,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.54,
+            "stated_uncertainty_percent": 1.4
+          },
+          {
+            "T_K": 303.59,
+            "value": 0.0415,
+            "reference": "Verevkin 2015",
+            "deviation_percent": 0.16,
+            "stated_uncertainty_percent": 1.69
+          },
+          {
+            "T_K": 308.43,
+            "value": 0.0728,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.12,
+            "stated_uncertainty_percent": 1.24
+          },
+          {
+            "T_K": 310.89,
+            "value": 0.0963,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.45,
+            "stated_uncertainty_percent": 1.04
+          },
+          {
+            "T_K": 306.03,
+            "value": 0.0556,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.64,
+            "stated_uncertainty_percent": 1.44
+          },
+          {
+            "T_K": 303.61,
+            "value": 0.0419,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.56,
+            "stated_uncertainty_percent": 1.67
+          },
+          {
+            "T_K": 304.56,
+            "value": 0.0468,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.48,
+            "stated_uncertainty_percent": 1.5
+          },
+          {
+            "T_K": 338.2,
+            "value": 1.51,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -0.37,
+            "stated_uncertainty_percent": 2.65
+          },
+          {
+            "T_K": 341.7,
+            "value": 2.1,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -1.8,
+            "stated_uncertainty_percent": 2.86
+          },
+          {
+            "T_K": 347.7,
+            "value": 3.55,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -1.99,
+            "stated_uncertainty_percent": 2.54
+          },
+          {
+            "T_K": 354.5,
+            "value": 6.31,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -2.77,
+            "stated_uncertainty_percent": 2.85
+          },
+          {
+            "T_K": 365.9,
+            "value": 15.29,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -1.85,
+            "stated_uncertainty_percent": 2.68
+          },
+          {
+            "T_K": 370.3,
+            "value": 20.8,
+            "reference": "Verevkin 2015",
+            "deviation_percent": 0.11,
+            "stated_uncertainty_percent": 2.6
+          },
+          {
+            "T_K": 477.25,
+            "value": 6700.0,
+            "reference": "Veneral 2013",
+            "deviation_percent": -1.41,
+            "stated_uncertainty_percent": 1.85
+          },
+          {
+            "T_K": 333.15,
+            "value": 1.0,
+            "reference": "Zaoui-Djelloul-Daouadji 2014",
+            "deviation_percent": -5.87,
+            "stated_uncertainty_percent": 100.0
+          },
+          {
+            "T_K": 343.15,
+            "value": 2.0,
+            "reference": "Zaoui-Djelloul-Daouadji 2014",
+            "deviation_percent": 17.24,
+            "stated_uncertainty_percent": 50.0
+          },
+          {
+            "T_K": 353.15,
+            "value": 6.0,
+            "reference": "Zaoui-Djelloul-Daouadji 2014",
+            "deviation_percent": -8.44,
+            "stated_uncertainty_percent": 16.67
+          },
+          {
+            "T_K": 363.15,
+            "value": 12.0,
+            "reference": "Zaoui-Djelloul-Daouadji 2014",
+            "deviation_percent": 1.41,
+            "stated_uncertainty_percent": 8.33
+          },
+          {
+            "T_K": 547.25,
+            "value": 66660.0,
+            "reference": "Aniya 2016",
+            "deviation_percent": -1.7,
+            "stated_uncertainty_percent": 2.12
+          },
+          {
+            "T_K": 402.16,
+            "value": 180.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -4.14,
+            "stated_uncertainty_percent": 6.11
+          },
+          {
+            "T_K": 412.24,
+            "value": 315.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -1.54,
+            "stated_uncertainty_percent": 6.03
+          },
+          {
+            "T_K": 422.28,
+            "value": 534.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": 0.66,
+            "stated_uncertainty_percent": 5.99
+          },
+          {
+            "T_K": 463.15,
+            "value": 3850.0,
+            "reference": "Yan 2008",
+            "deviation_percent": -3.19,
+            "stated_uncertainty_percent": 7.79
+          },
+          {
+            "T_K": 483.15,
+            "value": 8640.0,
+            "reference": "Yan 2008",
+            "deviation_percent": -4.08,
+            "stated_uncertainty_percent": 7.75
+          },
+          {
+            "T_K": 503.15,
+            "value": 17900.0,
+            "reference": "Yan 2008",
+            "deviation_percent": -5.0,
+            "stated_uncertainty_percent": 7.82
+          },
+          {
+            "T_K": 523.15,
+            "value": 34500.0,
+            "reference": "Yan 2008",
+            "deviation_percent": -5.72,
+            "stated_uncertainty_percent": 7.83
+          },
+          {
+            "T_K": 543.15,
+            "value": 62600.0,
+            "reference": "Yan 2008",
+            "deviation_percent": -6.54,
+            "stated_uncertainty_percent": 7.67
+          }
+        ],
+        "excluded": [
+          {
+            "T_K": 351.5,
+            "value": 5.03,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -4.72,
+            "why": "stated uncertainty 2.6 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 357.5,
+            "value": 8.31,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -5.95,
+            "why": "stated uncertainty 2.8 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 360.1,
+            "value": 9.89,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -2.91,
+            "why": "stated uncertainty 2.7 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 363.2,
+            "value": 12.74,
+            "reference": "Verevkin 2015",
+            "deviation_percent": -4.11,
+            "why": "stated uncertainty 2.7 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 493.35,
+            "value": 13300.0,
+            "reference": "Veneral 2013",
+            "deviation_percent": -9.25,
+            "why": "stated uncertainty 2.8 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 505.55,
+            "value": 20000.0,
+            "reference": "Veneral 2013",
+            "deviation_percent": -7.77,
+            "why": "stated uncertainty 2.9 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 513.95,
+            "value": 26700.0,
+            "reference": "Veneral 2013",
+            "deviation_percent": -8.86,
+            "why": "stated uncertainty 2.9 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 520.65,
+            "value": 33300.0,
+            "reference": "Veneral 2013",
+            "deviation_percent": -9.61,
+            "why": "stated uncertainty 2.6 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 553.96,
+            "value": 79990.0,
+            "reference": "Aniya 2016",
+            "deviation_percent": -1.84,
+            "why": "stated uncertainty 1.8 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 560.95,
+            "value": 95990.0,
+            "reference": "Aniya 2016",
+            "deviation_percent": -1.84,
+            "why": "stated uncertainty 1.5 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 351.8,
+            "value": 5.83,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -15.72,
+            "why": "stated uncertainty 7.4 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 362.02,
+            "value": 12.9,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -13.54,
+            "why": "stated uncertainty 7 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 372.06,
+            "value": 25.8,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -8.24,
+            "why": "stated uncertainty 6.6 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 382.08,
+            "value": 54.4,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -12.04,
+            "why": "stated uncertainty 6.2 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 392.18,
+            "value": 102.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -8.76,
+            "why": "stated uncertainty 5.9 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 432.45,
+            "value": 981.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -7.38,
+            "why": "stated uncertainty 2.1 % is above the target, and the value deviates by more than it"
+          },
+          {
+            "T_K": 452.64,
+            "value": 2747.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -14.02,
+            "why": "deviates most from a robust fit of the others"
+          },
+          {
+            "T_K": 462.86,
+            "value": 4099.0,
+            "reference": "Mokbel 2012",
+            "deviation_percent": -10.18,
+            "why": "deviates most from a robust fit of the others"
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 90 measured values from 2 articles, 313.3-462.9 K; median deviation of the articles 6.05 % (above the 1 % tolerance of the engineering report); largest single deviation -14.02 % at 452.6 K (Mokbel 2012, doi:10.1021/je200766t); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 3.385629,
@@ -12184,7 +14362,7 @@
         ]
       },
       "omega": 1.54413,
-      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (563.596 K); ChemSep lists 563.15 K.",
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (563.799 K); ChemSep lists 563.15 K.",
       "constants_source_ids": [
         "chemsep-8.3"
       ],
@@ -12210,7 +14388,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 92.0938 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 291.33-850.00 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 88 measured values from 23 articles, 293.1-363.1 K; median deviation of the articles 0.76 % (within the 1 % tolerance of the engineering report); largest single deviation -1.05 % at 298.1 K (Mohan 2017, doi:10.1016/j.fluid.2017.05.024); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12289,25 +14468,175 @@
         "liquidViscosity": {
           "equation": "DIPPR101",
           "coefficients": {
-            "A": 70.40515994,
-            "B": 3183.866136,
-            "C": -14.81208245,
-            "D": 0.01164562202,
-            "E": 1.0
+            "A": -247.6889532,
+            "B": 17197.84256,
+            "C": 33.32528803,
+            "D": 0.0
           },
           "units": "Pa s",
-          "Tmin_K": 291.33,
-          "Tmax_K": 500.0,
+          "Tmin_K": 288.1,
+          "Tmax_K": 363.15,
           "tier": "fitted",
           "source": {
-            "name": "ChemSep v8.3 pure-component database",
-            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
-            "access": "Artistic License 2.0",
-            "fit": "refitted in the DIPPR101 form to ChemSep equation 10 (Y = exp(A - B/(T + C)), Pa.s, converted to the mol basis): 200 points 291.33-500.00 K (ChemSep range, Tmin raised to the triple point), max deviation 0.057 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "name": "Measured values (NIST TRC ThermoML Archive)",
+            "reference": "Kijevcanin et al., J. Chem. Thermodyn. 56 (2013) 49-56, doi:10.1016/j.jct.2012.06.031; Ge et al., J. Chem. Eng. Data 55 (2010) 2649-2651, doi:10.1021/je900938b; Ferreira et al., J. Chem. Thermodyn. 113 (2017) 162-182, doi:10.1016/j.jct.2017.05.042; Hoga et al., J. Chem. Thermodyn. 122 (2018) 38-64, doi:10.1016/j.jct.2018.02.022; Liu et al., J. Chem. Thermodyn. 136 (2019) 16-27, doi:10.1016/j.jct.2019.04.017; Kassim et al., Thermochim. Acta 639 (2016) 130-147, doi:10.1016/j.tca.2016.07.005; Mirza et al., J. Chem. Eng. Data 62 (2017) 348-354, doi:10.1021/acs.jced.6b00680; Ozturk et al., J. Chem. Eng. Data 63 (2018) 2384-2393, doi:10.1021/acs.jced.7b00944; Alkindi et al., J. Chem. Eng. Data 53 (2008) 2793-2796, doi:10.1021/je8004479",
+            "access": "open data (NIST TRC ThermoML Archive), free to read even where the article is not",
+            "fit": "6 measured values with stated uncertainties within 3 % from 2 articles, 308.15-338.15 K, max deviation 2.7 %; 29 values with larger stated uncertainties agree within them",
+            "notes": "Fitted to measured data instead of the databank: the ChemSep viscosity deviates from the measured values by 38 % (median of the articles); the databank record deviates from these values by +41.6 % (median, +44.4 % at most). Rules: validation/python/measured_components.py.",
+            "chain": "Measured data (ThermoML Archive) above the databank: see docs/MEASURED_CHECKS.md",
+            "excluded": [
+              {
+                "T_K": 295.0,
+                "value": 1.4995,
+                "reference": "Shi 2008",
+                "deviation_percent": -24.14,
+                "why": "stated uncertainty 13 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 288.15,
+                "value": 2.2983,
+                "reference": "Kijevcanin 2013",
+                "deviation_percent": -9.55,
+                "why": "stated uncertainty 5.2 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 293.15,
+                "value": 1.4251,
+                "reference": "Kijevcanin 2013",
+                "deviation_percent": -6.49,
+                "why": "stated uncertainty 4.5 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 298.15,
+                "value": 0.91198,
+                "reference": "Kijevcanin 2013",
+                "deviation_percent": -4.01,
+                "why": "stated uncertainty 3.9 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 292.89,
+                "value": 1.47,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -7.28,
+                "why": "stated uncertainty 5.3 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 298.1,
+                "value": 0.9706,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -9.44,
+                "why": "stated uncertainty 5 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 302.59,
+                "value": 0.6458,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -4.84,
+                "why": "stated uncertainty 4.6 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 312.81,
+                "value": 0.3053,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -4.91,
+                "why": "stated uncertainty 4.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 323.88,
+                "value": 0.1474,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -4.14,
+                "why": "stated uncertainty 3.6 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 343.8,
+                "value": 0.04983,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -4.43,
+                "why": "stated uncertainty 3.2 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 353.67,
+                "value": 0.0318,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -4.78,
+                "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 364.12,
+                "value": 0.02105,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -5.97,
+                "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 374.38,
+                "value": 0.01474,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -7.09,
+                "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 383.29,
+                "value": 0.011,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -6.28,
+                "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 394.08,
+                "value": 0.00832,
+                "reference": "Ferreira 2017",
+                "deviation_percent": -8.51,
+                "why": "stated uncertainty 3.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 296.5,
+                "value": 1.252,
+                "reference": "Mirza 2017",
+                "deviation_percent": -19.89,
+                "why": "stated uncertainty 12 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 332.7,
+                "value": 0.0975,
+                "reference": "Mirza 2017",
+                "deviation_percent": -13.18,
+                "why": "stated uncertainty 11 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 354.2,
+                "value": 0.0349,
+                "reference": "Mirza 2017",
+                "deviation_percent": -15.19,
+                "why": "stated uncertainty 11 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 298.15,
+                "value": 1.2,
+                "reference": "Duan 2019",
+                "deviation_percent": -27.05,
+                "why": "stated uncertainty 8.1 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 308.15,
+                "value": 0.4319,
+                "reference": "Ge 2010",
+                "deviation_percent": -6.38,
+                "why": "stated uncertainty 6 % is above the target, and the value deviates by more than it"
+              },
+              {
+                "T_K": 318.15,
+                "value": 0.1858,
+                "reference": "Ge 2010",
+                "deviation_percent": 9.16,
+                "why": "stated uncertainty 4.1 % is above the target, and the value deviates by more than it"
+              }
+            ],
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 3 articles, 293.1-353.7 K; median deviation of the articles 1.06 % (within the 5 % tolerance of the engineering report); largest single deviation +9.16 % at 318.1 K (Ge 2010, doi:10.1021/je900938b); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
-            "chemsep-8.3"
+            "nist-thermoml-archive"
           ]
         },
         "vapourViscosity": {
@@ -12348,7 +14677,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 293.15-550.00 K (ChemSep range), max deviation 0.028 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 293.1-333.1 K; median deviation of the articles 2.09 % (within the 5 % tolerance of the engineering report); largest single deviation +4.14 % at 333.1 K (Rodil 2018, doi:10.1016/j.tca.2018.04.007); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12394,7 +14724,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 291.33-453.15 K (ChemSep range), max deviation 0.15 %",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 4 articles, 293.1-333.2 K; median deviation of the articles 0.44 %; largest single deviation +6.62 % at 323.1 K (Liu 2018, doi:10.1016/j.jct.2018.05.013); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"
@@ -12413,23 +14744,23 @@
       "MW": 94.11124,
       "Tc_K": 694.25,
       "Pc_Pa": 6130000.0,
-      "Tb_K": 454.447,
+      "Tb_K": 454.9537,
       "vapourPressure": {
         "equation": "DIPPR101",
         "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
         "units": "Pa",
-        "A": 300.97,
-        "B": -20269.0,
-        "C": -40.743,
-        "D": 2.1631e-05,
-        "E": 2.0,
-        "Tmin_K": 310.45,
+        "A": 232.9239657,
+        "B": -14718.65408,
+        "C": -33.03664815,
+        "D": 0.02889273403,
+        "E": 1.0,
+        "Tmin_K": 353.15,
         "Tmax_K": 694.25,
-        "tier": "databank",
-        "source": "ChemSep v8.3 pure-component database, vapour pressure: ChemSep equation 101 coefficients taken over unchanged; 310.45-694.25 K (ChemSep range); reproduces ChemSep within 0.0001 % at 200 points. Not a CoolProp 8.0.0 fluid. Artistic License 2.0",
+        "tier": "fitted",
+        "source": "Fitted to measured vapour pressures (NIST TRC ThermoML Archive): 4 values with stated uncertainties within 1 % from 3 articles, max deviation 0.77 %, and 3 values with larger stated uncertainties, kept where the fit is within them (they extend the range to 353.15 K); 9 points of the measured Antoine equation of Dreisbach and Shrader, 1949; and the ChemSep v8.3 pure-component database critical point (694.25 K, 6130000 Pa). Between 454.90 K and the critical point the curve is held only by the critical point. The ChemSep vapour-pressure equation was not used: it deviates from the values within 1 % by -8.0 % (median, -21.0 % at most); see docs/MEASURED_CHECKS.md. Articles: Chylinski et al., J. Chem. Eng. Data 49 (2004) 2-6, doi:10.1021/je025566c; Giles and Wilson, J. Chem. Eng. Data 51 (2006) 1954-1962, doi:10.1021/je050317k; Giles and Wilson, J. Chem. Eng. Data 51 (2006) 1966-1972, doi:10.1021/je050327l. Rules: validation/python/measured_components.py (fit_measured_loose).",
         "source_ids": [
-          "chemsep-8.3",
-          "coolprop"
+          "nist-thermoml-archive",
+          "chemsep-8.3"
         ],
         "crossCheck": [
           {
@@ -12439,9 +14770,33 @@
               380.3,
               454.9
             ],
-            "max_deviation_percent": -17.14
+            "max_deviation_percent": 0.32
           }
-        ]
+        ],
+        "looser": [
+          {
+            "T_K": 353.15,
+            "value": 2037.0,
+            "reference": "Chylinski 2004",
+            "deviation_percent": 0.76,
+            "stated_uncertainty_percent": 2.01
+          },
+          {
+            "T_K": 373.1,
+            "value": 5506.0,
+            "reference": "Giles 2006",
+            "deviation_percent": 0.27,
+            "stated_uncertainty_percent": 2.11
+          },
+          {
+            "T_K": 373.1,
+            "value": 5529.0,
+            "reference": "Giles 2006",
+            "deviation_percent": -0.15,
+            "stated_uncertainty_percent": 1.92
+          }
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 3 articles, 373.1-433.1 K; median deviation of the articles 0.62 % (within the 1 % tolerance of the engineering report); largest single deviation +0.77 % at 433.1 K (Giles 2006, doi:10.1021/je050317k); docs/MEASURED_CHECKS.md"
       },
       "uniquac": {
         "r": 3.5517,
@@ -12452,7 +14807,7 @@
         ]
       },
       "omega": 0.442,
-      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (454.447 K); ChemSep lists 455.04 K.",
+      "constants_source": "ChemSep pure-component database v8.3 (Kooijman & Taylor) (MolecularWeight, CriticalTemperature, CriticalPressure, NormalBoilingPointTemperature); Artistic License 2.0. Not a CoolProp 8.0.0 fluid. Formula and CAS: chemicals library (MIT). Tb: the temperature at which the vapour-pressure record reaches 101.325 kPa (454.954 K); ChemSep lists 455.04 K.",
       "constants_source_ids": [
         "chemsep-8.3"
       ],
@@ -12478,7 +14833,8 @@
             "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
             "access": "Artistic License 2.0",
             "fit": "ChemSep equation 105 coefficients taken over unchanged except: A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 94.1112 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 314.06-688.71 K",
-            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)"
+            "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids (checked against the NIST WebBook where it has data: vapour pressure)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 314.4-343.1 K; median deviation of the articles 0.04 % (within the 1 % tolerance of the engineering report); largest single deviation -0.31 % at 314.4 K (Yang 2007, doi:10.1016/j.fluid.2007.05.026); docs/MEASURED_CHECKS.md"
           },
           "source_ids": [
             "chemsep-8.3"

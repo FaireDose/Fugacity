@@ -10,7 +10,8 @@
     "reference": "Thol et al., Int. J. Thermophys. 35 (2014) 783-811, doi:10.1007/s10765-014-1633-1",
     "access": "MIT (open source)",
     "quantity": "saturated liquid density",
-    "fit": "200 points 270.00-444.50 K (triple point to 0.95 Tc), max deviation 0.054 %"
+    "fit": "200 points 270.00-444.50 K (triple point to 0.95 Tc), max deviation 0.054 %",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 4 articles, 273.1-298.1 K; median deviation of the articles 0.07 % (within the 1 % tolerance of the engineering report); largest single deviation -0.14 % at 293.1 K (Meng 2008, doi:10.1016/j.fluid.2008.06.014); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     270.0,
@@ -394,7 +395,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 270.00 K (ChemSep: 200.00 K).; reproduces ChemSep within 0.0001 % at 200 points 270.00-373.15 K",
-    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: diethyl ether is not a WebBook fluid"
+    "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: diethyl ether is not a WebBook fluid",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 2 articles, 273.1-298.1 K; median deviation of the articles 4.98 % (within the 5 % tolerance of the engineering report); largest single deviation -8.64 % at 298.1 K (Sah 2010, doi:10.1021/je100594u); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     270.0,
@@ -586,7 +588,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 270.00-433.15 K (ChemSep range, Tmin raised to the triple point), max deviation 0.46 %",
-    "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: diethyl ether is not a WebBook fluid"
+    "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: diethyl ether is not a WebBook fluid",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 274.7-296.0 K; median deviation of the articles 4.37 % (within the 5 % tolerance of the engineering report); largest single deviation +5.12 % at 274.7 K (Li 2010, doi:10.1021/je900615b); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     270.0,

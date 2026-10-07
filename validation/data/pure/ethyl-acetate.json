@@ -10,7 +10,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 523.20 K (ChemSep: 523.25 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 88.1051 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 189.60-523.20 K",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 177 measured values from 71 articles, 278.1-348.1 K; median deviation of the articles 0.08 % (within the 1 % tolerance of the engineering report); largest single deviation -2.30 % at 343.1 K (Djojoputro 2005, doi:10.1021/je050001c); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     189.6,
@@ -358,7 +359,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 220.00-473.15 K",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 42 measured values from 19 articles, 293.1-343.1 K; median deviation of the articles 1.06 % (within the 5 % tolerance of the engineering report); largest single deviation +7.55 % at 303.1 K (Syeda 2010, doi:10.1021/je900525f); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     220.0,
@@ -550,7 +552,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 189.60-350.21 K (ChemSep range), max deviation 0.55 %",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 249.1-348.5 K; median deviation of the articles 2.09 % (within the 5 % tolerance of the engineering report); largest single deviation +2.82 % at 345.4 K (Song 2019, doi:10.1016/j.jct.2019.06.014); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     189.6,
@@ -742,7 +745,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "refitted in the DIPPR106 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), N/m, converted to the mol basis): 200 points 189.60-497.04 K (ChemSep range, limited to 0.95 Tc), max deviation 0.39 %",
-    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data"
+    "chain": "CoolProp 8.0.0: fluid not included; NIST WebBook: no data",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 3 articles, 295.1-315.1 K; median deviation of the articles 2.29 %; largest single deviation -4.01 % at 315.1 K (Khosroshahi 2016, doi:10.1016/j.fluid.2016.04.007); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     189.6,

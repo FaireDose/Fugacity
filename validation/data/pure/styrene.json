@@ -10,7 +10,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 105 coefficients taken over unchanged except: Tmax limited to the ChemSep critical temperature 636.00 K (ChemSep: 640.76 K). A converted from kmol/m3 to kg/m3 with the ChemSep molar mass 104.1490 kg/kmol.; reproduces ChemSep within 0.0001 % at 200 points 242.54-636.00 K",
-    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page"
+    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 36 measured values from 10 articles, 293.1-363.1 K; median deviation of the articles 0.19 % (within the 1 % tolerance of the engineering report); largest single deviation -0.29 % at 363.1 K (Yang 2005, doi:10.1021/je049572f); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     242.54,
@@ -394,7 +395,8 @@
     "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
     "access": "Artistic License 2.0",
     "fit": "ChemSep equation 101 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 242.54-508.80 K",
-    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page"
+    "chain": "CoolProp 8.0.0: fluid not included; ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page",
+    "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 2 articles, 293.1-363.1 K; median deviation of the articles 0.45 % (within the 5 % tolerance of the engineering report); largest single deviation -2.08 % at 363.1 K (Yang 2005, doi:10.1021/je049572f); docs/MEASURED_CHECKS.md"
    },
    "T_K": [
     242.54,

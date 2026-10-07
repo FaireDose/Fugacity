@@ -67,6 +67,7 @@ export const QUANTITIES = {
   k_W_mK: { label: "λ", unit: "W/(m·K)", fmt: sig(4) },
   HE_J_mol: { label: "hᴱ", unit: "J/mol", fmt: v => v.toFixed(1) },
   VF: { label: "vapour fraction", unit: "mol/mol", fmt: v => v.toFixed(5) },
+  medianDev_pct: { label: "median deviation from measured values", unit: "%", fmt: v => v.toFixed(2), devUnit: "%" },
 };
 const PROPERTY_LABELS = {
   vapourPressure: "vapour pressure", liquidDensity: "liquid density", liquidHeatCapacity: "liquid cp",
@@ -255,6 +256,60 @@ function pureProperty(ctx, cs) {
   throw new NotAvailable("pure().property() is not available in this version" + propsNote);
 }
 
+// Records against measured data (proposal 0008, Part B): the same rules as validation/python/check_measured.py and
+// test/measured-checks.test.js. Values of the liquid (at 110 kPa or less, except vapour pressure and heat of
+// vaporization) inside the record's range, with a stated uncertainty no larger than the tolerance; each article counts
+// once (the median of its deviations); the result is the median over the articles of |deviation|, in percent.
+const MEASURED = {
+  vapourPressure: ["Vapor or sublimation pressure, kPa", 1, 0.01], liquidDensity: ["Mass density, kg/m3", 1, 0.01],
+  liquidHeatCapacity: ["Molar heat capacity at constant pressure, J/K/mol", 1, 0.02],
+  heatOfVaporization: ["Molar enthalpy of vaporization or sublimation, kJ/mol", 1000, 0.02],
+  liquidViscosity: ["Viscosity, Pa*s", 1, 0.05], liquidThermalConductivity: ["Thermal conductivity, W/m/K", 1, 0.05],
+};
+const measuredData = new Map();
+const median = a => { const s = [...a].sort((x, y) => x - y), n = s.length; return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2; };
+
+function measuredSet(ctx, cs) {
+  const file = join(REPO, cs.data);
+  if (!existsSync(file)) throw new NotAvailable(`no measured data (${cs.data})`);
+  if (!measuredData.has(file)) measuredData.set(file, JSON.parse(readFileSync(file, "utf8")));
+  const data = measuredData.get(file);
+  const [propName, factor, tol] = MEASURED[cs.property];
+  const p = ctx.pure(cs.component);
+  const isVP = cs.property === "vapourPressure";
+  let at;
+  if (isVP) at = T => p.psat(T);
+  else {
+    if (typeof p.has === "function" && !p.has(cs.property)) throw new NotAvailable(missingReason(p, cs.property));
+    at = T => p.property(cs.property, T);
+  }
+  const seen = new Set(), byArticle = new Map();
+  let Tlo = Infinity, Thi = -Infinity, worst = null;
+  for (const r of data.rows) {
+    if (r.property !== propName || r.T_K == null || !r.phases.includes("Liquid") || r.phases.includes("Crystal")) continue;
+    if (!isVP && cs.property !== "heatOfVaporization" && (r.phases.includes("Gas") || (r.P_kPa ?? 0) > 110)) continue;
+    if (r.uncertainty && r.uncertainty / r.value > tol) continue;
+    const key = `${r.doi}|${r.T_K}|${r.value}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    let v;
+    try { v = at(r.T_K); } catch (e) {
+      if (RANGE_PATTERNS.some(re => re.test(e.message))) continue;  // outside the record: not compared
+      throw e;
+    }
+    const dev = v / (r.value * factor) - 1;
+    if (!byArticle.has(r.doi)) byArticle.set(r.doi, []);
+    byArticle.get(r.doi).push(dev);
+    Tlo = Math.min(Tlo, r.T_K); Thi = Math.max(Thi, r.T_K);
+    if (!worst || Math.abs(dev) > Math.abs(worst.dev)) worst = { dev, T: r.T_K, doi: r.doi };
+  }
+  const n = [...byArticle.values()].flat().length;
+  if (n < 3) throw new NotAvailable(`fewer than 3 measured values within the range of the record (${n})`);
+  const value = 100 * median([...byArticle.values()].map(d => Math.abs(median(d))));
+  return { value, method: `${n} measured values from ${byArticle.size} articles, ${Tlo.toFixed(1)}-${Thi.toFixed(1)} K; ` +
+    `largest single deviation ${(100 * worst.dev).toFixed(2)} % at ${worst.T.toFixed(1)} K (doi:${worst.doi})` };
+}
+
 function waterMW(ctx) {
   try { const M = ctx.pure("water").MW; if (num(M)) return M; } catch { /* fall through */ }
   return null;
@@ -378,6 +433,8 @@ function evaluateQuantity(ctx, cs, key) {
     }
     case "pureProperty":
       return pureProperty(ctx, cs);
+    case "measuredSet":
+      return measuredSet(ctx, cs);
     case "steamState":
       return steamState(ctx, cs.T_K, cs.P_kPa, key);
     case "steamSaturation":
@@ -468,7 +525,7 @@ export function formatDeviation(dev, tol, key) {
   }
   const unit = QUANTITIES[key]?.devUnit ?? (QUANTITIES[key]?.unit === "mol/mol" ? "" : QUANTITIES[key]?.unit ?? "");
   const a = Math.abs(dev);
-  return `${sgn}${unit === "K" ? a.toFixed(2) : unit === "J/mol" ? a.toFixed(1) : a < 1e-3 ? a.toExponential(1) : a.toFixed(4)}${unit ? " " + unit : ""}`;
+  return `${sgn}${unit === "K" || unit === "%" ? a.toFixed(2) : unit === "J/mol" ? a.toFixed(1) : a < 1e-3 ? a.toExponential(1) : a.toFixed(4)}${unit ? " " + unit : ""}`;
 }
 
 function tolText(tol) {
@@ -535,6 +592,9 @@ function describe(cs, key) {
       return { property: `Water: ${key === "P_bar" ? "saturation pressure" : q.label}`, conditions: `${tC(cs.T_K)} °C, saturation` };
     case "steamState":
       return { property: `Water: ${q.label}`, conditions: `${bar(cs.P_kPa)} bar, ${tC(cs.T_K)} °C (${cs.label})` };
+    case "measuredSet":
+      return { property: `${cs.name ?? name(cs.component)}: ${PROPERTY_LABELS[cs.property] ?? cs.property}`,
+        conditions: "median deviation of the ThermoML articles" };
     case "mixtureDensity":
       return { property: `${name(cs.label)}: density`, conditions: `${cs.components.map((c, i) => `${cs.z[i]} ${c}`).join(" + ")}, ${tC(cs.T_K)} °C, ${bar(cs.P_kPa)} bar, ${cs.model}` };
     default:

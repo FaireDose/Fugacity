@@ -1,0 +1,1303 @@
+{
+ "component": "hydrogen-sulfide",
+ "cas": "7783-06-4",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"hydrogen sulfide\"; 52 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2006.09.021": {
+   "authors": [
+    "Theveneau, P.[Pascal]",
+    "Coquelet, C.[Christophe]",
+    "Richon, D.[Dominique]"
+   ],
+   "title": "Vapour liquid equilibrium data for the hydrogen sulphide + n-heptane system at temperatures from 293.25 to 373.22K and pressures up to about 6.9MPa",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "249",
+   "year": "2006",
+   "pages": "179-186"
+  },
+  "10.1016/j.fluid.2007.07.013": {
+   "authors": [
+    "Guilbot, P.",
+    "Fischer, K.",
+    "Valtz, A.",
+    "Theveneau, P.",
+    "Baba-Ahmed, A.",
+    "Richon, D."
+   ],
+   "title": "Measurement of VLE (TPx or TPxy data) for hydrogen sulfide + (dimethylsulfide or ethylmethylsulfide or carbon disulfide) and methane solubilities in (dimethylsulfide or ethylmethylsulfide or methylmercaptan or ethylmercaptan)",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "260",
+   "year": "2007",
+   "pages": "49-59"
+  },
+  "10.1016/j.fluid.2013.07.050": {
+   "authors": [
+    "Chapoy, A.[Antonin]",
+    "Coquelet, C.[Christophe]",
+    "Liu, H.[Haifan]",
+    "Valtz, A.[Alain]",
+    "Tohidi, B.[Bahman]"
+   ],
+   "title": "Vapour-liquid equilibrium data for the hydrogen sulphide(H2S) + carbon dioxide (CO2) system at temperatures from 258 to 313 K",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "356",
+   "year": "2013",
+   "pages": "223-228"
+  },
+  "10.1016/j.fluid.2014.09.025": {
+   "authors": [
+    "Coquelet, C.[Christophe]",
+    "Valtz, A.[Alain]",
+    "Stringari, P.[Paolo]",
+    "Popovic, M.[Marko]",
+    "Richon, D.[Dominique]",
+    "Mougin, P.[Pascal]"
+   ],
+   "title": "Phase equilibrium data for the hydrogen sulphide + methane system at temperatures from 186 to 313 K and pressures up to about 14 MPa",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "383",
+   "year": "2014",
+   "pages": "94-99"
+  },
+  "10.1016/j.jct.2006.03.013": {
+   "authors": [
+    "Lobo, L. Q.[Lelio Q.]",
+    "Ferreira, A. G. M.",
+    "Fonseca, I. M. A.[Isabel M. A.]",
+    "Senra, A. M. P."
+   ],
+   "title": "Vapour pressure and excess Gibbs free energy of binary mixtures of hydrogen sulphide with ethane, propane, and n-butane at temperature of 182.33 K",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "38",
+   "year": "2006",
+   "pages": "1651-1654"
+  },
+  "10.1021/je200371n": {
+   "authors": [
+    "Vogel, E.[Eckhard]"
+   ],
+   "title": "Reference Viscosities of Gaseous Methane and Hydrogen Sulfide at Low Density in the Temperature Range from (292 to 682) K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "56",
+   "year": "2011",
+   "pages": "3265-3272"
+  },
+  "10.1021/je300111m": {
+   "authors": [
+    "Dicko, M.[Moussa]",
+    "Coquelet, C.[Christophe]",
+    "Theveneau, P.[Pascal]",
+    "Mougin, P.[Pascal]"
+   ],
+   "title": "Phase Equilibria of H2S-Hydrocarbons (Propane, n-Butane, and n-Pentane) Binary Systems at Low Temperatures",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "57",
+   "year": "2012",
+   "pages": "1534-1543"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 223.19,
+   "P_kPa": null,
+   "value": 167.4,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 228.2,
+   "P_kPa": null,
+   "value": 209.1,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 233.11,
+   "P_kPa": null,
+   "value": 257.4,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 238.04,
+   "P_kPa": null,
+   "value": 313.9,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.04,
+   "P_kPa": null,
+   "value": 380.1,
+   "uncertainty": 1.4,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 248.01,
+   "P_kPa": null,
+   "value": 456.7,
+   "uncertainty": 1.5,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 252.97,
+   "P_kPa": null,
+   "value": 544.2,
+   "uncertainty": 1.5,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 258.01,
+   "P_kPa": null,
+   "value": 644.5,
+   "uncertainty": 1.6,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.0,
+   "P_kPa": null,
+   "value": 757.7,
+   "uncertainty": 1.8,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 268.02,
+   "P_kPa": null,
+   "value": 885.7,
+   "uncertainty": 1.9,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.17,
+   "P_kPa": null,
+   "value": 1032.3,
+   "uncertainty": 2.1,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 278.24,
+   "P_kPa": null,
+   "value": 1194.1,
+   "uncertainty": 2.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 283.26,
+   "P_kPa": null,
+   "value": 1371.1,
+   "uncertainty": 2.5,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 288.31,
+   "P_kPa": null,
+   "value": 1566.6,
+   "uncertainty": 2.8,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.1,
+   "P_kPa": null,
+   "value": 1767.9,
+   "uncertainty": 3.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.3,
+   "P_kPa": null,
+   "value": 1779.5,
+   "uncertainty": 3.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.41,
+   "P_kPa": null,
+   "value": 2022.2,
+   "uncertainty": 3.5,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 303.08,
+   "P_kPa": null,
+   "value": 2259.6,
+   "uncertainty": 3.9,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 313.11,
+   "P_kPa": null,
+   "value": 2847.2,
+   "uncertainty": 4.8,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 323.18,
+   "P_kPa": null,
+   "value": 3540.4,
+   "uncertainty": 5.9,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.17,
+   "P_kPa": null,
+   "value": 4339.5,
+   "uncertainty": 7.2,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.16,
+   "P_kPa": null,
+   "value": 5261.2,
+   "uncertainty": 8.7,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 353.17,
+   "P_kPa": null,
+   "value": 6319.2,
+   "uncertainty": 10.4,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 363.16,
+   "P_kPa": null,
+   "value": 7533.0,
+   "uncertainty": 12.3,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.15,
+   "P_kPa": null,
+   "value": 8932.1,
+   "uncertainty": 14.5,
+   "doi": "10.1016/j.fluid.2006.09.021",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.08,
+   "P_kPa": null,
+   "value": 1033.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.4,
+   "P_kPa": null,
+   "value": 2024.0,
+   "uncertainty": 26.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 323.5,
+   "P_kPa": null,
+   "value": 3564.0,
+   "uncertainty": 44.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 348.45,
+   "P_kPa": null,
+   "value": 5812.0,
+   "uncertainty": 72.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.08,
+   "P_kPa": null,
+   "value": 1033.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 8,
+   "binary_with": "carbon disulfide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.4,
+   "P_kPa": null,
+   "value": 2024.0,
+   "uncertainty": 26.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 8,
+   "binary_with": "carbon disulfide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 323.5,
+   "P_kPa": null,
+   "value": 3564.0,
+   "uncertainty": 44.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 8,
+   "binary_with": "carbon disulfide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 348.45,
+   "P_kPa": null,
+   "value": 5812.0,
+   "uncertainty": 72.0,
+   "doi": "10.1016/j.fluid.2007.07.013",
+   "set": 8,
+   "binary_with": "carbon disulfide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 313.02,
+   "P_kPa": null,
+   "value": 2920.0,
+   "uncertainty": 10.0,
+   "doi": "10.1016/j.fluid.2013.07.050",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.47,
+   "P_kPa": null,
+   "value": 1781.0,
+   "uncertainty": 7.0,
+   "doi": "10.1016/j.fluid.2013.07.050",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.15,
+   "P_kPa": null,
+   "value": 1030.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2013.07.050",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 258.41,
+   "P_kPa": null,
+   "value": 644.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2013.07.050",
+   "set": 1,
+   "binary_with": "carbon dioxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 203.4,
+   "P_kPa": null,
+   "value": 43.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2014.09.025",
+   "set": 3,
+   "binary_with": "methane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 223.17,
+   "P_kPa": null,
+   "value": 172.0,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.fluid.2014.09.025",
+   "set": 3,
+   "binary_with": "methane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Crystal",
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 23.175,
+   "uncertainty": 0.036,
+   "doi": "10.1016/j.jct.2006.03.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 291.61,
+   "P_kPa": null,
+   "value": 1.1856e-05,
+   "uncertainty": 3.42e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 292.3,
+   "P_kPa": null,
+   "value": 1.1863e-05,
+   "uncertainty": 3.42e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 292.46,
+   "P_kPa": null,
+   "value": 1.1866e-05,
+   "uncertainty": 3.42e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 292.77,
+   "P_kPa": null,
+   "value": 1.188e-05,
+   "uncertainty": 3.42e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 296.89,
+   "P_kPa": null,
+   "value": 1.2069e-05,
+   "uncertainty": 3.43e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 297.01,
+   "P_kPa": null,
+   "value": 1.2059e-05,
+   "uncertainty": 3.43e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 323.94,
+   "P_kPa": null,
+   "value": 1.3186e-05,
+   "uncertainty": 3.5e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 323.96,
+   "P_kPa": null,
+   "value": 1.3181e-05,
+   "uncertainty": 3.5e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 350.47,
+   "P_kPa": null,
+   "value": 1.4287e-05,
+   "uncertainty": 3.73e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 350.59,
+   "P_kPa": null,
+   "value": 1.4296e-05,
+   "uncertainty": 3.73e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 378.01,
+   "P_kPa": null,
+   "value": 1.543e-05,
+   "uncertainty": 3.81e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 378.19,
+   "P_kPa": null,
+   "value": 1.5443e-05,
+   "uncertainty": 3.81e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 405.76,
+   "P_kPa": null,
+   "value": 1.6562e-05,
+   "uncertainty": 3.88e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 405.86,
+   "P_kPa": null,
+   "value": 1.6574e-05,
+   "uncertainty": 3.88e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 433.66,
+   "P_kPa": null,
+   "value": 1.7693e-05,
+   "uncertainty": 4.11e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 433.81,
+   "P_kPa": null,
+   "value": 1.77e-05,
+   "uncertainty": 4.11e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 461.72,
+   "P_kPa": null,
+   "value": 1.8808e-05,
+   "uncertainty": 4.19e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 461.92,
+   "P_kPa": null,
+   "value": 1.8818e-05,
+   "uncertainty": 4.19e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 490.09,
+   "P_kPa": null,
+   "value": 1.9926e-05,
+   "uncertainty": 4.27e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 490.2,
+   "P_kPa": null,
+   "value": 1.992e-05,
+   "uncertainty": 4.27e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 518.68,
+   "P_kPa": null,
+   "value": 2.1004e-05,
+   "uncertainty": 4.34e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 518.75,
+   "P_kPa": null,
+   "value": 2.1005e-05,
+   "uncertainty": 4.34e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 542.48,
+   "P_kPa": null,
+   "value": 2.1901e-05,
+   "uncertainty": 4.56e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 542.61,
+   "P_kPa": null,
+   "value": 2.1901e-05,
+   "uncertainty": 4.56e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 565.19,
+   "P_kPa": null,
+   "value": 2.2737e-05,
+   "uncertainty": 4.61e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 565.29,
+   "P_kPa": null,
+   "value": 2.275e-05,
+   "uncertainty": 4.62e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 593.95,
+   "P_kPa": null,
+   "value": 2.3789e-05,
+   "uncertainty": 4.69e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 594.02,
+   "P_kPa": null,
+   "value": 2.3794e-05,
+   "uncertainty": 4.69e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 623.07,
+   "P_kPa": null,
+   "value": 2.4816e-05,
+   "uncertainty": 4.77e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 623.19,
+   "P_kPa": null,
+   "value": 2.4822e-05,
+   "uncertainty": 4.77e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 652.3,
+   "P_kPa": null,
+   "value": 2.5835e-05,
+   "uncertainty": 4.99e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 652.32,
+   "P_kPa": null,
+   "value": 2.5845e-05,
+   "uncertainty": 4.99e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 681.36,
+   "P_kPa": null,
+   "value": 2.6824e-05,
+   "uncertainty": 5.06e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 682.03,
+   "P_kPa": null,
+   "value": 2.6842e-05,
+   "uncertainty": 5.06e-07,
+   "doi": "10.1021/je200371n",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.18,
+   "P_kPa": null,
+   "value": 380.2,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.2,
+   "P_kPa": null,
+   "value": 379.4,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.12,
+   "P_kPa": null,
+   "value": 1030.2,
+   "uncertainty": 16.6,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.13,
+   "P_kPa": null,
+   "value": 1029.3,
+   "uncertainty": 16.6,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 222.83,
+   "P_kPa": null,
+   "value": 167.3,
+   "uncertainty": 2.8,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.02,
+   "P_kPa": null,
+   "value": 384.0,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.43,
+   "P_kPa": null,
+   "value": 1793.7,
+   "uncertainty": 28.9,
+   "doi": "10.1021/je300111m",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.18,
+   "P_kPa": null,
+   "value": 380.2,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 4,
+   "binary_with": "propane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.2,
+   "P_kPa": null,
+   "value": 379.4,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 4,
+   "binary_with": "propane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.12,
+   "P_kPa": null,
+   "value": 1030.2,
+   "uncertainty": 16.6,
+   "doi": "10.1021/je300111m",
+   "set": 4,
+   "binary_with": "propane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.13,
+   "P_kPa": null,
+   "value": 1029.3,
+   "uncertainty": 16.6,
+   "doi": "10.1021/je300111m",
+   "set": 4,
+   "binary_with": "propane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 222.83,
+   "P_kPa": null,
+   "value": 167.3,
+   "uncertainty": 2.8,
+   "doi": "10.1021/je300111m",
+   "set": 5,
+   "binary_with": "butane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.02,
+   "P_kPa": null,
+   "value": 384.0,
+   "uncertainty": 6.2,
+   "doi": "10.1021/je300111m",
+   "set": 5,
+   "binary_with": "butane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.43,
+   "P_kPa": null,
+   "value": 1793.7,
+   "uncertainty": 28.9,
+   "doi": "10.1021/je300111m",
+   "set": 5,
+   "binary_with": "butane"
+  }
+ ]
+}

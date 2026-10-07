@@ -1,0 +1,3951 @@
+{
+ "component": "ethylene",
+ "cas": "74-85-1",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"ethene\", \"ethylene\"; 841 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1016/j.fluid.2012.08.023": {
+   "authors": [
+    "Koster, A.[Andreas]",
+    "Nandi, P.[Prabir]",
+    "Windmann, T.[Thorsten]",
+    "Ramjugernath, D.[Deresh]",
+    "Vrabec, J.[Jadran]"
+   ],
+   "title": "Vapor-liquid equilibria of ethylene (C2H4) + decafluorobutane (C4F10) at 268 to 298 K from experiment, molecular simulation and the Peng-Robinson equation of state",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "336",
+   "year": "2012",
+   "pages": "104-112"
+  },
+  "10.1016/j.fluid.2013.05.018": {
+   "authors": [
+    "Subramoney, S. C.[Shalendra Clinton]",
+    "Courtial, X.[Xavier]",
+    "Naidoo, P.[Paramespri]",
+    "Coquelet, C.[Christophe]",
+    "Richon, D.[Dominique]",
+    "Ramjugernatha, D.[Deresh]"
+   ],
+   "title": "Isothermal vapor-liquid equilibrium data for the ethylene + 1,1,2,3,3,3-hexafluoro-1-propene binary system between 258 and 308 K at pressures up to 4.56 MPa",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "353",
+   "year": "2013",
+   "pages": "7-14"
+  },
+  "10.1016/j.fluid.2017.08.005": {
+   "authors": [
+    "Nelson, W. M.[Wayne Michael]",
+    "Hassanalizadeh, R.[Rasoul]",
+    "Ramjugernath, D.[Deresh]"
+   ],
+   "title": "Phase equilibrium and critical point data for ethylene and chlorodifluoromethane binary mixtures using a new static-analytic apparatus",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "451",
+   "year": "2017",
+   "pages": "106-113"
+  },
+  "10.1016/j.fluid.2017.11.013": {
+   "authors": [
+    "Neindre, B. L.",
+    "Lombardi, G.",
+    "Desmarest, P.[Ph.]",
+    "Kayser, M.",
+    "Zaripov, Z. I.",
+    "Gumerov, F.",
+    "Garrabos, Y."
+   ],
+   "title": "Measurements of the thermal conductivity of ethene in the supercritical region",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "459",
+   "year": "2018",
+   "pages": "119-128"
+  },
+  "10.1021/je300599p": {
+   "authors": [
+    "Ahmar, E. E.[Elise El]",
+    "Valtz, A.[Alain]",
+    "Ferrando, N.[Nicolas]",
+    "Coquelet, C.[Christophe]",
+    "Mougin, P.[Pascal]"
+   ],
+   "title": "Vapor-Liquid Equilibrium (PTxy) Measurements and Modeling for the CO-C2H4 Binary System  ",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "57",
+   "year": "2012",
+   "pages": "2744-2749"
+  },
+  "10.1021/je9009199": {
+   "authors": [
+    "Chen, Z.-h.[Zhen-hua]",
+    "Yao, Z.[Zhen]",
+    "Zhu, F.-j.[Fang-jun]",
+    "Cao, K.[Kun]",
+    "Li, Y.[Yan]",
+    "Huang, Z.-m.[Zhi-ming]"
+   ],
+   "title": "Gas-Liquid Critical Properties of Ethylene + Hydrogen and Propylene + Hydrogen Binary Mixtures",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "55",
+   "year": "2010",
+   "pages": "2004-2007"
+  }
+ },
+ "rows": [
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 268.13,
+   "P_kPa": null,
+   "value": 3648.5,
+   "uncertainty": 22.4,
+   "doi": "10.1016/j.fluid.2012.08.023",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 278.36,
+   "P_kPa": null,
+   "value": 4611.2,
+   "uncertainty": 26.3,
+   "doi": "10.1016/j.fluid.2012.08.023",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 268.13,
+   "P_kPa": null,
+   "value": 3648.5,
+   "uncertainty": 22.4,
+   "doi": "10.1016/j.fluid.2012.08.023",
+   "set": 3,
+   "binary_with": "decafluorobutane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 278.36,
+   "P_kPa": null,
+   "value": 4611.2,
+   "uncertainty": 26.3,
+   "doi": "10.1016/j.fluid.2012.08.023",
+   "set": 3,
+   "binary_with": "decafluorobutane"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 256.22,
+   "P_kPa": null,
+   "value": 2732.0,
+   "uncertainty": 16.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 258.59,
+   "P_kPa": null,
+   "value": 2903.0,
+   "uncertainty": 16.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 261.02,
+   "P_kPa": null,
+   "value": 3083.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.48,
+   "P_kPa": null,
+   "value": 3272.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 265.94,
+   "P_kPa": null,
+   "value": 3470.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 268.37,
+   "P_kPa": null,
+   "value": 3671.0,
+   "uncertainty": 17.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 270.85,
+   "P_kPa": null,
+   "value": 3891.0,
+   "uncertainty": 18.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.29,
+   "P_kPa": null,
+   "value": 4113.0,
+   "uncertainty": 18.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 275.68,
+   "P_kPa": null,
+   "value": 4339.0,
+   "uncertainty": 18.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 278.16,
+   "P_kPa": null,
+   "value": 4588.0,
+   "uncertainty": 19.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 280.98,
+   "P_kPa": null,
+   "value": 4891.0,
+   "uncertainty": 19.0,
+   "doi": "10.1016/j.fluid.2013.05.018",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.15,
+   "P_kPa": null,
+   "value": 4094.0,
+   "uncertainty": 16.0,
+   "doi": "10.1016/j.fluid.2017.08.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": null,
+   "value": 4094.0,
+   "uncertainty": 14.0,
+   "doi": "10.1016/j.fluid.2017.08.005",
+   "set": 6,
+   "binary_with": "chlorodifluoromethane"
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 101.0,
+   "value": 0.01865,
+   "uncertainty": 0.00069,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 101.0,
+   "value": 0.01869,
+   "uncertainty": 0.00069,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 101.0,
+   "value": 0.01877,
+   "uncertainty": 0.00069,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 302.21,
+   "P_kPa": 101.0,
+   "value": 0.02112,
+   "uncertainty": 0.00077,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 303.1,
+   "P_kPa": 101.0,
+   "value": 0.0207,
+   "uncertainty": 0.00076,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 425.0,
+   "P_kPa": 101.0,
+   "value": 0.0381,
+   "uncertainty": 0.00133,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 425.62,
+   "P_kPa": 101.0,
+   "value": 0.03809,
+   "uncertainty": 0.00133,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 4620.0,
+   "value": 0.03417,
+   "uncertainty": 0.00157,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 4770.0,
+   "value": 0.03732,
+   "uncertainty": 0.00169,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 4910.0,
+   "value": 0.04251,
+   "uncertainty": 0.00336,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 4960.0,
+   "value": 0.04566,
+   "uncertainty": 0.00263,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5050.0,
+   "value": 0.05593,
+   "uncertainty": 0.00254,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5090.0,
+   "value": 0.06391,
+   "uncertainty": 0.00272,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5120.0,
+   "value": 0.07425,
+   "uncertainty": 0.00284,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5140.0,
+   "value": 0.09013,
+   "uncertainty": 0.00336,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5150.0,
+   "value": 0.1049,
+   "uncertainty": 0.00387,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5150.0,
+   "value": 0.10324,
+   "uncertainty": 0.00381,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5160.0,
+   "value": 0.12407,
+   "uncertainty": 0.00481,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5170.0,
+   "value": 0.13392,
+   "uncertainty": 0.00537,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5180.0,
+   "value": 0.11431,
+   "uncertainty": 0.00504,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5190.0,
+   "value": 0.09843,
+   "uncertainty": 0.00538,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5200.0,
+   "value": 0.09006,
+   "uncertainty": 0.00777,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5200.0,
+   "value": 0.0888,
+   "uncertainty": 0.00783,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5210.0,
+   "value": 0.08522,
+   "uncertainty": 0.00977,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5220.0,
+   "value": 0.08191,
+   "uncertainty": 0.0111,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5230.0,
+   "value": 0.07984,
+   "uncertainty": 0.01033,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5240.0,
+   "value": 0.07787,
+   "uncertainty": 0.00824,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5250.0,
+   "value": 0.076,
+   "uncertainty": 0.00289,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5290.0,
+   "value": 0.07419,
+   "uncertainty": 0.00413,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5300.0,
+   "value": 0.07248,
+   "uncertainty": 0.00386,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5370.0,
+   "value": 0.07203,
+   "uncertainty": 0.00326,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5390.0,
+   "value": 0.07122,
+   "uncertainty": 0.00286,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5440.0,
+   "value": 0.06948,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5480.0,
+   "value": 0.06848,
+   "uncertainty": 0.00479,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5540.0,
+   "value": 0.06774,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5730.0,
+   "value": 0.06774,
+   "uncertainty": 0.00263,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5820.0,
+   "value": 0.06848,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 5930.0,
+   "value": 0.06847,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 6220.0,
+   "value": 0.07041,
+   "uncertainty": 0.00271,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 6490.0,
+   "value": 0.07152,
+   "uncertainty": 0.00275,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 6720.0,
+   "value": 0.07259,
+   "uncertainty": 0.00279,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 6980.0,
+   "value": 0.07316,
+   "uncertainty": 0.0028,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 7060.0,
+   "value": 0.07329,
+   "uncertainty": 0.00282,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 7200.0,
+   "value": 0.07345,
+   "uncertainty": 0.00281,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 7610.0,
+   "value": 0.07519,
+   "uncertainty": 0.00287,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 8250.0,
+   "value": 0.07664,
+   "uncertainty": 0.00291,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.47,
+   "P_kPa": 8910.0,
+   "value": 0.07874,
+   "uncertainty": 0.00298,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 3380.0,
+   "value": 0.02528,
+   "uncertainty": 0.00131,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 3960.0,
+   "value": 0.02767,
+   "uncertainty": 0.00138,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 4620.0,
+   "value": 0.03396,
+   "uncertainty": 0.00164,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 4970.0,
+   "value": 0.04334,
+   "uncertainty": 0.00201,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5050.0,
+   "value": 0.04855,
+   "uncertainty": 0.00218,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5090.0,
+   "value": 0.05262,
+   "uncertainty": 0.00248,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5110.0,
+   "value": 0.05631,
+   "uncertainty": 0.00292,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5120.0,
+   "value": 0.05987,
+   "uncertainty": 0.00304,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5150.0,
+   "value": 0.06832,
+   "uncertainty": 0.00401,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5190.0,
+   "value": 0.08914,
+   "uncertainty": 0.00413,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5200.0,
+   "value": 0.10049,
+   "uncertainty": 0.00423,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5210.0,
+   "value": 0.11002,
+   "uncertainty": 0.00441,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5220.0,
+   "value": 0.11615,
+   "uncertainty": 0.00453,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5230.0,
+   "value": 0.11191,
+   "uncertainty": 0.0042,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5240.0,
+   "value": 0.1008,
+   "uncertainty": 0.00379,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5260.0,
+   "value": 0.08675,
+   "uncertainty": 0.00326,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5270.0,
+   "value": 0.08189,
+   "uncertainty": 0.00309,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5290.0,
+   "value": 0.0783,
+   "uncertainty": 0.00311,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5300.0,
+   "value": 0.07641,
+   "uncertainty": 0.0031,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5340.0,
+   "value": 0.07293,
+   "uncertainty": 0.00369,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5400.0,
+   "value": 0.07163,
+   "uncertainty": 0.00282,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5500.0,
+   "value": 0.06977,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5590.0,
+   "value": 0.06886,
+   "uncertainty": 0.00266,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5740.0,
+   "value": 0.06796,
+   "uncertainty": 0.00263,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 5920.0,
+   "value": 0.06854,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 6140.0,
+   "value": 0.06972,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 6310.0,
+   "value": 0.0703,
+   "uncertainty": 0.00271,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 6530.0,
+   "value": 0.0709,
+   "uncertainty": 0.00273,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 6710.0,
+   "value": 0.07122,
+   "uncertainty": 0.00274,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 283.96,
+   "P_kPa": 7100.0,
+   "value": 0.07249,
+   "uncertainty": 0.00278,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 680.0,
+   "value": 0.02012,
+   "uncertainty": 0.00116,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 1170.0,
+   "value": 0.02064,
+   "uncertainty": 0.00118,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 2430.0,
+   "value": 0.02241,
+   "uncertainty": 0.00123,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 3520.0,
+   "value": 0.02591,
+   "uncertainty": 0.00133,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 4330.0,
+   "value": 0.03024,
+   "uncertainty": 0.00145,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 4740.0,
+   "value": 0.03518,
+   "uncertainty": 0.0016,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 4900.0,
+   "value": 0.03781,
+   "uncertainty": 0.00172,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5030.0,
+   "value": 0.04219,
+   "uncertainty": 0.00191,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5100.0,
+   "value": 0.04581,
+   "uncertainty": 0.00614,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5160.0,
+   "value": 0.05257,
+   "uncertainty": 0.00221,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5200.0,
+   "value": 0.05764,
+   "uncertainty": 0.00237,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5240.0,
+   "value": 0.0653,
+   "uncertainty": 0.00264,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5260.0,
+   "value": 0.06948,
+   "uncertainty": 0.00631,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5290.0,
+   "value": 0.08267,
+   "uncertainty": 0.01027,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5310.0,
+   "value": 0.09324,
+   "uncertainty": 0.00848,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5320.0,
+   "value": 0.09654,
+   "uncertainty": 0.00356,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5340.0,
+   "value": 0.09916,
+   "uncertainty": 0.01718,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5360.0,
+   "value": 0.08875,
+   "uncertainty": 0.02029,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5380.0,
+   "value": 0.08399,
+   "uncertainty": 0.01709,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5400.0,
+   "value": 0.07691,
+   "uncertainty": 0.00992,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5430.0,
+   "value": 0.07429,
+   "uncertainty": 0.01169,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5460.0,
+   "value": 0.07184,
+   "uncertainty": 0.00573,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5490.0,
+   "value": 0.06955,
+   "uncertainty": 0.00629,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5530.0,
+   "value": 0.06954,
+   "uncertainty": 0.00271,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5600.0,
+   "value": 0.06952,
+   "uncertainty": 0.0027,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5610.0,
+   "value": 0.06954,
+   "uncertainty": 0.00338,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5670.0,
+   "value": 0.06864,
+   "uncertainty": 0.00471,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5780.0,
+   "value": 0.06822,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 5890.0,
+   "value": 0.06866,
+   "uncertainty": 0.00266,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 6170.0,
+   "value": 0.06954,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 6530.0,
+   "value": 0.07045,
+   "uncertainty": 0.00272,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 7030.0,
+   "value": 0.07139,
+   "uncertainty": 0.00275,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 7500.0,
+   "value": 0.07332,
+   "uncertainty": 0.00281,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 8190.0,
+   "value": 0.07593,
+   "uncertainty": 0.00289,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 8580.0,
+   "value": 0.07756,
+   "uncertainty": 0.00294,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 8590.0,
+   "value": 0.07756,
+   "uncertainty": 0.00294,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 9070.0,
+   "value": 0.07866,
+   "uncertainty": 0.00298,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 9530.0,
+   "value": 0.07924,
+   "uncertainty": 0.003,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 9990.0,
+   "value": 0.08043,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 284.89,
+   "P_kPa": 10010.0,
+   "value": 0.08041,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5080.0,
+   "value": 0.04457,
+   "uncertainty": 0.00193,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5100.0,
+   "value": 0.04514,
+   "uncertainty": 0.00194,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5210.0,
+   "value": 0.05584,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5270.0,
+   "value": 0.06826,
+   "uncertainty": 0.00275,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5300.0,
+   "value": 0.07918,
+   "uncertainty": 0.00308,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5340.0,
+   "value": 0.09492,
+   "uncertainty": 0.00357,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5350.0,
+   "value": 0.09641,
+   "uncertainty": 0.00362,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5370.0,
+   "value": 0.09081,
+   "uncertainty": 0.00344,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5420.0,
+   "value": 0.07925,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5490.0,
+   "value": 0.07233,
+   "uncertainty": 0.0028,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 5640.0,
+   "value": 0.06952,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6040.0,
+   "value": 0.06871,
+   "uncertainty": 0.00266,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6040.0,
+   "value": 0.0687,
+   "uncertainty": 0.00266,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6050.0,
+   "value": 0.06846,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6140.0,
+   "value": 0.06843,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6150.0,
+   "value": 0.06861,
+   "uncertainty": 0.00266,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6160.0,
+   "value": 0.06936,
+   "uncertainty": 0.00268,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 6760.0,
+   "value": 0.07168,
+   "uncertainty": 0.00276,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 7250.0,
+   "value": 0.07341,
+   "uncertainty": 0.00281,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 8160.0,
+   "value": 0.07598,
+   "uncertainty": 0.00289,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9010.0,
+   "value": 0.07839,
+   "uncertainty": 0.00297,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9690.0,
+   "value": 0.0804,
+   "uncertainty": 0.00304,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9800.0,
+   "value": 0.08072,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9810.0,
+   "value": 0.08067,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9830.0,
+   "value": 0.0807,
+   "uncertainty": 0.00305,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9850.0,
+   "value": 0.08058,
+   "uncertainty": 0.00304,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9900.0,
+   "value": 0.08077,
+   "uncertainty": 0.00306,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9920.0,
+   "value": 0.08085,
+   "uncertainty": 0.00307,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9950.0,
+   "value": 0.08076,
+   "uncertainty": 0.00307,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 9950.0,
+   "value": 0.08065,
+   "uncertainty": 0.00306,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 10000.0,
+   "value": 0.08079,
+   "uncertainty": 0.00307,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 10180.0,
+   "value": 0.08121,
+   "uncertainty": 0.00306,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 10350.0,
+   "value": 0.08166,
+   "uncertainty": 0.00308,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 285.04,
+   "P_kPa": 10570.0,
+   "value": 0.08194,
+   "uncertainty": 0.00309,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 4580.0,
+   "value": 0.03085,
+   "uncertainty": 0.00147,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5100.0,
+   "value": 0.03767,
+   "uncertainty": 0.00168,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5360.0,
+   "value": 0.04634,
+   "uncertainty": 0.00202,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5510.0,
+   "value": 0.05465,
+   "uncertainty": 0.00223,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5570.0,
+   "value": 0.06007,
+   "uncertainty": 0.00239,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5630.0,
+   "value": 0.06943,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5680.0,
+   "value": 0.07371,
+   "uncertainty": 0.00283,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5790.0,
+   "value": 0.0746,
+   "uncertainty": 0.00285,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 5920.0,
+   "value": 0.06841,
+   "uncertainty": 0.00265,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 6000.0,
+   "value": 0.06651,
+   "uncertainty": 0.00259,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 6240.0,
+   "value": 0.06542,
+   "uncertainty": 0.00256,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 6570.0,
+   "value": 0.06758,
+   "uncertainty": 0.00262,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 288.24,
+   "P_kPa": 7140.0,
+   "value": 0.06951,
+   "uncertainty": 0.00269,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 5100.0,
+   "value": 0.03346,
+   "uncertainty": 0.00155,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 5370.0,
+   "value": 0.03618,
+   "uncertainty": 0.00164,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6200.0,
+   "value": 0.05841,
+   "uncertainty": 0.00233,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6290.0,
+   "value": 0.06125,
+   "uncertainty": 0.00242,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6530.0,
+   "value": 0.06505,
+   "uncertainty": 0.00254,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6690.0,
+   "value": 0.066,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6770.0,
+   "value": 0.06592,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6870.0,
+   "value": 0.06592,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 6950.0,
+   "value": 0.06591,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7030.0,
+   "value": 0.0659,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7130.0,
+   "value": 0.06589,
+   "uncertainty": 0.00257,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7360.0,
+   "value": 0.06665,
+   "uncertainty": 0.00259,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7490.0,
+   "value": 0.06627,
+   "uncertainty": 0.00258,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7670.0,
+   "value": 0.06623,
+   "uncertainty": 0.00258,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 7690.0,
+   "value": 0.06625,
+   "uncertainty": 0.00258,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 8210.0,
+   "value": 0.06804,
+   "uncertainty": 0.00264,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 8570.0,
+   "value": 0.06916,
+   "uncertainty": 0.00267,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 9220.0,
+   "value": 0.07111,
+   "uncertainty": 0.00274,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 9740.0,
+   "value": 0.07276,
+   "uncertainty": 0.00279,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 10280.0,
+   "value": 0.07482,
+   "uncertainty": 0.00286,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 294.62,
+   "P_kPa": 10840.0,
+   "value": 0.07574,
+   "uncertainty": 0.00289,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 1010.0,
+   "value": 0.02196,
+   "uncertainty": 0.00121,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 1900.0,
+   "value": 0.02294,
+   "uncertainty": 0.00124,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 2940.0,
+   "value": 0.02469,
+   "uncertainty": 0.00129,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 3920.0,
+   "value": 0.02736,
+   "uncertainty": 0.00137,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 5010.0,
+   "value": 0.03136,
+   "uncertainty": 0.00149,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 5560.0,
+   "value": 0.0359,
+   "uncertainty": 0.00162,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 5610.0,
+   "value": 0.03586,
+   "uncertainty": 0.00162,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 6120.0,
+   "value": 0.0417,
+   "uncertainty": 0.00181,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 6120.0,
+   "value": 0.04209,
+   "uncertainty": 0.00183,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 6550.0,
+   "value": 0.0488,
+   "uncertainty": 0.00204,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 6780.0,
+   "value": 0.05244,
+   "uncertainty": 0.00215,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 6930.0,
+   "value": 0.05667,
+   "uncertainty": 0.00228,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7100.0,
+   "value": 0.05988,
+   "uncertainty": 0.00238,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7230.0,
+   "value": 0.06174,
+   "uncertainty": 0.00244,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7400.0,
+   "value": 0.06342,
+   "uncertainty": 0.00249,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7430.0,
+   "value": 0.06371,
+   "uncertainty": 0.0025,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7440.0,
+   "value": 0.06376,
+   "uncertainty": 0.0025,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7460.0,
+   "value": 0.06392,
+   "uncertainty": 0.0025,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7480.0,
+   "value": 0.06395,
+   "uncertainty": 0.00251,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7570.0,
+   "value": 0.06425,
+   "uncertainty": 0.00252,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7570.0,
+   "value": 0.06425,
+   "uncertainty": 0.00252,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7680.0,
+   "value": 0.06462,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7720.0,
+   "value": 0.06482,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7760.0,
+   "value": 0.06461,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7800.0,
+   "value": 0.06479,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7820.0,
+   "value": 0.06483,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 7980.0,
+   "value": 0.06482,
+   "uncertainty": 0.00253,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 8360.0,
+   "value": 0.0649,
+   "uncertainty": 0.00254,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 9100.0,
+   "value": 0.0668,
+   "uncertainty": 0.0026,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 10390.0,
+   "value": 0.0716,
+   "uncertainty": 0.00275,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 12800.0,
+   "value": 0.07701,
+   "uncertainty": 0.00293,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 14950.0,
+   "value": 0.08151,
+   "uncertainty": 0.00307,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 18120.0,
+   "value": 0.08743,
+   "uncertainty": 0.00326,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 20700.0,
+   "value": 0.09068,
+   "uncertainty": 0.00337,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 20800.0,
+   "value": 0.09075,
+   "uncertainty": 0.00337,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 25600.0,
+   "value": 0.09706,
+   "uncertainty": 0.00358,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 31800.0,
+   "value": 0.10393,
+   "uncertainty": 0.0038,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 40300.0,
+   "value": 0.11378,
+   "uncertainty": 0.00413,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 45200.0,
+   "value": 0.11847,
+   "uncertainty": 0.00428,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 50400.0,
+   "value": 0.12361,
+   "uncertainty": 0.00445,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 50400.0,
+   "value": 0.12361,
+   "uncertainty": 0.00445,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 55500.0,
+   "value": 0.12834,
+   "uncertainty": 0.0046,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 59300.0,
+   "value": 0.132,
+   "uncertainty": 0.00472,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 61000.0,
+   "value": 0.13366,
+   "uncertainty": 0.00478,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 61000.0,
+   "value": 0.13364,
+   "uncertainty": 0.00478,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 61000.0,
+   "value": 0.13356,
+   "uncertainty": 0.00477,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 62000.0,
+   "value": 0.13421,
+   "uncertainty": 0.0048,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 65000.0,
+   "value": 0.13664,
+   "uncertainty": 0.00488,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 65300.0,
+   "value": 0.13724,
+   "uncertainty": 0.0049,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 65700.0,
+   "value": 0.13778,
+   "uncertainty": 0.00491,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 66000.0,
+   "value": 0.13776,
+   "uncertainty": 0.00491,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 301.6,
+   "P_kPa": 70000.0,
+   "value": 0.14142,
+   "uncertainty": 0.00503,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 500.0,
+   "value": 0.03821,
+   "uncertainty": 0.00169,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 1000.0,
+   "value": 0.03832,
+   "uncertainty": 0.0017,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 2500.0,
+   "value": 0.03937,
+   "uncertainty": 0.00173,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 5000.0,
+   "value": 0.04226,
+   "uncertainty": 0.00182,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 7300.0,
+   "value": 0.04435,
+   "uncertainty": 0.00188,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 10000.0,
+   "value": 0.04845,
+   "uncertainty": 0.00201,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 12200.0,
+   "value": 0.0528,
+   "uncertainty": 0.00215,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 14600.0,
+   "value": 0.05769,
+   "uncertainty": 0.00231,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 14600.0,
+   "value": 0.05771,
+   "uncertainty": 0.00231,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 14800.0,
+   "value": 0.05814,
+   "uncertainty": 0.00232,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 20000.0,
+   "value": 0.06783,
+   "uncertainty": 0.00263,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 24900.0,
+   "value": 0.07364,
+   "uncertainty": 0.00282,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 30000.0,
+   "value": 0.07726,
+   "uncertainty": 0.00293,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 40600.0,
+   "value": 0.08392,
+   "uncertainty": 0.00315,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 50500.0,
+   "value": 0.0908,
+   "uncertainty": 0.00337,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 60700.0,
+   "value": 0.09875,
+   "uncertainty": 0.00363,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 70300.0,
+   "value": 0.10515,
+   "uncertainty": 0.00384,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 71800.0,
+   "value": 0.10681,
+   "uncertainty": 0.0039,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 73700.0,
+   "value": 0.10896,
+   "uncertainty": 0.00397,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 75000.0,
+   "value": 0.10984,
+   "uncertainty": 0.004,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 79000.0,
+   "value": 0.11192,
+   "uncertainty": 0.00406,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 81900.0,
+   "value": 0.11442,
+   "uncertainty": 0.00415,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 89500.0,
+   "value": 0.11837,
+   "uncertainty": 0.00428,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 93500.0,
+   "value": 0.12144,
+   "uncertainty": 0.00438,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 97000.0,
+   "value": 0.12317,
+   "uncertainty": 0.00443,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Fluid (supercritical or subcritical phases)"
+   ],
+   "T_K": 425.46,
+   "P_kPa": 100000.0,
+   "value": 0.12506,
+   "uncertainty": 0.0045,
+   "doi": "10.1016/j.fluid.2017.11.013",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 233.73,
+   "P_kPa": null,
+   "value": 1476.0,
+   "uncertainty": 5.0,
+   "doi": "10.1021/je300599p",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.08,
+   "P_kPa": null,
+   "value": 1932.3,
+   "uncertainty": 6.4,
+   "doi": "10.1021/je300599p",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 253.22,
+   "P_kPa": null,
+   "value": 2534.8,
+   "uncertainty": 8.3,
+   "doi": "10.1021/je300599p",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.22,
+   "P_kPa": null,
+   "value": 3247.5,
+   "uncertainty": 10.6,
+   "doi": "10.1021/je300599p",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.18,
+   "P_kPa": null,
+   "value": 4102.0,
+   "uncertainty": 13.2,
+   "doi": "10.1021/je300599p",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 233.73,
+   "P_kPa": null,
+   "value": 1476.0,
+   "uncertainty": 5.0,
+   "doi": "10.1021/je300599p",
+   "set": 2,
+   "binary_with": "carbon monoxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 243.08,
+   "P_kPa": null,
+   "value": 1932.3,
+   "uncertainty": 6.4,
+   "doi": "10.1021/je300599p",
+   "set": 2,
+   "binary_with": "carbon monoxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 253.22,
+   "P_kPa": null,
+   "value": 2534.8,
+   "uncertainty": 8.3,
+   "doi": "10.1021/je300599p",
+   "set": 2,
+   "binary_with": "carbon monoxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.22,
+   "P_kPa": null,
+   "value": 3247.5,
+   "uncertainty": 10.6,
+   "doi": "10.1021/je300599p",
+   "set": 2,
+   "binary_with": "carbon monoxide"
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.18,
+   "P_kPa": null,
+   "value": 4102.0,
+   "uncertainty": 13.2,
+   "doi": "10.1021/je300599p",
+   "set": 2,
+   "binary_with": "carbon monoxide"
+  },
+  {
+   "property": "Critical pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 5020.0,
+   "uncertainty": 100.0,
+   "doi": "10.1021/je9009199",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Critical temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 282.3,
+   "uncertainty": 0.2,
+   "doi": "10.1021/je9009199",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Critical pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 5020.0,
+   "uncertainty": 100.0,
+   "doi": "10.1021/je9009199",
+   "set": 7,
+   "binary_with": "hydrogen"
+  },
+  {
+   "property": "Critical temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 282.3,
+   "uncertainty": 0.3,
+   "doi": "10.1021/je9009199",
+   "set": 8,
+   "binary_with": "hydrogen"
+  }
+ ]
+}

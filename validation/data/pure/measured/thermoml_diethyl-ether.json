@@ -1,0 +1,6929 @@
+{
+ "component": "diethyl-ether",
+ "cas": "60-29-7",
+ "archive": "NIST TRC ThermoML Archive, https://trc.nist.gov/ThermoML/",
+ "retrieved": "2026-10-07",
+ "searched": "ThermoML-API full-text search for \"ethoxyethane\", \"diethyl ether\"; 155 records opened",
+ "about": "Values as stored in the archive records (property units as named); 'uncertainty' is the expanded (or combined) uncertainty stated there; 'binary_with' marks the pure end point of a binary set.",
+ "articles": {
+  "10.1007/s10765-011-0948-4": {
+   "authors": [
+    "Polikhronidi, N. G.",
+    "Abdulagatov, I. M.",
+    "Batyrova, R. G.",
+    "Stepanov, G. V.",
+    "Ustuzhanin, E. E.",
+    "Wu, J. T."
+   ],
+   "title": "Experimental Study of the Thermodynamic Properties of Diethyl Ether (DEE) at Saturation",
+   "journal": "Int. J. Thermophys.",
+   "volume": "32",
+   "year": "2011",
+   "pages": "559-595"
+  },
+  "10.1016/j.fluid.2008.03.015": {
+   "authors": [
+    "Amireche-Ziar, F.[Faouzia]",
+    "Boukais-Belaribi, G.[Ghenima]"
+   ],
+   "title": "Isothermal vapour liquid equilibria of binary systems of 1,2-dichloroethane with ethers",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "268",
+   "year": "2008",
+   "pages": "39-44"
+  },
+  "10.1016/j.fluid.2008.06.014": {
+   "authors": [
+    "Meng, X.[Xianyang]",
+    "Zheng, P.[Pinqjun]",
+    "Wu, J.[Jiangtao]",
+    "Liu, Z.[Zhigang]"
+   ],
+   "title": "Density and viscosity measurements of diethyl ether from 243 to 373K and up to 20MPa",
+   "journal": "Fluid Phase Equilib.",
+   "volume": "271",
+   "year": "2008",
+   "pages": "1-5"
+  },
+  "10.1016/j.jct.2005.01.002": {
+   "authors": [
+    "Venkatesu, P.",
+    "Lee, M. J.",
+    "Lin, H. M.[Ho-Mu]"
+   ],
+   "title": "Volumetric properties of (N,N-dimethylformamide + aliphatic diethers) at Temperatures ranging from (298.15 to 358.15) K",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "37",
+   "year": "2005",
+   "pages": "996-1002"
+  },
+  "10.1016/j.jct.2012.04.005": {
+   "authors": [
+    "Polikhronidi, N. G.",
+    "Batyrova, R. G.",
+    "Abdulagatov, I. M.",
+    "Stepanov, G. V.",
+    "Wu, J. T."
+   ],
+   "title": "PvT and thermal-pressure coefficient measurements of diethyl ether (DEE) in the critical and supercritical regions",
+   "journal": "J. Chem. Thermodyn.",
+   "volume": "53",
+   "year": "2012",
+   "pages": "67-81"
+  },
+  "10.1021/acs.jced.9b00249": {
+   "authors": [
+    "Menossi, M.[Matias]",
+    "Hegel, P. E.[Pablo E.]",
+    "Milanesio, J. M.[Juan M.]",
+    "Camy, S.[Severine]",
+    "Zabaloy, M. S.[Marcelo S.]"
+   ],
+   "title": "Experimental High-Pressure Isochoric/Isoplethic Equilibrium for the Systems Propane + n-Pentane and Propane + Diethyl Ether",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "64",
+   "year": "2019",
+   "pages": "3848-3860"
+  },
+  "10.1021/je100341q": {
+   "authors": [
+    "Guo, X.-Z.[Xiu-Zhi]",
+    "Wang, L. -S.[Li-Sheng]"
+   ],
+   "title": "Solubilities of Phosphorus-Containing Compounds in Selected Solvents",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "55",
+   "year": "2010",
+   "pages": "4709-4720"
+  },
+  "10.1021/je100594u": {
+   "authors": [
+    "Sah, R. S.[Radhey Shyam]",
+    "Sinha, B.[Biswajit]",
+    "Roy, M. N.[Mahendra Nath]"
+   ],
+   "title": "Study of the Solution Properties of Ternary Mixtures of 1,3-Dioxolane (1), Diethyl Ether (2), and n-Amyl Alcohol (3) and the Corresponding Binary Mixtures by Density, Viscosity, Refractivity, and Ultrasonic Speed Measurements at 298.15 K",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "55",
+   "year": "2010",
+   "pages": "4536-4540"
+  },
+  "10.1021/je900615b": {
+   "authors": [
+    "Li, X.[Xiaojing]",
+    "Wu, J.[Jiangtao]",
+    "Dang, Q.[Qi]"
+   ],
+   "title": "Thermal Conductivity of Liquid Diethyl Ether, Diisopropyl Ether, and Di-n-butyl Ether from (233 to 373) K at Pressures up to 30 MPa",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "55",
+   "year": "2010",
+   "pages": "1241-1246"
+  },
+  "10.1021/je900665a": {
+   "authors": [
+    "Bi, S.[Shengshan]",
+    "Zhao, G.[Guanjia]",
+    "Wu, J.[Jiangtao]"
+   ],
+   "title": "Surface Tension of Diethyl Ether, Diisopropyl Ether, and Dibutyl Ether",
+   "journal": "J. Chem. Eng. Data",
+   "volume": "55",
+   "year": "2010",
+   "pages": "1523-1526"
+  }
+ },
+ "rows": [
+  {
+   "property": "Critical pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 3605.0,
+   "uncertainty": 57.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Critical temperature, K",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": null,
+   "P_kPa": null,
+   "value": 466.845,
+   "uncertainty": 0.201,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 416.096,
+   "P_kPa": null,
+   "value": 1599.0,
+   "uncertainty": 48.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 425.19,
+   "P_kPa": null,
+   "value": 1906.0,
+   "uncertainty": 57.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 437.138,
+   "P_kPa": null,
+   "value": 2280.0,
+   "uncertainty": 68.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.603,
+   "P_kPa": null,
+   "value": 2931.0,
+   "uncertainty": 88.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.766,
+   "P_kPa": null,
+   "value": 2933.0,
+   "uncertainty": 88.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 459.608,
+   "P_kPa": null,
+   "value": 3315.0,
+   "uncertainty": 99.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 464.785,
+   "P_kPa": null,
+   "value": 3580.0,
+   "uncertainty": 107.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.474,
+   "P_kPa": null,
+   "value": 3612.0,
+   "uncertainty": 108.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.755,
+   "P_kPa": null,
+   "value": 3601.0,
+   "uncertainty": 108.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.795,
+   "P_kPa": null,
+   "value": 3583.0,
+   "uncertainty": 108.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.805,
+   "P_kPa": null,
+   "value": 3608.0,
+   "uncertainty": 108.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.805,
+   "P_kPa": null,
+   "value": 3576.0,
+   "uncertainty": 107.0,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 416.096,
+   "P_kPa": null,
+   "value": 534.6,
+   "uncertainty": 0.3,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 425.19,
+   "P_kPa": null,
+   "value": 517.3,
+   "uncertainty": 0.3,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 437.138,
+   "P_kPa": null,
+   "value": 485.2,
+   "uncertainty": 0.3,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.603,
+   "P_kPa": null,
+   "value": 441.5,
+   "uncertainty": 0.2,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.766,
+   "P_kPa": null,
+   "value": 440.8,
+   "uncertainty": 0.2,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 459.608,
+   "P_kPa": null,
+   "value": 394.8,
+   "uncertainty": 0.2,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 464.785,
+   "P_kPa": null,
+   "value": 348.2,
+   "uncertainty": 0.3,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.474,
+   "P_kPa": null,
+   "value": 310.8,
+   "uncertainty": 0.8,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.755,
+   "P_kPa": null,
+   "value": 296.7,
+   "uncertainty": 0.8,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.795,
+   "P_kPa": null,
+   "value": 288.3,
+   "uncertainty": 1.1,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.805,
+   "P_kPa": null,
+   "value": 278.7,
+   "uncertainty": 1.5,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.805,
+   "P_kPa": null,
+   "value": 275.7,
+   "uncertainty": 1.6,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 9,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 466.122,
+   "P_kPa": null,
+   "value": 212.6,
+   "uncertainty": 0.6,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 466.659,
+   "P_kPa": null,
+   "value": 233.7,
+   "uncertainty": 0.8,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 466.825,
+   "P_kPa": null,
+   "value": 255.0,
+   "uncertainty": 1.9,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 466.835,
+   "P_kPa": null,
+   "value": 260.7,
+   "uncertainty": 2.3,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas",
+    "Liquid"
+   ],
+   "T_K": 466.845,
+   "P_kPa": null,
+   "value": 261.2,
+   "uncertainty": 2.2,
+   "doi": "10.1007/s10765-011-0948-4",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 255.47,
+   "P_kPa": null,
+   "value": 10.11,
+   "uncertainty": 0.1,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 255.48,
+   "P_kPa": null,
+   "value": 10.13,
+   "uncertainty": 0.1,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 255.5,
+   "P_kPa": null,
+   "value": 10.14,
+   "uncertainty": 0.1,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 265.44,
+   "P_kPa": null,
+   "value": 17.06,
+   "uncertainty": 0.17,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 265.44,
+   "P_kPa": null,
+   "value": 17.06,
+   "uncertainty": 0.17,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 265.45,
+   "P_kPa": null,
+   "value": 17.07,
+   "uncertainty": 0.17,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 274.86,
+   "P_kPa": null,
+   "value": 26.9,
+   "uncertainty": 0.27,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 274.87,
+   "P_kPa": null,
+   "value": 26.91,
+   "uncertainty": 0.27,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 284.83,
+   "P_kPa": null,
+   "value": 41.98,
+   "uncertainty": 0.43,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 284.84,
+   "P_kPa": null,
+   "value": 42.0,
+   "uncertainty": 0.43,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 294.77,
+   "P_kPa": null,
+   "value": 62.89,
+   "uncertainty": 0.64,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 294.78,
+   "P_kPa": null,
+   "value": 62.93,
+   "uncertainty": 0.64,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 304.75,
+   "P_kPa": null,
+   "value": 91.58,
+   "uncertainty": 0.93,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 304.75,
+   "P_kPa": null,
+   "value": 91.56,
+   "uncertainty": 0.93,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 304.76,
+   "P_kPa": null,
+   "value": 91.6,
+   "uncertainty": 0.93,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 314.74,
+   "P_kPa": null,
+   "value": 129.3,
+   "uncertainty": 1.31,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 314.74,
+   "P_kPa": null,
+   "value": 129.45,
+   "uncertainty": 1.31,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 314.75,
+   "P_kPa": null,
+   "value": 129.42,
+   "uncertainty": 1.31,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 324.89,
+   "P_kPa": null,
+   "value": 179.51,
+   "uncertainty": 1.82,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 324.89,
+   "P_kPa": null,
+   "value": 179.65,
+   "uncertainty": 1.82,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 324.89,
+   "P_kPa": null,
+   "value": 179.77,
+   "uncertainty": 1.82,
+   "doi": "10.1016/j.fluid.2008.03.015",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 100.0,
+   "value": 0.000412,
+   "uncertainty": 1.7e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 4360.0,
+   "value": 0.000427,
+   "uncertainty": 1.7e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 9400.0,
+   "value": 0.000445,
+   "uncertainty": 1.8e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 14450.0,
+   "value": 0.000463,
+   "uncertainty": 1.9e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 19460.0,
+   "value": 0.000481,
+   "uncertainty": 1.9e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 100.0,
+   "value": 0.000363,
+   "uncertainty": 1.5e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 4440.0,
+   "value": 0.000377,
+   "uncertainty": 1.5e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 9400.0,
+   "value": 0.000392,
+   "uncertainty": 1.6e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 14460.0,
+   "value": 0.000408,
+   "uncertainty": 1.6e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 19510.0,
+   "value": 0.000424,
+   "uncertainty": 1.7e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 100.0,
+   "value": 0.000323,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 4390.0,
+   "value": 0.000335,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 9440.0,
+   "value": 0.00035,
+   "uncertainty": 1.4e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 14430.0,
+   "value": 0.000364,
+   "uncertainty": 1.5e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 19430.0,
+   "value": 0.000378,
+   "uncertainty": 1.5e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 100.0,
+   "value": 0.000288,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 4380.0,
+   "value": 0.0003,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 9430.0,
+   "value": 0.000313,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 14470.0,
+   "value": 0.000326,
+   "uncertainty": 1.3e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 19480.0,
+   "value": 0.000339,
+   "uncertainty": 1.4e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 100.0,
+   "value": 0.00026,
+   "uncertainty": 1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 4390.0,
+   "value": 0.00027,
+   "uncertainty": 1.1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 9420.0,
+   "value": 0.000283,
+   "uncertainty": 1.1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 14500.0,
+   "value": 0.000294,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 19540.0,
+   "value": 0.000307,
+   "uncertainty": 1.2e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 100.0,
+   "value": 0.000235,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 4380.0,
+   "value": 0.000245,
+   "uncertainty": 1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 9420.0,
+   "value": 0.000256,
+   "uncertainty": 1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 14480.0,
+   "value": 0.000268,
+   "uncertainty": 1.1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 19490.0,
+   "value": 0.00028,
+   "uncertainty": 1.1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 220.0,
+   "value": 0.000214,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 4380.0,
+   "value": 0.000223,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 9420.0,
+   "value": 0.000234,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 14500.0,
+   "value": 0.000245,
+   "uncertainty": 1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 19560.0,
+   "value": 0.000256,
+   "uncertainty": 1e-05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 410.0,
+   "value": 0.000195,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 4360.0,
+   "value": 0.000203,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 9430.0,
+   "value": 0.000214,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 14520.0,
+   "value": 0.000225,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 19610.0,
+   "value": 0.000235,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 350.0,
+   "value": 0.000179,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 4380.0,
+   "value": 0.000187,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 9430.0,
+   "value": 0.000197,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 14490.0,
+   "value": 0.000209,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 19510.0,
+   "value": 0.000217,
+   "uncertainty": 9e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 410.0,
+   "value": 0.000163,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 4390.0,
+   "value": 0.000172,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 9430.0,
+   "value": 0.000182,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 14470.0,
+   "value": 0.000192,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 19470.0,
+   "value": 0.000201,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 340.0,
+   "value": 0.00015,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 4390.0,
+   "value": 0.000158,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 9420.0,
+   "value": 0.000167,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 14460.0,
+   "value": 0.000178,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 19470.0,
+   "value": 0.000187,
+   "uncertainty": 8e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 410.0,
+   "value": 0.000137,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 4380.0,
+   "value": 0.000146,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 9410.0,
+   "value": 0.000155,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 14440.0,
+   "value": 0.000165,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 19400.0,
+   "value": 0.000174,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 510.0,
+   "value": 0.000126,
+   "uncertainty": 5e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 4380.0,
+   "value": 0.000134,
+   "uncertainty": 5e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 9390.0,
+   "value": 0.000144,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 14400.0,
+   "value": 0.000153,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 19350.0,
+   "value": 0.000162,
+   "uncertainty": 7e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 650.0,
+   "value": 0.000116,
+   "uncertainty": 5e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 4380.0,
+   "value": 0.000124,
+   "uncertainty": 5e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 9380.0,
+   "value": 0.000134,
+   "uncertainty": 5e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 14400.0,
+   "value": 0.000143,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 19460.0,
+   "value": 0.000151,
+   "uncertainty": 6e-06,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 100.0,
+   "value": 768.339,
+   "uncertainty": 3.078,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 4360.0,
+   "value": 771.759,
+   "uncertainty": 3.091,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 9400.0,
+   "value": 775.801,
+   "uncertainty": 3.107,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 14450.0,
+   "value": 779.603,
+   "uncertainty": 3.122,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 243.15,
+   "P_kPa": 19460.0,
+   "value": 783.16,
+   "uncertainty": 3.136,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 100.0,
+   "value": 758.413,
+   "uncertainty": 3.04,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 4440.0,
+   "value": 762.367,
+   "uncertainty": 3.055,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 9400.0,
+   "value": 766.683,
+   "uncertainty": 3.071,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 14460.0,
+   "value": 770.762,
+   "uncertainty": 3.087,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 253.15,
+   "P_kPa": 19510.0,
+   "value": 774.696,
+   "uncertainty": 3.102,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 100.0,
+   "value": 747.885,
+   "uncertainty": 2.999,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 4390.0,
+   "value": 752.036,
+   "uncertainty": 3.014,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 9440.0,
+   "value": 756.778,
+   "uncertainty": 3.033,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 14430.0,
+   "value": 761.197,
+   "uncertainty": 3.05,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 263.15,
+   "P_kPa": 19430.0,
+   "value": 765.357,
+   "uncertainty": 3.066,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 100.0,
+   "value": 736.593,
+   "uncertainty": 2.954,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 4380.0,
+   "value": 741.075,
+   "uncertainty": 2.972,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 9430.0,
+   "value": 746.224,
+   "uncertainty": 2.991,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 14470.0,
+   "value": 750.968,
+   "uncertainty": 3.01,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 273.15,
+   "P_kPa": 19480.0,
+   "value": 755.407,
+   "uncertainty": 3.027,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 100.0,
+   "value": 725.632,
+   "uncertainty": 2.912,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 4390.0,
+   "value": 730.65,
+   "uncertainty": 2.931,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 9420.0,
+   "value": 735.997,
+   "uncertainty": 2.952,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 14500.0,
+   "value": 741.302,
+   "uncertainty": 2.972,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 283.15,
+   "P_kPa": 19540.0,
+   "value": 746.114,
+   "uncertainty": 2.99,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 100.0,
+   "value": 714.517,
+   "uncertainty": 2.87,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 4380.0,
+   "value": 719.86,
+   "uncertainty": 2.89,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 9420.0,
+   "value": 725.825,
+   "uncertainty": 2.912,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 14480.0,
+   "value": 731.278,
+   "uncertainty": 2.933,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 19490.0,
+   "value": 736.437,
+   "uncertainty": 2.953,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 220.0,
+   "value": 702.89,
+   "uncertainty": 2.826,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 4380.0,
+   "value": 708.706,
+   "uncertainty": 2.848,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 9420.0,
+   "value": 715.312,
+   "uncertainty": 2.872,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 14500.0,
+   "value": 721.122,
+   "uncertainty": 2.893,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 303.15,
+   "P_kPa": 19560.0,
+   "value": 726.788,
+   "uncertainty": 2.916,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 410.0,
+   "value": 691.21,
+   "uncertainty": 2.783,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 4360.0,
+   "value": 697.329,
+   "uncertainty": 2.805,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 9430.0,
+   "value": 704.446,
+   "uncertainty": 2.831,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 14520.0,
+   "value": 710.954,
+   "uncertainty": 2.855,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 313.15,
+   "P_kPa": 19610.0,
+   "value": 717.082,
+   "uncertainty": 2.878,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 350.0,
+   "value": 678.758,
+   "uncertainty": 2.737,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 4380.0,
+   "value": 685.74,
+   "uncertainty": 2.762,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 9430.0,
+   "value": 693.587,
+   "uncertainty": 2.789,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 14490.0,
+   "value": 700.362,
+   "uncertainty": 2.814,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 323.15,
+   "P_kPa": 19510.0,
+   "value": 707.014,
+   "uncertainty": 2.841,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 410.0,
+   "value": 666.408,
+   "uncertainty": 2.694,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 4390.0,
+   "value": 673.959,
+   "uncertainty": 2.719,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 9430.0,
+   "value": 682.531,
+   "uncertainty": 2.749,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 14470.0,
+   "value": 690.138,
+   "uncertainty": 2.776,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 333.15,
+   "P_kPa": 19470.0,
+   "value": 697.082,
+   "uncertainty": 2.802,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 340.0,
+   "value": 653.148,
+   "uncertainty": 2.649,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 4390.0,
+   "value": 661.825,
+   "uncertainty": 2.677,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 9420.0,
+   "value": 671.37,
+   "uncertainty": 2.709,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 14460.0,
+   "value": 679.704,
+   "uncertainty": 2.737,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 343.15,
+   "P_kPa": 19470.0,
+   "value": 687.162,
+   "uncertainty": 2.764,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 410.0,
+   "value": 639.678,
+   "uncertainty": 2.605,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 4380.0,
+   "value": 649.165,
+   "uncertainty": 2.634,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 9410.0,
+   "value": 659.723,
+   "uncertainty": 2.668,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 14440.0,
+   "value": 668.759,
+   "uncertainty": 2.697,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 353.15,
+   "P_kPa": 19400.0,
+   "value": 676.864,
+   "uncertainty": 2.727,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 510.0,
+   "value": 625.615,
+   "uncertainty": 2.565,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 4380.0,
+   "value": 636.228,
+   "uncertainty": 2.593,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 9390.0,
+   "value": 647.821,
+   "uncertainty": 2.627,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 14400.0,
+   "value": 657.773,
+   "uncertainty": 2.658,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 363.15,
+   "P_kPa": 19350.0,
+   "value": 666.459,
+   "uncertainty": 2.689,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 650.0,
+   "value": 610.791,
+   "uncertainty": 2.523,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 4380.0,
+   "value": 622.533,
+   "uncertainty": 2.553,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 9380.0,
+   "value": 635.564,
+   "uncertainty": 2.587,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 14400.0,
+   "value": 646.594,
+   "uncertainty": 2.619,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 373.15,
+   "P_kPa": 19460.0,
+   "value": 656.28,
+   "uncertainty": 2.653,
+   "doi": "10.1016/j.fluid.2008.06.014",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.325,
+   "value": 707.79,
+   "uncertainty": 0.68,
+   "doi": "10.1016/j.jct.2005.01.002",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 416.096,
+   "P_kPa": null,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 425.19,
+   "P_kPa": null,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 437.138,
+   "P_kPa": null,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.603,
+   "P_kPa": null,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 450.766,
+   "P_kPa": null,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 459.608,
+   "P_kPa": null,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 464.785,
+   "P_kPa": null,
+   "value": 348.2,
+   "uncertainty": 1.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.122,
+   "P_kPa": null,
+   "value": 212.6,
+   "uncertainty": 1.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.474,
+   "P_kPa": null,
+   "value": 310.8,
+   "uncertainty": 2.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.659,
+   "P_kPa": null,
+   "value": 233.7,
+   "uncertainty": 4.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.755,
+   "P_kPa": null,
+   "value": 296.7,
+   "uncertainty": 6.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.795,
+   "P_kPa": null,
+   "value": 288.3,
+   "uncertainty": 16.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.814,
+   "P_kPa": null,
+   "value": 278.7,
+   "uncertainty": 11.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.821,
+   "P_kPa": null,
+   "value": 275.7,
+   "uncertainty": 10.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.826,
+   "P_kPa": null,
+   "value": 255.0,
+   "uncertainty": 5.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.835,
+   "P_kPa": null,
+   "value": 260.7,
+   "uncertainty": 6.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 466.845,
+   "P_kPa": null,
+   "value": 261.2,
+   "uncertainty": 5.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 416.298,
+   "P_kPa": 1625.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 416.832,
+   "P_kPa": 1747.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 416.933,
+   "P_kPa": 1693.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 417.259,
+   "P_kPa": 1783.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 418.112,
+   "P_kPa": 2014.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 420.912,
+   "P_kPa": 2770.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 421.091,
+   "P_kPa": 2823.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 422.046,
+   "P_kPa": 3084.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 425.266,
+   "P_kPa": 1926.0,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 425.695,
+   "P_kPa": 4074.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 425.748,
+   "P_kPa": 2146.0,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 425.834,
+   "P_kPa": 2193.0,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 425.959,
+   "P_kPa": 4149.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 426.064,
+   "P_kPa": 2271.0,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 426.778,
+   "P_kPa": 2602.0,
+   "value": 517.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 427.434,
+   "P_kPa": 4552.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 432.776,
+   "P_kPa": 5984.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 432.994,
+   "P_kPa": 6050.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 433.934,
+   "P_kPa": 6306.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 437.476,
+   "P_kPa": 2381.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 437.611,
+   "P_kPa": 2392.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 437.684,
+   "P_kPa": 2382.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 437.788,
+   "P_kPa": 2430.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 438.722,
+   "P_kPa": 2616.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 438.851,
+   "P_kPa": 7649.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 439.137,
+   "P_kPa": 7729.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 439.967,
+   "P_kPa": 7955.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 445.619,
+   "P_kPa": 3997.0,
+   "value": 485.2,
+   "uncertainty": 1.2,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 445.852,
+   "P_kPa": 4046.0,
+   "value": 485.2,
+   "uncertainty": 2.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 446.571,
+   "P_kPa": 4191.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 448.807,
+   "P_kPa": 10345.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 449.035,
+   "P_kPa": 10408.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 449.957,
+   "P_kPa": 10662.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 450.966,
+   "P_kPa": 2954.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 450.98,
+   "P_kPa": 2969.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 451.082,
+   "P_kPa": 2998.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 451.174,
+   "P_kPa": 3017.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 451.491,
+   "P_kPa": 3039.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 451.695,
+   "P_kPa": 3088.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 452.308,
+   "P_kPa": 3185.0,
+   "value": 440.8,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 452.818,
+   "P_kPa": 3254.0,
+   "value": 441.5,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 459.552,
+   "P_kPa": 6842.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 459.829,
+   "P_kPa": 6900.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.032,
+   "P_kPa": 3345.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.234,
+   "P_kPa": 3396.0,
+   "value": 394.8,
+   "uncertainty": 1.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.355,
+   "P_kPa": 3392.0,
+   "value": 394.8,
+   "uncertainty": 1.2,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.497,
+   "P_kPa": 13585.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.638,
+   "P_kPa": 7064.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 460.638,
+   "P_kPa": 13628.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 461.447,
+   "P_kPa": 3512.0,
+   "value": 394.8,
+   "uncertainty": 0.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 461.548,
+   "P_kPa": 13877.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 461.584,
+   "P_kPa": 4562.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 461.851,
+   "P_kPa": 4602.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 461.976,
+   "P_kPa": 4645.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 462.658,
+   "P_kPa": 4726.0,
+   "value": 441.5,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 463.062,
+   "P_kPa": 4812.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 465.087,
+   "P_kPa": 3597.0,
+   "value": 348.2,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 465.579,
+   "P_kPa": 3635.0,
+   "value": 348.2,
+   "uncertainty": 1.2,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 465.679,
+   "P_kPa": 3649.0,
+   "value": 348.2,
+   "uncertainty": 1.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 465.84,
+   "P_kPa": 3662.0,
+   "value": 348.2,
+   "uncertainty": 1.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 466.764,
+   "P_kPa": 3609.0,
+   "value": 296.7,
+   "uncertainty": 2.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 466.865,
+   "P_kPa": 3577.0,
+   "value": 275.7,
+   "uncertainty": 2.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 466.875,
+   "P_kPa": 3561.0,
+   "value": 261.2,
+   "uncertainty": 2.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 466.883,
+   "P_kPa": 3641.0,
+   "value": 310.8,
+   "uncertainty": 2.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.086,
+   "P_kPa": 3625.0,
+   "value": 278.8,
+   "uncertainty": 2.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.086,
+   "P_kPa": 3678.0,
+   "value": 310.8,
+   "uncertainty": 3.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.286,
+   "P_kPa": 3582.0,
+   "value": 261.2,
+   "uncertainty": 2.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.286,
+   "P_kPa": 3602.0,
+   "value": 275.7,
+   "uncertainty": 2.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.487,
+   "P_kPa": 3648.0,
+   "value": 296.7,
+   "uncertainty": 2.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.501,
+   "P_kPa": 3591.0,
+   "value": 261.2,
+   "uncertainty": 2.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.575,
+   "P_kPa": 3699.0,
+   "value": 310.8,
+   "uncertainty": 1.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.688,
+   "P_kPa": 3637.0,
+   "value": 288.3,
+   "uncertainty": 1.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 467.958,
+   "P_kPa": 3736.0,
+   "value": 310.8,
+   "uncertainty": 1.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 468.389,
+   "P_kPa": 3632.0,
+   "value": 261.2,
+   "uncertainty": 2.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 468.69,
+   "P_kPa": 3721.0,
+   "value": 278.8,
+   "uncertainty": 1.9,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 468.69,
+   "P_kPa": 3780.0,
+   "value": 310.8,
+   "uncertainty": 2.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 468.828,
+   "P_kPa": 3719.0,
+   "value": 278.8,
+   "uncertainty": 1.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 468.941,
+   "P_kPa": 3681.0,
+   "value": 275.7,
+   "uncertainty": 1.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 469.892,
+   "P_kPa": 3738.0,
+   "value": 275.7,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 469.892,
+   "P_kPa": 3776.0,
+   "value": 278.8,
+   "uncertainty": 1.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 470.224,
+   "P_kPa": 4019.0,
+   "value": 348.2,
+   "uncertainty": 1.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 470.712,
+   "P_kPa": 16287.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 470.746,
+   "P_kPa": 3929.0,
+   "value": 296.7,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 471.092,
+   "P_kPa": 16390.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 471.251,
+   "P_kPa": 9234.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 471.291,
+   "P_kPa": 4110.0,
+   "value": 348.2,
+   "uncertainty": 1.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 471.591,
+   "P_kPa": 9306.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 471.691,
+   "P_kPa": 16551.0,
+   "value": 534.6,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 472.29,
+   "P_kPa": 9719.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 472.583,
+   "P_kPa": 4780.0,
+   "value": 394.8,
+   "uncertainty": 0.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 473.158,
+   "P_kPa": 3968.0,
+   "value": 288.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 473.487,
+   "P_kPa": 4095.0,
+   "value": 296.7,
+   "uncertainty": 1.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 473.487,
+   "P_kPa": 4886.0,
+   "value": 394.8,
+   "uncertainty": 0.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 474.184,
+   "P_kPa": 4037.0,
+   "value": 288.3,
+   "uncertainty": 0.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 477.405,
+   "P_kPa": 7063.0,
+   "value": 440.8,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 478.456,
+   "P_kPa": 7226.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 478.966,
+   "P_kPa": 10850.0,
+   "value": 485.2,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 479.249,
+   "P_kPa": 10911.0,
+   "value": 485.2,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 479.285,
+   "P_kPa": 4255.0,
+   "value": 261.2,
+   "uncertainty": 1.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 479.794,
+   "P_kPa": 4580.0,
+   "value": 310.8,
+   "uncertainty": 0.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.041,
+   "P_kPa": 11078.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.081,
+   "P_kPa": 4398.0,
+   "value": 288.3,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.204,
+   "P_kPa": 11129.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.437,
+   "P_kPa": 4322.0,
+   "value": 296.7,
+   "uncertainty": 1.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.437,
+   "P_kPa": 11179.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 480.833,
+   "P_kPa": 4665.0,
+   "value": 310.8,
+   "uncertainty": 0.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 481.03,
+   "P_kPa": 4460.0,
+   "value": 288.3,
+   "uncertainty": 0.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 481.426,
+   "P_kPa": 11386.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 487.13,
+   "P_kPa": 6550.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 488.122,
+   "P_kPa": 6673.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 490.817,
+   "P_kPa": 9157.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 491.844,
+   "P_kPa": 9329.0,
+   "value": 440.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 492.582,
+   "P_kPa": 13642.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 492.821,
+   "P_kPa": 13695.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 493.602,
+   "P_kPa": 13857.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 499.044,
+   "P_kPa": 6021.0,
+   "value": 310.8,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 499.152,
+   "P_kPa": 8032.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 500.021,
+   "P_kPa": 6096.0,
+   "value": 310.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 500.215,
+   "P_kPa": 8166.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 504.018,
+   "P_kPa": 15987.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 504.278,
+   "P_kPa": 16044.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 505.051,
+   "P_kPa": 16203.0,
+   "value": 485.2,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 517.608,
+   "P_kPa": 10294.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 518.471,
+   "P_kPa": 10403.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 533.203,
+   "P_kPa": 12288.0,
+   "value": 394.8,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 534.358,
+   "P_kPa": 12440.0,
+   "value": 394.8,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 554.383,
+   "P_kPa": 14968.0,
+   "value": 394.8,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 555.385,
+   "P_kPa": 15098.0,
+   "value": 394.8,
+   "uncertainty": 0.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 574.324,
+   "P_kPa": 17455.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 575.318,
+   "P_kPa": 17595.0,
+   "value": 394.8,
+   "uncertainty": 0.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 2,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 466.132,
+   "P_kPa": 3555.0,
+   "value": 212.6,
+   "uncertainty": 4.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 466.67,
+   "P_kPa": 3560.0,
+   "value": 233.7,
+   "uncertainty": 4.8,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 466.684,
+   "P_kPa": 3578.0,
+   "value": 212.6,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 466.845,
+   "P_kPa": 3565.0,
+   "value": 260.7,
+   "uncertainty": 3.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 466.895,
+   "P_kPa": 3586.0,
+   "value": 255.0,
+   "uncertainty": 2.2,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 467.286,
+   "P_kPa": 3591.0,
+   "value": 233.7,
+   "uncertainty": 6.2,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 467.286,
+   "P_kPa": 3605.0,
+   "value": 255.0,
+   "uncertainty": 5.5,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 467.391,
+   "P_kPa": 3612.0,
+   "value": 255.0,
+   "uncertainty": 7.1,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 467.473,
+   "P_kPa": 3597.0,
+   "value": 233.7,
+   "uncertainty": 4.6,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 467.623,
+   "P_kPa": 3606.0,
+   "value": 260.7,
+   "uncertainty": 10.3,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 468.289,
+   "P_kPa": 3629.0,
+   "value": 233.7,
+   "uncertainty": 5.0,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 468.289,
+   "P_kPa": 3662.0,
+   "value": 255.0,
+   "uncertainty": 2.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 468.516,
+   "P_kPa": 3635.0,
+   "value": 212.6,
+   "uncertainty": 3.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 468.69,
+   "P_kPa": 3669.0,
+   "value": 260.7,
+   "uncertainty": 5.4,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Gas"
+   ],
+   "T_K": 469.491,
+   "P_kPa": 3681.0,
+   "value": 212.6,
+   "uncertainty": 7.7,
+   "doi": "10.1016/j.jct.2012.04.005",
+   "set": 3,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 424.3,
+   "P_kPa": null,
+   "value": 1790.0,
+   "uncertainty": 820.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 434.3,
+   "P_kPa": null,
+   "value": 2150.0,
+   "uncertainty": 820.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Vapor or sublimation pressure, kPa",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 438.9,
+   "P_kPa": null,
+   "value": 2390.0,
+   "uncertainty": 820.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 5,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 442.3,
+   "P_kPa": 3250.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 445.3,
+   "P_kPa": 3750.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 447.8,
+   "P_kPa": 4200.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 450.2,
+   "P_kPa": 4750.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 453.9,
+   "P_kPa": 5680.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 459.4,
+   "P_kPa": 6890.0,
+   "value": 473.0,
+   "uncertainty": 24.0,
+   "doi": "10.1021/acs.jced.9b00249",
+   "set": 6,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 293.15,
+   "P_kPa": 101.325,
+   "value": 714.0,
+   "uncertainty": 1.0,
+   "doi": "10.1021/je100341q",
+   "set": 34,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 0.0002469,
+   "uncertainty": 2.4e-06,
+   "doi": "10.1021/je100594u",
+   "set": 10,
+   "binary_with": null
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 708.3,
+   "uncertainty": 0.6,
+   "doi": "10.1021/je100594u",
+   "set": 12,
+   "binary_with": null
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 0.0002469,
+   "uncertainty": 2.4e-06,
+   "doi": "10.1021/je100594u",
+   "set": 13,
+   "binary_with": "1,3-dioxolane"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 708.3,
+   "uncertainty": 0.6,
+   "doi": "10.1021/je100594u",
+   "set": 16,
+   "binary_with": "1,3-dioxolane"
+  },
+  {
+   "property": "Viscosity, Pa*s",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 0.0002469,
+   "uncertainty": 2.4e-06,
+   "doi": "10.1021/je100594u",
+   "set": 21,
+   "binary_with": "pentan-1-ol"
+  },
+  {
+   "property": "Mass density, kg/m3",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 298.15,
+   "P_kPa": 101.3,
+   "value": 708.3,
+   "uncertainty": 0.6,
+   "doi": "10.1021/je100594u",
+   "set": 24,
+   "binary_with": "pentan-1-ol"
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 234.64,
+   "P_kPa": 100.0,
+   "value": 0.1453,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 234.88,
+   "P_kPa": 20100.0,
+   "value": 0.1543,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 234.9,
+   "P_kPa": 30300.0,
+   "value": 0.1565,
+   "uncertainty": 0.0032,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 234.92,
+   "P_kPa": 20100.0,
+   "value": 0.1542,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.03,
+   "P_kPa": 100.0,
+   "value": 0.1461,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.09,
+   "P_kPa": 20200.0,
+   "value": 0.1538,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.1,
+   "P_kPa": 10100.0,
+   "value": 0.1496,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.17,
+   "P_kPa": 5100.0,
+   "value": 0.1478,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.22,
+   "P_kPa": 30200.0,
+   "value": 0.1563,
+   "uncertainty": 0.0032,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.4,
+   "P_kPa": 30400.0,
+   "value": 0.1559,
+   "uncertainty": 0.0032,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.48,
+   "P_kPa": 10100.0,
+   "value": 0.1499,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.53,
+   "P_kPa": 5100.0,
+   "value": 0.1479,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.89,
+   "P_kPa": 10100.0,
+   "value": 0.15,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.93,
+   "P_kPa": 5100.0,
+   "value": 0.1477,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 235.94,
+   "P_kPa": 100.0,
+   "value": 0.1456,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.64,
+   "P_kPa": 20200.0,
+   "value": 0.1484,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.74,
+   "P_kPa": 30000.0,
+   "value": 0.1514,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.75,
+   "P_kPa": 5200.0,
+   "value": 0.1408,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.86,
+   "P_kPa": 30000.0,
+   "value": 0.1512,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.91,
+   "P_kPa": 19700.0,
+   "value": 0.1477,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.95,
+   "P_kPa": 100.0,
+   "value": 0.1386,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.98,
+   "P_kPa": 10100.0,
+   "value": 0.1427,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 254.99,
+   "P_kPa": 4900.0,
+   "value": 0.1411,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.26,
+   "P_kPa": 100.0,
+   "value": 0.1386,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.28,
+   "P_kPa": 29900.0,
+   "value": 0.1512,
+   "uncertainty": 0.0031,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.34,
+   "P_kPa": 20200.0,
+   "value": 0.1475,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.37,
+   "P_kPa": 5100.0,
+   "value": 0.1407,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.38,
+   "P_kPa": 10200.0,
+   "value": 0.1432,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.69,
+   "P_kPa": 10000.0,
+   "value": 0.1427,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 255.7,
+   "P_kPa": 100.0,
+   "value": 0.1386,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.69,
+   "P_kPa": 100.0,
+   "value": 0.1315,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.7,
+   "P_kPa": 20100.0,
+   "value": 0.1409,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.71,
+   "P_kPa": 5000.0,
+   "value": 0.1338,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.71,
+   "P_kPa": 10000.0,
+   "value": 0.1363,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.92,
+   "P_kPa": 30000.0,
+   "value": 0.1447,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.93,
+   "P_kPa": 20000.0,
+   "value": 0.1409,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.96,
+   "P_kPa": 100.0,
+   "value": 0.1319,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 274.97,
+   "P_kPa": 10000.0,
+   "value": 0.1362,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.21,
+   "P_kPa": 30000.0,
+   "value": 0.145,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.37,
+   "P_kPa": 100.0,
+   "value": 0.1317,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.38,
+   "P_kPa": 5000.0,
+   "value": 0.1339,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.56,
+   "P_kPa": 10100.0,
+   "value": 0.1364,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.64,
+   "P_kPa": 30000.0,
+   "value": 0.145,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.7,
+   "P_kPa": 20000.0,
+   "value": 0.1407,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 275.79,
+   "P_kPa": 5000.0,
+   "value": 0.134,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 294.61,
+   "P_kPa": 20200.0,
+   "value": 0.1366,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 294.79,
+   "P_kPa": 10100.0,
+   "value": 0.1311,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 294.81,
+   "P_kPa": 5100.0,
+   "value": 0.128,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 294.83,
+   "P_kPa": 29900.0,
+   "value": 0.1419,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 294.93,
+   "P_kPa": 20000.0,
+   "value": 0.1366,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.04,
+   "P_kPa": 5000.0,
+   "value": 0.128,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.06,
+   "P_kPa": 10100.0,
+   "value": 0.1309,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.08,
+   "P_kPa": 29700.0,
+   "value": 0.1416,
+   "uncertainty": 0.003,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.25,
+   "P_kPa": 20000.0,
+   "value": 0.1365,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.26,
+   "P_kPa": 10000.0,
+   "value": 0.1308,
+   "uncertainty": 0.0027,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.31,
+   "P_kPa": 100.0,
+   "value": 0.1248,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.43,
+   "P_kPa": 5100.0,
+   "value": 0.1277,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.53,
+   "P_kPa": 29900.0,
+   "value": 0.1419,
+   "uncertainty": 0.0029,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 295.6,
+   "P_kPa": 100.0,
+   "value": 0.1252,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 296.02,
+   "P_kPa": 100.0,
+   "value": 0.125,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.33,
+   "P_kPa": 5100.0,
+   "value": 0.1201,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.44,
+   "P_kPa": 5300.0,
+   "value": 0.1205,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.55,
+   "P_kPa": 30100.0,
+   "value": 0.1357,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.6,
+   "P_kPa": 10000.0,
+   "value": 0.1231,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.95,
+   "P_kPa": 10100.0,
+   "value": 0.1236,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.95,
+   "P_kPa": 20100.0,
+   "value": 0.1291,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 314.95,
+   "P_kPa": 30100.0,
+   "value": 0.1361,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.01,
+   "P_kPa": 200.0,
+   "value": 0.1187,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.13,
+   "P_kPa": 200.0,
+   "value": 0.1182,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.21,
+   "P_kPa": 5200.0,
+   "value": 0.1202,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.39,
+   "P_kPa": 30100.0,
+   "value": 0.1356,
+   "uncertainty": 0.0028,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.5,
+   "P_kPa": 200.0,
+   "value": 0.1182,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.52,
+   "P_kPa": 10100.0,
+   "value": 0.1232,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.56,
+   "P_kPa": 20200.0,
+   "value": 0.1289,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 315.91,
+   "P_kPa": 20100.0,
+   "value": 0.1287,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.02,
+   "P_kPa": 5100.0,
+   "value": 0.1127,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.13,
+   "P_kPa": 20300.0,
+   "value": 0.1222,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.21,
+   "P_kPa": 5100.0,
+   "value": 0.1127,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.28,
+   "P_kPa": 200.0,
+   "value": 0.1093,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.3,
+   "P_kPa": 30200.0,
+   "value": 0.1275,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.33,
+   "P_kPa": 10200.0,
+   "value": 0.1159,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.33,
+   "P_kPa": 19900.0,
+   "value": 0.1217,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.63,
+   "P_kPa": 5200.0,
+   "value": 0.1126,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.71,
+   "P_kPa": 20400.0,
+   "value": 0.1224,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.72,
+   "P_kPa": 10100.0,
+   "value": 0.1162,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.72,
+   "P_kPa": 30000.0,
+   "value": 0.1271,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 335.78,
+   "P_kPa": 200.0,
+   "value": 0.1091,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 336.08,
+   "P_kPa": 200.0,
+   "value": 0.1092,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 336.13,
+   "P_kPa": 30200.0,
+   "value": 0.1269,
+   "uncertainty": 0.0026,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 336.17,
+   "P_kPa": 10100.0,
+   "value": 0.1159,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 354.59,
+   "P_kPa": 30000.0,
+   "value": 0.1208,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 354.75,
+   "P_kPa": 5000.0,
+   "value": 0.1044,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.05,
+   "P_kPa": 10000.0,
+   "value": 0.1084,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.05,
+   "P_kPa": 30000.0,
+   "value": 0.1206,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.08,
+   "P_kPa": 500.0,
+   "value": 0.1001,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.18,
+   "P_kPa": 20000.0,
+   "value": 0.115,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.32,
+   "P_kPa": 10100.0,
+   "value": 0.1082,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.37,
+   "P_kPa": 5000.0,
+   "value": 0.1048,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.39,
+   "P_kPa": 30000.0,
+   "value": 0.1204,
+   "uncertainty": 0.0025,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.52,
+   "P_kPa": 500.0,
+   "value": 0.1001,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.52,
+   "P_kPa": 20000.0,
+   "value": 0.1148,
+   "uncertainty": 0.0024,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.74,
+   "P_kPa": 5000.0,
+   "value": 0.1045,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.8,
+   "P_kPa": 10000.0,
+   "value": 0.1079,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 355.82,
+   "P_kPa": 500.0,
+   "value": 0.1002,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 356.03,
+   "P_kPa": 20000.0,
+   "value": 0.1147,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 374.62,
+   "P_kPa": 10000.0,
+   "value": 0.1004,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 374.7,
+   "P_kPa": 5200.0,
+   "value": 0.0974,
+   "uncertainty": 0.002,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 374.92,
+   "P_kPa": 30000.0,
+   "value": 0.1132,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.01,
+   "P_kPa": 29700.0,
+   "value": 0.1131,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.06,
+   "P_kPa": 10000.0,
+   "value": 0.1011,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.22,
+   "P_kPa": 20000.0,
+   "value": 0.1081,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.25,
+   "P_kPa": 5100.0,
+   "value": 0.0973,
+   "uncertainty": 0.002,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.4,
+   "P_kPa": 5000.0,
+   "value": 0.0973,
+   "uncertainty": 0.002,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.46,
+   "P_kPa": 10000.0,
+   "value": 0.1008,
+   "uncertainty": 0.0021,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.51,
+   "P_kPa": 29800.0,
+   "value": 0.1135,
+   "uncertainty": 0.0023,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.62,
+   "P_kPa": 20000.0,
+   "value": 0.1082,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 375.72,
+   "P_kPa": 700.0,
+   "value": 0.0926,
+   "uncertainty": 0.0019,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 376.18,
+   "P_kPa": 700.0,
+   "value": 0.0925,
+   "uncertainty": 0.0019,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 376.28,
+   "P_kPa": 20000.0,
+   "value": 0.1076,
+   "uncertainty": 0.0022,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Thermal conductivity, W/m/K",
+   "phases": [
+    "Liquid"
+   ],
+   "T_K": 376.8,
+   "P_kPa": 700.0,
+   "value": 0.0923,
+   "uncertainty": 0.0019,
+   "doi": "10.1021/je900615b",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 258.167,
+   "P_kPa": null,
+   "value": 0.021487,
+   "uncertainty": 0.000408,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 263.167,
+   "P_kPa": null,
+   "value": 0.020759,
+   "uncertainty": 0.000407,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 268.178,
+   "P_kPa": null,
+   "value": 0.020127,
+   "uncertainty": 0.000407,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 273.181,
+   "P_kPa": null,
+   "value": 0.019619,
+   "uncertainty": 0.000407,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 278.182,
+   "P_kPa": null,
+   "value": 0.018966,
+   "uncertainty": 0.000407,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 283.181,
+   "P_kPa": null,
+   "value": 0.018464,
+   "uncertainty": 0.000406,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 288.175,
+   "P_kPa": null,
+   "value": 0.01782,
+   "uncertainty": 0.000406,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 293.16,
+   "P_kPa": null,
+   "value": 0.017153,
+   "uncertainty": 0.000406,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 298.1,
+   "P_kPa": null,
+   "value": 0.016578,
+   "uncertainty": 0.000406,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 303.17,
+   "P_kPa": null,
+   "value": 0.016003,
+   "uncertainty": 0.000405,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 308.111,
+   "P_kPa": null,
+   "value": 0.015435,
+   "uncertainty": 0.000405,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 313.192,
+   "P_kPa": null,
+   "value": 0.014868,
+   "uncertainty": 0.000405,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 318.16,
+   "P_kPa": null,
+   "value": 0.014143,
+   "uncertainty": 0.000405,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 323.163,
+   "P_kPa": null,
+   "value": 0.013614,
+   "uncertainty": 0.000405,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 328.125,
+   "P_kPa": null,
+   "value": 0.012957,
+   "uncertainty": 0.000404,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 333.175,
+   "P_kPa": null,
+   "value": 0.012462,
+   "uncertainty": 0.000404,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 338.174,
+   "P_kPa": null,
+   "value": 0.011919,
+   "uncertainty": 0.000404,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 343.17,
+   "P_kPa": null,
+   "value": 0.011278,
+   "uncertainty": 0.000404,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 348.172,
+   "P_kPa": null,
+   "value": 0.010746,
+   "uncertainty": 0.000404,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 353.19,
+   "P_kPa": null,
+   "value": 0.010194,
+   "uncertainty": 0.000403,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 358.184,
+   "P_kPa": null,
+   "value": 0.009575,
+   "uncertainty": 0.000403,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 363.16,
+   "P_kPa": null,
+   "value": 0.009014,
+   "uncertainty": 0.000403,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 368.18,
+   "P_kPa": null,
+   "value": 0.008459,
+   "uncertainty": 0.000403,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  },
+  {
+   "property": "Surface tension liquid-gas, N/m",
+   "phases": [
+    "Liquid",
+    "Gas"
+   ],
+   "T_K": 373.167,
+   "P_kPa": null,
+   "value": 0.007914,
+   "uncertainty": 0.000403,
+   "doi": "10.1021/je900665a",
+   "set": 1,
+   "binary_with": null
+  }
+ ]
+}

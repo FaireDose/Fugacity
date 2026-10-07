@@ -43,18 +43,18 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | n-Heptane | CoolProp 0.20 (f) | CoolProp 0.43 (f) | CoolProp 0.12 (f) | CoolProp 0.58 (f) | CoolProp 0.072 (f) | CoolProp 2.0 (f) | CoolProp 0.046 (f) | CoolProp 0.39 (f) | CoolProp 0.39 (f) | CoolProp 0.30 (f) |
 | n-Octane | CoolProp 0.17 (f) | CoolProp 0.22 (f) | CoolProp 0.11 (f) | CoolProp 0.39 (f) | CoolProp 0.19 (f) | CoolProp 0.65 (f) | CoolProp 0.0041 (f) | CoolProp 0.40 (f) | CoolProp 1.1 (f) | CoolProp 0.33 (f) |
 | Diethyl ether | CoolProp 0.074 (f) | CoolProp 0.054 (f) | CoolProp 0.0067 (f) | CoolProp 0.43 (f) | CoolProp 0.0072 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.46 (f) | ChemSep 0.0001 (d) | CoolProp 0.20 (f) |
-| Propylene glycol | CoolProp 0.64 (f) | CoolProp 0.25 (f) | CoolProp 0.00085 (f) | CoolProp 0.92 (f) | CoolProp 0.17 (f) | no open data | no open data | no open data | no open data | no open data |
+| Propylene glycol | CoolProp 0.64 (f) | CoolProp 0.25 (f) | CoolProp 0.00085 (f) | CoolProp 0.92 (f) | CoolProp 0.17 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) |
 | Tetrahydrofuran | CoolProp 0.34 (f) | CoolProp 0.27 (f) | CoolProp 0.18 (f) | CoolProp 0.79 (f) | CoolProp 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.32 (f) | ChemSep 0.0001 (d) | ChemSep 0.56 (f) |
 | 1-Propanol | ChemSep 0.00014 (d) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.18 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.23 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
 | 2-Propanol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.51 (f) | ChemSep 0.24 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.54 (f) | ChemSep 0.0001 (d) | ChemSep 0.16 (f) |
-| 1-Butanol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.61 (f) | ChemSep 0.076 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) | ChemSep 0.0001 (d) | ChemSep 0.085 (f) |
+| 1-Butanol | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.61 (f) | ChemSep 0.076 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) | ChemSep 0.0001 (d) | ChemSep 0.085 (f) |
 | 2-Butanone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.49 (f) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.053 (f) | ChemSep 0.0001 (d) | ChemSep 0.11 (f) |
 | Methyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) | ChemSep 0.13 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.38 (f) | ChemSep 0.0001 (d) | ChemSep 0.21 (f) |
 | n-Butyl acetate | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.26 (f) | ChemSep 0.16 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.57 (f) | ChemSep 0.0001 (d) | ChemSep 0.36 (f) |
-| Acetonitrile | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.55 (f) | ChemSep 0.0018 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.27 (f) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) |
+| Acetonitrile | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.55 (f) | ChemSep 0.0018 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.27 (f) | ChemSep 0.0001 (d) | ChemSep 0.18 (f) |
 | MTBE | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.31 (f) | ChemSep 0.015 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.67 (f) | ChemSep 0.0001 (d) | ChemSep 0.14 (f) |
-| Glycerol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.057 (f) | ChemSep 0.27 (f) | ChemSep 0.028 (f) | ChemSep 2.1 (f) | ChemSep 0.15 (f) |
-| Phenol | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.93 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
+| Glycerol | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 3 (f) | ChemSep 0.27 (f) | ChemSep 0.028 (f) | ChemSep 2.1 (f) | ChemSep 0.15 (f) |
+| Phenol | ChemSep 1 (f) | ChemSep 0.0001 (d) | ChemSep 0.93 (f) | ChemSep 0.039 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.25 (f) | ChemSep 0.0001 (d) | ChemSep 0.22 (f) |
 | 1,2-Dichloroethane | CoolProp 0.25 (f) | CoolProp 0.13 (f) | CoolProp 0.0001 (f) | CoolProp 0.70 (f) | CoolProp 0.22 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.53 (f) | ChemSep 0.0001 (d) | ChemSep 0.37 (f) |
 | Methyl isobutyl ketone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.33 (f) | ChemSep 0.050 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.21 (f) | ChemSep 0.0001 (d) | ChemSep 0.20 (f) |
 | Cyclohexanone | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.13 (f) | ChemSep 0.016 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.39 (f) | ChemSep 0.0001 (d) | ChemSep 0.79 (f) |
@@ -110,7 +110,7 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | n-Heptane | 182.55–514.16 | 182.55–600 | 182.55–497.57 | 182.55–514.16 | 182.55–514.16 | 182.55–600 | 182.55–514.16 | 182.55–600 | 182.55–514.16 |
 | n-Octane | 216.37–540.3 | 216.37–730 | 216.37–524.1 | 216.37–540.3 | 216.37–540.3 | 216.37–730 | 216.37–540.3 | 216.37–730 | 216.37–540.3 |
 | Diethyl ether | 270–444.5 | 270–548 | 270–435.77 | 270–444.5 | 270–373.15 | 156.85–1000 | 270–433.15 | 200–600 | 270–444.5 |
-| Propylene glycol | 213–640.29 | 213–680 | 213–618.92 | 213–640.29 | – | – | – | – | – |
+| Propylene glycol | 213–640.29 | 213–680 | 213–618.92 | 213–640.29 | 213.15–500.8 | 213.15–1000 | 213.15–460.75 | 460.75–1000 | 213.15–573.95 |
 | Tetrahydrofuran | 164.76–513.18 | 164.76–600 | 164.76–495.75 | 164.76–513.18 | 164.76–440 | 164.65–1000 | 164.76–433.56 | 164.65–1000 | 164.76–513.19 |
 | 1-Propanol | 146.95–536.65 | 150–1500 | 146.95–400 | 146.95–536.24 | 146.95–523 | 200–1000 | 164.06–380.35 | 146.95–720.25 | 283.15–370.35 |
 | 2-Propanol | 185.28–508.3 | 150–1500 | 185.28–480 | 185.28–507.79 | 187.35–408 | 185.28–1000 | 185.28–410.15 | 185.28–995.41 | 273.15–355.41 |
@@ -120,7 +120,7 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | n-Butyl acetate | 199.65–575.4 | 273–1200 | 202.7–461.7 | 199.65–575.4 | 250–399.26 | 199.65–1000 | 199.65–463.15 | 199.65–800 | 199.65–550.04 |
 | Acetonitrile | 229.32–545.5 | 100–1500 | 229.32–354.75 | 229.32–544.95 | 229.32–436.4 | 229.32–1000 | 229.32–383.15 | 229.32–994.75 | 229.32–518.22 |
 | MTBE | 164.55–497.1 | 200–1500 | 164.55–328.35 | 164.55–496.6 | 180–449.93 | 164.55–1000 | 164.55–460.87 | 164.55–1000 | 164.55–472.24 |
-| Glycerol | 291.33–850 | 273–1200.15 | 291.33–561 | 291.33–849.15 | 291.33–500 | 291.33–1000 | 293.15–550 | 274–1000 | 291.33–453.15 |
+| Glycerol | 291.33–850 | 273–1200.15 | 291.33–561 | 291.33–849.15 | 288.1–363.15 | 291.33–1000 | 293.15–550 | 274–1000 | 291.33–453.15 |
 | Phenol | 314.06–688.71 | 100–1500 | 314.06–655.37 | 314.06–674.24 | 314.06–690 | 199.82–1000 | 314.06–454.99 | 199.82–1000 | 314.06–659.53 |
 | 1,2-Dichloroethane | 237.52–533.5 | 237.52–1000 | 237.52–518.7 | 237.52–533.5 | 237.52–550 | 237.49–1000 | 244.26–499.82 | 237.49–1000 | 237.52–518.16 |
 | Methyl isobutyl ketone | 189.15–574.6 | 189.15–1500.15 | 189.15–450 | 189.15–574.02 | 189.15–474 | 189.15–1000 | 189.15–451.42 | 189.15–1000 | 189.15–545.87 |
@@ -690,15 +690,15 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
 | Psat | kPa | 0.017489 | 0.017582 | -0.53 % | – |
-| ρL | kg/m³ | 1033.2 | 1032.5 | 0.07 % | – |
-| cp° | J/(mol·K) | 105.58 | 105.58 | -0.00 % | – |
-| cpL | J/(mol·K) | 190.11 | 189.54 | 0.30 % | – |
-| ΔHvap | kJ/mol | 65.977 | 66.002 | -0.04 % | – |
-| μL | mPa·s | – | – | – | – |
-| μV | μPa·s | – | – | – | – |
-| kL | mW/(m·K) | – | – | – | – |
+| ρL | kg/m³ | 1033.2 | 1032.5 | 0.07 % | 1032.6 |
+| cp° | J/(mol·K) | 105.58 | 105.58 | -0.00 % | 105.16 |
+| cpL | J/(mol·K) | 190.11 | 189.54 | 0.30 % | 191.59 |
+| ΔHvap | kJ/mol | 65.977 | 66.002 | -0.04 % | 67.076 |
+| μL | mPa·s | 42.484 | 42.484 | 0.00 % | – |
+| μV | μPa·s | 7.0194 | 7.0194 | 0.00 % | – |
+| kL | mW/(m·K) | 199.97 | 199.97 | 0.00 % | – |
 | kV | mW/(m·K) | – | – | – | – |
-| σ | mN/m | – | – | – | – |
+| σ | mN/m | 35.478 | 35.539 | -0.17 % | – |
 
 ### Tetrahydrofuran, T = 298.15 K
 
@@ -749,7 +749,7 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
-| Psat | kPa | 0.9323 | 0.9323 | 0.00 % | – |
+| Psat | kPa | 0.90816 | 0.9323 | -2.59 % | – |
 | ρL | kg/m³ | 806.1 | 806.1 | 0.00 % | – |
 | cp° | J/(mol·K) | 109.53 | 108.88 | 0.59 % | – |
 | cpL | J/(mol·K) | 177.88 | 177.76 | 0.07 % | – |
@@ -809,7 +809,7 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
-| Psat | kPa | 12.16 | 12.16 | 0.00 % | – |
+| Psat | kPa | 11.841 | 12.16 | -2.62 % | – |
 | ρL | kg/m³ | 776.65 | 776.65 | 0.00 % | – |
 | cp° | J/(mol·K) | 52.483 | 52.204 | 0.53 % | – |
 | cpL | J/(mol·K) | 91.45 | 91.451 | -0.00 % | – |
@@ -839,12 +839,12 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
-| Psat | kPa | 2.5668e-05 | 2.5668e-05 | 0.00 % | – |
+| Psat | kPa | 2.1614e-05 | 2.5668e-05 | -15.80 % | – |
 | ρL | kg/m³ | 1248.7 | 1248.7 | 0.00 % | – |
 | cp° | J/(mol·K) | 114.38 | 114.62 | -0.21 % | – |
 | cpL | J/(mol·K) | 221.79 | 221.78 | 0.00 % | – |
 | ΔHvap | kJ/mol | 88.826 | 88.826 | 0.00 % | – |
-| μL | mPa·s | 1176.8 | 1176.8 | -0.01 % | – |
+| μL | mPa·s | 875.42 | (table) | – | 1176.8 |
 | μV | μPa·s | 6.6311 | 6.6375 | -0.10 % | – |
 | kL | mW/(m·K) | 291.77 | 291.72 | 0.02 % | – |
 | kV | mW/(m·K) | 6.938 | 7.075 | -1.94 % | – |
@@ -854,7 +854,7 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 
 | Property | Unit | Fugacity | Source | Deviation | ChemSep |
 |---|---|---|---|---|---|
-| Psat | kPa | 0.016008 | (table) | – | – |
+| Psat | kPa | 0.051533 | (table) | – | – |
 | ρL | kg/m³ | – | – | – | – |
 | cp° | J/(mol·K) | 103.39 | 103.63 | -0.23 % | – |
 | cpL | J/(mol·K) | – | – | – | – |
@@ -1093,6 +1093,95 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | 2-Butanol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 3 articles, 288.1-318.1 K; median deviation of the articles 0.71 % (with |
 | 2-Butanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 173 measured values from 43 articles, 288.1-353.1 K; median deviation of the articles 2.44 % (w |
 | 2-Butanol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 4 articles, 283.1-313.1 K; median deviation of the articles 0.53 %; lar |
+| Acetic acid | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 4 articles, 323.1-391.0 K; median deviation of the articles 0.27 % (wit |
+| Acetic acid | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 92 measured values from 48 articles, 293.0-353.1 K; median deviation of the articles 0.14 % (wi |
+| Acetic acid | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 6 articles, 293.1-373.1 K; median deviation of the articles 0.60 % (wit |
+| Ethylene glycol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 25 measured values from 4 articles, 405.9-470.2 K; median deviation of the articles 0.40 % (wit |
+| Ethylene glycol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 378 measured values from 75 articles, 273.1-473.1 K; median deviation of the articles 0.02 % (w |
+| Ethylene glycol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 42 measured values from 1 articles, 293.1-353.1 K; median deviation of the articles 0.61 % (wit |
+| Ethylene glycol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 135 measured values from 25 articles, 288.1-464.4 K; median deviation of the articles 1.19 % (w |
+| Ethylene glycol | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 7 articles, 293.1-338.3 K; median deviation of the articles 1.69 % (wit |
+| Ethylene glycol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 20 measured values from 4 articles, 293.1-323.1 K; median deviation of the articles 0.59 %; lar |
+| Chloroform | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 11 measured values from 3 articles, 303.1-342.0 K; median deviation of the articles 0.01 % (wit |
+| Chloroform | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 107 measured values from 32 articles, 273.1-323.1 K; median deviation of the articles 0.85 % (w |
+| Chloroform | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 11 articles, 273.1-318.1 K; median deviation of the articles 0.93 % (wi |
+| Ethyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 117 measured values from 19 articles, 297.2-462.8 K; median deviation of the articles 0.33 % (w |
+| Ethyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 177 measured values from 71 articles, 278.1-348.1 K; median deviation of the articles 0.08 % (w |
+| Ethyl acetate | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 42 measured values from 19 articles, 293.1-343.1 K; median deviation of the articles 1.06 % (wi |
+| Ethyl acetate | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 249.1-348.5 K; median deviation of the articles 2.09 % (wit |
+| Ethyl acetate | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 3 articles, 295.1-315.1 K; median deviation of the articles 2.29 %; larg |
+| Styrene | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 2 articles, 348.1-373.4 K; median deviation of the articles 1.09 % (abo |
+| Styrene | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 36 measured values from 10 articles, 293.1-363.1 K; median deviation of the articles 0.19 % (wi |
+| Styrene | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 2 articles, 293.1-363.1 K; median deviation of the articles 0.45 % (wit |
+| 1-Propanol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 130 measured values from 32 articles, 298.1-469.5 K; median deviation of the articles 0.83 % (w |
+| 1-Propanol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 800 measured values from 260 articles, 278.1-363.1 K; median deviation of the articles 0.14 % ( |
+| 1-Propanol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 100 measured values from 4 articles, 153.0-350.0 K; median deviation of the articles 0.49 % (wi |
+| 1-Propanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 269 measured values from 63 articles, 278.1-363.1 K; median deviation of the articles 1.85 % (w |
+| 1-Propanol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 52 measured values from 12 articles, 283.1-348.1 K; median deviation of the articles 0.27 %; la |
+| 2-Propanol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 220 measured values from 36 articles, 313.1-503.1 K; median deviation of the articles 0.53 % (w |
+| 2-Propanol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 534 measured values from 190 articles, 263.1-353.1 K; median deviation of the articles 0.12 % ( |
+| 2-Propanol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 2 articles, 190.0-330.0 K; median deviation of the articles 0.88 % (wit |
+| 2-Propanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 49 articles, 283.1-343.1 K; median deviation of the articles 0.54 % (w |
+| 2-Propanol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 60 measured values from 15 articles, 288.1-338.1 K; median deviation of the articles 0.58 %; la |
+| 1-Butanol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 110 measured values from 26 articles, 313.1-559.3 K; median deviation of the articles 0.39 % (w |
+| 1-Butanol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 764 measured values from 240 articles, 273.1-383.1 K; median deviation of the articles 0.04 % ( |
+| 1-Butanol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 55 measured values from 5 articles, 273.1-353.1 K; median deviation of the articles 0.44 % (wit |
+| 1-Butanol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 329 measured values from 69 articles, 273.1-363.1 K; median deviation of the articles 1.53 % (w |
+| 1-Butanol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 33 measured values from 13 articles, 283.1-333.2 K; median deviation of the articles 1.28 %; la |
+| 2-Butanone | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 16 measured values from 8 articles, 309.6-413.2 K; median deviation of the articles 0.79 % (wit |
+| 2-Butanone | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 181 measured values from 67 articles, 283.1-333.1 K; median deviation of the articles 0.33 % (w |
+| 2-Butanone | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 22 articles, 283.1-333.1 K; median deviation of the articles 2.55 % (wi |
+| Methyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 91 measured values from 12 articles, 304.0-436.1 K; median deviation of the articles 0.66 % (wi |
+| Methyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 67 measured values from 36 articles, 278.1-323.1 K; median deviation of the articles 0.07 % (wi |
+| Methyl acetate | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 14 measured values from 7 articles, 293.1-308.1 K; median deviation of the articles 1.54 % (wit |
+| n-Butyl acetate | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 130 measured values from 6 articles, 347.8-531.5 K; median deviation of the articles 0.26 % (wi |
+| n-Butyl acetate | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 115 measured values from 41 articles, 288.1-393.1 K; median deviation of the articles 0.09 % (w |
+| n-Butyl acetate | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 32 measured values from 12 articles, 293.1-343.1 K; median deviation of the articles 1.23 % (wi |
+| Acetonitrile | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 9 articles, 277.9-535.0 K; median deviation of the articles 0.22 % (wi |
+| Acetonitrile | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 334 measured values from 86 articles, 278.1-343.1 K; median deviation of the articles 0.03 % (w |
+| Acetonitrile | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 13 measured values from 6 articles, 283.1-328.1 K; median deviation of the articles 0.78 % (wit |
+| Acetonitrile | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 79 measured values from 21 articles, 288.1-343.1 K; median deviation of the articles 0.92 % (wi |
+| Acetonitrile | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 1 articles, 273.1-313.1 K; median deviation of the articles 3.78 % (with |
+| Acetonitrile | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 5 articles, 278.1-313.1 K; median deviation of the articles 1.24 %; lar |
+| MTBE | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 60 measured values from 10 articles, 263.1-373.2 K; median deviation of the articles 0.25 % (wi |
+| MTBE | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 126 measured values from 36 articles, 273.1-328.1 K; median deviation of the articles 0.23 % (w |
+| MTBE | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 4 articles, 273.1-313.1 K; median deviation of the articles 3.12 % (wit |
+| MTBE | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 3 measured values from 3 articles, 298.1-303.1 K; median deviation of the articles 3.46 %; larg |
+| Glycerol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 90 measured values from 2 articles, 313.3-462.9 K; median deviation of the articles 6.05 % (abo |
+| Glycerol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 88 measured values from 23 articles, 293.1-363.1 K; median deviation of the articles 0.76 % (wi |
+| Glycerol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 18 measured values from 3 articles, 293.1-353.7 K; median deviation of the articles 1.06 % (wit |
+| Glycerol | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 2 articles, 293.1-333.1 K; median deviation of the articles 2.09 % (with |
+| Glycerol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 4 articles, 293.1-333.2 K; median deviation of the articles 0.44 %; lar |
+| Phenol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 3 articles, 373.1-433.1 K; median deviation of the articles 0.62 % (with |
+| Phenol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 314.4-343.1 K; median deviation of the articles 0.04 % (wit |
+| Acetone | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 54 measured values from 16 articles, 297.6-373.1 K; median deviation of the articles 0.39 % (wi |
+| Acetone | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 147 measured values from 64 articles, 278.1-333.1 K; median deviation of the articles 0.11 % (w |
+| Acetone | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 30 measured values from 9 articles, 278.1-318.1 K; median deviation of the articles 0.41 % (wit |
+| Acetone | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 7 articles, 287.8-328.1 K; median deviation of the articles 1.54 %; lar |
+| Ethylene | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 19 measured values from 4 articles, 233.7-281.0 K; median deviation of the articles 0.07 % (wit |
+| Hydrogen sulfide | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 28 measured values from 2 articles, 223.2-363.2 K; median deviation of the articles 0.38 % (wit |
+| Dimethyl ether | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 236 measured values from 17 articles, 253.1-399.6 K; median deviation of the articles 0.41 % (w |
+| Dimethyl ether | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 39 measured values from 2 articles, 214.0-380.0 K; median deviation of the articles 3.84 %; lar |
+| Cyclohexane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 157 measured values from 25 articles, 283.1-363.1 K; median deviation of the articles 0.07 % (w |
+| Cyclohexane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 263 measured values from 116 articles, 283.1-358.1 K; median deviation of the articles 0.03 % ( |
+| Cyclohexane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 4 articles, 293.1-333.1 K; median deviation of the articles 0.37 % (with |
+| Cyclohexane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 77 measured values from 24 articles, 283.1-333.1 K; median deviation of the articles 0.61 % (wi |
+| Cyclohexane | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 12 measured values from 1 articles, 280.8-318.9 K; median deviation of the articles 0.16 % (wit |
+| Cyclohexane | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 22 measured values from 6 articles, 282.8-337.9 K; median deviation of the articles 1.10 %; lar |
+| Diethyl ether | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 4 articles, 273.1-298.1 K; median deviation of the articles 0.07 % (with |
+| Diethyl ether | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 2 articles, 273.1-298.1 K; median deviation of the articles 4.98 % (with |
+| Diethyl ether | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 274.7-296.0 K; median deviation of the articles 4.37 % (with |
+| Propylene glycol | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 29 measured values from 5 articles, 375.1-460.8 K; median deviation of the articles 0.87 % (wit |
+| Propylene glycol | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 287 measured values from 44 articles, 253.2-463.1 K; median deviation of the articles 0.05 % (w |
+| Propylene glycol | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 2 articles, 298.1-353.1 K; median deviation of the articles 0.49 % (with |
+| Propylene glycol | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 103 measured values from 16 articles, 288.1-458.9 K; median deviation of the articles 2.92 % (w |
+| Propylene glycol | liquidThermalConductivity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 9 measured values from 1 articles, 299.1-450.8 K; median deviation of the articles 2.25 % (with |
+| Propylene glycol | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 298.1-328.1 K; median deviation of the articles 3.27 %; larg |
+| Tetrahydrofuran | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 63 measured values from 7 articles, 276.0-353.1 K; median deviation of the articles 0.46 % (wit |
+| Tetrahydrofuran | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 171 measured values from 61 articles, 278.1-333.1 K; median deviation of the articles 0.06 % (w |
+| Tetrahydrofuran | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 8 measured values from 1 articles, 288.1-323.1 K; median deviation of the articles 2.08 % (abov |
+| Tetrahydrofuran | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 56 measured values from 19 articles, 283.1-323.1 K; median deviation of the articles 1.93 % (wi |
+| Tetrahydrofuran | surfaceTension | NIST TRC ThermoML Archive (validation/python/check_measured.py): 10 measured values from 4 articles, 288.1-313.1 K; median deviation of the articles 1.68 %; lar |
 
 ## Range limits to note
 
@@ -1105,6 +1194,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - Ethylene, kV: starts at 170 K, above the normal boiling point 169.379 K (ChemSep range); vapour states between Tb and 170 K have no value.
 - Dimethyl ether, μL: starts at 144.1 K, above the other liquid properties (131.66 K): range narrowed from 131.66-380.35 K (max deviation there 3.2 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (131.66 K)
 - n-Pentane, μL: starts at 173.75 K, above the other liquid properties (143.47 K): range narrowed from 143.47-446.21 K (max deviation there 17 %) to meet the 3 % target; DIPPR 101 cannot follow the steep rise of the viscosity towards the triple point, so this range starts above the triple point (143.47 K)
+- Propylene glycol, σ: starts at 213.15 K, above the other liquid properties (213 K): range narrowed from 213.15-592.94 K (max deviation there 1.1 %) to meet the 1 % target
 - N-Methyl-2-pyrrolidone, kV: starts at 477.42 K, above the normal boiling point 477.144 K (ChemSep range); vapour states between Tb and 477.42 K have no value.
 
 ## Cross-checks
@@ -1117,17 +1207,17 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 - cross-check 1-propanol vapour pressure vs Ambrose and Townsend, 1963, 2, 405.46-536.71 K: max +3.27 % at 536.7 K
 - cross-check 2-propanol vapour pressure vs Ambrose and Townsend, 1963, 3, 395.10-508.24 K: max +1.56 % at 468.6 K
 - cross-check 2-propanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 329.92-362.41 K: max +0.92 % at 329.9 K
-- cross-check 1-butanol vapour pressure vs Kemme and Kreps, 1969, 295.80-391.00 K: max +6.34 % at 295.8 K
-- cross-check 1-butanol vapour pressure vs Hessel and Geiseler, 1965, 391.00-479.00 K: max +1.74 % at 470.2 K
-- cross-check 1-butanol vapour pressure vs Ambrose and Townsend, 1963, 2, 419.34-562.98 K: max -2.16 % at 419.3 K
-- cross-check 1-butanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2, 362.36-398.84 K: max -1.58 % at 378.8 K
+- cross-check 1-butanol vapour pressure vs Kemme and Kreps, 1969: max +3.30 % at 295.8 K
+- cross-check 1-butanol vapour pressure vs Hessel and Geiseler, 1965: max +2.58 % at 426.2 K
+- cross-check 1-butanol vapour pressure vs Ambrose and Townsend, 1963, 2: max +1.36 % at 469.6 K
+- cross-check 1-butanol vapour pressure vs Biddiscombe, Collerson, et al., 1963, 2: max +0.54 % at 398.8 K
 - cross-check 2-butanone vapour pressure vs Nickerson, Kobe, et al., 1961, 314.60-370.60 K: max +2.94 % at 314.6 K
 - cross-check methyl-acetate vapour pressure vs Polák and Mertl, 1965, 274.91-328.99 K: max -0.51 % at 304.7 K
 - cross-check n-butyl-acetate vapour pressure vs Kliment, Fried, et al., 1964, 332.89-399.24 K: max +1.81 % at 332.9 K
-- cross-check acetonitrile vapour pressure vs Dojcansky and Heinrich, 1974, 2, 288.30-362.30 K: max +3.64 % at 288.3 K
-- cross-check acetonitrile vapour pressure vs Putnam, McEachern, et al., 1965, 2, 280.41-300.53 K: max +3.00 % at 290.5 K
-- cross-check glycerol vapour pressure vs Richardson, 1886, 2, 456.40-533.60 K: max -10.13 % at 533.6 K
-- cross-check phenol vapour pressure vs Dreisbach and Shrader, 1949, 380.30-454.90 K: max -17.14 % at 380.3 K
+- cross-check acetonitrile vapour pressure vs Dojcansky and Heinrich, 1974, 2: max +0.79 % at 362.3 K
+- cross-check acetonitrile vapour pressure vs Putnam, McEachern, et al., 1965, 2: max -1.52 % at 280.4 K
+- cross-check glycerol vapour pressure vs Richardson, 1886, 2: max -10.96 % at 533.6 K
+- cross-check phenol vapour pressure vs Dreisbach and Shrader, 1949: max +0.32 % at 380.3 K
 - cross-check mibk vapour pressure vs Fuge, Bowden, et al., 1952, 294.90-389.30 K: max +3.56 % at 294.9 K
 - cross-check cyclohexanone vapour pressure vs Meyer and Hotz, 1973, 362.78-438.92 K: max -2.50 % at 362.8 K
 - cross-check dmf vapour pressure vs Gopal and Rizvi, 1968, 2, 303.00-363.00 K: max -9.68 % at 363.0 K
