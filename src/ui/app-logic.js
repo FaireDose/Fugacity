@@ -34,6 +34,8 @@ export const VIEWS = {
   flash: { workspace: "flash", label: "Flash" },
   flowsheet: { workspace: "flowsheet", label: "Flowsheet" },
   henry: { workspace: "solubility", label: "Gas solubility" },
+  solid: { workspace: "solubility", label: "Solid solubility" },
+  sle: { workspace: "solubility", label: "Solid-liquid diagram" },
   properties: { workspace: "properties", label: "Property curves" },
   steam: { workspace: "steam", label: "Steam tables" },
 };
@@ -69,7 +71,8 @@ export const PRESETS = [
 ];
 
 export const MAX_COMPONENTS = 6;
-const START_ALIASES = { drum: "flash", eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties", library: "sources" };
+const START_ALIASES = { drum: "flash", eos: "eos", "pt": "envelope", "p-x-y": "pxy", "t-x-y": "txy", vle: "ternary", gases: "henry", solubility: "henry", explorer: "properties", library: "sources",
+  solids: "solid", eutectic: "sle", "solid-liquid": "sle" };
 
 const normModel = m => (String(m ?? "NRTL").toUpperCase() === "IDEAL" ? "ideal" : String(m ?? "NRTL").toUpperCase());
 const normEos = m => String(m ?? "PR").toUpperCase();
@@ -138,6 +141,9 @@ export function viewAvailability(view, ids, model = "NRTL") {
       const g = henryGases(ids);
       return { enabled: true, use: g.length ? g : HENRY_GASES.slice(), note: g.length ? undefined : "No gas selected: all gases with a Henry's law constant are shown." };
     }
+    case "solid": case "sle":
+      // their own inputs (a solid and a solvent; two components with melting data), seeded with examples
+      return { enabled: true, use: [] };
     case "properties":
       return { enabled: true, use: ids.length ? [ids[0]] : ["water"] };
     case "steam":
@@ -178,7 +184,7 @@ const DEFAULTS = {
   components: ["methanol", "acetone", "chloroform"],
   model: "NRTL", eos: "PR", vapour: "ideal", P_kPa: 101.325, basis: "mole",
   background: true, residueCurves: true, isotherms: true, grid: 40,
-  property: "density", henryP_kPa: 101.325, henryT_K: 298.15, steamP_kPa: [10, 100, 1000, 10000],
+  property: "density", henryP_kPa: 101.325, henryT_K: 298.15, sleT_K: 298.15, steamP_kPa: [10, 100, 1000, 10000],
 };
 
 /**
@@ -238,6 +244,7 @@ export function initialState(cfg = {}) {
     z: { pxy: null, envelope: null },
     henryP_kPa: positive(cfg.henryP_kPa ?? DEFAULTS.henryP_kPa, "henryP_kPa"),
     henryT_K: positive(cfg.henryT_K ?? DEFAULTS.henryT_K, "henryT_K"),
+    sleT_K: positive(cfg.sleT_K ?? DEFAULTS.sleT_K, "sleT_K"),
     compareGases: !!cfg.compareGases,
     steamP_kPa: cleanList(cfg.steamP_kPa ?? DEFAULTS.steamP_kPa),
     flash: normalizeFlash(cfg.flash ?? {}, FLASH_DEFAULTS),
@@ -364,6 +371,7 @@ export function applyPatch(state, patch = {}) {
   if (patch.property != null) next.property = String(patch.property);
   if (patch.henryP_kPa != null) next.henryP_kPa = positive(patch.henryP_kPa, "henryP_kPa");
   if (patch.henryT_K != null) next.henryT_K = positive(patch.henryT_K, "henryT_K");
+  if (patch.sleT_K != null) next.sleT_K = positive(patch.sleT_K, "sleT_K");
   if (patch.steamP_kPa != null) next.steamP_kPa = cleanList(patch.steamP_kPa);
   if ("title" in patch) next.title = patch.title;
   if ("sets" in patch) next.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);

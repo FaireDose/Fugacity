@@ -167,6 +167,9 @@ export const APP_CSS = `
 .fa-gaps strong{font-weight:600; color:var(--fug-fg)}
 .fug-app .fug-props{border:0; padding:0; max-width:none; background:transparent; border-radius:0}
 .fug-app .sw{display:inline-block; width:14px; border-top:2px solid; margin-right:6px; vertical-align:middle}
+.fug-app .fa-plain{margin:4px 0 8px; padding-left:18px; font-size:13px; line-height:1.45}
+.fug-app .fa-plain li{margin:2px 0}
+.fug-app .fa-leg{white-space:nowrap}
 .fa-cards{display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:12px}
 .fa-card{border:1px solid var(--fug-rule); border-radius:8px; padding:10px 12px 12px; display:grid; gap:6px; align-content:start; background:var(--fug-bg)}
 .fa-card svg{width:100%; height:auto; display:block}

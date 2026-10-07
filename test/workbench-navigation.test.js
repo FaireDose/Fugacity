@@ -14,7 +14,7 @@ const go = (s, ...patches) => patches.reduce(applyPatch, s);
 
 test("one navigation: six task workspaces holding every view; four supporting panels", () => {
   assert.deepEqual(WORKSPACES.map(w => w.id), ["equilibrium", "steam", "solubility", "properties", "flash", "flowsheet"]);
-  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Steam", "Gas solubility", "Properties", "Flash", "Flowsheet"]);
+  assert.deepEqual(WORKSPACES.map(w => w.label), ["Phase equilibrium", "Steam", "Solubility", "Properties", "Flash", "Flowsheet"]);
   // the top navigation: File, then three sections holding every workspace once, in order
   assert.deepEqual(SECTIONS.map(x => x.label), ["Properties & Equilibria", "Unit models", "Flowsheet"]);
   assert.deepEqual(SECTIONS.flatMap(x => x.workspaces), WORKSPACES.map(w => w.id));
@@ -31,6 +31,32 @@ test("one navigation: six task workspaces holding every view; four supporting pa
   }
   assert.deepEqual(WORKSPACES.find(w => w.id === "equilibrium").views, ["txy", "ternary", "azeotropes", "pxy", "envelope"]);
   assert.throws(() => workspaceOf("column"), /Unknown view/);
+});
+
+test("solids: the Solubility workspace holds gases, a solid in a solvent and the solid-liquid diagram", () => {
+  assert.deepEqual(WORKSPACES.find(w => w.id === "solubility").views, ["henry", "solid", "sle"]);
+  let st = initialState({ start: "sle" });
+  assert.equal(st.workspace, "solubility"); assert.equal(st.view, "sle");
+  assert.deepEqual(st.components, ["benzene", "naphthalene"]);
+  st = go(st, { view: "solid" });
+  assert.deepEqual(st.components, ["benzoic-acid", "ethanol"]);
+  // the solid needs melting data; the solvent does not
+  let c = checkInputs("solid", ["mdea", "water"], "NRTL");
+  assert.equal(c.ok, false); assert.match(c.problems[0].message, /no melting temperature/); assert.equal(c.problems[0].slot, 0);
+  assert.ok(checkInputs("solid", ["naphthalene", "mdea"], "ideal").ok);
+  // a component without activity-model data: said so, without suggesting an equation of state
+  c = checkInputs("solid", ["naphthalene", "2-methoxyethanol"], "ideal");
+  assert.equal(c.ok, false); assert.doesNotMatch(c.problems[0].message, /equation of state/);
+  // the diagram needs melting data for both
+  c = checkInputs("sle", ["naphthalene", "mdea"], "ideal");
+  assert.equal(c.ok, false); assert.equal(c.problems[0].slot, 1);
+  // an equation of state cannot describe the solid's liquid side here: an activity model is asked for
+  c = checkInputs("sle", ["benzene", "naphthalene"], "PR");
+  assert.equal(c.ok, false); assert.match(c.problems.at(-1).message, /activity model/);
+  // the readout temperature
+  st = go(st, { sleT_K: 310 });
+  assert.equal(st.sleT_K, 310);
+  assert.throws(() => go(st, { sleT_K: -1 }), /positive/);
 });
 
 test("each view asks for what it needs: one, two, three components, a list, or a gas and a solvent", () => {

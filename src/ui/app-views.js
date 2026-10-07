@@ -49,6 +49,8 @@ export function renderView(view, ctx) {
     case "envelope": return envelopeView(ctx);
     case "flash": return flashView(ctx);
     case "henry": return henryView(ctx);
+    case "solid": return solidView(ctx);
+    case "sle": return sleView(ctx);
     case "properties": return propertiesView(ctx);
     case "steam": return steamView(ctx);
     case "flowsheet": return flowsheetView({ ...ctx, saveText, copyText });
@@ -684,6 +686,158 @@ function henryView(ctx) {
   return { data: tierSummary(tierCounts(gases.map(g => ({ tier: g.info.tier }))), "gas", "gases") };
 }
 const info0 = gases => gases[0].info;
+
+// ---------------------------------------------------------------------------------------
+// Solids (proposal 0007, step 4): the solubility of a pure solid, and the solid-liquid diagram of a binary
+
+/**
+ * The system of a solid view: the model of the Model group, or the ideal solution where the pair has no parameters
+ * for it (most solid-solvent pairs: none are fitted yet), with the reason to show.
+ */
+function sleSystem(state, ids) {
+  try { return { sys: system({ components: ids, model: state.model, ...setsFor(state, state.model) }), note: null }; } catch (e) {
+    if (e.code !== "MISSING_DATA" || state.model === "ideal") throw e;
+    return { sys: system({ components: ids, model: "ideal" }),
+      note: `No ${state.model} parameters for ${ids.map(nameOf).join(" + ")} (none fitted to solid-liquid or vapour-liquid data yet): this shows the ideal solubility (γ = 1), which can be far off for chemically different components.` };
+  }
+}
+
+const meltText = (f, u) => `${fmtTemp(f.Tm_K, u)}, ΔH_fus ${fmtShort(f.Hfus_J_mol / 1000, 4)} kJ/mol`;
+
+function fusionSources(ctx, ids) {
+  return sourceList(ctx, ids.map(id => {
+    const f = pure(id).fusion;
+    return { label: `${nameOf(id)}: melting temperature and enthalpy of fusion`, tier: f.tier ?? "databank",
+      text: `${formatSource(f.source)}${f.source.selection ? `. ${f.source.selection}` : ""}` };
+  }));
+}
+
+function solidView(ctx) {
+  const { state, plot, side, notes, extra, compact } = ctx;
+  const u = state.units, [solid, solvent] = state.components;
+  const { sys, note } = sleSystem(state, [solid, solvent]);
+  if (note) notes.append(h("div", { class: "fug-warn", role: "note" }, note));
+  const f = sys.fusion[0], fs = sys.fusion[1];
+  const MW = [pure(solid).MW, pure(solvent).MW];
+  const mass = state.basis === "mass";
+  const show1 = x => (mass ? x * MW[0] / (x * MW[0] + (1 - x) * MW[1]) : x);
+  // from the solvent's melting point (it freezes below), or 150 K below the solid's, up to just below T_m
+  const T1 = f.Tm_K - 0.05, T0 = Math.min(T1 - 5, Math.max(f.Tm_K - 150, fs ? fs.Tm_K + 0.5 : 0, 0.5 * f.Tm_K));
+  const pts = [], ideal = [], reasons = new Map();
+  let splits = false;
+  for (const T of linspace(T0, T1, 90)) {
+    try {
+      const r = sys.solidSolubility(0, T);
+      pts.push({ x: tToDisplay(T, u), y: show1(r.xSolute) }); ideal.push({ x: tToDisplay(T, u), y: show1(r.xIdeal) });
+      splits ||= r.splits;
+    } catch (e) { addReason(reasons, e.message); }
+  }
+  const series = [{ name: sys.model === "ideal" ? "ideal" : sys.model, color: SERIES(0), segments: [{ points: pts }] }];
+  if (sys.model !== "ideal") series.push({ name: "ideal", color: "var(--fug-muted)", dash: "5 4", segments: [{ points: ideal }] });
+  if (splits) notes.append(h("div", { class: "fug-warn", role: "note" }, `The ${sys.model} model splits the liquid into two phases at some temperatures: the solvent-rich solubility is drawn there; a liquid-liquid check is needed.`));
+  const gap = gapNote(reasons, "solubility");
+  if (gap) notes.append(gap);
+
+  // the result at the chosen temperature
+  const result = h("div", { class: "fa-result-card" });
+  const T = state.sleT_K;
+  result.append(h("div", { class: "fug-eyebrow" }, `${nameOf(solid)} in ${nameOf(solvent).toLowerCase()} at ${fmtTemp(T, u)}`));
+  try {
+    const r = sys.solidSolubility(0, T);
+    const w = r.xSolute * MW[0] / (r.xSolute * MW[0] + (1 - r.xSolute) * MW[1]);
+    result.append(
+      h("div", { class: "fa-result-main" }, h("span", {}, mass ? "Mass fraction w" : "Mole fraction x"), h("b", { class: "fug-big" }, fmtNum(mass ? w : r.xSolute, 4))),
+      kv([[mass ? "Mole fraction" : "Mass fraction", fmtNum(mass ? r.xSolute : w, 4)],
+        ["Per 100 g of solvent", fmtNum(100 * w / (1 - w), 4), "g"],
+        ["Activity coefficient γ", fmtNum(r.gamma, 4)],
+        ["Ideal solubility", fmtNum(mass ? show1(r.xIdeal) : r.xIdeal, 4), mass ? "mass fraction" : "mole fraction"],
+        ["Melting point of the solid", meltText(f, u)]]),
+      ...r.notes.filter(n => !/ΔCp/.test(n)).map(n => h("div", { class: "fug-warn" }, n)),
+      h("div", { class: "fug-foot" }, "Pure solid in equilibrium with the solution: ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m), ΔCp of fusion taken as 0."));
+  } catch (e) {
+    result.append(h("div", { class: "fug-err", role: "alert" }, e.message));
+  }
+  const read = h("div", { class: "fa-read" });
+  const show = Tx => {
+    const Tk = tFromDisplay(Tx, u);
+    const vals = series.map(sr => interpolate(sr.segments[0].points, Tx));
+    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `On the curve at ${fmtShort(+Tx.toFixed(2))} ${tU(u)}`),
+      ...series.map((sr, i) => h("div", { class: "fa-row" }, h("span", {}, h("span", { class: "sw", style: `border-color:${sr.color}` }), sr.name),
+        h("b", { class: "fug-num" }, vals[i] == null || Tk >= f.Tm_K ? "–" : fmtNum(vals[i], 3)))));
+    return vals;
+  };
+  const x0 = tToDisplay(T0, u), x1 = tToDisplay(f.Tm_K, u);
+  if (!pts.length) {
+    plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, "No solubility could be calculated in this temperature range."));
+  } else {
+    const move = drawPlot(plot, { compact, series, x0, x1, log: true, xLabel: `T, ${tU(u)}`,
+      yLabel: `${nameOf(solid)} (${mass ? "mass" : "mole"} fraction)`, show,
+      aria: `Solubility of ${nameOf(solid)} in ${nameOf(solvent).toLowerCase()} against temperature` });
+    plot.append(h("div", { class: "fug-legend" }, `Up to the melting point of ${nameOf(solid).toLowerCase()} (${fmtTemp(f.Tm_K, u)})${fs && T0 <= fs.Tm_K + 0.6 ? `, from the melting point of ${nameOf(solvent).toLowerCase()} (below it the solvent freezes)` : ""}.`));
+    move(Math.min(x1, Math.max(x0, tToDisplay(T, u))));
+  }
+  side.replaceChildren(result, read);
+  extra.append(section("Sources", fusionSources(ctx, [solid]), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null));
+  return { data: `${sys.model === "ideal" ? "Ideal solution" : sys.model}${note ? " (no pair parameters)" : ""}` };
+}
+
+function sleView(ctx) {
+  const { state, plot, side, notes, extra, compact } = ctx;
+  const u = state.units, ids = state.components;
+  const { sys, note } = sleSystem(state, ids);
+  if (note) notes.append(h("div", { class: "fug-warn", role: "note" }, note));
+  const MW = ids.map(id => pure(id).MW);
+  const bv = basisView(state.basis, MW);
+  const conv1 = x1 => bv.conv([x1, 1 - x1])[0];
+  let d;
+  try { d = sys.sleDiagram({ n: 61 }); } catch (e) {
+    plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, e.message));
+    side.replaceChildren();
+    return { data: "No diagram" };
+  }
+  for (const n of d.notes) notes.append(h("div", { class: "fug-warn", role: "note" }, n));
+  // unlabelled curves (their names would collide at the eutectic): the legend under the plot names them
+  const branch = (b, k) => ({ name: "", label: `solid ${nameOf(ids[k]).toLowerCase()}`, color: SERIES(k), segments: [{ points: b.points.map(p => ({ x: conv1(p.x1), y: tToDisplay(p.T_K, u) })) }] });
+  const Te = tToDisplay(d.eutectic.T_K, u);
+  const series = [branch(d.branches[0], 0), branch(d.branches[1], 1),
+    { name: "", label: "eutectic", color: "var(--fug-muted)", dash: "5 4", segments: [{ points: [{ x: 0, y: Te }, { x: 1, y: Te }] }] }];
+  const read = h("div", { class: "fa-read" });
+  const show = xv => {
+    const vals = series.map(sr => interpolate(sr.segments[0].points.slice().sort((a, b) => a.x - b.x), xv));
+    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `At ${bv.mass ? "w" : "x"} ${nameOf(ids[0]).toLowerCase()} = ${bv.f(xv)}${bv.mass ? " wt %" : ""}`),
+      ...series.slice(0, 2).map((sr, i) => h("div", { class: "fa-row" }, h("span", {}, h("span", { class: "sw", style: `border-color:${sr.color}` }), `${sr.label} appears at`),
+        h("b", { class: "fug-num" }, vals[i] == null ? "–" : `${fmtNum(vals[i], 4)} ${tU(u)}`))));
+    return vals;
+  };
+  const move = drawPlot(plot, { compact, series, x0: 0, x1: 1, xLabel: `${nameOf(ids[0])} (${bv.axis})`, yLabel: `T, ${tU(u)}`, show,
+    aria: `Solid-liquid diagram of ${ids.map(nameOf).join(" and ")} with the eutectic` });
+  plot.append(h("div", { class: "fug-legend" },
+    ...series.map(sr => h("span", { class: "fa-leg" }, h("span", { class: "sw", style: `border-color:${sr.color}${sr.dash ? ";border-top-style:dashed" : ""}` }), ` ${sr.label}   `)),
+    h("div", {}, `Above the curves: one liquid. Below each curve: that pure solid and liquid. Below the eutectic (${fmtTemp(d.eutectic.T_K, u)}): both solids.`)));
+  // the result at the chosen temperature: where each solid starts to crystallize
+  const T = state.sleT_K, f = sys.fusion;
+  const rows = [["Eutectic temperature", fmtShort(+Te.toFixed(2)), tU(u)],
+    [`Eutectic composition, ${bv.mass ? "wt %" : "mole fraction"} ${nameOf(ids[0]).toLowerCase()}`, bv.f(conv1(d.eutectic.x1))]];
+  const at = [];
+  const xn = `${bv.mass ? "w" : "x"} ${nameOf(ids[0]).toLowerCase()}`;
+  if (T < d.eutectic.T_K) at.push(`Below the eutectic: both solids, no liquid.`);
+  else for (const k of [0, 1]) {
+    if (T >= f[k].Tm_K) { at.push(`No solid ${nameOf(ids[k]).toLowerCase()}: above its melting point (${fmtTemp(f[k].Tm_K, u)}).`); continue; }
+    try {
+      const r = sys.solidSolubility(k, T), x1 = k === 0 ? r.xSolute : 1 - r.xSolute;
+      at.push(`Solid ${nameOf(ids[k]).toLowerCase()} appears where ${xn} ${k === 0 ? "≥" : "≤"} ${bv.f(conv1(x1))}${bv.mass ? " wt %" : ""}.`);
+    } catch (e) { at.push(e.message); }
+  }
+  side.replaceChildren(h("div", { class: "fa-result-card" },
+    h("div", { class: "fug-eyebrow" }, `${ids.map(nameOf).join(" + ")}`),
+    kv([...rows, ...[0, 1].map(k => [`Melting point, ${nameOf(ids[k]).toLowerCase()}`, fmtShort(+tToDisplay(f[k].Tm_K, u).toFixed(2)), tU(u)])]),
+    h("div", { class: "fug-eyebrow" }, `At ${fmtTemp(T, u)}`),
+    h("ul", { class: "fa-plain" }, ...at.map(t => h("li", {}, t))),
+    h("div", { class: "fug-foot" }, "Each liquidus: ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m) for that pure solid; no solid solutions, ΔCp of fusion taken as 0.")), read);
+  move(conv1(d.eutectic.x1));
+  extra.append(section("Sources", fusionSources(ctx, ids), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null));
+  return { data: `Eutectic ${fmtTemp(d.eutectic.T_K, u)}` };
+}
 
 // ---------------------------------------------------------------------------------------
 // Property explorer

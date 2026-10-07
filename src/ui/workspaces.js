@@ -17,7 +17,7 @@ export const WORKSPACES = [
   { id: "equilibrium", label: "Phase equilibrium", short: "Phase eq.", icon: "ternary",
     views: ["txy", "ternary", "azeotropes", "pxy", "envelope"], view: "ternary" },
   { id: "steam", label: "Steam", short: "Steam", icon: "dome", views: ["steam"], view: "steam" },
-  { id: "solubility", label: "Gas solubility", short: "Solubility", icon: "henry", views: ["henry"], view: "henry" },
+  { id: "solubility", label: "Solubility", short: "Solubility", icon: "henry", views: ["henry", "solid", "sle"], view: "henry" },
   { id: "properties", label: "Properties", short: "Properties", icon: "curves", views: ["properties"], view: "properties" },
   { id: "flash", label: "Flash", short: "Flash", icon: "drum", views: ["flash"], view: "flash" },
   { id: "flowsheet", label: "Flowsheet", short: "Flowsheet", icon: "flowsheet", views: ["flowsheet"], view: "flowsheet" },
@@ -64,6 +64,8 @@ export function workspaceOf(view) {
  *  - kind "list": min to max components;
  *  - kind "henry": a gas and a solvent;
  *  - kind "none": nothing to choose (steam is water).
+ * `solid`: the slots whose component must have a melting temperature and enthalpy of fusion;
+ * `activityOnly`: the view needs an activity model (NRTL, UNIQUAC or ideal) for the liquid.
  * `liquid`: with an activity-coefficient model (NRTL, UNIQUAC, ideal), only components with
  * activity-model data (vapour pressure, UNIQUAC r and q); with an equation of state (PR, SRK)
  * every component, gases too. `minActivity`: the smallest list with an activity model, where
@@ -78,6 +80,9 @@ export const INPUTS = {
   envelope: { kind: "list", min: 1, minActivity: 2, max: 6, liquid: true, what: "a phase envelope" },
   flash: { kind: "list", min: 1, minActivity: 2, max: 6, liquid: true, what: "a flash" },
   henry: { kind: "henry", what: "a gas solubility" },
+  // solid-liquid equilibrium (proposal 0007, step 4): `solid` lists the slots whose component crystallizes (melting data needed)
+  solid: { kind: "slots", n: 2, liquid: true, solid: [0], activityOnly: true, what: "a solid solubility", roles: ["the solid", "the solvent"] },
+  sle: { kind: "slots", n: 2, liquid: true, solid: [0, 1], activityOnly: true, what: "a solid-liquid diagram", roles: ["x axis", "1 − x"] },
   properties: { kind: "slots", n: 1, liquid: false, what: "the property curves", roles: ["pure component"] },
   steam: { kind: "none", what: "the steam tables" },
   flowsheet: { kind: "none", what: "the flowsheet" },   // its own setup: components and method of the flowsheet
@@ -163,12 +168,20 @@ export function checkInputs(view, value, model = "NRTL") {
     const label = spec.kind === "slots" && spec.n > 1 ? `Component ${i + 1}` : spec.kind === "slots" ? "The component" : nameIn(m, id);
     if (!id) { problems.push({ slot: i, message: `${label} is empty: choose ${spec.liquid ? "a liquid" : "a component"}.` }); return; }
     if (!m.has(id)) { problems.push({ slot: i, message: `${label}: unknown component "${id}".` }); return; }
-    if (spec.liquid && !m.get(id).activity) {
+    if (spec.liquid && !m.get(id).activity && spec.activityOnly) {
+      problems.push({ slot: i, message: `${spec.kind === "slots" ? `${label}, ${nameIn(m, id)}` : nameIn(m, id)}, has no activity-model data (vapour pressure and UNIQUAC r and q), so ${spec.what} cannot use it yet.` });
+    } else if (spec.liquid && !m.get(id).activity) {
       problems.push({ slot: i, message: `${spec.kind === "slots" ? `${label}, ${nameIn(m, id)}` : nameIn(m, id)}, has no activity-model data (vapour pressure and UNIQUAC r and q), so ${spec.what} with ${model === "ideal" ? "an ideal solution" : model} cannot use it. Choose a liquid, or an equation of state (Peng–Robinson or SRK) in the Model group for gases.` });
+    }
+    if (spec.solid?.includes(i) && !m.get(id).fusion) {
+      problems.push({ slot: i, message: `${nameIn(m, id)} has no melting temperature and enthalpy of fusion in the databank (no open data), so it cannot be the solid.` });
     }
     if (seen.has(id)) problems.push({ slot: i, message: `Components ${seen.get(id) + 1} and ${i + 1} are both ${nameIn(m, id)}: choose different components.` });
     else seen.set(id, i);
   });
+  if (spec.activityOnly && isEosModel(model)) {
+    problems.push({ slot: null, message: `${spec.what[0].toUpperCase()}${spec.what.slice(1)} needs an activity model for the liquid: choose NRTL, UNIQUAC or Ideal in the Model group.` });
+  }
   if (spec.kind === "list" && ids.length < spec.min) {
     const why = !isEosModel(model) && spec.minActivity
       ? ` with an activity model (one pure component needs an equation of state: Peng–Robinson or SRK)` : "";
@@ -198,6 +211,9 @@ export function seedInputs(components = [], { gas, solvent, propComponent, model
     envelope: normalizeInputs("envelope", ids.slice(0, 6)),
     flash: normalizeInputs("flash", liq.slice(0, 6)),
     henry: { gas: g, solvent: pickId(solvent) ?? solventsFor(g)[0] ?? "water" },
+    // a solid in a solvent, and a binary with a eutectic: examples until the person chooses
+    solid: normalizeInputs("solid", ["benzoic-acid", "ethanol"]),
+    sle: normalizeInputs("sle", ["benzene", "naphthalene"]),
     properties: [pickId(propComponent) ?? ids[0] ?? "water"],
     steam: [],
     flowsheet: [],

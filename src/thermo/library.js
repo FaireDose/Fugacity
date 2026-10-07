@@ -203,13 +203,14 @@ export function sourceEntry(id) {
 
 function labelProperty(key) {
   return { vapourPressure: "vapour pressure", uniquac: "UNIQUAC r and q", association: "vapour association",
+    fusion: "melting temperature and enthalpy of fusion",
     constants_source: "critical constants and normal boiling point", omega_source: "acentric factor" }[key]
     ?? key.replace(/[A-Z]/g, m => " " + m.toLowerCase());
 }
 
 /**
  * The sources of a component's records: [{ key, label, source_ids }] for the critical
- * constants, acentric factor, vapour pressure, UNIQUAC r and q, association and property records.
+ * constants, acentric factor, vapour pressure, UNIQUAC r and q, association, melting data and property records.
  */
 export function componentSources(id) {
   const c = comp(findComponent(id));
@@ -217,7 +218,7 @@ export function componentSources(id) {
   const rec = (key, ids) => { if (ids?.length) out.push({ key, label: labelProperty(key), source_ids: ids.slice() }); };
   rec("constants_source", c.constants_source_ids);
   rec("omega_source", c.omega_source_ids);
-  for (const key of ["vapourPressure", "uniquac", "association"]) if (c[key]) rec(key, c[key].source_ids);
+  for (const key of ["vapourPressure", "uniquac", "association", "fusion"]) if (c[key]) rec(key, c[key].source_ids);
   for (const [key, r] of Object.entries(c.properties ?? {})) rec(key, r.source_ids);
   return out;
 }
@@ -237,7 +238,7 @@ function computeUsedBy() {
   for (const id of henryData.solvents.water.vapourPressure.source_ids ?? []) add(id, { type: "henry", gas: null, label: "Water vapour pressure in the Henry's law equations" });
   for (const [cid, c] of Object.entries(componentData.components)) {
     const rec = (key, ids) => { for (const id of ids ?? []) add(id, { type: "component", component: cid, property: key, label: `${c.name}: ${labelProperty(key)}` }); };
-    for (const key of ["vapourPressure", "uniquac", "association"]) if (c[key]) rec(key, c[key].source_ids);
+    for (const key of ["vapourPressure", "uniquac", "association", "fusion"]) if (c[key]) rec(key, c[key].source_ids);
     for (const [key, r] of Object.entries(c.properties ?? {})) rec(key, r.source_ids);
     rec("constants_source", c.constants_source_ids);
     rec("omega_source", c.omega_source_ids);
