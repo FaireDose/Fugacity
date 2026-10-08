@@ -29,6 +29,7 @@ import {
   VIEWS, PRESETS, initialState, applyPatch, TIER_SHORT, fmtP, parseP, parseT, fmtTemp, pxyTemperature,
   RULES, ruleOf, setsFor, setChoices, pairKeyOf, modelLabel,
 } from "./app-logic.js";
+import { FUTURE_MODELS } from "./future-models.js";
 import { WORKSPACES, SECTIONS, sectionOf, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
 import { renderView, sourcesPanel, saveText, copyText } from "./app-views.js";
@@ -306,6 +307,9 @@ export function app(target, cfg = {}) {
     return bigButton({ ico: VIEW_ICON[view], label, pressed: state.view === view, title: `${VIEWS[view].label}: ${needsOf(view, state.model).toLowerCase()}`,
       fk: `diagram-${view}`, onClick: () => set({ view }) });
   }
+  /** Models on the roadmap: locked chips with what each is for (FUTURE_MODELS). */
+  const lockedChips = list => list.map(m => h("span", { class: "fa-locked-chip", title: m.note, "aria-disabled": "true", "data-fk": `later-${m.id}` },
+    icon("lock", 11), m.label));
   /** One labelled row of the Model group: a caption and its choices. */
   const modelRow = (caption, label, choices, current, onPick) =>
     h("div", { class: "fa-model-row" }, h("span", { class: "fa-model-cap", "aria-hidden": "true" }, caption), seg(label, choices, current, onPick));
@@ -329,6 +333,8 @@ export function app(target, cfg = {}) {
             { disabled: eos, title: eos ? "The vapour model belongs to the activity models; an equation of state describes the vapour itself" : undefined }))),
       h("div", { class: "fa-model-family" + (eos ? " is-on" : "") },
         modelRow("EOS", "Equation of state (both phases)", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? state.model : null, m => set({ model: m }))),
+      h("div", { class: "fa-model-row fa-model-later", role: "note", "aria-label": "Models not available yet" },
+        h("span", { class: "fa-model-cap", "aria-hidden": "true" }, "later"), ...lockedChips([...FUTURE_MODELS.activity, ...FUTURE_MODELS.eos])),
       h("div", { class: "fa-hint" }, hint)));
   }
   function ribbonGroups() {
@@ -419,7 +425,6 @@ export function app(target, cfg = {}) {
       return { disabled: bad || noMelt, note: bad ? "gas: equation of state only" : noMelt ? "no melting data" : other != null ? `also component ${other + 1}` : null };
     };
   }
-  const pickGroup = view => c => (c.activity ? "Liquids" : needsFor(view, state.model).liquid ? "Gases (need an equation of state)" : "Gases");
 
   function slotsInput(view, check) {
     const spec = needsFor(view, state.model), value = state.inputs[view];
@@ -429,7 +434,7 @@ export function app(target, cfg = {}) {
       const picker = componentPicker({
         id: sid, fk: `slot-${view}-${i}`, label: spec.n > 1 ? `Component ${i + 1}` : "Component", components: all, value: id,
         placeholder: spec.liquid ? "Liquid: name, formula, CAS…" : "Name, formula, CAS…",
-        status: pickStatus(view, i), group: pickGroup(view), invalid: bad.has(i), describedBy: bad.has(i) ? `fa-problems-${uid}` : undefined,
+        status: pickStatus(view, i), invalid: bad.has(i), describedBy: bad.has(i) ? `fa-problems-${uid}` : undefined,
         onPick: pid => { if (!pid) return; const next = value.slice(); next[i] = pid; set({ inputs: { [view]: next } }); },
       });
       return h("div", { class: "fa-slot" + (bad.has(i) ? " is-bad" : "") + (spec.n === 1 ? " is-single" : "") },
@@ -453,7 +458,7 @@ export function app(target, cfg = {}) {
     const addId = `fa-add-${view}-${uid}`;
     const add = componentPicker({
       id: addId, fk: `add-${view}`, label: "Add a component", disabled: full, clearOnPick: true,
-      components: all.filter(c => !value.includes(c.id)), status: pickStatus(view, -1), group: pickGroup(view),
+      components: all.filter(c => !value.includes(c.id)), status: pickStatus(view, -1),
       placeholder: full ? `Full: at most ${spec.max}` : spec.liquid ? "Add a liquid: name, formula, CAS…" : "Add: name, formula, CAS…",
       onPick: pid => { if (pid) set({ inputs: { [view]: [...value, pid] } }); },
     });
