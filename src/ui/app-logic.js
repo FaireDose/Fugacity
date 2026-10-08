@@ -19,6 +19,7 @@ import knownIssues from "../data/known-issues.json" with { type: "json" };
 import { WORKSPACES, UTILITIES, INPUTS, checkInputs, normalizeInputs, seedInputs, isEosModel } from "./workspaces.js";
 import { normalizeUnits, tToDisplay, tFromDisplay, pToDisplay, pFromDisplay, fmtShort } from "./properties-logic.js";
 import { normalizeFlash, FLASH_DEFAULTS } from "./flash-logic.js";
+import { solidUnitIds } from "./solubility-units.js";
 
 /**
  * Canvas views: the workspace each belongs to and its name. The phase-equilibrium diagrams
@@ -184,7 +185,7 @@ const DEFAULTS = {
   components: ["methanol", "acetone", "chloroform"],
   model: "NRTL", eos: "PR", vapour: "ideal", P_kPa: 101.325, basis: "mole",
   background: true, residueCurves: true, isotherms: true, grid: 40,
-  property: "density", henryP_kPa: 101.325, henryT_K: 298.15, sleT_K: 298.15, steamP_kPa: [10, 100, 1000, 10000],
+  property: "density", henryP_kPa: 101.325, henryT_K: 298.15, sleT_K: 298.15, solidUnit: "mole", steamP_kPa: [10, 100, 1000, 10000],
 };
 
 /**
@@ -245,6 +246,7 @@ export function initialState(cfg = {}) {
     henryP_kPa: positive(cfg.henryP_kPa ?? DEFAULTS.henryP_kPa, "henryP_kPa"),
     henryT_K: positive(cfg.henryT_K ?? DEFAULTS.henryT_K, "henryT_K"),
     sleT_K: positive(cfg.sleT_K ?? DEFAULTS.sleT_K, "sleT_K"),
+    solidUnit: checkSolidUnit(cfg.solidUnit ?? DEFAULTS.solidUnit),
     compareGases: !!cfg.compareGases,
     steamP_kPa: cleanList(cfg.steamP_kPa ?? DEFAULTS.steamP_kPa),
     flash: normalizeFlash(cfg.flash ?? {}, FLASH_DEFAULTS),
@@ -284,6 +286,11 @@ function checkEos(m) {
   if (!EOS_MODELS.includes(m)) throw new Error(`Unknown equation of state "${m}". Use one of: ${EOS_MODELS.join(", ")}.`);
   return m;
 }
+function checkSolidUnit(u) {
+  if (!solidUnitIds.includes(u)) throw new Error(`Unknown solubility unit "${u}". Known: ${solidUnitIds.join(", ")}.`);
+  return u;
+}
+
 function positive(v, name) {
   const x = Number(v);
   if (!(x > 0) || !Number.isFinite(x)) throw new RangeError(`${name} must be a positive number (got ${v}).`);
@@ -372,6 +379,7 @@ export function applyPatch(state, patch = {}) {
   if (patch.henryP_kPa != null) next.henryP_kPa = positive(patch.henryP_kPa, "henryP_kPa");
   if (patch.henryT_K != null) next.henryT_K = positive(patch.henryT_K, "henryT_K");
   if (patch.sleT_K != null) next.sleT_K = positive(patch.sleT_K, "sleT_K");
+  if (patch.solidUnit != null) next.solidUnit = checkSolidUnit(patch.solidUnit);
   if (patch.steamP_kPa != null) next.steamP_kPa = cleanList(patch.steamP_kPa);
   if ("title" in patch) next.title = patch.title;
   if ("sets" in patch) next.sets = patch.sets === null ? {} : normalizeSets(patch.sets, state.sets);

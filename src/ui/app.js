@@ -38,6 +38,7 @@ import { projectOf, projectText, projectFileName, stateFromProject } from "./pro
 import { browserStore, hostStore, autosave, lastAutosave, clearAutosave } from "./project-store.js";
 import { FLASH_SPECS, FLOW_UNITS, feedComposition, convertBasis, flowIn } from "./flash-logic.js";
 import { pure } from "../thermo/pure.js";
+import { SOLID_UNITS } from "./solubility-units.js";
 import pkg from "../../package.json" with { type: "json" };
 
 const PROPERTY_GLYPHS = [
@@ -93,6 +94,8 @@ const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY
  * @param {number} [cfg.henryT_K=298.15] temperature of the Gas solubility workspace
  * @param {number} [cfg.henryP_kPa=101.325]  gas partial pressure of the Gas solubility workspace
  * @param {boolean} [cfg.compareGases=false] also draw the other gases with a constant in the same solvent
+ * @param {"mole"|"mass"|"g100g"|"gL"} [cfg.solidUnit="mole"] how the Solid view states the solubility: mole fraction,
+ *   wt %, g per 100 g of solvent, or g per litre of solvent
  * @param {string} [cfg.propComponent]   component of the Properties workspace (default: the first of components)
  * @param {string} [cfg.property="density"]   property of the Properties workspace
  * @param {number[]} [cfg.steamP_kPa]   isobars of the steam chart, kPa (up to six)
@@ -378,7 +381,9 @@ export function app(target, cfg = {}) {
           group("Liquid model", h("div", { class: "fa-stack" },
             seg("Liquid model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], isEosModel(state.model) ? null : state.model, m => set({ model: m })),
             h("div", { class: "fa-hint" }, "ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m); pure solid, ΔCp = 0"))),
-          group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
+          v === "solid"
+            ? group("Solubility as", seg("Solubility unit", SOLID_UNITS.map(su => [su.id, su.label]), state.solidUnit, su => set({ solidUnit: su })))
+            : group("Composition", seg("Composition basis", [["mole", "mol frac"], ["mass", "wt %"]], state.basis, b => set({ basis: b }))),
         ];
       }
       case "properties": {
@@ -1001,7 +1006,7 @@ export function app(target, cfg = {}) {
     return JSON.stringify([v, check.ok ? check.use : ["invalid", state.inputs[v]], state.model, state.eos, state.vapour, state.P_kPa, state.T_K,
       state.units, state.basis, state.residueCurves, state.isotherms, state.grid, state.property, state.z[v] ?? null,
       v === "henry" ? [state.inputs.henry, state.henryT_K, state.henryP_kPa, state.compareGases] : null,
-      v === "solid" || v === "sle" ? state.sleT_K : null, state.steamP_kPa, state.sets, state.prefer,
+      v === "solid" || v === "sle" ? [state.sleT_K, state.solidUnit] : null, state.steamP_kPa, state.sets, state.prefer,
       v === "flash" ? state.flash : null,
       v === "flowsheet" ? [state.flowsheet, ensureUi(ui).sel, ui.fs.auto, ui.fs.solveKey, ui.fs.zoom] : null]);
   };
