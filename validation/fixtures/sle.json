@@ -170,6 +170,56 @@
    "solute": "water",
    "T_K": 265.0,
    "x": 0.9239686775276519
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "benzoic-acid",
+    "water"
+   ],
+   "solute": "benzoic-acid",
+   "T_K": 298.15,
+   "x": 0.000458286509138638
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "benzoic-acid",
+    "water"
+   ],
+   "solute": "benzoic-acid",
+   "T_K": 330.0,
+   "x": 0.0016989498270221141
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "solute": "naphthalene",
+   "T_K": 290.0,
+   "x": 0.2300928902936717
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "naphthalene",
+    "toluene"
+   ],
+   "solute": "naphthalene",
+   "T_K": 320.0,
+   "x": 0.48993981805751824
+  },
+  {
+   "model": "NRTL",
+   "components": [
+    "salicylic-acid",
+    "ethanol"
+   ],
+   "solute": "salicylic-acid",
+   "T_K": 300.0,
+   "x": 0.15078750743906885
   }
  ],
  "eutectic": [

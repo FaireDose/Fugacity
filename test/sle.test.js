@@ -104,3 +104,34 @@ test("every component's melting data have a source, or say there are no open dat
   }
   assert.ok(withData >= 90, `${withData} components with melting data`);
 });
+
+test("NRTL sets fitted to measured solubilities reproduce the data as their records state, inside their valid range", () => {
+  // validation/python/fit_sle.py, docs/SLE_FITS.md: each record states the median of the articles' median
+  // deviations |x / x_measured − 1| and its valid temperature range; the engine must give the same numbers
+  const binaries = JSON.parse(readFileSync(new URL("../src/data/binaries.json", import.meta.url))).pairs;
+  const sets = binaries.filter(p => p.set === "fitted-sle-thermoml");
+  assert.ok(sets.length >= 20, `${sets.length} fitted solid-liquid sets`);
+  const median = a => { const s = [...a].sort((x, y) => x - y); const n = s.length; return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2; };
+  for (const p of sets) {
+    assert.equal(p.tier, "fitted");
+    assert.match(p.source, /not checked against vapour-liquid data/);
+    const stated = Number(p.source.match(/median of the articles ([\d.]+) %/)[1]) / 100;
+    assert.ok(stated <= 0.15, `${p.i} + ${p.j}: ${stated}`);
+    const data = JSON.parse(readFileSync(new URL(`../validation/data/sle/${p.i}.json`, import.meta.url)));
+    const s = system({ components: [p.i, p.j], model: "NRTL" });
+    const byArticle = new Map();
+    for (const set of data.sets.filter(x => x.solvent === p.j)) {
+      for (const r of set.rows) {
+        if (r.T_K > p.valid.T_K[1] + 1e-9 || r.T_K >= s.fusion[0].Tm_K) continue;
+        const x = s.solidSolubility(p.i, r.T_K).xSolute;
+        if (!byArticle.has(set.doi)) byArticle.set(set.doi, []);
+        byArticle.get(set.doi).push(Math.abs(x / r.x_solute - 1));
+      }
+    }
+    const med = median([...byArticle.values()].map(median));
+    assert.ok(Math.abs(med - stated) < 0.0006, `${p.i} + ${p.j}: engine ${(100 * med).toFixed(2)} %, record ${(100 * stated).toFixed(1)} %`);
+  }
+  // the fitted sets are the defaults: the solid views use them instead of the ideal solution
+  const bw = system({ components: ["benzoic-acid", "water"], model: "NRTL" }).solidSolubility("benzoic-acid", 298.15);
+  assert.ok(bw.gamma > 50, "benzoic acid in water is far from ideal");
+});

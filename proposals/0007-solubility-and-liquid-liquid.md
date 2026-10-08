@@ -166,3 +166,9 @@ temperature, with the ideal solubility for comparison and the readout at a chose
 (mole and mass fraction, grams per 100 g of solvent, γ); and the solid-liquid diagram of a binary
 with both liquidus curves and the eutectic. Where the pair has no parameters for the chosen model
 (most solid-solvent pairs), the views show the ideal solubility and say so.
+
+**Step 4, third part, done:** NRTL parameters for 26 solid + solvent pairs fitted to the measured
+solubilities of the ThermoML Archive (`validation/python/fit_sle.py`, report in
+[docs/SLE_FITS.md](../docs/SLE_FITS.md)): median deviation of the articles 0.2-9.5 %, and close to
+that on articles left out of the fit. Pairs whose fit would split the liquid of a miscible pair, or
+that miss 15 %, are reported and not written.
