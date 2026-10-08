@@ -19,6 +19,7 @@ import { drawPlot } from "./plot.js";
 import { system } from "../system.js";
 import { listComponents } from "../thermo/system.js";
 import { pure, PROPERTIES, PROPERTY_NAMES } from "../thermo/pure.js";
+import { SOLID_UNITS, solidIn } from "./solubility-units.js";
 import { steam, steamSat } from "../thermo/iapws/steam.js";
 import { henry, henryInfo, gasSolubility } from "../thermo/henry.js";
 import { ternaryAzeotropes, binaryAzeotropes } from "../equilibrium/azeotrope.js";
@@ -719,40 +720,59 @@ function solidView(ctx) {
   if (note) notes.append(h("div", { class: "fug-warn", role: "note" }, note));
   const f = sys.fusion[0], fs = sys.fusion[1];
   const MW = [pure(solid).MW, pure(solvent).MW];
-  const mass = state.basis === "mass";
-  const show1 = x => (mass ? x * MW[0] / (x * MW[0] + (1 - x) * MW[1]) : x);
+  const unit = SOLID_UNITS.find(su => su.id === state.solidUnit) ?? SOLID_UNITS[0];
+  // the solvent's liquid density (g/L): only for "g per L of solvent"; null where its correlation has no value
+  const rho = T => { try { return pure(solvent).property("liquidDensity", T); } catch { return null; } };
+  const conv = (x, T, id = unit.id) => {
+    if (id === "gL") { const r = rho(T); return r == null ? null : solidIn(id, x, MW, r); }
+    return solidIn(id, x, MW);
+  };
+  // per gram of solvent the amount grows without limit at the melting point (x -> 1): those curves stop at x = XMAX
+  const ratio = unit.id === "g100g" || unit.id === "gL", XMAX = 0.9;
   // from the solvent's melting point (it freezes below), or 150 K below the solid's, up to just below T_m
   const T1 = f.Tm_K - 0.05, T0 = Math.min(T1 - 5, Math.max(f.Tm_K - 150, fs ? fs.Tm_K + 0.5 : 0, 0.5 * f.Tm_K));
   const pts = [], ideal = [], reasons = new Map();
-  let splits = false;
+  let splits = false, cut = false, noRho = false;
+  const add = (list, x, T) => {
+    if (ratio && x > XMAX) { cut = true; return; }
+    const y = conv(x, T);
+    if (y == null) { noRho = true; return; }
+    list.push({ x: tToDisplay(T, u), y });
+  };
   for (const T of linspace(T0, T1, 90)) {
     try {
       const r = sys.solidSolubility(0, T);
-      pts.push({ x: tToDisplay(T, u), y: show1(r.xSolute) }); ideal.push({ x: tToDisplay(T, u), y: show1(r.xIdeal) });
+      add(pts, r.xSolute, T); add(ideal, r.xIdeal, T);
       splits ||= r.splits;
     } catch (e) { addReason(reasons, e.message); }
   }
   const series = [{ name: sys.model === "ideal" ? "ideal" : sys.model, color: SERIES(0), segments: [{ points: pts }] }];
   if (sys.model !== "ideal") series.push({ name: "ideal", color: "var(--fug-muted)", dash: "5 4", segments: [{ points: ideal }] });
   if (splits) notes.append(h("div", { class: "fug-warn", role: "note" }, `The ${sys.model} model splits the liquid into two phases at some temperatures: the solvent-rich solubility is drawn there; a liquid-liquid check is needed.`));
+  if (noRho) notes.append(h("div", { class: "fug-warn", role: "note" }, `No liquid density of ${nameOf(solvent).toLowerCase()} at some of these temperatures (outside its correlation): g/L is not drawn there. g/100 g needs no density.`));
   const gap = gapNote(reasons, "solubility");
   if (gap) notes.append(gap);
 
-  // the result at the chosen temperature
+  // the result at the chosen temperature, in every unit
   const result = h("div", { class: "fa-result-card" });
   const T = state.sleT_K;
   result.append(h("div", { class: "fug-eyebrow" }, `${nameOf(solid)} in ${nameOf(solvent).toLowerCase()} at ${fmtTemp(T, u)}`));
   try {
     const r = sys.solidSolubility(0, T);
-    const w = r.xSolute * MW[0] / (r.xSolute * MW[0] + (1 - r.xSolute) * MW[1]);
+    const val = (x, id) => { const y = conv(x, T, id); return y == null ? "–" : fmtNum(y, 4); };
+    const rhoT = rho(T);
+    const rows = [["Mole fraction x", val(r.xSolute, "mole")], ["Mass fraction", val(r.xSolute, "mass"), "wt %"],
+      ["Per 100 g of solvent", val(r.xSolute, "g100g"), "g"],
+      ["Per litre of solvent", val(r.xSolute, "gL"), rhoT == null ? "g (no solvent density at this T)" : `g (solvent ${fmtNum(rhoT, 4)} kg/m³)`]];
+    const main = rows[SOLID_UNITS.indexOf(unit)];
     result.append(
-      h("div", { class: "fa-result-main" }, h("span", {}, mass ? "Mass fraction w" : "Mole fraction x"), h("b", { class: "fug-big" }, fmtNum(mass ? w : r.xSolute, 4))),
-      kv([[mass ? "Mole fraction" : "Mass fraction", fmtNum(mass ? r.xSolute : w, 4)],
-        ["Per 100 g of solvent", fmtNum(100 * w / (1 - w), 4), "g"],
+      h("div", { class: "fa-result-main" }, h("span", {}, unit.title), h("b", { class: "fug-big" }, `${main[1]}${unit.id === "mole" ? "" : ` ${unit.id === "mass" ? "%" : unit.id === "gL" ? "g/L" : "g"}`}`)),
+      kv([...rows.filter(row => row !== main),
         ["Activity coefficient γ", fmtNum(r.gamma, 4)],
-        ["Ideal solubility", fmtNum(mass ? show1(r.xIdeal) : r.xIdeal, 4), mass ? "mass fraction" : "mole fraction"],
+        ["Ideal solubility", val(r.xIdeal, unit.id), unit.axis],
         ["Melting point of the solid", meltText(f, u)]]),
       ...r.notes.filter(n => !/ΔCp/.test(n)).map(n => h("div", { class: "fug-warn" }, n)),
+      h("div", { class: "fug-foot" }, `x is the mole fraction of ${nameOf(solid).toLowerCase()} in the saturated solution (moles of dissolved solid per mole of solution), not the share of the solid that dissolves: x = 0.5 is one mole of solid per mole of solvent. At the melting point x reaches 1: the molten solid mixes with the solvent in any ratio. g/L is per litre of pure solvent at this temperature, before the solid is added.`),
       h("div", { class: "fug-foot" }, "Pure solid in equilibrium with the solution: ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m), ΔCp of fusion taken as 0."));
   } catch (e) {
     result.append(h("div", { class: "fug-err", role: "alert" }, e.message));
@@ -761,7 +781,7 @@ function solidView(ctx) {
   const show = Tx => {
     const Tk = tFromDisplay(Tx, u);
     const vals = series.map(sr => interpolate(sr.segments[0].points, Tx));
-    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `On the curve at ${fmtShort(+Tx.toFixed(2))} ${tU(u)}`),
+    read.replaceChildren(h("div", { class: "fug-eyebrow" }, `On the curve at ${fmtShort(+Tx.toFixed(2))} ${tU(u)}, ${unit.axis}`),
       ...series.map((sr, i) => h("div", { class: "fa-row" }, h("span", {}, h("span", { class: "sw", style: `border-color:${sr.color}` }), sr.name),
         h("b", { class: "fug-num" }, vals[i] == null || Tk >= f.Tm_K ? "–" : fmtNum(vals[i], 3)))));
     return vals;
@@ -771,13 +791,14 @@ function solidView(ctx) {
     plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, "No solubility could be calculated in this temperature range."));
   } else {
     const move = drawPlot(plot, { compact, series, x0, x1, log: true, xLabel: `T, ${tU(u)}`,
-      yLabel: `${nameOf(solid)} (${mass ? "mass" : "mole"} fraction)`, show,
-      aria: `Solubility of ${nameOf(solid)} in ${nameOf(solvent).toLowerCase()} against temperature` });
-    plot.append(h("div", { class: "fug-legend" }, `Up to the melting point of ${nameOf(solid).toLowerCase()} (${fmtTemp(f.Tm_K, u)})${fs && T0 <= fs.Tm_K + 0.6 ? `, from the melting point of ${nameOf(solvent).toLowerCase()} (below it the solvent freezes)` : ""}.`));
+      yLabel: `${nameOf(solid)} (${unit.axis})`, show,
+      aria: `Solubility of ${nameOf(solid)} in ${nameOf(solvent).toLowerCase()} against temperature, ${unit.axis}` });
+    plot.append(h("div", { class: "fug-legend" }, `Up to the melting point of ${nameOf(solid).toLowerCase()} (${fmtTemp(f.Tm_K, u)})${fs && T0 <= fs.Tm_K + 0.6 ? `, from the melting point of ${nameOf(solvent).toLowerCase()} (below it the solvent freezes)` : ""}.${cut ? ` Drawn up to x = ${XMAX}: per gram of solvent the solubility grows without limit at the melting point.` : ""}`));
     move(Math.min(x1, Math.max(x0, tToDisplay(T, u))));
   }
   side.replaceChildren(result, read);
-  extra.append(section("Sources", fusionSources(ctx, [solid]), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null));
+  extra.append(section("Sources", fusionSources(ctx, [solid]), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null,
+    unit.id === "gL" ? componentSourceList([solvent], ["liquidDensity"]) : null));
   return { data: `${sys.model === "ideal" ? "Ideal solution" : sys.model}${note ? " (no pair parameters)" : ""}` };
 }
 

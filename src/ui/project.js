@@ -26,7 +26,7 @@
  *       "z": { "pxy": null, "envelope": null },
  *       "flash": { "spec", "T_K", "P_kPa", "VF", "Q_J_mol", "feedT_K", "feedP_kPa", "duty", "z", "flow", "flowUnit" },
  *       "sets": { "ethanol+water": "chemsep" }, "prefer": null,
- *       "henryT_K", "henryP_kPa", "compareGases", "property", "steamP_kPa",
+ *       "henryT_K", "henryP_kPa", "compareGases", "sleT_K", "solidUnit", "property", "steamP_kPa",
  *       "background", "residueCurves", "isotherms", "grid", "panels", "ribbon"
  *     },
  *     "flowsheet": { "components", "thermo", "blocks", "streams", "solver" },   // optional; src/flowsheet/document.js
@@ -48,7 +48,7 @@ export const PROJECT_FORMAT = 2;
 
 /** The keys of `workbench`, in the order they are written. */
 const KEYS = ["view", "diagram", "model", "eos", "vapour", "P_kPa", "T_K", "units", "basis", "inputs", "z", "flash", "sets", "prefer",
-  "henryT_K", "henryP_kPa", "compareGases", "property", "steamP_kPa", "background", "residueCurves", "isotherms", "grid", "panels", "ribbon"];
+  "henryT_K", "henryP_kPa", "compareGases", "sleT_K", "solidUnit", "property", "steamP_kPa", "background", "residueCurves", "isotherms", "grid", "panels", "ribbon"];
 
 const copy = v => (v == null ? v : JSON.parse(JSON.stringify(v)));
 
@@ -127,7 +127,7 @@ export function stateFromProject(input) {
   const w = doc.workbench;
   const cfg = { components: [] };
   for (const k of ["model", "eos", "vapour", "P_kPa", "T_K", "units", "basis", "background", "panels", "ribbon", "residueCurves",
-    "isotherms", "grid", "property", "henryP_kPa", "henryT_K", "compareGases", "steamP_kPa", "sets", "prefer"]) {
+    "isotherms", "grid", "property", "henryP_kPa", "henryT_K", "compareGases", "sleT_K", "solidUnit", "steamP_kPa", "sets", "prefer"]) {
     if (w[k] !== undefined && w[k] !== null) cfg[k] = w[k];
   }
   if (w.T_K === null) delete cfg.T_K;
