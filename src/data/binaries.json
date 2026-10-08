@@ -3666,6 +3666,710 @@
       ],
       "tier": "databank",
       "data_wanted": "open experimental data to fit (proposal 0004 step 3; the databank set is used until then)."
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "1-butanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 717.4501,
+      "b_ji": -379.7917,
+      "alpha": 0.3,
+      "source": "Fitted to 9 measured solubilities of solid benzoic acid in 1-butanol, 276.9-327.3 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.3 %, largest 1.0 % (ideal solution: 5.6 %). From solid-liquid data only: not checked against vapour-liquid data; outside 276.9-327.3 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        276.92,
+        327.3
+      ],
+      "valid": {
+        "T_K": [
+          276.92,
+          327.3
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "1-propanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 763.8942,
+      "b_ji": -378.0464,
+      "alpha": 0.3,
+      "source": "Fitted to 10 measured solubilities of solid benzoic acid in 1-propanol, 279.1-326.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.3 %, largest 0.9 % (ideal solution: 5.3 %). From solid-liquid data only: not checked against vapour-liquid data; outside 279.1-326.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        279.06,
+        326.16
+      ],
+      "valid": {
+        "T_K": [
+          279.06,
+          326.16
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "2-butanone",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 732.6234,
+      "b_ji": -411.0855,
+      "alpha": 0.3,
+      "source": "Fitted to 9 measured solubilities of solid benzoic acid in 2-butanone, 278.6-325.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.2 %, largest 0.9 % (ideal solution: 6.7 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.6-325.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.65,
+        325.2
+      ],
+      "valid": {
+        "T_K": [
+          278.65,
+          325.2
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "2-propanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 641.8057,
+      "b_ji": -384.4327,
+      "alpha": 0.3,
+      "source": "Fitted to 29 measured solubilities of solid benzoic acid in 2-propanol, 278.1-343.1 K, from 4 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Long, Fluid Phase Equilib. 297 (2010), doi:10.1016/j.fluid.2010.06.021; Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025; Zhang, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b00888; Zhu, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b01226. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 2.3 %, largest 5.0 %; refitted without each article in turn, the left-out articles deviate by 3.7 % (median) (ideal solution: 7.0 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-343.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.06,
+        343.1
+      ],
+      "valid": {
+        "T_K": [
+          278.06,
+          343.1
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "acetone",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 529.3199,
+      "b_ji": -362.6836,
+      "alpha": 0.3,
+      "source": "Fitted to 21 measured solubilities of solid benzoic acid in acetone, 277.6-322.7 K, from 3 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Long, Fluid Phase Equilib. 297 (2010), doi:10.1016/j.fluid.2010.06.021; Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025; Zhang, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b00888. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 2.3 %, largest 6.9 %; refitted without each article in turn, the left-out articles deviate by 6.1 % (median) (ideal solution: 7.0 %). From solid-liquid data only: not checked against vapour-liquid data; outside 277.6-322.7 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        277.59,
+        322.72
+      ],
+      "valid": {
+        "T_K": [
+          277.59,
+          322.72
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "chloroform",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -99.3138,
+      "b_ji": 252.2311,
+      "alpha": 0.3,
+      "source": "Fitted to 14 measured solubilities of solid benzoic acid in chloroform, 278.1-323.1 K, from 2 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025; Thati, J. Chem. Eng. Data 55 (2010), doi:10.1021/je100675r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.1 %, largest 8.1 % (ideal solution: 35.3 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-323.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.15,
+        323.15
+      ],
+      "valid": {
+        "T_K": [
+          278.15,
+          323.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "ethanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 1026.5475,
+      "b_ji": -412.2551,
+      "alpha": 0.3,
+      "source": "Fitted to 29 measured solubilities of solid benzoic acid in ethanol, 278.1-328.1 K, from 5 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Kumari, J. Chem. Eng. Data 62 (2017), doi:10.1021/acs.jced.6b00464; Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025; Zhang, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b00888; Li, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b01265; Thati, J. Chem. Eng. Data 55 (2010), doi:10.1021/je100675r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.5 %, largest 7.2 %; refitted without each article in turn, the left-out articles deviate by 1.8 % (median) (ideal solution: 7.9 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-328.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.15,
+        328.15
+      ],
+      "valid": {
+        "T_K": [
+          278.15,
+          328.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "ethyl-acetate",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 399.3737,
+      "b_ji": -241.955,
+      "alpha": 0.3,
+      "source": "Fitted to 11 measured solubilities of solid benzoic acid in ethyl acetate, 279.7-326.5 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.4 %, largest 2.1 % (ideal solution: 9.4 %). From solid-liquid data only: not checked against vapour-liquid data; outside 279.7-326.5 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        279.67,
+        326.5
+      ],
+      "valid": {
+        "T_K": [
+          279.67,
+          326.5
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "methanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 1184.6558,
+      "b_ji": -370.2863,
+      "alpha": 0.3,
+      "source": "Fitted to 8 measured solubilities of solid benzoic acid in methanol, 278.0-323.5 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.4 %, largest 1.2 % (ideal solution: 13.6 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.0-323.5 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.0,
+        323.49
+      ],
+      "valid": {
+        "T_K": [
+          278.0,
+          323.49
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "methyl-acetate",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 12.3737,
+      "b_ji": -37.7051,
+      "alpha": 0.3,
+      "source": "Fitted to 10 measured solubilities of solid benzoic acid in methyl acetate, 283.1-328.1 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.1 %, largest 6.0 % (ideal solution: 4.5 %). From solid-liquid data only: not checked against vapour-liquid data; outside 283.1-328.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        283.15,
+        328.15
+      ],
+      "valid": {
+        "T_K": [
+          283.15,
+          328.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "mibk",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 736.6712,
+      "b_ji": -368.9768,
+      "alpha": 0.3,
+      "source": "Fitted to 10 measured solubilities of solid benzoic acid in methyl isobutyl ketone, 276.4-325.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Tully, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.5b00746. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.6 %, largest 2.4 % (ideal solution: 5.0 %). From solid-liquid data only: not checked against vapour-liquid data; outside 276.4-325.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        276.45,
+        325.16
+      ],
+      "valid": {
+        "T_K": [
+          276.45,
+          325.16
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "toluene",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -300.1984,
+      "b_ji": 821.3443,
+      "alpha": 0.3,
+      "source": "Fitted to 95 measured solubilities of solid benzoic acid in toluene, 273.1-354.1 K, from 13 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Cheng, J. Chem. Thermodyn. 101 (2016), doi:10.1016/j.jct.2016.06.014; Wu, J. Chem. Thermodyn. 102 (2016), doi:10.1016/j.jct.2016.07.023; Yang, J. Chem. Thermodyn. 132 (2019), doi:10.1016/j.jct.2018.12.035; Han, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.6b00230; Gao, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00170; Chen, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00192; Qiao, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00333; Xu, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00416; Yang, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b00952; Xie, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.9b00190; Zhang, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.9b00717; Thati, J. Chem. Eng. Data 55 (2010), doi:10.1021/je100675r; Wang, J. Chem. Eng. Data 60 (2015), doi:10.1021/je500775r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 6.5 %, largest 67.5 %; refitted without each article in turn, the left-out articles deviate by 6.8 % (median) (ideal solution: 133.1 %). From solid-liquid data only: not checked against vapour-liquid data; outside 273.1-354.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive",
+        "gao2018-acetone-chloroform"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        273.15,
+        354.05
+      ],
+      "valid": {
+        "T_K": [
+          273.15,
+          354.05
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "benzoic-acid",
+      "j": "water",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -554.6517,
+      "b_ji": 2788.8034,
+      "alpha": 0.3,
+      "source": "Fitted to 114 measured solubilities of solid benzoic acid in water, 278.4-368.1 K, from 12 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/benzoic-acid.json): Qing-Zhu, Fluid Phase Equilib. 250 (2006), doi:10.1016/j.fluid.2006.10.014; Sun, Fluid Phase Equilib. 330 (2012), doi:10.1016/j.fluid.2012.06.010; Sunsandee, Fluid Phase Equilib. 338 (2013), doi:10.1016/j.fluid.2012.11.023; Cuevas-Valenzuela, Fluid Phase Equilib. 382 (2014), doi:10.1016/j.fluid.2014.09.013; Ren, J. Chem. Thermodyn. 37 (2005), doi:10.1016/j.jct.2004.12.006; Seyf, J. Chem. Eng. Data 61 (2016), doi:10.1021/acs.jced.6b00163; Sandeepa, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.8b00025; Jin, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.8b01181; Gheitasi, J. Chem. Eng. Data 64 (2019), doi:10.1021/acs.jced.9b00620; Li, J. Chem. Eng. Data 58 (2013), doi:10.1021/je400602s; Wang, J. Chem. Eng. Data 60 (2015), doi:10.1021/je500775r; Kong, J. Chem. Eng. Data 53 (2008), doi:10.1021/je7004038. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 9.5 %, largest 50.1 %; refitted without each article in turn, the left-out articles deviate by 11.1 % (median) (ideal solution: 30319.5 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.4-355.1 K the parameters are extrapolated. Above 355.6 K the model has the solid melt into a second, benzoic acid-rich liquid (a monotectic) before the measured solubilities do, so the set is valid to 355.1 K; the deviations are those below it.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.4,
+        368.15
+      ],
+      "valid": {
+        "T_K": [
+          278.4,
+          355.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "1-butanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 334.7785,
+      "b_ji": 298.9077,
+      "alpha": 0.3,
+      "source": "Fitted to 17 measured solubilities of solid naphthalene in 1-butanol, 313.8-342.8 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Cui, J. Chem. Eng. Data 54 (2009), doi:10.1021/je800628a. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 2.9 %, largest 9.6 % (ideal solution: 123.4 %). From solid-liquid data only: not checked against vapour-liquid data; outside 313.8-342.8 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        313.77,
+        342.8
+      ],
+      "valid": {
+        "T_K": [
+          313.77,
+          342.8
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "acetone",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 286.389,
+      "b_ji": -94.0772,
+      "alpha": 0.3,
+      "source": "Fitted to 28 measured solubilities of solid naphthalene in acetone, 278.1-323.1 K, from 2 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Li, J. Chem. Eng. Data 53 (2008), doi:10.1021/je800428r; Cui, J. Chem. Eng. Data 54 (2009), doi:10.1021/je800628a. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.7 %, largest 4.2 % (ideal solution: 29.4 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-323.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.15,
+        323.05
+      ],
+      "valid": {
+        "T_K": [
+          278.15,
+          323.05
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "dmf",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 357.6044,
+      "b_ji": -225.3538,
+      "alpha": 0.3,
+      "source": "Fitted to 9 measured solubilities of solid naphthalene in n,n-dimethylformamide, 278.1-318.1 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Li, J. Chem. Eng. Data 53 (2008), doi:10.1021/je800428r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.0 %, largest 3.5 % (ideal solution: 7.2 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-318.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.05,
+        318.15
+      ],
+      "valid": {
+        "T_K": [
+          278.05,
+          318.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "ethyl-acetate",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 444.6268,
+      "b_ji": -270.5354,
+      "alpha": 0.3,
+      "source": "Fitted to 10 measured solubilities of solid naphthalene in ethyl acetate, 278.2-323.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Li, J. Chem. Eng. Data 53 (2008), doi:10.1021/je800428r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.5 %, largest 6.1 % (ideal solution: 6.8 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.2-323.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.2,
+        323.21
+      ],
+      "valid": {
+        "T_K": [
+          278.2,
+          323.21
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "n-heptane",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 330.876,
+      "b_ji": 225.8919,
+      "alpha": 0.3,
+      "source": "Fitted to 21 measured solubilities of solid naphthalene in n-heptane, 290.2-333.8 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Cui, J. Chem. Eng. Data 54 (2009), doi:10.1021/je800628a. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.0 %, largest 3.1 % (ideal solution: 197.1 %). From solid-liquid data only: not checked against vapour-liquid data; outside 290.2-333.8 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        290.25,
+        333.75
+      ],
+      "valid": {
+        "T_K": [
+          290.25,
+          333.75
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "nmp",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -420.1671,
+      "b_ji": 382.2939,
+      "alpha": 0.3,
+      "source": "Fitted to 10 measured solubilities of solid naphthalene in n-methyl-2-pyrrolidone, 278.2-323.3 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Li, J. Chem. Eng. Data 53 (2008), doi:10.1021/je800428r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.5 %, largest 3.5 % (ideal solution: 18.5 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.2-323.3 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.18,
+        323.27
+      ],
+      "valid": {
+        "T_K": [
+          278.18,
+          323.27
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "tetrahydrofuran",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 813.515,
+      "b_ji": -497.2352,
+      "alpha": 0.3,
+      "source": "Fitted to 12 measured solubilities of solid naphthalene in tetrahydrofuran, 278.6-333.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Li, J. Chem. Eng. Data 53 (2008), doi:10.1021/je800428r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.6 %, largest 5.5 % (ideal solution: 10.4 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.6-333.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.6,
+        333.22
+      ],
+      "valid": {
+        "T_K": [
+          278.6,
+          333.22
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "toluene",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 286.3221,
+      "b_ji": -196.4931,
+      "alpha": 0.3,
+      "source": "Fitted to 12 measured solubilities of solid naphthalene in toluene, 291.4-334.6 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Cui, J. Chem. Eng. Data 54 (2009), doi:10.1021/je800628a. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.5 %, largest 2.7 % (ideal solution: 4.3 %). From solid-liquid data only: not checked against vapour-liquid data; outside 291.4-334.6 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        291.35,
+        334.65
+      ],
+      "valid": {
+        "T_K": [
+          291.35,
+          334.65
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "naphthalene",
+      "j": "water",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 288.4606,
+      "b_ji": 3249.4107,
+      "alpha": 0.3,
+      "source": "Fitted to 8 measured solubilities of solid naphthalene in water, 313.2-348.2 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/naphthalene.json): Karasek, J. Chem. Eng. Data 51 (2006), doi:10.1021/je050427r. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 2.0 %, largest 5.0 % (ideal solution: 3593546.5 %). From solid-liquid data only: not checked against vapour-liquid data; outside 313.2-348.2 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        313.2,
+        348.2
+      ],
+      "valid": {
+        "T_K": [
+          313.2,
+          348.2
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "salicylic-acid",
+      "j": "1-butanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -550.6465,
+      "b_ji": 337.0227,
+      "alpha": 0.3,
+      "source": "Fitted to 9 measured solubilities of solid salicylic acid in 1-butanol, 278.1-318.1 K, from 1 article (data public in the NIST TRC ThermoML Archive; validation/data/sle/salicylic-acid.json): Lim, J. Chem. Thermodyn. 57 (2013), doi:10.1016/j.jct.2012.09.006. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 0.2 %, largest 0.4 % (ideal solution: 68.9 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-318.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.15,
+        318.15
+      ],
+      "valid": {
+        "T_K": [
+          278.15,
+          318.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "salicylic-acid",
+      "j": "ethanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -599.5669,
+      "b_ji": 474.1596,
+      "alpha": 0.3,
+      "source": "Fitted to 20 measured solubilities of solid salicylic acid in ethanol, 278.1-348.0 K, from 2 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/salicylic-acid.json): Lim, J. Chem. Thermodyn. 57 (2013), doi:10.1016/j.jct.2012.09.006; Shalmashi, J. Chem. Eng. Data 53 (2008), doi:10.1021/je7004962. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 1.0 %, largest 5.5 % (ideal solution: 60.9 %). From solid-liquid data only: not checked against vapour-liquid data; outside 278.1-348.0 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        278.15,
+        348.0
+      ],
+      "valid": {
+        "T_K": [
+          278.15,
+          348.0
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "salicylic-acid",
+      "j": "methanol",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -683.549,
+      "b_ji": 1082.7237,
+      "alpha": 0.3,
+      "source": "Fitted to 15 measured solubilities of solid salicylic acid in methanol, 283.1-323.1 K, from 3 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/salicylic-acid.json): Yang, J. Chem. Eng. Data 62 (2017), doi:10.1021/acs.jced.7b00238; Li, J. Chem. Eng. Data 63 (2018), doi:10.1021/acs.jced.7b00665; Nordstrom, J. Chem. Eng. Data 51 (2006), doi:10.1021/je060134d. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 3.0 %, largest 7.9 %; refitted without each article in turn, the left-out articles deviate by 4.4 % (median) (ideal solution: 61.0 %). From solid-liquid data only: not checked against vapour-liquid data; outside 283.1-323.1 K the parameters are extrapolated.",
+      "source_ids": [
+        "nist-thermoml-archive",
+        "li2018-acetone-methanol"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        283.1,
+        323.15
+      ],
+      "valid": {
+        "T_K": [
+          283.1,
+          323.15
+        ]
+      }
+    },
+    {
+      "model": "NRTL",
+      "i": "salicylic-acid",
+      "j": "water",
+      "set": "fitted-sle-thermoml",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -897.4523,
+      "b_ji": 3856.7286,
+      "alpha": 0.3,
+      "source": "Fitted to 26 measured solubilities of solid salicylic acid in water, 283.1-348.0 K, from 4 articles (data public in the NIST TRC ThermoML Archive; validation/data/sle/salicylic-acid.json): Yang, J. Chem. Eng. Data 62 (2017), doi:10.1021/acs.jced.7b00238; Nordstrom, J. Chem. Eng. Data 51 (2006), doi:10.1021/je060134d; Fakhree, J. Chem. Eng. Data 57 (2012), doi:10.1021/je300980k; Shalmashi, J. Chem. Eng. Data 53 (2008), doi:10.1021/je7004962. Pure-solid equilibrium with the melting data of the databank and dCp of fusion 0 (validation/python/fit_sle.py, docs/SLE_FITS.md). Solubility deviation: median of the articles 7.5 %, largest 25.0 %; refitted without each article in turn, the left-out articles deviate by 10.2 % (median) (ideal solution: 16715.3 %). From solid-liquid data only: not checked against vapour-liquid data; outside 283.1-336.9 K the parameters are extrapolated. Above 337.4 K the model has the solid melt into a second, salicylic acid-rich liquid (a monotectic) before the measured solubilities do, so the set is valid to 336.9 K; the deviations are those below it.",
+      "source_ids": [
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted",
+      "T_range_K": [
+        283.1,
+        348.0
+      ],
+      "valid": {
+        "T_K": [
+          283.1,
+          336.85
+        ]
+      }
     }
   ]
 }

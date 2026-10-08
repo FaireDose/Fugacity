@@ -104,6 +104,10 @@ SYSTEM_CASES = [  # model, components, solute, temperatures
     ("UNIQUAC", ["phenol", "water"], "phenol", [305.0]),
     ("NRTL", ["acetic-acid", "water"], "acetic-acid", [270.0, 285.0]),
     ("NRTL", ["water", "ethylene-glycol"], "water", [250.0, 265.0]),
+    # sets fitted to measured solubilities (validation/python/fit_sle.py)
+    ("NRTL", ["benzoic-acid", "water"], "benzoic-acid", [298.15, 330.0]),
+    ("NRTL", ["naphthalene", "toluene"], "naphthalene", [290.0, 320.0]),
+    ("NRTL", ["salicylic-acid", "ethanol"], "salicylic-acid", [300.0]),
 ]
 EUTECTIC_CASES = [("ideal", ["benzene", "naphthalene"]), ("ideal", ["naphthalene", "toluene"]),
                   ("ideal", ["benzene", "p-xylene"]), ("NRTL", ["acetic-acid", "water"]),
