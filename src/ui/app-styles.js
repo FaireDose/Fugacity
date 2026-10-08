@@ -347,6 +347,10 @@ export const APP_CSS = `
 .fa-field.fa-field-stack select{width:100%}
 .fs-block.is-failed .fs-shape{stroke:#c0392b; stroke-width:2.6}
 .fa-btn.is-locked{opacity:.5}
+.fug-app .fa-locked-chip{display:inline-flex; align-items:center; gap:3px; padding:2px 7px; border:1px dashed var(--fug-rule); border-radius:6px; font-size:11.5px; color:var(--fug-muted); cursor:not-allowed; white-space:nowrap}
+.fug-app .fa-model-later{flex-wrap:wrap; gap:4px}
+.fug-app .fa-locked-row{display:flex; flex-wrap:wrap; gap:4px}
+.fug-app .fa-fs-later{margin-top:10px; padding-top:8px; border-top:1px solid var(--fug-rule)}
 .fa-canvas-grid{display:grid; grid-template-columns:repeat(2, auto); gap:2px 4px}
 .fa-soon-grid{display:grid; grid-template-columns:repeat(3, auto); gap:2px 4px}
 .fs-wrap{overflow:auto}

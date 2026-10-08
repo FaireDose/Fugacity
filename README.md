@@ -177,4 +177,6 @@ change reviewed by someone other than its author.
 
 Code: MIT. Data: under the license of its source, see [src/data/LICENSES.md](src/data/LICENSES.md).
 
+The repository therefore carries two licences on purpose: the MIT license ([LICENSE](LICENSE)) for Fugacity's own code, and the licences of the redistributed data, chiefly the Artistic License 2.0 of the ChemSep databank, whose text must travel with the data it covers ([src/data/LICENSES.md](src/data/LICENSES.md)).
+
 **Your files and results are yours.** Project files, flowsheets, exports (CSV, Excel) and the numbers and diagrams you make with Fugacity belong to the people who make them. The MIT license covers the Fugacity software, not what you create with it: Fugacity claims no rights in your inputs or results and puts no conditions on their use, commercial use included. Exports may repeat a few values from Fugacity's data (for example molar masses); their sources are listed in [src/data/LICENSES.md](src/data/LICENSES.md).

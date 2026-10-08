@@ -16,6 +16,7 @@
  *     placeholder,
  *     status(c) -> { note, disabled },   // optional: a note after the name, and whether it can be picked
  *     group(c) -> string,           // optional: heading of the component's group, shown while nothing is typed
+ *                                   // (not the phase: the list is alphabetical; groups only where most entries cannot be picked)
  *     allowClear,                   // Enter on an empty field picks null (an optional slot)
  *     disabled, invalid, describedBy, fk,
  *     onPick(id | null),
@@ -46,7 +47,11 @@ export function componentPicker(o) {
     const q = query.trim();
     // the ones that can be picked first (a stable split: the search order stays within each part)
     const found = searchComponents(o.components, q);
-    matches = q ? [...found.filter(c => !status(c).disabled), ...found.filter(c => status(c).disabled)] : found;
+    // nothing typed: alphabetical by name (within the groups, if any, in the order they first appear)
+    const byName = (a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base", numeric: true });
+    const groups = o.group ? [...new Set(found.map(o.group))] : [];
+    matches = q ? [...found.filter(c => !status(c).disabled), ...found.filter(c => status(c).disabled)]
+      : found.slice().sort((a, b) => (o.group ? groups.indexOf(o.group(a)) - groups.indexOf(o.group(b)) : 0) || byName(a, b));
     list.replaceChildren();
     active = -1;
     if (!matches.length) {

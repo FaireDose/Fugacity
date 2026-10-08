@@ -9,6 +9,7 @@
  */
 import { h, s as svgEl } from "./dom.js";
 import { icon } from "./icons.js";
+import { FUTURE_MODELS } from "./future-models.js";
 import { listComponents } from "../thermo/system.js";
 import { componentPicker } from "./component-picker.js";
 import { unitType } from "../units/units.js";
@@ -285,7 +286,6 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
     id: `fa-fs-addcomp-${uid}`, fk: "fs-addcomp", label: "Add a component", clearOnPick: true,
     components: all.filter(c => !fs.components.includes(c.id)),
     status: c => (usable.includes(c) ? {} : { disabled: true, note: "gas: choose Peng–Robinson or SRK" }),
-    group: c => (c.activity ? "Liquids" : "Gases"),
     placeholder: fs.components.length ? "Add: name, formula, CAS…" : "Choose: name, formula, CAS…",
     onPick: id => { if (id) changeComps([...fs.components, id]); },
   });
@@ -333,7 +333,13 @@ function methodSection({ fs, eos, setThermo, inputsSection }) {
     eos ? null : h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "with vapour"),
       segRow("Vapour model", [["ideal", "Ideal gas"], ["PR", "PR"], ["SRK", "SRK"]], fs.thermo.vapour ?? "ideal", v => setThermo({ vapour: v }), "fs-vap")),
     h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "or an equation of state"),
-      segRow("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? fs.thermo.model : null, m => setThermo({ model: m }), "fs-model")));
+      segRow("Equation of state", [["PR", "Peng–Robinson"], ["SRK", "SRK"]], eos ? fs.thermo.model : null, m => setThermo({ model: m }), "fs-model")),
+    // on the roadmap: locked, with what each is for
+    h("div", { class: "fa-fs-later", role: "note" },
+      h("div", { class: "fa-in-hint" }, "Not available yet:"),
+      ...[["More models", [...FUTURE_MODELS.activity, ...FUTURE_MODELS.eos]], ["Ions (electrolytes)", FUTURE_MODELS.electrolyte], ["Polymers", FUTURE_MODELS.polymer]]
+        .map(([cap, list]) => h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, cap),
+          h("div", { class: "fa-locked-row" }, ...list.map(m => h("span", { class: "fa-locked-chip", title: m.note, "aria-disabled": "true", "data-fk": `fs-later-${m.id}` }, icon("lock", 11), m.label)))))));
 }
 
 /** The solver settings of the flowsheet: method, tolerance, maximum iterations. */
