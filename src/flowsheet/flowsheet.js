@@ -293,7 +293,20 @@ export function solveFlowsheet(sys, fs) {
     for (; it < opt.maxIterations; it++) {
       const before = tears.map(e => values.get(e.id));
       try { for (const id of seq) calc(id); } catch (e) {
-        if (it === 0) throw e;   // the first pass is a plain calculation: its error is the block's own
+        if (it === 0) {
+          // the first pass is a plain calculation: its error is the block's own, but its inlets are those of
+          // the start values of the tear streams (no flow, unless guessed), not of the converged loop
+          if (!tears.every(t => t.guess)) {
+            e.message += ` (This happened in the first pass through the loop ${seq.join(", ")}, with the tear stream${tears.length > 1 ? "s" : ""} ${tears.map(t => t.id).join(", ")} at ${tears.length > 1 ? "their" : "its"} start value${tears.length > 1 ? "s" : ""}: no flow unless a guess is given. A guess close to the answer may avoid this state.)`;
+          }
+          throw e;
+        }
+        // a state the property method cannot handle (two liquids with an equation of state) is not a
+        // convergence problem: keep its code, with the loop as context
+        if (e && e.code === "PHASE_SPLIT") {
+          e.message = `In the loop through ${seq.join(", ")}, at iteration ${it + 1}: ${e.message}`;
+          throw e;
+        }
         throw stop(`: at iteration ${it + 1}, ${e.message}`, { cause: e.message });
       }
       const after = tears.map(e => values.get(e.id));

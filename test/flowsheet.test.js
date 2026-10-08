@@ -4,12 +4,9 @@
 //    (validation/python/reference_flowsheet.py) — a different algorithm and a different flash;
 //  - a recycle with fixed split fractions, whose balances are linear and have an exact answer;
 //  - structure errors and a loop that cannot converge, which must throw.
-// A published worked example (proposal 0006, "Engineering basis" 4): no open data so far. Searched
-// (2026-10-06): web searches for openly licensed worked examples of a flash drum or separator with
-// recycle and purge (open textbooks, LibreTexts, Wikibooks "Introduction to Chemical Engineering
-// Processes", course notes, Wolfram demonstrations: the ones found are CC BY-NC-SA or show no
-// complete numbers). The closed-form recycle and the equation-oriented reference carry the
-// validation until one is found.
+// A published worked example (proposal 0006, "Engineering basis" 4): the Cavett problem with the
+// published VMGSim and FLOWTRAN solutions (Rosen, CACHE News, Fall 2005, free to read), in
+// test/flowsheet-suite.test.js with 16 generated recycle flowsheets (docs/FLOWSHEET_TESTS.md).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";

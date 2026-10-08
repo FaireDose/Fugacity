@@ -45,6 +45,9 @@
  *    by the bubble and dew points; for a single phase, a bracket stepped out from them; for a
  *    P-H flash without bubble and dew points at that pressure (above the highest two-phase
  *    pressure), a bracket of T-P flashes stepped out from 300 K.
+ *    Equations of state: when successive substitution is slow (close to a bubble or dew
+ *    point), the GDEM extrapolation (Crowe and Nishio 1975; fluids.numerics.gdem, MIT) every
+ *    fifth step after the 50th.
  *  - Not done (yet): Newton steps near a mixture critical point, where successive
  *    substitution is slow (the flash then stops with NO_CONVERGENCE), and a "supercritical"
  *    label: a single phase is called liquid or vapour by its root (equations of state).
@@ -66,6 +69,7 @@ const K_TOL = 1e-11;   // max |ln K_new - ln K| at convergence
 // azeotrope): the bubble and dew solvers agree only to their own tolerance there.
 const NARROW_K = 1e-4;
 const MAX_IT = 500;
+const ACC_AFTER = 50;  // successive-substitution steps of an equation-of-state flash before GDEM acceleration
 
 // ------------------------------------------------------------------ Rachford-Rice
 
@@ -190,11 +194,21 @@ function splitActivity(sys, z, T, P, K) {
 /** Equations of state: two-phase split at T, P from a starting K. */
 function splitEos(sys, z, T, P, K) {
   const eos = sys.eos;
+  const hist = [];   // ln K of the last steps, for the acceleration of slow cases
   for (let it = 1; it <= MAX_IT; it++) {
     const V = rachfordRice(z, K);
     const { x, y } = phaseCompositions(z, K, Math.min(Math.max(V, -1e3), 1e3));
     const L = eos.state(T, P, x, "liquid").lnPhi, G = eos.state(T, P, y, "vapour").lnPhi;
-    const Kn = L.map((v, i) => Math.exp(v - G[i]));
+    let Kn = L.map((v, i) => Math.exp(v - G[i]));
+    // slow convergence (close to a bubble or dew point): every fifth step after ACC_AFTER, the
+    // GDEM extrapolation of ln K (gdem, below); fast cases never reach it and are unchanged
+    const lnKn = Kn.map(Math.log);
+    if (it > ACC_AFTER && it % 5 === 0 && hist.length >= 3) {
+      const d = gdem(lnKn, hist[hist.length - 1], hist[hist.length - 2], hist[hist.length - 3]);
+      if (d) Kn = lnKn.map((v, i) => Math.exp(v + d[i]));
+    }
+    hist.push(lnKn);
+    if (hist.length > 3) hist.shift();
     let d = 0, trivial = 0;
     for (let i = 0; i < z.length; i++) if (z[i] > 0) { d = Math.max(d, Math.abs(Math.log(Kn[i] / K[i]))); trivial += Math.log(Kn[i]) ** 2; }
     K = Kn;
@@ -209,6 +223,34 @@ function splitEos(sys, z, T, P, K) {
 }
 
 const isEos = sys => sys.kind === "eos";
+
+/**
+ * GDEM, the general dominant eigenvalue method of Crowe and Nishio (AIChE J. 21 (1975) 528), as in
+ * the open-source fluids library (fluids.numerics.gdem, MIT), which thermo's accelerated successive
+ * substitution uses: from the last four iterates x, x1, x2, x3 the step that removes the two
+ * dominant eigenvalues of the iteration. Returns the change to add to x, or null when the
+ * extrapolation is undefined. As there, a component's change is kept only if it is smaller than
+ * |x_i| (else that component takes no extra step).
+ */
+function gdem(x, x1, x2, x3) {
+  const n = x.length;
+  let b01 = 0, b02 = 0, b12 = 0, b11 = 0, b22 = 0;
+  const dx = [], dx1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = x[i] - x1[i], b = x[i] - x2[i], c = x[i] - x3[i];
+    dx.push(a); dx1.push(b);
+    b01 += a * b; b02 += a * c; b12 += b * c; b11 += b * b; b22 += c * c;
+  }
+  const den = b11 * b22 - b12 * b12;
+  if (!(Math.abs(den) > 0)) return null;
+  const mu1 = (b02 * b12 - b01 * b22) / den, mu2 = (b01 * b12 - b02 * b11) / den;
+  const den2 = 1 + mu1 + mu2;
+  if (!(Math.abs(den2) > 0) || !Number.isFinite(mu1) || !Number.isFinite(mu2)) return null;
+  return dx.map((d, i) => {
+    const ch = (d - mu2 * dx1[i]) / den2;
+    return x[i] !== 0 && Math.abs(ch / x[i]) < 1 ? ch : 0;
+  });
+}
 
 /** Throw PHASE_SPLIT if liquid x at T would split into two liquids (tangent-plane test). */
 function checkLiquid(sys, x, T, lead, P = null) {
@@ -550,7 +592,8 @@ function tpCore(sys, z, T, P, ctx = {}) {
       r = splitEos(sys, z, T, P, K);
     }
     if (!r || !(r.V >= -1e-9 && r.V <= 1 + 1e-9)) {
-      throw fail("NO_CONVERGENCE", `${what}: the feed is not stable as one phase (tangent-plane distance ${st.tm.toFixed(4)}), but no vapour-liquid split was found; it may split into two liquids, which is not supported yet with an equation of state.`, { z, T, P });
+      // a liquid trial phase of the stability test: the feed splits into two liquids (PHASE_SPLIT)
+      throw fail(st.trialRoot?.startsWith("liquid") ? "PHASE_SPLIT" : "NO_CONVERGENCE", `${what}: the feed is not stable as one phase (tangent-plane distance ${st.tm.toFixed(4)}), but no vapour-liquid split was found; it may split into two liquids, which is not supported yet with an equation of state.`, { z, T, P });
     }
     if (check) checkLiquid(sys, r.x, T, `${what}: the liquid`, P);
     ctx.K = r.K;
@@ -683,6 +726,28 @@ const single = (type, z) => ({ V: type === "vapour" ? 1 : 0, x: z, y: z, single:
 /** The first bubble (VF = 0) or drop (VF = 1) at the solution, for the result. */
 const incipient = (VF, bd) => (VF === 0 ? { type: "vapour", composition: bd.yb } : VF === 1 ? { type: "liquid", composition: bd.xd } : null);
 
+/**
+ * P-VF flash with an equation of state when the feed has no single-liquid bubble point: T-P flashes
+ * stepping down from the dew point until the vapour fraction falls below VF, then Brent on V(T) = VF.
+ * The liquid at the solution is checked for a second liquid; if it splits, the bubble-point error
+ * (`why`) is not an artefact and is thrown with the solution's own split.
+ */
+function eosVfFromDew(sys, z, P, VF, why) {
+  const Td = eosDewT(sys, z, P).T;
+  const V = Tq => { const c = tpCore(sys, z, Tq, P); return c.single === "vapour" ? 1 : c.single === "liquid" ? 0 : c.V; };
+  let a = Td, b = Td, step = 1;
+  for (let k = 0; ; k++) {
+    b = Math.max(a - step, T_FLOOR);
+    if (V(b) <= VF) break;
+    if (b === T_FLOOR || k >= 200) throw why;
+    a = b; step *= 1.3;
+  }
+  const T = brent(Tq => V(Tq) - VF, b, a, { xtol: 1e-9 });
+  const core = tpCore(sys, z, T, P);
+  checkLiquid(sys, core.x, T, `${sys.model} flash at ${P.toPrecision(6)} kPa, VF = ${VF}: the liquid`, P);
+  return { T, core };
+}
+
 /** Enthalpy of the feed z flashed at T, P (J/mol); throws NOT_AVAILABLE as phase() does. */
 function enthalpyAt(sys, z, T, P, ctx = {}) {
   const core = tpCore(sys, z, T, P, ctx);
@@ -691,12 +756,25 @@ function enthalpyAt(sys, z, T, P, ctx = {}) {
   return { H: r.H, core };
 }
 
-/** Bracket a root of f (increasing in T) by stepping from T0 in direction dir. */
-function stepBracket(f, T0, dir, limit, step = 5) {
-  let a = T0, fa = f(a);
+/**
+ * Bracket a root of f (increasing in T) by stepping from T0 in direction dir. f0: f(T0) if
+ * already known (an iterative f can change sign in its last digits between two evaluations of
+ * one point); a start with |f0| <= ftol is returned as the root, [T0, T0].
+ */
+function stepBracket(f, T0, dir, limit, step = 5, f0 = null, ftol = 0) {
+  let a = T0, fa = f0 ?? f(a);
+  if (Math.abs(fa) <= ftol) return [a, a];
   for (let k = 0; k < 60; k++) {
-    const b = dir > 0 ? Math.min(a + step, limit) : Math.max(a - step, limit);
-    const fb = f(b);
+    let b = dir > 0 ? Math.min(a + step, limit) : Math.max(a - step, limit), fb;
+    // a correlation's range can end between a and b (a liquid heat capacity at the melting point):
+    // step back towards a, and fail with the range error only at the edge of the range
+    for (let tries = 0; ; tries++) {
+      try { fb = f(b); break; } catch (e) {
+        if (!(e && e.code === "OUT_OF_RANGE") || tries >= 40 || Math.abs(b - a) < 1e-6) throw e;
+        b = (a + b) / 2;
+        step = Math.abs(b - a);
+      }
+    }
     if (fa * fb <= 0) return dir > 0 ? [a, b] : [b, a];
     if (b === limit) break;
     a = b; fa = fb; step *= 1.6;
@@ -705,6 +783,7 @@ function stepBracket(f, T0, dir, limit, step = 5) {
 }
 
 const T_FLOOR = 30, T_CEIL = 2000; // K: limits of the temperature search of a P-H flash
+const H_FTOL = 1e-6;                // J/mol: an enthalpy residual this small is a root of the P-H search
 
 // ------------------------------------------------------------------ specifications across two liquids
 
@@ -925,60 +1004,79 @@ function phFast(sys, z, P, H) {
   try { Tb = (isEos(sys) ? eosBubbleT(sys, z, P, { stability: false }) : bubbleTCore(sys, z, P)).T; } catch (e) {
     if (!(e && (e.code === "NO_CONVERGENCE" || e.code === "PHASE_SPLIT" || e.code === "OUT_OF_RANGE"))) throw e;
   }
-  if (Tb === null) {
-    const f = Tq => enthalpyAt(sys, z, Tq, P, ctx).H - H;
+  // without a bubble point: T-P flashes stepped out from 300 K (with their own warm start: K-values
+  // left by a failed search from the bubble point can lead to the trivial solution)
+  const fromTP = () => {
+    const c = { check: false };
+    const f = Tq => enthalpyAt(sys, z, Tq, P, c).H - H;
     const f300 = f(300);
-    const br = stepBracket(f, 300, f300 < 0 ? +1 : -1, f300 < 0 ? T_CEIL : T_FLOOR);
+    const br = stepBracket(f, 300, f300 < 0 ? +1 : -1, f300 < 0 ? T_CEIL : T_FLOOR, 5, f300, H_FTOL);
     if (!br) throw failRange("OUT_OF_RANGE", `${what}: no temperature between ${T_FLOOR} K and ${T_CEIL} K gives the enthalpy ${H.toFixed(1)} J/mol.`, { z, P, H });
-    return finish(brent(f, br[0], br[1], { xtol: 1e-9 }));
-  }
-  const hb = sys.phase("liquid", Tb, P, z).h_J_mol;
-  if (H <= hb) {
-    const br = stepBracket(hLiq, Tb, -1, T_FLOOR);
-    if (!br) throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is below that of the liquid at ${T_FLOOR} K.`, { z, P, H });
-    const T = brent(hLiq, br[0], br[1], { xtol: 1e-9 });
-    checkLiquid(sys, z, T, `${what}: the liquid feed at ${T.toFixed(2)} K`, P);
-    return [T, P, single("liquid", z)];
-  }
-  // a single-temperature two-phase region: all vapour just above the bubble point
-  const probe = tpCore(sys, z, Tb + 2 * NARROW_K, P, ctx);
-  if (probe.single === "vapour") {
-    const Td = (isEos(sys) ? eosDewT(sys, z, P, { stability: false }) : dewT(sys, z, P)).T;
-    const hd = sys.phase("vapour", Td, P, z).h_J_mol;
-    if (H < hd) {
-      const V = (H - hb) / (hd - hb);
-      checkLiquid(sys, z, Tb, `${what}: the liquid`, P);
-      return [Tb + V * (Td - Tb), P, { V, x: z, y: z, single: null, iterations: 0 }];
+    const T = br[0] === br[1] ? br[0] : brent(f, br[0], br[1], { xtol: 1e-9, ftol: H_FTOL });
+    return [T, P, tpCore(sys, z, T, P, { K: c.K })];
+  };
+  if (Tb === null) return fromTP();
+  if (isEos(sys)) {
+    // an equation of state can put the "bubble point" of a gas-rich feed where its liquid splits in two
+    // (nitrogen + heavier hydrocarbons, K-values near 1); the search from it then stalls. The state at
+    // H can still be an ordinary one: search it from 300 K instead, and keep the first error if that
+    // fails too
+    try { return phFromBubble(Tb); } catch (e) {
+      if (!(e && (e.code === "NO_CONVERGENCE" || e.code === "PHASE_SPLIT"))) throw e;
+      try { return fromTP(); } catch { throw e; }
     }
-    const br = stepBracket(hVap, Td, +1, T_CEIL);
-    if (!br) throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is above that of the vapour at ${T_CEIL} K.`, { z, P, H });
-    return [brent(hVap, br[0], br[1], { xtol: 1e-9 }), P, single("vapour", z)];
   }
-  // step up from the bubble point with warm-started T-P flashes
-  let a = Tb, step = 2;
-  for (let k = 0; k < 80; k++) {
-    const b = Math.min(a + step, T_CEIL);
-    const core = tpCore(sys, z, b, P, ctx);
-    if (core.single === "vapour") {
-      if (hVap(b) >= 0) {
-        // the root lies in [a, b]: two-phase up to the dew point, vapour above
-        const f = Tq => enthalpyAt(sys, z, Tq, P, ctx).H - H;
-        const T = brent(f, a, b, { xtol: 1e-9 });
-        return finish(T);
+  return phFromBubble(Tb);
+
+  function phFromBubble(Tb) {
+    const hb = sys.phase("liquid", Tb, P, z).h_J_mol;
+    if (H <= hb) {
+      const br = stepBracket(hLiq, Tb, -1, T_FLOOR);
+      if (!br) throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is below that of the liquid at ${T_FLOOR} K.`, { z, P, H });
+      const T = brent(hLiq, br[0], br[1], { xtol: 1e-9, ftol: H_FTOL });
+      checkLiquid(sys, z, T, `${what}: the liquid feed at ${T.toFixed(2)} K`, P);
+      return [T, P, single("liquid", z)];
+    }
+    // a single-temperature two-phase region: all vapour just above the bubble point
+    const probe = tpCore(sys, z, Tb + 2 * NARROW_K, P, ctx);
+    if (probe.single === "vapour") {
+      const Td = (isEos(sys) ? eosDewT(sys, z, P, { stability: false }) : dewT(sys, z, P)).T;
+      const hd = sys.phase("vapour", Td, P, z).h_J_mol;
+      if (H < hd) {
+        const V = (H - hb) / (hd - hb);
+        checkLiquid(sys, z, Tb, `${what}: the liquid`, P);
+        return [Tb + V * (Td - Tb), P, { V, x: z, y: z, single: null, iterations: 0 }];
       }
-      const br = stepBracket(hVap, b, +1, T_CEIL);
+      const br = stepBracket(hVap, Td, +1, T_CEIL);
       if (!br) throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is above that of the vapour at ${T_CEIL} K.`, { z, P, H });
-      return [brent(hVap, br[0], br[1], { xtol: 1e-9 }), P, single("vapour", z)];
+      return [brent(hVap, br[0], br[1], { xtol: 1e-9, ftol: H_FTOL }), P, single("vapour", z)];
     }
-    const fb = withEnthalpy(sys, core, b, P).H - H;
-    if (fb >= 0) {
-      const f = Tq => enthalpyAt(sys, z, Tq, P, ctx).H - H;
-      return finish(brent(f, a, b, { xtol: 1e-9 }));
+    // step up from the bubble point with warm-started T-P flashes
+    let a = Tb, step = 2;
+    for (let k = 0; k < 80; k++) {
+      const b = Math.min(a + step, T_CEIL);
+      const core = tpCore(sys, z, b, P, ctx);
+      if (core.single === "vapour") {
+        if (hVap(b) >= 0) {
+          // the root lies in [a, b]: two-phase up to the dew point, vapour above
+          const f = Tq => enthalpyAt(sys, z, Tq, P, ctx).H - H;
+          const T = brent(f, a, b, { xtol: 1e-9, ftol: H_FTOL });
+          return finish(T);
+        }
+        const br = stepBracket(hVap, b, +1, T_CEIL);
+        if (!br) throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is above that of the vapour at ${T_CEIL} K.`, { z, P, H });
+        return [brent(hVap, br[0], br[1], { xtol: 1e-9, ftol: H_FTOL }), P, single("vapour", z)];
+      }
+      const fb = withEnthalpy(sys, core, b, P).H - H;
+      if (fb >= 0) {
+        const f = Tq => enthalpyAt(sys, z, Tq, P, ctx).H - H;
+        return finish(brent(f, a, b, { xtol: 1e-9, ftol: H_FTOL }));
+      }
+      if (b === T_CEIL) break;
+      a = b; step *= 1.5;
     }
-    if (b === T_CEIL) break;
-    a = b; step *= 1.5;
+    throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is not reached below ${T_CEIL} K.`, { z, P, H });
   }
-  throw failRange("OUT_OF_RANGE", `${what}: the enthalpy ${H.toFixed(1)} J/mol is not reached below ${T_CEIL} K.`, { z, P, H });
 }
 
 /**
@@ -1039,7 +1137,16 @@ export function flash(sys, spec = {}, opts = {}) {
     if (kind === "PVF") {
       let bd = null;
       out = run(() => {
-        bd = temperatureBubbleDew(sys, z, P, splits);
+        try { bd = temperatureBubbleDew(sys, z, P, splits); } catch (e) {
+          // equations of state: a gas-rich feed at high pressure (nitrogen + heavier hydrocarbons) can have no
+          // single-liquid bubble point (its liquid splits in two there, or there is none) while the vapour +
+          // liquid state at VF exists; search that state down from the dew point instead. If that fails too,
+          // the bubble point's error stands (or the split found at the solution)
+          if (!(isEos(sys) && VF > 0 && VF < 1 && (isSplitError(e) || e?.code === "NO_CONVERGENCE" || e?.code === "OUT_OF_RANGE"))) throw e;
+          let r;
+          try { r = eosVfFromDew(sys, z, P, VF, e); } catch (e2) { throw isSplitError(e2) ? e2 : e; }
+          return result(sys, "PVF", z, r.T, P, r.core);
+        }
         if (!bd) return null;
         const { Tb, Td } = bd;
         let Tsol, core;

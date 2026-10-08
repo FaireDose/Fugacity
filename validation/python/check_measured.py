@@ -120,6 +120,9 @@ CHECKED = {
     "aniline": ["aniline", "benzenamine"],
     "acrylonitrile": ["2-propenenitrile", "acrylonitrile"],
     "methylamine": ["methanamine", "methylamine"],
+    # proposal 0008, Part B, batch 5: the Cavett problem's missing components
+    "isopentane": ["2-methylbutane", "isopentane"],
+    "n-undecane": ["undecane"],
     # proposal 0008, Part B, batch 4: solids at 25 degC (liquid records from the melting point up)
     "naphthalene": ["naphthalene"],
     "benzoic-acid": ["benzoic acid", "benzenecarboxylic acid"],

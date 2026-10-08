@@ -6272,6 +6272,82 @@
    }
   },
   {
+   "model": "PR",
+   "i": "nitrogen",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.0922,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep pr.ipd",
+    "printed": ".922e-1",
+    "conditions": "Nitrogen/Iso-C5 p336",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "PR",
+   "i": "methane",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": -0.0056,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep pr.ipd",
+    "printed": "-.56e-2",
+    "conditions": "Methane/Iso-C5 p436",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "PR",
+   "i": "carbon-dioxide",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.1219,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep pr.ipd",
+    "printed": ".1219",
+    "conditions": "Carbon Dioxide/Iso-C5 p612",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "PR",
+   "i": "propane",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.0111,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep pr.ipd",
+    "printed": ".111e-1",
+    "conditions": "Propane/Isopentane p668",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
    "model": "SRK",
    "i": "dimethyl-ether",
    "j": "methanol",
@@ -6299,6 +6375,82 @@
      323.15
     ]
    }
+  },
+  {
+   "model": "SRK",
+   "i": "nitrogen",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.0867,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep srk.ipd",
+    "printed": ".867e-1",
+    "conditions": "Nitrogen/Iso-C5 p336",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "SRK",
+   "i": "methane",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": -0.0078,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep srk.ipd",
+    "printed": "-.78e-2",
+    "conditions": "Methane/Iso-C5 p436",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "SRK",
+   "i": "carbon-dioxide",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.1307,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep srk.ipd",
+    "printed": ".1307",
+    "conditions": "Carbon Dioxide/Iso-C5 p612",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
+  },
+  {
+   "model": "SRK",
+   "i": "propane",
+   "j": "isopentane",
+   "set": "chemsep",
+   "default": true,
+   "kij": 0.0078,
+   "tier": "databank",
+   "source": {
+    "file": "ChemSep srk.ipd",
+    "printed": ".78e-2",
+    "conditions": "Propane/Isopentane p668",
+    "entries_in_file": 1
+   },
+   "source_ids": [
+    "chemsep-eos-ipd"
+   ],
+   "alternatives": []
   }
  ]
 }

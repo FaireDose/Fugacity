@@ -83,7 +83,9 @@ IDS = ["water", "acetic-acid", "ethylene-glycol", "methanol", "ethanol", "aceton
        "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
        "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
        # proposal 0008, Part B, batch 4: solids at 25 degC
-       "naphthalene", "benzoic-acid", "salicylic-acid"]
+       "naphthalene", "benzoic-acid", "salicylic-acid",
+       # proposal 0008, Part B, batch 5: the Cavett problem's missing components
+       "isopentane", "n-undecane"]
 # components whose vapour-pressure record is made here (the ten liquids of v0.1 keep theirs): from CoolProp,
 # or from ChemSep for a component that is not a CoolProp fluid
 VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
@@ -100,7 +102,9 @@ VP_FITTED = ["oxygen", "nitrogen", "hydrogen", "methane", "ethane", "ethylene",
              "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
              "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
        # proposal 0008, Part B, batch 4: solids at 25 degC
-       "naphthalene", "benzoic-acid", "salicylic-acid"]
+       "naphthalene", "benzoic-acid", "salicylic-acid",
+       # proposal 0008, Part B, batch 5: the Cavett problem's missing components
+       "isopentane", "n-undecane"]
 # proposal 0008, Part B, batches 1 to 3 (the record notes name the proposal)
 BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "sulfolane", "furfural", "dioxane",
        "isobutanol", "2-butanol",
@@ -109,7 +113,9 @@ BATCH_0008 = ["dichloroethane", "mibk", "cyclohexanone", "dmf", "dmso", "nmp", "
        "cumene", "mesitylene", "n-nonane", "n-decane", "n-dodecane", "isooctane", "1-butene", "isoprene",
        "etbe", "pyridine", "aniline", "acrylonitrile", "methylamine",
        # proposal 0008, Part B, batch 4: solids at 25 degC
-       "naphthalene", "benzoic-acid", "salicylic-acid"]
+       "naphthalene", "benzoic-acid", "salicylic-acid",
+       # proposal 0008, Part B, batch 5: the Cavett problem's missing components
+       "isopentane", "n-undecane"]
 
 COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "acetone": "Acetone",
             "benzene": "Benzene", "toluene": "Toluene", "oxygen": "Oxygen", "nitrogen": "Nitrogen",
@@ -123,7 +129,8 @@ COOLPROP = {"water": "Water", "methanol": "Methanol", "ethanol": "Ethanol", "ace
             "n-octane": "n-Octane", "diethyl-ether": "DiethylEther", "propylene-glycol": "PropyleneGlycol",
             "tetrahydrofuran": "Tetrahydrofuran", "dichloroethane": "Dichloroethane",
             "sulfur-dioxide": "SulfurDioxide", "nitrous-oxide": "NitrousOxide", "ethylene-oxide": "EthyleneOxide",
-            "n-nonane": "n-Nonane", "n-decane": "n-Decane", "n-dodecane": "n-Dodecane", "1-butene": "1-Butene"}
+            "n-nonane": "n-Nonane", "n-decane": "n-Decane", "n-dodecane": "n-Dodecane", "1-butene": "1-Butene",
+            "isopentane": "Isopentane", "n-undecane": "n-Undecane"}
 
 PROPS = ["liquidDensity", "idealGasHeatCapacity", "liquidHeatCapacity", "heatOfVaporization",
          "liquidViscosity", "vapourViscosity", "liquidThermalConductivity",
@@ -179,6 +186,7 @@ COOLPROP_GAPS = {  # property models CoolProp 8.0.0 does not have (checked in th
     "ethylene-oxide": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity",
                        "surfaceTension"],
     "1-butene": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
+    "n-undecane": ["liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"],
 }
 
 # NIST WebBook fluid tables (step 3 of the chain) for properties in COOLPROP_GAPS, where the WebBook
@@ -342,6 +350,9 @@ def chain_note(cid, prop):
         elif cid in ("dimethyl-ether", "diethyl-ether", "propylene-glycol", "tetrahydrofuran", "dichloroethane",
                      "ethylene-oxide", "1-butene"):
             notes.append("NIST WebBook: %s is not a WebBook fluid" % ("1-butene" if cid == "1-butene" else cid.replace("-", " ")))
+        elif cid == "n-undecane":
+            notes.append("NIST WebBook: undecane is not a WebBook fluid (its fluid list, checked 2026-10-08, has decane "
+                         "and dodecane)")
         elif cid == "styrene":
             notes.append("ChemSep, as proposal 0004 sets for the components that are not CoolProp fluids; NIST "
                          "WebBook: not a WebBook fluid, and no gas-phase heat capacity table on its page")
