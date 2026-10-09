@@ -246,7 +246,7 @@ def write_doc(found, errors, have, cs, pairs):
     ]
     for title, ps in groups:
         ps = sorted(ps, key=lambda p: -vle_points(p))
-        lines += [f"## {title} ({len(ps)})", "", "| Pair | Fugacity | ChemSep | Records | VLE points | Kinds |", "|---|---|---|---|---|---|"]
+        lines += [f"## {title} ({len(ps)})", "", "| Pair | Parameters | ChemSep | Records | VLE points | Kinds |", "|---|---|---|---|---|---|"]
         for p in ps:
             kinds = defaultdict(int)
             for r in found.get(p, []):

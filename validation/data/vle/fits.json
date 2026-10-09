@@ -195,6 +195,16 @@
    "describe": "Fitted to 15 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Lladosa et al., J. Chem. Eng. Data 53 (2008) 108-115 (data public in the NIST TRC ThermoML Archive; validation/data/vle/1-butanol_water_10-1021-je700411p_101.3kPa_tx.json)."
   },
   {
+   "key": "1-propanol+2-methoxyethanol",
+   "pair": [
+    "1-propanol",
+    "2-methoxyethanol"
+   ],
+   "file": "vle/1-propanol_2-methoxyethanol_10-1021-je400791n_101.3kPa.json",
+   "check": [],
+   "describe": "Fitted to 19 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/1-propanol_2-methoxyethanol_10-1021-je400791n_101.3kPa.json)."
+  },
+  {
    "key": "1-propanol+acetonitrile",
    "pair": [
     "1-propanol",
@@ -569,6 +579,76 @@
    "file": "vle/2-butanone_n-hexane_10-1016-j-fluid-2011-05-004_101.3kPa_tx.json",
    "check": [],
    "describe": "Fitted to 14 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Lladosa et al., Fluid Phase Equilib. 307 (2011) 24-29 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-butanone_n-hexane_10-1016-j-fluid-2011-05-004_101.3kPa_tx.json)."
+  },
+  {
+   "key": "2-methoxyethanol+2-propanol",
+   "pair": [
+    "2-methoxyethanol",
+    "2-propanol"
+   ],
+   "file": "vle/2-methoxyethanol_2-propanol_10-1016-j-fluid-2007-09-014_101.3kPa.json",
+   "check": [],
+   "describe": "Fitted to 18 T-x-y points at 101.3 kPa from Lladosa et al., Fluid Phase Equilib. 262 (2007) 271-279 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_2-propanol_10-1016-j-fluid-2007-09-014_101.3kPa.json)."
+  },
+  {
+   "key": "2-methoxyethanol+cyclohexane",
+   "pair": [
+    "2-methoxyethanol",
+    "cyclohexane"
+   ],
+   "file": "vle/2-methoxyethanol_cyclohexane_10-1021-je900259b_100.0kPa.json",
+   "check": [],
+   "describe": "Fitted to 20 T-x-y points at 100.0 kPa from Marrufo et al., J. Chem. Eng. Data 55 (2010) 62-68 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_cyclohexane_10-1021-je900259b_100.0kPa.json)."
+  },
+  {
+   "key": "2-methoxyethanol+ethanol",
+   "pair": [
+    "2-methoxyethanol",
+    "ethanol"
+   ],
+   "file": "vle/2-methoxyethanol_ethanol_10-1021-je400791n_101.3kPa.json",
+   "check": [],
+   "describe": "Fitted to 19 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_ethanol_10-1021-je400791n_101.3kPa.json)."
+  },
+  {
+   "key": "2-methoxyethanol+ethylbenzene",
+   "pair": [
+    "2-methoxyethanol",
+    "ethylbenzene"
+   ],
+   "file": "vle/2-methoxyethanol_ethylbenzene_10-1021-acs-jced-8b00225_100.0kPa.json",
+   "check": [],
+   "describe": "Fitted to 16 T-x-y points at 100.0 kPa from Shen et al., J. Chem. Eng. Data 63 (2018) 3345-3352 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_ethylbenzene_10-1021-acs-jced-8b00225_100.0kPa.json)."
+  },
+  {
+   "key": "2-methoxyethanol+nmp",
+   "pair": [
+    "2-methoxyethanol",
+    "nmp"
+   ],
+   "file": "vle/2-methoxyethanol_nmp_10-1016-j-fluid-2012-08-030_95.3kPa_tx.json",
+   "check": [],
+   "describe": "Fitted to 13 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 95.3 kPa from Reddy et al., Fluid Phase Equilib. 336 (2012) 52-58 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_nmp_10-1016-j-fluid-2012-08-030_95.3kPa_tx.json)."
+  },
+  {
+   "key": "2-methoxyethanol+toluene",
+   "pair": [
+    "2-methoxyethanol",
+    "toluene"
+   ],
+   "file": "vle/2-methoxyethanol_toluene_10-1016-j-fluid-2014-04-025_101.3kPa.json",
+   "check": [],
+   "describe": "Fitted to 15 T-x-y points at 101.3 kPa from Zhao et al., Fluid Phase Equilib. 375 (2014) 37-44 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_toluene_10-1016-j-fluid-2014-04-025_101.3kPa.json)."
+  },
+  {
+   "key": "2-methoxyethanol+water",
+   "pair": [
+    "2-methoxyethanol",
+    "water"
+   ],
+   "file": "vle/2-methoxyethanol_water_10-1021-je400791n_101.3kPa.json",
+   "check": [],
+   "describe": "Fitted to 22 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_water_10-1021-je400791n_101.3kPa.json)."
   },
   {
    "key": "2-propanol+acetonitrile",

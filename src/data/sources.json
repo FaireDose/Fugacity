@@ -1114,6 +1114,20 @@
         "validation/data/vle/1-propanol_dmf_10-1021-je0604479_101.3kPa.json"
       ]
     },
+    "lladosa2007-2-methoxyethanol-2-propanol": {
+      "title": "Effect of pressure and the capability of 2-methoxyethanol as a solvent in the behaviour of a diisopropyl ether isopropyl alcohol azeotropic mixture",
+      "authors": "E. Lladosa, J. B. Monton, M. Burguet, R. Munoz",
+      "year": 2007,
+      "published": "Fluid Phase Equilib. 262 (2007) 271-279",
+      "kind": "thermoml",
+      "doi": "10.1016/j.fluid.2007.09.014",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.09.014.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/2-methoxyethanol_2-propanol_10-1016-j-fluid-2007-09-014_101.3kPa.json"
+      ]
+    },
     "lladosa2008-1-butanol-n-butyl-acetate": {
       "title": "Phase Equilibrium for the Esterification Reaction of Acetic Acid + Butan-1-ol at 101.3 kPa",
       "authors": "E. Lladosa, J. B. Monton, M. C. Burguet, R. Munoz",
@@ -1223,6 +1237,20 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/vle/1-propanol_mtbe_10-1021-je900274n_101.32kPa.json"
+      ]
+    },
+    "marrufo2010-2-methoxyethanol-cyclohexane": {
+      "title": "Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures with Cyclohexane, Cyclohexene, and 2-Methoxyethanol at 100 kPa",
+      "authors": "B. Marrufo, S. Loras, M. Sanchotello",
+      "year": 2010,
+      "published": "J. Chem. Eng. Data 55 (2010) 62-68",
+      "kind": "thermoml",
+      "doi": "10.1021/je900259b",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je900259b.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/2-methoxyethanol_cyclohexane_10-1021-je900259b_100.0kPa.json"
       ]
     },
     "marrufo2010-cyclohexane-mibk": {
@@ -1469,6 +1497,22 @@
         "validation/data/vle/ethanol_isooctane_10-1021-je300847v_101.3kPa.json"
       ]
     },
+    "plafranco2013-1-propanol-2-methoxyethanol": {
+      "title": "Evaluation of the 2-Methoxyethanol as Entrainer in Ethanol Water and 1-Propanol Water Mixtures",
+      "authors": "J. Pla-Franco, E. Lladosa, J. B. Monton, S. Loras",
+      "year": 2013,
+      "published": "J. Chem. Eng. Data 58 (2013) 3504-3512",
+      "kind": "thermoml",
+      "doi": "10.1021/je400791n",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/je400791n.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/1-propanol_2-methoxyethanol_10-1021-je400791n_101.3kPa.json",
+        "validation/data/vle/2-methoxyethanol_ethanol_10-1021-je400791n_101.3kPa.json",
+        "validation/data/vle/2-methoxyethanol_water_10-1021-je400791n_101.3kPa.json"
+      ]
+    },
     "postigo2009-benzene-n-butyl-acetate": {
       "title": "Isobaric Vapor-Liquid Equilibria for the Binary Systems Benzene + Methyl Ethanoate, Benzene + Butyl Ethanoate, and Benzene + Methyl Heptanoate at 101.31kPa",
       "authors": "M. A. Postigo, A. Mariano, N. Zurakoski, A. F. Jara",
@@ -1568,6 +1612,20 @@
       "files": [
         "validation/data/vle/1-butanol_dioxane_10-1016-j-fluid-2007-11-002_363.15K.json",
         "validation/data/vle/dioxane_isobutanol_10-1016-j-fluid-2007-11-002_353.15K.json"
+      ]
+    },
+    "reddy2012-2-methoxyethanol-nmp": {
+      "title": "Vapor-liquid equilibria and excess molar volumes of N-methyl-2-pyrrolidone with 2-alkoxyethanols",
+      "authors": "K. R. Reddy, D. B. K. Kumar, G. S. Rao, P. B. S. Sri, C. Rambabu",
+      "year": 2012,
+      "published": "Fluid Phase Equilib. 336 (2012) 52-58",
+      "kind": "thermoml",
+      "doi": "10.1016/j.fluid.2012.08.030",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.08.030.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/2-methoxyethanol_nmp_10-1016-j-fluid-2012-08-030_95.3kPa_tx.json"
       ]
     },
     "reddy2013-2-butanol-acetone": {
@@ -1700,6 +1758,20 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/vle/methanol_methyl-acetate_10-1016-j-fluid-2018-05-031_101.3kPa.json"
+      ]
+    },
+    "shen2018-2-methoxyethanol-ethylbenzene": {
+      "title": "Isobaric Vapor-Liquid Equilibrium for Binary and Ternary Systems of 2-Methoxyethanol, Ethylbenzene, and Dimethyl Sulfoxide at 100.00 kPa",
+      "authors": "D. Shen, T. Chen, P. Bai, X. Guo",
+      "year": 2018,
+      "published": "J. Chem. Eng. Data 63 (2018) 3345-3352",
+      "kind": "thermoml",
+      "doi": "10.1021/acs.jced.8b00225",
+      "url": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00225.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/2-methoxyethanol_ethylbenzene_10-1021-acs-jced-8b00225_100.0kPa.json"
       ]
     },
     "sunder2003-furfural-water": {
@@ -2411,6 +2483,20 @@
       "via": "the NIST TRC ThermoML Archive",
       "files": [
         "validation/data/vle/methanol_water_10-1016-j-jct-2019-05-005_101.3kPa.json"
+      ]
+    },
+    "zhao2014-2-methoxyethanol-toluene": {
+      "title": "Isobaric vapor-liquid equilibrium for binary and ternary systems with toluene, 2-methoxyethanol and dimethyl sulfoxide at 101.3 kPa",
+      "authors": "S. Zhao, P. Bai, C. Sun",
+      "year": 2014,
+      "published": "Fluid Phase Equilib. 375 (2014) 37-44",
+      "kind": "thermoml",
+      "doi": "10.1016/j.fluid.2014.04.025",
+      "url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.04.025.html",
+      "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)",
+      "via": "the NIST TRC ThermoML Archive",
+      "files": [
+        "validation/data/vle/2-methoxyethanol_toluene_10-1016-j-fluid-2014-04-025_101.3kPa.json"
       ]
     },
     "zhu2013-ethanol-acetic-acid": {

@@ -1,0 +1,99 @@
+{
+ "_about": "2-Methoxyethanol (1) + Toluene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-methoxyethanol, boiling temperature in K, vapour mole fraction of 2-methoxyethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "S. Zhao, P. Bai, C. Sun, Isobaric vapor-liquid equilibrium for binary and ternary systems with toluene, 2-methoxyethanol and dimethyl sulfoxide at 101.3 kPa, Fluid Phase Equilib. 375 (2014) 37-44",
+  "doi": "10.1016/j.fluid.2014.04.025",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.04.025.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "2-methoxyethanol",
+  "toluene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.029,
+   382.76,
+   0.05500000000000005
+  ],
+  [
+   0.0706,
+   381.47,
+   0.11929999999999996
+  ],
+  [
+   0.1414,
+   380.08,
+   0.20509999999999995
+  ],
+  [
+   0.1956,
+   379.47,
+   0.24980000000000002
+  ],
+  [
+   0.2384,
+   379.27,
+   0.26890000000000003
+  ],
+  [
+   0.2869,
+   379.18,
+   0.29200000000000004
+  ],
+  [
+   0.351,
+   379.12,
+   0.3164
+  ],
+  [
+   0.4097,
+   379.21,
+   0.3399
+  ],
+  [
+   0.489,
+   379.64,
+   0.38
+  ],
+  [
+   0.6596,
+   381.26,
+   0.44430000000000003
+  ],
+  [
+   0.7754,
+   383.6,
+   0.5245
+  ],
+  [
+   0.8617,
+   386.79,
+   0.6255
+  ],
+  [
+   0.9002,
+   389.06,
+   0.6915
+  ],
+  [
+   0.9405,
+   391.9,
+   0.787
+  ],
+  [
+   0.9739,
+   394.94,
+   0.8955
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0065. To be checked by a person against the record (AGENTS.md rule 4)."
+}

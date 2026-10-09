@@ -2265,7 +2265,7 @@ chloroform); liquid-liquid data for them is welcome too.
 - 1-Propanol + n-Decane (NRTL, UNIQUAC)
 - 1-Propanol + Pyridine (NRTL, UNIQUAC)
 
-## Fitted, but the fit still lacks data (122)
+## Fitted, but the fit still lacks data (121)
 
 - Water + Ethyl acetate: open finite-concentration VLE data (isobaric T-x-y near 101.3 kPa, isothermal P-x-y, or VLLE); the 1-atm VLE target is a handbook azeotrope. Excess enthalpies (in the ThermoML Archive, Brandt et al., Fluid Phase Equilib. 376 (2014) 48) could also constrain the temperature dependence.
 - Ethanol + Acetic acid: consistent open vapour-liquid data at 1 atm (the 1-atm set fails the point test, and it disagrees with the static P-x data at 298-323 K).
@@ -2328,7 +2328,6 @@ chloroform); liquid-liquid data for them is welcome too.
 - p-Xylene + Toluene: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
 - Phenol + Water: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
 - Tetrahydrofuran + Water: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
-- 1-Propanol + 2-Methoxyethanol: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
 - 1-Propanol + Isobutanol: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
 - 1-Propanol + n-Decane: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).
 - 1-Propanol + Pyridine: open experimental data to fit (proposal 0004 step 3; the databank set is used until then).

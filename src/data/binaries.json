@@ -5062,8 +5062,26 @@
       "model": "NRTL",
       "i": "1-propanol",
       "j": "2-methoxyethanol",
-      "set": "chemsep",
+      "set": "fitted-plafranco2013",
       "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 409.80421281077736,
+      "b_ji": -268.3191989254758,
+      "alpha": 0.3,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/1-propanol_2-methoxyethanol_10-1021-je400791n_101.3kPa.json). AAD 0.03 K in T, 0.0008 in y (max 0.13 K, 0.0020). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.001 (passes, < 0.01).",
+      "source_ids": [
+        "plafranco2013-1-propanol-2-methoxyethanol",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "1-propanol",
+      "j": "2-methoxyethanol",
+      "set": "chemsep",
+      "default": false,
       "a_ij": 0.0,
       "a_ji": 0.0,
       "b_ij": -204.49669339876792,
@@ -10819,6 +10837,134 @@
       "source": "Fitted to 45 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 60.0 kPa from Cripwell et al., J. Chem. Eng. Data 61 (2016) 2353-2362 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-butyl-acetate_n-octane_10-1021-acs-jced-5b01058_60.0kPa_tx.json). AAD 0.06 K in T (max 0.21 K; no vapour compositions).",
       "source_ids": [
         "cripwell2016-n-butyl-acetate-n-octane",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "2-propanol",
+      "set": "fitted-lladosa2007-etal",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -392.6801599639596,
+      "b_ji": 666.3111079217266,
+      "alpha": 0.3,
+      "source": "Fitted to 18 T-x-y points at 101.3 kPa from Lladosa et al., Fluid Phase Equilib. 262 (2007) 271-279 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_2-propanol_10-1016-j-fluid-2007-09-014_101.3kPa.json). AAD 0.10 K in T, 0.0030 in y (max 0.30 K, 0.0086). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.003 (passes, < 0.01).",
+      "source_ids": [
+        "lladosa2007-1-propanol-dmf",
+        "lladosa2007-2-methoxyethanol-2-propanol",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "cyclohexane",
+      "set": "fitted-marrufo2010-etal",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 391.4720889492458,
+      "b_ji": 774.0289375979177,
+      "alpha": 0.47,
+      "source": "Fitted to 20 T-x-y points at 100.0 kPa from Marrufo et al., J. Chem. Eng. Data 55 (2010) 62-68 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_cyclohexane_10-1021-je900259b_100.0kPa.json). AAD 0.46 K in T, 0.0097 in y (max 1.52 K, 0.0270). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.005 (passes, < 0.01).",
+      "source_ids": [
+        "marrufo2010-2-methoxyethanol-cyclohexane",
+        "marrufo2010-cyclohexane-mibk",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "ethanol",
+      "set": "fitted-plafranco2013",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -334.73449290527134,
+      "b_ji": 482.25830790425016,
+      "alpha": 0.3,
+      "source": "Fitted to 19 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_ethanol_10-1021-je400791n_101.3kPa.json). AAD 0.16 K in T, 0.0015 in y (max 0.37 K, 0.0056). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.002 (passes, < 0.01).",
+      "source_ids": [
+        "plafranco2013-1-propanol-2-methoxyethanol",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "ethylbenzene",
+      "set": "fitted-shen2018",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 189.75150429950492,
+      "b_ji": 429.0188659098429,
+      "alpha": 0.3,
+      "source": "Fitted to 16 T-x-y points at 100.0 kPa from Shen et al., J. Chem. Eng. Data 63 (2018) 3345-3352 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_ethylbenzene_10-1021-acs-jced-8b00225_100.0kPa.json). AAD 0.17 K in T, 0.0069 in y (max 0.48 K, 0.0223). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.006 (passes, < 0.01).",
+      "source_ids": [
+        "shen2018-2-methoxyethanol-ethylbenzene",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "nmp",
+      "set": "fitted-reddy2012",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -348.66288934264225,
+      "b_ji": 492.1264316714599,
+      "alpha": 0.3,
+      "source": "Fitted to 13 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 95.3 kPa from Reddy et al., Fluid Phase Equilib. 336 (2012) 52-58 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_nmp_10-1016-j-fluid-2012-08-030_95.3kPa_tx.json). AAD 0.16 K in T (max 0.50 K; no vapour compositions).",
+      "source_ids": [
+        "reddy2012-2-methoxyethanol-nmp",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "toluene",
+      "set": "fitted-zhao2014",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": 204.33169898373706,
+      "b_ji": 337.11931809746915,
+      "alpha": 0.3,
+      "source": "Fitted to 15 T-x-y points at 101.3 kPa from Zhao et al., Fluid Phase Equilib. 375 (2014) 37-44 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_toluene_10-1016-j-fluid-2014-04-025_101.3kPa.json). AAD 0.14 K in T, 0.0035 in y (max 0.28 K, 0.0092). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.007 (passes, < 0.01).",
+      "source_ids": [
+        "zhao2014-2-methoxyethanol-toluene",
+        "nist-thermoml-archive"
+      ],
+      "tier": "fitted"
+    },
+    {
+      "model": "NRTL",
+      "i": "2-methoxyethanol",
+      "j": "water",
+      "set": "fitted-plafranco2013",
+      "default": true,
+      "a_ij": 0.0,
+      "a_ji": 0.0,
+      "b_ij": -183.23170038322743,
+      "b_ji": 556.7237421491749,
+      "alpha": 0.3,
+      "source": "Fitted to 22 T-x-y points at 101.3 kPa from Pla-Franco et al., J. Chem. Eng. Data 58 (2013) 3504-3512 (data public in the NIST TRC ThermoML Archive; validation/data/vle/2-methoxyethanol_water_10-1021-je400791n_101.3kPa.json). AAD 0.09 K in T, 0.0044 in y (max 0.24 K, 0.0078). Data consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.004 (passes, < 0.01).",
+      "source_ids": [
+        "plafranco2013-1-propanol-2-methoxyethanol",
         "nist-thermoml-archive"
       ],
       "tier": "fitted"

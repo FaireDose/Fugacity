@@ -1,6 +1,7 @@
 """Data files and fit definitions for binary pairs from the NIST TRC ThermoML Archive, a batch at a time.
 
-For each pair asked for, the records listed in validation/data/vle/index.json (scan_pairs.py) are opened,
+For each pair asked for, the records listed in validation/data/vle/index.json (archive search, scan_pairs.py) and
+archive_index.json (the archive's whole bulk file, scan_archive.py) are opened,
 their binary vapour-liquid data sets are read (validation/python/thermoml_read.py: the values as stored,
 nothing rounded) and combined per record into isobaric T-x-y curves (bubble temperature and vapour
 composition at the same liquid composition and pressure) and isothermal P-x(-y) curves. One data set is
@@ -51,7 +52,22 @@ from measured_components import get, norm_inchi  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 COMPS = json.loads((ROOT / "src" / "data" / "components.json").read_text())["components"]
 VLE_DIR = ROOT / "validation" / "data" / "vle"
-INDEX = json.loads((VLE_DIR / "index.json").read_text())["pairs"]
+def _index():
+    """Records per pair: the archive search (index.json, scan_pairs.py) and the whole bulk file (archive_index.json,
+    scan_archive.py), each record once."""
+    out = {}
+    for name in ("index.json", "archive_index.json"):
+        f = VLE_DIR / name
+        if not f.exists():
+            continue
+        for k, recs in json.loads(f.read_text())["pairs"].items():
+            k = "+".join(sorted(k.split("+")))
+            have = {r["doi"] for r in out.setdefault(k, [])}
+            out[k] += [r for r in recs if r["doi"] not in have]
+    return out
+
+
+INDEX = _index()
 FITS_FILE = VLE_DIR / "fits.json"
 ACCESS = "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license)."
 

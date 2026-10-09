@@ -337,7 +337,9 @@ FITS = [
 # Generated fits (vle_batch.py): validation/data/vle/fits.json
 GENERATED_FILE = VAL / "vle" / "fits.json"
 GENERATED = [dict(pair=tuple(f["pair"]), data="txy-file", file=f["file"], check=f.get("check", []), temperature_dependent=False,
-                  describe=f["describe"], generated=True)
+                  describe=f["describe"], generated=True,
+                  # UNIQUAC needs r and q of both components
+                  models=["NRTL", "UNIQUAC"] if all(COMPONENTS[c].get("uniquac") for c in f["pair"]) else ["NRTL"])
              for f in (json.loads(GENERATED_FILE.read_text())["fits"] if GENERATED_FILE.exists() else [])]
 # A generated fit must follow the data it is fitted to: AAD in T and y for T-x-y, in P for P-x.
 GATE = {"T_K": 0.5, "y": 0.012, "P_pct": 1.5}

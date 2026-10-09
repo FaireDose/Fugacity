@@ -1,0 +1,144 @@
+{
+ "_about": "2-Methoxyethanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-methoxyethanol, boiling temperature in K, vapour mole fraction of 2-methoxyethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "J. Pla-Franco, E. Lladosa, J. B. Monton, S. Loras, Evaluation of the 2-Methoxyethanol as Entrainer in Ethanol Water and 1-Propanol Water Mixtures, J. Chem. Eng. Data 58 (2013) 3504-3512",
+  "doi": "10.1021/je400791n",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400791n.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "2-methoxyethanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   373.15,
+   0.0
+  ],
+  [
+   0.014,
+   373.12,
+   0.016000000000000014
+  ],
+  [
+   0.051,
+   373.07,
+   0.049000000000000044
+  ],
+  [
+   0.089,
+   373.17,
+   0.07499999999999996
+  ],
+  [
+   0.118,
+   373.35,
+   0.08899999999999997
+  ],
+  [
+   0.161,
+   373.6,
+   0.11299999999999999
+  ],
+  [
+   0.21,
+   373.93,
+   0.139
+  ],
+  [
+   0.232,
+   374.15,
+   0.14900000000000002
+  ],
+  [
+   0.289,
+   374.59,
+   0.17400000000000004
+  ],
+  [
+   0.325,
+   375.0,
+   0.19099999999999995
+  ],
+  [
+   0.392,
+   375.83,
+   0.22099999999999997
+  ],
+  [
+   0.458,
+   376.82,
+   0.257
+  ],
+  [
+   0.508,
+   377.65,
+   0.281
+  ],
+  [
+   0.585,
+   379.26,
+   0.33499999999999996
+  ],
+  [
+   0.668,
+   381.34,
+   0.4
+  ],
+  [
+   0.733,
+   383.28,
+   0.46199999999999997
+  ],
+  [
+   0.795,
+   385.45,
+   0.538
+  ],
+  [
+   0.824,
+   386.8,
+   0.581
+  ],
+  [
+   0.842,
+   387.62,
+   0.608
+  ],
+  [
+   0.901,
+   390.75,
+   0.723
+  ],
+  [
+   0.928,
+   392.4,
+   0.785
+  ],
+  [
+   0.949,
+   393.86,
+   0.838
+  ],
+  [
+   0.974,
+   395.63,
+   0.912
+  ],
+  [
+   1.0,
+   397.58,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0041. Pure-component boiling points of the set within 0.03 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

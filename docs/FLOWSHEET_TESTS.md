@@ -55,9 +55,9 @@ Cavett (1963) and Rosen and Pauls (1977) found this problem slow to converge (pr
 | Case | Components | Recycles (reference tears) | Drums: vapour fraction at the solution | Liquids (thermo FlashVLN) |
 |---|---|---|---|---|
 | G01 two drums, PR, 3 components | Ethane, n-Butane, n-Heptane | R1, R2 | V1 0.711, V2 0.563 | V1 1, V2 1 |
-| G02 two drums, NRTL, 4 components | Ethanol, Acetonitrile, Toluene, p-Xylene | R1, R2 | V1 0.644, V2 0.725 | not checked (activity model) |
+| G02 two drums, NRTL, 4 components | Ethanol, Acetonitrile, Toluene, p-Xylene | R1, R2 | V1 0.644, V2 0.729 | not checked (activity model) |
 | G03 two drums, PR, 6 components | Methane, n-Butane, n-Pentane, n-Octane, n-Decane, n-Undecane | R1, R2 | V1 0.407, V2 0.781 | V1 1, V2 1 |
-| G04 two drums, UNIQUAC, 5 components | Methanol, Ethanol, Benzene, Toluene, p-Xylene | R1, R2 | V1 0.494, V2 0.975 | not checked (activity model) |
+| G04 two drums, UNIQUAC, 5 components | Methanol, Ethanol, Benzene, Toluene, p-Xylene | R1, R2 | V1 0.494, V2 0.979 | not checked (activity model) |
 | G05 three drums, PR, 4 components | Carbon dioxide, Isopentane, n-Pentane, n-Undecane | R1, R2, R3 | V1 0.400, V2 0.205, V3 0.657 | V1 1, V2 1, V3 1 |
 | G06 three drums, NRTL, 3 components | Ethanol, Acetonitrile, p-Xylene | R1, R2, R3 | V1 0.457, V2 0.958, V3 0.357 | not checked (activity model) |
 | G07 three drums, PR, 7 components | Methane, Hydrogen sulfide, Propane, n-Pentane, n-Heptane, n-Octane, n-Nonane | R1, R2, R3 | V1 0.414, V2 0.461, V3 0.314 | V1 1, V2 1, V3 1 |
