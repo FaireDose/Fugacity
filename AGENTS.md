@@ -109,6 +109,10 @@ Something broken in the interface: the [Bug form](https://github.com/FaireDose/F
   `validation/python/`, extended if needed, or an open library such as CoolProp or thermo)
   and against open experimental data or published worked examples. Put the comparison in
   `test/`.
+- Choose the property method of a test or example first, by
+  [docs/METHOD_SELECTION.md](docs/METHOD_SELECTION.md) (which model for which mixture and
+  conditions, from open sources); a test that uses another method on purpose (an error message,
+  a code path) says so in a comment.
 - SI units inside the engine (K, kPa, mol, J); convert only at the interface.
 - Fail loudly: a solver that does not converge throws an error that says why; never return
   a silently wrong answer.

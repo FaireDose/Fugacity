@@ -113,6 +113,18 @@ test("a loop that cannot converge throws, with the reason", () => {
     && /The loop through .* did not converge/.test(err.message) && /purge/.test(err.message), "throws NO_CONVERGENCE");
 });
 
+test("a recycle with no way out fails loudly with every convergence method", () => {
+  // Broyden extrapolates: without the growth limit it reached flows of 1e13 kmol/h whose relative change
+  // looked converged (found by the flowsheet suite); every method must stop instead of answering
+  const c = { ...cases[0], r: 1 };
+  const sys = system({ components: c.components, model: c.model });
+  for (const method of ["broyden", "wegstein", "direct"]) {
+    const fs = recycleFlowsheet(c);
+    fs.solver = { method, maxIterations: 200 };
+    assert.throws(() => solveFlowsheet(sys, fs), err => err.code === "NO_CONVERGENCE" && /purge/.test(err.message), method);
+  }
+});
+
 test("a flowsheet without recycle is calculated in order", () => {
   const sys = system({ components: ["ethanol", "water"], model: "NRTL" });
   const r = solveFlowsheet(sys, {
@@ -148,13 +160,14 @@ test("structure errors name the block or stream", () => {
   ]) assert.throws(() => checkFlowsheet(fs), err => err instanceof FugacityError && re.test(err.message), re.source);
 });
 
-test("solver methods: direct substitution reaches the same answer as Wegstein, in more iterations", () => {
+test("solver methods: direct substitution reaches the same answer as Wegstein and Broyden, in more iterations", () => {
   const c = cases[0], sys = system({ components: c.components, model: c.model });
-  const w = solveFlowsheet(sys, recycleFlowsheet(c));
-  const fs = recycleFlowsheet(c);
-  fs.solver = { method: "direct", maxIterations: 300, tolerance: 1e-9 };
-  const d = solveFlowsheet(sys, fs);
-  c.recycle_kmol_h.forEach((v, i) => close(d.streams.S5.flows[i], w.streams.S5.flows[i], 1e-6 * 100, `recycle ${i}`));
-  assert.ok(d.loops[0].iterations >= w.loops[0].iterations, `direct ${d.loops[0].iterations}, Wegstein ${w.loops[0].iterations}`);
-  assert.throws(() => solveFlowsheet(sys, { ...fs, solver: { method: "broyden" } }), /solver.method "broyden"/);
+  const with_ = method => { const fs = recycleFlowsheet(c); fs.solver = { method, maxIterations: 300, tolerance: 1e-9 }; return solveFlowsheet(sys, fs); };
+  const w = with_("wegstein"), b = with_("broyden"), d = with_("direct");
+  assert.equal(solveFlowsheet(sys, recycleFlowsheet(c)).loops[0].iterations, solveFlowsheet(sys, { ...recycleFlowsheet(c), solver: { method: "broyden" } }).loops[0].iterations, "Broyden is the default");
+  for (const [name, r] of [["Wegstein", w], ["Broyden", b]]) {
+    c.recycle_kmol_h.forEach((v, i) => close(d.streams.S5.flows[i], r.streams.S5.flows[i], 1e-6 * 100, `${name}: recycle ${i}`));
+    assert.ok(d.loops[0].iterations >= r.loops[0].iterations, `direct ${d.loops[0].iterations}, ${name} ${r.loops[0].iterations}`);
+  }
+  assert.throws(() => solveFlowsheet(sys, { ...recycleFlowsheet(c), solver: { method: "newton" } }), /solver.method "newton"/);
 });

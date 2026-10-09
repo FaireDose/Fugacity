@@ -8,9 +8,9 @@
 // (validation/python/reference_flowsheet_suite.py). On top of the comparison, relations that any
 // correct solver must satisfy (metamorphic tests): the answer does not depend on the tear streams,
 // on the convergence method, on the order of the components or of the blocks, and scales with the
-// feed; every block and the whole flowsheet balance. Where thermo's three-phase flash finds two liquids
-// in a drum at the reference solution, the engine must refuse instead (two liquids with an equation of
-// state are not supported yet).
+// feed; every block and the whole flowsheet balance. Every case uses the property method the selection
+// rules recommend for its components and conditions (docs/FLOWSHEET_TESTS.md, "Choosing the method"),
+// checked here from the fixture.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -20,35 +20,10 @@ const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/flowsh
 const feedTotal = c => c.flowsheet.blocks.filter(b => b.type === "feed").reduce((a, b) => a + b.spec.flow_kmol_h.reduce((s, v) => s + v, 0), 0);
 const clone = v => JSON.parse(JSON.stringify(v));
 const maxDev = (a, b) => Math.max(...a.map((v, i) => Math.abs(v - b[i])));
-// Cases whose first pass (tear streams empty) reaches a state with two liquids that the converged loop
-// does not have: the engine refuses that state (two liquids with an equation of state are not supported
-// yet), and says a guess for the tear streams may avoid it. These are solved with a rough guess, a fifth
-// of the reference's tear flows, at the temperature and pressure of the drum they come from; the test
-// below checks that the default start still stops with that explanation.
-const START_GUESS = ["G15 "];
-const needsGuess = c => START_GUESS.some(k => c.name.startsWith(k));
-/** The drum a stream comes from, through splitters. */
-function sourceDrum(c, sid) {
-  const blocks = Object.fromEntries(c.flowsheet.blocks.map(b => [b.id, b]));
-  let b = blocks[c.flowsheet.streams.find(s => s.id === sid).from.split(".")[0]];
-  while (b.type === "splitter") b = blocks[c.flowsheet.streams.find(s => s.to.split(".")[0] === b.id).from.split(".")[0]];
-  return b;
-}
-function flowsheetOf(c) {
-  const fs = clone(c.flowsheet);
-  if (needsGuess(c)) {
-    for (const s of fs.streams) if (c.reference_tears.includes(s.id)) {
-      const d = sourceDrum(c, s.id);
-      s.tear = true;
-      s.guess = { flow_kmol_h: c.streams_kmol_h[s.id].map(v => 0.2 * v), T_K: c.drums[d.id].T_K, P_kPa: d.spec.P_kPa };
-    }
-  }
-  return fs;
-}
-// Drums where thermo's FlashVLN finds two liquids at the reference solution (liquids_vln, from
-// reference_flowsheet_suite.py): the vapour-liquid reference is not the stable state there, and the
-// engine must refuse it.
-const twoLiquids = c => Object.entries(c.drums).filter(([, d]) => d.liquids_vln > 1).map(([id]) => id);
+const flowsheetOf = c => clone(c.flowsheet);
+// Wegstein's per-flow acceleration oscillates without end on this case (direct substitution and
+// Broyden solve it): a known weakness of that option, checked so that a fix shows up here
+const WEGSTEIN_OSCILLATES = ["G07 "];
 const solved = new Map();
 const solve = c => {
   if (!solved.has(c.name)) solved.set(c.name, solveFlowsheet(system({ components: c.components, model: c.model }), flowsheetOf(c)));
@@ -72,22 +47,18 @@ test("flowsheet suite: 17 cases, 3 to 16 components, two or three recycles each"
   for (const c of cases) assert.ok(c.reference_tears.length >= 2, c.name);
 });
 
-for (const c of cases.filter(c => twoLiquids(c).length)) {
-  test(`flowsheet suite, ${c.name}: refuses the drum where the liquid splits in two`, () => {
-    const ids = twoLiquids(c);
-    assert.throws(() => solveFlowsheet(system({ components: c.components, model: c.model }), c.flowsheet),
-      e => e.code === "PHASE_SPLIT" && ids.some(id => e.message.includes(id)) && /two liquid/.test(e.message));
-  });
-}
+test("flowsheet suite: every case passed the method-selection rules; the rejected draws say why", () => {
+  const { rejected_draws } = JSON.parse(readFileSync(new URL("../validation/fixtures/flowsheet-suite.json", import.meta.url)));
+  for (const r of rejected_draws) assert.ok(r.why.length > 0, r.case);
+  for (const c of cases) {
+    // equations of state only where no second liquid forms (thermo FlashVLN at the reference solution)
+    if (["PR", "SRK"].includes(c.model)) for (const [id, d] of Object.entries(c.drums)) assert.equal(d.liquids_vln, 1, `${c.name} ${id}`);
+    // activity models only below 10 bar
+    else for (const b of c.flowsheet.blocks) if (b.type === "flash") assert.ok(b.spec.P_kPa <= 1000, `${c.name} ${b.id}`);
+  }
+});
 
-for (const c of cases.filter(c => needsGuess(c))) {
-  test(`flowsheet suite, ${c.name}: without a guess, the first pass stops with the reason and the remedy`, () => {
-    assert.throws(() => solveFlowsheet(system({ components: c.components, model: c.model }), c.flowsheet),
-      e => e.code === "PHASE_SPLIT" && /first pass/.test(e.message) && /guess/.test(e.message));
-  });
-}
-
-for (const c of cases.filter(c => !twoLiquids(c).length)) {
+for (const c of cases) {
   test(`flowsheet suite, ${c.name}: matches the equation-oriented reference`, () => {
     const r = solve(c);
     const F = feedTotal(c);
@@ -118,6 +89,16 @@ for (const c of cases.filter(c => !twoLiquids(c).length)) {
     sameStreams(r, solve(c), 1e-5 * feedTotal(c), `${c.name}, reference tears`);
   });
 
+  test(`flowsheet suite, ${c.name}: same answer with Wegstein`, () => {
+    const fs = { ...flowsheetOf(c), solver: { method: "wegstein", maxIterations: 1000 } };
+    const run = () => solveFlowsheet(system({ components: c.components, model: c.model }), fs);
+    if (WEGSTEIN_OSCILLATES.some(k => c.name.startsWith(k))) {
+      assert.throws(run, e => e.code === "NO_CONVERGENCE");
+      return;
+    }
+    sameStreams(run(), solve(c), 1e-5 * feedTotal(c), `${c.name}, Wegstein`);
+  });
+
   test(`flowsheet suite, ${c.name}: same answer by direct substitution`, () => {
     const fs = { ...flowsheetOf(c), solver: { method: "direct", maxIterations: 2000 } };
     const r = solveFlowsheet(system({ components: c.components, model: c.model }), fs);
@@ -127,8 +108,7 @@ for (const c of cases.filter(c => !twoLiquids(c).length)) {
   test(`flowsheet suite, ${c.name}: ten times the feed gives ten times every flow`, () => {
     const fs = flowsheetOf(c);
     for (const b of fs.blocks) if (b.type === "feed") b.spec.flow_kmol_h = b.spec.flow_kmol_h.map(v => 10 * v);
-    for (const s of fs.streams) if (s.guess) s.guess.flow_kmol_h = s.guess.flow_kmol_h.map(v => 10 * v);
-    const r = solveFlowsheet(system({ components: c.components, model: c.model }), fs);
+        const r = solveFlowsheet(system({ components: c.components, model: c.model }), fs);
     const base = solve(c);
     for (const [sid, s] of Object.entries(r.streams)) {
       const d = maxDev(s.flows, base.streams[sid].flows.map(v => 10 * v));
@@ -141,8 +121,7 @@ for (const c of cases.filter(c => !twoLiquids(c).length)) {
     const fs = flowsheetOf(c);
     fs.blocks = rev(fs.blocks);
     for (const b of fs.blocks) if (b.type === "feed") b.spec.flow_kmol_h = rev(b.spec.flow_kmol_h);
-    for (const s of fs.streams) if (s.guess) s.guess.flow_kmol_h = rev(s.guess.flow_kmol_h);
-    const r = solveFlowsheet(system({ components: rev(c.components), model: c.model }), fs);
+        const r = solveFlowsheet(system({ components: rev(c.components), model: c.model }), fs);
     const base = solve(c);
     for (const [sid, s] of Object.entries(r.streams)) {
       const d = maxDev(rev(s.flows), base.streams[sid].flows);

@@ -338,12 +338,14 @@ function methodSection({ fs, eos, setThermo, inputsSection }) {
 
 /** The solver settings of the flowsheet: method, tolerance, maximum iterations. */
 function solverSection({ fs, set, uid, inputsSection }) {
-  const sv = { method: "wegstein", tolerance: 1e-8, maxIterations: 50, ...(fs.solver ?? {}) };
+  const sv = { method: "broyden", tolerance: 1e-8, maxIterations: 50, ...(fs.solver ?? {}) };
   const put = patch => set({ flowsheet: { ...fs, solver: { ...(fs.solver ?? {}), ...patch } } });
   return [inputsSection("Recycle solver",
     h("p", { class: "fa-in-hint" }, "Recycles are solved by tearing them: the solver picks the fewest streams that break every loop (or the ones you mark as tear streams), guesses them (no flow at first), and calculates around the loop until they stop changing."),
-    segRow("Method", [["wegstein", "Wegstein"], ["direct", "Direct substitution"]], sv.method, m => put({ method: m }), "fs-solver-method"),
-    h("p", { class: "fa-in-hint" }, sv.method === "wegstein" ? "Wegstein: two plain steps, then each flow is extrapolated from its last two values (bounded). Usually much faster." : "Direct substitution: the next guess is the last result. Slower, but it never overshoots."),
+    segRow("Method", [["broyden", "Broyden"], ["wegstein", "Wegstein"], ["direct", "Direct substitution"]], sv.method, m => put({ method: m }), "fs-solver-method"),
+    h("p", { class: "fa-in-hint" }, sv.method === "broyden" ? "Broyden: a quasi-Newton method that learns how the recycles act on each other. The fastest and most reliable on the flowsheet test suite."
+      : sv.method === "wegstein" ? "Wegstein: two plain steps, then each flow is extrapolated from its last two values (bounded). Fast on simple loops; can oscillate when recycles interact."
+      : "Direct substitution: the next guess is the last result. Slowest, but it never overshoots."),
     numberField("Tolerance", String(sv.tolerance), t => { const v = num(t); if (!(v > 0 && v < 0.1)) return false; put({ tolerance: v }); },
       { id: "solver-tol", uid, unit: "relative", title: "Converged when every flow and temperature of the tear streams changes by less than this, relative" }),
     numberField("Maximum iterations", String(sv.maxIterations), t => { const v = num(t); if (!(Number.isInteger(v) && v >= 1 && v <= 1000)) return false; put({ maxIterations: v }); },

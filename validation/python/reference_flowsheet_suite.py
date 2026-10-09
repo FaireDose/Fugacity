@@ -242,9 +242,6 @@ def cavett():
             {"id": "P2", "from": "FL4.liquid", "to": "PR2.in"},
         ],
     }
-    # Cavett (1963) and Rosen and Pauls (1977) report slow convergence (propane builds up in all three loops); at
-    # Fugacity's tolerance, 1e-8, the solver needs more than its default 50 iterations (docs/FLOWSHEET_TESTS.md)
-    fs["solver"] = {"maxIterations": 300}
     return {"name": "Cavett problem", "kind": "cavett", "model": "PR", "components": CAVETT_IDS, "flowsheet": fs,
             "reference_tears": ["R1", "R2", "R3"],
             "published": {**CAVETT["products"], "source": CAVETT["source"]["citation"] + ", " + CAVETT["source"]["open_copy"],
@@ -418,32 +415,118 @@ PLAN = [("two drums", "PR", 3), ("two drums", "NRTL", 4), ("two drums", "PR", 6)
 SEED = 20261008
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# Is the property method the one the literature recommends for this mixture, at these conditions? A case is only a
+# test of the solver if the answer it is compared with is one an engineer would accept. The rules (docs/
+# METHOD_SELECTION.md): the decision trees of E. Carlson and the heuristics that follow them, as given in the
+# Northwestern University Chemical Process Design Open Textbook, page "Property package"
+# (https://processdesign.mccormick.northwestern.edu/index.php/Property_package, free to read):
+#   - nonpolar real components (light gases, hydrocarbons): Peng-Robinson or SRK, at any pressure;
+#   - polar non-electrolytes below 10 bar with interaction parameters: NRTL or UNIQUAC (Wilson without two liquids);
+#     above 10 bar PSRK or a cubic equation with Wong-Sandler / MHV2 mixing rules, which Fugacity does not have: no case;
+#   - an equation of state only where no second liquid is expected; an activity model where the reduced temperature
+#     by Kay's rule, T / sum(z_i Tc_i), is below about 0.75.
+# And a physical one: no drum below the melting (triple) point of a component present above 0.1 % (it would freeze).
+
+# light gases handled with cubic equations of state in gas processing (the Cavett problem itself, Rosen 2005, uses
+# Peng-Robinson with them); every other component with O, N, S or a halogen in its formula counts as polar
+EOS_GASES = {"nitrogen", "carbon-dioxide", "hydrogen-sulfide", "carbon-monoxide", "oxygen", "argon", "hydrogen"}
+TR_MAX_ACTIVITY = 0.75
+P_MAX_ACTIVITY = 1000.0   # kPa (10 bar)
+
+
+def polar(cid):
+    import re as _re
+    return cid not in EOS_GASES and bool(_re.search(r"O|N|S|Cl|F|Br", COMPONENTS[cid]["formula"]))
+
+
+def method_check(case):
+    """The reasons this case's method or conditions are not the recommended ones (empty if they are)."""
+    ids, why = case["components"], []
+    is_polar = any(polar(c) for c in ids)
+    eos = case["model"] in ("PR", "SRK")
+    if is_polar and eos:
+        why.append("polar components with an equation of state (the trees recommend an activity model below 10 bar)")
+    # nonpolar liquids at low reduced temperature may take either (the heuristics after the trees: activity models
+    # for C4-C18 hydrocarbons and aromatics below Tr 0.75); the reduced-temperature rule below applies
+    blocks = {b["id"]: b for b in case["flowsheet"]["blocks"]}
+    for d, st in case["drums"].items():
+        f = sum(np.asarray(case["streams_kmol_h"][s["id"]]) for s in case["flowsheet"]["streams"] if s["to"].split(".")[0] == d)
+        if f.sum() <= 0:
+            continue
+        z = f / f.sum()
+        T, P = st["T_K"], blocks[d]["spec"]["P_kPa"]
+        Tm = max((COMPONENTS[c].get("fusion", {}).get("Tm_K") or 0) for c, zi in zip(ids, z) if zi > 1e-3)
+        if T < Tm:
+            why.append("%s at %.1f K is below the melting point of a component present (%.1f K)" % (d, T, Tm))
+        if not eos:
+            Tr = T / sum(zi * COMPONENTS[c]["Tc_K"] for c, zi in zip(ids, z))
+            if Tr > TR_MAX_ACTIVITY:
+                why.append("%s: reduced temperature %.2f (Kay's rule) above %.2f for an activity model" % (d, Tr, TR_MAX_ACTIVITY))
+            if P > P_MAX_ACTIVITY:
+                why.append("%s at %.0f kPa: above 10 bar for an activity model" % (d, P))
+        elif st.get("liquids_vln", 1) > 1:
+            why.append("%s: a second liquid (thermo FlashVLN), outside the domain of a cubic equation of state" % d)
+    return why
+
+
+def solved(case):
+    ev = Evaluator(case)
+    case["streams_kmol_h"], case["drums"], case["residual"] = ev.solve()
+    for d, n in liquids_at_solution(case, case["streams_kmol_h"]).items():
+        case["drums"][d]["liquids_vln"] = n
+    return case, ev.flashes
+
+
 def generated(rng):
+    """The cases of PLAN, each the first draw whose method and conditions pass method_check; the rejected draws are
+    kept in REJECTED (reported in the doc)."""
     out = []
     for k, (layout, model, n) in enumerate(PLAN):
-        ids = pick_components(rng, model, n)
-        fl = flasher(model, ids)
-        feed = [float(v) for v in np.round(rng.uniform(5, 50, n), 2)]
-        z = list(np.asarray(feed) / sum(feed))
-        # pressures: around 1 atm for the liquids, 0.5 to 5 MPa for the hydrocarbons and gases
-        P = [float(np.round(rng.uniform(80, 200), 1)) if model != "PR" else float(np.round(rng.uniform(500, 5000), 0))
-             for _ in range(3)]
-        VF = [float(np.round(rng.uniform(0.2, 0.8), 3)) for _ in range(3)]
-        # T-P drums: a temperature at which the fresh feed is partly vapour at that pressure (40 % vapour; drum 2 of
-        # "two drums" and "three drums" 25 %, to condense)
-        T = []
-        for j in range(3):
-            Tj, P[j] = two_phase_T(fl, z, P[j], 0.4 if j == 0 else 0.25)
-            T.append(Tj)
-        c = {"ids": ids, "feed": feed, "P": P, "VF": VF, "T": T,
-             "r": [float(np.round(rng.uniform(0.2, 0.6), 3)), float(np.round(rng.uniform(0.1, 0.3), 3))],
-             "b": float(np.round(rng.uniform(0.1, 0.4), 3)),
-             # separator: light components mostly to the first outlet
-             "a": [float(np.round(0.9 - 0.8 * i / max(1, n - 1), 3)) for i in range(n)]}
-        fs, tears = LAYOUTS[layout](c)
-        out.append({"name": f"G{k + 1:02d} {layout}, {model}, {n} components", "kind": "generated", "layout": layout,
-                    "model": model, "components": ids, "flowsheet": fs, "reference_tears": tears})
+        for attempt in range(40):
+            case = {"name": f"G{k + 1:02d} {layout}, {model}, {n} components", "components": []}
+            try:
+                case = draw(rng, k, layout, model, n)
+                case, _ = solved(case)
+                why = method_check(case)
+            except Exception as e:   # noqa: BLE001 - a draw the reference cannot solve is rejected, with the reason
+                why = ["the reference did not solve it (%s)" % str(e)[:120]]
+            if not why:
+                out.append(case)
+                break
+            REJECTED.append({"case": case["name"], "components": case["components"], "why": why})
+        else:
+            raise RuntimeError("no acceptable draw for %s" % (PLAN[k],))
     return out
+
+
+REJECTED = []
+
+
+def draw(rng, k, layout, model, n):
+    """One random case of the plan (components, feed, drum conditions, splits)."""
+    ids = pick_components(rng, model, n)
+    fl = flasher(model, ids)
+    feed = [float(v) for v in np.round(rng.uniform(5, 50, n), 2)]
+    z = list(np.asarray(feed) / sum(feed))
+    # pressures: around 1 atm for the liquids, 0.5 to 5 MPa for the hydrocarbons and gases
+    P = [float(np.round(rng.uniform(80, 200), 1)) if model != "PR" else float(np.round(rng.uniform(500, 5000), 0))
+         for _ in range(3)]
+    VF = [float(np.round(rng.uniform(0.2, 0.8), 3)) for _ in range(3)]
+    # T-P drums: a temperature at which the fresh feed is partly vapour at that pressure (40 % vapour; drum 2 of
+    # "two drums" and "three drums" 25 %, to condense)
+    T = []
+    for j in range(3):
+        Tj, P[j] = two_phase_T(fl, z, P[j], 0.4 if j == 0 else 0.25)
+        T.append(Tj)
+    c = {"ids": ids, "feed": feed, "P": P, "VF": VF, "T": T,
+         "r": [float(np.round(rng.uniform(0.2, 0.6), 3)), float(np.round(rng.uniform(0.1, 0.3), 3))],
+         "b": float(np.round(rng.uniform(0.1, 0.4), 3)),
+         # separator: light components mostly to the first outlet
+         "a": [float(np.round(0.9 - 0.8 * i / max(1, n - 1), 3)) for i in range(n)]}
+    fs, tears = LAYOUTS[layout](c)
+    return {"name": f"G{k + 1:02d} {layout}, {model}, {n} components", "kind": "generated", "layout": layout,
+            "model": model, "components": ids, "flowsheet": fs, "reference_tears": tears}
 
 
 def write_doc(cases):
@@ -462,17 +545,30 @@ def write_doc(cases):
          "2. **Many generated flowsheets against an independent solution:** four layouts (two drums with two recycles, "
          "three drums with three recycles across pressures, a component separator with nested recycles, a bypass with a "
          "heater), each with Peng-Robinson, NRTL and UNIQUAC component sets of 3 to 7 components, feeds and drum "
-         "conditions drawn by a seeded random generator (seed %d). Every generated case is kept. The reference solves "
+         "conditions drawn by a seeded random generator (seed %d). A draw is kept only if its property method is the "
+         "one the selection rules recommend for its components and conditions (below); the rejected draws are listed "
+         "with the reason. The reference solves "
          "each flowsheet **equation-oriented**: the component flows of hand-chosen tear streams (the recycles, as Rosen "
          "and Pauls tore Cavett's problem) are the unknowns of g(x) - x = 0, solved by scipy's hybrid Powell method, "
          "with the flash of the open-source `thermo` library (FlashVL, same parameters). The engine solves the same "
-         "JSON **sequential-modular**: its own tear streams (the smallest set), direct substitution and Wegstein, its "
+         "JSON **sequential-modular**: its own tear streams (the smallest set), Broyden's method, its "
          "own flash. Different algorithm, different tears, different flash: agreement to 2e-5 of the feed in every "
          "stream is not a coincidence." % SEED,
          "3. **Relations every correct solver must satisfy** (metamorphic tests), for every case: the same answer with "
-         "the reference's tear streams, with direct substitution instead of Wegstein, and with the components and "
+         "the reference's tear streams, with Wegstein and with direct substitution instead of Broyden, and with the components and "
          "blocks listed in reverse order; ten times the feed gives ten times every flow; every block and the whole "
          "flowsheet close their component balances to 1e-7.", "",
+         "## Choosing the method", "",
+         "A test only means something if it uses the method an engineer would choose. Each case is checked by the rules "
+         "of [METHOD_SELECTION.md](METHOD_SELECTION.md) (the decision trees of E. Carlson and the heuristics that follow "
+         "them, Northwestern University Chemical Process Design Open Textbook, page \"Property package\"):", "",
+         "- Peng-Robinson only for nonpolar components and light gases, and only where no second liquid forms (thermo's "
+         "three-phase flash, FlashVLN, at the solution);",
+         "- NRTL or UNIQUAC only for polar mixtures below 10 bar with every pair in the databank, and at a reduced "
+         "temperature (Kay's rule) below 0.75;",
+         "- no drum below the melting point of a component present above 0.1 %% (it would freeze).", "",
+         "Rejected draws:", ""] + ["- %s (%s): %s" % (r["case"], ", ".join(COMPONENTS[i]["name"] for i in r["components"]),
+                                                     "; ".join(r["why"])) for r in REJECTED] + ["",
          "## The Cavett problem", "",
          "Peng-Robinson with the databank's k_ij (ChemSep). Flows as printed (mol/hr); the flowsheet is homogeneous in "
          "the flows, so the units do not matter. The engine agrees with the reference below to better than 2e-5 of the "
@@ -492,9 +588,8 @@ def write_doc(cases):
     L += ["", pub["notes"], "",
           "Drums: " + "; ".join("%s %.2f K, vapour fraction %.4f" % (k, d["T_K"], d["VF"]) for k, d in cav["drums"].items()) + ".",
           "", "Cavett (1963) and Rosen and Pauls (1977) found this problem slow to converge (propane builds up in all three "
-          "loops). At Fugacity's tolerance (1e-8, relative) the solver needs about 170 Wegstein iterations with its own "
-          "tear streams (91 with R1, R2, R3 torn), more than the default 50: the case sets `maxIterations: 300`, which "
-          "the workbench allows (up to 1000). A faster tear method (quasi-Newton, Broyden) is a possible improvement.", "",
+          "loops). At Fugacity's tolerance (1e-8, relative), Wegstein needed 170 iterations and direct substitution 222; "
+          "Broyden's method, now the default, needs 37.", "",
           "## Generated flowsheets", "",
           "| Case | Components | Recycles (reference tears) | Drums: vapour fraction at the solution | Liquids (thermo FlashVLN) |",
           "|---|---|---|---|---|"]
@@ -505,54 +600,57 @@ def write_doc(cases):
                                                ", ".join("%s %s" % (k, d["liquids_vln"]) for k, d in c["drums"].items()
                                                          if "liquids_vln" in d) or "not checked (activity model)"))
     L += ["", "## What the suite found, and what changed", "",
-          "Run first against the engine before this change, the suite stopped on 8 of the 16 generated cases (G01, G03, G08, "
-          "G09, G12, G13, G14, G15) and on Cavett. Each "
-          "stop was traced:", "",
-          "- **P-H flash stepping out of a correlation's range** (mixers with benzene or p-xylene: the temperature "
-          "search stepped below the liquid heat capacity's lower limit, the melting point, and threw instead of "
-          "stepping back). Fixed: the bracket search halves its step at a range limit.",
-          "- **A last-digit change of sign** between two evaluations of the same temperature in the P-H search (an "
-          "iterative flash with a warm start) left Brent's method without a bracket. Fixed: an end within 1e-6 J/mol of "
-          "the target is the root, and the first evaluation is reused.",
-          "- **Peng-Robinson P-VF flash without a single-liquid bubble point** (nitrogen or CO2 with heavier "
-          "hydrocarbons at 1-4 MPa: at the bubble point the liquid splits in two, or there is none). The vapour + "
-          "liquid state at the specified vapour fraction exists; it is now found from the dew point down, and its liquid "
-          "is checked for a second liquid.",
-          "- **Peng-Robinson P-H flash starting from such a bubble point** (K-values near 1, successive substitution "
-          "stalls). It now falls back to the search from 300 K, with its own warm start. Successive substitution is "
-          "also accelerated (GDEM) after 50 slow steps.",
-          "- **Two liquids that the engine correctly refuses** (case G01, drum V2: nitrogen + methane + n-pentane at "
-          "112 K and 2 MPa). thermo's three-phase flash (FlashVLN) confirms two liquids at the reference solution: the "
-          "vapour-liquid reference is not the stable state there. The test requires the engine to refuse it with a "
-          "PHASE_SPLIT error naming the drum (two liquids with an equation of state are not supported yet). The error "
-          "used to read as a convergence failure; it now keeps its PHASE_SPLIT code.",
-          "- **Two liquids in the first pass only** (case G15: with the recycles still empty, drum V2 sees the fresh "
-          "feed, whose state at the specified vapour fraction has two liquids; the converged loop does not). The "
-          "engine refuses that first pass and now says so, suggesting a guess for the tear streams; with a rough guess "
-          "(a fifth of the reference's recycle flows) it converges to the reference. The test checks both.",
-          "- **Cavett's slow convergence**, above.", "",
-          "Activity-model cases (NRTL, UNIQUAC) passed from the start once the P-H fix was in.", ""]
+          "First run against the engine before these changes, the suite stopped on 8 of 16 generated cases and on "
+          "Cavett. Each stop was traced; none was a wrong number (each stopped with an error), and the recycle "
+          "solver's answers, where it ran, matched the reference.", "",
+          "**Property method and conditions.** In the first version of the suite, three cases were not legitimate tests: drums below the "
+          "freezing point of n-pentane, n-decane or CO2, two of them with a second liquid that a cubic equation of state "
+          "is not used for. The method rules above now reject such draws before they become tests.", "",
+          "**Flash calculations** (the numerical searches, not the models):", "",
+          "- the P-H search stepped below a correlation's range (liquid heat capacity ends at the melting point) and "
+          "threw: it now steps back inside the range;",
+          "- the P-H residual changed sign in its last digits between two evaluations of one temperature (warm-started "
+          "inner flash): an end within 1e-6 J/mol of the target is the root, and the first evaluation is reused. A "
+          "deterministic inner flash would remove the cause (open);",
+          "- Peng-Robinson P-VF flash for gas-rich feeds whose bubble point lies where the liquid splits or does not "
+          "exist: the state at the vapour fraction is found from the dew point down, and its liquid is checked for a "
+          "second liquid;",
+          "- Peng-Robinson P-H search stalling at such a bubble point: a second start from 300 K, and GDEM acceleration "
+          "of successive substitution after 50 slow steps. This is a fallback, not a guarantee: a Newton-based flash "
+          "with stability analysis is the rigorous next step (open).", "",
+          "**Recycle convergence.** Wegstein's per-flow acceleration needed 170 iterations for Cavett and oscillated "
+          "without end on G07 (three drums, seven components), which direct substitution solves in 73. A safeguard "
+          "that restarts the acceleration when the change grows fixed G07 but slowed the other cases, and was dropped. "
+          "Broyden's quasi-Newton method on all tear flows together (as scipy.optimize.broyden1) converged every case, "
+          "all within the default 50 iterations, and is now the default; Wegstein and direct substitution stay as "
+          "options, and the test checks that Wegstein still oscillates on G07, so a fix shows.", "",
+          "**Guards for every method.** Broyden extrapolates, and on a recycle with no way out (test/flowsheet.test.js) "
+          "it reached flows of 1e13 kmol/h, where the relative change per iteration looked converged and a meaningless "
+          "answer came back. Two physical checks now stop such a loop for any method: a tear stream above a million "
+          "times the total feed (the loop accumulates), and, after convergence, the component balance of the whole "
+          "flowsheet (feeds = products within 1e-6 of the feed, or 1000 times the tolerance).", ""]
     DOC.write_text("\n".join(L))
 
 
 def main():
     warnings.simplefilter("ignore", RuntimeWarning)
     rng = np.random.default_rng(SEED)
-    cases = [cavett()] + generated(rng)
+    cav, _ = solved(cavett())
+    problems = method_check(cav)
+    if problems:
+        raise RuntimeError("the Cavett problem fails the method rules: %s" % problems)
+    cases = [cav] + generated(rng)
     for c in cases:
-        t0 = time.time()
-        ev = Evaluator(c)
-        c["streams_kmol_h"], c["drums"], c["residual"] = ev.solve()
-        for d, n in liquids_at_solution(c, c["streams_kmol_h"]).items():
-            c["drums"][d]["liquids_vln"] = n
         print(f"{c['name']:48s} {', '.join(c['components'])[:70]:70s} drums VF "
               f"{' '.join('%.3f' % d['VF'] for d in c['drums'].values())}  liquids (VLN) "
-              f"{' '.join(str(d.get('liquids_vln', '-')) for d in c['drums'].values())}  {ev.flashes} flashes {time.time() - t0:.0f} s")
+              f"{' '.join(str(d.get('liquids_vln', '-')) for d in c['drums'].values())}")
+    for r in REJECTED:
+        print("rejected draw:", r["case"], ", ".join(r["components"]), "|", "; ".join(r["why"]))
     OUT.write_text(json.dumps({
         "_about": "Recycle flowsheets solved equation-oriented (scipy root on the flows of the reference_tears) with "
                   "the independent flash of reference_flash.py; validation/python/reference_flowsheet_suite.py "
                   "(seed %d). docs/FLOWSHEET_TESTS.md explains the suite. Do not edit by hand." % SEED,
-        "cases": cases}, indent=1) + "\n")
+        "cases": cases, "rejected_draws": REJECTED}, indent=1) + "\n")
     write_doc(cases)
     print(f"wrote {len(cases)} cases to {OUT} and {DOC}")
 
