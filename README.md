@@ -169,6 +169,8 @@ change reviewed by someone other than its author.
 
 ## More
 
+- [docs/README.md](docs/README.md): every document by topic, with one page each for the thermodynamic models, the equilibrium algorithms and the flowsheet
+- [docs/DECISIONS.md](docs/DECISIONS.md): what has been decided and what is pending
 - [ARCHITECTURE.md](ARCHITECTURE.md): the layers from data to flowsheet and the data quality tiers
 - [ROADMAP.md](ROADMAP.md): what comes next
 - [GOVERNANCE.md](GOVERNANCE.md) and [SECURITY.md](SECURITY.md): how decisions are made and how the project is protected

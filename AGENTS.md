@@ -189,4 +189,5 @@ python validation/python/make_fixtures.py       # after changing parameters
 
 Tell the person what you did, what they must check against the source, and how to submit
 (which form, or the pull request). Do not describe results as validated beyond what the
-tests show.
+tests show. Record what the person decided, and what is still pending, in
+[docs/DECISIONS.md](docs/DECISIONS.md).
