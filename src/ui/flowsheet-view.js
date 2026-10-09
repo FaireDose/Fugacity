@@ -11,6 +11,7 @@ import { h, s as svgEl } from "./dom.js";
 import { icon } from "./icons.js";
 import { FUTURE_MODELS } from "./future-models.js";
 import { listComponents } from "../thermo/system.js";
+import { methodAdvice } from "../thermo/method-advice.js";
 import { componentPicker } from "./component-picker.js";
 import { unitType } from "../units/units.js";
 import { flowsheetDocStatus, runFlowsheet } from "../flowsheet/document.js";
@@ -326,8 +327,12 @@ function setupSections({ state, set, ui, uid, inputsSection, st }) {
 
 /** The property method of the whole flowsheet: an activity model with a vapour model, or an equation of state. */
 function methodSection({ fs, eos, setThermo, inputsSection }) {
+  // is this the recommended method for these components? (docs/METHOD_SELECTION.md)
+  const advice = methodAdvice({ ids: fs.components, names: fs.components.map(nameOf), formulas: fs.components.map(id => byId().get(id)?.formula),
+    model: fs.thermo.model, eos });
   return inputsSection("2. Method",
     h("p", { class: "fa-in-hint" }, "One property method for every block and stream."),
+    ...advice.map(a => h("div", { class: "fug-warn", role: "note", "data-fk": "fs-method-advice" }, a)),
     h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "Activity model"),
       segRow("Activity model", [["NRTL", "NRTL"], ["UNIQUAC", "UNIQUAC"], ["ideal", "Ideal"]], eos ? null : fs.thermo.model, m => setThermo({ model: m }), "fs-model")),
     eos ? null : h("div", { class: "fa-fs-model" }, h("span", { class: "fa-in-hint" }, "with vapour"),

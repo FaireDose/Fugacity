@@ -2,6 +2,9 @@
 // diagram algorithms use the system's own bubble point (src/equilibrium/bubble-any.js), so an
 // equation of state draws T-x-y, P-x-y, ternary maps, residue curves and azeotropes too.
 // Also the composition basis of the diagrams (mole fraction or wt %, src/ui/dom.js basisView).
+// Method on purpose outside docs/METHOD_SELECTION.md: these tests draw polar mixtures (methanol +
+// water, methanol + acetone + chloroform) with PR and SRK to check that the diagram code works with
+// any method, not that the method suits them (for these liquids NRTL or UNIQUAC is recommended).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { system, binaryAzeotropes, pure } from "../src/index.js";

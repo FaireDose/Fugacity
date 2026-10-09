@@ -83,7 +83,9 @@ test("ethanol + acetic acid: 1-atm T-x-y and static P-x fitted together (they di
 
 test("equation of state (second model): fitted k_ij of ethanol + ethyl acetate against Calvar et al. (2005)", () => {
   // AAD in T reported by validation/python/eos_fit_kij.py (independent Python implementation);
-  // the acetic acid pairs have no k_ij (no vapour dimerization in a cubic equation of state)
+  // the acetic acid pairs have no k_ij (no vapour dimerization in a cubic equation of state).
+  // Method on purpose outside docs/METHOD_SELECTION.md: a fitted k_ij for a polar pair, kept to show the
+  // gap to the data and labelled "not recommended" for the liquid in the Library.
   const d = load("ethyl-acetate_ethanol_101kPa.json"), c = col(d);
   const pts = d.rows.filter(r => r[c.x_1] > 0 && r[c.x_1] < 1);
   for (const [model, aad] of [["PR", 0.40], ["SRK", 0.26]]) {

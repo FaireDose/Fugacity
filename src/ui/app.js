@@ -672,6 +672,8 @@ export function app(target, cfg = {}) {
     const open = ui.pairsOpen ?? ui.size !== "narrow";
     const missing = info.missingPairs.length;
     return h("section", { class: "fa-in-sec fa-pairs" },
+      // is this the recommended method for these components? (docs/METHOD_SELECTION.md)
+      ...(info.advice ?? []).map(a => h("div", { class: "fug-warn", role: "note", "data-fk": "method-advice" }, a)),
       h("details", { open, on: { toggle: ev => { ui.pairsOpen = ev.target.open; } } },
         h("summary", { "data-fk": "pairs-summary" }, head.textContent, h("span", { class: "fa-count" }, missing ? ` ${missing} without data` : ` ${rows.length}`)),
         h("ul", {}, ...rows),

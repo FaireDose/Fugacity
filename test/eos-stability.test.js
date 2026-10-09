@@ -53,6 +53,8 @@ test("warnings: pairs with k_ij = 0, and temperatures outside a k_ij's data rang
   assert.deepEqual(system({ components: ["nitrogen", "methane"], model: "PR" }).bubbleP([0.3, 0.7], 150).warnings, []);
 });
 
+// Methane + water with PR: as in gas processing for the water content of a gas (docs/METHOD_SELECTION.md
+// lists it); these tests check the messages and the refusal of a second liquid, not liquid accuracy.
 test("a gas-rich 'liquid' gets a message about gases, not about the critical region", () => {
   assert.throws(() => system({ components: ["methane", "water"], model: "PR" }).bubbleT([0.5, 0.5], 101.325),
     /Methane \(Tc = 190.564 K\) is a gas at ambient conditions.*Henry's law/);

@@ -150,6 +150,9 @@ test("equation of state (second model): fitted k_ij of the three miscible pairs 
     ["ethanol_ethylene-glycol_101kPa.json", { PR: 0.31, SRK: 0.25 }],
     ["water_ethylene-glycol_101kPa_kamihama2012.json", { PR: 1.88, SRK: 2.01 }],
   ];
+  // Method on purpose outside docs/METHOD_SELECTION.md: these k_ij were fitted (proposal 0004) to show
+  // how far a plain cubic equation is from the data of polar pairs; the Library labels them "not
+  // recommended" for the liquid, and the recommended method (NRTL, UNIQUAC) is tested elsewhere.
   for (const [file, aad] of cases) {
     const d = load(file), c = col(d);
     for (const model of ["PR", "SRK"]) {
