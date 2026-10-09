@@ -126,6 +126,9 @@ Rules the checker enforces:
   their basis. The checker refuses a conversion without them.
 - Units are explicit, from a fixed list, and converted only by the checker, never by the
   agent's arithmetic.
+- The reactions in a route file are what the paper reports, written in the reaction format of
+  proposal 0010 for the user to accept or change: they belong to that route and the user's
+  project, never to Fugacity's databank, which holds components only.
 - Reactions are checked for element balance (proposal 0010). A "schematic" biological step
   (marked **S** in the attached map) must be a yield step with a stated closure.
 - Values that come from Fugacity's databank are not copied into the route. They are referenced

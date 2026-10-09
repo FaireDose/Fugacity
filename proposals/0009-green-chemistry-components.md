@@ -3,7 +3,7 @@
 - **Status:** Draft
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
-- **Roadmap item:** data track D5 (components), D8 (reaction data, through proposal 0010);
+- **Roadmap item:** data track D5 (components), D8 (formation data of the components, for proposal 0010);
   agentic design track G (the routes agents will compare)
 
 ## Problem
@@ -126,12 +126,15 @@ Already in Fugacity, and part of these routes: water, methanol, ethanol, acetone
 formic acid, ethylene glycol, 1,2-propanediol, glycerol, furfural, tetrahydrofuran, diethyl
 ether, ethylene, hydrogen, CO, CO₂, the n-alkanes to dodecane, phenol.
 
-### Reaction products of the building blocks
+### Why these components: the intermediates and products of each route
 
-The map's routes connect building blocks to products. Choosing components by reaction keeps
-each batch useful for a whole route once reactions exist (proposal 0010):
+A simulator ships chemicals, not reactions: the user writes the reactions of their own process
+(proposal 0010). But a user can only write a reaction if every molecule in it is a component. So
+the candidates were chosen route by route: not only the building blocks of the map, but also the
+intermediates and products their usual transformations lead to. The table records that reasoning;
+it is **not** a list of reactions Fugacity will provide.
 
-| Reaction (building block → product) | New components it needs | Batch |
+| Transformation in the route (for choosing components only) | New components it brings in | Batch |
 |---|---|---|
 | Hexose → HMF → levulinic acid + formic acid | HMF, levulinic acid, glucose, fructose | 3, 4 |
 | Levulinic acid + alcohol ⇌ levulinate ester + water | methyl, ethyl, butyl levulinate | 3 |

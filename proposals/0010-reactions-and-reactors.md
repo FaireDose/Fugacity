@@ -3,7 +3,8 @@
 - **Status:** Draft
 - **Author(s):** Fugacity maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
-- **Roadmap item:** core track A13 (reactions), data track D8 (reaction data), release v0.6
+- **Roadmap item:** core track A13 (reactions), data track D8 (formation data of the
+  components), release v0.6
   (reactors and reactive systems in flowsheets); used by tracks E (cost) and G (agents)
 
 ## Problem
@@ -16,8 +17,9 @@ to build on.
 
 Four things are missing:
 
-1. **A reaction description** that every reactor, the data files and the agents share:
-   stoichiometry, phase, equilibrium constant and rate law, each with a source.
+1. **A reaction description** in which the user writes their own reactions (as in desktop
+   simulators: they ship components, not reactions): stoichiometry, phase, equilibrium constant
+   and rate law. Every reactor and the agents of proposal 0011 read the same format.
 2. **Formation properties** of the components (ΔfH° and ΔfG°). Today every component's enthalpy
    is 0 for the ideal gas at 298.15 K (src/thermo/enthalpy.js), which is fine for separations
    but hides the heat of reaction.
@@ -30,8 +32,14 @@ Four things are missing:
 
 ### 1. Reaction description (A13, `src/reactions/`)
 
-One JSON object per reaction. It can live in a project file, in a flowsheet, or in the
-databank `src/data/reactions.json` (with `source_ids` and a `tier`, like pair parameters):
+**Reactions are the user's, not Fugacity's.** Fugacity ships components and their data
+(including the formation properties below); it ships **no reaction library**. The user defines
+the reactions of their process in the project or flowsheet file, on the Reactions page or by
+hand, the way desktop simulators do it. What Fugacity adds is the checking: element balance,
+K(T) from the components' formation data, units, ranges, and a clear error when something does
+not fit.
+
+One JSON object per reaction, in the project or flowsheet file:
 
 ```json
 {
@@ -48,14 +56,12 @@ databank `src/data/reactions.json` (with `source_ids` and a `tier`, like pair pa
     "reverse":  "from-equilibrium",
     "per": "catalyst-mass",
     "units": "mol/(kg_cat s)",
-    "source": { "citation": "…", "doi": "…", "open_copy": "…", "tables": "Table 4" }
-  },
-  "tier": "literature",
-  "source_ids": []
+    "source": "optional: where the user took the rate law from"
+  }
 }
 ```
 
-(The zeros are placeholders of the format, not data.)
+(The zeros are placeholders of the format, not data; the user enters the values.)
 
 - **Stoichiometry** is checked against the element formulas of the components (from
   components.json): a reaction that doesn't balance C, H, O, N, S, … is refused with the
@@ -71,9 +77,11 @@ databank `src/data/reactions.json` (with `source_ids` and a `tier`, like pair pa
   below). Basis: concentration, mole fraction, activity, or partial pressure / fugacity. The
   reverse rate may be `from-equilibrium`, so the kinetics and K stay consistent. Rates per
   reactor volume or per catalyst mass.
-- **Sources:** like every number in Fugacity, k0, Ea, K correlations and orders carry a citation
-  (AGENTS.md rules 1–3). Tiers: `standard`, `literature` (from an open article or free book),
-  `fitted` (fitted here to cited data with a script in validation/python/), `user`.
+- **Sources:** the user's own numbers (k0, Ea, orders, a K correlation, a conversion) are the
+  user's responsibility. Each reaction has an optional `source` field, which the results and
+  exports show next to the numbers, so a reader can see where a rate law came from. Fugacity's
+  open-source rules (AGENTS.md rule 1) apply to what Fugacity ships, the component data, not to
+  what a user types into their own project.
 
 ### 2. Formation properties (D8)
 
@@ -136,12 +144,14 @@ character 12; known: C, x, p, f, a, T, P, K").
 
 - A **Reactions** page in the flowsheet's Setup group (after Components and Method): a reaction
   table with stoichiometry chips, balance check (✓ C H O), ΔrH°(298 K) and K(298 K) where
-  formation data exist, and each reaction's source and tier.
+  formation data exist (computed from the components, so the user sees at once whether a
+  reaction is exothermic and how far it can go), and the source the user gave.
 - Reactor blocks in the Blocks group (the **Reactor** button is already there as "Coming
   later").
 - In the stream table: extents and conversions per reactor; a Q-stream for the duty, as for
   heaters.
-- Library: reactions are searchable like pairs, with their sources.
+- Reactions can be copied between projects (export and import of the reaction list), but there
+  is no shipped reaction catalogue.
 
 ## Engineering basis
 
@@ -173,13 +183,16 @@ character 12; known: C, x, p, f, a, T, P, K").
   in conversion and yield reactors.
 - The flowsheet file format (A7) gains a `reactions` list. Old files have none, so they keep
   working.
-- New tier `literature` for parameters taken from an open article without a refit here.
+- No new data file for reactions: they live in the user's project and flowsheet files.
 
 ## Alternatives considered
 
 - **Only conversion reactors.** Quick, but they can't answer "how far can it go", which needs
   equilibrium, or "how big is the reactor", which needs kinetics. Kept as the first step, not as
   the end.
+- **A shipped reaction library.** Rejected: simulators ship components, not reactions; a
+  reaction's rate law and conditions belong to a particular process and catalyst, and the user
+  (or the agent of proposal 0011, from a cited paper, for the user to accept) chooses them.
 - **Heat of reaction typed per reaction.** Simple, but it would disagree with the enthalpies of
   the property package at other temperatures. Formation properties keep one consistent energy
   balance.
@@ -201,8 +214,9 @@ character 12; known: C, x, p, f, a, T, P, K").
 5. **CSTR and plug flow** with power-law and LHHW rates. Tests: scipy and the Rawlings and
    Ekerdt examples.
 6. **Gibbs reactor.** Test: Cantera.
-7. **Reactions page and reactor views**, Library entries, Excel export of conversion reactors
+7. **Reactions page and reactor views**, export and import of reaction lists, Excel export of conversion reactors
    (the concept model of the Excel export: extents as formulas).
-8. **Benchmarks with reactions:** methanol from CO₂ (equilibrium), ethyl acetate esterification
+8. **Tests with reactions:** methanol from CO₂ (equilibrium), ethyl acetate esterification
    (equilibrium and kinetics from an open article), ethanol to ethylene (conversion with side
-   reactions). Each with sources, in docs/BENCHMARKS.md.
+   reactions), defined in the test files with their sources and documented in docs/BENCHMARKS.md
+   as worked examples a user can copy; not shipped as a library.
