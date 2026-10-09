@@ -610,14 +610,16 @@ def write_doc(cases):
           "- the P-H search stepped below a correlation's range (liquid heat capacity ends at the melting point) and "
           "threw: it now steps back inside the range;",
           "- the P-H residual changed sign in its last digits between two evaluations of one temperature (warm-started "
-          "inner flash): an end within 1e-6 J/mol of the target is the root, and the first evaluation is reused. A "
-          "deterministic inner flash would remove the cause (open);",
+          "inner flash): first worked around with a 1e-6 J/mol tolerance; now each temperature is evaluated once per "
+          "search and remembered, so every evaluation of a point gives the same value;",
           "- Peng-Robinson P-VF flash for gas-rich feeds whose bubble point lies where the liquid splits or does not "
           "exist: the state at the vapour fraction is found from the dew point down, and its liquid is checked for a "
           "second liquid;",
-          "- Peng-Robinson P-H search stalling at such a bubble point: a second start from 300 K, and GDEM acceleration "
-          "of successive substitution after 50 slow steps. This is a fallback, not a guarantee: a Newton-based flash "
-          "with stability analysis is the rigorous next step (open).", "",
+          "- Peng-Robinson P-H search stalling at such a bubble point (its liquid splits into two liquids, K-values near 1): "
+          "first fixed with a second start from 300 K and GDEM acceleration; since replaced by the rule that the search "
+          "starts from the bubble point only if its liquid passes the stability test (else from 300 K), and by Newton's "
+          "method for the two-phase split after 10 steps of successive substitution (test/flash-hard.test.js: 77 flashes "
+          "close to bubble, dew and cricondenbar against thermo, to 1e-8 in vapour fraction).", "",
           "**Recycle convergence.** Wegstein's per-flow acceleration needed 170 iterations for Cavett and oscillated "
           "without end on G07 (three drums, seven components), which direct substitution solves in 73. A safeguard "
           "that restarts the acceleration when the change grows fixed G07 but slowed the other cases, and was dropped. "
