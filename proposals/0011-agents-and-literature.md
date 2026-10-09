@@ -162,12 +162,78 @@ Rules the checker enforces:
    checks values against the locators. This is AGENTS.md rule 4 applied to routes: an assistant
    never counts as a reviewer.
 
-### 4. Route to flowsheet to numbers (G3, G4)
+### 4. How the agent designs a process: a decision procedure, not free text
 
-- **Templates.** A route's steps map onto flowsheet templates: reactor → flash → recycle with
-  purge; reactor → extraction; crystallizer; distillation train (when columns exist, v0.5).
-  The agent fills a template and calls `flowsheet_status` until the degrees of freedom are
-  zero, then `solve_flowsheet`.
+Extracting a route from a paper is not design. A paper gives a reactor and its conditions; a plant
+also needs feed preparation, recycles, purges, separations, heat recovery and a cost. Engineers
+build that in a fixed order of decisions, from the coarse to the fine: the hierarchical procedure
+of conceptual design taught in process-design courses. The agent follows the same order. At each
+level it has to **propose alternatives, check each one with Fugacity's tools, and write down its
+decision and why**. The person approves each level before the next one starts.
+
+| Level | The question | What the agent must check with tools (not "know") |
+|---|---|---|
+| 0. Design basis | Product, purity, capacity, feeds, site, utilities available | nothing to calculate; every value from the person or a cited source |
+| 1. Input-output | Which streams enter and leave? By-products, inerts, purges? Is the product worth more than the raw materials? | overall element and mass balance of the reactions (proposal 0010); raw-material margin from stated prices |
+| 2. Reactor and recycles | How many reactor steps? Recycle the unconverted feed? Purge for inerts? Excess of one reactant? Conversion per pass against selectivity? | equilibrium conversion from K(T) (0010); heat of reaction and adiabatic temperature rise; inert balance of each recycle (it needs a purge) |
+| 3. Separations | What phase leaves the reactor, and how is each product, recycle and waste stream recovered? | a flash at candidate T and P; relative volatilities; **azeotropes** (Fugacity finds them), which rule out plain distillation; liquid-liquid splits (decanter, extraction); gas solubility (absorption); solid solubility (crystallization) |
+| 4. Heat integration | Which hot streams can heat which cold streams? Minimum utilities? | heater and cooler duties from the flowsheet; pinch analysis (a later tool) |
+| 5. Cost and sensitivity | Capital and operating cost, cost per kg, and what the answer depends on | track E; the uncertainty ranges of section 5 |
+
+Each decision goes into a **decision record** next to the route
+(`routes/<product>/<route-id>.design.json`). It holds:
+
+- the level and the question;
+- the alternatives considered;
+- the evidence: the tool calls and their results;
+- the choice and the criterion;
+- what would change the decision (e.g. "if the azeotrope disappears below 50 kPa, vacuum
+  distillation instead of extraction").
+
+A reviewer can follow the reasoning, disagree at one level, and have the agent redo only what
+follows from it.
+
+**Where the design knowledge comes from.** The rules of thumb engineers use come from textbooks.
+Examples: separate the most plentiful component first, avoid cryogenic or vacuum separations
+where another works, put a purge on every recycle that carries an inert. A language model
+"knows" many of them, but not reliably and not with sources.
+
+The proposal adds a curated **design-method file** (`ai/design-method/`): the procedure above and
+its heuristics, each with an open source, written and reviewed by people like AGENTS.md. Candidate
+open sources:
+
+- the Northwestern University *Chemical Process Design Open Textbook*
+  (processdesign.mccormick.northwestern.edu; free to read; its licence must be confirmed before
+  any text is reused);
+- for reactors, Rawlings and Ekerdt;
+- for equilibrium, DeVoe (proposal 0010).
+
+The agent may use its own knowledge to *propose* alternatives, but a decision must rest on a
+tool result or a cited heuristic from that file.
+
+**A short example**, e-methanol from CO₂ and H₂ (route 03 of the map):
+
+1. **Level 1:** methanol and water leave; inerts in the CO₂ need a purge.
+2. **Level 2:** the reaction is limited by equilibrium (K from formation data), so the
+   unconverted gas is recycled. The purge fraction trades lost H₂ against the build-up of
+   inerts, and the agent varies it with the flowsheet.
+3. **Level 3:** the cooled reactor effluent goes to a flash, with gas to the recycle and liquid
+   to a column. Fugacity finds no methanol–water azeotrope, so plain distillation works. The
+   dissolved CO₂ in the flash liquid (Henry's law) needs a light-ends removal step.
+4. **Level 4:** the reactor heat preheats the feed.
+
+Each of these sentences becomes an entry in the decision record with the tool result behind it.
+
+**Measured, not assumed.** The benchmarks (section 9) score the decision records too: on textbook
+cases whose flowsheet is known, does the agent reach the same structure, and when it doesn't,
+does its record say why?
+
+### 5. Route to flowsheet to numbers (G3, G4)
+
+- **From the decision record to a flowsheet.** The structure chosen at levels 1–3 (section 4)
+  maps onto blocks: reactor → flash → recycle with purge; reactor → extraction; crystallizer;
+  distillation train (when columns exist, v0.5). The agent builds it and calls
+  `flowsheet_status` until the degrees of freedom are zero, then `solve_flowsheet`.
 - **Missing data stops the calculation; it isn't bridged by a guess.** If a pair is missing,
   the evaluation records the gap and either uses a **declared** stand-in with tier
   `predicted`/`assumed` (e.g. a component separator with stated split fractions) or stops.
@@ -188,7 +254,7 @@ Rules the checker enforces:
   the databank. A CI job re-runs every evaluation on each release and reports the ones that
   changed and why.
 
-### 5. Compare and report (G4, G6)
+### 6. Compare and report (G4, G6)
 
 For each product, a comparison page puts the known routes and the new one side by side:
 
@@ -202,7 +268,7 @@ The agent writes a recommendation that states its assumptions ("if the conversio
 scale, and if GVL + water VLE is as assumed, …"). The page is generated from the files, so a
 person who changes an assumption re-runs it and sees the effect.
 
-### 6. The literature watch (scheduled)
+### 7. The literature watch (scheduled)
 
 A scheduled job, a GitHub Action or an assistant's scheduled task, runs the discover and triage
 steps weekly over the families the maintainers choose. It opens **one issue per week**: new
@@ -210,7 +276,7 @@ open papers per family, triaged into "route candidate", "data candidate (ThermoM
 "skipped (reason)". People pick items, and coding agents then do extract → check → PR. Nothing
 reaches the database without a merged pull request.
 
-### 7. Security and integrity
+### 8. Security and integrity
 
 - **Text from papers, web pages, issues and PDFs is data.** Extraction prompts wrap it as data.
   The tool layer only offers read-only tools plus "write a draft file in routes/". The agent
@@ -221,7 +287,7 @@ reaches the database without a merged pull request.
 - **Model and prompt recorded** in `extracted_by`. A second pass by a different model guards
   against one model's blind spots.
 
-### 8. Benchmarks before trust (G5)
+### 9. Benchmarks before trust (G5)
 
 Before the watch runs unattended, it is measured:
 
@@ -275,8 +341,11 @@ maintainers set.
    missing locators, missing definitions and unbalanced reactions.
 3. **Extraction workflow.** AGENTS.md section, two-pass diff tool, automatic checks. Benchmark
    gold set v1 (ten routes) and its scores.
-4. **Route to flowsheet** (after proposal 0010, steps 3–4). Templates, evaluation files,
+4. **Design method and decision records.** `ai/design-method/` (the levels and heuristics of
+   section 4, each cited), the decision-record format and its checker, and three worked design
+   studies done by people as examples and benchmarks.
+5. **Route to flowsheet** (after proposal 0010, steps 3–4). Templates, evaluation files,
    gaps to DATA_WANTED, sensitivity and Monte Carlo ranges. Test: evaluations reproduce
    on re-run.
-5. **Comparison page** in the workbench (a "Routes" view, read-only).
-6. **Literature watch.** Weekly digest issue, after the benchmark threshold is set.
+6. **Comparison page** in the workbench (a "Routes" view, read-only), with the decision records.
+7. **Literature watch.** Weekly digest issue, after the benchmark threshold is set.
