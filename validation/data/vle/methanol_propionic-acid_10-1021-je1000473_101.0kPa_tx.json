@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + Propionic acid (2): isobaric bubble temperatures at 101.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of methanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Gao, D.[Daming], Zhu, D.[Dechun], Sun, H.[Hong], Zhang, L.[Linyun], Chen, H.[Hong], Si, J.[Jingyu], Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures of Methanol, Ethanoic Acid, and Propanoic Acid, J. Chem. Eng. Data 55 (2010) 4002-4009",
+  "citation": "D. Gao, D. Zhu, H. Sun, L. Zhang, H. Chen, J. Si, Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures of Methanol, Ethanoic Acid, and Propanoic Acid, J. Chem. Eng. Data 55 (2010) 4002-4009",
   "doi": "10.1021/je1000473",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je1000473.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

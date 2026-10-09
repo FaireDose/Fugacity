@@ -1,7 +1,7 @@
 {
  "_about": "Isopropyl acetate (1) + Methyl acetate (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of isopropyl acetate, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Xiao, L.[Li], Wang, Q.-l.[Qian-lian], Wang, H.-x.[Hong-xing], Qiu, T.[Ting], Isobaric vapor-liquid equilibrium data for the binary system methyl acetate + isopropyl acetate and the quaternary system methyl acetate + methanol + isopropanol + isopropyl acetate at 101.3 kPa, Fluid Phase Equilib. 344 (2013) 79-83",
+  "citation": "L. Xiao, Q. L. Wang, H. X. Wang, T. Qiu, Isobaric vapor-liquid equilibrium data for the binary system methyl acetate + isopropyl acetate and the quaternary system methyl acetate + methanol + isopropanol + isopropyl acetate at 101.3 kPa, Fluid Phase Equilib. 344 (2013) 79-83",
   "doi": "10.1016/j.fluid.2013.01.024",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2013.01.024.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + Ethyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhu, J.[Jiujuan], Li, Q.[Qunsheng], Li, M.[Manman], Song, X.[Xiaoling], Tang, H.[Hongjian], Liu, Y.[Yudong], The isobaric vapor liquid equilibria of ethyl acetate p acetonitrile p bis(trifluoromethylsulfonyl)imide-based ionic liquids at 101.3 kPa, Fluid Phase Equilib. 425 (2016) 289-296",
+  "citation": "J. Zhu, Q. Li, M. Li, X. Song, H. Tang, Y. Liu, The isobaric vapor liquid equilibria of ethyl acetate p acetonitrile p bis(trifluoromethylsulfonyl)imide-based ionic liquids at 101.3 kPa, Fluid Phase Equilib. 425 (2016) 289-296",
   "doi": "10.1016/j.fluid.2016.06.022",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.06.022.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

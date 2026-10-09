@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhu, J.[Jiujuan], Li, R.[Runchao], Li, Z.[Zhuo], Song, X.[Xiaolin], Li, C.[Chunjiang], Tang, H.[Hongjian], Li, Q.[Qunsheng], Measurement and correlation of isobaric vapor-liquid equilibria of methanol + tetrahydrofuran + 1-alkyl-3-methylimidazolium bis(trifluoromethylsulfonyl)imide at 101.3 kPa, Fluid Phase Equilib. 423 (2016) 1-7",
+  "citation": "J. Zhu, R. Li, Z. Li, X. Song, C. Li, H. Tang, Q. Li, Measurement and correlation of isobaric vapor-liquid equilibria of methanol + tetrahydrofuran + 1-alkyl-3-methylimidazolium bis(trifluoromethylsulfonyl)imide at 101.3 kPa, Fluid Phase Equilib. 423 (2016) 1-7",
   "doi": "10.1016/j.fluid.2016.04.012",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.04.012.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

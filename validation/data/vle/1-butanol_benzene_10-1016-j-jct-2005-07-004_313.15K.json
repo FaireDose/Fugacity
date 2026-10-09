@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Benzene (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 1-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M., Martin, M. C., Chamorro, C. R.[Cesar R.], Villamanan, M. A.[Miguel Angel], Segovia, J. J.[Jose J.], Phase equilibrium properties of binary and ternary systems containing di-isopropyl ether + 1-butanol + benzene at 313.15 K, J. Chem. Thermodyn. 38 (2006) 547-553",
+  "citation": "R. M. Villamanan, M. C. Martin, C. R. Chamorro, M. A. Villamanan, J. J. Segovia, Phase equilibrium properties of binary and ternary systems containing di-isopropyl ether + 1-butanol + benzene at 313.15 K, J. Chem. Thermodyn. 38 (2006) 547-553",
   "doi": "10.1016/j.jct.2005.07.004",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2005.07.004.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

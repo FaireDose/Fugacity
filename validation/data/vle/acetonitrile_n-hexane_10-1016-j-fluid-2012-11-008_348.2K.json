@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + n-Hexane (2): isothermal total pressures at 348.2 K. Rows: temperature in K, liquid mole fraction of acetonitrile, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Narasigadu, C., Naidoo, P.[Paramesperi], Coquelet, C.[Christophe], Richon, D.[Dominique], Ramjugernath, D.[Deresh], A novel static analytical apparatus for phase equilibrium measurements, Fluid Phase Equilib. 338 (2013) 188-196",
+  "citation": "C. Narasigadu, P. Naidoo, C. Coquelet, D. Richon, D. Ramjugernath, A novel static analytical apparatus for phase equilibrium measurements, Fluid Phase Equilib. 338 (2013) 188-196",
   "doi": "10.1016/j.fluid.2012.11.008",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.11.008.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

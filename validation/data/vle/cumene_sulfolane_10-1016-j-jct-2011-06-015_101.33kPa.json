@@ -1,7 +1,7 @@
 {
  "_about": "Cumene (1) + Sulfolane (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of cumene, boiling temperature in K, vapour mole fraction of cumene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, Z.[Zhengrong], Huang, L.[Lei], Xia, S.[Shuqian], Ma, P.[Peisheng], Isobaric (vapour + liquid) equilibria for sulfolane with toluene, ethylbenzene, and isopropylbenzene at 101.33 kPa, J. Chem. Thermodyn. 43 (2011) 1865-1869",
+  "citation": "Z. Wang, L. Huang, S. Xia, P. Ma, Isobaric (vapour + liquid) equilibria for sulfolane with toluene, ethylbenzene, and isopropylbenzene at 101.33 kPa, J. Chem. Thermodyn. 43 (2011) 1865-1869",
   "doi": "10.1016/j.jct.2011.06.015",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2011.06.015.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

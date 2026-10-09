@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + Water (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of acetonitrile, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Z.[Zhigang], Lv, M.[Ming], Huang, D.[Donghao], Jia, P.[Peng], Sun, D.[Dezhang], Li, W.[Wenxiu], Isobaric Vapor Liquid Equilibrium for the Extractive Distillation of Acetonitrile + Water Mixtures Using Dimethyl Sulfoxide at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 3364-3369",
+  "citation": "Z. Zhang, M. Lv, D. Huang, P. Jia, D. Sun, W. Li, Isobaric Vapor Liquid Equilibrium for the Extractive Distillation of Acetonitrile + Water Mixtures Using Dimethyl Sulfoxide at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 3364-3369",
   "doi": "10.1021/je400531a",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400531a.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

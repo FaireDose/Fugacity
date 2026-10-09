@@ -1,7 +1,7 @@
 {
  "_about": "Methyl acetate (1) + n-Heptane (2): isobaric bubble temperatures at 1500.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of methyl acetate, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Badajoz, P. S.[Pedro Susial], Garcia-Vera, D.[Diego], Marrero-Perez, A.[Anibal], Padron-Guerra, N.[Nieves], Mujica-Gonzalez, T.[Tatiana], Measurement of VLE Data by Using an Experimental Installation with Automatic Control: Modeling of Binary Systems of Methyl Acetate or Ethyl Acetate with n-Heptane or 2,2,4-Trimethylpentane at Both 0.1 and 1.5 MPa, J. Chem. Eng. Data 64 (2019) 5591-5608",
+  "citation": "P. S. Badajoz, D. Garcia-Vera, A. Marrero-Perez, N. Padron-Guerra, T. Mujica-Gonzalez, Measurement of VLE Data by Using an Experimental Installation with Automatic Control: Modeling of Binary Systems of Methyl Acetate or Ethyl Acetate with n-Heptane or 2,2,4-Trimethylpentane at Both 0.1 and 1.5 MPa, J. Chem. Eng. Data 64 (2019) 5591-5608",
   "doi": "10.1021/acs.jced.9b00668",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.9b00668.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "Cyclohexane (1) + Methyl isobutyl ketone (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of cyclohexane, boiling temperature in K, vapour mole fraction of cyclohexane, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Marrufo, B.[Beatriz], Loras, S.[Sonia], Sanchotello, M.[Margarita], Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures with Cyclohexane, Cyclohexene, and Methyl Isobutyl Ketone at 100 kPa, J. Chem. Eng. Data 55 (2010) 5812-5817",
+  "citation": "B. Marrufo, S. Loras, M. Sanchotello, Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures with Cyclohexane, Cyclohexene, and Methyl Isobutyl Ketone at 100 kPa, J. Chem. Eng. Data 55 (2010) 5812-5817",
   "doi": "10.1021/je100776x",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100776x.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

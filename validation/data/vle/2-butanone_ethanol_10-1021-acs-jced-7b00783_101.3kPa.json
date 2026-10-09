@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + Ethanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-butanone, boiling temperature in K, vapour mole fraction of 2-butanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Li, Wenxiu, Chen, Xue, Yin, Haiying, Li, Linhao, Zhang, Tao, Isobaric Vapor-Liquid Equilibrium for 2-Butanone + Ethanol System Containing Different Ionic Liquids at 101.3 kPa, J. Chem. Eng. Data 63 (2018) 380-388",
+  "citation": "W. Li, X. Chen, H. Yin, L. Li, T. Zhang, Isobaric Vapor-Liquid Equilibrium for 2-Butanone + Ethanol System Containing Different Ionic Liquids at 101.3 kPa, J. Chem. Eng. Data 63 (2018) 380-388",
   "doi": "10.1021/acs.jced.7b00783",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.7b00783.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

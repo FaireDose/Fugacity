@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Water (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Orchilles, A. V., Miguel, P. J.[Pablo J.], Vercher, E.[Ernesto], Martinez-Andreu, A.[Antoni], Isobaric Vapor-Liquid Equilibria for 1-Propanol + Water + 1-Ethyl-3-methylimidazolium Trifluoromethanesulfonate at 100 kPa, J. Chem. Eng. Data 53 (2008) 2426-2431",
+  "citation": "A. V. Orchilles, P. J. Miguel, E. Vercher, A. Martinez-Andreu, Isobaric Vapor-Liquid Equilibria for 1-Propanol + Water + 1-Ethyl-3-methylimidazolium Trifluoromethanesulfonate at 100 kPa, J. Chem. Eng. Data 53 (2008) 2426-2431",
   "doi": "10.1021/je800436u",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je800436u.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

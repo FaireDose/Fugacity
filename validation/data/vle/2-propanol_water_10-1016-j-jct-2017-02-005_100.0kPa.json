@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Water (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Orchilles, A. V., Miguel, P. J.[Pablo J.], Gonzalez-Alfaro, V.[Vicenta], Llopis, F. J.[Francisco J.], Vercher, E.[Ernesto], Martinez-Andreu, A.[Antoni], Isobaric vapor-liquid equilibria for the extractive distillation of 2-propanol + water mixtures using 1-ethyl-3-methylimidazolium dicyanamide ionic liquid, J. Chem. Thermodyn. 110 (2017) 16-24",
+  "citation": "A. V. Orchilles, P. J. Miguel, V. Gonzalez-Alfaro, F. J. Llopis, E. Vercher, A. Martinez-Andreu, Isobaric vapor-liquid equilibria for the extractive distillation of 2-propanol + water mixtures using 1-ethyl-3-methylimidazolium dicyanamide ionic liquid, J. Chem. Thermodyn. 110 (2017) 16-24",
   "doi": "10.1016/j.jct.2017.02.005",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2017.02.005.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

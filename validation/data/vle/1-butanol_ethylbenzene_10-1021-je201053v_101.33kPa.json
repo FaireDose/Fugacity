@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Ethylbenzene (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Yang, B.[Baimei], Wan, H.[Hui], Guan, G.[Guofeng], Isobaric vapor liquid equilibium for the binary systerms of  1-butanol with o-xylene, m-xylene, p-xylene, and  ethylbenzene at 101.33 kPa, J. Chem. Eng. Data 57 (2012) 18-25",
+  "citation": "B. Yang, H. Wan, G. Guan, Isobaric vapor liquid equilibium for the binary systerms of  1-butanol with o-xylene, m-xylene, p-xylene, and  ethylbenzene at 101.33 kPa, J. Chem. Eng. Data 57 (2012) 18-25",
   "doi": "10.1021/je201053v",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je201053v.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

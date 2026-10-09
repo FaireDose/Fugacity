@@ -1,7 +1,7 @@
 {
  "_about": "Cyclohexane (1) + ETBE (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of cyclohexane, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M.[Rosa M.], Vega-Maza, D.[David], Chamorro, C. R.[Cesar R.], Villamanan, M. A.[Miguel A.], Segovia, J. J.[Jose J.], Thermodynamics of Fuels with a Biosynthetic Component. II. Vapor Liquid Equilibrium Data for Binary and Ternary Mixtures Containing Ethyl 1,1-Dimethylethyl Ether, 1-Hexene, and Cyclohexane at T = 313.15 K, J. Chem. Eng. Data 53 (2008) 247-251",
+  "citation": "R. M. Villamanan, D. Vega-Maza, C. R. Chamorro, M. A. Villamanan, J. J. Segovia, Thermodynamics of Fuels with a Biosynthetic Component. II. Vapor Liquid Equilibrium Data for Binary and Ternary Mixtures Containing Ethyl 1,1-Dimethylethyl Ether, 1-Hexene, and Cyclohexane at T = 313.15 K, J. Chem. Eng. Data 53 (2008) 247-251",
   "doi": "10.1021/je7005488",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je7005488.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Benzene (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 2-propanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M.[Rosa M.], Martin, M. C., Villamanan, M. A.[Miguel A.], Chamorro, C. R.[Cesar R.], Segovia, J. J.[Jose J.], Thermodynamic Properties of Binary and Ternary Mixtures Containing Di-isopropyl Ether, 2-Propanol, and Benzene at T = 313.15 K, J. Chem. Eng. Data 55 (2010) 2741-2745",
+  "citation": "R. M. Villamanan, M. C. Martin, M. A. Villamanan, C. R. Chamorro, J. J. Segovia, Thermodynamic Properties of Binary and Ternary Mixtures Containing Di-isopropyl Ether, 2-Propanol, and Benzene at T = 313.15 K, J. Chem. Eng. Data 55 (2010) 2741-2745",
   "doi": "10.1021/je900977e",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je900977e.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

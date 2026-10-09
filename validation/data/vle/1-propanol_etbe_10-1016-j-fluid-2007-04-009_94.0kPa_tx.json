@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + ETBE (2): isobaric bubble temperatures at 94.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-propanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Mejia, A.[Andres], Segura, H.[Hugo], Cartes, M.[Marcela], Bustos, P.[Pia], Vapor liquid equilibrium, densities, and interfacial tensions for the system ethyl 1,1-dimethylethyl ether (ETBE) + propan-1-ol, Fluid Phase Equilib. 255 (2007) 121-130",
+  "citation": "A. Mejia, H. Segura, M. Cartes, P. Bustos, Vapor liquid equilibrium, densities, and interfacial tensions for the system ethyl 1,1-dimethylethyl ether (ETBE) + propan-1-ol, Fluid Phase Equilib. 255 (2007) 121-130",
   "doi": "10.1016/j.fluid.2007.04.009",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.04.009.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

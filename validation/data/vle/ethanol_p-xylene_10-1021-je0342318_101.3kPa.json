@@ -1,7 +1,7 @@
 {
  "_about": "Ethanol (1) + p-Xylene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Sanchez-Russinyol, M. d. C.[Maria del Carmen], Aucejo, A.[Antonio], Loras, S.[Sonia], Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures of Ethanol, Methylcyclohexane and p-Xylene, J. Chem. Eng. Data 49 (2004) 1258-1262",
+  "citation": "M. D. C. Sanchez-Russinyol, A. Aucejo, S. Loras, Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures of Ethanol, Methylcyclohexane and p-Xylene, J. Chem. Eng. Data 49 (2004) 1258-1262",
   "doi": "10.1021/je0342318",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0342318.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

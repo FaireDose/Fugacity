@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Ethanol (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-butanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Cripwell, J. T.[Jamie T.], Schwarz, C. E.[Cara E.], Burger, A. J.[Andries J.], Vapor Liquid Equilibria Measurements for the Nine n-Alkane/Ketone Pairs Comprising 2-, 3-, and 4-Heptanone with n-Octane, n-Nonane, and n-Decane, J. Chem. Eng. Data 60 (2015) 602-611",
+  "citation": "J. T. Cripwell, C. E. Schwarz, A. J. Burger, Vapor Liquid Equilibria Measurements for the Nine n-Alkane/Ketone Pairs Comprising 2-, 3-, and 4-Heptanone with n-Octane, n-Nonane, and n-Decane, J. Chem. Eng. Data 60 (2015) 602-611",
   "doi": "10.1021/je500731x",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je500731x.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

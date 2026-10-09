@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + Furfural (2): isothermal total pressures at 353.2 K. Rows: temperature in K, liquid mole fraction of 2-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Zaitseva, A.[Anna], Laavi, H.[Helena], Pokki, J. -P.[Juha-Pekka], Uusi-Kyyny, P.[Petri], Alopaeus, V.[Ville], Isothermal vapor-liquid equilibrium and excess molar enthalpies of the binary mixtures furfural + methyl isobutyl ketone, + 2-butanol and + 2-methyl-2-butanol, Fluid Phase Equilib. 372 (2014) 85-99",
+  "citation": "A. Zaitseva, H. Laavi, J. P. Pokki, P. Uusi-Kyyny, V. Alopaeus, Isothermal vapor-liquid equilibrium and excess molar enthalpies of the binary mixtures furfural + methyl isobutyl ketone, + 2-butanol and + 2-methyl-2-butanol, Fluid Phase Equilib. 372 (2014) 85-99",
   "doi": "10.1016/j.fluid.2014.03.033",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.03.033.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

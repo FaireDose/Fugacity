@@ -275,6 +275,7 @@ def write_doc(found, errors, have, cs, pairs):
             lines.append(f"| {name(f['pair'][0])} + {name(f['pair'][1])} | {kind} | {models} | "
                          f"{(('**' if max(checks) > 1 else '') + f'{max(checks):.2f} K' + ('**' if max(checks) > 1 else '')) if checks else '–'} |")
         lines.append("")
+    lines += coverage_by_method()
     rest = [p for p in none if not cs.get(p) and not vle_points(p)]
     lines += [f"## No parameters and no open vapour-liquid data found ({len(rest)})", "",
               "Many of these are pairs of a liquid with a component that is far from its boiling range (a gas or a "
@@ -284,6 +285,71 @@ def write_doc(found, errors, have, cs, pairs):
         lines += ["## Records that could not be read", "", *[f"- {d}: {e}" for d, e in errors], ""]
     DOC_FILE.write_text("\n".join(lines))
     print(f"wrote {INDEX_FILE.relative_to(ROOT)} and {DOC_FILE.relative_to(ROOT)}", file=sys.stderr)
+
+
+# The method a pair needs (docs/METHOD_SELECTION.md): polar = a heteroatom in the formula, except the light
+# gases that cubic equations of state describe (as src/thermo/method-advice.js decides); a gas = boiling below 0 degC.
+EOS_GASES = {"nitrogen", "carbon-dioxide", "hydrogen-sulfide", "carbon-monoxide", "oxygen", "argon", "hydrogen",
+             "nitrous-oxide", "sulfur-dioxide", "ammonia"}
+
+
+def is_polar(cid):
+    import re
+    return cid not in EOS_GASES and bool(re.search(r"O|N(?!a)|S(?!i)|P|F|Cl|Br|I", COMPS[cid].get("formula", "")))
+
+
+def is_gas(cid):
+    return (COMPS[cid].get("Tb_K") or 0) < 273.15
+
+
+def needed_method(a, b):
+    if not is_polar(a) and not is_polar(b):
+        return "eos"
+    if is_gas(a) and is_gas(b):
+        return "eos"
+    if is_gas(a) or is_gas(b):
+        return "gas-in-liquid"
+    return "activity"
+
+
+def coverage_by_method():
+    """Pairs of all components by the method the rules choose, and how many have parameters or open data."""
+    arch_file = ROOT / "validation" / "data" / "vle" / "archive_index.json"
+    if not arch_file.exists():
+        return []
+    arch = json.loads(arch_file.read_text())
+    data = {tuple(k.split("+")) for k, v in arch["pairs"].items()
+            if any(s["kind"] in ("isobaric-txy", "isobaric-tx", "isothermal-pxy", "isothermal-px", "txy-varying", "tpx-varying") for r in v for s in r["sets"])}
+    kij = {key(p["i"], p["j"]) for p in json.loads((ROOT / "src" / "data" / "kij.json").read_text())["pairs"] if p.get("tier") != "none"}
+    henry = {key(p["gas"], p["solvent"]) for p in json.loads((ROOT / "src" / "data" / "henry.json").read_text())["pairs"]}
+    act = {key(r["i"], r["j"]) for r in BINS_NOW if r.get("default", True)}
+    ids = sorted(COMPS)
+    rows = defaultdict(lambda: [0, 0, 0, 0])
+    for x in range(len(ids)):
+        for y in range(x + 1, len(ids)):
+            p = key(ids[x], ids[y])
+            m = needed_method(*p)
+            have = p in (kij if m == "eos" else henry if m == "gas-in-liquid" else act)
+            r = rows[m]
+            r[0] += 1
+            r[1] += have
+            r[2] += (not have) and p in data
+            r[3] += (not have) and p not in data
+    label = {"eos": "Nonpolar, or both gases: an equation of state with k_ij", "activity": "Polar liquids: an activity model (NRTL, UNIQUAC)",
+             "gas-in-liquid": "A gas in a polar liquid: Henry's law (water only), else PSRK or MHV2 (not in CHEPTA yet)"}
+    out = ["## Coverage by the method each pair needs", "",
+           f"All {len(ids)} components, {len(ids) * (len(ids) - 1) // 2} pairs, each counted once for the method the rules of "
+           "docs/METHOD_SELECTION.md choose (polar: a heteroatom in the formula, except the light gases cubic equations describe; "
+           "gas: boiling below 0 °C). Open data: binary vapour-liquid data in the whole NIST TRC ThermoML Archive "
+           f"(bulk file, {arch['records_read']} records; validation/data/vle/archive_index.json, scan_archive.py).", "",
+           "| Method needed | Pairs | With parameters | No parameters, open data in the archive | No parameters, no data in the archive |",
+           "|---|---|---|---|---|"]
+    for m in ("activity", "eos", "gas-in-liquid"):
+        r = rows[m]
+        out.append(f"| {label[m]} | {r[0]} | {r[1]} | {r[2]} | {r[3]} |")
+    out += ["", f"The whole archive has binary vapour-liquid data for {arch['archive_binary_vle_compound_pairs']} distinct compound pairs "
+            "(of every compound it holds, not only CHEPTA's).", ""]
+    return out
 
 
 def main():

@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + 1-Propanol (2): isobaric bubble temperatures at 91.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-butanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Mohsen-Nia, M., Memarzadeh, M. R., Isobaric (vapour + liquid) equilibria for the (1-propanol + 1-butanol) binary mixture at (53.3 and 91.3) kPa, J. Chem. Thermodyn. 42 (2010) 792-796",
+  "citation": "M. Mohsen-Nia, M. R. Memarzadeh, Isobaric (vapour + liquid) equilibria for the (1-propanol + 1-butanol) binary mixture at (53.3 and 91.3) kPa, J. Chem. Thermodyn. 42 (2010) 792-796",
   "doi": "10.1016/j.jct.2010.02.001",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2010.02.001.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

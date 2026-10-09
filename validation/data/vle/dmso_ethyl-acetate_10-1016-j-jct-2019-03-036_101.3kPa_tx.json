@@ -1,7 +1,7 @@
 {
  "_about": "Dimethyl sulfoxide (1) + Ethyl acetate (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of dimethyl sulfoxide, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, Yinglong, Zhang, Hongru, Pan, Xiangshuai, Yang, Jingwei, Cui, Peizhe, Zhang, Fangkun, Gao, Jun, Isobaric vapor-liquid equilibrium of a ternary system of ethyl acetate + propyl acetate + dimethyl sulfoxide and binary systems of ethyl acetate + dimethyl sulfoxide and propyl acetate + dimethyl sulfoxide at 101.3 kPa, J. Chem. Thermodyn. 135 (2019) 116-123",
+  "citation": "Y. Wang, H. Zhang, X. Pan, J. Yang, P. Cui, F. Zhang, J. Gao, Isobaric vapor-liquid equilibrium of a ternary system of ethyl acetate + propyl acetate + dimethyl sulfoxide and binary systems of ethyl acetate + dimethyl sulfoxide and propyl acetate + dimethyl sulfoxide at 101.3 kPa, J. Chem. Thermodyn. 135 (2019) 116-123",
   "doi": "10.1016/j.jct.2019.03.036",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2019.03.036.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

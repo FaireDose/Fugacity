@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + Ethyl acetate (2): isobaric bubble temperatures at 300.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 2-butanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Susial, P.[Pedro], Susial, R.[Rodrigo], Castillo, V. D.[Victor D.], Estupinan, E. J.[Esteban J.], Rodriguez-Henriquez, J. J.[Jose J.], Apolinario, J. C.[Jose C.], Experimental VLE data of Methyl Acetate or Ethyl Acetate with 2-Butanol at 0.3 and 0.6 MPa. Quality assessment and predictions., J. Chem. Eng. Data 59 (2014) 2763-2772",
+  "citation": "P. Susial, R. Susial, V. D. Castillo, E. J. Estupinan, J. J. Rodriguez-Henriquez, J. C. Apolinario, Experimental VLE data of Methyl Acetate or Ethyl Acetate with 2-Butanol at 0.3 and 0.6 MPa. Quality assessment and predictions., J. Chem. Eng. Data 59 (2014) 2763-2772",
   "doi": "10.1021/je5003225",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je5003225.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

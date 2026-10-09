@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + Chloroform (2): isothermal total pressures at 303.15 K. Rows: temperature in K, liquid mole fraction of 2-butanone, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Clara, R. A.[Rene A.], Marigliano, A. C. G.[Ana C. Gomez], Solimo, H. N.[Horacio N.], Density, Viscosity, Vapor-Liquid Equilibrium, Excess Molar Volume, Viscosity Deviation, and Their Correlations for the Chloroform + 2-Butanone Binary System, J. Chem. Eng. Data 51 (2006) 1473-1478",
+  "citation": "R. A. Clara, A. C. G. Marigliano, H. N. Solimo, Density, Viscosity, Vapor-Liquid Equilibrium, Excess Molar Volume, Viscosity Deviation, and Their Correlations for the Chloroform + 2-Butanone Binary System, J. Chem. Eng. Data 51 (2006) 1473-1478",
   "doi": "10.1021/je060150a",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je060150a.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -903,16 +903,6 @@
    "describe": "Fitted to 19 total pressures at 383.15 K with the measured pure-component pressures from Grenner et al., J. Chem. Eng. Data 51 (2006) 1009-1014 (data public in the NIST TRC ThermoML Archive; validation/data/vle/aniline_n-octane_10-1021-je0505366_383.15K.json)."
   },
   {
-   "key": "benzene+cyclohexane",
-   "pair": [
-    "benzene",
-    "cyclohexane"
-   ],
-   "file": "vle/benzene_cyclohexane_10-1021-je101304x_403.15K.json",
-   "check": [],
-   "describe": "Fitted to 12 total pressures at 403.15 K with the measured pure-component pressures from Dong et al., J. Chem. Eng. Data 56 (2011) 2386-2392 (data public in the NIST TRC ThermoML Archive; validation/data/vle/benzene_cyclohexane_10-1021-je101304x_403.15K.json)."
-  },
-  {
    "key": "benzene+cyclohexanone",
    "pair": [
     "benzene",
@@ -961,39 +951,6 @@
    "file": "vle/benzene_n-butyl-acetate_10-1021-je800915d_101.31kPa.json",
    "check": [],
    "describe": "Fitted to 17 T-x-y points at 101.31 kPa from Postigo et al., J. Chem. Eng. Data 54 (2009) 1575-1579 (data public in the NIST TRC ThermoML Archive; validation/data/vle/benzene_n-butyl-acetate_10-1021-je800915d_101.31kPa.json)."
-  },
-  {
-   "key": "benzene+n-nonane",
-   "pair": [
-    "benzene",
-    "n-nonane"
-   ],
-   "file": "vle/benzene_n-nonane_10-1016-j-fluid-2013-05-016_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 15 T-x-y points at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 352 (2013) 86-92 (data public in the NIST TRC ThermoML Archive; validation/data/vle/benzene_n-nonane_10-1016-j-fluid-2013-05-016_101.3kPa.json)."
-  },
-  {
-   "key": "benzene+o-xylene",
-   "pair": [
-    "benzene",
-    "o-xylene"
-   ],
-   "file": "vle/benzene_o-xylene_10-1016-j-fluid-2013-05-016_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 17 T-x-y points at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 352 (2013) 86-92 (data public in the NIST TRC ThermoML Archive; validation/data/vle/benzene_o-xylene_10-1016-j-fluid-2013-05-016_101.3kPa.json)."
-  },
-  {
-   "key": "benzene+toluene",
-   "pair": [
-    "benzene",
-    "toluene"
-   ],
-   "file": "vle/benzene_toluene_10-1016-j-fluid-2013-12-002_101.33kPa.json",
-   "check": [
-    "vle/benzene_toluene_10-1021-je7005665_101.3kPa.json",
-    "vle/benzene_toluene_10-1016-j-fluid-2012-09-019_101.3kPa.json"
-   ],
-   "describe": "Fitted to 11 T-x-y points at 101.33 kPa from Li et al., Fluid Phase Equilib. 364 (2014) 62-66 (data public in the NIST TRC ThermoML Archive; validation/data/vle/benzene_toluene_10-1016-j-fluid-2013-12-002_101.33kPa.json); checked against Huang et al., J. Chem. Eng. Data 53 (2008) 252-255 at 101.3 kPa, Yang et al., Fluid Phase Equilib. 337 (2013) 109-114 at 101.3 kPa."
   },
   {
    "key": "chloroform+mibk",
@@ -1046,26 +1003,6 @@
    "describe": "Fitted to 21 T-x-y points at 100.0 kPa from Marrufo et al., J. Chem. Eng. Data 55 (2010) 5812-5817 (data public in the NIST TRC ThermoML Archive; validation/data/vle/cyclohexane_mibk_10-1021-je100776x_100.0kPa.json)."
   },
   {
-   "key": "cyclohexane+n-heptane",
-   "pair": [
-    "cyclohexane",
-    "n-heptane"
-   ],
-   "file": "vle/cyclohexane_n-heptane_10-1021-acs-jced-8b00929_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 9 T-x-y points at 101.3 kPa from Manivannan et al., J. Chem. Eng. Data 64 (2019) 696-705 (data public in the NIST TRC ThermoML Archive; validation/data/vle/cyclohexane_n-heptane_10-1021-acs-jced-8b00929_101.3kPa.json)."
-  },
-  {
-   "key": "cyclohexane+n-nonane",
-   "pair": [
-    "cyclohexane",
-    "n-nonane"
-   ],
-   "file": "vle/cyclohexane_n-nonane_10-1016-j-fluid-2011-10-009_101.3kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 12 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 313 (2012) 190-195 (data public in the NIST TRC ThermoML Archive; validation/data/vle/cyclohexane_n-nonane_10-1016-j-fluid-2011-10-009_101.3kPa_tx.json)."
-  },
-  {
    "key": "cyclohexane+propylene-glycol",
    "pair": [
     "cyclohexane",
@@ -1084,16 +1021,6 @@
    "file": "vle/cyclohexane_tetrahydrofuran_10-1021-je4004993_101.3kPa.json",
    "check": [],
    "describe": "Fitted to 20 T-x-y points at 101.3 kPa from Zhang et al., J. Chem. Eng. Data 58 (2013) 3054-3060 (data public in the NIST TRC ThermoML Archive; validation/data/vle/cyclohexane_tetrahydrofuran_10-1021-je4004993_101.3kPa.json)."
-  },
-  {
-   "key": "cyclohexane+toluene",
-   "pair": [
-    "cyclohexane",
-    "toluene"
-   ],
-   "file": "vle/cyclohexane_toluene_10-1016-j-tca-2017-12-010_101.3kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 14 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Khoshooei et al., Thermochim. Acta 659 (2018) 232-241 (data public in the NIST TRC ThermoML Archive; validation/data/vle/cyclohexane_toluene_10-1016-j-tca-2017-12-010_101.3kPa_tx.json)."
   },
   {
    "key": "cyclohexanone+ethanol",
@@ -1388,46 +1315,6 @@
    "describe": "Fitted to 23 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.32 kPa from Fernandez et al., J. Chem. Eng. Data 55 (2010) 5519-5533 (data public in the NIST TRC ThermoML Archive; validation/data/vle/ethyl-acetate_n-pentane_10-1021-je100832h_101.32kPa_tx.json)."
   },
   {
-   "key": "ethylbenzene+isooctane",
-   "pair": [
-    "ethylbenzene",
-    "isooctane"
-   ],
-   "file": "vle/ethylbenzene_isooctane_10-1021-je401057z_250.0kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 17 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 250.0 kPa from Martins et al., J. Chem. Eng. Data 59 (2014) 1499-1506 (data public in the NIST TRC ThermoML Archive; validation/data/vle/ethylbenzene_isooctane_10-1021-je401057z_250.0kPa_tx.json)."
-  },
-  {
-   "key": "ethylbenzene+m-xylene",
-   "pair": [
-    "ethylbenzene",
-    "m-xylene"
-   ],
-   "file": "vle/ethylbenzene_m-xylene_10-1021-je049701s_100.65kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 100.65 kPa from Rodrigues et al., J. Chem. Eng. Data 50 (2005) 1134-1138 (data public in the NIST TRC ThermoML Archive; validation/data/vle/ethylbenzene_m-xylene_10-1021-je049701s_100.65kPa.json)."
-  },
-  {
-   "key": "ethylbenzene+o-xylene",
-   "pair": [
-    "ethylbenzene",
-    "o-xylene"
-   ],
-   "file": "vle/ethylbenzene_o-xylene_10-1021-je049701s_100.65kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 100.65 kPa from Rodrigues et al., J. Chem. Eng. Data 50 (2005) 1134-1138 (data public in the NIST TRC ThermoML Archive; validation/data/vle/ethylbenzene_o-xylene_10-1021-je049701s_100.65kPa.json)."
-  },
-  {
-   "key": "ethylbenzene+p-xylene",
-   "pair": [
-    "ethylbenzene",
-    "p-xylene"
-   ],
-   "file": "vle/ethylbenzene_p-xylene_10-1021-je049701s_100.65kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 100.65 kPa from Rodrigues et al., J. Chem. Eng. Data 50 (2005) 1134-1138 (data public in the NIST TRC ThermoML Archive; validation/data/vle/ethylbenzene_p-xylene_10-1021-je049701s_100.65kPa.json)."
-  },
-  {
    "key": "ethylbenzene+sulfolane",
    "pair": [
     "ethylbenzene",
@@ -1478,16 +1365,6 @@
    "describe": "Fitted to 10 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 95.8 kPa from Prasad et al., J. Chem. Eng. Data 49 (2004) 746-749 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isobutanol_tetrahydrofuran_10-1021-je030141r_95.8kPa_tx.json)."
   },
   {
-   "key": "isooctane+m-xylene",
-   "pair": [
-    "isooctane",
-    "m-xylene"
-   ],
-   "file": "vle/isooctane_m-xylene_10-1021-je401057z_250.0kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 16 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 250.0 kPa from Martins et al., J. Chem. Eng. Data 59 (2014) 1499-1506 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isooctane_m-xylene_10-1021-je401057z_250.0kPa_tx.json)."
-  },
-  {
    "key": "isooctane+methyl-acetate",
    "pair": [
     "isooctane",
@@ -1508,36 +1385,6 @@
    "describe": "Fitted to 11 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 95.96 kPa from Reddy et al., Fluid Phase Equilib. 230 (2005) 105-108 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isooctane_mtbe_10-1016-j-fluid-2004-12-007_95.96kPa_tx.json)."
   },
   {
-   "key": "isooctane+n-heptane",
-   "pair": [
-    "isooctane",
-    "n-heptane"
-   ],
-   "file": "vle/isooctane_n-heptane_10-1016-j-fluid-2015-07-049_313.15K.json",
-   "check": [],
-   "describe": "Fitted to 22 total pressures at 313.15 K with the measured pure-component pressures from Moreau et al., Fluid Phase Equilib. 405 (2015) 101-106 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isooctane_n-heptane_10-1016-j-fluid-2015-07-049_313.15K.json)."
-  },
-  {
-   "key": "isooctane+o-xylene",
-   "pair": [
-    "isooctane",
-    "o-xylene"
-   ],
-   "file": "vle/isooctane_o-xylene_10-1021-je401057z_250.0kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 19 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 250.0 kPa from Martins et al., J. Chem. Eng. Data 59 (2014) 1499-1506 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isooctane_o-xylene_10-1021-je401057z_250.0kPa_tx.json)."
-  },
-  {
-   "key": "isooctane+p-xylene",
-   "pair": [
-    "isooctane",
-    "p-xylene"
-   ],
-   "file": "vle/isooctane_p-xylene_10-1021-je401057z_250.0kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 12 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 250.0 kPa from Martins et al., J. Chem. Eng. Data 59 (2014) 1499-1506 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isooctane_p-xylene_10-1021-je401057z_250.0kPa_tx.json)."
-  },
-  {
    "key": "isopropyl-acetate+methyl-acetate",
    "pair": [
     "isopropyl-acetate",
@@ -1546,58 +1393,6 @@
    "file": "vle/isopropyl-acetate_methyl-acetate_10-1016-j-fluid-2013-01-024_101.3kPa_tx.json",
    "check": [],
    "describe": "Fitted to 17 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Xiao et al., Fluid Phase Equilib. 344 (2013) 79-83 (data public in the NIST TRC ThermoML Archive; validation/data/vle/isopropyl-acetate_methyl-acetate_10-1016-j-fluid-2013-01-024_101.3kPa_tx.json)."
-  },
-  {
-   "key": "m-xylene+n-decane",
-   "pair": [
-    "m-xylene",
-    "n-decane"
-   ],
-   "file": "vle/m-xylene_n-decane_10-1016-j-fluid-2012-09-019_20.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 20.0 kPa from Yang et al., Fluid Phase Equilib. 337 (2013) 109-114 (data public in the NIST TRC ThermoML Archive; validation/data/vle/m-xylene_n-decane_10-1016-j-fluid-2012-09-019_20.0kPa.json)."
-  },
-  {
-   "key": "m-xylene+n-hexane",
-   "pair": [
-    "m-xylene",
-    "n-hexane"
-   ],
-   "file": "vle/m-xylene_n-hexane_10-1021-je3002283_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 101.3 kPa from Gupta et al., J. Chem. Eng. Data 57 (2012) 1237-1243 (data public in the NIST TRC ThermoML Archive; validation/data/vle/m-xylene_n-hexane_10-1021-je3002283_101.3kPa.json)."
-  },
-  {
-   "key": "m-xylene+n-nonane",
-   "pair": [
-    "m-xylene",
-    "n-nonane"
-   ],
-   "file": "vle/m-xylene_n-nonane_10-1016-j-fluid-2011-10-009_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 313 (2012) 190-195 (data public in the NIST TRC ThermoML Archive; validation/data/vle/m-xylene_n-nonane_10-1016-j-fluid-2011-10-009_101.3kPa.json)."
-  },
-  {
-   "key": "m-xylene+n-octane",
-   "pair": [
-    "m-xylene",
-    "n-octane"
-   ],
-   "file": "vle/m-xylene_n-octane_10-1021-je3002283_101.3kPa.json",
-   "check": [
-    "vle/m-xylene_n-octane_10-1016-j-fluid-2013-01-015_20.0kPa.json"
-   ],
-   "describe": "Fitted to 11 T-x-y points at 101.3 kPa from Gupta et al., J. Chem. Eng. Data 57 (2012) 1237-1243 (data public in the NIST TRC ThermoML Archive; validation/data/vle/m-xylene_n-octane_10-1021-je3002283_101.3kPa.json); checked against Yang et al., Fluid Phase Equilib. 344 (2013) 1-5 at 20.0 kPa."
-  },
-  {
-   "key": "m-xylene+n-undecane",
-   "pair": [
-    "m-xylene",
-    "n-undecane"
-   ],
-   "file": "vle/m-xylene_n-undecane_10-1016-j-fluid-2013-10-012_10.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 13 T-x-y points at 10.0 kPa from Yang et al., Fluid Phase Equilib. 360 (2013) 451-455 (data public in the NIST TRC ThermoML Archive; validation/data/vle/m-xylene_n-undecane_10-1016-j-fluid-2013-10-012_10.0kPa.json)."
   },
   {
    "key": "methanol+methyl-acetate",
@@ -1736,136 +1531,6 @@
    "file": "vle/n-butyl-acetate_n-octane_10-1021-acs-jced-5b01058_60.0kPa_tx.json",
    "check": [],
    "describe": "Fitted to 45 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 60.0 kPa from Cripwell et al., J. Chem. Eng. Data 61 (2016) 2353-2362 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-butyl-acetate_n-octane_10-1021-acs-jced-5b01058_60.0kPa_tx.json)."
-  },
-  {
-   "key": "n-decane+o-xylene",
-   "pair": [
-    "n-decane",
-    "o-xylene"
-   ],
-   "file": "vle/n-decane_o-xylene_10-1016-j-fluid-2012-09-019_20.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 20.0 kPa from Yang et al., Fluid Phase Equilib. 337 (2013) 109-114 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-decane_o-xylene_10-1016-j-fluid-2012-09-019_20.0kPa.json)."
-  },
-  {
-   "key": "n-decane+p-xylene",
-   "pair": [
-    "n-decane",
-    "p-xylene"
-   ],
-   "file": "vle/n-decane_p-xylene_10-1016-j-fluid-2012-09-019_20.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 20.0 kPa from Yang et al., Fluid Phase Equilib. 337 (2013) 109-114 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-decane_p-xylene_10-1016-j-fluid-2012-09-019_20.0kPa.json)."
-  },
-  {
-   "key": "n-heptane+n-nonane",
-   "pair": [
-    "n-heptane",
-    "n-nonane"
-   ],
-   "file": "vle/n-heptane_n-nonane_10-1016-j-fluid-2013-05-016_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 14 T-x-y points at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 352 (2013) 86-92 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-heptane_n-nonane_10-1016-j-fluid-2013-05-016_101.3kPa.json)."
-  },
-  {
-   "key": "n-heptane+toluene",
-   "pair": [
-    "n-heptane",
-    "toluene"
-   ],
-   "file": "vle/n-heptane_toluene_10-1021-je0602115_313.15K.json",
-   "check": [],
-   "describe": "Fitted to 25 total pressures at 313.15 K with the measured pure-component pressures from Villamanan et al., J. Chem. Eng. Data 51 (2006) 2091-2095 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-heptane_toluene_10-1021-je0602115_313.15K.json)."
-  },
-  {
-   "key": "n-hexane+o-xylene",
-   "pair": [
-    "n-hexane",
-    "o-xylene"
-   ],
-   "file": "vle/n-hexane_o-xylene_10-1021-je3002283_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 101.3 kPa from Gupta et al., J. Chem. Eng. Data 57 (2012) 1237-1243 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-hexane_o-xylene_10-1021-je3002283_101.3kPa.json)."
-  },
-  {
-   "key": "n-hexane+toluene",
-   "pair": [
-    "n-hexane",
-    "toluene"
-   ],
-   "file": "vle/n-hexane_toluene_10-1016-j-tca-2019-178413_313.2K.json",
-   "check": [],
-   "describe": "Fitted to 18 total pressures at 313.2 K with the measured pure-component pressures from Karkevandi et al., Thermochim. Acta 682 (2019) 178413 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-hexane_toluene_10-1016-j-tca-2019-178413_313.2K.json)."
-  },
-  {
-   "key": "n-nonane+p-xylene",
-   "pair": [
-    "n-nonane",
-    "p-xylene"
-   ],
-   "file": "vle/n-nonane_p-xylene_10-1016-j-fluid-2011-10-009_101.3kPa.json",
-   "check": [],
-   "describe": "Fitted to 11 T-x-y points at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 313 (2012) 190-195 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-nonane_p-xylene_10-1016-j-fluid-2011-10-009_101.3kPa.json)."
-  },
-  {
-   "key": "n-nonane+toluene",
-   "pair": [
-    "n-nonane",
-    "toluene"
-   ],
-   "file": "vle/n-nonane_toluene_10-1016-j-fluid-2011-10-009_101.3kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 13 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 313 (2012) 190-195 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-nonane_toluene_10-1016-j-fluid-2011-10-009_101.3kPa_tx.json)."
-  },
-  {
-   "key": "n-octane+o-xylene",
-   "pair": [
-    "n-octane",
-    "o-xylene"
-   ],
-   "file": "vle/n-octane_o-xylene_10-1016-j-fluid-2013-01-015_20.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 20.0 kPa from Yang et al., Fluid Phase Equilib. 344 (2013) 1-5 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-octane_o-xylene_10-1016-j-fluid-2013-01-015_20.0kPa.json)."
-  },
-  {
-   "key": "n-octane+p-xylene",
-   "pair": [
-    "n-octane",
-    "p-xylene"
-   ],
-   "file": "vle/n-octane_p-xylene_10-1016-j-fluid-2013-01-015_20.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 14 T-x-y points at 20.0 kPa from Yang et al., Fluid Phase Equilib. 344 (2013) 1-5 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-octane_p-xylene_10-1016-j-fluid-2013-01-015_20.0kPa.json)."
-  },
-  {
-   "key": "n-undecane+o-xylene",
-   "pair": [
-    "n-undecane",
-    "o-xylene"
-   ],
-   "file": "vle/n-undecane_o-xylene_10-1016-j-fluid-2013-10-012_10.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 13 T-x-y points at 10.0 kPa from Yang et al., Fluid Phase Equilib. 360 (2013) 451-455 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-undecane_o-xylene_10-1016-j-fluid-2013-10-012_10.0kPa.json)."
-  },
-  {
-   "key": "n-undecane+p-xylene",
-   "pair": [
-    "n-undecane",
-    "p-xylene"
-   ],
-   "file": "vle/n-undecane_p-xylene_10-1016-j-fluid-2013-10-012_10.0kPa.json",
-   "check": [],
-   "describe": "Fitted to 12 T-x-y points at 10.0 kPa from Yang et al., Fluid Phase Equilib. 360 (2013) 451-455 (data public in the NIST TRC ThermoML Archive; validation/data/vle/n-undecane_p-xylene_10-1016-j-fluid-2013-10-012_10.0kPa.json)."
-  },
-  {
-   "key": "o-xylene+toluene",
-   "pair": [
-    "o-xylene",
-    "toluene"
-   ],
-   "file": "vle/o-xylene_toluene_10-1016-j-fluid-2013-05-016_101.3kPa_tx.json",
-   "check": [],
-   "describe": "Fitted to 15 bubble temperatures (T-x, Barker's method; no consistent vapour compositions) at 101.3 kPa from Gupta et al., Fluid Phase Equilib. 352 (2013) 86-92 (data public in the NIST TRC ThermoML Archive; validation/data/vle/o-xylene_toluene_10-1016-j-fluid-2013-05-016_101.3kPa_tx.json)."
   },
   {
    "key": "p-xylene+vinyl-acetate",

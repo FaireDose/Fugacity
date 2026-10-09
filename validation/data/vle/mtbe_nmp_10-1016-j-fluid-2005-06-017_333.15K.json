@@ -1,7 +1,7 @@
 {
  "_about": "MTBE (1) + N-Methyl-2-pyrrolidone (2): isothermal total pressures at 333.15 K. Rows: temperature in K, liquid mole fraction of mtbe, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Domanska, U., Lachwa, J., Gonzalez, J. A., Thermodynamics of binary mixtures containing N-methyl-2-pyrrolidinone VLE measurements for systems with ethers Comparison with the Mod. UNIFAC (Do) and DISQUAC models Predictions for VLE, GE m, HEm and SLE?, Fluid Phase Equilib. 235 (2005) 182-190",
+  "citation": "U. Domanska, J. Lachwa, J. A. Gonzalez, Thermodynamics of binary mixtures containing N-methyl-2-pyrrolidinone VLE measurements for systems with ethers Comparison with the Mod. UNIFAC (Do) and DISQUAC models Predictions for VLE, GE m, HEm and SLE?, Fluid Phase Equilib. 235 (2005) 182-190",
   "doi": "10.1016/j.fluid.2005.06.017",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.06.017.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

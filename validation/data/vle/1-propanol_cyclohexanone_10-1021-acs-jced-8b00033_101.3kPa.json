@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Cyclohexanone (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Kai, Xu, Dongmei, Zhou, Yunpeng, Shi, Puyun, Gao, Jun, Wang, Yinglong, Isobaric Vapor-Liquid Phase Equilibrium Measurements, Correlation, and Prediction for Separation of the Mixtures of Cyclohexanone and Alcohols, J. Chem. Eng. Data 63 (2018) 2038-2045",
+  "citation": "K. Zhang, D. Xu, Y. Zhou, P. Shi, J. Gao, Y. Wang, Isobaric Vapor-Liquid Phase Equilibrium Measurements, Correlation, and Prediction for Separation of the Mixtures of Cyclohexanone and Alcohols, J. Chem. Eng. Data 63 (2018) 2038-2045",
   "doi": "10.1021/acs.jced.8b00033",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00033.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + n-Hexane (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 2-butanone, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Lladosa, E.[Estela], Martinez, N. F.[Nelson F.], Monton, J. B. [Juan B.], Torre, J. d. l.[Javier de la], Measurements and correlation of vapour liquid equilibria of 2-butanone and  hydrocarbons binary systems at two different pressures, Fluid Phase Equilib. 307 (2011) 24-29",
+  "citation": "E. Lladosa, N. F. Martinez, J. B. Monton, J. D. L. Torre, Measurements and correlation of vapour liquid equilibria of 2-butanone and  hydrocarbons binary systems at two different pressures, Fluid Phase Equilib. 307 (2011) 24-29",
   "doi": "10.1016/j.fluid.2011.05.004",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2011.05.004.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

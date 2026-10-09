@@ -1,7 +1,7 @@
 {
  "_about": "ETBE (1) + Toluene (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of etbe, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M., Martin, C. M.[Carmen M.], Chamorro, C. R.[Cesar R.], Villamanan, M. A.[Miguel Angel], Segovia, J. J.[Jose J.], Thermodynamics of Fuels with a Biosynthetic Component: Vapor-Liquid Equilibrium Data for Binary and Ternary Mixtures Containing Ethyl 1,1-Dimethylethyl Ether, n-Heptane, and Toluene at T ) 313.15 K, J. Chem. Eng. Data 51 (2006) 2091-2095",
+  "citation": "R. M. Villamanan, C. M. Martin, C. R. Chamorro, M. A. Villamanan, J. J. Segovia, Thermodynamics of Fuels with a Biosynthetic Component: Vapor-Liquid Equilibrium Data for Binary and Ternary Mixtures Containing Ethyl 1,1-Dimethylethyl Ether, n-Heptane, and Toluene at T ) 313.15 K, J. Chem. Eng. Data 51 (2006) 2091-2095",
   "doi": "10.1021/je0602115",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0602115.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

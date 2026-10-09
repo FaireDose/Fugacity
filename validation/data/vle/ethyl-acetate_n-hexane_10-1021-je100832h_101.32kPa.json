@@ -1,7 +1,7 @@
 {
  "_about": "Ethyl acetate (1) + n-Hexane (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Fernandez, L.[Luis], Perez, E.[Estefania], Ortega, J.[Juan], Canosa, J.[Jose], Wisniak, J.[Jaime], Measurements of the Excess Properties and Vapor-Liquid Equilibria at 101.32 kPa for Mixtures of Ethyl Ethanoate + Alkanes (from C5 to C10) , J. Chem. Eng. Data 55 (2010) 5519-5533",
+  "citation": "L. Fernandez, E. Perez, J. Ortega, J. Canosa, J. Wisniak, Measurements of the Excess Properties and Vapor-Liquid Equilibria at 101.32 kPa for Mixtures of Ethyl Ethanoate + Alkanes (from C5 to C10) , J. Chem. Eng. Data 55 (2010) 5519-5533",
   "doi": "10.1021/je100832h",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100832h.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

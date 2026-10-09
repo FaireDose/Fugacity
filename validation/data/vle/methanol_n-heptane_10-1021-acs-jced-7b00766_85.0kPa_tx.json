@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + n-Heptane (2): isobaric bubble temperatures at 85.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of methanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Alinejhad, Mehran, Shariati, Alireza, Hekayati, Javad, Experimental Vapor-Liquid Equilibria and Thermodynamic Modeling of the Methanol + n-Heptane and 1-Butanol + Aniline Binary Systems, J. Chem. Eng. Data 63 (2018) 965-971",
+  "citation": "M. Alinejhad, A. Shariati, J. Hekayati, Experimental Vapor-Liquid Equilibria and Thermodynamic Modeling of the Methanol + n-Heptane and 1-Butanol + Aniline Binary Systems, J. Chem. Eng. Data 63 (2018) 965-971",
   "doi": "10.1021/acs.jced.7b00766",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.7b00766.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

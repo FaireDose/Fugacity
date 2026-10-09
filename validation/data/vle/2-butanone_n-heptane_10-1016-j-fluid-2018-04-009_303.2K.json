@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + n-Heptane (2): isothermal total pressures at 303.2 K. Rows: temperature in K, liquid mole fraction of 2-butanone, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Liebergesell, Bastian, Brands, Thorsten, Kobeta, Hans-Juergen, Bardow, Andre, Quaternary isothermal vapor-liquid equilibrium of the model biofuel 2-butanone + n-heptane + tetrahydrofuran + cyclohexane using Raman spectroscopic characterization, Fluid Phase Equilib. 472 (2018) 107-116",
+  "citation": "B. Liebergesell, T. Brands, H.-J. Kobeta, A. Bardow, Quaternary isothermal vapor-liquid equilibrium of the model biofuel 2-butanone + n-heptane + tetrahydrofuran + cyclohexane using Raman spectroscopic characterization, Fluid Phase Equilib. 472 (2018) 107-116",
   "doi": "10.1016/j.fluid.2018.04.009",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.04.009.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

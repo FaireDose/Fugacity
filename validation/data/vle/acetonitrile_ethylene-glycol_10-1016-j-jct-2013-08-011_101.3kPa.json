@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + Ethylene glycol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Qian, G.-f.[Guo-fei], Liu, W.[Wen], Wang, L.-t.[Li-tao], Wang, D.-c.[Dao-cai], Song, H.[Hang], (Vapour + liquid) equilibria in the ternary system (acetonitrile + n-propanol + ethylene glycol) and corresponding binary systems at 101.3 kPa, J. Chem. Thermodyn. 67 (2013) 241-246",
+  "citation": "G. F. Qian, W. Liu, L. T. Wang, D. C. Wang, H. Song, (Vapour + liquid) equilibria in the ternary system (acetonitrile + n-propanol + ethylene glycol) and corresponding binary systems at 101.3 kPa, J. Chem. Thermodyn. 67 (2013) 241-246",
   "doi": "10.1016/j.jct.2013.08.011",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2013.08.011.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

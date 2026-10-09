@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + Methyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Z.[Zhigang], Hu, A.[Angran], Zhang, T.[Tao], Zhang, Q.[Qinqin], Sun, M.[Mingyao], Sun, D.[Dezhang], Li, W.[Wenxiu], Separation of methyl acetate + methanol azeotropic mixture using ionic liquids as entrainers, Fluid Phase Equilib. 401 (2015) 1-8",
+  "citation": "Z. Zhang, A. Hu, T. Zhang, Q. Zhang, M. Sun, D. Sun, W. Li, Separation of methyl acetate + methanol azeotropic mixture using ionic liquids as entrainers, Fluid Phase Equilib. 401 (2015) 1-8",
   "doi": "10.1016/j.fluid.2015.04.018",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.04.018.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

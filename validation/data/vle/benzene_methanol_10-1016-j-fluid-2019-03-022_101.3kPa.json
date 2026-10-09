@@ -1,7 +1,7 @@
 {
  "_about": "Benzene (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of benzene, boiling temperature in K, vapour mole fraction of benzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Li, Wenxiu, Yin, Haiying, Guo, Hongfan, Li, Jipeng, Zhang, Tao, Separation abilities of three acetate-based ionic liquids for benzene-methanol mixture through vapor-liquid equilibrium experiment at 101.3 kPa, Fluid Phase Equilib. 492 (2019) 80-87",
+  "citation": "W. Li, H. Yin, H. Guo, J. Li, T. Zhang, Separation abilities of three acetate-based ionic liquids for benzene-methanol mixture through vapor-liquid equilibrium experiment at 101.3 kPa, Fluid Phase Equilib. 492 (2019) 80-87",
   "doi": "10.1016/j.fluid.2019.03.022",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2019.03.022.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

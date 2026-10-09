@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Lin, Y.-F.[Yi-Feng], Tu, C. -H.[Chein-Hsiun], Isobaric vapor-liquid equilibria for the binary and ternary mixtures of 2-propanol, water, and 1,3-propanediol at p = 101.3 kPa: Effect of the 1,3-propanediol addition, Fluid Phase Equilib. 368 (2014) 104-111",
+  "citation": "Y. F. Lin, C. H. Tu, Isobaric vapor-liquid equilibria for the binary and ternary mixtures of 2-propanol, water, and 1,3-propanediol at p = 101.3 kPa: Effect of the 1,3-propanediol addition, Fluid Phase Equilib. 368 (2014) 104-111",
   "doi": "10.1016/j.fluid.2014.02.006",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.02.006.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

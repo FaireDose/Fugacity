@@ -1,7 +1,7 @@
 {
  "_about": "Acetone (1) + N-Methyl-2-pyrrolidone (2): isothermal total pressures at 333.15 K. Rows: temperature in K, liquid mole fraction of acetone, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Domanska, U.[Urszula], Lachwa, J.[Joanna], Thermodynamics of binary mixtures of N-methyl-2-pyrrolidinone and ketone. Experimental results and modelling of the solid-liquid equilibrium and vapou-liquid equilibrium. The Modified UNIFAC (Do) model characterization, J. Chem. Thermodyn. 37 (2005) 692-704",
+  "citation": "U. Domanska, J. Lachwa, Thermodynamics of binary mixtures of N-methyl-2-pyrrolidinone and ketone. Experimental results and modelling of the solid-liquid equilibrium and vapou-liquid equilibrium. The Modified UNIFAC (Do) model characterization, J. Chem. Thermodyn. 37 (2005) 692-704",
   "doi": "10.1016/j.jct.2004.11.007",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2004.11.007.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

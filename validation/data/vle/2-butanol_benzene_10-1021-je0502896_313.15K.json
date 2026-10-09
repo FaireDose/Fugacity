@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + Benzene (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 2-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M., Martin, M. C., Chamorro, C. R.[Cesar R.], Segovia, J. J.[Jose J.], Vapor-Liquid Equilibrium of Binary and Ternary Mixtures Containing Isopropyl Ether, 2-Butanol, and Benzene at T ) 313.15 K, J. Chem. Eng. Data 51 (2006) 148-152",
+  "citation": "R. M. Villamanan, M. C. Martin, C. R. Chamorro, J. J. Segovia, Vapor-Liquid Equilibrium of Binary and Ternary Mixtures Containing Isopropyl Ether, 2-Butanol, and Benzene at T ) 313.15 K, J. Chem. Eng. Data 51 (2006) 148-152",
   "doi": "10.1021/je0502896",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0502896.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

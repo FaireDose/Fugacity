@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + n-Hexane (2): isothermal total pressures at 329.22 K. Rows: temperature in K, liquid mole fraction of 2-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Raal, J. D.[J. David], Motchelaho, A. M.[Anne M], Perumal, Y.[Yudeshnee], Courtial, X.[Xavier], Ramjugernath, D.[Deresh], P-x data for binary systems using a novel static total pressure apparatus, Fluid Phase Equilib. 310 (2011) 156-165",
+  "citation": "J. D. Raal, A. M. Motchelaho, Y. Perumal, X. Courtial, D. Ramjugernath, P-x data for binary systems using a novel static total pressure apparatus, Fluid Phase Equilib. 310 (2011) 156-165",
   "doi": "10.1016/j.fluid.2011.08.009",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2011.08.009.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

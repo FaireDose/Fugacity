@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Ethyl acetate (2): isobaric bubble temperatures at 600.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-propanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Susial  Badajoz, P.[Pedro], Garcia-Vera, D.[Diego], Susial, R.[Rodrigo], Castillo, V. D.[Victor D.], Estupinan, E. J.[Esteban J.], Apolinario, J. C.[Jose C.], Rodriguez-Henriquez, J. J.[Jose J.], Experimental Determination of Vapor Liquid Equilibria. Binary Systems of Methyl Acetate, Ethyl Acetate, and Propyl Acetate with 1-Propanol at 0.6 MPa, J. Chem. Eng. Data 58 (2013) 2861-2867",
+  "citation": "P. Susial  Badajoz, D. Garcia-Vera, R. Susial, V. D. Castillo, E. J. Estupinan, J. C. Apolinario, J. J. Rodriguez-Henriquez, Experimental Determination of Vapor Liquid Equilibria. Binary Systems of Methyl Acetate, Ethyl Acetate, and Propyl Acetate with 1-Propanol at 0.6 MPa, J. Chem. Eng. Data 58 (2013) 2861-2867",
   "doi": "10.1021/je400622g",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400622g.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

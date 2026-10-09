@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + Water (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Yang, C.[Changsheng], Ma, S.[Shengyong], Yin, X.[Xia], Organic Salt Effect of Tetramethylammonium Bicarbonate on the Vapor Liquid Equilibrium of the Methanol Water System, J. Chem. Eng. Data 56 (2011) 3747-3751",
+  "citation": "C. Yang, S. Ma, X. Yin, Organic Salt Effect of Tetramethylammonium Bicarbonate on the Vapor Liquid Equilibrium of the Methanol Water System, J. Chem. Eng. Data 56 (2011) 3747-3751",
   "doi": "10.1021/je200341c",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je200341c.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

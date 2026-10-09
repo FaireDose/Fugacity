@@ -1,7 +1,7 @@
 {
  "_about": "Methyl isobutyl ketone (1) + n-Hexane (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of methyl isobutyl ketone, boiling temperature in K, vapour mole fraction of methyl isobutyl ketone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Marrufo, B.[Beatriz], Pla-Franco, J.[Jordi], Lladosa, E.[Estela], Loras, S.[Sonia], Evaluation of Diethyl Carbonate and Methyl Isobutyl Ketone as Entrainers for the Separation of 1-Hexene and n-Hexane, J. Chem. Eng. Data 62 (2017) 1355-1364",
+  "citation": "B. Marrufo, J. Pla-Franco, E. Lladosa, S. Loras, Evaluation of Diethyl Carbonate and Methyl Isobutyl Ketone as Entrainers for the Separation of 1-Hexene and n-Hexane, J. Chem. Eng. Data 62 (2017) 1355-1364",
   "doi": "10.1021/acs.jced.6b00905",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.6b00905.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Li, Q.[Qing], Zhu, W.[Wei], Liu, B.[Bing], Fan, Z.[Zenglu], Zhu, Y.[Yumeng], Gao, Z.[Ziwei], Measurement and correlation of the vapor-liquid equilibrium for methanol + acetonitrile + imidazolium-based ionic liquids at 101.3 kPa, J. Chem. Thermodyn. 101 (2016) 25-30",
+  "citation": "Q. Li, W. Zhu, B. Liu, Z. Fan, Y. Zhu, Z. Gao, Measurement and correlation of the vapor-liquid equilibrium for methanol + acetonitrile + imidazolium-based ionic liquids at 101.3 kPa, J. Chem. Thermodyn. 101 (2016) 25-30",
   "doi": "10.1016/j.jct.2016.05.011",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2016.05.011.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

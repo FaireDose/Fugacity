@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Benzene (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 1-propanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Villamanan, R. M., Chamorro, C. R., Villamanan, M. A., Segovia, J. J., Total pressure and excess Gibbs energy for the ternary mixture di-isopropyl ether + 1-propanol + benzene and its corresponding binary systems at 313.15K, Fluid Phase Equilib. 239 (2006) 183-187",
+  "citation": "R. M. Villamanan, C. R. Chamorro, M. A. Villamanan, J. J. Segovia, Total pressure and excess Gibbs energy for the ternary mixture di-isopropyl ether + 1-propanol + benzene and its corresponding binary systems at 313.15K, Fluid Phase Equilib. 239 (2006) 183-187",
   "doi": "10.1016/j.fluid.2005.11.014",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.11.014.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

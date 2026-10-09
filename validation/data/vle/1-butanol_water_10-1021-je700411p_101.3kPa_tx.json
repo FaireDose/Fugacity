@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Water (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-butanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Lladosa, E.[Estela], Monton, J. B. [Juan B.], Burguet, M. C.[M. Cruz], Munoz, R.[Rosa], Phase Equilibrium for the Esterification Reaction of Acetic Acid + Butan-1-ol at 101.3 kPa, J. Chem. Eng. Data 53 (2008) 108-115",
+  "citation": "E. Lladosa, J. B. Monton, M. C. Burguet, R. Munoz, Phase Equilibrium for the Esterification Reaction of Acetic Acid + Butan-1-ol at 101.3 kPa, J. Chem. Eng. Data 53 (2008) 108-115",
   "doi": "10.1021/je700411p",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je700411p.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

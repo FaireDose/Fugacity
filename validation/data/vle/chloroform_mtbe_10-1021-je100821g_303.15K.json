@@ -1,7 +1,7 @@
 {
  "_about": "Chloroform (1) + MTBE (2): isothermal total pressures at 303.15 K. Rows: temperature in K, liquid mole fraction of chloroform, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Clara, R. A.[Rene A.], Gomez Marigliano, A. C.[Ana C.], Morales, D.[Diego], Solimo, H. N.[Horacio N.], Density, Viscosity, Vapor-Liquid Equilibrium, and Excess Molar Enthalpy of [Chloroform + Methyl tert-Butyl Ether], J. Chem. Eng. Data 55 (2010) 5862-5867",
+  "citation": "R. A. Clara, A. C. Gomez Marigliano, D. Morales, H. N. Solimo, Density, Viscosity, Vapor-Liquid Equilibrium, and Excess Molar Enthalpy of [Chloroform + Methyl tert-Butyl Ether], J. Chem. Eng. Data 55 (2010) 5862-5867",
   "doi": "10.1021/je100821g",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100821g.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

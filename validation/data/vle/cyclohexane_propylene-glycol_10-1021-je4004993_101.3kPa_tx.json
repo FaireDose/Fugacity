@@ -1,7 +1,7 @@
 {
  "_about": "Cyclohexane (1) + Propylene glycol (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of cyclohexane, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Z.[Zhigang], Jiang, P.[Peng], Huang, D.[Donghao], Lv, M.[Ming], Du, Y.[Yan], Li, W.[Wenxiu], Vapor Liquid Equilibrium for Ternary and Binary Mixtures of Tetrahydrofuran, Cyclohexane, and 1,2-Propanediol at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 3054-3060",
+  "citation": "Z. Zhang, P. Jiang, D. Huang, M. Lv, Y. Du, W. Li, Vapor Liquid Equilibrium for Ternary and Binary Mixtures of Tetrahydrofuran, Cyclohexane, and 1,2-Propanediol at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 3054-3060",
   "doi": "10.1021/je4004993",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je4004993.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

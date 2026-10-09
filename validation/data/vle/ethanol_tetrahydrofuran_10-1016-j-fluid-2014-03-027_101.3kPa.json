@@ -1,7 +1,7 @@
 {
  "_about": "Ethanol (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Cao, L.[Ling], Liu, P.[Panpan], Wang, B.[Baohua], Li, Q.[Qunsheng], Vapor-liquid equilibria for tetrahydrofuran + ethanol system containing three different ionic liquids at 101.3 kPa, Fluid Phase Equilib. 372 (2014) 49-55",
+  "citation": "L. Cao, P. Liu, B. Wang, Q. Li, Vapor-liquid equilibria for tetrahydrofuran + ethanol system containing three different ionic liquids at 101.3 kPa, Fluid Phase Equilib. 372 (2014) 49-55",
   "doi": "10.1016/j.fluid.2014.03.027",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.03.027.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

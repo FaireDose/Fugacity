@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + Isooctane (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 2-butanone, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wen, C.-C.[Chao-Cheng], Tu, C. -H.[Chein-Hsiun], Vapor liquid equilibria for binary and ternary mixtures of ethanol, 2-butanone, and 2,2,4-trimethylpentane at 101.3 kPa, Fluid Phase Equilib. 258 (2007) 131-139",
+  "citation": "C. C. Wen, C. H. Tu, Vapor liquid equilibria for binary and ternary mixtures of ethanol, 2-butanone, and 2,2,4-trimethylpentane at 101.3 kPa, Fluid Phase Equilib. 258 (2007) 131-139",
   "doi": "10.1016/j.fluid.2007.06.005",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.06.005.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

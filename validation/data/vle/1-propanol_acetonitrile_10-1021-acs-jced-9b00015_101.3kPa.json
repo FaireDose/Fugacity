@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Acetonitrile (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Jia, P.[Peng], Zhao, Z.[Zongchang], Gao, Q.[Qinglin], Zhang, X.[Xiaodong], Isobaric Vapor-Liquid Equilibrium of the Acetonitrile + 1-Propanol + Ionic Liquids at an Atmospheric Pressure, J. Chem. Eng. Data 64 (2019) 2963-2972",
+  "citation": "P. Jia, Z. Zhao, Q. Gao, X. Zhang, Isobaric Vapor-Liquid Equilibrium of the Acetonitrile + 1-Propanol + Ionic Liquids at an Atmospheric Pressure, J. Chem. Eng. Data 64 (2019) 2963-2972",
   "doi": "10.1021/acs.jced.9b00015",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.9b00015.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

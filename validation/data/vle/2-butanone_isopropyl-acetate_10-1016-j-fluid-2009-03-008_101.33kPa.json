@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanone (1) + Isopropyl acetate (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 2-butanone, boiling temperature in K, vapour mole fraction of 2-butanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Xie, Q.[Qiang], Wan, H.[Hui], Han, M.[MingJuan], Guan, G.[Guofeng], Investigation on isobaric vapor liquid equilibrium for acetic acid +water +methyl ethyl ketone + isopropyl acetate, Fluid Phase Equilib. 280 (2009) 120-128",
+  "citation": "Q. Xie, H. Wan, M. Han, G. Guan, Investigation on isobaric vapor liquid equilibrium for acetic acid +water +methyl ethyl ketone + isopropyl acetate, Fluid Phase Equilib. 280 (2009) 120-128",
   "doi": "10.1016/j.fluid.2009.03.008",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2009.03.008.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

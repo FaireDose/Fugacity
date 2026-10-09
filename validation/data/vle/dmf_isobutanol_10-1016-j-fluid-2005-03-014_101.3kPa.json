@@ -1,7 +1,7 @@
 {
  "_about": "N,N-Dimethylformamide (1) + Isobutanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of n,n-dimethylformamide, boiling temperature in K, vapour mole fraction of n,n-dimethylformamide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Munoz, R., Monton, J. B., Burguet, M. C., de la Torre, J., Phase equilibria in the systems isobutyl alcohol +N,N-dimethylformamide, isobutyl acetate +N,N-dimethylformamide and isobutyl alcohol + isobutyl acetate +N,N-dimethylformamide at 101.3 kPa, Fluid Phase Equilib. 232 (2005) 62-69",
+  "citation": "R. Munoz, J. B. Monton, M. C. Burguet, J. de la Torre, Phase equilibria in the systems isobutyl alcohol +N,N-dimethylformamide, isobutyl acetate +N,N-dimethylformamide and isobutyl alcohol + isobutyl acetate +N,N-dimethylformamide at 101.3 kPa, Fluid Phase Equilib. 232 (2005) 62-69",
   "doi": "10.1016/j.fluid.2005.03.014",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.03.014.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

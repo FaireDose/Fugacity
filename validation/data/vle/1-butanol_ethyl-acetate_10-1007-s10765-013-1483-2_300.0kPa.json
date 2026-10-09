@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Ethyl acetate (2): isobaric T-x-y at 300.0 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Susial, P.[Pedro], Estupinan, E. J.[Esteban J.], Castillo, V. D.[Victor D.], Rodriguez-Henriquez, J. J.[Jose J.], Apolinario, J. C.[Jose C.], Experimental Determination of Densities and Isobaric Vapor Liquid Equilibria of Methyl Acetate and Ethyl Acetate with Alcohols (C3 and C4) at 0.3 MPa, Int. J. Thermophys. 34 (2013) 1906-1917",
+  "citation": "P. Susial, E. J. Estupinan, V. D. Castillo, J. J. Rodriguez-Henriquez, J. C. Apolinario, Experimental Determination of Densities and Isobaric Vapor Liquid Equilibria of Methyl Acetate and Ethyl Acetate with Alcohols (C3 and C4) at 0.3 MPa, Int. J. Thermophys. 34 (2013) 1906-1917",
   "doi": "10.1007/s10765-013-1483-2",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1007/s10765-013-1483-2.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

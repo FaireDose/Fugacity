@@ -1,7 +1,7 @@
 {
  "_about": "Ethyl acetate (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Li, Wenxiu, Zhang, Liyue, Guo, Hongfan, Li, Jipeng, Zhang, Tao, Effect of Ionic Liquids on the Binary Vapor-Liquid Equilibrium of Ethyl Acetate + Methanol System at 101.3 kPa, J. Chem. Eng. Data 64 (2019) 34-41",
+  "citation": "W. Li, L. Zhang, H. Guo, J. Li, T. Zhang, Effect of Ionic Liquids on the Binary Vapor-Liquid Equilibrium of Ethyl Acetate + Methanol System at 101.3 kPa, J. Chem. Eng. Data 64 (2019) 34-41",
   "doi": "10.1021/acs.jced.8b00424",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00424.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

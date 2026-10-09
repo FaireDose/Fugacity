@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + MTBE (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Marigliano, A. C. G.[Ana C. Gomez], Arce, A.[Alberto], Rodil, E.[Eva], Soto, A.[Ana], Isobaric Vapor-Liquid Equilibria at 101.32 kPa and Densities, Speeds of Sound, and Refractive Indices at 298.15 K for MTBE or DIPE or TAME + 1-Propanol Binary Systems, J. Chem. Eng. Data 55 (2010) 92-97",
+  "citation": "A. C. G. Marigliano, A. Arce, E. Rodil, A. Soto, Isobaric Vapor-Liquid Equilibria at 101.32 kPa and Densities, Speeds of Sound, and Refractive Indices at 298.15 K for MTBE or DIPE or TAME + 1-Propanol Binary Systems, J. Chem. Eng. Data 55 (2010) 92-97",
   "doi": "10.1021/je900274n",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je900274n.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

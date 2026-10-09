@@ -1,7 +1,7 @@
 {
  "_about": "Ethanol (1) + Isooctane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Pienaar, C.[Cornelia], Schwarz, C.[Cara], Knoetze, J. H.[Johannes H.], Burger, A.[Andries], Vapor Liquid Liquid Equilibria Measurements for the Dehydration of Ethanol, Isopropanol, and n-Propanol via Azeotropic Distillation Using DIPE and Isooctane as Entrainers, J. Chem. Eng. Data 58 (2013) 537-550",
+  "citation": "C. Pienaar, C. Schwarz, J. H. Knoetze, A. Burger, Vapor Liquid Liquid Equilibria Measurements for the Dehydration of Ethanol, Isopropanol, and n-Propanol via Azeotropic Distillation Using DIPE and Isooctane as Entrainers, J. Chem. Eng. Data 58 (2013) 537-550",
   "doi": "10.1021/je300847v",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je300847v.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

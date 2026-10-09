@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Dimethyl sulfoxide (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, Q.-Y.[Quan-Yi], Zeng, H.[Hong], Song, H.[Hang], Liu, Q.-S.[Qi-Song], Yao, S.[Shun], Vapor-Liquid Equilibria for the Ternary System Acetonitrile + 1-Propanol + Dimethyl Sulfoxide and the Corresponding Binary Systems at 101.3 kPa, J. Chem. Eng. Data 55 (2010) 5271-5275",
+  "citation": "Q. Y. Wang, H. Zeng, H. Song, Q. S. Liu, S. Yao, Vapor-Liquid Equilibria for the Ternary System Acetonitrile + 1-Propanol + Dimethyl Sulfoxide and the Corresponding Binary Systems at 101.3 kPa, J. Chem. Eng. Data 55 (2010) 5271-5275",
   "doi": "10.1021/je100033s",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100033s.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

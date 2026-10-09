@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + N,N-Dimethylformamide (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Lladosa, E., Monton, J. B. [Juan B.], Burguet, M. C.[M. Cruz], Munoz, R.[Rosa], Phase Equilibria Involved in Extractive Distillation of Dipropyl Ether + 1-Propyl Alcohol Using N,N-Dimethylformamide as Entrainer, J. Chem. Eng. Data 52 (2007) 532-537",
+  "citation": "E. Lladosa, J. B. Monton, M. C. Burguet, R. Munoz, Phase Equilibria Involved in Extractive Distillation of Dipropyl Ether + 1-Propyl Alcohol Using N,N-Dimethylformamide as Entrainer, J. Chem. Eng. Data 52 (2007) 532-537",
   "doi": "10.1021/je0604479",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0604479.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

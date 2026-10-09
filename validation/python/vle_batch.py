@@ -24,7 +24,8 @@ Up to two further isobaric T-x-y sets of other articles that pass the point test
 (compared with the fit, not fitted). Each chosen set is written to validation/data/vle/<i>_<j>_<doi>.json
 with a source block (citation, DOI, open copy in the archive, access, the record's set numbers) and the
 pair's fit definition to validation/data/vle/fits.json, which fit_parameters.py reads with its own FITS.
-A pair with no set meeting these rules is reported with the reason and left out.
+A pair with no set meeting these rules is reported with the reason and left out. Only pairs for which the
+method rules choose an activity model are taken (scan_pairs.needed_method: both condensable, at least one polar).
 
     python validation/python/vle_batch.py --cache DIR --pairs 1-propanol+water ethanol+1-propanol ...
     python validation/python/vle_batch.py --cache DIR --batch alcohols       # a named batch below
@@ -239,9 +240,20 @@ def choose(cands):
     return None, [], "no isobaric T-x-y set with 8 or more points and no isothermal P-x set with its pure-component pressures"
 
 
+def author(name):
+    """ThermoML "Weeks, B. L.[Brandon L.]" as "B. L. Weeks" (the form the source registry reads)."""
+    import re
+    name = re.sub(r"\[.*?\]", "", name).strip()
+    if ", " not in name:
+        return name
+    last, first = name.split(", ", 1)
+    initials = " ".join("-".join(f"{w[0].upper()}." for w in part.split("-") if w) for part in re.split(r"[\s.]+", first) if part)
+    return f"{initials} {last}"
+
+
 def citation(rec):
     c = rec["citation"]
-    authors = ", ".join(c["authors"])
+    authors = ", ".join(author(a) for a in c["authors"])
     return f"{authors}, {c['title']}, {c['journal']} {c['volume']} ({c['year']}) {c['pages']}"
 
 
@@ -297,6 +309,12 @@ def main():
     fits["_about"] = ("Fit definitions written by validation/python/vle_batch.py and read by fit_parameters.py with its own FITS: "
                       "for each pair the data file fitted and the check files, all in validation/data/vle/.")
     existing_fitted = {pair_key(r["i"], r["j"]) for r in fit_parameters.ALL_BINARIES if r.get("tier") == "fitted"}
+    # only pairs for which the method rules choose an activity model (docs/METHOD_SELECTION.md): nonpolar pairs
+    # need an equation of state with k_ij instead, gases dissolved in a liquid Henry's law
+    from scan_pairs import needed_method
+    skipped = [p for p in pairs if needed_method(*p) != "activity"]
+    pairs = [p for p in pairs if needed_method(*p) == "activity"]
+    fits["fits"] = [f for f in fits["fits"] if needed_method(*f["pair"]) == "activity"]
     report = []
     for i, j in pairs:
         k = pair_key(i, j)
@@ -325,8 +343,10 @@ def main():
     # data files of earlier runs that no fit uses any more
     keep = {f["file"] for f in fits["fits"]} | {c for f in fits["fits"] for c in f["check"]}
     for f in VLE_DIR.glob("*.json"):
-        if f.name not in ("index.json", "fits.json") and f"vle/{f.name}" not in keep:
+        if f.name not in ("index.json", "fits.json", "archive_index.json") and f"vle/{f.name}" not in keep:
             f.unlink()
+    if skipped:
+        report += [(i, j, f"not an activity-model pair ({needed_method(i, j)}): left for the equation-of-state or gas-solubility data") for i, j in skipped]
     for i, j, msg in report:
         print(f"{COMPS[i]['name']} + {COMPS[j]['name']}: {msg}")
 

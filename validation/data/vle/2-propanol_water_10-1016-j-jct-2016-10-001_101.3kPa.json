@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Gupta, B. S.[Bhupender S.], Taha, M.[Mohamed], Lee, M.-J.[Ming-Jer], A green process for recovery of 1-propanol/2-propanol from their aqueous solutions: Experimental and MD simulation studies, J. Chem. Thermodyn. 105 (2017) 76-85",
+  "citation": "B. S. Gupta, M. Taha, M. J. Lee, A green process for recovery of 1-propanol/2-propanol from their aqueous solutions: Experimental and MD simulation studies, J. Chem. Thermodyn. 105 (2017) 76-85",
   "doi": "10.1016/j.jct.2016.10.001",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2016.10.001.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

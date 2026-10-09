@@ -1,7 +1,7 @@
 {
  "_about": "Furfural (1) + Water (2): isobaric bubble temperatures at 94.6 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of furfural, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Sunder, M. S., Prasad, D.H.L., Phase Equilibria of Water + Furfural and Dichloromethane + n-Hexane, J. Chem. Eng. Data 48 (2003) 221-223",
+  "citation": "M. S. Sunder, D. H. L. Prasad, Phase Equilibria of Water + Furfural and Dichloromethane + n-Hexane, J. Chem. Eng. Data 48 (2003) 221-223",
   "doi": "10.1021/je020053r",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je020053r.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

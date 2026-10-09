@@ -1,7 +1,7 @@
 {
  "_about": "Benzene (1) + Ethanol (2): isobaric bubble temperatures at 101.33 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of benzene, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, X.[Xue], Xu, W.[Weiwei], Li, Y.[Yonghong], Wang, J.[Jianxiong], He, F.[Fan], Phase equilibria of three binary systems containing 2,5-dimethylthiophene and 2-ethylthiophene in hydrocarbons, Fluid Phase Equilib. 409 (2016) 30-36",
+  "citation": "X. Wang, W. Xu, Y. Li, J. Wang, F. He, Phase equilibria of three binary systems containing 2,5-dimethylthiophene and 2-ethylthiophene in hydrocarbons, Fluid Phase Equilib. 409 (2016) 30-36",
   "doi": "10.1016/j.fluid.2015.09.030",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.09.030.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

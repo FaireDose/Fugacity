@@ -1,7 +1,7 @@
 {
  "_about": "N,N-Dimethylformamide (1) + Dimethyl sulfoxide (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of n,n-dimethylformamide, boiling temperature in K, vapour mole fraction of n,n-dimethylformamide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, X.[Xuemei], Liu, H.[Hongpeng], Yang, W.[Wei], Jian, C.[Chungui], Miao, Y.[Yanfeng], Experimental isobaric (vapor + liquid) equilibrium data for the binary system N, N-dimethyl formamide + dimethyl sulfoxide and the quaternary system sec-butyl alcohol + sec-butyl acetate + N, Ndimethyl formamide + dimethyl sulfoxide at 101.3 kPa, Fluid Phase Equilib. 409 (2016) 78-83",
+  "citation": "X. Zhang, H. Liu, W. Yang, C. Jian, Y. Miao, Experimental isobaric (vapor + liquid) equilibrium data for the binary system N, N-dimethyl formamide + dimethyl sulfoxide and the quaternary system sec-butyl alcohol + sec-butyl acetate + N, Ndimethyl formamide + dimethyl sulfoxide at 101.3 kPa, Fluid Phase Equilib. 409 (2016) 78-83",
   "doi": "10.1016/j.fluid.2015.09.039",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.09.039.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

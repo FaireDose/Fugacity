@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + Isooctane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Rubio-Perez, Gabriel, Munoz-Rujas, Natalia, Srhiyer, Adil, Montero, Eduardo A., Aguilar, Fernando, Isobaric vapor-liquid equilibrium, density and speed of sound of binary mixtures 2,2,4-trimethylpentane + 1-butanol or dibutyl ether (DBE) at 101.3 kPa, Fluid Phase Equilib. 475 (2018) 10-17",
+  "citation": "G. Rubio-Perez, N. Munoz-Rujas, A. Srhiyer, E. A. Montero, F. Aguilar, Isobaric vapor-liquid equilibrium, density and speed of sound of binary mixtures 2,2,4-trimethylpentane + 1-butanol or dibutyl ether (DBE) at 101.3 kPa, Fluid Phase Equilib. 475 (2018) 10-17",
   "doi": "10.1016/j.fluid.2018.07.027",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.07.027.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

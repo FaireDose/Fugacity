@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + n-Heptane (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 1-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Belabbaci, A.[Aouicha], Villamanan, R. M.[Rosa M.], Negadi, L.[Latifa], Martin, C. M.[Carmen M.], Ait Kaci, A.[Ahmed], Villamanan, M. A.[Miguel A.], Vapor-Liquid Equilibria of Binary Mixtures Containing 1-Butanol and Hydrocarbons at 313.15 K, J. Chem. Eng. Data 57 (2012) 114-119",
+  "citation": "A. Belabbaci, R. M. Villamanan, L. Negadi, C. M. Martin, A. Ait Kaci, M. A. Villamanan, Vapor-Liquid Equilibria of Binary Mixtures Containing 1-Butanol and Hydrocarbons at 313.15 K, J. Chem. Eng. Data 57 (2012) 114-119",
   "doi": "10.1021/je200840e",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je200840e.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

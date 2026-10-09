@@ -1,7 +1,7 @@
 {
  "_about": "p-Xylene (1) + Vinyl acetate (2): isobaric bubble temperatures at 97.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of p-xylene, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Kapoor, S.[Seema], Rattan, V. K., Vapor-Liquid Equilibria and Excess Properties of the Binary System Vinyl Acetate + p-Xylene, J. Chem. Eng. Data 50 (2005) 1897-1901",
+  "citation": "S. Kapoor, V. K. Rattan, Vapor-Liquid Equilibria and Excess Properties of the Binary System Vinyl Acetate + p-Xylene, J. Chem. Eng. Data 50 (2005) 1897-1901",
   "doi": "10.1021/je050162g",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je050162g.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

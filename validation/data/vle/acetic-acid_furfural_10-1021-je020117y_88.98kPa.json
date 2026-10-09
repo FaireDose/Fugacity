@@ -1,7 +1,7 @@
 {
  "_about": "Acetic acid (1) + Furfural (2): isobaric T-x-y at 88.98 kPa. Rows: liquid mole fraction of acetic acid, boiling temperature in K, vapour mole fraction of acetic acid, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Fele, L.[Ljudmila], Grilc, V.[Viktor], Separation of Furfural from Ternary Mixtures, J. Chem. Eng. Data 48 (2003) 564-570",
+  "citation": "L. Fele, V. Grilc, Separation of Furfural from Ternary Mixtures, J. Chem. Eng. Data 48 (2003) 564-570",
   "doi": "10.1021/je020117y",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je020117y.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + Ethyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Li, Q.[Qunsheng], Cao, L.[Ling], Sun, X.[Xueting], Liu, P.[Panpan], Wang, B.[Baohua], Isobaric Vapor  -  Liquid Equilibrium for Ethyl Acetate + Acetonitrile +  1  -  Butyl-3-methylimidazolium Hexa  fl  uorophosphate at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 1112-1116",
+  "citation": "Q. Li, L. Cao, X. Sun, P. Liu, B. Wang, Isobaric Vapor  -  Liquid Equilibrium for Ethyl Acetate + Acetonitrile +  1  -  Butyl-3-methylimidazolium Hexa  fl  uorophosphate at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 1112-1116",
   "doi": "10.1021/je301204w",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je301204w.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

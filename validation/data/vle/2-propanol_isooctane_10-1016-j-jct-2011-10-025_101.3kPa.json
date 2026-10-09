@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Isooctane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Lin, D.-Y.[Dun-Yi], Tu, C. -H.[Chein-Hsiun], (Vapour + liquid) equilibria for binary and ternary mixtures of 2-propanol,  tetrahydropyran, and 2,2,4-trimethylpentane at P = 101.3 kPa, J. Chem. Thermodyn. 47 (2012) 260-266",
+  "citation": "D. Y. Lin, C. H. Tu, (Vapour + liquid) equilibria for binary and ternary mixtures of 2-propanol,  tetrahydropyran, and 2,2,4-trimethylpentane at P = 101.3 kPa, J. Chem. Thermodyn. 47 (2012) 260-266",
   "doi": "10.1016/j.jct.2011.10.025",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2011.10.025.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

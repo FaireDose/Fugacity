@@ -1,7 +1,7 @@
 {
  "_about": "Acetonitrile (1) + MTBE (2): isobaric bubble temperatures at 95.5 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of acetonitrile, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Prasad, T. E. V.[T. E. Vittal], Kumar, R. K., Prasad, D. H. L., (Vapor + liquid) equilibrium of the binary mixtures formed by acetonitrile with selected compounds at 95.5 kPa, J. Chem. Thermodyn. 39 (2007) 1458-1462",
+  "citation": "T. E. V. Prasad, R. K. Kumar, D. H. L. Prasad, (Vapor + liquid) equilibrium of the binary mixtures formed by acetonitrile with selected compounds at 95.5 kPa, J. Chem. Thermodyn. 39 (2007) 1458-1462",
   "doi": "10.1016/j.jct.2007.03.007",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2007.03.007.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

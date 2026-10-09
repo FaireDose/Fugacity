@@ -1,7 +1,7 @@
 {
  "_about": "Chloroform (1) + Methyl isobutyl ketone (2): isothermal total pressures at 303.15 K. Rows: temperature in K, liquid mole fraction of chloroform, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Clara, R. A.[Rene A.], Marigliano, A. C. G.[Ana C. Gomez], Solimo, H. N.[Horacio N.], Density, viscosity, isothermal (vapour + liquid) equilibrium, excess molar volume, viscosity deviation, and their correlations for chloroform + methyl isobutyl ketone binary system, J. Chem. Thermodyn. 39 (2007) 261-267",
+  "citation": "R. A. Clara, A. C. G. Marigliano, H. N. Solimo, Density, viscosity, isothermal (vapour + liquid) equilibrium, excess molar volume, viscosity deviation, and their correlations for chloroform + methyl isobutyl ketone binary system, J. Chem. Thermodyn. 39 (2007) 261-267",
   "doi": "10.1016/j.jct.2006.07.004",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2006.07.004.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

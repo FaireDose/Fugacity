@@ -1,7 +1,7 @@
 {
  "_about": "Cyclohexanone (1) + p-Xylene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of cyclohexanone, boiling temperature in K, vapour mole fraction of cyclohexanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Gao, J.[Jun], Zhang, K.[Kai], Xu, D.[Dongmei], Zhang, L.[Lianzheng], Chen, N.[Nannan], Li, C.[Chunlu], Isobaric Vapor Liquid Equilibrium for Binary Systems of Cyclohexanone + Benzene, Cyclohexanone + Toluene, and Cyclohexanone + p-Xylene at 101.3 kPa, J. Chem. Eng. Data 62 (2017) 1948-1954",
+  "citation": "J. Gao, K. Zhang, D. Xu, L. Zhang, N. Chen, C. Li, Isobaric Vapor Liquid Equilibrium for Binary Systems of Cyclohexanone + Benzene, Cyclohexanone + Toluene, and Cyclohexanone + p-Xylene at 101.3 kPa, J. Chem. Eng. Data 62 (2017) 1948-1954",
   "doi": "10.1021/acs.jced.6b00877",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.6b00877.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

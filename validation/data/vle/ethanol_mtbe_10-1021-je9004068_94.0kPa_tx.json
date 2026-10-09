@@ -1,7 +1,7 @@
 {
  "_about": "Ethanol (1) + MTBE (2): isobaric bubble temperatures at 94.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of ethanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Mejia, A.[Andres], Segura, H.[Hugo], Cartes, M.[Marcela], Vapor-Liquid Equilibria and Interfacial Tensions of the System Ethanol + 2-Methoxy-2-methylpropane, J. Chem. Eng. Data 55 (2010) 428-434",
+  "citation": "A. Mejia, H. Segura, M. Cartes, Vapor-Liquid Equilibria and Interfacial Tensions of the System Ethanol + 2-Methoxy-2-methylpropane, J. Chem. Eng. Data 55 (2010) 428-434",
   "doi": "10.1021/je9004068",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je9004068.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

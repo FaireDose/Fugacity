@@ -1,7 +1,7 @@
 {
  "_about": "1-Butanol (1) + 2-Propanol (2): isobaric T-x-y at 101.0 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, J.[Juan], Bao, Z.[Zonghong], Investigation on vapor liquid equilibrium for 2-propanol + 1-butanol + 1-pentanol at 101.3 kPa, Fluid Phase Equilib. 341 (2013) 30-34",
+  "citation": "J. Wang, Z. Bao, Investigation on vapor liquid equilibrium for 2-propanol + 1-butanol + 1-pentanol at 101.3 kPa, Fluid Phase Equilib. 341 (2013) 30-34",
   "doi": "10.1016/j.fluid.2012.12.020",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.12.020.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

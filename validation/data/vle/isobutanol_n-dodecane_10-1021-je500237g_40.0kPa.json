@@ -1,7 +1,7 @@
 {
  "_about": "Isobutanol (1) + n-Dodecane (2): isobaric T-x-y at 40.0 kPa. Rows: liquid mole fraction of isobutanol, boiling temperature in K, vapour mole fraction of isobutanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Tebbal, Z.[Zoubir], Ngema, P. T.[Peterson Thokozani], Narasigadu, C.[Caleb], Negadi, L.[Latifa], Ramjugernath, D.[Deresh], Vapor Liquid Equilibrium Data for Binary Systems of n-Dodecane + {Propan-1-ol, Butan-1-ol, 2-Methylpropan-1-ol} at 40 kPa, J. Chem. Eng. Data 59 (2014) 1710-1713",
+  "citation": "Z. Tebbal, P. T. Ngema, C. Narasigadu, L. Negadi, D. Ramjugernath, Vapor Liquid Equilibrium Data for Binary Systems of n-Dodecane + {Propan-1-ol, Butan-1-ol, 2-Methylpropan-1-ol} at 40 kPa, J. Chem. Eng. Data 59 (2014) 1710-1713",
   "doi": "10.1021/je500237g",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je500237g.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Acetonitrile (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhu, W.[Wei], Qing, L.[Li], Liu, B.[Bing], Cai, X.[Xinbing], Fan, Z.[Zenglu], Effect of imidazolium-based ionic liquid on vapor-liquid equilibria of 2-propanol + acetonitrile binary system at 101.3 kPa, Fluid Phase Equilib. 409 (2016) 383-387",
+  "citation": "W. Zhu, L. Qing, B. Liu, X. Cai, Z. Fan, Effect of imidazolium-based ionic liquid on vapor-liquid equilibria of 2-propanol + acetonitrile binary system at 101.3 kPa, Fluid Phase Equilib. 409 (2016) 383-387",
   "doi": "10.1016/j.fluid.2015.10.035",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.10.035.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

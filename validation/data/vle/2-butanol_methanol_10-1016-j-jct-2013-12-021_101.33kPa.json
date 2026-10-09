@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + Methanol (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 2-butanol, boiling temperature in K, vapour mole fraction of 2-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Wang, H.-x.[Hong-xing], Bu, X.-w.[Xiang-wei], Yang, J.-b.[Jin-bei], Jiang, Y.-p.[Yi-ping], Li, L.[Ling], Isobaric (vapor + liquid) equilibrium data for the binary system methanol + 2-butyl alcohol and the quaternary system methyl acetate + methanol + 2-butyl alcohol + 2-butyl acetate at P = 101.33 kPa, J. Chem. Thermodyn. 74 (2014) 85-90",
+  "citation": "H. X. Wang, X. W. Bu, J. B. Yang, Y. P. Jiang, L. Li, Isobaric (vapor + liquid) equilibrium data for the binary system methanol + 2-butyl alcohol and the quaternary system methyl acetate + methanol + 2-butyl alcohol + 2-butyl acetate at P = 101.33 kPa, J. Chem. Thermodyn. 74 (2014) 85-90",
   "doi": "10.1016/j.jct.2013.12.021",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2013.12.021.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

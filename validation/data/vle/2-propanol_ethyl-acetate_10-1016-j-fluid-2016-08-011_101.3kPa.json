@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Ethyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Z.[Zhigang], Zhang, A.[Aidi], Wu, K.[Kaifang], Zhang, Q.[Qinqin], Hu, A.[Angran], Li, W.[Wenxiu], Separation of ethyl acetate and 2-propanol azeotropic mixture using ionic liquids as entrainers, Fluid Phase Equilib. 429 (2016) 331-338",
+  "citation": "Z. Zhang, A. Zhang, K. Wu, Q. Zhang, A. Hu, W. Li, Separation of ethyl acetate and 2-propanol azeotropic mixture using ionic liquids as entrainers, Fluid Phase Equilib. 429 (2016) 331-338",
   "doi": "10.1016/j.fluid.2016.08.011",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.08.011.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

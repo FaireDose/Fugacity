@@ -1,7 +1,7 @@
 {
  "_about": "Dimethyl sulfoxide (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of dimethyl sulfoxide, boiling temperature in K, vapour mole fraction of dimethyl sulfoxide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, X.[Xuemei], Liu, H.[Hongpeng], Liu, Y.[Yunxian], Jian, C.[Chungui], Wang, W.[Wei], Experimental isobaric vapor-liquid equilibrium for the binary and ternary systems with methanol, methyl acetate and dimethyl sulfoxide at 101.3 kPa, Fluid Phase Equilib. 408 (2016) 52-57",
+  "citation": "X. Zhang, H. Liu, Y. Liu, C. Jian, W. Wang, Experimental isobaric vapor-liquid equilibrium for the binary and ternary systems with methanol, methyl acetate and dimethyl sulfoxide at 101.3 kPa, Fluid Phase Equilib. 408 (2016) 52-57",
   "doi": "10.1016/j.fluid.2015.08.014",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.08.014.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

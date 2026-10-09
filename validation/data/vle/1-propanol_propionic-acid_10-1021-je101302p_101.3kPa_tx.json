@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Propionic acid (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of 1-propanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Altman, E.[Ernesto], Stefanidis, G. D.[Georgios D.], Gerven, T. v.[Thomas van], Stankiewicz, A. I.[Andrzej I.], Phase Equilibria for Reactive Distillation of Propyl Propanoate. Pure Component Property Data, Vapor-Liquid Equilibria, and Liquid-Liquid Equilibria, J. Chem. Eng. Data 56 (2011) 2322-2328",
+  "citation": "E. Altman, G. D. Stefanidis, T. V. Gerven, A. I. Stankiewicz, Phase Equilibria for Reactive Distillation of Propyl Propanoate. Pure Component Property Data, Vapor-Liquid Equilibria, and Liquid-Liquid Equilibria, J. Chem. Eng. Data 56 (2011) 2322-2328",
   "doi": "10.1021/je101302p",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je101302p.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

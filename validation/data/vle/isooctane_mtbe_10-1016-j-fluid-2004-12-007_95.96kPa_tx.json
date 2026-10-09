@@ -1,7 +1,7 @@
 {
  "_about": "Isooctane (1) + MTBE (2): isobaric bubble temperatures at 95.96 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of isooctane, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Reddy, K. V. N. S., Prasad, D.H.L., Krishnaiah, A.[Abburi], Phase equilibria for binary systems of octane boosters with 2,2,4-trimethylpentane, Fluid Phase Equilib. 230 (2005) 105-108",
+  "citation": "K. V. N. S. Reddy, D. H. L. Prasad, A. Krishnaiah, Phase equilibria for binary systems of octane boosters with 2,2,4-trimethylpentane, Fluid Phase Equilib. 230 (2005) 105-108",
   "doi": "10.1016/j.fluid.2004.12.007",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2004.12.007.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

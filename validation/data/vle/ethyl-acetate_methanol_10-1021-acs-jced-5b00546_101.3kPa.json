@@ -1,7 +1,7 @@
 {
  "_about": "Ethyl acetate (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Z.[Zhigang], Pan, F.[Fenjin], Zhang, Q.[Qinqin], Zhang, T.[Tao], Zhang, L.[Lin], Wu, K.[Kaifang], Li, W.[Wenxiu], Isobaric Vapor - Liquid Equilibrium for Ethyl acetate + Methanol + Ionic Liquids Ternary systems at 101.3 kPa, J. Chem. Eng. Data 61 (2016) 772-779",
+  "citation": "Z. Zhang, F. Pan, Q. Zhang, T. Zhang, L. Zhang, K. Wu, W. Li, Isobaric Vapor - Liquid Equilibrium for Ethyl acetate + Methanol + Ionic Liquids Ternary systems at 101.3 kPa, J. Chem. Eng. Data 61 (2016) 772-779",
   "doi": "10.1021/acs.jced.5b00546",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00546.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

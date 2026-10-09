@@ -1,7 +1,7 @@
 {
  "_about": "Dimethyl sulfoxide (1) + Water (2): isobaric T-x-y at 13.33 kPa. Rows: liquid mole fraction of dimethyl sulfoxide, boiling temperature in K, vapour mole fraction of dimethyl sulfoxide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Peng, Y.[Yong], Ping, L.[Lijuan], Lu, S.[Shengli], Mao, J.[Jianwei], Vapor liquid equilibria for water + acetic acid + (N,N-dimethylformamide or dimethyl sulfoxide) at 13.33 kPa, Fluid Phase Equilib. 275 (2009) 27-32",
+  "citation": "Y. Peng, L. Ping, S. Lu, J. Mao, Vapor liquid equilibria for water + acetic acid + (N,N-dimethylformamide or dimethyl sulfoxide) at 13.33 kPa, Fluid Phase Equilib. 275 (2009) 27-32",
   "doi": "10.1016/j.fluid.2008.09.010",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2008.09.010.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

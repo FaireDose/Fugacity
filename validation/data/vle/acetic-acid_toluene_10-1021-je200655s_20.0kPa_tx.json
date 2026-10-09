@@ -1,7 +1,7 @@
 {
  "_about": "Acetic acid (1) + Toluene (2): isobaric bubble temperatures at 20.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of acetic acid, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Huang, G.[Guoqiang], Yao, S.[Shuaipeng], Zhao, Y.[Yuchen], Liu, L.[Liyan], Isobaric Vapor Liquid Equilibrium for Binary Systems of Toluene + Acrylic Acid, Toluene + Acetic Acid, and Cyclohexane + Acrylic Acid at 20 kPa, J. Chem. Eng. Data 56 (2011) 3914-3919",
+  "citation": "G. Huang, S. Yao, Y. Zhao, L. Liu, Isobaric Vapor Liquid Equilibrium for Binary Systems of Toluene + Acrylic Acid, Toluene + Acetic Acid, and Cyclohexane + Acrylic Acid at 20 kPa, J. Chem. Eng. Data 56 (2011) 3914-3919",
   "doi": "10.1021/je200655s",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je200655s.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

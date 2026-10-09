@@ -1,7 +1,7 @@
 {
  "_about": "Ethyl acetate (1) + Isobutanol (2): isobaric T-x-y at 101.0 kPa. Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Resa, J. M.[Jose M.], Goenaga, J. M.[Jose M.], Lanz, J.[Juan], Iglesias, M.[Miguel], Vapor-Liquid Equilibrium of Binary Mixtures Containing Ethyl Acetate + 2-Methyl-1-propanol and Ethyl Acetate + 2-Methyl-1-butanol at 101.3 kPa, J. Chem. Eng. Data 51 (2006) 595-598",
+  "citation": "J. M. Resa, J. M. Goenaga, J. Lanz, M. Iglesias, Vapor-Liquid Equilibrium of Binary Mixtures Containing Ethyl Acetate + 2-Methyl-1-propanol and Ethyl Acetate + 2-Methyl-1-butanol at 101.3 kPa, J. Chem. Eng. Data 51 (2006) 595-598",
   "doi": "10.1021/je050420+",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je050420+.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

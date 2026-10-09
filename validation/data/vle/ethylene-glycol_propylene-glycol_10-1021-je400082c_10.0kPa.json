@@ -1,7 +1,7 @@
 {
  "_about": "Ethylene glycol (1) + Propylene glycol (2): isobaric T-x-y at 10.0 kPa. Rows: liquid mole fraction of ethylene glycol, boiling temperature in K, vapour mole fraction of ethylene glycol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, L.[Luhong], Wu, W.[Weihua], Sun, Y.[Yongli], Li, L.[Lingqiao], Jiang, B.[Bin], Li, X.[Xingang], Yang, N.[Na], Ding, H.[Hui], Isobaric Vapor Liquid Equilibria for the Binary Mixtures Composed of Ethylene Glycol, 1,2-Propylene Glycol, 1,2-Butanediol, and 1,3-Butanediol at 10.00 kPa, J. Chem. Eng. Data 58 (2013) 1308-1315",
+  "citation": "L. Zhang, W. Wu, Y. Sun, L. Li, B. Jiang, X. Li, N. Yang, H. Ding, Isobaric Vapor Liquid Equilibria for the Binary Mixtures Composed of Ethylene Glycol, 1,2-Propylene Glycol, 1,2-Butanediol, and 1,3-Butanediol at 10.00 kPa, J. Chem. Eng. Data 58 (2013) 1308-1315",
   "doi": "10.1021/je400082c",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400082c.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

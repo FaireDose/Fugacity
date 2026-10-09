@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + Chloroform (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Yue, Kun, Qiao, Ruiqi, Luo, Chengjingyan, Zhu, Jiujuan, Li, Qunsheng, Isobaric vapor-liquid equilibrium for chloroform + isopropanol + 1,3-dimethylimidazolium dimethylphosphate at 101.3 kPa, Fluid Phase Equilib. 466 (2018) 1-6",
+  "citation": "K. Yue, R. Qiao, C. Luo, J. Zhu, Q. Li, Isobaric vapor-liquid equilibrium for chloroform + isopropanol + 1,3-dimethylimidazolium dimethylphosphate at 101.3 kPa, Fluid Phase Equilib. 466 (2018) 1-6",
   "doi": "10.1016/j.fluid.2018.03.011",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.03.011.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + N-Methyl-2-pyrrolidone (2): isothermal total pressures at 393.19 K. Rows: temperature in K, liquid mole fraction of methanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
  "source": {
-  "citation": "Horstmann, S.[Sven], Fischer, K.[Kai], Gmehling, J., Isothermal Vapor-Liquid Equilibrium and Excess Enthalpy Data for the Binary Systems Water + Sulfolane and Methanol + N-Methyl-2-pyrrolidone (NMP), J. Chem. Eng. Data 49 (2004) 1499-1503",
+  "citation": "S. Horstmann, K. Fischer, J. Gmehling, Isothermal Vapor-Liquid Equilibrium and Excess Enthalpy Data for the Binary Systems Water + Sulfolane and Methanol + N-Methyl-2-pyrrolidone (NMP), J. Chem. Eng. Data 49 (2004) 1499-1503",
   "doi": "10.1021/je034254m",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je034254m.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

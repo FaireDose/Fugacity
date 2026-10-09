@@ -1,7 +1,7 @@
 {
  "_about": "n-Butyl acetate (1) + n-Octane (2): isobaric bubble temperatures at 60.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of n-butyl acetate, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Cripwell, J. T.[Jamie T.], Schwarz, C. E.[Cara E.], Burger, A. J.[Andries J.], Vapor Liquid Equilibria Measurements for the Five Linear C6 Esters with n-Octane, J. Chem. Eng. Data 61 (2016) 2353-2362",
+  "citation": "J. T. Cripwell, C. E. Schwarz, A. J. Burger, Vapor Liquid Equilibria Measurements for the Five Linear C6 Esters with n-Octane, J. Chem. Eng. Data 61 (2016) 2353-2362",
   "doi": "10.1021/acs.jced.5b01058",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b01058.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

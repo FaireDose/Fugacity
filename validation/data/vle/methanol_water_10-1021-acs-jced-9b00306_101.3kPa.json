@@ -1,7 +1,7 @@
 {
  "_about": "Methanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Yang, X.[Xingchuan], Li, H.[Huanxin], Cao, C.[Chunmei], Zou, Z.[Zongpeng], Xu, L.[Li], Liu, G.[Guoji], Isobaric Vapor-Liquid Equilibrium for the Binary System of Dimethyl Adipate and 1,6-Hexanediol at 10, 20, and 99 kPa, J. Chem. Eng. Data 64 (2019) 4256-4263",
+  "citation": "X. Yang, H. Li, C. Cao, Z. Zou, L. Xu, G. Liu, Isobaric Vapor-Liquid Equilibrium for the Binary System of Dimethyl Adipate and 1,6-Hexanediol at 10, 20, and 99 kPa, J. Chem. Eng. Data 64 (2019) 4256-4263",
   "doi": "10.1021/acs.jced.9b00306",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.9b00306.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

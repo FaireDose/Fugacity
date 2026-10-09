@@ -1,7 +1,7 @@
 {
  "_about": "1-Propanol (1) + Isopropyl acetate (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Casimiro, F. M.[Filipa M.], Constantino, D. S. M.[Dania S. M.], Pereira, C. S. M.[Carla S. M.], Ferreira, O.[Olga], Rodrigues, A. E.[Alirio E.], Pinho, S. P.[Simao. P.], Vapor-Liquid Equilibrium of Binary Mixtures Containing Isopropyl Acetate and Alkanols at 101.32 kPa, J. Chem. Eng. Data 60 (2015) 3181-3186",
+  "citation": "F. M. Casimiro, D. S. M. Constantino, C. S. M. Pereira, O. Ferreira, A. E. Rodrigues, S. P. Pinho, Vapor-Liquid Equilibrium of Binary Mixtures Containing Isopropyl Acetate and Alkanols at 101.32 kPa, J. Chem. Eng. Data 60 (2015) 3181-3186",
   "doi": "10.1021/acs.jced.5b00360",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00360.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

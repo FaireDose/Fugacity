@@ -1,7 +1,7 @@
 {
  "_about": "2-Butanol (1) + MTBE (2): isobaric T-x-y at 90.1 kPa. Rows: liquid mole fraction of 2-butanol, boiling temperature in K, vapour mole fraction of 2-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zaitseva, A.[Anna], Laavi, H.[Helena], Ojala, L.[Leo], Coxam, J.-Y.[Jean-Yves], Ballerat-Busserolles, K.[Karine], Pokki, J.-P.[Juha-Pekka], Alopaeus, V.[Ville], sothermal and Isobaric Vapor-Liquid Equilibrium and Excess Molar Enthalpy of the Binary Mixtures of 2-Methoxy-2-methylpropane + 2-Methyl-2-butanol or + 2-Butanol, J. Chem. Eng. Data 60 (2015) 2655-2664",
+  "citation": "A. Zaitseva, H. Laavi, L. Ojala, J. Y. Coxam, K. Ballerat-Busserolles, J. P. Pokki, V. Alopaeus, sothermal and Isobaric Vapor-Liquid Equilibrium and Excess Molar Enthalpy of the Binary Mixtures of 2-Methoxy-2-methylpropane + 2-Methyl-2-butanol or + 2-Butanol, J. Chem. Eng. Data 60 (2015) 2655-2664",
   "doi": "10.1021/acs.jced.5b00300",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00300.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",

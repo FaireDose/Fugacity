@@ -60,7 +60,8 @@ test("pair selectors list the default first and mark the set in use", () => {
   const c = setChoices(p);
   assert.deepEqual(c.map(x => [x.set, x.default, x.current]), [["fitted-gao2018", true, false], ["chemsep", false, true]]);
   assert.equal(c[0].label, "fitted-gao2018 (default)");
-  assert.deepEqual(setChoices(system({ components: ["water", "methanol"] }).info.pairs[0]), [], "one set: no selector");
+  // a pair with a single NRTL set (the ChemSep databank)
+  assert.deepEqual(setChoices(system({ components: ["ethanol", "methanol"] }).info.pairs[0]), [], "one set: no selector");
 });
 
 test("source search: text, kind and the selected components", () => {

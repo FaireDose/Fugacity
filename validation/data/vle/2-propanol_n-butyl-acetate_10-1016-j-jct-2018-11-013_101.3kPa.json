@@ -1,7 +1,7 @@
 {
  "_about": "2-Propanol (1) + n-Butyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
  "source": {
-  "citation": "Zhang, Yi, Liu, Kai, Wang, Zhaojie, Gao, Jun, Zhang, Lianzheng, Xu, Dongmei, Wang, Yinglong, Vapour-liquid equilibrium and extractive distillation for separation of azeotrope isopropyl alcohol and diisopropyl ether, J. Chem. Thermodyn. 131 (2019) 294-302",
+  "citation": "Y. Zhang, K. Liu, Z. Wang, J. Gao, L. Zhang, D. Xu, Y. Wang, Vapour-liquid equilibrium and extractive distillation for separation of azeotrope isopropyl alcohol and diisopropyl ether, J. Chem. Thermodyn. 131 (2019) 294-302",
   "doi": "10.1016/j.jct.2018.11.013",
   "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2018.11.013.html",
   "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
