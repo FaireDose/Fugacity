@@ -31,7 +31,7 @@
  *    chain inside a circular reference stops LibreOffice's iteration before it converges; checked):
  *    the "Recycle passes" sheet repeats the flowsheet's formulas 40 times, each pass starting from
  *    the tear streams of the one before, by direct substitution for two passes and then bounded
- *    Wegstein, as Fugacity's solver does; the Streams sheet takes the tear streams of the last pass.
+ *    Wegstein, as Fugacity's Wegstein option does; the Streams sheet takes the tear streams of the last pass.
  *    The workbook has no circular reference.
  *  - Outlet flows: vapour_i = F_i VF K_i / (1 + VF (K_i − 1)), liquid_i = F_i − vapour_i.
  * At the conditions Fugacity solved, the workbook gives Fugacity's flows; away from them it holds
@@ -366,7 +366,7 @@ function recyclePasses({ fs, res, comps, nameOf, streams, flowFormula, flash, in
   const fmt = (p, i) => (sid, k) => cellOf(p, cS.get(sid), k);
   const last = PASSES - 1;
   rows.push([{ v: "Recycle passes (concept model)", s: "head" }],
-    [`The recycle is solved here by ${PASSES} passes through the flowsheet: tear stream${tears.length > 1 ? "s" : ""} ${tears.join(", ")}. Pass 1 starts from Fugacity's solution; passes 2 and 3 take the tear streams computed in the pass before; later passes use bounded Wegstein (q = s / (s − 1), between −5 and 0), as Fugacity's solver. The Streams sheet takes the last pass.`],
+    [`The recycle is solved here by ${PASSES} passes through the flowsheet: tear stream${tears.length > 1 ? "s" : ""} ${tears.join(", ")}. Pass 1 starts from Fugacity's solution; passes 2 and 3 take the tear streams computed in the pass before; later passes use bounded Wegstein (q = s / (s − 1), between −5 and 0), as Fugacity's Wegstein option (Fugacity's default, Broyden's method, needs matrix updates a workbook does not show well). The Streams sheet takes the last pass.`],
     ["Largest relative change of the tear streams in the last pass", F(`MAX(${tears.map(t => cellOf(last, cQ.get(t), n)).join(",")})`, 0),
       "converged when this is about 1E-9 or less; if not, the recycle needs more passes than this workbook has (run it in Fugacity)"], [], []);
   for (let p = 0; p < PASSES; p++) {

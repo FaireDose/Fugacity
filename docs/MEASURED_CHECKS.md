@@ -548,6 +548,21 @@ Rules: liquid values at 110 kPa or less, inside the record's temperature range, 
 | Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
 |---|---|---|---|---|---|---|
 
+## Isopentane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 6 | 1 (1) | 340.0-420.0 | 0.04 % | +0.21 % at 420.0 K (Matsumoto 2016, doi:10.1016/j.jct.2016.05.019) | ✅ within 1 % |
+
+## n-Undecane
+
+| Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |
+|---|---|---|---|---|---|---|
+| Vapour pressure | 0 | | | | | too few values (10 measured in all) |
+| Liquid density | 78 | 16 (16) | 278.1-363.1 | 0.01 % | -0.49 % at 298.1 K (Maduro 2008, doi:10.1016/j.fluid.2008.01.007) | ✅ within 1 % |
+| Liquid heat capacity | 5 | 1 (1) | 283.1-303.1 | 0.17 % | -0.29 % at 283.1 K (Peleteiro 2005, doi:10.1016/j.jct.2004.12.010) | ✅ within 2 % |
+| Liquid viscosity | 45 | 4 (4) | 283.1-363.1 | 1.88 % | +3.50 % at 288.1 K (Iglesias-Silva 2016, doi:10.1021/acs.jced.6b00121) | ✅ within 5 % |
+
 ## Naphthalene
 
 | Property | Values used | Articles (within tolerance) | Range (K) | Median deviation of the articles | Largest single deviation | Result |

@@ -128,6 +128,12 @@ BATCHES = {
         ("benzoic-acid", "Benzoic acid", None, ["benzenecarboxylic acid", "carboxybenzene"]),
         ("salicylic-acid", "Salicylic acid", None, ["2-hydroxybenzoic acid", "o-hydroxybenzoic acid"]),
     ],
+    # proposal 0008, Part B, two of the four free places: the two components of the Cavett problem (the flowsheet
+    # convergence test, docs/FLOWSHEET_TESTS.md) that were missing
+    8: [
+        ("isopentane", "Isopentane", "Isopentane", ["2-methylbutane", "i-pentane", "isoamylane"]),
+        ("n-undecane", "n-Undecane", "n-Undecane", ["undecane", "hendecane"]),
+    ],
 }
 CHEMSEP_NAME = "ChemSep pure-component database v8.3 (Kooijman & Taylor)"
 CHEMSEP_CAS = {"styrene": "100-42-5", "1-propanol": "71-23-8", "2-propanol": "67-63-0", "1-butanol": "71-36-3",

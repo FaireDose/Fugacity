@@ -1,0 +1,147 @@
+{
+ "source": {
+  "citation": "E. M. Rosen, VMGSim: Revisiting the Cavett Problem, CACHE News Fall (2005)",
+  "doi": null,
+  "open_copy": "https://cache.org/sites/default/files/fall2005_rosen_cavett.pdf",
+  "access": "Open access: free to read on the website of CACHE (Computer Aids for Chemical Engineering Education)",
+  "tables": "Figure 2 (VMGSim flowsheet of the Cavett problem: units, streams, recycles R1, R2, R3) and Figure 3 (fixed pressures and temperatures of FL1-FL4, feed temperature, pressure and flows, products P1 and P2 of VMGSim with advanced Peng-Robinson and of FLOWTRAN as given by Rosen and Pauls, 1977). Values copied as printed; the PDF's text was extracted and checked against the page image."
+ },
+ "components": [
+  "nitrogen",
+  "carbon-dioxide",
+  "hydrogen-sulfide",
+  "methane",
+  "ethane",
+  "propane",
+  "isobutane",
+  "n-butane",
+  "isopentane",
+  "n-pentane",
+  "n-hexane",
+  "n-heptane",
+  "n-octane",
+  "n-nonane",
+  "n-decane",
+  "n-undecane"
+ ],
+ "units": "flows in mol/hr as printed (lb-mol/hr in the original problem); pressures psia; temperatures degrees F",
+ "drums": {
+  "FL1": {
+   "P_psia": 800,
+   "T_F": 100
+  },
+  "FL2": {
+   "P_psia": 270,
+   "T_F": 120
+  },
+  "FL3": {
+   "P_psia": 49,
+   "T_F": 96
+  },
+  "FL4": {
+   "P_psia": 13,
+   "T_F": 85
+  }
+ },
+ "feed": {
+  "T_F": 120,
+  "P_psia": 270,
+  "flow": [
+   358.2,
+   4965.6,
+   339.4,
+   2995.5,
+   2395.5,
+   2291,
+   604.1,
+   1539.9,
+   790.4,
+   1129.9,
+   1764.7,
+   2606.7,
+   1844.5,
+   1669,
+   831.7,
+   1214.5
+  ]
+ },
+ "products": {
+  "P1": {
+   "VMGSim APR": [
+    358.2,
+    4961.79,
+    334.95,
+    2995.35,
+    2378.28,
+    1876.66,
+    197.73,
+    311.86,
+    38.61,
+    41.41,
+    11.14,
+    4.04,
+    0.7,
+    0.15,
+    0.02,
+    0.01
+   ],
+   "FLOWTRAN": [
+    358.2,
+    4964.7,
+    334.7,
+    2996.3,
+    2883.2,
+    1899.1,
+    198.2,
+    299.4,
+    37.2,
+    34.8,
+    10.5,
+    3.72,
+    0.55,
+    0.12,
+    0.015,
+    0.007
+   ]
+  },
+  "P2": {
+   "VMGSim APR": [
+    0,
+    3.81,
+    4.45,
+    0.15,
+    17.22,
+    414.34,
+    406.37,
+    1228.04,
+    751.79,
+    1088.49,
+    1753.56,
+    2602.66,
+    1843.8,
+    1668.85,
+    831.68,
+    1214.49
+   ],
+   "FLOWTRAN": [
+    0.0009,
+    4.73,
+    5.22,
+    0.17,
+    14.5,
+    404.2,
+    410.3,
+    1247.4,
+    753.9,
+    1095.7,
+    1754.6,
+    2603.2,
+    1844,
+    1668.9,
+    831.7,
+    1214.5
+   ]
+  }
+ },
+ "notes": "FLOWTRAN's P1 ethane, 2883.2, is above the feed (2395.5); Rosen reads it as a typo for 2383.2. FLOWTRAN's products do not close the component balances (Rosen's last column); VMGSim's do. P1 is the vapour of FL1, P2 the liquid of FL4 (Figure 2). Rosen's text says P2 is the liquid of FL2; Figure 2 and the stated conditions (85 F, 13 psia) are those of FL4."
+}

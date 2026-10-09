@@ -5,7 +5,7 @@ import { fail, failRange } from "./errors.js";
  * @param {(x:number)=>number} f
  * @param {number} a
  * @param {number} b
- * @param {{xtol?:number, maxIter?:number}} [opts]
+ * @param {{xtol?:number, maxIter?:number, ftol?:number}} [opts]  ftol: an end with |f| <= ftol is returned as the root
  * @returns {number}
  */
 export function brent(f, a, b, opts = {}) {
@@ -14,6 +14,10 @@ export function brent(f, a, b, opts = {}) {
   let fa = f(a), fb = f(b);
   if (fa === 0) return a;
   if (fb === 0) return b;
+  // an end that already meets the residual tolerance is the root (an iterative f can give a
+  // last-digit change of sign between two evaluations of the same point)
+  const ftol = opts.ftol ?? 0;
+  if (fa * fb > 0 && Math.min(Math.abs(fa), Math.abs(fb)) <= ftol) return Math.abs(fa) <= Math.abs(fb) ? a : b;
   if (fa * fb > 0) {
     throw failRange("NO_CONVERGENCE", `brent: no sign change on [${a}, ${b}] (f = ${fa}, ${fb})`);
   }

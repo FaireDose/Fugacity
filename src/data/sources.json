@@ -432,6 +432,18 @@
         "validation/data/dimethyl-ether_methanol_px_park2007.json"
       ]
     },
+    "rosen2005-nitrogen-carbon-dioxide-hydrogen-sulfide-methane-ethane-propane-isobutane-n-butane-isopentane-n-pentane-n-hexane-n-heptane-n-octane-n-nonane-n-decane-n-undecane": {
+      "title": "VMGSim: Revisiting the Cavett Problem",
+      "authors": "E. M. Rosen",
+      "year": 2005,
+      "published": "CACHE News Fall (2005)",
+      "kind": "open-access article",
+      "url": "https://cache.org/sites/default/files/fall2005_rosen_cavett.pdf",
+      "access": "Open access: free to read on the website of CACHE (Computer Aids for Chemical Engineering Education)",
+      "files": [
+        "validation/data/flowsheets/cavett_rosen2005.json"
+      ]
+    },
     "sander2023-henry": {
       "title": "Compilation of Henry's law constants (version 5.0.0) for water as solvent",
       "authors": "R. Sander",

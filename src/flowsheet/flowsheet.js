@@ -15,11 +15,18 @@
  *  2. In a loop, the tear streams are those marked `tear: true`, else the smallest set of the
  *     loop's streams whose removal leaves no cycle (searched by increasing size), the tear
  *     selection of pyomo.network (3-clause BSD; module foqus_graph, after FOQUS).
- *  3. The loop is converged on the tear streams' component flows: two steps of direct
- *     substitution, then Wegstein per flow as implemented in pyomo.network
- *     (SequentialDecomposition.solve_tear_wegstein):
+ *  3. The loop is converged on the tear streams' component flows x, with g(x) the flows after
+ *     one pass through the loop:
+ *     - "broyden" (default): Broyden's quasi-Newton method on F(x) = g(x) - x, all tear flows
+ *       together, first step direct substitution (scipy.optimize.broyden1, BSD; below);
+ *     - "wegstein": two steps of direct substitution, then Wegstein per flow as implemented in
+ *       pyomo.network (SequentialDecomposition.solve_tear_wegstein):
  *       s = (g(x) - g(x_prev)) / (x - x_prev),  q = s / (s - 1) bounded to [-5, 0],
- *       x_new = q x + (1 - q) g(x)
+ *       x_new = q x + (1 - q) g(x);
+ *     - "direct": x_new = g(x).
+ *     On the flowsheet suite (docs/FLOWSHEET_TESTS.md) Broyden converged every case within the
+ *     default 50 iterations (the Cavett problem in 37); Wegstein needed 170 for Cavett and
+ *     oscillated without end on one case that direct substitution solves.
  *     The accelerated tear stream is flashed at the temperature and pressure just calculated
  *     for it (extrapolating the enthalpy flow as well can push the temperature out of range).
  *     The start of a tear stream is its `guess` ({ flow_kmol_h, T_K, P_kPa }), else no flow.
@@ -37,10 +44,16 @@ import { fail } from "../util/errors.js";
 import { stream } from "../stream/stream.js";
 import { runUnit, unitType, specStatus } from "../units/units.js";
 
-/** Solver settings: `method` "wegstein" (direct substitution for two steps, then bounded Wegstein)
- *  or "direct" (direct substitution only: slower, never overshoots). */
-export const SOLVER_DEFAULTS = Object.freeze({ method: "wegstein", maxIterations: 50, tolerance: 1e-8, accelMin: -5, accelMax: 0 });
-export const SOLVER_METHODS = ["wegstein", "direct"];
+/** Solver settings: `method` "broyden" (quasi-Newton on all tear flows together; the default since the
+ *  flowsheet suite: it converged every case, mostly fastest), "wegstein" (direct substitution for two
+ *  steps, then bounded Wegstein per flow; oscillated on one case of the suite) or "direct" (direct
+ *  substitution only: slowest, never overshoots). */
+export const SOLVER_DEFAULTS = Object.freeze({ method: "broyden", maxIterations: 50, tolerance: 1e-8, accelMin: -5, accelMax: 0 });
+export const SOLVER_METHODS = ["wegstein", "broyden", "direct"];
+const GROWTH_LIMIT = 1e6;     // a tear stream above this many times the total feed: the loop accumulates
+// the whole flowsheet's component balance, relative to the total feed: at least 1e-6, and 1000 times the
+// tear tolerance (a converged recycle leaves an imbalance of about the tolerance times the recycle flow)
+const balanceTol = tolerance => Math.max(1e-6, 1e3 * tolerance);
 
 /** "B1.out" → { block: "B1", port: "out" } */
 function endpoint(text, what, sid) {
@@ -266,6 +279,9 @@ export function solveFlowsheet(sys, fs) {
     results[id] = { type: b.type, duty_kW: r.duty_kW, balance: r.balance, notes: r.notes, ...(r.state ? { state: r.state } : {}) };
   };
 
+  /** Total flow of the feed streams calculated so far (kmol/h). */
+  const feedTotal = () => nodes.filter(id => blocks.get(id).type === "feed")
+    .flatMap(id => outEdges(id).map(e => values.get(e.id))).reduce((a, s) => a + (s?.F_kmol_h ?? 0), 0);
   const comps = tarjan(nodes, id => outEdges(id).map(e => e.to)).reverse();   // topological order
   const inLoop = new Set(comps.flatMap(c => { const set = new Set(c); return edges.filter(e => set.has(e.from) && set.has(e.to)).map(e => e.id); }));
   const stray = edges.filter(e => e.tear && !inLoop.has(e.id));
@@ -286,14 +302,57 @@ export function solveFlowsheet(sys, fs) {
     const vec = s => s.flows.slice();
     let x = tears.map(e => vec(values.get(e.id)));
     let xPrev = null, gPrev = null, it = 0, err = Infinity;
+    let H = null, bPrev = null;   // Broyden: inverse Jacobian approximation of F(x) = g(x) - x, last point
     const history = [];
     const stop = (why, extra = {}) => fail("NO_CONVERGENCE",
-      `The loop through ${seq.join(", ")} did not converge${why}. What usually helps: a purge or a smaller recycle fraction (a recycle with no way out keeps growing), a guess for the tear stream${tears.length > 1 ? "s" : ""} (${tears.map(e => e.id).join(", ")}) close to the answer, another tear stream, or more iterations.`,
+      `The loop through ${seq.join(", ")} did not converge${why}. What usually helps: a purge or a smaller recycle fraction (a recycle with no way out keeps growing), a guess for the tear stream${tears.length > 1 ? "s" : ""} (${tears.map(e => e.id).join(", ")}) close to the answer, another tear stream, another convergence method, or more iterations.`,
       { loop: comp, tears: tears.map(e => e.id), history, ...extra });
+    /**
+     * Broyden's "good" method on F(x) = g(x) - x over all tear flows at once: x+ = x - H F, with the
+     * inverse-Jacobian update H+ = H + (dx - H df) (dx' H) / (dx' H df), H started at -I so the first
+     * step is direct substitution (as scipy.optimize.broyden1, BSD; Broyden, Math. Comp. 19 (1965) 577).
+     * Unlike Wegstein's per-flow slopes it learns how the tears act on each other. The change may grow
+     * for a few steps (the method is not monotone; resetting H when it does was tried and made the
+     * flowsheet suite slower, the Cavett problem divergent): H is reset only after a non-finite step.
+     * Flows are kept non-negative.
+     */
+    const broydenStep = g => {
+      const xf = x.flat(), gf = g.flat(), m = xf.length;
+      const F = gf.map((v, i) => v - xf[i]);
+      if (!H) H = Array.from({ length: m }, (_, i) => Array.from({ length: m }, (_, j) => (i === j ? -1 : 0)));
+      else if (bPrev) {
+        const dx = xf.map((v, i) => v - bPrev.x[i]), df = F.map((v, i) => v - bPrev.F[i]);
+        const Hdf = H.map(row => row.reduce((a, h, j) => a + h * df[j], 0));
+        const dxH = dx.map((_, j) => dx.reduce((a, d, i) => a + d * H[i][j], 0));
+        const den = dx.reduce((a, d, i) => a + d * Hdf[i], 0);
+        if (Math.abs(den) > 1e-300 && Number.isFinite(den)) {
+          for (let i = 0; i < m; i++) { const c = (dx[i] - Hdf[i]) / den; for (let j = 0; j < m; j++) H[i][j] += c * dxH[j]; }
+        }
+      }
+      bPrev = { x: xf, F, err };
+      const step = H.map(row => -row.reduce((a, h, j) => a + h * F[j], 0));
+      const out = xf.map((v, i) => Math.max(0, v + step[i]));
+      if (!out.every(Number.isFinite)) { H = null; return g; }
+      const n = g[0].length;
+      return g.map((_, k) => out.slice(k * n, (k + 1) * n));
+    };
     for (; it < opt.maxIterations; it++) {
       const before = tears.map(e => values.get(e.id));
       try { for (const id of seq) calc(id); } catch (e) {
-        if (it === 0) throw e;   // the first pass is a plain calculation: its error is the block's own
+        if (it === 0) {
+          // the first pass is a plain calculation: its error is the block's own, but its inlets are those of
+          // the start values of the tear streams (no flow, unless guessed), not of the converged loop
+          if (!tears.every(t => t.guess)) {
+            e.message += ` (This happened in the first pass through the loop ${seq.join(", ")}, with the tear stream${tears.length > 1 ? "s" : ""} ${tears.map(t => t.id).join(", ")} at ${tears.length > 1 ? "their" : "its"} start value${tears.length > 1 ? "s" : ""}: no flow unless a guess is given. A guess close to the answer may avoid this state.)`;
+          }
+          throw e;
+        }
+        // a state the property method cannot handle (two liquids with an equation of state) is not a
+        // convergence problem: keep its code, with the loop as context
+        if (e && e.code === "PHASE_SPLIT") {
+          e.message = `In the loop through ${seq.join(", ")}, at iteration ${it + 1}: ${e.message}`;
+          throw e;
+        }
         throw stop(`: at iteration ${it + 1}, ${e.message}`, { cause: e.message });
       }
       const after = tears.map(e => values.get(e.id));
@@ -306,10 +365,16 @@ export function solveFlowsheet(sys, fs) {
         return Math.max(dF, dT);
       }));
       history.push(err);
+      // a loop without a way out for some component accumulates it: its flows grow without bound, and a
+      // method that extrapolates (Broyden) can reach flows so large that the relative change looks converged
+      const Ffeed = feedTotal();
+      const big = after.find(s => !(s.F_kmol_h <= GROWTH_LIMIT * Math.max(Ffeed, 1e-12)));
+      if (big) throw stop(`: the recycle grows without bound (tear stream ${tears[after.indexOf(big)].id} carries more than ${GROWTH_LIMIT.toExponential(0)} times the feed): material accumulates in the loop`);
       if (err < opt.tolerance) { it++; break; }
       // next tear values: direct substitution for two steps, then bounded Wegstein per variable
       let xNew = g;
-      if (opt.method === "wegstein" && it >= 2 && xPrev) {
+      if (opt.method === "broyden") xNew = broydenStep(g);
+      else if (opt.method === "wegstein" && it >= 2 && xPrev) {
         xNew = g.map((gk, k) => gk.map((gi, i) => {
           const dx = x[k][i] - xPrev[k][i];
           const s = dx !== 0 ? (gi - gPrev[k][i]) / dx : 0;
@@ -339,6 +404,12 @@ export function solveFlowsheet(sys, fs) {
   const products = nodes.filter(id => blocks.get(id).type === "product").flatMap(id => (blocks.get(id).ins.in ?? []).map(s => values.get(s)));
   const sum = list => list.reduce((acc, s) => acc.map((v, i) => v + s.flows[i]), new Array(sys.n).fill(0));
   const fin = sum(feeds), fout = sum(products);
+  // the whole flowsheet must balance: a converged loop that does not is not converged (fail loudly)
+  const Fin = fin.reduce((a, v) => a + v, 0);
+  const off = sys.ids.map((id, i) => [id, fin[i] - fout[i]]).filter(([, d]) => !(Math.abs(d) <= balanceTol(opt.tolerance) * Math.max(Fin, 1e-12)));
+  if (off.length && products.length) {
+    throw fail("NO_CONVERGENCE", `The flowsheet does not balance: ${off.map(([id, d]) => `${sys.names[sys.ids.indexOf(id)]} ${d > 0 ? "in" : "out"} exceeds ${d > 0 ? "out" : "in"} by ${Math.abs(d).toPrecision(3)} kmol/h`).join(", ")}. A recycle without a way out for a component, or a loop that has not really converged; a purge or another convergence method usually helps.`, { balance: Object.fromEntries(off) });
+  }
   const duties = Object.values(results).reduce((a, r) => a + (r.duty_kW ?? 0), 0);
   const H = list => list.reduce((a, s) => a + (s.H_kW ?? 0), 0);
   // energy streams: one per block with a duty (heater, drum, separator), in kW (+ heat in, - heat out)

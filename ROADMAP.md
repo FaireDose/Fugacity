@@ -204,6 +204,7 @@ Needs A6, A7, A8, A10, A11.
 - [x] Mixer, splitter, component separator, heater/cooler, flash drum, with degrees of freedom and energy streams (proposal 0006, step 2)
 - [ ] Pump, valve
 - [x] Flowsheet solver with recycles; flowsheet drawing and stream tables (proposal 0006, steps 3 and 5)
+- [x] Flowsheet test suite: the Cavett problem against its published solutions, 16 generated recycle flowsheets of 3 to 7 components against an equation-oriented reference, and solver-independence checks ([docs/FLOWSHEET_TESTS.md](docs/FLOWSHEET_TESTS.md))
 - [x] Assistants can write, check and edit flowsheet files (proposal 0006, steps 4 and 7)
 - [x] Project files (B4): files, this browser, the host page's storage (proposal 0006, step 6)
 

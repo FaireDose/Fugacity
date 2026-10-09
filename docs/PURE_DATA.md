@@ -96,6 +96,8 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Naphthalene | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.33 (f) | ChemSep 0.12 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.66 (f) | ChemSep 0.0001 (d) | ChemSep 0.61 (f) |
 | Benzoic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.46 (f) | ChemSep 0.065 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.35 (f) | ChemSep 0.0001 (d) | ChemSep 0.27 (f) |
 | Salicylic acid | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.11 (f) | ChemSep 0.036 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.054 (f) | ChemSep 0.0001 (d) | ChemSep 0.19 (f) |
+| Isopentane | CoolProp 0.33 (f) | CoolProp 0.60 (f) | CoolProp 0.35 (f) | CoolProp 0.56 (f) | CoolProp 0.13 (f) | CoolProp 0.79 (f) | CoolProp 0.17 (f) | CoolProp 0.26 (f) | CoolProp 0.32 (f) | CoolProp 0.00017 (f) |
+| n-Undecane | CoolProp 0.33 (f) | CoolProp 0.35 (f) | CoolProp 0.043 (f) | CoolProp 0.79 (f) | CoolProp 0.18 (f) | ChemSep 0.0001 (d) | ChemSep 0.0001 (d) | ChemSep 0.64 (f) | ChemSep 0.0001 (d) | CoolProp 0.0001 (f) |
 
 "existing": the vapour-pressure records of the ten liquids from v0.1 (not changed).
 
@@ -193,6 +195,8 @@ Each cell: source of the record and the maximum deviation of the correlation fro
 | Naphthalene | 353.43–748.35 | 200–1500 | 353.43–491.14 | 353.43–747.65 | 353.43–673.56 | 325.8–1266.41 | 353.43–694.96 | 353.43–1000 | 353.43–710.97 |
 | Benzoic acid | 395.45–751 | 200–1500 | 395.45–450 | 395.45–750.24 | 395.52–600.8 | 395.45–1000 | 395.45–596 | 274–1000 | 395.45–713.45 |
 | Salicylic acid | 431.75–722.53 | 273–1000.15 | 431.75–551.75 | 431.75–722.83 | 431.75–639 | 431.75–1000 | 431.75–529 | 274–1000 | 431.75–702.05 |
+| Isopentane | 112.65–437.33 | 112.65–500 | 112.65–421.09 | 112.65–437.33 | 112.65–437.33 | 112.65–500 | 112.65–437.33 | 112.65–500 | 112.65–437.33 |
+| n-Undecane | 247.55–606.86 | 247.55–700 | 247.55–606.86 | 247.55–606.86 | 247.58–639 | 247.57–1000 | 247.58–469.08 | 247.571–1000 | 247.55–606.86 |
 
 Temperatures in K.
 
@@ -1540,6 +1544,36 @@ At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gas
 | kV | mW/(m·K) | 7.2217 | 7.2217 | 0.00 % | – |
 | σ | mN/m | – | – | – | – |
 
+### Isopentane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 91.498 | 91.795 | -0.32 % | – |
+| ρL | kg/m³ | 614.57 | 614.97 | -0.06 % | 617.25 |
+| cp° | J/(mol·K) | 118.6 | 118.89 | -0.25 % | 118.85 |
+| cpL | J/(mol·K) | 163.99 | 164.06 | -0.04 % | 165.85 |
+| ΔHvap | kJ/mol | 24.944 | 24.924 | 0.08 % | 24.863 |
+| μL | mPa·s | 0.19468 | 0.19362 | 0.54 % | 0.21454 |
+| μV | μPa·s | 6.9683 | 6.9726 | -0.06 % | 7.0397 |
+| kL | mW/(m·K) | 101.94 | 101.7 | 0.23 % | 109.51 |
+| kV | mW/(m·K) | 14.451 | 14.431 | 0.14 % | 14.404 |
+| σ | mN/m | 14.449 | 14.449 | 0.00 % | 14.433 |
+
+### n-Undecane, T = 298.15 K
+
+| Property | Unit | Fugacity | Source | Deviation | ChemSep |
+|---|---|---|---|---|---|
+| Psat | kPa | 0.05754 | 0.057702 | -0.28 % | – |
+| ρL | kg/m³ | 736.66 | 736.41 | 0.03 % | 736.81 |
+| cp° | J/(mol·K) | 255.71 | 255.75 | -0.02 % | 258.61 |
+| cpL | J/(mol·K) | 343.61 | 346.16 | -0.74 % | 344.78 |
+| ΔHvap | kJ/mol | 56.507 | 56.426 | 0.14 % | 56.871 |
+| μL | mPa·s | 1.0893 | 1.0893 | 0.00 % | – |
+| μV | μPa·s | 4.421 | 4.421 | 0.00 % | – |
+| kL | mW/(m·K) | 135 | 135.86 | -0.64 % | – |
+| kV | mW/(m·K) | 8.6433 | 8.6433 | 0.00 % | – |
+| σ | mN/m | 24.246 | 24.246 | 0.00 % | 24.31 |
+
 ## Comparison with measured data
 
 Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.json` (rules and references there), checked by `test/properties.test.js` at 2 %. Liquid heat capacity at 298.15 K against the mean of the values measured in 1970 or later; heat of vaporization at the normal boiling point against Majer and Svoboda (1985). Ethylene glycol has no Majer-Svoboda value at Tb on its WebBook page. Liquid densities of the four ChemSep liquids are not compared with measurements: the WebBook has none and the ThermoML Archive could not be reached.
@@ -1754,6 +1788,10 @@ Measured values from the NIST WebBook in `validation/data/pure/measured/webbook.
 | Aniline | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 4 measured values from 1 articles, 293.1-308.1 K; median deviation of the articles 0.34 % (with |
 | Aniline | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 17 measured values from 3 articles, 288.1-333.1 K; median deviation of the articles 2.20 % (wit |
 | Acrylonitrile | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 7 measured values from 5 articles, 293.1-318.1 K; median deviation of the articles 0.10 % (with |
+| Isopentane | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 340.0-420.0 K; median deviation of the articles 0.04 % (with |
+| n-Undecane | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 78 measured values from 16 articles, 278.1-363.1 K; median deviation of the articles 0.01 % (wi |
+| n-Undecane | liquidHeatCapacity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 1 articles, 283.1-303.1 K; median deviation of the articles 0.17 % (with |
+| n-Undecane | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 45 measured values from 4 articles, 283.1-363.1 K; median deviation of the articles 1.88 % (wit |
 | Naphthalene | vapourPressure | NIST TRC ThermoML Archive (validation/python/check_measured.py): 21 measured values from 1 articles, 367.2-452.4 K; median deviation of the articles 0.67 % (wit |
 | Benzoic acid | liquidDensity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 401.3-447.1 K; median deviation of the articles 0.72 % (with |
 | Benzoic acid | liquidViscosity | NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 400.3-447.1 K; median deviation of the articles 6.14 % (abov |
@@ -1843,6 +1881,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
 ## References
 
 - CoolProp 8.0.0: Bell, Ian H. et al., Pure and Pseudo-pure Fluid Thermophysical Property Evaluation and the Open-Source Thermophysical Property Library CoolProp, Ind. Eng. Chem. Res. 53 (2014) 2498-2508, doi:10.1021/ie4033999; https://github.com/CoolProp/CoolProp (MIT). The equations it implements for these fluids:
+  - Aleksandrov-TE-2011: I. S. Aleksandrov et al., Using Fundamental Equations of State for Calculating the Thermodynamic Properties of Normal Undecane, Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027
   - Assael-JPCRD-2011-Hydrogen: M. J. Assael et al., Correlation of the Thermal Conductivity of Normal and Parahydrogen from the Triple Point to 1000 K and up to 100 MPa, J. Phys. Chem. Ref. Data 40 (2011) 033101-1:13, doi:10.1063/1.3606499
   - Assael-JPCRD-2012-Benzene: M.J. Assael et al., Reference Correlation of the Thermal Conductivity of Benzene from the Triple Point to 725 K and up to 500 MPa, J. Phys. Chem. Ref. Data 41 (2012) 043102-1:9, doi:10.1063/1.4755781
   - Assael-JPCRD-2012-Toluene: M. J. Assael et al., Reference Correlation of the Thermal Conductivity of Toluene from the Triple Point to 1000 K and up to 1000 MPa, J. Phys. Chem. Ref. Data 41 (2012) 023101-1:12, doi:10.1063/1.3700155
@@ -1857,6 +1896,7 @@ Liquid records whose range was narrowed by the fit so that it starts above the o
   - Buecker-JPCRD-2006B: D. Buecker and W. Wagner, Reference Equations of State for the Thermodynamic Properties of Fluid Phase n-Butane and Isobutane, J. Phys. Chem. Ref. Data 35 (2006) 929-1019, doi:10.1063/1.1901687
   - Cao-JPCRD-2016-mxylene: F. L. Cao et al., Reference Correlation of the Viscosity of meta-Xylene from 273 to 673 K and up to 200 MPa, J. Phys. Chem. Ref. Data 45 (2016) 013103, doi:10.1063/1.4941241
   - Cao-JPCRD-2016-oxylene: F. L. Cao et al., Reference Correlation of the Viscosity of ortho-Xylene from 273 to 673 K and up to 110 MPa, J. Phys. Chem. Ref. Data 45 (2016) 023102, doi:10.1063/1.4945663
+  - Chung-IECR-1988: Chung, Ting Horng et al., Generalized multiparameter correlation for nonpolar and polar fluid transport properties, Ind. Eng. Chem. Res. 27 (1988) 671-679, doi:10.1021/ie00076a024
   - Eisenbach-JPCRD-2021: Tim Eisenbach et al., Speed-of-Sound Measurements and a Fundamental Equation of State for Propylene Glycol, J. Phys. Chem. Ref. Data 50 (2021)
   - Fenghour-JPCRD-1995: A. Fenghour et al., The Viscosity of Ammonia, J. Phys. Chem. Ref. Data 24 (1995) 1649-1667, doi:10.1063/1.555961
   - Fiedler-IJT-2023-THF: Felix Fiedler et al., Fundamental Equation of State for Fluid Tetrahydrofuran, International Journal of Thermophysics 44 (2023) 153

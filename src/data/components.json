@@ -30516,6 +30516,562 @@
           "nist-webbook"
         ]
       }
+    },
+    "isopentane": {
+      "name": "Isopentane",
+      "formula": "C5H12",
+      "cas": "78-78-4",
+      "aliases": [
+        "2-methylbutane",
+        "i-pentane",
+        "isoamylane"
+      ],
+      "MW": 72.14878,
+      "Tc_K": 460.3498,
+      "Pc_Pa": 3378217.0,
+      "Tb_K": 300.9763,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 78.36347403,
+        "B": -5133.076579,
+        "C": -8.978771659,
+        "D": 0.0001576116679,
+        "E": 1.6,
+        "Tmin_K": 112.65,
+        "Tmax_K": 460.349,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (Isopentane: equation of state Lemmon-JCED-2006; Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n); 200 points 112.650-460.349 K (triple point to critical point), max deviation 0.33 %.",
+        "source_ids": [
+          "coolprop"
+        ],
+        "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 6 measured values from 1 articles, 340.0-420.0 K; median deviation of the articles 0.04 % (within the 1 % tolerance of the engineering report); largest single deviation +0.21 % at 420.0 K (Matsumoto 2016, doi:10.1016/j.jct.2016.05.019); docs/MEASURED_CHECKS.md"
+      },
+      "uniquac": {
+        "r": 3.82,
+        "q": 3.31,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.2274,
+      "constants_source": "CoolProp 8.0.0 (Isopentane: equation of state Lemmon-JCED-2006); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
+      "constants_source_ids": [
+        "coolprop"
+      ],
+      "omega_source": "CoolProp 8.0.0 (Isopentane: equation of state Lemmon-JCED-2006); open source, MIT.",
+      "omega_source_ids": [
+        "coolprop"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 132.7636408,
+            "B": 0.3893902013,
+            "C": 446.06671,
+            "D": 0.426258874
+          },
+          "units": "kg/m3",
+          "Tmin_K": 112.65,
+          "Tmax_K": 437.33,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 112.65-437.33 K (triple point to 0.95 Tc), max deviation 0.60 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 42.93453164,
+            "B": 245.1813799,
+            "C": 790.2062578,
+            "D": 94.85975883,
+            "E": 319.9383518
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 112.65,
+          "Tmax_K": 500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 112.65-500.00 K (triple point to the upper limit of the equation of state), max deviation 0.35 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 268.0887141,
+            "B": -2.678550782,
+            "C": 0.01709691628,
+            "D": -4.390223574e-05,
+            "E": 4.280899612e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 112.65,
+          "Tmax_K": 421.09,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 112.65-421.09 K, max deviation 0.56 %; range narrowed from 112.65-437.33 K (max deviation there 2.0 %) to meet the 1 % target"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 49293.54722,
+            "B": 1.994138445,
+            "C": -3.904467227,
+            "D": 3.685891943,
+            "E": -1.319605026
+          },
+          "units": "J/mol",
+          "Tmin_K": 112.65,
+          "Tmax_K": 437.33,
+          "Tc_K": 460.34979,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Lemmon-JCED-2006)",
+            "reference": "Lemmon and Span, J. Chem. Eng. Data 51 (2006) 785-850, doi:10.1021/je050186n",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 112.65-437.33 K (triple point to 0.95 Tc), max deviation 0.13 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -3.719285776,
+            "B": 350.470189,
+            "C": -1.041178328,
+            "D": -7.988128559e-16,
+            "E": 5.63
+          },
+          "units": "Pa s",
+          "Tmin_K": 112.65,
+          "Tmax_K": 437.33,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Chung-IECR-1988)",
+            "reference": "Chung et al., Ind. Eng. Chem. Res. 27 (1988) 671-679, doi:10.1021/ie00076a024",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 112.65-437.33 K (triple point to 0.95 Tc), max deviation 0.79 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 3.668874492e-06,
+            "B": 0.3631464891,
+            "C": 1069.972381,
+            "D": -37345.46402
+          },
+          "units": "Pa s",
+          "Tmin_K": 112.65,
+          "Tmax_K": 500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Chung-IECR-1988)",
+            "reference": "Chung et al., Ind. Eng. Chem. Res. 27 (1988) 671-679, doi:10.1021/ie00076a024",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 112.65-500.00 K (triple point to the upper limit of the equation of state), max deviation 0.17 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.4704295425,
+            "B": -0.003634854582,
+            "C": 1.48441973e-05,
+            "D": -2.914561464e-08,
+            "E": 2.127994645e-11
+          },
+          "units": "W/m/K",
+          "Tmin_K": 112.65,
+          "Tmax_K": 437.33,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Vassiliou-JPCRD-2015-pentanes)",
+            "reference": "Vassiliou et al., Journal of Physical and Chemical Reference Data 44 (2015) 033102",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid",
+            "fit": "200 points 112.65-437.33 K (triple point to 0.95 Tc), max deviation 0.26 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 5.59344194e-06,
+            "B": 1.550424109,
+            "C": 524.6525253,
+            "D": -9230.204269
+          },
+          "units": "W/m/K",
+          "Tmin_K": 112.65,
+          "Tmax_K": 500.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Vassiliou-JPCRD-2015-pentanes)",
+            "reference": "Vassiliou et al., Journal of Physical and Chemical Reference Data 44 (2015) 033102",
+            "access": "MIT (open source)",
+            "quantity": "dilute gas (1 kPa, or 1 % of Psat if lower)",
+            "fit": "200 points 112.65-500.00 K (triple point to the upper limit of the equation of state), max deviation 0.32 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.05099987396,
+            "B": 1.208996205
+          },
+          "units": "N/m",
+          "Tmin_K": 112.65,
+          "Tmax_K": 437.33,
+          "Tc_K": 460.34979,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (Isopentane: Mulero-JPCRD-2012)",
+            "reference": "Mulero et al., J. Phys. Chem. Ref. Data 41 (2012) 043105-1:13, doi:10.1063/1.4768782",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 112.65-437.33 K (triple point to 0.95 Tc), max deviation 0.00017 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        }
+      },
+      "fusion": {
+        "Tm_K": 113.37,
+        "Hfus_J_mol": 5130.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C78784&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Guthrie and Huffman, 1943, 2; Parks, Huffman, et al., 1930, 2; Schumann, Aston, et al., 1942, 2",
+          "selection": "melting temperature: median of 3 WebBook triple-point temperatures (Guthrie and Huffman, 1943; Schumann, Aston, et al., 1942; Parks, Huffman, et al., 1930); enthalpy of fusion: median of 4 measured values (5.113-5.1555 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 113.25 K (-0.12 K), enthalpy of fusion 5150 J/mol (+0.4 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
+      }
+    },
+    "n-undecane": {
+      "name": "n-Undecane",
+      "formula": "C11H24",
+      "cas": "1120-21-4",
+      "aliases": [
+        "undecane",
+        "hendecane"
+      ],
+      "MW": 156.3083,
+      "Tc_K": 638.8,
+      "Pc_Pa": 1990452.0,
+      "Tb_K": 468.9337,
+      "vapourPressure": {
+        "equation": "DIPPR101",
+        "form": "ln(P/Pa) = A + B/T + C ln T + D T^E",
+        "units": "Pa",
+        "A": 105.6636059,
+        "B": -10232.62022,
+        "C": -11.82468394,
+        "D": 1.195738599e-10,
+        "E": 3.57,
+        "Tmin_K": 247.541,
+        "Tmax_K": 638.8,
+        "tier": "fitted",
+        "source": "Fitted to the saturation pressure of CoolProp 8.0.0 (n-Undecane: equation of state Aleksandrov-TE-2011; Aleksandrov et al., Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027); 200 points 247.541-638.800 K (triple point to critical point), max deviation 0.33 %.",
+        "source_ids": [
+          "coolprop"
+        ]
+      },
+      "uniquac": {
+        "r": 7.871799,
+        "q": 6.556,
+        "source": "ChemSep pure-component database v8.3 (Kooijman & Taylor), UNIQUAC r and q; Artistic License 2.0.",
+        "source_ids": [
+          "chemsep-8.3"
+        ]
+      },
+      "omega": 0.539037,
+      "constants_source": "CoolProp 8.0.0 (n-Undecane: equation of state Aleksandrov-TE-2011); open source, MIT. Tb at 101.325 kPa from the same equation of state. Formula and CAS: chemicals library (MIT).",
+      "constants_source_ids": [
+        "coolprop"
+      ],
+      "omega_source": "CoolProp 8.0.0 (n-Undecane: equation of state Aleksandrov-TE-2011); open source, MIT.",
+      "omega_source_ids": [
+        "coolprop"
+      ],
+      "properties": {
+        "liquidDensity": {
+          "equation": "DIPPR105",
+          "coefficients": {
+            "A": 124.2250675,
+            "B": 0.3640075837,
+            "C": 621.1667647,
+            "D": 0.4168892226
+          },
+          "units": "kg/m3",
+          "Tmin_K": 247.55,
+          "Tmax_K": 606.86,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (n-Undecane: Aleksandrov-TE-2011)",
+            "reference": "Aleksandrov et al., Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027",
+            "access": "MIT (open source)",
+            "quantity": "saturated liquid density",
+            "fit": "200 points 247.55-606.86 K (triple point to 0.95 Tc), max deviation 0.35 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 78 measured values from 16 articles, 278.1-363.1 K; median deviation of the articles 0.01 % (within the 1 % tolerance of the engineering report); largest single deviation -0.49 % at 298.1 K (Maduro 2008, doi:10.1016/j.fluid.2008.01.007); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "idealGasHeatCapacity": {
+          "equation": "DIPPR107",
+          "coefficients": {
+            "A": 182.3032018,
+            "B": 526.8979421,
+            "C": 1351.868665,
+            "D": 325.2517078,
+            "E": 683.3448195
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 247.55,
+          "Tmax_K": 700.0,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (n-Undecane: Aleksandrov-TE-2011)",
+            "reference": "Aleksandrov et al., Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027",
+            "access": "MIT (open source)",
+            "quantity": "cp0molar",
+            "fit": "200 points 247.55-700.00 K (triple point to the upper limit of the equation of state), max deviation 0.043 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidHeatCapacity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 1448.702468,
+            "B": -12.75559107,
+            "C": 0.0511902592,
+            "D": -8.569321071e-05,
+            "E": 5.298442225e-08
+          },
+          "units": "J/mol/K",
+          "Tmin_K": 247.55,
+          "Tmax_K": 606.86,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (n-Undecane: Aleksandrov-TE-2011)",
+            "reference": "Aleksandrov et al., Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027",
+            "access": "MIT (open source)",
+            "quantity": "cp of the saturated liquid",
+            "fit": "200 points 247.55-606.86 K (triple point to 0.95 Tc), max deviation 0.79 %",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 5 measured values from 1 articles, 283.1-303.1 K; median deviation of the articles 0.17 % (within the 2 % tolerance of the engineering report); largest single deviation -0.29 % at 283.1 K (Peleteiro 2005, doi:10.1016/j.jct.2004.12.010); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "heatOfVaporization": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 92537.70914,
+            "B": 1.187442614,
+            "C": -0.9924137657,
+            "D": 0.2766700856
+          },
+          "units": "J/mol",
+          "Tmin_K": 247.55,
+          "Tmax_K": 606.86,
+          "Tc_K": 638.80001,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (n-Undecane: Aleksandrov-TE-2011)",
+            "reference": "Aleksandrov et al., Thermal Engineering 58 (2011) 691-698, doi:10.1134/S0040601511080027",
+            "access": "MIT (open source)",
+            "quantity": "h(saturated vapour) - h(saturated liquid)",
+            "fit": "200 points 247.55-606.86 K (triple point to 0.95 Tc), max deviation 0.18 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        },
+        "liquidViscosity": {
+          "equation": "DIPPR101",
+          "coefficients": {
+            "A": -92.575,
+            "B": 4408.9,
+            "C": 12.698,
+            "D": -1.5556e-05,
+            "E": 2.0
+          },
+          "units": "Pa s",
+          "Tmin_K": 247.58,
+          "Tmax_K": 639.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 101 coefficients taken over unchanged except: Tmin raised to the triple point 247.58 K (ChemSep: 247.57 K).; reproduces ChemSep within 0.0001 % at 200 points 247.58-639.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: undecane is not a WebBook fluid (its fluid list, checked 2026-10-08, has decane and dodecane)",
+            "measuredCheck": "NIST TRC ThermoML Archive (validation/python/check_measured.py): 45 measured values from 4 articles, 283.1-363.1 K; median deviation of the articles 1.88 % (within the 5 % tolerance of the engineering report); largest single deviation +3.50 % at 288.1 K (Iglesias-Silva 2016, doi:10.1021/acs.jced.6b00121); docs/MEASURED_CHECKS.md"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourViscosity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 2.9213e-08,
+            "B": 0.9335,
+            "C": 118.62,
+            "D": -4363.8
+          },
+          "units": "Pa s",
+          "Tmin_K": 247.57,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 247.57-1000.00 K",
+            "chain": "CoolProp 8.0.0: no viscosity model; NIST WebBook: undecane is not a WebBook fluid (its fluid list, checked 2026-10-08, has decane and dodecane)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "liquidThermalConductivity": {
+          "equation": "DIPPR100",
+          "coefficients": {
+            "A": 0.1843962306,
+            "B": -0.0001210740053,
+            "C": -1.496432892e-07
+          },
+          "units": "W/m/K",
+          "Tmin_K": 247.58,
+          "Tmax_K": 469.08,
+          "tier": "fitted",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "refitted in the DIPPR100 form to ChemSep equation 16 (Y = A + exp(B/T + C + D T + E T^2), W/m/K, converted to the mol basis): 200 points 247.58-469.08 K (ChemSep range, Tmin raised to the triple point), max deviation 0.64 %",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: undecane is not a WebBook fluid (its fluid list, checked 2026-10-08, has decane and dodecane)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "vapourThermalConductivity": {
+          "equation": "DIPPR102",
+          "coefficients": {
+            "A": 0.037608,
+            "B": 0.6852,
+            "C": 33443.0,
+            "D": 9124600.0
+          },
+          "units": "W/m/K",
+          "Tmin_K": 247.571,
+          "Tmax_K": 1000.0,
+          "tier": "databank",
+          "source": {
+            "name": "ChemSep v8.3 pure-component database",
+            "reference": "Kooijman and Taylor, ChemSep v8.3, chemsep1.xml (2021), via https://github.com/DanWBR/dwsim (DWSIM.Thermodynamics/Assets/Databases)",
+            "access": "Artistic License 2.0",
+            "fit": "ChemSep equation 102 coefficients taken over unchanged; reproduces ChemSep within 0.0001 % at 200 points 247.57-1000.00 K",
+            "chain": "CoolProp 8.0.0: no thermal conductivity model; NIST WebBook: undecane is not a WebBook fluid (its fluid list, checked 2026-10-08, has decane and dodecane)"
+          },
+          "source_ids": [
+            "chemsep-8.3"
+          ]
+        },
+        "surfaceTension": {
+          "equation": "DIPPR106",
+          "coefficients": {
+            "A": 0.05560000644,
+            "B": 1.320000151
+          },
+          "units": "N/m",
+          "Tmin_K": 247.55,
+          "Tmax_K": 606.86,
+          "Tc_K": 638.80001,
+          "tier": "fitted",
+          "source": {
+            "name": "CoolProp 8.0.0 (n-Undecane: Mulero-JPCRD-2014)",
+            "reference": "Mulero and Cachadiña, J. Phys. Chem. Ref. Data 43 (2014) 023104-1:8, doi:10.1063/1.4878755",
+            "access": "MIT (open source)",
+            "quantity": "surface tension",
+            "fit": "200 points 247.55-606.86 K (triple point to 0.95 Tc), max deviation 0.0001 %"
+          },
+          "source_ids": [
+            "coolprop"
+          ]
+        }
+      },
+      "fusion": {
+        "Tm_K": 247.58,
+        "Hfus_J_mol": 22340.0,
+        "tier": "databank",
+        "source": {
+          "name": "NIST Chemistry WebBook (SRD 69), phase change data",
+          "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C1120214&Units=SI&Mask=4",
+          "access": "Free to read online (NIST Standard Reference Database 69); values cited per record",
+          "reference": "Domalski and Hearing, 1996; Mondieig, Rajabalee, et al., 2004",
+          "selection": "melting temperature: median of 5 WebBook triple-point temperatures (Messerly, Guthrie, et al., 1967; Finke, Gross, et al., 1954; Waddington, 1950; Waddington, 1950; Huffman, Parks, et al., 1931); enthalpy of fusion: median of 2 measured values (22.18-22.5 kJ/mol) within 3 K of it",
+          "crossCheck": "ChemSep v8.3: triple point 247.57 K (-0.01 K), enthalpy of fusion 22180 J/mol (-0.7 %)"
+        },
+        "source_ids": [
+          "nist-webbook"
+        ]
+      }
     }
   }
 }
