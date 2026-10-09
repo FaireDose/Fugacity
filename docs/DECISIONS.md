@@ -13,7 +13,8 @@ Newest first. Pull requests are in `FaireDose/Fugacity`.
 - **Review and merge:**
   - [#85](https://github.com/FaireDose/Fugacity/pull/85): method advisor; older tests reviewed against the method rules.
   - [#86](https://github.com/FaireDose/Fugacity/pull/86): Newton flash; P-H search without workarounds.
-  - The pull request that adds this page.
+  - [#87](https://github.com/FaireDose/Fugacity/pull/87): this page, the documentation index and the model pages.
+  - [#88](https://github.com/FaireDose/Fugacity/pull/88): Excel download of every diagram; Feedback panel.
 - **Proposals 0009, 0010 and 0011:** merged in [#83](https://github.com/FaireDose/Fugacity/pull/83) with status
   **Draft**. Accept or decline each one, then set its status in the file and in `proposals/README.md`.
 - **The project name** (the CHETA idea, *Chemical Engineering Tools for Agents*). The v0.3.0 GitHub
@@ -146,6 +147,15 @@ These apply to every piece of work, on top of [AGENTS.md](../AGENTS.md).
   - this page;
   - an index of the documentation ([README.md](README.md));
   - one reference page per topic in [models/](models/).
+- **Model pages stay maps** (maintainer's decision): the model pages point to the code files, where the
+  equations and references are; the full equations are not copied into the documentation.
+- **Requested and opened in [#88](https://github.com/FaireDose/Fugacity/pull/88):**
+  - In the simulator, a link to report bugs and improvements and to the GitHub forum. It became the
+    Feedback panel: the bug form opens with the setup filled in, plus the improvement form,
+    GitHub Discussions and the Data form.
+  - An Excel download on each page with the shown diagram and enough points for the whole curve.
+    It became the Excel button on the canvas: every point the view drew (for example 101 for a
+    T-x-y), in the units shown, with an About sheet of settings and sources.
 
 ### 2026-10-08
 
