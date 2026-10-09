@@ -15,6 +15,8 @@ const START = [[0.1, 0.1, 0.8], [0.2, 0.6, 0.2], [0.6, 0.2, 0.2], [0.3, 0.3, 0.4
  * two-liquid hatching and the isotherms carry the class "fug-bg-layer" (background layers).
  * Works with any system that has bubbleT (activity models and equations of state); grid
  * nodes where the bubble point is not found are left blank, and the readout says how many.
+ * Returns what was drawn, for the Excel export: { nodes: [{ x, T, y, stable }], n (grid
+ * divisions), residueCurves: [{ start, points: [{ x, T }] }], azeotropes } (mole fractions, K).
  */
 export function renderTernary(plot, side, sys, P, opts) {
   const bv = basisView(opts.basis, opts.MW);
@@ -85,11 +87,14 @@ export function renderTernary(plot, side, sys, P, opts) {
     }
   }
 
+  const residues = [];
   if (opts.residueCurves) {
     for (const x0 of START) {
-      let pts;
-      try { pts = sys.residueCurve(x0, P).map(p => toXY(p.x)); } catch (e) { if (!(e && e.code)) throw e; continue; }
-      if (pts.length < 2) continue;
+      let curve;
+      try { curve = sys.residueCurve(x0, P); } catch (e) { if (!(e && e.code)) throw e; continue; }
+      if (curve.length < 2) continue;
+      residues.push({ start: x0, points: curve });
+      const pts = curve.map(p => toXY(p.x));
       const d = "M" + pts.map(p => p.map(q => q.toFixed(1)).join(",")).join("L");
       s("path", { d, fill: "none", stroke: "var(--fug-halo)", "stroke-width": 3.2, "stroke-linejoin": "round" }, svg);
       s("path", { d, fill: "none", stroke: "var(--fug-fg)", "stroke-width": 1.2, "stroke-linejoin": "round" }, svg);
@@ -180,4 +185,5 @@ export function renderTernary(plot, side, sys, P, opts) {
   svg.addEventListener("pointermove", onPointer);
   svg.addEventListener("pointerdown", onPointer);
   show(Math.round(n * 0.3), Math.round(n * 0.3));
+  return { nodes, n, residueCurves: residues, azeotropes: azeo };
 }

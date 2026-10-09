@@ -49,6 +49,7 @@ export const UTILITIES = [
   { id: "library", label: "Library", icon: "book", title: "Library", intro: "Which parameter set each binary pair uses." },
   { id: "sources", label: "Sources", icon: "search", title: "Sources", intro: "Every source behind Fugacity's data, why it is open and what uses it." },
   { id: "settings", label: "Settings", icon: "units", title: "Settings", intro: "Units, composition basis and panels. They apply to every workspace." },
+  { id: "feedback", label: "Feedback", icon: "chat", title: "Feedback", intro: "Report a bug, suggest an improvement or ask a question, on Fugacity's GitHub pages." },
 ];
 
 /** The workspace of a view. */

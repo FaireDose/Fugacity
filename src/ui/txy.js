@@ -8,6 +8,8 @@ import { s, h, text, ticks, svgPoint, tempUnit, fmt, basisView } from "./dom.js"
  * Works with any system that has bubbleT (activity models and equations of state); points
  * where the bubble point is not found are left out, and the readout says how many.
  * Grid lines and the two-liquid shading carry the class "fug-bg-layer" (background layers).
+ * Returns what was drawn, for the Excel export: { points: [{ x, y, T, gamma, stable } | null],
+ * azeotropes: [{ x, T }] } (mole fractions of component 1, T in K; null where no bubble point).
  */
 export function renderTxy(plot, side, sys, P, view = {}) {
   const bv = basisView(view.basis, view.MW);
@@ -16,7 +18,7 @@ export function renderTxy(plot, side, sys, P, view = {}) {
   let missed = 0, firstError = null;
   for (let k = 0; k < N; k++) {
     const x1 = k / (N - 1);
-    try { const r = sys.bubbleT([x1, 1 - x1], P); data.push({ x: x1, T: r.T, y: r.y[0] }); } catch (e) {
+    try { const r = sys.bubbleT([x1, 1 - x1], P); data.push({ x: x1, T: r.T, y: r.y[0], gamma: r.gamma ?? null }); } catch (e) {
       if (!(e && e.code)) throw e;
       missed++; firstError ??= e; data.push(null);
     }
@@ -44,7 +46,8 @@ export function renderTxy(plot, side, sys, P, view = {}) {
   text(svg, 14, (T + H - B) / 2, `T, ${tl}`, { "text-anchor": "middle", fill: "var(--fug-fg2)", "font-size": 12, transform: `rotate(-90 14 ${(T + H - B) / 2})` });
 
   // spinodal check: shade compositions where the liquid would split
-  const unstable = ok.filter(d => !sys.isLiquidStable([d.x, 1 - d.x], d.T, P));
+  for (const d of ok) d.stable = sys.isLiquidStable([d.x, 1 - d.x], d.T, P);
+  const unstable = ok.filter(d => !d.stable);
   if (unstable.length) {
     const x0 = W1(Math.min(...unstable.map(d => d.x))), x1 = W1(Math.max(...unstable.map(d => d.x)));
     s("rect", { x: sx(x0), y: T, width: Math.max(2, sx(x1) - sx(x0)), height: H - B - T, fill: "var(--fug-err-bg)", opacity: 0.9 }, bg);
@@ -108,4 +111,5 @@ export function renderTxy(plot, side, sys, P, view = {}) {
   svg.addEventListener("pointermove", onPointer);
   svg.addEventListener("pointerdown", onPointer);
   show(0.5);
+  return { points: data, azeotropes: azeo };
 }

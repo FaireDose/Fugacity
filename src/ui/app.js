@@ -27,8 +27,9 @@ import { HENRY_GASES } from "../thermo/henry.js";
 import { system } from "../system.js";
 import {
   VIEWS, PRESETS, initialState, applyPatch, TIER_SHORT, fmtP, parseP, parseT, fmtTemp, pxyTemperature,
-  RULES, ruleOf, setsFor, setChoices, pairKeyOf, modelLabel,
+  RULES, ruleOf, setsFor, setChoices, pairKeyOf, modelLabel, feedbackLinks,
 } from "./app-logic.js";
+import { diagramXlsx, exportFileName } from "./diagram-export.js";
 import { FUTURE_MODELS } from "./future-models.js";
 import { WORKSPACES, SECTIONS, sectionOf, UTILITIES, INPUTS, checkInputs, examplesFor, rotateInputs, solventsFor, needsFor, isEosModel } from "./workspaces.js";
 import { UNIT_CHOICES, explorerProperties, tToDisplay, pToDisplay, fmtShort } from "./properties-logic.js";
@@ -152,6 +153,10 @@ export function app(target, cfg = {}) {
   const ribbon = h("div", { class: "fa-ribbon", role: "toolbar", id: `fa-rib-${uid}` });
   const left = h("aside", { class: "fa-left", "aria-label": "Inputs", id: `fa-in-${uid}` });
   const canvasBar = h("div", { class: "fa-canvas-bar" });
+  // Excel download of the diagram on the canvas: shown when the view has a data table (info.export)
+  const excelBtn = h("button", { type: "button", class: "fa-mini fa-excel", "data-fk": "diagram-xlsx", hidden: true,
+    title: "Download the numbers of this diagram as an Excel workbook: every point drawn, in the units shown",
+    on: { click: () => exportDiagram() } }, icon("table", 15), "Excel");
   const notes = h("div", { class: "fa-notes" });
   const plot = h("div", { class: "fug-plot fa-plot" });
   const below = h("div", { class: "fa-below" });
@@ -747,6 +752,7 @@ export function app(target, cfg = {}) {
         h("h2", {}, v === "properties" && check.ok ? [h("span", { class: "fa-role-tag" }, "Component"), title] : title),
         h("div", { class: "fa-sub" }, sub)),
       h("div", { class: "fa-canvas-tools", role: "toolbar", "aria-label": "Panels" },
+        excelBtn,
         tog("panelL", "Inputs panel", state.panels.left, () => set({ panels: { left: !state.panels.left } }, { canvas: false }), "tog-left"),
         tog("layers", state.background ? "Hide background layers" : "Show background layers", state.background, () => set({ background: !state.background }, { canvas: false }), "tog-bg"),
         tog("panelR", "Results panel", state.panels.right, () => set({ panels: { right: !state.panels.right } }, { canvas: false }), "tog-right")));
@@ -922,9 +928,25 @@ export function app(target, cfg = {}) {
       h("button", { type: "button", class: "fa-mini", "data-fk": "restore-no", on: { click: () => { previous = null; clearAutosave(); set({}, { canvas: false }); renderCanvas(true); } } }, "Start new"));
   }
 
+  /** The Feedback panel: GitHub issue forms and the Discussions forum, the bug form filled with the setup. */
+  function feedbackPanel() {
+    const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
+    const setup = v === "flowsheet" ? `Flowsheet "${state.title || "untitled"}", ${state.flowsheet.thermo.model}`
+      : `${WORKSPACES.find(w => w.id === state.workspace).label}${state.workspace === "equilibrium" ? `, ${VIEWS[v].label}` : ""}${check.ok ? `: ${calculationName()}` : ""}; ${modelLabel(state)}`;
+    const links = feedbackLinks({ version: pkg.version, setup });
+    return h("div", { class: "fa-dgrid" },
+      drawerSection("On GitHub", h("ul", { class: "fa-feedback" }, ...links.map(l => h("li", {},
+        h("a", { href: l.url, target: "_blank", rel: "noopener", "data-fk": `feedback-${l.id}` }, l.label),
+        h("p", { class: "fa-in-hint" }, l.hint))))),
+      drawerSection("Before you send",
+        h("p", { class: "fa-in-hint" }, "The pages are public and need a free GitHub account. For a wrong result, say what you expected and where that number comes from; a saved project file (File, Save) lets others open exactly your setup."),
+        h("p", { class: "fa-in-hint" }, "A security problem: report it privately, as SECURITY.md says, not in a public issue.")));
+  }
+
   function drawerBody(id) {
     const u = state.units;
     if (id === "project") return projectPanel();
+    if (id === "feedback") return feedbackPanel();
     if (id === "sources") {
       const check = checkInputs(state.view, state.inputs[state.view], state.model);
       return sourcesPanel({ ids: check.ok ? check.use : [], what: check.ok ? calculationName() : VIEWS[state.view].label, uid, look: ui.sources });
@@ -1002,6 +1024,24 @@ export function app(target, cfg = {}) {
     renderDrawer();
   }
 
+  /** Download the numbers behind the diagram on the canvas (the view's export()) as .xlsx. */
+  function exportDiagram() {
+    const exp = ui.status.info?.export;
+    if (!exp) return;
+    const note = h("div", { class: "fug-foot fa-export-note", role: "status" });
+    try {
+      const desc = exp();
+      const name = exportFileName(desc);
+      const url = URL.createObjectURL(new Blob([diagramXlsx(desc, { version: pkg.version })], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      const a = h("a", { href: url, download: name, style: "display:none" });
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      note.textContent = `Saved ${name}: an About sheet with the settings and sources, then ${desc.tables.map(t => `"${t.name}"`).join(", ")}, with every point the view calculated, in the units shown. If nothing was downloaded, the page does not allow downloads.`;
+    } catch (e) { note.textContent = `The Excel file could not be made: ${e.message}`; }
+    notes.querySelector(".fa-export-note")?.remove();
+    notes.prepend(note);
+  }
+
   // ---- canvas
   const canvasKey = () => {
     const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
@@ -1025,6 +1065,7 @@ export function app(target, cfg = {}) {
       const v = state.view, check = checkInputs(v, state.inputs[v], state.model);
       let info = null, error = null;
       notes.replaceChildren(); below.replaceChildren(); inspectorExtra.replaceChildren(); provenance.replaceChildren(); side.hidden = false;
+      excelBtn.hidden = true;
       delete plot.dataset.view;
       if (!check.ok) {
         plot.replaceChildren(needInputs(v, check));
@@ -1046,6 +1087,7 @@ export function app(target, cfg = {}) {
       canvasRendered = true;
       box.classList.remove("fa-busy");
       ui.status = { busy: false, ms: check.ok ? performance.now() - t0 : null, error: error ?? info?.error ?? null, info, waiting: !check.ok };
+      excelBtn.hidden = !(check.ok && !error && typeof info?.export === "function");
       renderStatus();
     };
     if (now) run(); else setTimeout(run, 16);

@@ -41,6 +41,29 @@ export const VIEWS = {
   steam: { workspace: "steam", label: "Steam tables" },
 };
 
+/** Fugacity's repository: its issue forms (.github/ISSUE_TEMPLATE) and its Discussions forum. */
+export const REPO_URL = "https://github.com/FaireDose/Fugacity";
+
+/**
+ * The links of the Feedback panel. The bug form opens with its "What happened" field (id
+ * "what" in .github/ISSUE_TEMPLATE/bug.yml) filled with the version and the setup on the canvas,
+ * from a query parameter named by the field's id, so the report says what was calculated.
+ * Everything goes to public GitHub pages, which need a free GitHub account.
+ */
+export function feedbackLinks({ version = "", setup = "", repo = REPO_URL } = {}) {
+  const what = `Fugacity ${version}${setup ? `. ${setup}` : ""}.\n\nWhat happened:\n\nWhat I expected:\n`;
+  return [
+    { id: "bug", label: "Report a bug", hint: "Something does not work, looks wrong, or stops with an error. The form opens with your setup filled in.",
+      url: `${repo}/issues/new?template=bug.yml&what=${encodeURIComponent(what)}` },
+    { id: "idea", label: "Suggest an improvement", hint: "A feature, a view, a unit operation or a model you need.",
+      url: `${repo}/issues/new?template=model-or-feature.yml` },
+    { id: "forum", label: "Ask or discuss in the forum", hint: "Questions, ideas still taking shape, how others use Fugacity: GitHub Discussions.",
+      url: `${repo}/discussions` },
+    { id: "data", label: "Suggest data or a correction", hint: "Open measured data for a pair or a component, or a value that disagrees with an open source.",
+      url: `${repo}/issues/new?template=ai-contribution.yml` },
+  ];
+}
+
 /** Every model of the Model group: activity-coefficient models, then equations of state. */
 export const ALL_MODELS = [...MODELS, ...EOS_MODELS];
 
