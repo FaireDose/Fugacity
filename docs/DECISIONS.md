@@ -24,13 +24,19 @@ Newest first. Pull requests are in `FaireDose/Fugacity`.
 
 ### Engineering, in the suggested order
 
-1. Import the ChemSep k_ij of the proposal 0008 components, which the batches did not bring in
-   (for example methane + n-nonane).
-2. Compressor, pump and valve blocks (shown as "coming later"). Optionally, then the energy side
+1. Equation-of-state pairs: fit PR and SRK k_ij to the archive data of the 92 nonpolar or gas pairs
+   that have none (docs/PAIR_SCAN.md, "Coverage by the method each pair needs"), and import the
+   ChemSep k_ij of the proposal 0008 components that the batches did not bring in (for example
+   methane + n-nonane).
+2. Gases in polar liquids (139 pairs with archive data): Henry's-law constants for gases in water
+   from the archive; other solvents need PSRK or MHV2, not in CHEPTA yet.
+3. Review the two pairs whose 1-atm data sets disagree by more than 1 K (methanol + 2-propanol,
+   water + 2-propanol; docs/PAIR_SCAN.md).
+4. Compressor, pump and valve blocks (shown as "coming later"). Optionally, then the energy side
    of the Cavett problem (no published values to compare with).
-3. A "measured solubility" option next to the model, for a future crystallizer block.
-4. Grow the flowsheet suite: more seeds, P-H drums, and reactive cases once proposal 0010 exists.
-5. Two liquids with an equation of state: low priority. Only with a proper method such as CPA,
+5. A "measured solubility" option next to the model, for a future crystallizer block.
+6. Grow the flowsheet suite: more seeds, P-H drums, and reactive cases once proposal 0010 exists.
+7. Two liquids with an equation of state: low priority. Only with a proper method such as CPA,
    never a plain cubic equation (decision of 2026-10-09).
 
 ### After the proposals are accepted
@@ -99,6 +105,19 @@ These apply to every piece of work, on top of [AGENTS.md](../AGENTS.md).
   with the ChemSep data (README, [#81](https://github.com/FaireDose/Fugacity/pull/81)).
 
 ## Log
+
+### 2026-10-09 (night): pair data
+
+- **Asked:** why common pairs such as 1-propanol + 1-butanol had no parameters, and to look for the data
+  again; each pair needs only the model the method rules choose for it.
+- **Found** (docs/PAIR_SCAN.md):
+  - the ChemSep databank gave about 50 more activity-model pairs, now imported;
+  - the whole NIST TRC ThermoML Archive (bulk file, 11,923 records) holds binary vapour-liquid data
+    for 7,158 compound pairs, of which 704 are pairs of CHEPTA components;
+  - 162 activity-model pairs fitted to it, one consistent data set each (validation/data/vle/), within
+    fixed limits; hydrocarbon pairs left for equation-of-state k_ij.
+- **Still without open data:** many classic pairs measured before 2003, for example ethanol +
+  1-propanol; they stay on docs/DATA_WANTED.md.
 
 ### 2026-10-09
 
