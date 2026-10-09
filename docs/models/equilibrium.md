@@ -1,7 +1,19 @@
 # Equilibrium algorithms (layer 2)
 
 How Fugacity finds the phases. Every algorithm here takes a system from
-[thermodynamics.md](thermodynamics.md) and never looks inside it. Each file's header comment
+[thermodynamics.md](thermodynamics.md) and gets its numbers only by asking that system:
+
+- activity coefficients;
+- K-values;
+- fugacity coefficients;
+- enthalpies.
+
+The algorithms never read the parameters (NRTL a, b and α, or the k_ij) and never repeat a
+model's equations. They do check which family the system belongs to, activity model or
+equation of state, because the two need different steps. For example, an equation of state
+uses Michelsen's stability test and has no two-liquid flash yet. So a fix to NRTL, or a new
+parameter set, needs no change here, and a new activity model works with these algorithms once
+it answers the same questions. Each file's header comment
 states its method and open references; this page maps them. Errors carry codes
 ([src/util/errors.js](../../src/util/errors.js)): a solver that does not converge throws and says
 why, and never returns a wrong answer silently.
