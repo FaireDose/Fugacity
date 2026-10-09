@@ -1,3 +1,4 @@
+import { methodAdvice, pressureAdvice } from "./method-advice.js";
 import componentData from "../data/components.json" with { type: "json" };
 import { vapourPressure } from "./psat.js";
 import { nrtl } from "./activity/nrtl.js";
@@ -127,6 +128,8 @@ export function createSystem(cfg) {
       : assoc.some(Boolean) ? "chemical theory (dimerization) for " + comps.filter((_, i) => assoc[i]).map(c => c.name).join(", ") : "ideal gas",
     vapourModel,
     ...(cubicVapour ? { vapourPairs: cubicVapour.pairs } : {}),
+    // is this the recommended method for these components? (method-advice.js, docs/METHOD_SELECTION.md)
+    advice: methodAdvice({ ids, names: comps.map(c => c.name), formulas: comps.map(c => c.formula), model, eos: false }),
   };
 
   /**
@@ -136,6 +139,7 @@ export function createSystem(cfg) {
    */
   function warnings(T, P) {
     const w = pairWarnings(pairs, T, P, p => `${model} parameters of ${p.pair.join(" + ")}${p.default ? "" : ` (set "${p.set}")`} come`);
+    if (P != null && n > 1) w.push(...pressureAdvice({ model, eos: false }, P));
     return cubicVapour ? [...w, ...cubicVapour.warnings(T)] : w;
   }
 

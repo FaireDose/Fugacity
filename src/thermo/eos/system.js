@@ -7,6 +7,7 @@
  *
  * Equations: see cubic.js. Units: T in K, P in kPa, mole fractions.
  */
+import { methodAdvice } from "../method-advice.js";
 import componentData from "../../data/components.json" with { type: "json" };
 import { cubicEos, CUBICS } from "./cubic.js";
 import { RANGE_MARGIN_K, selection, choosePair, describePair, pairWarnings } from "../library.js";
@@ -91,6 +92,8 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
     components: comps.map((c, i) => ({ id: ids[i], name: c.name, formula: c.formula, Tc_K: c.Tc_K, Pc_kPa: c.Pc_Pa / 1000, omega: c.omega })),
     model, equation: eos.name, pairs, missingPairs: missing,
     vapour: eos.name, liquid: eos.name,
+    // is this the recommended method for these components? (method-advice.js, docs/METHOD_SELECTION.md)
+    advice: methodAdvice({ ids, names: comps.map(c => c.name), formulas: comps.map(c => c.formula), model, eos: true }),
     notes: [
       "No volume translation: liquid densities from a cubic equation of state are typically 5-20 % off.",
       "Root choice: smallest Z for the liquid, largest for the vapour; with one real root the same root is used for both and labelled liquid-like or vapour-like.",
@@ -108,7 +111,7 @@ export function createEosSystem(ids, cfg, sel = selection(cfg)) {
       if (p.tier === "none") w.push(`No ${model} k_ij for ${p.pair.join(" + ")}: k_ij = 0 used; results for this pair are a prediction without binary data.`);
       else w.push(...pairWarnings([p], T, P, q => `k_ij of ${q.pair.join(" + ")} (${q.kij}) comes`));
     }
-    return w;
+    return [...w, ...info.advice];
   }
 
   return {

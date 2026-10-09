@@ -28,6 +28,7 @@ import henryData from "../data/henry.json" with { type: "json" };
 import componentData from "../data/components.json" with { type: "json" };
 import knownIssues from "../data/known-issues.json" with { type: "json" };
 import { findComponent } from "./components.js";
+import { isPolar } from "./method-advice.js";
 import { fail } from "../util/errors.js";
 
 /** Quality tiers, best first (ARCHITECTURE.md). */
@@ -45,6 +46,10 @@ let usedByCache = null;
 
 const comp = id => componentData.components[id];
 const nameOf = id => comp(id)?.name ?? id;
+/** An equation-of-state k_ij of a pair with a polar component: not the recommended method for their liquid
+ *  (docs/METHOD_SELECTION.md); the set is kept (it shows how far a plain cubic equation is off) and labelled. */
+const eosPolar = s => EOS_MODELS.includes(s.model) && [s.i, s.j].some(id => isPolar(id, comp(id)?.formula));
+const NOT_RECOMMENDED = "not recommended for the liquid: a polar pair with a plain cubic equation of state (docs/METHOD_SELECTION.md)";
 const pairKey = (a, b) => [a, b].sort().join("|");
 
 // ---------------------------------------------------------------------------------------
@@ -231,7 +236,7 @@ function computeUsedBy() {
     const type = EOS_MODELS.includes(s.model) ? "kij" : "pair-set";
     for (const id of s.source_ids) {
       add(id, { type, model: s.model, pair, set: s.set, default: s.default, tier: s.tier,
-        label: `${s.model} ${type === "kij" ? "k_ij " : ""}${pair.join(" + ")}, set "${s.set}"${s.default ? " (default)" : ""}` });
+        label: `${s.model} ${type === "kij" ? "k_ij " : ""}${pair.join(" + ")}, set "${s.set}"${s.default ? " (default)" : ""}${eosPolar(s) ? `; ${NOT_RECOMMENDED}` : ""}` });
     }
   }
   for (const p of henryData.pairs) for (const id of p.source_ids ?? []) add(id, { type: "henry", gas: p.gas, label: `Henry's law constant of ${nameOf(p.gas)} in water` });
@@ -275,6 +280,7 @@ function publicSet(c) {
     source_ids: c.source_ids.slice(), sources: c.source_ids.map(sourceEntry).filter(Boolean), source: c.source,
     valid: c.valid ? JSON.parse(JSON.stringify(c.valid)) : null, params: { ...c.params },
     ...(c.reason ? { reason: c.reason } : {}),
+    ...(eosPolar(c) ? { recommended: false, advice: NOT_RECOMMENDED } : {}),
   };
 }
 

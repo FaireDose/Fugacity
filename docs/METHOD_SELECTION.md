@@ -60,22 +60,34 @@ Read on 2026-10-09:
   `validation/python/reference_flowsheet_suite.py`). Draws that fail are rejected and listed
   with the reason.
 
-## Existing tests to review under these rules
+## The method advisor
 
-These tests were written before the rules. They use an equation of state for polar liquids.
-Each should either be changed to the recommended method, or keep a comment saying why it
-deliberately uses another one:
+`src/thermo/method-advice.js` applies rules 1–4 to every system:
 
-- `test/diagrams-any-model.test.js`: methanol + water, methanol + chloroform and methanol +
-  acetone + chloroform with PR or SRK. These check that the diagrams can be drawn with any
-  method (a code path), not the accuracy. Proposed change: a comment saying so, or
-  hydrocarbons for the equation-of-state paths.
+- `system(...).info.advice` holds a note when the method is not the recommended one for the
+  components, for example Peng–Robinson with water + ethanol. Calculation results carry the note
+  in their `warnings`.
+- An activity model above about 10 bar gets a note at that pressure.
+- The workbench shows the note above the parameter sets in the Inputs panel, and on the
+  flowsheet's Method page.
+- `library.sets(...)` marks equation-of-state k_ij of pairs with a polar component
+  `recommended: false`, and the Library says why.
+
+The advice is a note, never a refusal: a person may compare methods on purpose.
+
+## Older tests, reviewed (2026-10-09)
+
+Written before these rules, these tests use an equation of state for polar liquids. Each now
+says in a comment why it does so on purpose:
+
+- `test/diagrams-any-model.test.js`: draws methanol + water, methanol + chloroform and
+  methanol + acetone + chloroform with PR or SRK. It checks that the diagram code works with
+  any method, not the method's accuracy.
 - `test/benchmark-ethanol-dehydration.test.js`, `test/benchmark-ethyl-acetate.test.js`,
-  `test/benchmark-methanol-synthesis.test.js`: PR and SRK k_ij fitted to ethanol + water, ethanol +
-  ethylene glycol, water + ethylene glycol, ethyl acetate + ethanol and dimethyl ether +
-  methanol (proposal 0004). Rule 4 says these mixtures need PSRK or MHV2 above 10 bar and an
-  activity model below. Proposed: keep the fits, which show how far a plain cubic equation
-  is off, but mark them "not recommended" in the Library and the method picker.
-- `test/eos.test.js`, `test/eos-stability.test.js`: methane + water (+ nitrogen) with PR. This is
-  common in gas processing for the water content of a gas. A second liquid is refused, as rule 7
-  requires.
+  `test/benchmark-methanol-synthesis.test.js`: PR and SRK k_ij fitted to polar pairs (proposal
+  0004). They are kept to show how far a plain cubic equation is from the data, and labelled
+  "not recommended" for the liquid. The recommended methods (NRTL, UNIQUAC; PSRK or MHV2 above
+  10 bar) are tested elsewhere, or not available yet.
+- `test/eos.test.js`, `test/eos-stability.test.js`: methane + water (+ nitrogen) with PR, as in
+  gas processing for the water content of a gas. They check the messages and the refusal of a
+  second liquid, not the liquid's accuracy.
