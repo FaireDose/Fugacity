@@ -40,7 +40,9 @@ const FEEDBACK = "https://github.com/FaireDose/Fugacity/issues/new/choose";
  * @param {string} [cfg.title]
  * @param {boolean} [cfg.controls=true]  false hides the title, the component and property
  *   menus and the unit switches (for a page, like the workbench, that sets them through update())
- * @returns {{update:(patch:object)=>void, state:object}}
+ * @returns {{update:(patch:object)=>void, state:object, plotted:()=>object|null}}  plotted(): the
+ *   curves drawn now, in display units ({ property, about, curves: [{ name, tUnit, yUnit, points: [{ T, y, phase? }] }] }),
+ *   or null when no curve is drawn (for the workbench's Excel export)
  *
  * @example
  * Fugacity.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
@@ -74,7 +76,9 @@ export function mountProperties(target, cfg = {}) {
     new ResizeObserver(() => { if (isCompact() !== compact) { compact = isCompact(); render(); } }).observe(root);
   }
 
+  let lastPlot = null;   // what the plot shows now (plotted())
   function render() {
+    lastPlot = null;
     const p = pure(state.component);
     const prop = findExplorerProperty(state.property);
     const u = state.units;
@@ -169,6 +173,10 @@ export function mountProperties(target, cfg = {}) {
       h("div", { class: "fug-foot" }, `Data range ${fmtT(smp.range[0], u)} to ${fmtT(smp.range[1], u)} ${unitLabel("temperature", u)}. Point at the plot to read values.`));
     // start the readout at the normal boiling point (the middle of the curve without one, e.g. carbon dioxide)
     move(tToDisplay(clamp(p.Tb_K ?? 0.5 * (smp.points[0].T + smp.points.at(-1).T), smp.points[0].T, smp.points.at(-1).T), u));
+    lastPlot = { property: { label: prop.label, symbol: prop.symbol },
+      about: [["Source", rec ? `${formatSource(rec.source)}; ${TIER_LABEL[rec.tier] ?? rec.tier ?? "tier not stated"}` : ""], ["Data range", `${fmtT(smp.range[0], u)} to ${fmtT(smp.range[1], u)} ${unitLabel("temperature", u)}`]],
+      curves: [{ name: "", tUnit: unitLabel("temperature", u), yUnit: yU, note: `${smp.points.length} temperatures inside the record's range`,
+        points: smp.points.map((pt, i) => ({ T: tToDisplay(pt.T, u), y: ys[i] })) }] };
     return { controls: rangeControls(domain, [], logAllowed, logAuto) };
   }
 
@@ -238,6 +246,12 @@ export function mountProperties(target, cfg = {}) {
         (prop.key === "enthalpy" ? " Reference: ideal gas at 25 °C (298.15 K), h = 0." : "")),
       read);
     move(tToDisplay(clamp(p.Tb_K ?? 0.5 * (lo + hi), lo, hi), u));
+    lastPlot = { property: { label: prop.label, symbol: prop.symbol },
+      about: [["Pressures", pressures.map(P => `${fmtShort(pToDisplay(P, u), 6)} ${u.P}`).join(", ")],
+        ...(prop.key === "enthalpy" ? [["Enthalpy reference", "ideal gas at 25 °C (298.15 K), h = 0"]] : [])],
+      curves: samples.map((sm, i) => ({ name: series[i].name, tUnit: tU, yUnit: yU, phase: true,
+        note: sm.transitions.length ? `Phase change at ${sm.transitions.map(t => `${fmtT(t.T, u)} ${tU} (${t.kind})`).join(", ")}: the value jumps there.` : "",
+        points: sm.segments.flatMap(g => g.points.map(pt => ({ T: tToDisplay(pt.T, u), y: conv(pt.v), phase: g.cls }))) })) };
     return { controls: rangeControls(domain, [pressureControl], logAllowed, logAuto) };
   }
 
@@ -387,6 +401,8 @@ export function mountProperties(target, cfg = {}) {
   render();
   return {
     state,
+    /** The curves drawn now, in display units, or null (see @returns). */
+    plotted() { return lastPlot; },
     /** Change the view: any of component, property, pressures_kPa, units, T_K, logScale, title. */
     update(patch = {}) {
       if (patch.component != null) { state.component = findComponent(patch.component); state.T_K = null; }

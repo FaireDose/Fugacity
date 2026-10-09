@@ -415,6 +415,10 @@ export const APP_CSS = `
 .fa-dev{margin-top:14px; font-size:12px}
 .fa-dev summary{cursor:pointer; font-weight:500}
 .fa-dgrid{display:grid; gap:18px}
+.fa-feedback{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.fa-feedback a{font-weight:600}
+.fa-feedback .fa-in-hint{margin:2px 0 0}
+.fa-canvas-tools .fa-excel[hidden]{display:none}
 .fa-dsec h3{font-size:12.5px; font-weight:600; margin:0 0 8px}
 .fa-dsec p{margin:0 0 8px; font-size:12.5px; color:var(--fug-fg2)}
 .fa-rules{display:grid; gap:6px}
