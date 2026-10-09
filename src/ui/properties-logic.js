@@ -465,7 +465,7 @@ export const fmtT = (T_K, units) => String(+tToDisplay(T_K, units).toFixed(2));
 /** Readable tier label. */
 export const TIER_LABEL = {
   standard: "official standard",
-  fitted: "fitted by Fugacity to an open source",
+  fitted: "fitted by CHEPTA to an open source",
   databank: "open databank",
   predicted: "predicted (estimation method)",
 };

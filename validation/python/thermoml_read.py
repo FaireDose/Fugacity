@@ -17,7 +17,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 NS = {"t": "http://www.iupac.org/namespaces/ThermoML"}
-UA = "Fugacity data script (https://github.com/FaireDose/Fugacity)"
+UA = "CHEPTA data script (https://github.com/FaireDose/CHEPTA)"
 
 
 def fetch(doi_or_file):

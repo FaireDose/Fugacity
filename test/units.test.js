@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, stream, runUnit, registerUnit, unitTypes, unitType, scaleStream, phaseStream, FugacityError } from "../src/index.js";
+import { system, stream, runUnit, registerUnit, unitTypes, unitType, scaleStream, phaseStream, CheptaError } from "../src/index.js";
 
 const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/flash.json", import.meta.url)));
 const F = 100;   // kmol/h
@@ -115,7 +115,7 @@ test("splitter and component separator: the fractions, by hand", () => {
     [{ fractions: [0.5] }, /1 fraction for 2 outlets/],
     [{ fractions: ["rest", "rest"] }, /only one outlet/],
     [{ fractions: [1.2, "rest"] }, /cannot be above 1/],
-  ]) assert.throws(() => runUnit("splitter", { sys, inlets: { in: s }, spec }), err => err instanceof FugacityError && re.test(err.message));
+  ]) assert.throws(() => runUnit("splitter", { sys, inlets: { in: s }, spec }), err => err instanceof CheptaError && re.test(err.message));
   assert.throws(() => runUnit("separator", { sys, inlets: { in: s }, spec: { fractions: { ethanol: [1, 0] } } }), /missing: Water/);
   assert.throws(() => runUnit("separator", { sys, inlets: { in: s }, spec: { fractions: { benzene: [1, 0], ethanol: [1, 0], water: [0, 1] } } }), /not a component of this system/);
 });
@@ -144,7 +144,7 @@ test("ports and specifications are checked", () => {
     ["flash", { inlets: { in: s }, spec: { P_kPa: 101.325, VF: 1.5 } }, /between 0 and 1/],
     ["feed", { spec: { T_K: 300, P_kPa: 100 } }, /give the flows/],
     ["splitter", { inlets: { in: s }, spec: { fractions: [1, 0] }, outletCount: 1 }, /at least 2 outlets/],
-  ]) assert.throws(() => runUnit(type, { sys, ...args }), err => err instanceof FugacityError && re.test(err.message), `${type} ${JSON.stringify(args.spec)}`);
+  ]) assert.throws(() => runUnit(type, { sys, ...args }), err => err instanceof CheptaError && re.test(err.message), `${type} ${JSON.stringify(args.spec)}`);
 });
 
 test("a new block type can be registered (a valve: isenthalpic pressure drop)", () => {

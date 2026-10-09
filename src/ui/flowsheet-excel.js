@@ -2,7 +2,7 @@
  * The solved flowsheet as an Excel workbook (.xlsx) with formulas (proposal 0006, export).
  *
  * What Excel can calculate is written as formulas, from inputs in blue that the person may
- * change; what needs the thermodynamic model is written as values calculated by Fugacity, in
+ * change; what needs the thermodynamic model is written as values calculated by CHEPTA, in
  * grey italics:
  *  - formulas: feed flows (from the Inputs sheet), mixer and heater outlet flows (sums of the
  *    inlets), splitter outlets (inlet × fraction; the "rest" fraction is 1 minus the others),
@@ -10,9 +10,9 @@
  *    flows, mole fractions, the duty of each energy stream (enthalpy flows out minus in) and
  *    the overall material balance. A recycle through these blocks is a circular reference; the
  *    workbook turns on iterative calculation so Excel solves it.
- *  - values from Fugacity: flash drum outlets (phase equilibrium), every temperature, pressure,
+ *  - values from CHEPTA: flash drum outlets (phase equilibrium), every temperature, pressure,
  *    vapour fraction and enthalpy flow. After changing an input, run the flowsheet again in
- *    Fugacity to update these.
+ *    CHEPTA to update these.
  * Units: kmol/h, kg/h, K, kPa, kW.
  *
  * Concept model ({ concept: true }, the "Excel concept model" button): the flash drums become
@@ -20,7 +20,7 @@
  * Each drum gets a section on the "Flash models" sheet:
  *  - K_i = γ_i · Psat_i(T) / P (modified Raoult's law), with Psat from the component's vapour-
  *    pressure record written as an Excel formula, ln(P/Pa) = A + B/T + C ln T + D T^E (DIPPR 101),
- *    and γ_i held constant at the value that reproduces Fugacity's solution (K_i P / Psat_i: the
+ *    and γ_i held constant at the value that reproduces CHEPTA's solution (K_i P / Psat_i: the
  *    activity coefficient, with the vapour non-ideality of the method folded in). A component with
  *    no vapour pressure at T (above its critical temperature or outside its record) gets a
  *    constant K_i instead.
@@ -31,14 +31,14 @@
  *    chain inside a circular reference stops LibreOffice's iteration before it converges; checked):
  *    the "Recycle passes" sheet repeats the flowsheet's formulas 40 times, each pass starting from
  *    the tear streams of the one before, by direct substitution for two passes and then bounded
- *    Wegstein, as Fugacity's Wegstein option does; the Streams sheet takes the tear streams of the last pass.
+ *    Wegstein, as CHEPTA's Wegstein option does; the Streams sheet takes the tear streams of the last pass.
  *    The workbook has no circular reference.
  *  - Outlet flows: vapour_i = F_i VF K_i / (1 + VF (K_i − 1)), liquid_i = F_i − vapour_i.
- * At the conditions Fugacity solved, the workbook gives Fugacity's flows; away from them it holds
+ * At the conditions CHEPTA solved, the workbook gives CHEPTA's flows; away from them it holds
  * γ constant (no composition or temperature dependence) and T and P fixed (a drum specified by its
- * vapour fraction or duty keeps the temperature Fugacity found). A drum with two liquid phases is
+ * vapour fraction or duty keeps the temperature CHEPTA found). A drum with two liquid phases is
  * written as fixed split fractions per component. Temperatures of other streams, enthalpies and
- * duties stay values from Fugacity.
+ * duties stay values from CHEPTA.
  */
 import { xlsx, ref, colName } from "./xlsx.js";
 import { pure } from "../thermo/pure.js";
@@ -65,7 +65,7 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
   // ---- Inputs sheet: components with molar masses, then each block's inputs
   const I = [];
   const at = (r, c) => `Inputs!${ref(r, c)}`;
-  I.push([{ v: "Inputs", s: "head" }], ["Blue: inputs you can change. Grey italics: calculated by Fugacity. Black: formulas."], []);
+  I.push([{ v: "Inputs", s: "head" }], ["Blue: inputs you can change. Grey italics: calculated by CHEPTA. Black: formulas."], []);
   I.push([{ v: "Component", s: "bold" }, { v: "Id", s: "bold" }, { v: "Molar mass, g/mol", s: "bold" }]);
   const mwRow0 = I.length;
   comps.forEach(c => I.push([nameOf(c), c, val(pure(c).MW)]));
@@ -108,7 +108,7 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
       I.push([]);
     } else if (["flash", "heater", "mixer"].includes(b.type) && Object.keys(spec).length) {
       I.push([{ v: `${unitType(b.type).label} ${b.id}`, s: "bold" }, concept && b.type === "flash"
-        ? "(as specified in Fugacity; in this workbook change T and P on the Flash models sheet)" : "(used by Fugacity; change it there)"]);
+        ? "(as specified in CHEPTA; in this workbook change T and P on the Flash models sheet)" : "(used by CHEPTA; change it there)"]);
       for (const [k, v] of Object.entries(spec)) I.push([k, null, val(v)]);
       I.push([]);
     }
@@ -133,7 +133,7 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
   S[R.VF] = ["Vapour fraction", "mol/mol", ...streams.map(s => (res.streams[s.id].VF == null ? null : val(res.streams[s.id].VF)))];
   const inletsOf = (bid, port = "in") => fs.streams.filter(s => s.to === `${bid}.${port}` && col.has(s.id)).map(s => s.id);
   /** The formula of component i's flow in stream s, with refOf(sid, i) giving the cells of the other streams and
-   *  drum(s, i) the formula of a flash drum outlet (null: a value from Fugacity). */
+   *  drum(s, i) the formula of a flash drum outlet (null: a value from CHEPTA). */
   const flowFormula = (s, i, refOf, drum) => {
     const c = comps[i];
     const { block: bid } = portOf(s.from), b = blocks.get(bid);
@@ -142,7 +142,7 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
     if (b.type === "mixer" || b.type === "heater") return ins.map(x => refOf(x, i)).join("+");
     if (b.type === "splitter") { const k = fs.streams.filter(x => x.from === `${bid}.out`).findIndex(x => x.id === s.id); return `${sumIn}*Inputs!${fracCell[bid][k]}`; }
     if (b.type === "separator") { const k = fs.streams.filter(x => x.from === `${bid}.out`).findIndex(x => x.id === s.id); return `${sumIn}*Inputs!${sepCell[bid][c][k]}`; }
-    return drum(s, i);   // flash drum outlets: the concept model, or null (phase equilibrium, from Fugacity)
+    return drum(s, i);   // flash drum outlets: the concept model, or null (phase equilibrium, from CHEPTA)
   };
   // concept model with recycles: the tear streams are solved by explicit passes (no circular reference)
   const passes = flash && res.loops.length ? recyclePasses({ fs, res, comps, nameOf, streams, flowFormula, flash, inletsOf }) : null;
@@ -182,10 +182,10 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
   });
 
   // ---- About
-  const loops = res.loops.length ? res.loops.map(l => `${l.tears.join(", ")} (${l.iterations} iterations in Fugacity)`).join("; ") : "none";
+  const loops = res.loops.length ? res.loops.map(l => `${l.tears.join(", ")} (${l.iterations} iterations in CHEPTA)`).join("; ") : "none";
   const A = [
     [{ v: "About this workbook", s: "head" }],
-    [`Exported from the Fugacity workbench ${version}`.trim()],
+    [`Exported from the CHEPTA workbench ${version}`.trim()],
     [`Components: ${comps.map(nameOf).join(", ")}. Method: ${fs.thermo.model}.`],
     [`Recycles (tear streams): ${loops}.`],
     [],
@@ -193,26 +193,26 @@ export function flowsheetSheets(fs, res, { version = "", names = {}, concept = f
     ...(concept ? [
       [inp("Blue"), "Inputs you can change: feed flows, split fractions, separator fractions; each drum's temperature, pressure and activity coefficients (Flash models)."],
       ["Black", "Formulas: every flow, including the flash drum outlets (concept model); totals; mass flows; mole fractions; duties; the material balance."],
-      [val("Grey italics"), "Calculated by Fugacity: vapour-pressure coefficients (from its databank), the temperatures of streams that do not leave a drum, vapour fractions of the streams, enthalpy flows and duties."],
+      [val("Grey italics"), "Calculated by CHEPTA: vapour-pressure coefficients (from its databank), the temperatures of streams that do not leave a drum, vapour fractions of the streams, enthalpy flows and duties."],
       [],
       [{ v: "Concept model of the flash drums", s: "bold" }],
-      ["Each drum on the Flash models sheet: K = γ · Psat(T) / P with the vapour pressure as a formula (DIPPR 101) and γ held at the value that reproduces Fugacity's solution; the vapour fraction from the Rachford-Rice equation, solved by the bisection rows under each drum; vapour flow = F · VF · K / (1 + VF (K − 1)), liquid = F − vapour."],
-      ["At the conditions Fugacity solved, this gives Fugacity's flows. Away from them it is an approximation, as in a concept design: γ does not change with composition or temperature, and T and P stay as entered (a drum specified by vapour fraction or duty keeps the temperature Fugacity found). A component above its critical temperature has a constant K. A drum with two liquids is fixed split fractions."],
-      ["For final numbers (and for enthalpies and duties after a change), run the flowsheet in Fugacity again."],
+      ["Each drum on the Flash models sheet: K = γ · Psat(T) / P with the vapour pressure as a formula (DIPPR 101) and γ held at the value that reproduces CHEPTA's solution; the vapour fraction from the Rachford-Rice equation, solved by the bisection rows under each drum; vapour flow = F · VF · K / (1 + VF (K − 1)), liquid = F − vapour."],
+      ["At the conditions CHEPTA solved, this gives CHEPTA's flows. Away from them it is an approximation, as in a concept design: γ does not change with composition or temperature, and T and P stay as entered (a drum specified by vapour fraction or duty keeps the temperature CHEPTA found). A component above its critical temperature has a constant K. A drum with two liquids is fixed split fractions."],
+      ["For final numbers (and for enthalpies and duties after a change), run the flowsheet in CHEPTA again."],
       [],
       [{ v: "What updates in Excel", s: "bold" }],
       ["Change a blue input and the formulas update. A recycle is a circular reference: iterative calculation is switched on in this workbook, so Excel solves it."],
     ] : [
       [inp("Blue"), "Inputs you can change: feed flows, split fractions, separator fractions."],
       ["Black", "Formulas: feed, mixer, heater, splitter and separator flows; totals; mass flows; mole fractions; duties; the material balance."],
-      [val("Grey italics"), "Calculated by Fugacity with the thermodynamic model: flash drum outlets, temperatures, pressures, vapour fractions and enthalpy flows."],
+      [val("Grey italics"), "Calculated by CHEPTA with the thermodynamic model: flash drum outlets, temperatures, pressures, vapour fractions and enthalpy flows."],
       [],
       [{ v: "What updates in Excel", s: "bold" }],
       ["Change a blue input and the formulas update. A recycle through mixers, splitters, separators and heaters is a circular reference: iterative calculation is switched on in this workbook, so Excel solves it."],
-      ["Flash drum outlets, temperatures and enthalpies cannot be Excel formulas (they need phase equilibrium): after changing inputs, run the flowsheet again in Fugacity for them, or use the concept-model export."],
+      ["Flash drum outlets, temperatures and enthalpies cannot be Excel formulas (they need phase equilibrium): after changing inputs, run the flowsheet again in CHEPTA for them, or use the concept-model export."],
     ]),
-    ["Model predictions, not measurements; the parameter sources are listed in Fugacity."],
-    ["This workbook is yours: Fugacity claims no rights in the files and results you create with it."],
+    ["Model predictions, not measurements; the parameter sources are listed in CHEPTA."],
+    ["This workbook is yours: CHEPTA claims no rights in the files and results you create with it."],
   ];
   return {
     // the concept model has no circular reference (recycles are solved by the passes); the other export needs iteration
@@ -247,7 +247,7 @@ function conceptFlashes(fs, res, { comps, nameOf, flowRef, inlets }) {
   const eos = ["PR", "SRK"].includes(fs.thermo.model);
 
   rows.push([{ v: "Flash models (concept design)", s: "head" }],
-    ["K = γ · Psat(T) / P; Psat in kPa from ln(P/Pa) = A + B/T + C ln T + D T^E; γ held at the value that reproduces Fugacity's solution. VF from Rachford-Rice, Σ z (K − 1) / (1 + VF (K − 1)) = 0, solved by the bisection rows. See the About sheet."], []);
+    ["K = γ · Psat(T) / P; Psat in kPa from ln(P/Pa) = A + B/T + C ln T + D T^E; γ held at the value that reproduces CHEPTA's solution. VF from Rachford-Rice, Σ z (K − 1) / (1 + VF (K − 1)) = 0, solved by the bisection rows. See the About sheet."], []);
   for (const b of drums) {
     const st = res.blocks[b.id].state, outs = fs.streams.filter(s => s.from.startsWith(`${b.id}.`) && res.streams[s.id]);
     const port = p => outs.find(s => s.from === `${b.id}.${p}`);
@@ -255,7 +255,7 @@ function conceptFlashes(fs, res, { comps, nameOf, flowRef, inlets }) {
     const ins = inlets(b.id);
     const spec = b.spec ?? {}, tp = spec.T_K != null && spec.P_kPa != null;
     rows.push([{ v: `Flash drum ${b.id}`, s: "bold" }, tp ? "specified by temperature and pressure"
-      : `specified by ${Object.keys(spec).join(" and ")} in Fugacity: the temperature it found is held here`]);
+      : `specified by ${Object.keys(spec).join(" and ")} in CHEPTA: the temperature it found is held here`]);
     const rT = rows.length;
     rows.push(["Temperature, K", inp(st.T_K)]);
     rows.push(["Pressure, kPa", inp(st.P_kPa)]);
@@ -264,8 +264,8 @@ function conceptFlashes(fs, res, { comps, nameOf, flowRef, inlets }) {
     const inFlow = i => (ins.length ? ins.map(x => `Streams!${flowRef(x, i)}`).join("+") : "0");
     const liq2 = L2 && res.streams[L2.id].F_kmol_h > 1e-12;
     if (liq2) {
-      // two liquids: fixed split fractions per component, from Fugacity's solution
-      rows.push(["Two liquid phases: written as fixed split fractions (inputs) from Fugacity's solution."]);
+      // two liquids: fixed split fractions per component, from CHEPTA's solution
+      rows.push(["Two liquid phases: written as fixed split fractions (inputs) from CHEPTA's solution."]);
       rows.push([{ v: "Component", s: "bold" }, { v: "Inlet, kmol/h", s: "bold" }, ...[V, L, L2].map(s => ({ v: s ? `to ${s.id}` : "", s: "bold" })),
         ...[V, L, L2].map(s => ({ v: s ? `${s.id}, kmol/h` : "", s: "bold" }))]);
       comps.forEach((c, i) => {
@@ -342,8 +342,8 @@ function conceptFlashes(fs, res, { comps, nameOf, flowRef, inlets }) {
 
 /**
  * The "Recycle passes" sheet of the concept model: the flowsheet's flow formulas repeated PASSES times. In each pass the
- * tear streams are inputs (pass 1: Fugacity's solution; passes 2-3: the tear streams computed in the pass before,
- * direct substitution; then bounded Wegstein, q = s / (s − 1) in [−5, 0], s from the last two passes, as Fugacity's
+ * tear streams are inputs (pass 1: CHEPTA's solution; passes 2-3: the tear streams computed in the pass before,
+ * direct substitution; then bounded Wegstein, q = s / (s − 1) in [−5, 0], s from the last two passes, as CHEPTA's
  * solver), every other stream is computed from them, and each drum's vapour fraction is solved by bisection rows.
  * @returns {{rows:Array, final:Object<string,string[]>}} final[tearId][i]: the tear stream as computed in the last pass
  */
@@ -366,9 +366,9 @@ function recyclePasses({ fs, res, comps, nameOf, streams, flowFormula, flash, in
   const fmt = (p, i) => (sid, k) => cellOf(p, cS.get(sid), k);
   const last = PASSES - 1;
   rows.push([{ v: "Recycle passes (concept model)", s: "head" }],
-    [`The recycle is solved here by ${PASSES} passes through the flowsheet: tear stream${tears.length > 1 ? "s" : ""} ${tears.join(", ")}. Pass 1 starts from Fugacity's solution; passes 2 and 3 take the tear streams computed in the pass before; later passes use bounded Wegstein (q = s / (s − 1), between −5 and 0), as Fugacity's Wegstein option (Fugacity's default, Broyden's method, needs matrix updates a workbook does not show well). The Streams sheet takes the last pass.`],
+    [`The recycle is solved here by ${PASSES} passes through the flowsheet: tear stream${tears.length > 1 ? "s" : ""} ${tears.join(", ")}. Pass 1 starts from CHEPTA's solution; passes 2 and 3 take the tear streams computed in the pass before; later passes use bounded Wegstein (q = s / (s − 1), between −5 and 0), as CHEPTA's Wegstein option (CHEPTA's default, Broyden's method, needs matrix updates a workbook does not show well). The Streams sheet takes the last pass.`],
     ["Largest relative change of the tear streams in the last pass", F(`MAX(${tears.map(t => cellOf(last, cQ.get(t), n)).join(",")})`, 0),
-      "converged when this is about 1E-9 or less; if not, the recycle needs more passes than this workbook has (run it in Fugacity)"], [], []);
+      "converged when this is about 1E-9 or less; if not, the recycle needs more passes than this workbook has (run it in CHEPTA)"], [], []);
   for (let p = 0; p < PASSES; p++) {
     const R0 = P(p);
     rows[R0] = [{ v: `Pass ${p + 1}`, s: "bold" }, "kmol/h", ...ids.map(id => ({ v: tears.includes(id) ? `${id} (tear, in)` : id, s: "bold" })),

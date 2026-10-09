@@ -1,14 +1,14 @@
 {
-  "name": "fugacity",
+  "name": "chepta",
   "version": "0.3.0",
   "description": "Chemical process simulation built for AI chat artifacts, starting with phase equilibria.",
   "license": "MIT",
   "author": "FaireDose",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FaireDose/Fugacity.git"
+    "url": "git+https://github.com/FaireDose/CHEPTA.git"
   },
-  "homepage": "https://github.com/FaireDose/Fugacity#readme",
+  "homepage": "https://github.com/FaireDose/CHEPTA#readme",
   "keywords": [
     "chemical-engineering",
     "thermodynamics",
@@ -20,17 +20,17 @@
     "flowsheet"
   ],
   "type": "module",
-  "main": "dist/fugacity.cjs",
-  "module": "dist/fugacity.mjs",
-  "browser": "dist/fugacity.js",
-  "unpkg": "dist/fugacity.js",
-  "jsdelivr": "dist/fugacity.js",
+  "main": "dist/chepta.cjs",
+  "module": "dist/chepta.mjs",
+  "browser": "dist/chepta.js",
+  "unpkg": "dist/chepta.js",
+  "jsdelivr": "dist/chepta.js",
   "exports": {
     ".": {
-      "import": "./dist/fugacity.mjs",
-      "require": "./dist/fugacity.cjs"
+      "import": "./dist/chepta.mjs",
+      "require": "./dist/chepta.cjs"
     },
-    "./browser": "./dist/fugacity.js"
+    "./browser": "./dist/chepta.js"
   },
   "files": [
     "dist",

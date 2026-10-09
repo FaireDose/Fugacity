@@ -166,7 +166,7 @@ def fit_px(doc):
             entry = {
                 "model": model, "i": i, "j": j, "kij": k, "tier": "fitted",
                 "source": {
-                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to the {len(pts)} total pressures of {fit['cite']} at {', '.join(f'{T:g}' for T in Ts)} K (the equation of state's own vapour pressures): {q}",
+                    "fit": f"Fitted for CHEPTA with validation/python/eos_fit_kij.py to the {len(pts)} total pressures of {fit['cite']} at {', '.join(f'{T:g}' for T in Ts)} K (the equation of state's own vapour pressures): {q}",
                     "data": [f"validation/data/{fit['file']}"],
                     "conditions": f"T = {', '.join(f'{T:g}' for T in Ts)} K, P = {min(p for _, _, p in pts):g}-{max(p for _, _, p in pts):g} kPa",
                     "T_range_K": [min(Ts), max(Ts)],
@@ -219,7 +219,7 @@ def fit_txy(doc):
             entry = {
                 "model": model, "i": i, "j": j, "kij": k, "tier": "fitted",
                 "source": {
-                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to the {len(pts)} bubble temperatures of {fit.get('cite', 'Kamihama et al. (2012)')} at {pts[0][0]} kPa: {q}",
+                    "fit": f"Fitted for CHEPTA with validation/python/eos_fit_kij.py to the {len(pts)} bubble temperatures of {fit.get('cite', 'Kamihama et al. (2012)')} at {pts[0][0]} kPa: {q}",
                     "data": [f"validation/data/{fit['file']}"],
                     "conditions": f"P = {pts[0][0]} kPa, T = {min(Ts):g}-{max(Ts):g} K",
                     "T_range_K": [min(Ts), max(Ts)],
@@ -270,7 +270,7 @@ def main():
             entry = {
                 "model": model, "i": i, "j": j, "kij": k, "tier": "fitted",
                 "source": {
-                    "fit": f"Fitted for Fugacity with validation/python/eos_fit_kij.py to {len(pts)} bubble pressures: AAD {aad:.2f} %, deviations {min(dev):.1f} to {max(dev):.1f} %",
+                    "fit": f"Fitted for CHEPTA with validation/python/eos_fit_kij.py to {len(pts)} bubble pressures: AAD {aad:.2f} %, deviations {min(dev):.1f} to {max(dev):.1f} %",
                     "data": fit["data_files"],
                     "conditions": f"T = {min(Ts):g}-{max(Ts):g} K, P = {min(p[2] for p in pts):g}-{max(p[2] for p in pts):g} kPa, x_H2 <= {max(p[1] for p in pts):g}",
                     "T_range_K": [min(Ts), max(Ts)],

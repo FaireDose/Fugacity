@@ -7,7 +7,7 @@ by hand; the script is named at the top of each.
 
 | Page | What it is |
 |---|---|
-| [../README.md](../README.md) | What Fugacity is, how to use it, licences |
+| [../README.md](../README.md) | What CHEPTA is, how to use it, licences |
 | [DECISIONS.md](DECISIONS.md) | What has been decided, and what is pending |
 | [../ROADMAP.md](../ROADMAP.md) | Where the project is going: tracks and releases |
 | [../ARCHITECTURE.md](../ARCHITECTURE.md) | The layers (data, property package, equilibrium, stream, blocks, flowsheet, interface) |

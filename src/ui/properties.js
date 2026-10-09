@@ -21,7 +21,7 @@ import {
 } from "./properties-logic.js";
 
 const SERIES = n => `var(--fug-s${(n % 6) + 1})`;
-const FEEDBACK = "https://github.com/FaireDose/Fugacity/issues/new/choose";
+const FEEDBACK = "https://github.com/FaireDose/CHEPTA/issues/new/choose";
 
 /**
  * Put a pure-component property explorer into a page element.
@@ -45,11 +45,11 @@ const FEEDBACK = "https://github.com/FaireDose/Fugacity/issues/new/choose";
  *   or null when no curve is drawn (for the workbench's Excel export)
  *
  * @example
- * Fugacity.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
+ * CHEPTA.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
  */
 export function mountProperties(target, cfg = {}) {
   const root = typeof target === "string" ? document.querySelector(target) : target;
-  if (!root) throw new Error(`Fugacity.mountProperties: no element matches "${target}".`);
+  if (!root) throw new Error(`CHEPTA.mountProperties: no element matches "${target}".`);
   injectPropertiesStyles(root.ownerDocument);
 
   const state = {
@@ -118,7 +118,7 @@ export function mountProperties(target, cfg = {}) {
     box.replaceChildren(...(state.controls ? [head, controls, units] : []), curve.controls, h("div", { class: "fug-main" }, plot, side), srcs,
       satSection(p, prop), calcSection(p),
       h("div", { class: "fug-foot" },
-        h("div", {}, "Calculated live in this page by Fugacity from the engine's SI values; units are converted for display only. Enthalpy reference: ideal gas at 25 °C (298.15 K) = 0."),
+        h("div", {}, "Calculated live in this page by CHEPTA from the engine's SI values; units are converted for display only. Enthalpy reference: ideal gas at 25 °C (298.15 K) = 0."),
         h("div", {}, "Correlations are never drawn outside their stated temperature range. ",
           state.feedbackUrl ? h("a", { href: state.feedbackUrl, target: "_blank", rel: "noopener" }, "Report a problem or suggest data") : null)));
   }
@@ -326,7 +326,7 @@ export function mountProperties(target, cfg = {}) {
       h("strong", {}, `No curve: ${label} of ${p.name}`),
       h("div", {}, message || "No open data."),
       h("div", { class: "fug-sub" }, "Nothing is estimated silently. ",
-        h("a", { href: "https://github.com/FaireDose/Fugacity/blob/main/docs/DATA_WANTED.md", target: "_blank", rel: "noopener" }, "Help find open data")));
+        h("a", { href: "https://github.com/FaireDose/CHEPTA/blob/main/docs/DATA_WANTED.md", target: "_blank", rel: "noopener" }, "Help find open data")));
   }
 
   // ---- saturation ("steam") table

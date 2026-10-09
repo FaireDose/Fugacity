@@ -3,7 +3,7 @@ checks of src/equilibrium/sle.js (proposal 0007, step 4; test/sle.test.js, docs/
 
 For each solid in SOLIDS, the archive is searched by name (ThermoML-API full text, as in measured_components.py), every
 record found is opened, and the binary data sets with a liquid and a crystal phase are kept when the other component is
-a Fugacity component (matched by InChI) and the solid is the one that crystallizes: the solvent is liquid at every
+a CHEPTA component (matched by InChI) and the solid is the one that crystallizes: the solvent is liquid at every
 temperature of the set (above its own melting temperature in src/data/components.json). Kept quantities, as stored:
 
   - "Mole fraction" of the solute in the liquid, against temperature;
@@ -110,7 +110,7 @@ def fetch(solid, comps, by_inchi, cache):
                ", ".join('"%s"' % q for q in SOLIDS[solid]), len(dois)),
            "about": "Solubility of the solid as the mole fraction of the solid in the saturated liquid (x_solute), "
                     "converted from the stored quantity where needed (validation/python/fetch_sle.py); binary sets with "
-                    "a Fugacity component as the solvent, at 110 kPa or less.",
+                    "a CHEPTA component as the solvent, at 110 kPa or less.",
            "articles": dict(sorted(articles.items())), "sets": sets}
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / ("%s.json" % solid)).write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")

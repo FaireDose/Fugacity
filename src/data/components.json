@@ -1,5 +1,5 @@
 {
-  "_about": "Pure-component data used by Fugacity. SI units unless stated.",
+  "_about": "Pure-component data used by CHEPTA. SI units unless stated.",
   "components": {
     "water": {
       "name": "Water",

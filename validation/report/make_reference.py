@@ -3,7 +3,7 @@ Reference values for the engineering report (validation/report/cases.json).
 
     python validation/report/make_reference.py        # writes validation/report/reference/*.json
 
-Every value comes from a source independent of Fugacity's JavaScript code:
+Every value comes from a source independent of CHEPTA's JavaScript code:
 
 - CoolProp 8.0.0 (open source, MIT), HEOS backend: IAPWS-95 for water and the reference
   equations of state of the other fluids, with the transport models CoolProp cites for
@@ -96,7 +96,7 @@ SOURCES = {
     "three-phase-ref": {"citation": "Independent Python reference (validation/python/reference_three_phase.py): binary from the "
                                     "liquid-liquid equilibrium, bubble pressure and lever rule of reference_model.py; ternary from the "
                                     "minimum of the Gibbs energy polished by the equal-fugacity equations (scipy)",
-                        "url": "https://github.com/FaireDose/Fugacity/blob/main/validation/python/reference_three_phase.py",
+                        "url": "https://github.com/FaireDose/CHEPTA/blob/main/validation/python/reference_three_phase.py",
                         "access": "Open source (MIT license)"},
     "xu2017": xu["source"],
     "water-ea-azeotrope": weaz["source"],

@@ -6,14 +6,14 @@
  * sets chosen per pair and the view that was open. Opening it rebuilds the workbench from
  * these and calculates everything again with the library that opens it. A project may also
  * carry `results`, the stream table of the flash as it was at save time, so the mass balance
- * can be read without Fugacity (it is a record and is never read back into a calculation).
+ * can be read without CHEPTA (it is a record and is never read back into a calculation).
  *
  * Format 2 (the "fugacity_project" key is the format version; format 1 is the same without
  * "flowsheet"):
  *
  *   {
  *     "fugacity_project": 1,
- *     "saved_with": "fugacity 0.3.0",
+ *     "saved_with": "chepta 0.3.0",
  *     "saved_at": "2026-10-06T12:00:00.000Z",
  *     "title": "Ethanol, water",                 // optional
  *     "workbench": {
@@ -35,7 +35,7 @@
  *
  * SI units throughout (K, kPa, J/mol), as in the engine; `units` is only how the workbench
  * shows them. Reading checks the format and every value with the same checks as
- * Fugacity.app's configuration, and throws an error that names the problem.
+ * CHEPTA.app's configuration, and throws an error that names the problem.
  *
  * A view helper (layer 6): no thermodynamics here.
  */
@@ -65,7 +65,7 @@ export function projectOf(state, { version = "", results, now = new Date() } = {
   for (const k of KEYS) w[k] = copy(state[k]);
   const { steam, ...inputs } = w.inputs;   // steam takes no inputs (always water)
   w.inputs = inputs;
-  const doc = { fugacity_project: PROJECT_FORMAT, saved_with: `fugacity ${version}`.trim(), saved_at: now.toISOString() };
+  const doc = { fugacity_project: PROJECT_FORMAT, saved_with: `chepta ${version}`.trim(), saved_at: now.toISOString() };
   if (state.title) doc.title = String(state.title);
   doc.workbench = w;
   const fs = state.flowsheet;
@@ -78,37 +78,37 @@ export function projectOf(state, { version = "", results, now = new Date() } = {
 export const projectText = doc => JSON.stringify(doc, null, 2) + "\n";
 
 /**
- * A file name for a project, ending in ".fugacity.json": the name the person gave the project
- * (kept as typed, without characters that file systems refuse), else "fugacity-" and the
+ * A file name for a project, ending in ".chepta.json": the name the person gave the project
+ * (kept as typed, without characters that file systems refuse), else "chepta-" and the
  * components.
  */
 export function projectFileName(state) {
   const named = String(state.title ?? "").normalize("NFC").replace(/[\\/:*?"<>|\u0000-\u001f]+/g, "-")
-    .replace(/\.fugacity\.json$|\.json$/i, "").replace(/\s+/g, " ").replace(/^[\s.-]+|[\s.-]+$/g, "").slice(0, 80);
-  if (named) return `${named}.fugacity.json`;
+    .replace(/\.(chepta|fugacity)\.json$|\.json$/i, "").replace(/\s+/g, " ").replace(/^[\s.-]+|[\s.-]+$/g, "").slice(0, 80);
+  if (named) return `${named}.chepta.json`;
   const base = state.components?.length ? state.components.join("-") : "workbench";
   const slug = base.toLowerCase().replace(/[^\w]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "workbench";
-  return `fugacity-${slug}.fugacity.json`;
+  return `chepta-${slug}.chepta.json`;
 }
 
 /**
  * Parse a project: a document, or its JSON text (a byte-order mark is allowed). Throws an
- * error naming the problem when it is not a Fugacity project or a value is wrong.
+ * error naming the problem when it is not a CHEPTA project or a value is wrong.
  * @returns {object} the document, checked
  */
 export function readProject(input) {
   let doc = input;
   if (typeof input === "string") {
-    try { doc = JSON.parse(input.replace(/^﻿/, "")); } catch (e) { throw new Error(`This is not a Fugacity project: the file is not valid JSON (${e.message}).`); }
+    try { doc = JSON.parse(input.replace(/^﻿/, "")); } catch (e) { throw new Error(`This is not a CHEPTA project: the file is not valid JSON (${e.message}).`); }
   }
-  if (doc == null || typeof doc !== "object" || Array.isArray(doc)) throw new Error("This is not a Fugacity project: expected a JSON object.");
+  if (doc == null || typeof doc !== "object" || Array.isArray(doc)) throw new Error("This is not a CHEPTA project: expected a JSON object.");
   if (!("fugacity_project" in doc)) {
-    if ("fugacity_package" in doc) throw new Error("This is a contribution package (data for the project), not a workbench project; check it with Fugacity.checkPackage().");
-    throw new Error('This is not a Fugacity project: the "fugacity_project" key is missing.');
+    if ("fugacity_package" in doc) throw new Error("This is a contribution package (data for the project), not a workbench project; check it with CHEPTA.checkPackage().");
+    throw new Error('This is not a CHEPTA project: the "fugacity_project" key is missing.');
   }
   const f = doc.fugacity_project;
   if (!Number.isInteger(f) || f < 1) throw new Error(`fugacity_project must be a format number such as ${PROJECT_FORMAT} (got ${JSON.stringify(f)}).`);
-  if (f > PROJECT_FORMAT) throw new Error(`This project uses format ${f}, saved with ${doc.saved_with || "a newer Fugacity"}; this library reads formats 1 to ${PROJECT_FORMAT}. Open it with a newer version of Fugacity.`);
+  if (f > PROJECT_FORMAT) throw new Error(`This project uses format ${f}, saved with ${doc.saved_with || "a newer CHEPTA"}; this library reads formats 1 to ${PROJECT_FORMAT}. Open it with a newer version of CHEPTA.`);
   const w = doc.workbench;
   if (w == null || typeof w !== "object" || Array.isArray(w)) throw new Error('The project has no "workbench" object.');
   const unknown = Object.keys(w).filter(k => !KEYS.includes(k));
@@ -118,7 +118,7 @@ export function readProject(input) {
 }
 
 /**
- * The workbench state of a project, built with the same checks as Fugacity.app's
+ * The workbench state of a project, built with the same checks as CHEPTA.app's
  * configuration: an unknown model, unit, view or component throws, naming it (a project
  * saved with a newer databank may name components this version does not hold).
  */

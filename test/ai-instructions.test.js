@@ -1,5 +1,5 @@
-// The flowsheet example the AI instructions give (ai/instructions/use-fugacity.md, the skill) and
-// the example file must pass Fugacity.checkProject and solve: an assistant copies them.
+// The flowsheet example the AI instructions give (ai/instructions/use-chepta.md, the skill) and
+// the example file must pass CHEPTA.checkProject and solve: an assistant copies them.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -13,7 +13,7 @@ function projectIn(md) {
   return Function(`"use strict"; return (${m[1]});`)();
 }
 
-for (const file of ["ai/instructions/use-fugacity.md", "ai/skills/fugacity/SKILL.md"]) {
+for (const file of ["ai/instructions/use-chepta.md", "ai/skills/chepta/SKILL.md"]) {
   test(`${file}: the flowsheet example checks and solves`, () => {
     const p = projectIn(read(file));
     const c = checkProject(p);
@@ -24,8 +24,8 @@ for (const file of ["ai/instructions/use-fugacity.md", "ai/skills/fugacity/SKILL
   });
 }
 
-test("examples/flowsheet-recycle.fugacity.json is the same project, and solves", () => {
-  const file = JSON.parse(read("examples/flowsheet-recycle.fugacity.json"));
-  assert.deepEqual(file, projectIn(read("ai/instructions/use-fugacity.md")));
+test("examples/flowsheet-recycle.chepta.json is the same project, and solves", () => {
+  const file = JSON.parse(read("examples/flowsheet-recycle.chepta.json"));
+  assert.deepEqual(file, projectIn(read("ai/instructions/use-chepta.md")));
   assert.ok(checkProject(file).ok);
 });

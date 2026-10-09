@@ -16,9 +16,22 @@ Newest first. Pull requests are in `FaireDose/Fugacity`.
   - The pull request that adds this page.
 - **Proposals 0009, 0010 and 0011:** merged in [#83](https://github.com/FaireDose/Fugacity/pull/83) with status
   **Draft**. Accept or decline each one, then set its status in the file and in `proposals/README.md`.
-- **The project name** (the CHETA idea, *Chemical Engineering Tools for Agents*). The v0.3.0 GitHub
-  release stays unpublished until it is decided. The npm package name can differ from the
-  project name.
+- **Make the new name official** (decided 2026-10-09: **CHEPTA**, *Chemical Engineering Process Tools
+  for Agents*). In this order:
+  1. GitHub: Settings → General → Repository name: `CHEPTA`. GitHub redirects the old links,
+     clones and pull requests to the new name.
+  2. Merge the rename pull request (it already uses the new links).
+  3. Settings → Pages: check that the site is served at `https://fairedose.github.io/CHEPTA/`
+     (the Pages workflow runs on the merge).
+  4. npm: the name `chepta` was free on 2026-10-09. On npmjs.com create the package's trusted
+     publisher (Packages → chepta → Settings → Trusted publishing, this repository and
+     `.github/workflows/publish.yml`); the first upload may need the token route described in the
+     workflow. Then publish the v0.3.0 GitHub release: the workflow builds and stages it.
+  5. npm: deprecate the old package with a pointer, `npm deprecate fugacity "Renamed: use chepta"`.
+  6. Optional: check for an existing trademark (for example in the EUIPO and USPTO search
+     tools) before wider promotion, and register the name where you want it protected.
+  The file formats keep their keys (`fugacity_project`, `fugacity_package`), so files and
+  contribution packages made under the old name stay valid.
 - **The two free component places** of proposal 0008: use them now, or keep them.
 - **Proposal 0005** (association models, [#48](https://github.com/FaireDose/Fugacity/pull/48)): deferred, on hold.
 
@@ -99,6 +112,17 @@ These apply to every piece of work, on top of [AGENTS.md](../AGENTS.md).
   with the ChemSep data (README, [#81](https://github.com/FaireDose/Fugacity/pull/81)).
 
 ## Log
+
+### 2026-10-09 (evening)
+
+- **The name is CHEPTA**, *Chemical Engineering Process Tools for Agents* (maintainer's decision).
+  The rename pull request changes the name everywhere it means the software, keeps "fugacity" where
+  it means the thermodynamic quantity, keeps the old script global `Fugacity` and the error class
+  `FugacityError` as aliases, and keeps the file-format keys. Steps to make it official are under
+  Open items.
+- **Pair data**: the archive has fewer binary pairs than expected. Maintainer's point: each pair
+  needs only the model the method rules choose for it (an equation of state for nonpolar pairs,
+  an activity model for polar liquids), so coverage is to be counted per needed model.
 
 ### 2026-10-09
 

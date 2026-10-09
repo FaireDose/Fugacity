@@ -135,7 +135,7 @@ test("CSV: standard quoting, decimal points, every row of the table", () => {
   const csv = flashCsv(table, { title: "Methanol, water", model: "NRTL", summary: [["Vapour fraction", r.VF, "mol/mol"]], version: "test" });
   const lines = csv.split("\r\n");
   assert.equal(lines.at(-1), "", "ends with a line break");
-  assert.equal(lines[0], 'Fugacity flash,"Methanol, water"');
+  assert.equal(lines[0], 'CHEPTA flash,"Methanol, water"');
   const head = lines.findIndex(l => l.startsWith("Quantity,Unit,"));
   assert.equal(lines[head], "Quantity,Unit,Feed,Vapour,Liquid");
   assert.equal(lines.length - head - 2, table.rows.length);

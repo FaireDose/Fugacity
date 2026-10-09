@@ -1,5 +1,5 @@
 /**
- * Workbench (Fugacity.app): the task-based navigation, DOM-free. Which workspaces exist,
+ * Workbench (CHEPTA.app): the task-based navigation, DOM-free. Which workspaces exist,
  * which views (diagrams) each holds, which inputs each view needs (one component, two,
  * three, a list, or a gas and a solvent), and the checks that explain an incomplete or
  * incompatible selection instead of changing it.
@@ -47,9 +47,9 @@ export const sectionOf = ws => SECTIONS.find(s => s.workspaces.includes(ws))?.id
 export const UTILITIES = [
   { id: "project", label: "Project", icon: "file", title: "Project", intro: "Save your work as a file and open it again." },
   { id: "library", label: "Library", icon: "book", title: "Library", intro: "Which parameter set each binary pair uses." },
-  { id: "sources", label: "Sources", icon: "search", title: "Sources", intro: "Every source behind Fugacity's data, why it is open and what uses it." },
+  { id: "sources", label: "Sources", icon: "search", title: "Sources", intro: "Every source behind CHEPTA's data, why it is open and what uses it." },
   { id: "settings", label: "Settings", icon: "units", title: "Settings", intro: "Units, composition basis and panels. They apply to every workspace." },
-  { id: "feedback", label: "Feedback", icon: "chat", title: "Feedback", intro: "Report a bug, suggest an improvement or ask a question, on Fugacity's GitHub pages." },
+  { id: "feedback", label: "Feedback", icon: "chat", title: "Feedback", intro: "Report a bug, suggest an improvement or ask a question, on CHEPTA's GitHub pages." },
 ];
 
 /** The workspace of a view. */

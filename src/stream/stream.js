@@ -6,10 +6,10 @@
  * property package (a `system`, proposal 0001), so the phase split and the enthalpy are
  * consistent with the model:
  *
- *   Fugacity.stream(sys, { flow_kmol_h: { ethanol: 40, water: 60 }, T_K: 351, P_kPa: 101.325 })
- *   Fugacity.stream(sys, { flow_kmol_h, P_kPa, H_kW })     // given enthalpy flow (P-H flash)
- *   Fugacity.stream(sys, { flow_kmol_h, P_kPa, VF })       // given vapour fraction
- *   Fugacity.stream(sys, { flow_kmol_h, T_K, VF })
+ *   CHEPTA.stream(sys, { flow_kmol_h: { ethanol: 40, water: 60 }, T_K: 351, P_kPa: 101.325 })
+ *   CHEPTA.stream(sys, { flow_kmol_h, P_kPa, H_kW })     // given enthalpy flow (P-H flash)
+ *   CHEPTA.stream(sys, { flow_kmol_h, P_kPa, VF })       // given vapour fraction
+ *   CHEPTA.stream(sys, { flow_kmol_h, T_K, VF })
  *
  * Flows are given per component as an object (names, ids, formulas or CAS numbers, as
  * system() takes them; components left out have zero flow) or as an array in the system's
@@ -71,10 +71,10 @@ export function componentFlows(sys, flows, unit = "kmol/h") {
  * @param {object} sys   a system (property package)
  * @param {object} spec  flow_kmol_h or flow_kg_h, and two of T_K, P_kPa, H_kW, VF
  *   (T_K + P_kPa, P_kPa + H_kW, P_kPa + VF or T_K + VF); `id` and `name` are kept
- * @returns {object} frozen stream (see the file header); throws a FugacityError naming the problem
+ * @returns {object} frozen stream (see the file header); throws a CheptaError naming the problem
  */
 export function stream(sys, spec = {}) {
-  if (!sys || typeof sys.flash !== "function") throw fail("BAD_INPUT", "stream: the first argument must be a system, e.g. Fugacity.system({ components, model }).");
+  if (!sys || typeof sys.flash !== "function") throw fail("BAD_INPUT", "stream: the first argument must be a system, e.g. CHEPTA.system({ components, model }).");
   if (!spec || typeof spec !== "object") throw fail("BAD_INPUT", "stream: give a specification such as { flow_kmol_h: { water: 10 }, T_K: 300, P_kPa: 101.325 }.");
   if (spec.flow_kmol_h != null && spec.flow_kg_h != null) throw fail("BAD_INPUT", "stream: give flow_kmol_h or flow_kg_h, not both.");
   const flows = spec.flow_kg_h != null ? componentFlows(sys, spec.flow_kg_h, "kg/h") : componentFlows(sys, spec.flow_kmol_h);

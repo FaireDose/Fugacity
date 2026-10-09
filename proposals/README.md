@@ -1,6 +1,6 @@
 # Proposals
 
-Larger changes to Fugacity start as a short written proposal: new layers, changes to an
+Larger changes to CHEPTA start as a short written proposal: new layers, changes to an
 interface or file format, the steps of the core track in the
 [roadmap](../ROADMAP.md), and changes to the project's rules.
 
@@ -23,7 +23,7 @@ interface or file format, the steps of the core track in the
 |---|---|---|
 | 0001 | [Property package and flash](0001-property-package.md) | Accepted |
 | 0002 | [Pure-component properties, gases and Peng–Robinson](0002-pure-component-properties.md) | Accepted |
-| 0003 | [The Fugacity Library: sources you can see and choose](0003-fugacity-library.md) | Draft |
+| 0003 | [The CHEPTA Library: sources you can see and choose](0003-chepta-library.md) | Draft |
 | 0004 | [The first 50 components, chosen by process](0004-first-50-components.md) | Accepted |
 | 0006 | [The first flowsheet: streams, blocks, recycles and a Flowsheet workspace](0006-first-flowsheet.md) | Accepted |
 | 0007 | [Solubility and liquid-liquid equilibria](0007-solubility-and-liquid-liquid.md) | Accepted |

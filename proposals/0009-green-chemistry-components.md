@@ -1,14 +1,14 @@
 # 0009: Components for green and bio-based chemistry
 
 - **Status:** Draft
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** data track D5 (components), D8 (formation data of the components, for proposal 0010);
   agentic design track G (the routes agents will compare)
 
 ## Problem
 
-Fugacity's 90-plus components cover petrochemicals, solvents, gases and three solids. The
+CHEPTA's 90-plus components cover petrochemicals, solvents, gases and three solids. The
 sustainable-chemistry map that came with this request lists twenty mature (TRL 7–9) bio-based
 and circular routes and a watchlist of emerging building blocks:
 
@@ -19,13 +19,13 @@ and circular routes and a watchlist of emerging building blocks:
 - recycled polyesters: PET → terephthalic acid + ethylene glycol;
 - captured carbon: CO₂ → methanol.
 
-Fugacity can simulate very few of them. Most of these molecules are missing, and so are many of
+CHEPTA can simulate very few of them. Most of these molecules are missing, and so are many of
 the products their reactions make: esters of levulinic and lactic acid, lactones, carbonates,
 ketals.
 
 These molecules are also harder than those added so far. Many of them decompose before they
 boil (sugars, polyacids), are solids at room temperature, or are absent from the two databanks
-Fugacity has used so far, ChemSep and CoolProp. Adding them needs a plan that is honest about
+CHEPTA has used so far, ChemSep and CoolProp. Adding them needs a plan that is honest about
 which open data exist.
 
 ## Proposal
@@ -122,7 +122,7 @@ Not recognized by the `chemicals` library by name in this scan, to be identified
 open source in their batch: xylose, erythritol, cis,cis-muconic acid, levoglucosenone, glycerol
 carbonate, 5-ethoxymethylfurfural.
 
-Already in Fugacity, and part of these routes: water, methanol, ethanol, acetone, acetic and
+Already in CHEPTA, and part of these routes: water, methanol, ethanol, acetone, acetic and
 formic acid, ethylene glycol, 1,2-propanediol, glycerol, furfural, tetrahydrofuran, diethyl
 ether, ethylene, hydrogen, CO, CO₂, the n-alkanes to dodecane, phenol.
 
@@ -132,7 +132,7 @@ A simulator ships chemicals, not reactions: the user writes the reactions of the
 (proposal 0010). But a user can only write a reaction if every molecule in it is a component. So
 the candidates were chosen route by route: not only the building blocks of the map, but also the
 intermediates and products their usual transformations lead to. The table records that reasoning;
-it is **not** a list of reactions Fugacity will provide.
+it is **not** a list of reactions CHEPTA will provide.
 
 | Transformation in the route (for choosing components only) | New components it brings in | Batch |
 |---|---|---|

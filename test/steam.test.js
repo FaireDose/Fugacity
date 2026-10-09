@@ -235,7 +235,7 @@ function dev(p, got, want) {
 test("grid over all regions agrees with CoolProp's IF97 implementation", () => {
   // Regions 1, 2, 5: same equations, so agreement to round-off. Region 3: CoolProp uses the
   // backward equations v(p,T) (IAPWS SR5-05), which are consistent with the basic equation
-  // only to about 1e-5 in v; Fugacity solves the basic equation itself.
+  // only to about 1e-5 in v; CHEPTA solves the basic equation itself.
   const TOL = { 1: 1e-9, 2: 1e-9, 5: 1e-9, 3: { cp_kJ_kgK: 1e-4, w_m_s: 5e-5, default: 2e-5 } };
   let n = 0;
   for (const pt of grid.points) {
@@ -282,7 +282,7 @@ test("saturated liquid and vapour agree with CoolProp IF97::Water", () => {
           assert.ok(d <= 1e-9, `${ph} ${p} at ${row.T_K} K: ${s[ph][p]} vs ${row[ph][p]}`);
         }
       } else {
-        // Region 3: Fugacity's saturated densities satisfy the basic equation p(rho, T) = psat
+        // Region 3: CHEPTA's saturated densities satisfy the basic equation p(rho, T) = psat
         // exactly. CoolProp takes them from the backward equations, which are consistent with
         // the basic equation to about 1e-5 in pressure; near the critical point, where
         // dp/drho -> 0, that is up to 1 % in density. So compare in pressure.

@@ -1,4 +1,4 @@
-// The Fugacity Library, data (proposal 0003, step 1): src/data/sources.json and the source_ids,
+// The CHEPTA Library, data (proposal 0003, step 1): src/data/sources.json and the source_ids,
 // set names and default flags of the parameter records (validation/python/make_sources.py).
 import { test } from "node:test";
 import assert from "node:assert/strict";

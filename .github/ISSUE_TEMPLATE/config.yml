@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: How to contribute
-    url: https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md
+    url: https://github.com/FaireDose/CHEPTA/blob/main/CONTRIBUTING.md
     about: The two ways to contribute, with ChatGPT, Claude, Gemini or another assistant.
   - name: Report a security problem privately
-    url: https://github.com/FaireDose/Fugacity/security/advisories/new
+    url: https://github.com/FaireDose/CHEPTA/security/advisories/new
     about: Not in a public issue. See SECURITY.md.

@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, stream, componentFlows, pure, FugacityError } from "../src/index.js";
+import { system, stream, componentFlows, pure, CheptaError } from "../src/index.js";
 
 const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/flash.json", import.meta.url)));
 const F = 50;   // kmol/h
@@ -99,6 +99,6 @@ test("wrong specifications are refused with the reason", () => {
     [{ flow_kmol_h: { water: 1 }, T_K: 350, P_kPa: 100, VF: 0.5 }, /give two of/],
     [{ T_K: 350, P_kPa: 100 }, /give the flows/],
     [{ ...ok, P_kPa: -5 }, /./],
-  ]) assert.throws(() => stream(s, spec), err => err instanceof FugacityError && re.test(err.message), JSON.stringify(spec));
+  ]) assert.throws(() => stream(s, spec), err => err instanceof CheptaError && re.test(err.message), JSON.stringify(spec));
   assert.throws(() => stream({}, ok), /must be a system/);
 });

@@ -33,7 +33,7 @@ Sources, in the order of the chain:
        (https://github.com/DanWBR/dwsim, DWSIM.Thermodynamics/Assets/Databases/chemsep1.xml).
        DIPPR 101, 102, 105 and 106 coefficients are taken over (units converted from the kmol
        basis); ChemSep equation 16, Y = A + exp(B/T + C + D T + E T^2) (as implemented in
-       DWSIM, PropertyPackage.vb, CalcCSTDepProp), is not in Fugacity, so it is sampled and
+       DWSIM, PropertyPackage.vb, CalcCSTDepProp), is not in CHEPTA, so it is sampled and
        refitted in a DIPPR form.
 
 Equation forms: ChemSep documentation (Kooijman & Taylor) and the open-source `chemicals`
@@ -142,7 +142,7 @@ UNITS = {"liquidDensity": "kg/m3", "idealGasHeatCapacity": "J/mol/K", "liquidHea
 TRANSPORT = {"liquidViscosity", "vapourViscosity", "liquidThermalConductivity", "vapourThermalConductivity"}
 LIQUID_SIDE = {"liquidDensity", "liquidHeatCapacity", "heatOfVaporization", "liquidViscosity",
                "liquidThermalConductivity", "surfaceTension"}
-# DIPPR form used for each property when Fugacity fits it
+# DIPPR form used for each property when CHEPTA fits it
 FORM = {"liquidDensity": "DIPPR105", "idealGasHeatCapacity": "DIPPR107", "liquidHeatCapacity": "DIPPR100",
         "heatOfVaporization": "DIPPR106", "liquidViscosity": "DIPPR101", "vapourViscosity": "DIPPR102",
         "liquidThermalConductivity": "DIPPR100", "vapourThermalConductivity": "DIPPR102",
@@ -883,7 +883,7 @@ class ChemSep:
         return d
 
     def value_si(self, cas, prop, T):
-        """ChemSep correlation in Fugacity's record units (mol basis)."""
+        """ChemSep correlation in CHEPTA's record units (mol basis)."""
         d = self.corr(cas, prop)
         eq = {1: "DIPPR100", 2: "DIPPR100", 3: "DIPPR100", 4: "DIPPR100", 10: "CS10", 16: "CS16", 116: "CS116", 100: "DIPPR100", 101: "DIPPR101", 102: "DIPPR102", 105: "DIPPR105",
               106: "DIPPR106", 107: "DIPPR107"}[d["eqno"]]
@@ -892,7 +892,7 @@ class ChemSep:
 
 
 def unit_factor(units, prop, MW):
-    """Factor from ChemSep units to Fugacity record units."""
+    """Factor from ChemSep units to CHEPTA record units."""
     table = {("kmol/m3", "liquidDensity"): MW, ("J/kmol", "heatOfVaporization"): 1e-3,
              ("J/kmol/K", "liquidHeatCapacity"): 1e-3, ("J/kmol/K", "idealGasHeatCapacity"): 1e-3,
              ("Pa.s", "liquidViscosity"): 1, ("Pa.s", "vapourViscosity"): 1,
@@ -1661,7 +1661,7 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
     L.append("Each cell: source of the record and the maximum deviation of the correlation from that source "
              "over its range (%). Sources: **CoolProp** 8.0.0 (reference equations cited in each record), "
              "**WebBook** = NIST Chemistry WebBook, **ChemSep** = ChemSep pure-component database v8.3 "
-             "(Artistic License 2.0). Tier: (f) fitted by Fugacity, (d) databank coefficients taken over.\n")
+             "(Artistic License 2.0). Tier: (f) fitted by CHEPTA, (d) databank coefficients taken over.\n")
     head = "| Component | Psat | " + " | ".join(SHORT[p] for p in PROPS) + " |"
     L.append(head)
     L.append("|" + "---|" * (len(PROPS) + 2))
@@ -1694,13 +1694,13 @@ def write_doc(comps, records, builder, vp_gas, measured=()):
     L.append("## Spot checks\n")
     L.append("At 25 °C (298.15 K) for the liquids and at the normal boiling point for the gases (carbon dioxide, "
              "which has no liquid at 1 atm: midway between its triple point and 0.95 Tc). "
-             "\"Fugacity\" is the stored correlation, \"source\" the value of the source it was fitted to "
+             "\"CHEPTA\" is the stored correlation, \"source\" the value of the source it was fitted to "
              "or taken from, and \"ChemSep\" an independent databank value (ChemSep v8.3) where the record "
              "is not itself from ChemSep. A dash: outside the range of the record.\n")
     for cid in IDS:
         T = spot_T(cid, comps)
         L.append("### %s, T = %.2f K\n" % (comps[cid]["name"], T))
-        L.append("| Property | Unit | Fugacity | Source | Deviation | ChemSep |")
+        L.append("| Property | Unit | CHEPTA | Source | Deviation | ChemSep |")
         L.append("|---|---|---|---|---|---|")
         for p in (["vapourPressure"] if cid in VP_FITTED else []) + PROPS:
             f, u = DISPLAY[p]
@@ -1889,7 +1889,7 @@ def fetch_webbook_fluid(cid):
     out = {"component": cid, "source": "NIST Chemistry WebBook (SRD 69), Thermophysical Properties of Fluid Systems",
            "reference": W["reference"], "retrieved": datetime.date.today().isoformat(), "urls": urls}
     for key, url in urls.items():
-        req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
+        req = urllib.request.Request(url, headers={"User-Agent": "CHEPTA data script (https://github.com/FaireDose/CHEPTA)"})
         for attempt in range(5):  # the WebBook gateway sometimes times out (HTTP 504)
             try:
                 with urllib.request.urlopen(req, timeout=120) as f:
@@ -1928,7 +1928,7 @@ def fetch_webbook_antoine():
         if cid in out:  # already downloaded (delete the entry to download it again)
             continue
         url = WEBBOOK_ANTOINE_URL.format(ID=ID)
-        req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
+        req = urllib.request.Request(url, headers={"User-Agent": "CHEPTA data script (https://github.com/FaireDose/CHEPTA)"})
         for attempt in range(6):  # the WebBook gateway sometimes times out (HTTP 504)
             try:
                 with urllib.request.urlopen(req, timeout=120) as f:

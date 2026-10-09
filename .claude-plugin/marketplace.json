@@ -1,22 +1,22 @@
 {
-  "name": "fugacity",
-  "description": "Fugacity skills: build live phase-equilibrium diagrams, and contribute to the open process simulator by its rules.",
+  "name": "chepta",
+  "description": "CHEPTA skills: build live phase-equilibrium diagrams, and contribute to the open process simulator by its rules.",
   "owner": {
     "name": "FaireDose",
-    "url": "https://github.com/FaireDose/Fugacity"
+    "url": "https://github.com/FaireDose/CHEPTA"
   },
   "plugins": [
     {
-      "name": "fugacity",
+      "name": "chepta",
       "source": "./",
-      "description": "Two skills: fugacity (T-x-y diagrams, ternary maps, residue curves and bubble points with the Fugacity library) and fugacity-contributor (develop models or add open data following AGENTS.md).",
+      "description": "Two skills: chepta (T-x-y diagrams, ternary maps, residue curves and bubble points with the CHEPTA library) and chepta-contributor (develop models or add open data following AGENTS.md).",
       "author": { "name": "FaireDose" },
-      "homepage": "https://github.com/FaireDose/Fugacity",
-      "repository": "https://github.com/FaireDose/Fugacity",
+      "homepage": "https://github.com/FaireDose/CHEPTA",
+      "repository": "https://github.com/FaireDose/CHEPTA",
       "license": "MIT",
       "keywords": ["chemical-engineering", "thermodynamics", "vapour-liquid-equilibrium"],
       "strict": false,
-      "skills": ["./ai/skills/fugacity", "./ai/skills/fugacity-contributor"]
+      "skills": ["./ai/skills/chepta", "./ai/skills/chepta-contributor"]
     }
   ]
 }

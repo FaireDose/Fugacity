@@ -1,7 +1,7 @@
 # 0010: Reactions and reactors: one reaction description, five reactor blocks
 
 - **Status:** Draft
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A13 (reactions), data track D8 (formation data of the
   components), release v0.6
@@ -9,7 +9,7 @@
 
 ## Problem
 
-Fugacity's flowsheets only separate and mix: every block conserves each component. A process
+CHEPTA's flowsheets only separate and mix: every block conserves each component. A process
 changes molecules: esterification, hydrogenation, dehydration, fermentation, methanol from CO₂.
 Without reactions, a flowsheet can't show conversion, selectivity, recycle of unreacted feed,
 or heat of reaction. Track G, where agents turn literature routes into flowsheets, has nothing
@@ -32,10 +32,10 @@ Four things are missing:
 
 ### 1. Reaction description (A13, `src/reactions/`)
 
-**Reactions are the user's, not Fugacity's.** Fugacity ships components and their data
+**Reactions are the user's, not CHEPTA's.** CHEPTA ships components and their data
 (including the formation properties below); it ships **no reaction library**. The user defines
 the reactions of their process in the project or flowsheet file, on the Reactions page or by
-hand, the way desktop simulators do it. What Fugacity adds is the checking: element balance,
+hand, the way desktop simulators do it. What CHEPTA adds is the checking: element balance,
 K(T) from the components' formation data, units, ranges, and a clear error when something does
 not fit.
 
@@ -79,8 +79,8 @@ One JSON object per reaction, in the project or flowsheet file:
   reactor volume or per catalyst mass.
 - **Sources:** the user's own numbers (k0, Ea, orders, a K correlation, a conversion) are the
   user's responsibility. Each reaction has an optional `source` field, which the results and
-  exports show next to the numbers, so a reader can see where a rate law came from. Fugacity's
-  open-source rules (AGENTS.md rule 1) apply to what Fugacity ships, the component data, not to
+  exports show next to the numbers, so a reader can see where a rate law came from. CHEPTA's
+  open-source rules (AGENTS.md rule 1) apply to what CHEPTA ships, the component data, not to
   what a user types into their own project.
 
 ### 2. Formation properties (D8)

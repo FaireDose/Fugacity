@@ -1,4 +1,4 @@
-// Styles for the workbench (Fugacity.app): navigation bar, toolbar, Inputs / canvas / Results,
+// Styles for the workbench (CHEPTA.app): navigation bar, toolbar, Inputs / canvas / Results,
 // drawer, status bar. Scoped under .fug-app; the base tokens and the
 // view styles come from styles.js. Light and dark follow the host page, as in styles.js:
 // prefers-color-scheme, overridden by data-theme="light|dark" on <html>.
@@ -498,9 +498,9 @@ export const APP_CSS = `
 /** Inject the base, property-explorer and workbench styles (once per document). */
 export function injectAppStyles(doc = document) {
   injectPropertiesStyles(doc);
-  if (doc.getElementById("fugacity-styles-app")) return;
+  if (doc.getElementById("chepta-styles-app")) return;
   const el = doc.createElement("style");
-  el.id = "fugacity-styles-app";
+  el.id = "chepta-styles-app";
   el.textContent = APP_CSS;
   doc.head.appendChild(el);
 }

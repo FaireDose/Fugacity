@@ -96,7 +96,7 @@ call a result validated beyond what the comparison shows.
 ```
 npm run build
 npm run report                                   # this checkout against itself
-npm run report -- --base-bundle ../main/dist/fugacity.mjs   # against another build
+npm run report -- --base-bundle ../main/dist/chepta.mjs   # against another build
 ```
 
 The output is in `dist/report/` (`report.md`, `report.html`, and the raw results).
@@ -112,10 +112,10 @@ python validation/report/make_reference.py
 Steam tables and the equation of state did not exist when the report was written. The
 script reaches them through `ADAPTERS` in `scripts/engineering-report.mjs`:
 
-- `Fugacity.steam(T_K, P_kPa)`: fields `rho_kg_m3`, `h_kJ_kg` (or `h_J_kg`, `h_J_mol`),
-  `s_kJ_kgK`, `cp_kJ_kgK`, `mu_Pa_s`, `k_W_mK`; saturation from `Fugacity.steam.saturation(T_K)`
+- `CHEPTA.steam(T_K, P_kPa)`: fields `rho_kg_m3`, `h_kJ_kg` (or `h_J_kg`, `h_J_mol`),
+  `s_kJ_kgK`, `cp_kJ_kgK`, `mu_Pa_s`, `k_W_mK`; saturation from `CHEPTA.steam.saturation(T_K)`
   (or `sat`, or `steam.psat`), with `psat_kPa` and `liquid`/`vapour` objects.
-- `Fugacity.system({ components, model: "PR" })`: `density(z, T_K, P_kPa)` or `Z(z, T_K, P_kPa)`,
+- `CHEPTA.system({ components, model: "PR" })`: `density(z, T_K, P_kPa)` or `Z(z, T_K, P_kPa)`,
   and the existing `bubbleP(x, T_K)`.
 
 If such a pull request names things differently, its cases stay "not available" (the

@@ -7,9 +7,9 @@
  *  - browserStore(): this browser's local storage (one origin: the page, or the chat page that
  *    shows the workbench). Kept until the person clears the site's data; not shared with other
  *    browsers or people.
- *  - hostStore(storage): the storage the host page gives to Fugacity.app({ storage }), for
+ *  - hostStore(storage): the storage the host page gives to CHEPTA.app({ storage }), for
  *    example the persistent storage an AI chat platform offers its pages; the page decides
- *    where it goes. Fugacity itself never sends a project anywhere.
+ *    where it goes. CHEPTA itself never sends a project anywhere.
  *
  * And an automatic copy of the open work (autosave) in the browser, offered back after a
  * reload. Every call is wrapped: storage that is blocked (private windows, sandboxed pages)

@@ -1,14 +1,14 @@
 # 0007: Solubility and liquid-liquid equilibria
 
 - **Status:** Accepted (by the lead maintainer, 2026-10-06)
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** v0.3 "Liquid-liquid and vapour-liquid-liquid equilibria"; data track D6 (liquid-liquid
   data for partly miscible pairs); later reactions (solids as reactants and products)
 
 ## Problem
 
-"How much of A dissolves in B?" is asked every day in process work, and Fugacity answers only
+"How much of A dissolves in B?" is asked every day in process work, and CHEPTA answers only
 one version of it: gases in water, by Henry's law (IAPWS G7-04). Missing:
 
 1. **Liquid in liquid.** Which liquids are partly miscible, how much of each dissolves in the

@@ -46,7 +46,7 @@ jobs:
           script: |
             const fs = require("fs");
             const path = require("path");
-            const MARKER = "<!-- fugacity-engineering-report -->";
+            const MARKER = "<!-- chepta-engineering-report -->";
             const MAX = 64000;
             const run = context.payload.workflow_run;
             const { owner, repo } = context.repo;

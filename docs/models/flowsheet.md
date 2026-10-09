@@ -1,6 +1,6 @@
 # Streams, blocks and the flowsheet (layers 3 to 5)
 
-How Fugacity builds and solves a process. Each layer uses only the one below it
+How CHEPTA builds and solves a process. Each layer uses only the one below it
 ([ARCHITECTURE.md](../../ARCHITECTURE.md)):
 
 - a stream is a flash result ([equilibrium.md](equilibrium.md));
@@ -14,9 +14,9 @@ As elsewhere, the header comment of each file is the authoritative statement.
 [`src/stream/stream.js`](../../src/stream/stream.js) (proposal 0006, step 1):
 
 ```js
-Fugacity.stream(sys, { flow_kmol_h: { ethanol: 40, water: 60 }, T_K: 351, P_kPa: 101.325 })
-Fugacity.stream(sys, { flow_kmol_h, P_kPa, H_kW })   // given enthalpy flow (P-H flash)
-Fugacity.stream(sys, { flow_kmol_h, P_kPa, VF })     // given vapour fraction
+CHEPTA.stream(sys, { flow_kmol_h: { ethanol: 40, water: 60 }, T_K: 351, P_kPa: 101.325 })
+CHEPTA.stream(sys, { flow_kmol_h, P_kPa, H_kW })   // given enthalpy flow (P-H flash)
+CHEPTA.stream(sys, { flow_kmol_h, P_kPa, VF })     // given vapour fraction
 ```
 
 - **Always from a flash:** every stream is the result of `sys.flash`, so its phases and enthalpy
@@ -62,7 +62,7 @@ components, the method (`thermo`), the blocks with positions, the streams and th
 - **Where it is kept:** project files of format 2, with the schema in
   [../schema/project-2.json](../schema/project-2.json).
 - **Writing and solving it:** an AI assistant can write the document, check it with
-  `Fugacity.checkProject` and solve it with `Fugacity.runFlowsheet`.
+  `CHEPTA.checkProject` and solve it with `CHEPTA.runFlowsheet`.
 
 ## Flowsheet solver (layer 5)
 

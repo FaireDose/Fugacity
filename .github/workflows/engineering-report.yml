@@ -58,8 +58,8 @@ jobs:
 
       - name: Compute the engineering results
         run: |
-          node head/scripts/engineering-report.mjs run --bundle base/dist/fugacity.mjs --out out/base.json
-          node head/scripts/engineering-report.mjs run --bundle head/dist/fugacity.mjs --out out/head.json
+          node head/scripts/engineering-report.mjs run --bundle base/dist/chepta.mjs --out out/base.json
+          node head/scripts/engineering-report.mjs run --bundle head/dist/chepta.mjs --out out/head.json
 
       - name: Write the report
         env:

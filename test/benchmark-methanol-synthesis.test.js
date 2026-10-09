@@ -12,7 +12,7 @@ const mean = v => v.reduce((a, b) => a + b, 0) / v.length;
 test("dimethyl ether + methanol: fitted k_ij against the total pressures of Park et al. (2007) at 323.15 K", () => {
   // AAD in P reported by validation/python/eos_fit_kij.py (independent Python implementation).
   // Method on purpose outside docs/METHOD_SELECTION.md: polar liquids at 323 K and up to 1143 kPa; the
-  // recommended methods (PSRK, MHV2 mixing rules) are not in Fugacity yet; labelled "not recommended".
+  // recommended methods (PSRK, MHV2 mixing rules) are not in CHEPTA yet; labelled "not recommended".
   const d = load("dimethyl-ether_methanol_px_park2007.json");
   const c = Object.fromEntries(d.columns.map((k, i) => [k, i]));
   const pts = d.rows.filter(r => r[c.x_1] > 0 && r[c.x_1] < 1);

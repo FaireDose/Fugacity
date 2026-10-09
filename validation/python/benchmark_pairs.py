@@ -10,7 +10,7 @@ with
         gas dilute in water; no activity model (no vapour pressure above the critical point);
       * two hydrocarbons (HYDROCARBONS below): equation of state first, activity model second;
       * otherwise (a polar component): activity model first, equation of state second;
-  - what Fugacity has today (src/data/binaries.json, kij.json, henry.json);
+  - what CHEPTA has today (src/data/binaries.json, kij.json, henry.json);
   - what the ChemSep databank has (NRTL, UNIQUAC, PR k_ij, Henry), looked up in the copy of
     the ChemSep interaction-parameter files shipped with the open-source `thermo` library
     (ChemSep: Artistic License 2.0; thermo: MIT);
@@ -130,7 +130,7 @@ def main(write):
     w("# Benchmark processes and their pairs")
     w("")
     w("Proposal [0004](../proposals/0004-first-50-components.md), step 1: the benchmark processes,")
-    w("their components, and the binary pairs each one needs, with what Fugacity and the ChemSep")
+    w("their components, and the binary pairs each one needs, with what CHEPTA and the ChemSep")
     w("databank have today. **A draft for the team to change**: which pairs matter is an")
     w("engineering decision, recorded here before any data is added.")
     w("")
@@ -150,7 +150,7 @@ def main(write):
     w("  boiling point at or below 298.15 K, from the `chemicals` library): *EOS* only, or *Henry*")
     w("  for a gas dilute in water; an activity model cannot describe a component above its")
     w("  critical temperature.")
-    w("- **Fugacity now**: the pair's parameter sets in `src/data/` today (tier in brackets).")
+    w("- **CHEPTA now**: the pair's parameter sets in `src/data/` today (tier in brackets).")
     w("- **ChemSep NRTL / UNIQUAC / PR k_ij / Henry**: the pair is in the ChemSep databank")
     w("  (Artistic License 2.0), as shipped with the open-source `thermo` library. A databank")
     w("  pair is tier `databank`; where open experimental data exist, step 3 fits the pair to")
@@ -160,7 +160,7 @@ def main(write):
     w("")
     w(f"## The components: {len(names)} in the benchmarks, {len(new)} new")
     w("")
-    w("| Component | CAS | In Fugacity | Liquid at 25 °C, 1 atm |")
+    w("| Component | CAS | In CHEPTA | Liquid at 25 °C, 1 atm |")
     w("|---|---|---|---|")
     for n in names:
         w(f"| {n} | {cas[n]} | {yes(fug_id(n))} | {yes(tb[n] and tb[n] > 298.15)} |")
@@ -172,7 +172,7 @@ def main(write):
         pairs = list(itertools.combinations(cs, 2))
         w(f"## {title}")
         w("")
-        w("| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |")
+        w("| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |")
         w("|---|---|---|---|---|---|---|---|---|")
         for a, b in pairs:
             liquid = all(tb[x] and tb[x] > 298.15 for x in (a, b))
@@ -226,7 +226,7 @@ def main(write):
     w("")
     w("| Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |")
     w("|---|--:|--:|--:|--:|")
-    for label, st in [("In Fugacity now", "now"), ("In ChemSep, not yet in Fugacity", "db"),
+    for label, st in [("In CHEPTA now", "now"), ("In ChemSep, not yet in CHEPTA", "db"),
                       ("Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning)", "none")]:
         def prim(v):
             return status(v, "eos" if v["eos_first"] else "act") == st

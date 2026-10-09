@@ -6,7 +6,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, pure, FugacityError } from "../src/index.js";
+import { system, pure, CheptaError } from "../src/index.js";
 
 const load = p => JSON.parse(readFileSync(new URL(p, import.meta.url)));
 const ref = load("../validation/fixtures/three_phase.json");
@@ -174,7 +174,7 @@ test("still refused: two liquids with the acid chemical theory (no K-values to s
   const s = system({ components: ["water", "ethyl acetate"], model: "NRTL" });
   const noK = { ...s, lnKValues: null };
   assert.throws(() => flash(noK, { z: [0.5, 0.5], T: 300, P: 101.325 }),
-    e => e instanceof FugacityError && e.code === "PHASE_SPLIT" && /acid chemical theory/.test(e.message));
+    e => e instanceof CheptaError && e.code === "PHASE_SPLIT" && /acid chemical theory/.test(e.message));
 });
 
 test("the known-issue messages quote the flash's own three-phase results", () => {

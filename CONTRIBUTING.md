@@ -1,6 +1,6 @@
 # Contributing
 
-Fugacity grows through chemical engineers who want an open process simulator: people who
+CHEPTA grows through chemical engineers who want an open process simulator: people who
 know the models behind Aspen or DWSIM, can tell a sensible result from a wrong one, and
 want open tools for teaching and design. You don't need to program: you bring the
 engineering, your AI assistant (ChatGPT, Claude, Gemini or another) does the typing, and
@@ -24,11 +24,11 @@ You need an AI assistant and a free [GitHub account](https://github.com/signup).
 3. **Work it out together**, then check the result yourself: the equations and
    references of a proposal, every number of a data package against its source.
 4. **Submit** with one of the three forms:
-   - [Proposal, model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml):
+   - [Proposal, model or feature](https://github.com/FaireDose/CHEPTA/issues/new?template=model-or-feature.yml):
      development work or a roadmap item;
-   - [Data](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml):
+   - [Data](https://github.com/FaireDose/CHEPTA/issues/new?template=ai-contribution.yml):
      data for a pair, a new component, a correction or a validation case;
-   - [Bug](https://github.com/FaireDose/Fugacity/issues/new?template=bug.yml): something
+   - [Bug](https://github.com/FaireDose/CHEPTA/issues/new?template=bug.yml): something
      that doesn't work or displays wrongly.
 
 A maintainer or a coding agent turns it into a pull request, and a reviewer checks it.
@@ -43,7 +43,7 @@ another agent. They read AGENTS.md automatically.
 1. Connect the agent to your GitHub account.
 2. Ask it, for example: *"Follow AGENTS.md. Implement proposal NNNN (or roadmap item
    ...), validate it against an independent implementation and open data, run the tests,
-   and open a pull request to FaireDose/Fugacity."*
+   and open a pull request to FaireDose/CHEPTA."*
 3. Read what it changed before the pull request goes out: the equations, the references
    and the validation results.
 

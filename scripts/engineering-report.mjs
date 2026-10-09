@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Engineering report: computes a fixed set of engineering results with a built Fugacity
+ * Engineering report: computes a fixed set of engineering results with a built CHEPTA
  * bundle and compares two versions (main and a pull request) with independent references.
  * Proposal 0002, section 8.
  *
@@ -10,12 +10,12 @@
  *
  * Usage
  *   npm run build && npm run report
- *       runs this checkout (dist/fugacity.mjs) and compares it with itself; writes
+ *       runs this checkout (dist/chepta.mjs) and compares it with itself; writes
  *       dist/report/{head.json, report.md, report.html}
- *   npm run report -- --base-bundle ../main/dist/fugacity.mjs
+ *   npm run report -- --base-bundle ../main/dist/chepta.mjs
  *       same, with another build (for example main) as the base
  *
- *   node scripts/engineering-report.mjs run --bundle <dir>/dist/fugacity.mjs --out results.json
+ *   node scripts/engineering-report.mjs run --bundle <dir>/dist/chepta.mjs --out results.json
  *       computes every case with one bundle and writes the results (JSON)
  *   node scripts/engineering-report.mjs compare --base base.json --head head.json --out-dir out
  *       [--base-dir <base checkout>] [--head-dir <head checkout>]
@@ -26,7 +26,7 @@
  *       report itself (this script, the cases, the references or the workflows).
  *
  * Feature detection: every case uses only the public interface of the bundle. A case whose
- * function does not exist in that version (Fugacity.steam, pure().props, model: "PR", ...)
+ * function does not exist in that version (CHEPTA.steam, pure().props, model: "PR", ...)
  * or whose data is missing is reported as "not available in this version", not as a failure.
  * Interfaces that did not exist when this script was written (steam tables, equation of
  * state) are reached through the small ADAPTERS below; if a pull request adds such an
@@ -147,7 +147,7 @@ export const ADAPTERS = {
     for (const f of [s?.saturation, s?.sat, s?.saturationT, s?.satT, F.steamSaturation]) {
       if (typeof f === "function") return f;
     }
-    // Fugacity.steamSat({ T_K }) | ({ P_kPa }) (v0.2)
+    // CHEPTA.steamSat({ T_K }) | ({ P_kPa }) (v0.2)
     if (typeof F.steamSat === "function") return T => F.steamSat({ T_K: T });
     return null;
   },
@@ -175,13 +175,13 @@ function makeContext(F) {
   return {
     F,
     pure(c) {
-      if (!pures.has(c)) pures.set(c, fn(F, "pure", "Fugacity.pure()")(c));
+      if (!pures.has(c)) pures.set(c, fn(F, "pure", "CHEPTA.pure()")(c));
       return pures.get(c);
     },
     system(components, model, vapour) {
       const key = model + (vapour ? "/" + vapour : "") + ":" + components.join("+");
       if (!systems.has(key)) {
-        const make = fn(F, "system", "Fugacity.system()");
+        const make = fn(F, "system", "CHEPTA.system()");
         try { systems.set(key, make({ components, model, ...(vapour ? { vapour } : {}) })); } catch (e) { systems.set(key, e); }
       }
       const s = systems.get(key);
@@ -328,13 +328,13 @@ function steamField(ctx, obj, key, what) {
 }
 
 function steamState(ctx, T, P, key) {
-  const steam = fn(ctx.F, "steam", "Fugacity.steam()");
+  const steam = fn(ctx.F, "steam", "CHEPTA.steam()");
   const r = steam(T, P);
-  return { value: steamField(ctx, r, key, "Fugacity.steam()"), method: "Fugacity.steam(T, P)" };
+  return { value: steamField(ctx, r, key, "CHEPTA.steam()"), method: "CHEPTA.steam(T, P)" };
 }
 
 function steamSaturation(ctx, T, key) {
-  fn(ctx.F, "steam", "Fugacity.steam()");
+  fn(ctx.F, "steam", "CHEPTA.steam()");
   const satFn = ADAPTERS.saturation(ctx.F);
   let r, liq, vap, method;
   if (satFn) {
@@ -344,13 +344,13 @@ function steamSaturation(ctx, T, key) {
     method = "steam saturation function";
   } else if (typeof ctx.F.steam.psat === "function") {
     const ps = ctx.F.steam.psat(T);
-    const pk = num(ps) ? ps : steamField(ctx, ps, "P_bar", "Fugacity.steam.psat()") * 100;
+    const pk = num(ps) ? ps : steamField(ctx, ps, "P_bar", "CHEPTA.steam.psat()") * 100;
     r = { psat_kPa: pk };
     liq = ctx.F.steam(T, pk * (1 + 1e-7));
     vap = ctx.F.steam(T, pk * (1 - 1e-7));
-    method = "Fugacity.steam(T, psat ± 1e-7)";
+    method = "CHEPTA.steam(T, psat ± 1e-7)";
   } else {
-    throw new NotAvailable("no saturation function in Fugacity.steam in this version");
+    throw new NotAvailable("no saturation function in CHEPTA.steam in this version");
   }
   const flat = { rhoL_kg_m3: ["rhoL_kg_m3", "rho_liquid_kg_m3"], rhoV_kg_m3: ["rhoV_kg_m3", "rho_vapour_kg_m3"],
     hL_kJ_kg: ["hL_kJ_kg", "h_liquid_kJ_kg"], hV_kJ_kg: ["hV_kJ_kg", "h_vapour_kJ_kg"] };
@@ -458,7 +458,7 @@ export function expand(v) {
 
 /**
  * Run every case and curve with one bundle.
- * @param {object} F      the Fugacity module (namespace)
+ * @param {object} F      the CHEPTA module (namespace)
  * @param {object} cases  validation/report/cases.json
  */
 export function runCases(F, cases, { curves = true } = {}) {
@@ -949,7 +949,7 @@ function args(argv) {
 }
 
 async function cmdRun(o) {
-  if (!o.bundle || !o.out) throw new Error("usage: run --bundle <dist/fugacity.mjs> --out <results.json>");
+  if (!o.bundle || !o.out) throw new Error("usage: run --bundle <dist/chepta.mjs> --out <results.json>");
   const cases = loadCases(o.cases);
   let F;
   try {
@@ -964,7 +964,7 @@ async function cmdRun(o) {
   mkdirSync(dirname(resolve(o.out)), { recursive: true });
   writeFileSync(o.out, JSON.stringify(res) + "\n");
   const n = Object.values(res.results).flatMap(Object.values);
-  console.log(`Fugacity ${res.fugacity_version}: ${n.filter(r => r.status === "ok").length} computed, ` +
+  console.log(`CHEPTA ${res.fugacity_version}: ${n.filter(r => r.status === "ok").length} computed, ` +
     `${n.filter(r => r.status === "na").length} not available, ${n.filter(r => r.status === "error").length} errors -> ${o.out}`);
   return res;
 }
@@ -975,7 +975,7 @@ function cmdCompare(o, baseRes, headRes) {
   const base = baseRes ?? JSON.parse(readFileSync(o.base, "utf8"));
   const head = headRes ?? JSON.parse(readFileSync(o.head, "utf8"));
   const cmp = compare(cases, refs, base, head);
-  const label = (l, r) => `${l}${r?.fugacity_version ? ` (Fugacity ${r.fugacity_version})` : ""}`;
+  const label = (l, r) => `${l}${r?.fugacity_version ? ` (CHEPTA ${r.fugacity_version})` : ""}`;
   const meta = {
     baseLabel: label(o["base-label"] ?? "main", base), headLabel: label(o["head-label"] ?? "this PR", head),
     machinery: machineryChanges(o["base-dir"], o["head-dir"]), date: new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC",
@@ -999,7 +999,7 @@ async function main(argv) {
   if (cmd && cmd !== "local") throw new Error(`unknown command "${cmd}" (run, compare)`);
   // Default (npm run report): this checkout against itself, or against --base-bundle.
   const outDir = o["out-dir"] ?? join(REPO, "dist/report");
-  const head = await cmdRun({ ...o, bundle: o.bundle ?? join(REPO, "dist/fugacity.mjs"), out: join(outDir, "head.json") });
+  const head = await cmdRun({ ...o, bundle: o.bundle ?? join(REPO, "dist/chepta.mjs"), out: join(outDir, "head.json") });
   const base = o["base-bundle"] ? await cmdRun({ ...o, bundle: o["base-bundle"], out: join(outDir, "base.json") }) : head;
   return cmdCompare({ ...o, "out-dir": outDir, "base-label": o["base-label"] ?? (o["base-bundle"] ? "base" : "this checkout") }, base, head);
 }

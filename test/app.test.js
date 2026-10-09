@@ -1,7 +1,7 @@
-// Workbench (Fugacity.app): the DOM-free part (state, which views can run, units, search).
+// Workbench (CHEPTA.app): the DOM-free part (state, which views can run, units, search).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import * as Fugacity from "../src/index.js";
+import * as CHEPTA from "../src/index.js";
 import {
   LEGACY_TABS, VIEWS, PRESETS, MAX_COMPONENTS, initialState, applyPatch, viewAvailability, resolveView, toggleComponent, rotate,
   filterComponents, searchComponents, normalizeComposition, knownIssuesFor, tierCounts, tierSummary, fmtP, fmtTemp, parseP, parseT, interpolate,
@@ -13,12 +13,12 @@ import { WORKSPACES } from "../src/ui/workspaces.js";
 const MAC = ["methanol", "acetone", "chloroform"];
 
 test("the public interface exports app, system and the earlier views unchanged", () => {
-  assert.equal(typeof Fugacity.app, "function");
-  assert.equal(typeof Fugacity.mount, "function");
-  assert.equal(typeof Fugacity.mountProperties, "function");
-  const s = Fugacity.system({ components: ["ethanol", "water"] });
+  assert.equal(typeof CHEPTA.app, "function");
+  assert.equal(typeof CHEPTA.mount, "function");
+  assert.equal(typeof CHEPTA.mountProperties, "function");
+  const s = CHEPTA.system({ components: ["ethanol", "water"] });
   assert.ok(s.bubbleT([0.5, 0.5], 101.325).T > 350);
-  const e = Fugacity.system({ components: ["methane", "ethane"], model: "PR" });
+  const e = CHEPTA.system({ components: ["methane", "ethane"], model: "PR" });
   assert.equal(typeof e.dewT, "function");
 });
 
@@ -272,7 +272,7 @@ test("composition, interpolation, tiers, known deviations", () => {
   assert.equal(tierSummary([{ tier: "standard", count: 1 }], "gas", "gases"), "1 gas: 1 standard");
   assert.equal(tierSummary([]), "");
   // EOS systems list pairs without k_ij both in pairs (tier "none") and in missingPairs: counted once
-  const eos = Fugacity.system({ components: ["benzene", "toluene"], model: "PR" }).info;
+  const eos = CHEPTA.system({ components: ["benzene", "toluene"], model: "PR" }).info;
   assert.deepEqual(tierCounts(eos.pairs, eos.missingPairs), [{ tier: "none", count: 1 }]);
 
   const ids = ["ethanol", "water", "ethyl-acetate"].map(findComponent);

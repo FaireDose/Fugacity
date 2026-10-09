@@ -1,16 +1,16 @@
 ---
-name: fugacity-contributor
-description: Help a contributor develop the Fugacity process simulator (equations of state, activity models, algorithms, unit operations, roadmap proposals) or add open data, following the repository's AGENTS.md rules.
+name: chepta-contributor
+description: Help a contributor develop the CHEPTA process simulator (equations of state, activity models, algorithms, unit operations, roadmap proposals) or add open data, following the repository's AGENTS.md rules.
 ---
 
-# Contributing to Fugacity
+# Contributing to CHEPTA
 
-Fugacity (https://github.com/FaireDose/Fugacity) is an open-source process simulator for
+CHEPTA (https://github.com/FaireDose/CHEPTA) is an open-source process simulator for
 chemical engineering, built step by step along its roadmap, mostly by engineers working
 with AI assistants.
 
 1. Read the project's rules first:
-   https://fairedose.github.io/Fugacity/agents.md
+   https://fairedose.github.io/CHEPTA/agents.md
    In a clone of the repository, read `AGENTS.md` there. It overrides this skill.
 2. Follow them exactly. In short: open sources only, tried in the order AGENTS.md gives
    (standards, CoolProp, NIST WebBook, open libraries and databanks, ThermoML Archive and
@@ -27,6 +27,6 @@ with AI assistants.
      `npm run wanted` or `npm run check-package` for data), and open a pull request with
      the template's author checklist filled in.
 4. If the chat can show HTML pages, you can offer a page that loads
-   `https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js` and calls
-   `Fugacity.checkPackage(pkg)` to show the package check, or `Fugacity.mount` to compare
+   `https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js` and calls
+   `CHEPTA.checkPackage(pkg)` to show the package check, or `CHEPTA.mount` to compare
    the current model with the new data visually.

@@ -6,7 +6,7 @@ as redistributed with DWSIM:
   https://github.com/DanWBR/dwsim/blob/windows/DWSIM.Thermodynamics/Assets/ChemSepIPD/srk.ipd
 
 Both files list several DECHEMA data sets for some pairs (one line per data set, with the
-DECHEMA page and the temperature range). Fugacity keeps one entry per pair: the one kept in
+DECHEMA page and the temperature range). CHEPTA keeps one entry per pair: the one kept in
 the copy of pr.ipd distributed with the open-source thermo library (thermo 0.6.1,
 thermo/Interaction Parameters/ChemSep/pr.ipd, which lists one data set per pair), and for
 SRK the line from the same DECHEMA page. The other entries are recorded in `alternatives`.
@@ -46,7 +46,7 @@ def t_range(comment):
 
 
 def parse(path, cas):
-    """Lines 'CAS1 CAS2 k12 comments' where both CAS numbers are Fugacity components."""
+    """Lines 'CAS1 CAS2 k12 comments' where both CAS numbers are CHEPTA components."""
     out = []
     for line in open(path, encoding="latin-1"):
         p = line.split()
@@ -106,7 +106,7 @@ def main():
             "name": "ChemSep interaction parameter files pr.ipd and srk.ipd (DECHEMA Peng-Robinson / Soave-Redlich-Kwong EOS data; library created by A. L. Dill 1996 and J. A. Clark 2014, updated by H. Kooijman)",
             "copy_used": "https://github.com/DanWBR/dwsim/tree/windows/DWSIM.Thermodynamics/Assets/ChemSepIPD",
             "license": "Artistic License 2.0, Copyright Harry Kooijman and Ross Taylor",
-            "selection": "Where the file lists several DECHEMA data sets for a pair (entries_in_file > 1; the others are in `alternatives`), Fugacity uses the entry kept in the ChemSep pr.ipd copy distributed with the thermo library 0.6.1, and for SRK the entry from the same DECHEMA page. `printed` is the value as printed in the file; `conditions` is the file's comment (DECHEMA page, temperature and pressure range of the data).",
+            "selection": "Where the file lists several DECHEMA data sets for a pair (entries_in_file > 1; the others are in `alternatives`), CHEPTA uses the entry kept in the ChemSep pr.ipd copy distributed with the thermo library 0.6.1, and for SRK the entry from the same DECHEMA page. `printed` is the value as printed in the file; `conditions` is the file's comment (DECHEMA page, temperature and pressure range of the data).",
         },
         "pairs": pairs,
     }
