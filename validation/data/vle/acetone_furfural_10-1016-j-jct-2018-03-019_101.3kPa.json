@@ -1,0 +1,119 @@
+{
+ "_about": "Acetone (1) + Furfural (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetone, boiling temperature in K, vapour mole fraction of acetone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Ma, Yixin, Gao, Jun, Li, Min, Zhu, Zhaoyou, Wang, Yinglong, Isobaric vapour-liquid equilibrium measurements and extractive distillation process for the azeotrope of (N,N-dimethylisopropylamine  +  acetone), J. Chem. Thermodyn. 122 (2018) 154-161",
+  "doi": "10.1016/j.jct.2018.03.019",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2018.03.019.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 11, 12. The table number in the article was not checked."
+ },
+ "components": [
+  "acetone",
+  "furfural"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   435.15,
+   0.0
+  ],
+  [
+   0.0286,
+   426.54,
+   0.2126
+  ],
+  [
+   0.0606,
+   417.69,
+   0.4029
+  ],
+  [
+   0.0963,
+   408.12,
+   0.5665
+  ],
+  [
+   0.1259,
+   399.8,
+   0.6788
+  ],
+  [
+   0.1519,
+   392.67,
+   0.7548
+  ],
+  [
+   0.1899,
+   383.37,
+   0.8332
+  ],
+  [
+   0.2401,
+   373.68,
+   0.893
+  ],
+  [
+   0.2944,
+   365.94,
+   0.928
+  ],
+  [
+   0.3632,
+   358.91,
+   0.9518
+  ],
+  [
+   0.4247,
+   354.22,
+   0.9641
+  ],
+  [
+   0.5025,
+   349.35,
+   0.9747
+  ],
+  [
+   0.6044,
+   343.74,
+   0.9846
+  ],
+  [
+   0.6678,
+   340.75,
+   0.989
+  ],
+  [
+   0.7181,
+   338.94,
+   0.9913
+  ],
+  [
+   0.7857,
+   336.37,
+   0.9944
+  ],
+  [
+   0.8503,
+   334.12,
+   0.9965
+  ],
+  [
+   0.9196,
+   331.84,
+   0.9985
+  ],
+  [
+   1.0,
+   329.56,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0081. Pure-component boiling points of the set within 0.57 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

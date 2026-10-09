@@ -1,0 +1,123 @@
+{
+ "_about": "2-Butanone (1) + n-Heptane (2): isothermal total pressures at 303.2 K. Rows: temperature in K, liquid mole fraction of 2-butanone, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "Liebergesell, Bastian, Brands, Thorsten, Kobeta, Hans-Juergen, Bardow, Andre, Quaternary isothermal vapor-liquid equilibrium of the model biofuel 2-butanone + n-heptane + tetrahydrofuran + cyclohexane using Raman spectroscopic characterization, Fluid Phase Equilib. 472 (2018) 107-116",
+  "doi": "10.1016/j.fluid.2018.04.009",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.04.009.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9. The table number in the article was not checked."
+ },
+ "components": [
+  "2-butanone",
+  "n-heptane"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   303.2,
+   0.0,
+   7.7
+  ],
+  [
+   303.2,
+   0.091,
+   11.8
+  ],
+  [
+   303.2,
+   0.133,
+   12.8
+  ],
+  [
+   303.2,
+   0.157,
+   13.3
+  ],
+  [
+   303.2,
+   0.178,
+   13.7
+  ],
+  [
+   303.2,
+   0.239,
+   14.6
+  ],
+  [
+   303.2,
+   0.301,
+   15.2
+  ],
+  [
+   303.2,
+   0.346,
+   15.6
+  ],
+  [
+   303.2,
+   0.482,
+   16.2
+  ],
+  [
+   303.2,
+   0.542,
+   16.5
+  ],
+  [
+   303.2,
+   0.574,
+   16.6
+  ],
+  [
+   303.2,
+   0.684,
+   16.7
+  ],
+  [
+   303.2,
+   0.691,
+   16.8
+  ],
+  [
+   303.2,
+   0.695,
+   16.8
+  ],
+  [
+   303.2,
+   0.803,
+   16.8
+  ],
+  [
+   303.2,
+   0.811,
+   16.7
+  ],
+  [
+   303.2,
+   0.895,
+   16.5
+  ],
+  [
+   303.2,
+   0.897,
+   16.4
+  ],
+  [
+   303.2,
+   0.906,
+   16.4
+  ],
+  [
+   303.2,
+   1.0,
+   15.1
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

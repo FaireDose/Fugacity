@@ -1,0 +1,79 @@
+{
+ "_about": "1-Butanol (1) + n-Butyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Cai, J.[Jialin], Zhen, S.[Shensheng], Gao, D.[Dengpan], Cui, X.[Xianbao], Phase Equilibrium (VLE, LLE, and VLLE) Data of the Ternary System: Ionic Liquid [OMIM][PF6] + Butan-1-ol + Butyl Acetate, J. Chem. Eng. Data 59 (2014) 2171-2176",
+  "doi": "10.1021/je5000296",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je5000296.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3, 4. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "n-butyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   399.15,
+   0.0
+  ],
+  [
+   0.122,
+   395.56,
+   0.211
+  ],
+  [
+   0.18,
+   394.31,
+   0.272
+  ],
+  [
+   0.302,
+   392.53,
+   0.41
+  ],
+  [
+   0.42,
+   391.37,
+   0.491
+  ],
+  [
+   0.531,
+   390.69,
+   0.582
+  ],
+  [
+   0.612,
+   390.38,
+   0.652
+  ],
+  [
+   0.699,
+   390.2,
+   0.711
+  ],
+  [
+   0.792,
+   390.2,
+   0.791
+  ],
+  [
+   0.901,
+   390.48,
+   0.881
+  ],
+  [
+   1.0,
+   390.48,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0070. Pure-component boiling points of the set within 0.26 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

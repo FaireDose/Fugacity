@@ -1,0 +1,87 @@
+{
+ "_about": "Cyclohexane (1) + Toluene (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of cyclohexane, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Khoshooei, Milad Ahmadi, Sharp, Dave, Maham, Yadollah, Afacan, Artin, Dechaine, Greg Paul, A new analysis method for improving collection of vapor-liquid equilibrium (VLE) data of binary mixtures using differential scanning calorimetry (DSC), Thermochim. Acta 659 (2018) 232-241",
+  "doi": "10.1016/j.tca.2017.12.010",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.tca.2017.12.010.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 8. The table number in the article was not checked."
+ },
+ "components": [
+  "cyclohexane",
+  "toluene"
+ ],
+ "kind": "isobaric-tx",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K"
+ ],
+ "rows": [
+  [
+   0.0,
+   383.6
+  ],
+  [
+   0.0295,
+   382.12
+  ],
+  [
+   0.0515,
+   380.72
+  ],
+  [
+   0.0987,
+   378.33
+  ],
+  [
+   0.1838,
+   374.31
+  ],
+  [
+   0.2964,
+   369.86
+  ],
+  [
+   0.3968,
+   366.5
+  ],
+  [
+   0.4981,
+   363.57
+  ],
+  [
+   0.5994,
+   361.15
+  ],
+  [
+   0.6985,
+   358.97
+  ],
+  [
+   0.8018,
+   356.94
+  ],
+  [
+   0.9,
+   355.27
+  ],
+  [
+   0.953,
+   354.42
+  ],
+  [
+   0.9703,
+   354.19
+  ],
+  [
+   0.9839,
+   353.84
+  ],
+  [
+   1.0,
+   353.82
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Fitted to the bubble temperatures alone (Barker's method): no set of this pair with vapour compositions passes the consistency point test, or none was measured. Pure-component boiling points of the set within 0.13 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

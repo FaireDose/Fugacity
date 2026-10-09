@@ -1,0 +1,89 @@
+{
+ "_about": "Acetic acid (1) + Furfural (2): isobaric T-x-y at 88.98 kPa. Rows: liquid mole fraction of acetic acid, boiling temperature in K, vapour mole fraction of acetic acid, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Fele, L.[Ljudmila], Grilc, V.[Viktor], Separation of Furfural from Ternary Mixtures, J. Chem. Eng. Data 48 (2003) 564-570",
+  "doi": "10.1021/je020117y",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je020117y.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "acetic-acid",
+  "furfural"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 88.98,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.1003,
+   422.33,
+   0.2936
+  ],
+  [
+   0.2344,
+   415.08,
+   0.5436
+  ],
+  [
+   0.3499,
+   409.6,
+   0.6803
+  ],
+  [
+   0.4677,
+   404.86,
+   0.7893
+  ],
+  [
+   0.5676,
+   401.03,
+   0.8526
+  ],
+  [
+   0.6715,
+   397.05,
+   0.8959
+  ],
+  [
+   0.7472,
+   395.03,
+   0.9214
+  ],
+  [
+   0.8436,
+   391.67,
+   0.9559
+  ],
+  [
+   0.9046,
+   389.94,
+   0.9726
+  ],
+  [
+   0.9277,
+   388.9,
+   0.9786
+  ],
+  [
+   0.9364,
+   388.47,
+   0.9817
+  ],
+  [
+   0.9587,
+   387.79,
+   0.9863
+  ],
+  [
+   0.9796,
+   386.95,
+   0.9935
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0036. To be checked by a person against the record (AGENTS.md rule 4)."
+}

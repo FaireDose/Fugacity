@@ -1,0 +1,119 @@
+{
+ "_about": "2-Butanone (1) + Isopropyl acetate (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 2-butanone, boiling temperature in K, vapour mole fraction of 2-butanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Xie, Q.[Qiang], Wan, H.[Hui], Han, M.[MingJuan], Guan, G.[Guofeng], Investigation on isobaric vapor liquid equilibrium for acetic acid +water +methyl ethyl ketone + isopropyl acetate, Fluid Phase Equilib. 280 (2009) 120-128",
+  "doi": "10.1016/j.fluid.2009.03.008",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2009.03.008.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 5, 6. The table number in the article was not checked."
+ },
+ "components": [
+  "2-butanone",
+  "isopropyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0814,
+   360.22,
+   0.1114
+  ],
+  [
+   0.152,
+   359.47,
+   0.2002
+  ],
+  [
+   0.2083,
+   358.78,
+   0.2668
+  ],
+  [
+   0.2533,
+   358.32,
+   0.3178
+  ],
+  [
+   0.3288,
+   357.51,
+   0.4012
+  ],
+  [
+   0.3839,
+   357.06,
+   0.457
+  ],
+  [
+   0.4519,
+   356.4,
+   0.5273
+  ],
+  [
+   0.5105,
+   355.97,
+   0.5841
+  ],
+  [
+   0.5574,
+   355.58,
+   0.6271
+  ],
+  [
+   0.6011,
+   355.24,
+   0.6663
+  ],
+  [
+   0.6657,
+   354.76,
+   0.7221
+  ],
+  [
+   0.7013,
+   354.56,
+   0.751
+  ],
+  [
+   0.731,
+   354.34,
+   0.7773
+  ],
+  [
+   0.7723,
+   354.05,
+   0.8127
+  ],
+  [
+   0.8189,
+   353.74,
+   0.8513
+  ],
+  [
+   0.8581,
+   353.59,
+   0.8826
+  ],
+  [
+   0.8997,
+   353.33,
+   0.9174
+  ],
+  [
+   0.9292,
+   353.17,
+   0.9414
+  ],
+  [
+   0.9471,
+   353.04,
+   0.956
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0035. To be checked by a person against the record (AGENTS.md rule 4)."
+}

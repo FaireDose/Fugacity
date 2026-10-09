@@ -1,0 +1,134 @@
+{
+ "_about": "Cyclohexane (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of cyclohexane, boiling temperature in K, vapour mole fraction of cyclohexane, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Zhang, Z.[Zhigang], Jiang, P.[Peng], Huang, D.[Donghao], Lv, M.[Ming], Du, Y.[Yan], Li, W.[Wenxiu], Vapor Liquid Equilibrium for Ternary and Binary Mixtures of Tetrahydrofuran, Cyclohexane, and 1,2-Propanediol at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 3054-3060",
+  "doi": "10.1021/je4004993",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je4004993.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "cyclohexane",
+  "tetrahydrofuran"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   339.15,
+   0.0
+  ],
+  [
+   0.021,
+   339.11,
+   0.023
+  ],
+  [
+   0.043,
+   339.08,
+   0.04
+  ],
+  [
+   0.058,
+   339.05,
+   0.062
+  ],
+  [
+   0.07,
+   339.04,
+   0.07
+  ],
+  [
+   0.081,
+   339.04,
+   0.078
+  ],
+  [
+   0.111,
+   339.07,
+   0.095
+  ],
+  [
+   0.128,
+   339.15,
+   0.125
+  ],
+  [
+   0.158,
+   339.19,
+   0.15
+  ],
+  [
+   0.22,
+   339.35,
+   0.184
+  ],
+  [
+   0.272,
+   339.65,
+   0.201
+  ],
+  [
+   0.309,
+   339.81,
+   0.245
+  ],
+  [
+   0.339,
+   340.15,
+   0.276
+  ],
+  [
+   0.419,
+   340.71,
+   0.319
+  ],
+  [
+   0.5,
+   341.51,
+   0.379
+  ],
+  [
+   0.579,
+   342.44,
+   0.438
+  ],
+  [
+   0.639,
+   343.55,
+   0.499
+  ],
+  [
+   0.732,
+   345.51,
+   0.577
+  ],
+  [
+   0.799,
+   346.42,
+   0.644
+  ],
+  [
+   0.851,
+   348.44,
+   0.729
+  ],
+  [
+   0.944,
+   351.31,
+   0.875
+  ],
+  [
+   1.0,
+   353.83,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0059. Pure-component boiling points of the set within 0.17 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

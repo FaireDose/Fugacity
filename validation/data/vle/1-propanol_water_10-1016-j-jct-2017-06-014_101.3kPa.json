@@ -1,0 +1,129 @@
+{
+ "_about": "1-Propanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Cumplido, M.[MaPilar], Lladosa, E.[Estela], Loras, S.[Sonia], Pla-Franco, J.[Jordi], Isobaric vapor-liquid equilibria for extractive distillation of 1-propanol + water mixture using thiocyanate-based ionic liquids, J. Chem. Thermodyn. 113 (2017) 219-228",
+  "doi": "10.1016/j.jct.2017.06.014",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2017.06.014.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3, 4. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   373.15,
+   0.0
+  ],
+  [
+   0.058,
+   362.34,
+   0.368
+  ],
+  [
+   0.102,
+   361.61,
+   0.389
+  ],
+  [
+   0.147,
+   361.33,
+   0.396
+  ],
+  [
+   0.19,
+   361.16,
+   0.402
+  ],
+  [
+   0.246,
+   361.01,
+   0.406
+  ],
+  [
+   0.288,
+   360.91,
+   0.411
+  ],
+  [
+   0.33,
+   360.86,
+   0.416
+  ],
+  [
+   0.379,
+   360.76,
+   0.423
+  ],
+  [
+   0.433,
+   360.72,
+   0.434
+  ],
+  [
+   0.482,
+   360.76,
+   0.449
+  ],
+  [
+   0.529,
+   360.86,
+   0.464
+  ],
+  [
+   0.602,
+   361.14,
+   0.492
+  ],
+  [
+   0.676,
+   361.87,
+   0.53
+  ],
+  [
+   0.705,
+   362.05,
+   0.552
+  ],
+  [
+   0.768,
+   362.81,
+   0.593
+  ],
+  [
+   0.838,
+   364.28,
+   0.677
+  ],
+  [
+   0.892,
+   365.75,
+   0.755
+  ],
+  [
+   0.939,
+   367.47,
+   0.848
+  ],
+  [
+   0.976,
+   369.07,
+   0.935
+  ],
+  [
+   1.0,
+   370.35,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0059. Pure-component boiling points of the set within 0.15 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

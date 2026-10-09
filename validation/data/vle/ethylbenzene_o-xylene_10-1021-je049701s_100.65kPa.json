@@ -1,0 +1,94 @@
+{
+ "_about": "Ethylbenzene (1) + o-Xylene (2): isobaric T-x-y at 100.65 kPa. Rows: liquid mole fraction of ethylbenzene, boiling temperature in K, vapour mole fraction of ethylbenzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Rodrigues, W. L.[Willias L.], Mattedi, S.[Silvana], Abreu, J. C. N.[Joao C. N.], Vapor-Liquid Equilibria Data for Binary Systems of Ethylbenzene + Xylene Isomers at 100.65 kPa, J. Chem. Eng. Data 50 (2005) 1134-1138",
+  "doi": "10.1021/je049701s",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je049701s.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 14, 15. The table number in the article was not checked."
+ },
+ "components": [
+  "ethylbenzene",
+  "o-xylene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 100.65,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   417.593,
+   0.0
+  ],
+  [
+   0.0538,
+   416.999,
+   0.0687
+  ],
+  [
+   0.1396,
+   416.183,
+   0.1756
+  ],
+  [
+   0.2163,
+   415.547,
+   0.269
+  ],
+  [
+   0.2899,
+   414.94,
+   0.3518
+  ],
+  [
+   0.4153,
+   413.761,
+   0.4869
+  ],
+  [
+   0.5211,
+   412.79,
+   0.5912
+  ],
+  [
+   0.6151,
+   412.021,
+   0.6753
+  ],
+  [
+   0.6918,
+   411.405,
+   0.7496
+  ],
+  [
+   0.7809,
+   410.769,
+   0.8267
+  ],
+  [
+   0.8457,
+   410.679,
+   0.8742
+  ],
+  [
+   0.9078,
+   409.566,
+   0.9309
+  ],
+  [
+   0.9579,
+   409.321,
+   0.9618
+  ],
+  [
+   1.0,
+   409.176,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0096. Pure-component boiling points of the set within 0.35 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

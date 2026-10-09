@@ -1,0 +1,79 @@
+{
+ "_about": "Cyclohexane (1) + n-Heptane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of cyclohexane, boiling temperature in K, vapour mole fraction of cyclohexane, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Manivannan, Raj Ganesh, Mohammad, Sayeed, McCarley, Ken, Cai, Tony, Aichele, Clint, A New Test System for Distillation Efficiency Experiments at Elevated Liquid Viscosities: Vapor-Liquid Equilibrium and Liquid Viscosity Data for Cyclopentanol + Cyclohexanol, J. Chem. Eng. Data 64 (2019) 696-705",
+  "doi": "10.1021/acs.jced.8b00929",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00929.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "cyclohexane",
+  "n-heptane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   370.97,
+   0.0
+  ],
+  [
+   0.1192,
+   368.67,
+   0.1879
+  ],
+  [
+   0.2507,
+   365.55,
+   0.3711
+  ],
+  [
+   0.3498,
+   363.57,
+   0.4798
+  ],
+  [
+   0.418,
+   362.17,
+   0.5543
+  ],
+  [
+   0.515,
+   360.95,
+   0.634
+  ],
+  [
+   0.5993,
+   359.69,
+   0.7181
+  ],
+  [
+   0.7535,
+   357.05,
+   0.8263
+  ],
+  [
+   0.8469,
+   355.78,
+   0.9009
+  ],
+  [
+   0.8804,
+   355.19,
+   0.9236
+  ],
+  [
+   1.0,
+   353.82,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0063. Pure-component boiling points of the set within 0.62 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

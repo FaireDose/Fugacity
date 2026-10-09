@@ -1,0 +1,104 @@
+{
+ "_about": "2-Propanol (1) + Methanol (2): isobaric T-x-y at 101.0 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Hao, Y.[Yabo], Zhang, S.[Songhong], Yao, K.[Kejian], Vapor Liquid Equilibrium Data for Methanol + tert-Butylamine + N,N-Dimethylformamide and Constituent Binary Systems at Atmospheric Pressure, J. Chem. Eng. Data 57 (2012) 1244-1248",
+  "doi": "10.1021/je201349k",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je201349k.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 4, 5. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0424,
+   339.07,
+   0.016800000000000037
+  ],
+  [
+   0.1112,
+   340.15,
+   0.04910000000000003
+  ],
+  [
+   0.1961,
+   341.34,
+   0.09989999999999999
+  ],
+  [
+   0.3175,
+   343.25,
+   0.17910000000000004
+  ],
+  [
+   0.4173,
+   344.93,
+   0.2623
+  ],
+  [
+   0.5083,
+   346.45,
+   0.34199999999999997
+  ],
+  [
+   0.557,
+   347.57,
+   0.39649999999999996
+  ],
+  [
+   0.5947,
+   348.01,
+   0.4325
+  ],
+  [
+   0.6277,
+   348.65,
+   0.4685
+  ],
+  [
+   0.6869,
+   349.85,
+   0.5425
+  ],
+  [
+   0.7321,
+   350.78,
+   0.6013
+  ],
+  [
+   0.7826,
+   351.73,
+   0.6685
+  ],
+  [
+   0.8494,
+   352.82,
+   0.7614
+  ],
+  [
+   0.8779,
+   353.43,
+   0.806
+  ],
+  [
+   0.9323,
+   354.27,
+   0.8891
+  ],
+  [
+   0.9573,
+   354.69,
+   0.929
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0049. To be checked by a person against the record (AGENTS.md rule 4)."
+}

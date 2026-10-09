@@ -1,0 +1,129 @@
+{
+ "_about": "Methyl isobutyl ketone (1) + n-Hexane (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of methyl isobutyl ketone, boiling temperature in K, vapour mole fraction of methyl isobutyl ketone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Marrufo, B.[Beatriz], Pla-Franco, J.[Jordi], Lladosa, E.[Estela], Loras, S.[Sonia], Evaluation of Diethyl Carbonate and Methyl Isobutyl Ketone as Entrainers for the Separation of 1-Hexene and n-Hexane, J. Chem. Eng. Data 62 (2017) 1355-1364",
+  "doi": "10.1021/acs.jced.6b00905",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.6b00905.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 15, 16. The table number in the article was not checked."
+ },
+ "components": [
+  "mibk",
+  "n-hexane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 100.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.02,
+   341.75,
+   0.01100000000000001
+  ],
+  [
+   0.049,
+   342.17,
+   0.026000000000000023
+  ],
+  [
+   0.106,
+   343.03,
+   0.050000000000000044
+  ],
+  [
+   0.158,
+   343.87,
+   0.06899999999999995
+  ],
+  [
+   0.214,
+   344.85,
+   0.08599999999999997
+  ],
+  [
+   0.27,
+   345.83,
+   0.10299999999999998
+  ],
+  [
+   0.324,
+   346.79,
+   0.121
+  ],
+  [
+   0.378,
+   347.95,
+   0.14
+  ],
+  [
+   0.436,
+   349.31,
+   0.15200000000000002
+  ],
+  [
+   0.497,
+   350.92,
+   0.17600000000000005
+  ],
+  [
+   0.547,
+   352.46,
+   0.18400000000000005
+  ],
+  [
+   0.596,
+   354.2,
+   0.21299999999999997
+  ],
+  [
+   0.655,
+   356.65,
+   0.243
+  ],
+  [
+   0.7,
+   358.6,
+   0.279
+  ],
+  [
+   0.77,
+   362.79,
+   0.36
+  ],
+  [
+   0.828,
+   366.9,
+   0.44199999999999995
+  ],
+  [
+   0.863,
+   370.09,
+   0.492
+  ],
+  [
+   0.892,
+   373.34,
+   0.562
+  ],
+  [
+   0.926,
+   377.27,
+   0.6599999999999999
+  ],
+  [
+   0.955,
+   381.08,
+   0.772
+  ],
+  [
+   0.978,
+   384.37,
+   0.881
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0063. To be checked by a person against the record (AGENTS.md rule 4)."
+}

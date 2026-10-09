@@ -1,0 +1,94 @@
+{
+ "_about": "m-Xylene (1) + n-Decane (2): isobaric T-x-y at 20.0 kPa. Rows: liquid mole fraction of m-xylene, boiling temperature in K, vapour mole fraction of m-xylene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Yang, S.[Shengkai], Wang, Y.[Yujie], Wang, X.[Xuejing], Zhu, Y.[Yong], Chen, N.[Na], Isobaric vapor-liquid equilibrium of binary systems of decane with p-, o-, m-xylene at 20 kPa, Fluid Phase Equilib. 337 (2013) 109-114",
+  "doi": "10.1016/j.fluid.2012.09.019",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.09.019.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 15, 16. The table number in the article was not checked."
+ },
+ "components": [
+  "m-xylene",
+  "n-decane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 20.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   393.12,
+   0.0
+  ],
+  [
+   0.027,
+   391.29,
+   0.08799999999999997
+  ],
+  [
+   0.11,
+   386.43,
+   0.29300000000000004
+  ],
+  [
+   0.164,
+   383.66,
+   0.401
+  ],
+  [
+   0.257,
+   379.49,
+   0.5389999999999999
+  ],
+  [
+   0.348,
+   376.04,
+   0.645
+  ],
+  [
+   0.436,
+   373.16,
+   0.72
+  ],
+  [
+   0.527,
+   370.55,
+   0.788
+  ],
+  [
+   0.611,
+   368.41,
+   0.834
+  ],
+  [
+   0.709,
+   366.17,
+   0.886
+  ],
+  [
+   0.796,
+   364.36,
+   0.921
+  ],
+  [
+   0.872,
+   362.9,
+   0.954
+  ],
+  [
+   0.937,
+   361.71,
+   0.975
+  ],
+  [
+   1.0,
+   360.59,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0027. Pure-component boiling points of the set within 0.29 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

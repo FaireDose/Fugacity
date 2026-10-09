@@ -1,0 +1,104 @@
+{
+ "_about": "1-Propanol (1) + Cyclohexanone (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Zhang, Kai, Xu, Dongmei, Zhou, Yunpeng, Shi, Puyun, Gao, Jun, Wang, Yinglong, Isobaric Vapor-Liquid Phase Equilibrium Measurements, Correlation, and Prediction for Separation of the Mixtures of Cyclohexanone and Alcohols, J. Chem. Eng. Data 63 (2018) 2038-2045",
+  "doi": "10.1021/acs.jced.8b00033",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00033.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 15, 16. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "cyclohexanone"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   428.6,
+   0.0
+  ],
+  [
+   0.0232,
+   423.9,
+   0.14149999999999996
+  ],
+  [
+   0.0445,
+   420.3,
+   0.23509999999999998
+  ],
+  [
+   0.076,
+   415.4,
+   0.3519
+  ],
+  [
+   0.1069,
+   411.4,
+   0.4395
+  ],
+  [
+   0.1633,
+   405.1,
+   0.5625
+  ],
+  [
+   0.2256,
+   399.7,
+   0.6543
+  ],
+  [
+   0.3362,
+   392.1,
+   0.7654
+  ],
+  [
+   0.4056,
+   388.1,
+   0.8125
+  ],
+  [
+   0.4848,
+   384.4,
+   0.8543000000000001
+  ],
+  [
+   0.5717,
+   380.9,
+   0.8894
+  ],
+  [
+   0.7463,
+   375.7,
+   0.9445
+  ],
+  [
+   0.8132,
+   374.1,
+   0.9608
+  ],
+  [
+   0.9098,
+   371.9,
+   0.9812
+  ],
+  [
+   0.9555,
+   371.1,
+   0.99
+  ],
+  [
+   1.0,
+   370.4,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0044. Pure-component boiling points of the set within 0.50 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

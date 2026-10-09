@@ -1,0 +1,129 @@
+{
+ "_about": "2-Propanol (1) + Isooctane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Lin, D.-Y.[Dun-Yi], Tu, C. -H.[Chein-Hsiun], (Vapour + liquid) equilibria for binary and ternary mixtures of 2-propanol,  tetrahydropyran, and 2,2,4-trimethylpentane at P = 101.3 kPa, J. Chem. Thermodyn. 47 (2012) 260-266",
+  "doi": "10.1016/j.jct.2011.10.025",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2011.10.025.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 13, 14. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "isooctane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   372.37,
+   0.0
+  ],
+  [
+   0.053,
+   361.23,
+   0.31
+  ],
+  [
+   0.073,
+   358.96,
+   0.36
+  ],
+  [
+   0.098,
+   356.86,
+   0.416
+  ],
+  [
+   0.138,
+   354.77,
+   0.468
+  ],
+  [
+   0.175,
+   353.35,
+   0.499
+  ],
+  [
+   0.246,
+   351.8,
+   0.549
+  ],
+  [
+   0.366,
+   350.57,
+   0.581
+  ],
+  [
+   0.432,
+   350.23,
+   0.597
+  ],
+  [
+   0.521,
+   349.99,
+   0.609
+  ],
+  [
+   0.533,
+   349.96,
+   0.613
+  ],
+  [
+   0.549,
+   349.93,
+   0.617
+  ],
+  [
+   0.608,
+   349.65,
+   0.627
+  ],
+  [
+   0.64,
+   349.69,
+   0.634
+  ],
+  [
+   0.693,
+   349.85,
+   0.648
+  ],
+  [
+   0.735,
+   349.95,
+   0.668
+  ],
+  [
+   0.787,
+   350.17,
+   0.692
+  ],
+  [
+   0.805,
+   350.39,
+   0.715
+  ],
+  [
+   0.911,
+   351.74,
+   0.793
+  ],
+  [
+   0.953,
+   353.17,
+   0.875
+  ],
+  [
+   1.0,
+   355.39,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0055. Pure-component boiling points of the set within 0.15 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

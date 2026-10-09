@@ -1,0 +1,104 @@
+{
+ "_about": "n-Heptane (1) + n-Nonane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of n-heptane, boiling temperature in K, vapour mole fraction of n-heptane, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Gupta, B. S.[Bhupender S.], Lee, M.-J.[Ming-Jer], Isobaric vapor-liquid equilibrium for binary systemsof toluene + o-xylene, benzene + o-xylene, nonane + benzene and nonane + heptane at 101.3 kPa, Fluid Phase Equilib. 352 (2013) 86-92",
+  "doi": "10.1016/j.fluid.2013.05.016",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2013.05.016.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 22, 23. The table number in the article was not checked."
+ },
+ "components": [
+  "n-heptane",
+  "n-nonane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   423.8,
+   0.0
+  ],
+  [
+   0.035,
+   420.7,
+   0.10899999999999999
+  ],
+  [
+   0.043,
+   420.0,
+   0.133
+  ],
+  [
+   0.098,
+   415.5,
+   0.28
+  ],
+  [
+   0.117,
+   413.9,
+   0.32499999999999996
+  ],
+  [
+   0.17,
+   409.6,
+   0.43999999999999995
+  ],
+  [
+   0.198,
+   407.5,
+   0.494
+  ],
+  [
+   0.278,
+   401.6,
+   0.625
+  ],
+  [
+   0.359,
+   396.2,
+   0.726
+  ],
+  [
+   0.466,
+   390.3,
+   0.8240000000000001
+  ],
+  [
+   0.58,
+   385.1,
+   0.883
+  ],
+  [
+   0.633,
+   382.3,
+   0.916
+  ],
+  [
+   0.751,
+   378.7,
+   0.95
+  ],
+  [
+   0.837,
+   375.7,
+   0.973
+  ],
+  [
+   0.929,
+   373.3,
+   0.99
+  ],
+  [
+   1.0,
+   371.4,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0077. Pure-component boiling points of the set within 0.19 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

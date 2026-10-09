@@ -1,0 +1,128 @@
+{
+ "_about": "2-Butanone (1) + Chloroform (2): isothermal total pressures at 303.15 K. Rows: temperature in K, liquid mole fraction of 2-butanone, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "Clara, R. A.[Rene A.], Marigliano, A. C. G.[Ana C. Gomez], Solimo, H. N.[Horacio N.], Density, Viscosity, Vapor-Liquid Equilibrium, Excess Molar Volume, Viscosity Deviation, and Their Correlations for the Chloroform + 2-Butanone Binary System, J. Chem. Eng. Data 51 (2006) 1473-1478",
+  "doi": "10.1021/je060150a",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je060150a.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "2-butanone",
+  "chloroform"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   303.15,
+   0.0,
+   32.19
+  ],
+  [
+   303.15,
+   0.087,
+   30.0
+  ],
+  [
+   303.15,
+   0.12,
+   29.22
+  ],
+  [
+   303.15,
+   0.177,
+   27.26
+  ],
+  [
+   303.15,
+   0.243,
+   24.66
+  ],
+  [
+   303.15,
+   0.268,
+   23.37
+  ],
+  [
+   303.15,
+   0.322,
+   21.74
+  ],
+  [
+   303.15,
+   0.369,
+   20.58
+  ],
+  [
+   303.15,
+   0.37,
+   20.41
+  ],
+  [
+   303.15,
+   0.398,
+   19.86
+  ],
+  [
+   303.15,
+   0.429,
+   19.26
+  ],
+  [
+   303.15,
+   0.44,
+   18.75
+  ],
+  [
+   303.15,
+   0.493,
+   17.69
+  ],
+  [
+   303.15,
+   0.526,
+   17.17
+  ],
+  [
+   303.15,
+   0.556,
+   16.69
+  ],
+  [
+   303.15,
+   0.623,
+   16.13
+  ],
+  [
+   303.15,
+   0.637,
+   15.89
+  ],
+  [
+   303.15,
+   0.748,
+   15.33
+  ],
+  [
+   303.15,
+   0.858,
+   15.47
+  ],
+  [
+   303.15,
+   0.926,
+   15.59
+  ],
+  [
+   303.15,
+   1.0,
+   15.74
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

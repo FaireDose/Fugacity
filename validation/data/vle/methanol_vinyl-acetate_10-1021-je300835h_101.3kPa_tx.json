@@ -1,0 +1,75 @@
+{
+ "_about": "Methanol (1) + Vinyl acetate (2): isobaric bubble temperatures at 101.3 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of methanol, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Camacho, J.[Javier], Diez, E.[Eduardo], Diaz, I.[Ismael], Ovejero, G.[Gabriel], Vapor Liquid Equilibrium at p/kPa = 101.3 of the Binary Mixtures of Ethenyl Acetate with Methanol and Butan-1-ol, J. Chem. Eng. Data 57 (2012) 3198-3202",
+  "doi": "10.1021/je300835h",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je300835h.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 4, 5. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "vinyl-acetate"
+ ],
+ "kind": "isobaric-tx",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K"
+ ],
+ "rows": [
+  [
+   0.0,
+   345.75
+  ],
+  [
+   0.218,
+   335.35
+  ],
+  [
+   0.445,
+   332.55
+  ],
+  [
+   0.587,
+   332.05
+  ],
+  [
+   0.633,
+   332.05
+  ],
+  [
+   0.701,
+   332.15
+  ],
+  [
+   0.742,
+   332.45
+  ],
+  [
+   0.817,
+   332.95
+  ],
+  [
+   0.855,
+   333.55
+  ],
+  [
+   0.908,
+   334.35
+  ],
+  [
+   0.954,
+   335.65
+  ],
+  [
+   0.967,
+   336.15
+  ],
+  [
+   1.0,
+   337.75
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Fitted to the bubble temperatures alone (Barker's method): no set of this pair with vapour compositions passes the consistency point test, or none was measured. Pure-component boiling points of the set within 0.36 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

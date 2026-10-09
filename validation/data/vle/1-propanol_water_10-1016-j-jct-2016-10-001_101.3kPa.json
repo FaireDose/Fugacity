@@ -1,0 +1,114 @@
+{
+ "_about": "1-Propanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Gupta, B. S.[Bhupender S.], Taha, M.[Mohamed], Lee, M.-J.[Ming-Jer], A green process for recovery of 1-propanol/2-propanol from their aqueous solutions: Experimental and MD simulation studies, J. Chem. Thermodyn. 105 (2017) 76-85",
+  "doi": "10.1016/j.jct.2016.10.001",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2016.10.001.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   373.2,
+   0.0
+  ],
+  [
+   0.011,
+   368.3,
+   0.176
+  ],
+  [
+   0.029,
+   365.1,
+   0.29
+  ],
+  [
+   0.034,
+   364.3,
+   0.303
+  ],
+  [
+   0.04,
+   363.9,
+   0.315
+  ],
+  [
+   0.057,
+   362.5,
+   0.358
+  ],
+  [
+   0.087,
+   361.6,
+   0.385
+  ],
+  [
+   0.225,
+   361.1,
+   0.401
+  ],
+  [
+   0.242,
+   361.0,
+   0.403
+  ],
+  [
+   0.261,
+   361.0,
+   0.402
+  ],
+  [
+   0.312,
+   361.0,
+   0.411
+  ],
+  [
+   0.313,
+   361.0,
+   0.412
+  ],
+  [
+   0.354,
+   360.9,
+   0.415
+  ],
+  [
+   0.473,
+   360.9,
+   0.438
+  ],
+  [
+   0.607,
+   361.3,
+   0.483
+  ],
+  [
+   0.727,
+   362.3,
+   0.553
+  ],
+  [
+   0.791,
+   363.2,
+   0.607
+  ],
+  [
+   1.0,
+   370.3,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0079. Pure-component boiling points of the set within 0.20 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

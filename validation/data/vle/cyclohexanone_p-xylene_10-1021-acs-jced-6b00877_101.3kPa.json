@@ -1,0 +1,99 @@
+{
+ "_about": "Cyclohexanone (1) + p-Xylene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of cyclohexanone, boiling temperature in K, vapour mole fraction of cyclohexanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Gao, J.[Jun], Zhang, K.[Kai], Xu, D.[Dongmei], Zhang, L.[Lianzheng], Chen, N.[Nannan], Li, C.[Chunlu], Isobaric Vapor Liquid Equilibrium for Binary Systems of Cyclohexanone + Benzene, Cyclohexanone + Toluene, and Cyclohexanone + p-Xylene at 101.3 kPa, J. Chem. Eng. Data 62 (2017) 1948-1954",
+  "doi": "10.1021/acs.jced.6b00877",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.6b00877.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 5, 6. The table number in the article was not checked."
+ },
+ "components": [
+  "cyclohexanone",
+  "p-xylene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0195,
+   411.55,
+   0.0196
+  ],
+  [
+   0.125,
+   411.85,
+   0.0998
+  ],
+  [
+   0.2706,
+   413.25,
+   0.1895
+  ],
+  [
+   0.3979,
+   414.85,
+   0.276
+  ],
+  [
+   0.5034,
+   416.65,
+   0.3636
+  ],
+  [
+   0.5245,
+   417.05,
+   0.3839
+  ],
+  [
+   0.5819,
+   418.25,
+   0.4391
+  ],
+  [
+   0.6485,
+   419.65,
+   0.5079
+  ],
+  [
+   0.6824,
+   420.45,
+   0.5463
+  ],
+  [
+   0.747,
+   421.95,
+   0.6251
+  ],
+  [
+   0.7885,
+   423.05,
+   0.6793
+  ],
+  [
+   0.8025,
+   423.35,
+   0.6984
+  ],
+  [
+   0.865,
+   425.05,
+   0.785
+  ],
+  [
+   0.896,
+   425.75,
+   0.8322
+  ],
+  [
+   0.9311,
+   426.75,
+   0.8862
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0032. To be checked by a person against the record (AGENTS.md rule 4)."
+}

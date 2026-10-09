@@ -1,0 +1,134 @@
+{
+ "_about": "1-Propanol (1) + Dimethyl sulfoxide (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Wang, Q.-Y.[Quan-Yi], Zeng, H.[Hong], Song, H.[Hang], Liu, Q.-S.[Qi-Song], Yao, S.[Shun], Vapor-Liquid Equilibria for the Ternary System Acetonitrile + 1-Propanol + Dimethyl Sulfoxide and the Corresponding Binary Systems at 101.3 kPa, J. Chem. Eng. Data 55 (2010) 5271-5275",
+  "doi": "10.1021/je100033s",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100033s.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 14, 15. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "dmso"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0198,
+   458.68,
+   0.1267
+  ],
+  [
+   0.0611,
+   449.78,
+   0.3394
+  ],
+  [
+   0.1136,
+   439.47,
+   0.5456
+  ],
+  [
+   0.1448,
+   433.86,
+   0.6373
+  ],
+  [
+   0.1927,
+   425.94,
+   0.7435
+  ],
+  [
+   0.2157,
+   422.43,
+   0.7864
+  ],
+  [
+   0.2519,
+   416.98,
+   0.8329
+  ],
+  [
+   0.3013,
+   410.51,
+   0.8782
+  ],
+  [
+   0.3709,
+   402.97,
+   0.9196
+  ],
+  [
+   0.42,
+   398.33,
+   0.9378
+  ],
+  [
+   0.4715,
+   394.01,
+   0.9532
+  ],
+  [
+   0.5439,
+   388.94,
+   0.9685
+  ],
+  [
+   0.5908,
+   385.99,
+   0.9752
+  ],
+  [
+   0.6337,
+   383.79,
+   0.9803
+  ],
+  [
+   0.6806,
+   381.45,
+   0.9849
+  ],
+  [
+   0.7417,
+   378.89,
+   0.9895
+  ],
+  [
+   0.7722,
+   377.59,
+   0.9913
+  ],
+  [
+   0.8134,
+   376.05,
+   0.9935
+  ],
+  [
+   0.8536,
+   374.65,
+   0.9953
+  ],
+  [
+   0.8925,
+   373.35,
+   0.9968
+  ],
+  [
+   0.9309,
+   372.28,
+   0.998
+  ],
+  [
+   0.9594,
+   371.51,
+   0.9988
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0086. To be checked by a person against the record (AGENTS.md rule 4)."
+}

@@ -1,0 +1,79 @@
+{
+ "_about": "Methanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Yang, X.[Xingchuan], Li, H.[Huanxin], Cao, C.[Chunmei], Zou, Z.[Zongpeng], Xu, L.[Li], Liu, G.[Guoji], Isobaric Vapor-Liquid Equilibrium for the Binary System of Dimethyl Adipate and 1,6-Hexanediol at 10, 20, and 99 kPa, J. Chem. Eng. Data 64 (2019) 4256-4263",
+  "doi": "10.1021/acs.jced.9b00306",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.9b00306.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   373.15,
+   0.0
+  ],
+  [
+   0.0121,
+   371.12,
+   0.0902
+  ],
+  [
+   0.0607,
+   363.99,
+   0.3339
+  ],
+  [
+   0.1321,
+   358.61,
+   0.4911
+  ],
+  [
+   0.1689,
+   356.42,
+   0.5456
+  ],
+  [
+   0.2598,
+   352.3,
+   0.65
+  ],
+  [
+   0.4345,
+   347.56,
+   0.7551
+  ],
+  [
+   0.5669,
+   345.1,
+   0.8145
+  ],
+  [
+   0.7231,
+   342.22,
+   0.8906
+  ],
+  [
+   0.9355,
+   338.85,
+   0.9766
+  ],
+  [
+   1.0,
+   337.69,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0050. Pure-component boiling points of the set within 0.06 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

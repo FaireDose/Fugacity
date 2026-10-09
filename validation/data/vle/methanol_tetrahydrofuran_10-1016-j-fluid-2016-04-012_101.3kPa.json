@@ -1,0 +1,104 @@
+{
+ "_about": "Methanol (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Zhu, J.[Jiujuan], Li, R.[Runchao], Li, Z.[Zhuo], Song, X.[Xiaolin], Li, C.[Chunjiang], Tang, H.[Hongjian], Li, Q.[Qunsheng], Measurement and correlation of isobaric vapor-liquid equilibria of methanol + tetrahydrofuran + 1-alkyl-3-methylimidazolium bis(trifluoromethylsulfonyl)imide at 101.3 kPa, Fluid Phase Equilib. 423 (2016) 1-7",
+  "doi": "10.1016/j.fluid.2016.04.012",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.04.012.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3, 4. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "tetrahydrofuran"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   338.65,
+   0.0
+  ],
+  [
+   0.075,
+   335.85,
+   0.132
+  ],
+  [
+   0.19,
+   334.05,
+   0.276
+  ],
+  [
+   0.299,
+   333.15,
+   0.37
+  ],
+  [
+   0.406,
+   332.65,
+   0.44
+  ],
+  [
+   0.455,
+   332.55,
+   0.473
+  ],
+  [
+   0.504,
+   332.55,
+   0.502
+  ],
+  [
+   0.573,
+   332.65,
+   0.538
+  ],
+  [
+   0.608,
+   332.75,
+   0.564
+  ],
+  [
+   0.662,
+   332.85,
+   0.603
+  ],
+  [
+   0.718,
+   333.15,
+   0.64
+  ],
+  [
+   0.767,
+   333.45,
+   0.683
+  ],
+  [
+   0.817,
+   333.95,
+   0.734
+  ],
+  [
+   0.868,
+   334.55,
+   0.788
+  ],
+  [
+   0.925,
+   335.55,
+   0.864
+  ],
+  [
+   1.0,
+   337.85,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0068. Pure-component boiling points of the set within 0.33 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

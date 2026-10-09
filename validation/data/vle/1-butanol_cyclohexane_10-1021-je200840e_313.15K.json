@@ -1,0 +1,153 @@
+{
+ "_about": "1-Butanol (1) + Cyclohexane (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 1-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "Belabbaci, A.[Aouicha], Villamanan, R. M.[Rosa M.], Negadi, L.[Latifa], Martin, C. M.[Carmen M.], Ait Kaci, A.[Ahmed], Villamanan, M. A.[Miguel A.], Vapor-Liquid Equilibria of Binary Mixtures Containing 1-Butanol and Hydrocarbons at 313.15 K, J. Chem. Eng. Data 57 (2012) 114-119",
+  "doi": "10.1021/je200840e",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je200840e.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "cyclohexane"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   313.15,
+   0.0,
+   24.634
+  ],
+  [
+   313.15,
+   0.0276,
+   24.833
+  ],
+  [
+   313.15,
+   0.1002,
+   24.658
+  ],
+  [
+   313.15,
+   0.1495,
+   24.471
+  ],
+  [
+   313.15,
+   0.1988,
+   24.306
+  ],
+  [
+   313.15,
+   0.2495,
+   24.038
+  ],
+  [
+   313.15,
+   0.299,
+   23.722
+  ],
+  [
+   313.15,
+   0.3491,
+   23.359
+  ],
+  [
+   313.15,
+   0.3988,
+   22.966
+  ],
+  [
+   313.15,
+   0.3995,
+   22.935
+  ],
+  [
+   313.15,
+   0.4487,
+   22.459
+  ],
+  [
+   313.15,
+   0.4496,
+   22.417
+  ],
+  [
+   313.15,
+   0.5001,
+   21.832
+  ],
+  [
+   313.15,
+   0.5014,
+   21.82
+  ],
+  [
+   313.15,
+   0.5493,
+   21.1
+  ],
+  [
+   313.15,
+   0.5497,
+   21.105
+  ],
+  [
+   313.15,
+   0.5991,
+   20.308
+  ],
+  [
+   313.15,
+   0.6002,
+   20.3
+  ],
+  [
+   313.15,
+   0.6484,
+   19.332
+  ],
+  [
+   313.15,
+   0.7006,
+   18.161
+  ],
+  [
+   313.15,
+   0.7504,
+   16.842
+  ],
+  [
+   313.15,
+   0.8001,
+   15.216
+  ],
+  [
+   313.15,
+   0.8513,
+   13.086
+  ],
+  [
+   313.15,
+   0.8972,
+   10.538
+  ],
+  [
+   313.15,
+   0.9533,
+   6.539
+  ],
+  [
+   313.15,
+   1.0,
+   2.507
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

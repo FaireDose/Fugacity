@@ -1,0 +1,129 @@
+{
+ "_about": "Acetic acid (1) + n-Butyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetic acid, boiling temperature in K, vapour mole fraction of acetic acid, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Lladosa, E.[Estela], Monton, J. B. [Juan B.], Burguet, M. C.[M. Cruz], Munoz, R.[Rosa], Phase Equilibrium for the Esterification Reaction of Acetic Acid + Butan-1-ol at 101.3 kPa, J. Chem. Eng. Data 53 (2008) 108-115",
+  "doi": "10.1021/je700411p",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je700411p.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 16, 17. The table number in the article was not checked."
+ },
+ "components": [
+  "acetic-acid",
+  "n-butyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   399.05,
+   0.0
+  ],
+  [
+   0.059,
+   398.42,
+   0.076
+  ],
+  [
+   0.113,
+   397.92,
+   0.146
+  ],
+  [
+   0.167,
+   397.46,
+   0.208
+  ],
+  [
+   0.222,
+   396.8,
+   0.273
+  ],
+  [
+   0.275,
+   396.41,
+   0.336
+  ],
+  [
+   0.328,
+   396.04,
+   0.396
+  ],
+  [
+   0.39,
+   395.48,
+   0.462
+  ],
+  [
+   0.443,
+   394.98,
+   0.515
+  ],
+  [
+   0.498,
+   394.62,
+   0.568
+  ],
+  [
+   0.557,
+   394.16,
+   0.622
+  ],
+  [
+   0.607,
+   393.72,
+   0.67
+  ],
+  [
+   0.66,
+   393.21,
+   0.716
+  ],
+  [
+   0.71,
+   392.57,
+   0.759
+  ],
+  [
+   0.756,
+   392.23,
+   0.8
+  ],
+  [
+   0.801,
+   392.0,
+   0.837
+  ],
+  [
+   0.848,
+   391.68,
+   0.876
+  ],
+  [
+   0.895,
+   391.37,
+   0.914
+  ],
+  [
+   0.936,
+   391.18,
+   0.947
+  ],
+  [
+   0.972,
+   391.01,
+   0.976
+  ],
+  [
+   1.0,
+   390.91,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0039. Pure-component boiling points of the set within 0.05 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

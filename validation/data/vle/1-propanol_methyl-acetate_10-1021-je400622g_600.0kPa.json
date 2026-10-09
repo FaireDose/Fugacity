@@ -1,0 +1,159 @@
+{
+ "_about": "1-Propanol (1) + Methyl acetate (2): isobaric T-x-y at 600.0 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Susial  Badajoz, P.[Pedro], Garcia-Vera, D.[Diego], Susial, R.[Rodrigo], Castillo, V. D.[Victor D.], Estupinan, E. J.[Esteban J.], Apolinario, J. C.[Jose C.], Rodriguez-Henriquez, J. J.[Jose J.], Experimental Determination of Vapor Liquid Equilibria. Binary Systems of Methyl Acetate, Ethyl Acetate, and Propyl Acetate with 1-Propanol at 0.6 MPa, J. Chem. Eng. Data 58 (2013) 2861-2867",
+  "doi": "10.1021/je400622g",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400622g.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "methyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 600.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   393.01,
+   0.0
+  ],
+  [
+   0.005,
+   393.13,
+   0.0030000000000000027
+  ],
+  [
+   0.012,
+   393.21,
+   0.007000000000000006
+  ],
+  [
+   0.024,
+   393.49,
+   0.015000000000000013
+  ],
+  [
+   0.058,
+   394.22,
+   0.038000000000000034
+  ],
+  [
+   0.081,
+   394.69,
+   0.050000000000000044
+  ],
+  [
+   0.107,
+   395.24,
+   0.06399999999999995
+  ],
+  [
+   0.141,
+   395.81,
+   0.08099999999999996
+  ],
+  [
+   0.182,
+   396.78,
+   0.10299999999999998
+  ],
+  [
+   0.219,
+   397.65,
+   0.127
+  ],
+  [
+   0.254,
+   398.67,
+   0.15000000000000002
+  ],
+  [
+   0.29,
+   399.48,
+   0.17300000000000004
+  ],
+  [
+   0.324,
+   400.06,
+   0.19199999999999995
+  ],
+  [
+   0.352,
+   400.86,
+   0.20899999999999996
+  ],
+  [
+   0.378,
+   401.54,
+   0.22799999999999998
+  ],
+  [
+   0.413,
+   402.09,
+   0.241
+  ],
+  [
+   0.436,
+   402.91,
+   0.262
+  ],
+  [
+   0.471,
+   403.4,
+   0.276
+  ],
+  [
+   0.55,
+   405.77,
+   0.33499999999999996
+  ],
+  [
+   0.649,
+   408.83,
+   0.41500000000000004
+  ],
+  [
+   0.706,
+   411.04,
+   0.476
+  ],
+  [
+   0.807,
+   415.56,
+   0.607
+  ],
+  [
+   0.918,
+   421.4,
+   0.791
+  ],
+  [
+   0.966,
+   424.74,
+   0.903
+  ],
+  [
+   0.981,
+   426.04,
+   0.945
+  ],
+  [
+   0.995,
+   426.94,
+   0.984
+  ],
+  [
+   1.0,
+   427.2,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0076. Pure-component boiling points of the set within 0.57 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

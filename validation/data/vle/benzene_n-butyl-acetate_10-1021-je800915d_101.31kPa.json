@@ -1,0 +1,109 @@
+{
+ "_about": "Benzene (1) + n-Butyl acetate (2): isobaric T-x-y at 101.31 kPa. Rows: liquid mole fraction of benzene, boiling temperature in K, vapour mole fraction of benzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Postigo, M. A.[Miguel A.], Mariano, A.[Alejandra], Zurakoski, N.[Natasha], Jara, A. F.[Andrea F.], Isobaric Vapor-Liquid Equilibria for the Binary Systems Benzene + Methyl Ethanoate, Benzene + Butyl Ethanoate, and Benzene + Methyl Heptanoate at 101.31kPa, J. Chem. Eng. Data 54 (2009) 1575-1579",
+  "doi": "10.1021/je800915d",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je800915d.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 17, 19. The table number in the article was not checked."
+ },
+ "components": [
+  "benzene",
+  "n-butyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.31,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0189,
+   397.19,
+   0.0617
+  ],
+  [
+   0.0437,
+   395.18,
+   0.1361
+  ],
+  [
+   0.0884,
+   391.75,
+   0.2533
+  ],
+  [
+   0.1168,
+   389.71,
+   0.3181
+  ],
+  [
+   0.1979,
+   384.15,
+   0.4765
+  ],
+  [
+   0.2712,
+   379.77,
+   0.5846
+  ],
+  [
+   0.36,
+   375.27,
+   0.6814
+  ],
+  [
+   0.4351,
+   372.14,
+   0.741
+  ],
+  [
+   0.4894,
+   369.75,
+   0.783
+  ],
+  [
+   0.5565,
+   367.22,
+   0.8238
+  ],
+  [
+   0.6005,
+   365.52,
+   0.8495
+  ],
+  [
+   0.6821,
+   362.54,
+   0.8914
+  ],
+  [
+   0.7651,
+   359.71,
+   0.9276
+  ],
+  [
+   0.7999,
+   358.58,
+   0.941
+  ],
+  [
+   0.8599,
+   356.81,
+   0.9608
+  ],
+  [
+   0.9077,
+   355.47,
+   0.9751
+  ],
+  [
+   0.9501,
+   354.25,
+   0.9875
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0099. To be checked by a person against the record (AGENTS.md rule 4)."
+}

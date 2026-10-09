@@ -1,0 +1,123 @@
+{
+ "_about": "Ethyl acetate (1) + n-Pentane (2): isobaric bubble temperatures at 101.32 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Fernandez, L.[Luis], Perez, E.[Estefania], Ortega, J.[Juan], Canosa, J.[Jose], Wisniak, J.[Jaime], Measurements of the Excess Properties and Vapor-Liquid Equilibria at 101.32 kPa for Mixtures of Ethyl Ethanoate + Alkanes (from C5 to C10) , J. Chem. Eng. Data 55 (2010) 5519-5533",
+  "doi": "10.1021/je100832h",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100832h.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 15, 16. The table number in the article was not checked."
+ },
+ "components": [
+  "ethyl-acetate",
+  "n-pentane"
+ ],
+ "kind": "isobaric-tx",
+ "P_kPa": 101.32,
+ "columns": [
+  "x_1",
+  "T_K"
+ ],
+ "rows": [
+  [
+   0.0,
+   309.3
+  ],
+  [
+   0.036,
+   309.7
+  ],
+  [
+   0.068,
+   310.05
+  ],
+  [
+   0.107,
+   310.58
+  ],
+  [
+   0.15,
+   311.13
+  ],
+  [
+   0.246,
+   312.2
+  ],
+  [
+   0.267,
+   312.5
+  ],
+  [
+   0.314,
+   313.19
+  ],
+  [
+   0.381,
+   314.22
+  ],
+  [
+   0.43,
+   314.85
+  ],
+  [
+   0.492,
+   316.21
+  ],
+  [
+   0.515,
+   316.8
+  ],
+  [
+   0.559,
+   317.91
+  ],
+  [
+   0.617,
+   319.4
+  ],
+  [
+   0.686,
+   321.73
+  ],
+  [
+   0.736,
+   323.88
+  ],
+  [
+   0.782,
+   326.83
+  ],
+  [
+   0.828,
+   329.55
+  ],
+  [
+   0.867,
+   332.28
+  ],
+  [
+   0.904,
+   336.05
+  ],
+  [
+   0.936,
+   339.51
+  ],
+  [
+   0.96,
+   342.42
+  ],
+  [
+   0.978,
+   344.5
+  ],
+  [
+   0.988,
+   346.7
+  ],
+  [
+   1.0,
+   350.15
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Fitted to the bubble temperatures alone (Barker's method): no set of this pair with vapour compositions passes the consistency point test, or none was measured. Pure-component boiling points of the set within 0.07 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

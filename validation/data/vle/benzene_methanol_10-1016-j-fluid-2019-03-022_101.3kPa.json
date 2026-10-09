@@ -1,0 +1,119 @@
+{
+ "_about": "Benzene (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of benzene, boiling temperature in K, vapour mole fraction of benzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Li, Wenxiu, Yin, Haiying, Guo, Hongfan, Li, Jipeng, Zhang, Tao, Separation abilities of three acetate-based ionic liquids for benzene-methanol mixture through vapor-liquid equilibrium experiment at 101.3 kPa, Fluid Phase Equilib. 492 (2019) 80-87",
+  "doi": "10.1016/j.fluid.2019.03.022",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2019.03.022.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "benzene",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   337.85,
+   0.0
+  ],
+  [
+   0.029,
+   335.97,
+   0.095
+  ],
+  [
+   0.081,
+   334.04,
+   0.195
+  ],
+  [
+   0.136,
+   332.86,
+   0.259
+  ],
+  [
+   0.169,
+   332.43,
+   0.286
+  ],
+  [
+   0.215,
+   332.02,
+   0.319
+  ],
+  [
+   0.276,
+   331.69,
+   0.349
+  ],
+  [
+   0.324,
+   331.56,
+   0.367
+  ],
+  [
+   0.431,
+   331.58,
+   0.396
+  ],
+  [
+   0.555,
+   331.74,
+   0.414
+  ],
+  [
+   0.664,
+   332.16,
+   0.431
+  ],
+  [
+   0.748,
+   332.61,
+   0.443
+  ],
+  [
+   0.857,
+   333.97,
+   0.484
+  ],
+  [
+   0.897,
+   335.62,
+   0.52
+  ],
+  [
+   0.91,
+   336.25,
+   0.536
+  ],
+  [
+   0.931,
+   337.75,
+   0.573
+  ],
+  [
+   0.95,
+   339.9,
+   0.628
+  ],
+  [
+   0.973,
+   343.83,
+   0.719
+  ],
+  [
+   1.0,
+   353.25,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0023. Pure-component boiling points of the set within 0.22 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

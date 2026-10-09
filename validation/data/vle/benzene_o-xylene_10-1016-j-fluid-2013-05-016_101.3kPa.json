@@ -1,0 +1,119 @@
+{
+ "_about": "Benzene (1) + o-Xylene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of benzene, boiling temperature in K, vapour mole fraction of benzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Gupta, B. S.[Bhupender S.], Lee, M.-J.[Ming-Jer], Isobaric vapor-liquid equilibrium for binary systemsof toluene + o-xylene, benzene + o-xylene, nonane + benzene and nonane + heptane at 101.3 kPa, Fluid Phase Equilib. 352 (2013) 86-92",
+  "doi": "10.1016/j.fluid.2013.05.016",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2013.05.016.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 18, 19. The table number in the article was not checked."
+ },
+ "components": [
+  "benzene",
+  "o-xylene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   417.5,
+   0.0
+  ],
+  [
+   0.03,
+   413.9,
+   0.12
+  ],
+  [
+   0.057,
+   410.8,
+   0.214
+  ],
+  [
+   0.093,
+   406.7,
+   0.326
+  ],
+  [
+   0.139,
+   401.4,
+   0.451
+  ],
+  [
+   0.216,
+   393.2,
+   0.612
+  ],
+  [
+   0.273,
+   387.5,
+   0.703
+  ],
+  [
+   0.305,
+   384.7,
+   0.743
+  ],
+  [
+   0.318,
+   383.6,
+   0.758
+  ],
+  [
+   0.428,
+   375.2,
+   0.855
+  ],
+  [
+   0.543,
+   368.7,
+   0.921
+  ],
+  [
+   0.657,
+   363.9,
+   0.95
+  ],
+  [
+   0.768,
+   359.8,
+   0.973
+  ],
+  [
+   0.826,
+   357.9,
+   0.981
+  ],
+  [
+   0.887,
+   356.3,
+   0.989
+  ],
+  [
+   0.909,
+   355.7,
+   0.991
+  ],
+  [
+   0.948,
+   354.6,
+   0.995
+  ],
+  [
+   0.98,
+   353.8,
+   0.998
+  ],
+  [
+   1.0,
+   353.3,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0050. Pure-component boiling points of the set within 0.09 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

@@ -1,0 +1,99 @@
+{
+ "_about": "Methyl acetate (1) + p-Xylene (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methyl acetate, boiling temperature in K, vapour mole fraction of methyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Jiang, Shiliang, Gao, Jun, Li, Rui, Xu, Dongmei, Zhang, Lianzheng, Wang, Yinglong, Isobaric Vapor-Liquid Equilibrium Measurements for Separation of Azeotrope (Methanol + Methyl Acetate), J. Chem. Eng. Data 64 (2019) 296-302",
+  "doi": "10.1021/acs.jced.8b00807",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00807.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "methyl-acetate",
+  "p-xylene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0046,
+   407.97,
+   0.0956
+  ],
+  [
+   0.0149,
+   400.97,
+   0.2634
+  ],
+  [
+   0.0251,
+   395.62,
+   0.3748
+  ],
+  [
+   0.0441,
+   387.99,
+   0.5109
+  ],
+  [
+   0.0584,
+   383.13,
+   0.5852
+  ],
+  [
+   0.084,
+   376.11,
+   0.6758
+  ],
+  [
+   0.1098,
+   370.63,
+   0.7371
+  ],
+  [
+   0.1844,
+   359.61,
+   0.8366
+  ],
+  [
+   0.2657,
+   352.35,
+   0.8869
+  ],
+  [
+   0.3063,
+   349.55,
+   0.9023
+  ],
+  [
+   0.3874,
+   345.22,
+   0.9275
+  ],
+  [
+   0.4881,
+   340.85,
+   0.9479
+  ],
+  [
+   0.5946,
+   337.69,
+   0.9617
+  ],
+  [
+   0.7114,
+   334.66,
+   0.9731
+  ],
+  [
+   0.8893,
+   331.64,
+   0.9874
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0045. To be checked by a person against the record (AGENTS.md rule 4)."
+}

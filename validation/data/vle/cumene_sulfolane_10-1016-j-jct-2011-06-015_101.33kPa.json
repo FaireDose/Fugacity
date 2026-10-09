@@ -1,0 +1,84 @@
+{
+ "_about": "Cumene (1) + Sulfolane (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of cumene, boiling temperature in K, vapour mole fraction of cumene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Wang, Z.[Zhengrong], Huang, L.[Lei], Xia, S.[Shuqian], Ma, P.[Peisheng], Isobaric (vapour + liquid) equilibria for sulfolane with toluene, ethylbenzene, and isopropylbenzene at 101.33 kPa, J. Chem. Thermodyn. 43 (2011) 1865-1869",
+  "doi": "10.1016/j.jct.2011.06.015",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2011.06.015.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "cumene",
+  "sulfolane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0803,
+   472.71,
+   0.9181
+  ],
+  [
+   0.0973,
+   466.33,
+   0.9322
+  ],
+  [
+   0.1365,
+   457.68,
+   0.9623
+  ],
+  [
+   0.1838,
+   451.53,
+   0.9723
+  ],
+  [
+   0.2754,
+   444.35,
+   0.9768
+  ],
+  [
+   0.3035,
+   442.05,
+   0.9815
+  ],
+  [
+   0.3523,
+   438.95,
+   0.9829
+  ],
+  [
+   0.3906,
+   437.05,
+   0.9847
+  ],
+  [
+   0.5355,
+   433.85,
+   0.9876
+  ],
+  [
+   0.6834,
+   431.48,
+   0.9888
+  ],
+  [
+   0.7788,
+   430.1,
+   0.9896
+  ],
+  [
+   0.8577,
+   428.45,
+   0.9905
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0093. To be checked by a person against the record (AGENTS.md rule 4)."
+}
