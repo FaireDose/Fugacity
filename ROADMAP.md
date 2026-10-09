@@ -70,7 +70,7 @@ formats and open standards only.
 
 | Item | What | Depends on | Status |
 |---|---|---|---|
-| **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Started: CSV of the flash result; the flowsheet as an Excel workbook with the balances as formulas, and as an "Excel concept model" where the flash drums are formulas too (constant activity coefficients, Rachford-Rice; recycles solved in the workbook; [check](docs/EXCEL_CONCEPT_CHECK.md)) |
+| **B1** | Export from every view: tables as CSV (opens in Excel and other spreadsheets), diagrams as SVG and PNG for reports | A9 | Started: every diagram, the flash and the property and steam views as an Excel workbook with the numbers behind what is drawn (an Excel button on the canvas); CSV of the flash result; the flowsheet as an Excel workbook with the balances as formulas, and as an "Excel concept model" where the flash drums are formulas too (constant activity coefficients, Rachford-Rice; recycles solved in the workbook; [check](docs/EXCEL_CONCEPT_CHECK.md)) |
 | **B2** | Share by link: the workbench state (components, model, conditions, view) in the page address, so a colleague opens exactly the same diagram | A9 | Open |
 | **B3** | Import open data files: read NIST ThermoML XML files and turn them into validation data and contribution packages with the source block filled in, which speeds up the data track | D3 | Open |
 | **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Started: the workbench (format 1, `src/ui/project.js`); the flowsheet follows with A7 |

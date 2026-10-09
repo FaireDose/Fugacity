@@ -26,12 +26,15 @@ import { ternaryAzeotropes, binaryAzeotropes } from "../equilibrium/azeotrope.js
 import { library, sourceEntry, componentSources } from "../thermo/library.js";
 import {
   knownIssuesFor, pxyTemperature, tierCounts, tierSummary, normalizeComposition, interpolate, fmtP, fmtTemp, parseP, parseT,
-  setsFor, filterSources, sourceUsedFor,
+  setsFor, filterSources, sourceUsedFor, modelLabel,
 } from "./app-logic.js";
 import { HENRY_PAIRS, isEosModel } from "./workspaces.js";
 import { flowsheetView } from "./flowsheet-view.js";
 import { runFlash, flashTable, flashCsv, phaseName, FLASH_SPECS, dutyKW, molarFlow } from "./flash-logic.js";
 import pkg from "../../package.json" with { type: "json" };
+import {
+  txyTables, ternaryTables, pxyTables, envelopeTables, azeotropeTables, flashTables, henryTables, solidTables, sleTables, propertyTables, steamTables,
+} from "./diagram-tables.js";
 import {
   tToDisplay, tFromDisplay, pToDisplay, fmtNum, fmtShort, linspace, niceValues, TIER_LABEL, formatSource,
 } from "./properties-logic.js";
@@ -40,7 +43,11 @@ const SERIES = n => `var(--fug-s${(n % 6) + 1})`;
 const nameOf = id => listComponents().find(c => c.id === id)?.name ?? id;
 const tU = u => (u.T === "K" ? "K" : "°C");
 
-/** Draw `view` into the canvas. ctx: { state, set, plot, side, notes, below, extra, compact, uid, badge }. */
+/**
+ * Draw `view` into the canvas. ctx: { state, set, plot, side, notes, below, extra, compact, uid, badge }.
+ * Returns { data, error?, record?, export? }: `export()` describes the numbers behind the diagram
+ * for the Excel download (diagram-export.js), the points the view calculated and drew.
+ */
 export function renderView(view, ctx) {
   ctx.plot.dataset.view = view;
   switch (view) {
@@ -154,6 +161,21 @@ function kv(rows) {
     h("tr", {}, h("th", { scope: "row" }, k), h("td", { class: "fug-num" }, v ?? "–", unit ? h("small", {}, ` ${unit}`) : null)))));
 }
 
+/** "Methanol, acetone and chloroform". */
+const listNames = names => names.join(", ").replace(/, ([^,]*)$/, " and $1");
+
+/** The About rows of an export: components, model, conditions, units, parameters and their sources. */
+function aboutRows(state, sys, conditions = []) {
+  const u = state.units;
+  const model = sys.kind === "eos" ? sys.info.equation : `${sys.model === "ideal" ? "Ideal solution" : sys.model}; vapour: ${sys.info.vapour}`;
+  return [
+    ["Components", sys.names.join(", ")], ["Model", model], ...conditions,
+    ["Units", `T in ${tU(u)}, P in ${u.P}; compositions in mole fractions${state.basis === "mass" ? " and wt %" : ""}`],
+    ["Parameters", pairData(sys)],
+    ...sys.info.pairs.map(p => [`Pair ${p.pair.join(" + ")}`, [p.tier, p.set ? `set ${p.set}` : null, sys.kind === "eos" ? `k_ij = ${p.kij}` : null, p.source].filter(Boolean).join("; ")]),
+  ];
+}
+
 // ---------------------------------------------------------------------------------------
 // T-x-y and ternary: the existing renderers
 
@@ -167,16 +189,22 @@ function vleView(view, ctx) {
     notes.append(h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`));
   }
   const look = { basis: state.basis, MW: sys.ids.map(id => pure(id).MW), T: state.units.T };
-  if (view === "txy") renderTxy(plot, side, sys, state.P_kPa, look);
-  else {
-    renderTernary(plot, side, sys, state.P_kPa, {
+  const drawn = view === "txy" ? renderTxy(plot, side, sys, state.P_kPa, look)
+    : renderTernary(plot, side, sys, state.P_kPa, {
       ...look, residueCurves: state.residueCurves, isotherms: state.isotherms, grid: state.grid,
       makePairSystem: ids => modelSystem(state, ids),
     });
-  }
+  const exp = () => ({
+    title: `${view === "txy" ? "T-x-y diagram" : "Ternary map"} of ${listNames(sys.names)} at ${fmtP(state.P_kPa, state.units)}`,
+    file: `${view} ${sys.ids.join(" ")}`,
+    about: aboutRows(state, sys, [["Pressure", fmtP(state.P_kPa, state.units)]]),
+    tables: view === "txy"
+      ? txyTables({ names: sys.names, MW: look.MW, units: state.units, basis: state.basis, ...drawn, activity: sys.kind !== "eos" })
+      : ternaryTables({ names: sys.names, MW: look.MW, units: state.units, basis: state.basis, ...drawn }),
+  });
   if (sys.kind === "eos") {
     extra.append(...eosSources(ctx, sys));
-    return { data: tierSummary(tierCounts(sys.info.pairs), "k_ij pair") };
+    return { data: tierSummary(tierCounts(sys.info.pairs), "k_ij pair"), export: exp };
   }
   const counts = tierCounts(sys.info.pairs, sys.info.missingPairs);
   extra.append(section("Parameter sources", sys.info.pairs.length
@@ -185,7 +213,7 @@ function vleView(view, ctx) {
   h("div", { class: "fug-foot" }, `Vapour: ${sys.info.vapour}. Predictions, not measurements.`)),
   section("Pure-component data", componentSourceList(sys.ids, ["vapourPressure", "uniquac", "association"]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
   const alt = sys.info.pairs.filter(p => p.default === false).length;
-  return { data: sys.model === "ideal" ? "Ideal solution, no pair parameters" : tierSummary(counts) + (alt ? `; ${alt} on a non-default set` : "") };
+  return { data: sys.model === "ideal" ? "Ideal solution, no pair parameters" : tierSummary(counts) + (alt ? `; ${alt} on a non-default set` : ""), export: exp };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -240,7 +268,7 @@ function azeotropeView(ctx) {
     const w = bv.conv(x);
     return pairIds.map((id, k) => (x[k] > 1e-6 ? `${nameOf(id)} ${state.basis === "mass" ? bv.f(w[k]) + " wt %" : fmtNum(x[k], 3)}` : null)).filter(Boolean).join(", ");
   };
-  const cards = [], points = [], sources = new Map(), errors = [];
+  const cards = [], points = [], sources = new Map(), errors = [], drawnPairs = [];
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
     const pair = [ids[i], ids[j]];
     let sys;
@@ -260,6 +288,7 @@ function azeotropeView(ctx) {
       continue;
     }
     const data = sample.data;
+    drawnPairs.push({ names: sys.names, MW: pair.map(id => MW[id]), data });
     for (const z of az) points.push({ T: z.T, kind: z.type === "minimum-boiling" ? "Minimum-boiling azeotrope" : "Maximum-boiling azeotrope", what: comp([z.x, 1 - z.x], pair) });
     const tier = sys.info.pairs[0]?.tier ?? (state.model === "ideal" ? "ideal" : "none");
     cards.push(h("div", { class: "fa-card" },
@@ -303,19 +332,25 @@ function azeotropeView(ctx) {
       h("tbody", {}, ...points.map(p => h("tr", {}, h("td", { class: "fug-num" }, fmtShort(+tToDisplay(p.T, u).toFixed(2))), h("td", {}, p.kind), h("td", {}, p.what)))))),
     h("div", { class: "fug-foot" }, "The lowest-boiling point goes to the top of a distillation column, the highest to the bottom; azeotropes can split the composition space into separate distillation regions.")));
   const nAz = points.filter(p => p.kind !== "Pure component").length;
+  const exp = () => ({
+    title: `Azeotropes of ${listNames(ids.map(nameOf))} at ${fmtP(P, u)}`, file: `azeotropes ${ids.join(" ")}`,
+    about: [["Components", ids.map(nameOf).join(", ")], ["Model", modelLabel(state)], ["Pressure", fmtP(P, u)],
+      ["Units", `T in ${tU(u)}; compositions in mole fractions${state.basis === "mass" ? " and wt %" : ""}`], ...errors.map(e => ["Not calculated", e])],
+    tables: azeotropeTables({ units: u, basis: state.basis, pairs: drawnPairs, points }),
+  });
   side.replaceChildren(
     h("div", {}, h("div", { class: "fug-eyebrow" }, "Azeotropes found"), h("div", { class: "fug-big" }, String(nAz))),
     h("div", { class: "fug-sub" }, `${ids.length} components, ${ids.length * (ids.length - 1) / 2} pairs, at ${fmtP(P, u)}.`),
     ...(errors.length ? [h("div", { class: "fug-err" }, ...errors.map(e => h("div", {}, e)))] : []));
   if (isEosModel(state.model)) {
     extra.append(...eosSources(ctx, modelSystem(state, ids)));
-    return { data: tierSummary(tierCounts([...sources.values()]), "k_ij pair"), error: errors.length ? errors[0] : null };
+    return { data: tierSummary(tierCounts([...sources.values()]), "k_ij pair"), error: errors.length ? errors[0] : null, export: exp };
   }
   extra.append(section("Parameter sources", sources.size
     ? pairSources(ctx, [...sources.values()])
     : h("div", { class: "fa-empty" }, state.model === "ideal" ? "Ideal solution: no binary parameters." : "No pair has parameters.")),
   section("Pure-component data", componentSourceList(ids, ["vapourPressure", "uniquac", "association"]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
-  return { data: tierSummary(tierCounts([...sources.values()])) || (state.model === "ideal" ? "Ideal solution" : ""), error: errors.length ? errors[0] : null };
+  return { data: tierSummary(tierCounts([...sources.values()])) || (state.model === "ideal" ? "Ideal solution" : ""), error: errors.length ? errors[0] : null, export: exp };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -418,14 +453,15 @@ function pxyView(ctx) {
   const scale = bv.mass ? 100 : 1;
   const X = x1 => scale * bv.conv([x1, 1 - x1])[0];
   const fromX = v => bv.inv([v / scale, 1 - v / scale])[0];
-  const N = 51, bub = [], dew = [], reasons = new Map(), warnings = new Set();
+  const N = 51, bub = [], dew = [], raw = [], reasons = new Map(), warnings = new Set();
   for (let i = 0; i < N; i++) {
     const x = i / (N - 1);
     try {
       const r = sys.bubbleP([x, 1 - x], T);
       (r.warnings || []).forEach(w => warnings.add(w));
       bub.push({ x: X(x), y: pToDisplay(r.P, u) }); dew.push({ x: X(r.y[0]), y: pToDisplay(r.P, u) });
-    } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); dew.push(null); }
+      raw.push({ x, y: r.y[0], P: r.P });
+    } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); dew.push(null); raw.push(null); }
   }
   const bs = segmentsOf(bub), ds = segmentsOf(dew);
   if (!bs.length) throw new Error(`No two-phase region at ${fmtTemp(T, u)} for ${sys.names.join(" + ")} (${sys.info.equation ?? sys.model}). ${[...reasons.values()][0]?.example ?? ""}`);
@@ -453,7 +489,11 @@ function pxyView(ctx) {
   side.replaceChildren(read);
   move(0.5 * scale);
   extra.append(bubbleDewCalculator(ctx, sys, ids), ...sourcesOf(ctx, sys));
-  return { data: pairData(sys) };
+  return { data: pairData(sys), export: () => ({
+    title: `P-x-y diagram of ${listNames(sys.names)} at ${fmtTemp(T, u)}`, file: `pxy ${ids.join(" ")}`,
+    about: aboutRows(state, sys, [["Temperature", fmtTemp(T, u)]]),
+    tables: pxyTables({ names: sys.names, MW: ids.map(id => pure(id).MW), units: u, basis: state.basis, points: raw }),
+  }) };
 }
 
 function envelopeView(ctx) {
@@ -463,14 +503,12 @@ function envelopeView(ctx) {
   try { sys = modelSystem(state, ids); } catch (e) { throw new Error(friendly(e)); }
   const z = normalizeComposition(state.z, ids.length);
   const reasons = new Map();
-  let series, xLo, xHi;
+  let series, xLo, xHi, raw;
   const comps = ids.map(id => pure(id));
   if (ids.length === 1) {
     const Tc = comps[0].Tc_K;
-    const pts = linspace(0.45 * Tc, 0.9995 * Tc, 70).map(T => {
-      const ps = sys.psatEos(T)[0];
-      return ps > 0 ? { x: tToDisplay(T, u), y: pToDisplay(ps, u) } : null;
-    });
+    raw = linspace(0.45 * Tc, 0.9995 * Tc, 70).map(T => { const ps = sys.psatEos(T)[0]; return { T, P: ps > 0 ? ps : null }; });
+    const pts = raw.map(d => (d.P != null ? { x: tToDisplay(d.T, u), y: pToDisplay(d.P, u) } : null));
     series = [{ name: "Saturation", color: "var(--fug-liq)", segments: segmentsOf(pts),
       transitions: [{ x: tToDisplay(Tc, u), y0: pToDisplay(comps[0].Pc_kPa, u), y1: null }] }];
     [xLo, xHi] = [tToDisplay(0.45 * Tc, u), tToDisplay(Tc, u)];
@@ -480,9 +518,12 @@ function envelopeView(ctx) {
     const Pmax = sys.kind === "eos" ? 1.4 * Math.max(...comps.map(c => c.Pc_kPa)) : Math.min(...comps.map(c => c.Pc_kPa));
     const Ps = linspace(Math.log(10), Math.log(Pmax), 46).map(Math.exp);
     const bub = [], dew = [];
+    raw = [];
     for (const P of Ps) {
-      try { bub.push({ x: tToDisplay(sys.bubbleT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); }
-      try { dew.push({ x: tToDisplay(sys.dewT(z, P).T, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); dew.push(null); }
+      const d = { P, Tb: null, Td: null };
+      try { d.Tb = sys.bubbleT(z, P).T; bub.push({ x: tToDisplay(d.Tb, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); bub.push(null); }
+      try { d.Td = sys.dewT(z, P).T; dew.push({ x: tToDisplay(d.Td, u), y: pToDisplay(P, u) }); } catch (e) { if (!(e && e.code)) throw e; addReason(reasons, e.message); dew.push(null); }
+      raw.push(d);
     }
     series = [{ name: "Bubble", color: "var(--fug-liq)", segments: segmentsOf(bub) }, { name: "Dew", color: "var(--fug-vap)", dash: "6 4", segments: segmentsOf(dew) }];
     const xs = [...bub, ...dew].filter(Boolean).map(p => p.x);
@@ -512,7 +553,11 @@ function envelopeView(ctx) {
   side.replaceChildren(read);
   move((xLo + xHi) / 2);
   extra.append(bubbleDewCalculator(ctx, sys, ids), ...sourcesOf(ctx, sys));
-  return { data: ids.length > 1 ? pairData(sys) : "Critical constants from the component record" };
+  return { data: ids.length > 1 ? pairData(sys) : "Critical constants from the component record", export: () => ({
+    title: ids.length > 1 ? `Phase envelope of ${listNames(sys.names)}` : `Vapour pressure of ${sys.names[0]}`, file: `envelope ${ids.join(" ")}`,
+    about: aboutRows(state, sys, ids.length > 1 ? [["Feed", ids.map((id, k) => `${nameOf(id)} ${fmtNum(z[k], 4)}`).join(", ") + " (mole fractions)"]] : []),
+    tables: envelopeTables({ names: sys.names, units: u, z, points: raw, single: ids.length === 1 }),
+  }) };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -630,7 +675,11 @@ function flashView(ctx) {
   // the stream table as a record for project files (src/ui/project.js), each row with its unit
   const record = { columns: table.columns, rows: table.rows.map(r => ({ key: r.key, label: r.label, unit: r.unit, values: r.values })),
     summary: meta.summary.map(([label, value, unit]) => ({ label, value, unit })), model: meta.model, spec: meta.spec, sources: meta.sources };
-  return { data: pairData(sys), record: { flash: record } };
+  return { data: pairData(sys), record: { flash: record }, export: () => ({
+    title: `${spec.title} flash of ${listNames(names)}`, file: `flash ${ids.join(" ")}`,
+    about: [...aboutRows(state, sys), ["Specification", meta.spec], ["Enthalpy reference", "each component as an ideal gas at 298.15 K (h = 0)"]],
+    tables: flashTables({ table, summary }),
+  }) };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -643,8 +692,11 @@ function henryView(ctx) {
   const solventName = nameOf(solvent);
   const others = state.compareGases ? HENRY_PAIRS.filter(q => q.solvent === solvent && q.gas !== gas).map(q => q.gas) : [];
   const gases = [gas, ...others].map(id => ({ id, info: henryInfo(id, solvent) }));
+  const drawnGases = [];
   const series = gases.map((g, i) => {
-    const pts = linspace(g.info.Tmin_K, g.info.Tmax_K, 90).map(T => ({ x: tToDisplay(T, u), y: gasSolubility(g.id, T, p, solvent) }));
+    const temps = linspace(g.info.Tmin_K, g.info.Tmax_K, 90);
+    drawnGases.push({ name: nameOf(g.id), points: temps.map(T => ({ T, x: gasSolubility(g.id, T, p, solvent), H: henry(g.id, solvent, T) })) });
+    const pts = drawnGases[i].points.map(d => ({ x: tToDisplay(d.T, u), y: d.x }));
     return { name: nameOf(g.id), color: SERIES(i), width: i === 0 && gases.length > 1 ? 2.6 : undefined, segments: [{ points: pts }] };
   });
   const x0 = tToDisplay(Math.min(...gases.map(g => g.info.Tmin_K)), u), x1 = tToDisplay(Math.max(...gases.map(g => g.info.Tmax_K)), u);
@@ -684,7 +736,12 @@ function henryView(ctx) {
     section("Sources", sourceList(ctx, gases.map(g => ({ label: `${nameOf(g.id)} in ${solventName.toLowerCase()}`, tier: g.info.tier,
       text: `${g.info.source}; valid ${fmtTemp(g.info.Tmin_K, u, 1)} to ${fmtTemp(g.info.Tmax_K, u, 1)}` }))),
     sourceLinks(gases.flatMap(g => g.info.source_ids ?? []))));
-  return { data: tierSummary(tierCounts(gases.map(g => ({ tier: g.info.tier }))), "gas", "gases") };
+  return { data: tierSummary(tierCounts(gases.map(g => ({ tier: g.info.tier }))), "gas", "gases"), export: () => ({
+    title: `Solubility of ${listNames(drawnGases.map(g => g.name))} in ${solventName.toLowerCase()}`, file: `solubility ${[gas, ...others].join(" ")} ${solvent}`,
+    about: [["Gas partial pressure", fmtP(p, u)], ["Model", "Henry's law, x = p / H (dilute solutions)"],
+      ...gases.map(g => [`${nameOf(g.id)} in ${solventName.toLowerCase()}`, `${g.info.tier}; ${g.info.source}; valid ${fmtTemp(g.info.Tmin_K, u, 1)} to ${fmtTemp(g.info.Tmax_K, u, 1)}`])],
+    tables: henryTables({ units: u, solvent: solventName, p_kPa: p, gases: drawnGases }),
+  }) };
 }
 const info0 = gases => gases[0].info;
 
@@ -731,7 +788,7 @@ function solidView(ctx) {
   const ratio = unit.id === "g100g" || unit.id === "gL", XMAX = 0.9;
   // from the solvent's melting point (it freezes below), or 150 K below the solid's, up to just below T_m
   const T1 = f.Tm_K - 0.05, T0 = Math.min(T1 - 5, Math.max(f.Tm_K - 150, fs ? fs.Tm_K + 0.5 : 0, 0.5 * f.Tm_K));
-  const pts = [], ideal = [], reasons = new Map();
+  const pts = [], ideal = [], raw = [], reasons = new Map();
   let splits = false, cut = false, noRho = false;
   const add = (list, x, T) => {
     if (ratio && x > XMAX) { cut = true; return; }
@@ -743,6 +800,8 @@ function solidView(ctx) {
     try {
       const r = sys.solidSolubility(0, T);
       add(pts, r.xSolute, T); add(ideal, r.xIdeal, T);
+      const shown = x => (ratio && x > XMAX ? null : conv(x, T));
+      raw.push({ T, x: r.xSolute, y: shown(r.xSolute), xIdeal: r.xIdeal, yIdeal: shown(r.xIdeal), gamma: r.gamma });
       splits ||= r.splits;
     } catch (e) { addReason(reasons, e.message); }
   }
@@ -799,7 +858,12 @@ function solidView(ctx) {
   side.replaceChildren(result, read);
   extra.append(section("Sources", fusionSources(ctx, [solid]), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null,
     unit.id === "gL" ? componentSourceList([solvent], ["liquidDensity"]) : null));
-  return { data: `${sys.model === "ideal" ? "Ideal solution" : sys.model}${note ? " (no pair parameters)" : ""}` };
+  return { data: `${sys.model === "ideal" ? "Ideal solution" : sys.model}${note ? " (no pair parameters)" : ""}`, export: () => ({
+    title: `Solubility of ${nameOf(solid)} in ${nameOf(solvent).toLowerCase()}`, file: `solubility ${solid} ${solvent}`,
+    about: [...aboutRows(state, sys), ["Melting point of the solid", meltText(f, u)], ...(note ? [["Note", note]] : []),
+      ["Equation", "ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m), ΔCp of fusion taken as 0"]],
+    tables: solidTables({ units: u, solid: nameOf(solid), solvent: nameOf(solvent), model: sys.model, unit, points: raw }),
+  }) };
 }
 
 function sleView(ctx) {
@@ -857,7 +921,11 @@ function sleView(ctx) {
     h("div", { class: "fug-foot" }, "Each liquidus: ln(x γ) = −(ΔH_fus / R T)(1 − T / T_m) for that pure solid; no solid solutions, ΔCp of fusion taken as 0.")), read);
   move(conv1(d.eutectic.x1));
   extra.append(section("Sources", fusionSources(ctx, ids), sys.model !== "ideal" ? pairSources(ctx, sys.info.pairs) : null));
-  return { data: `Eutectic ${fmtTemp(d.eutectic.T_K, u)}` };
+  return { data: `Eutectic ${fmtTemp(d.eutectic.T_K, u)}`, export: () => ({
+    title: `Solid-liquid diagram of ${listNames(ids.map(nameOf))}`, file: `sle ${ids.join(" ")}`,
+    about: [...aboutRows(state, sys), ...(note ? [["Note", note]] : []), ...[0, 1].map(k => [`Melting point, ${nameOf(ids[k]).toLowerCase()}`, meltText(f[k], u)])],
+    tables: sleTables({ names: sys.names, MW, units: u, basis: state.basis, diagram: d }),
+  }) };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -867,7 +935,7 @@ function propertiesView(ctx) {
   const { state, plot, side, extra } = ctx;
   const id = state.components[0];
   const p = pure(id), u = state.units;
-  mountProperties(plot, { component: id, property: state.property, units: u, controls: false });
+  const explorer = mountProperties(plot, { component: id, property: state.property, units: u, controls: false });
   side.replaceChildren(
     h("div", {}, h("div", { class: "fug-eyebrow" }, p.formula), h("div", { class: "fa-comp-name" }, p.name), h("div", { class: "fug-sub" }, `CAS ${p.cas}`)),
     kv([["Molar mass", fmtNum(p.MW, 5), "g/mol"], ["Critical temperature", fmtShort(+tToDisplay(p.Tc_K, u).toFixed(2)), tU(u)],
@@ -883,7 +951,15 @@ function propertiesView(ctx) {
   });
   extra.append(section(`Correlations for ${p.name}`, sourceList(ctx, rows)),
     section("Sources in the library", componentSourceList([id]) ?? h("div", { class: "fa-empty" }, "No sources recorded.")));
-  return { data: `${have} of ${names.length} correlations with open data` };
+  return { data: `${have} of ${names.length} correlations with open data`, export: () => {
+    const plotted = explorer.plotted();
+    if (!plotted) throw new Error(`No curve is drawn for ${p.name}: the property has no data in this range.`);
+    return {
+      title: `${plotted.property.label} of ${p.name}`, file: `${state.property} ${id}`,
+      about: [["Component", `${p.name} (${p.formula}), CAS ${p.cas}`], ["Property", plotted.property.label], ...plotted.about],
+      tables: propertyTables({ component: p.name, property: plotted.property, curves: plotted.curves }),
+    };
+  } };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -900,16 +976,18 @@ function steamView(ctx) {
   const dome = [...sat.map(sv => ({ x: sv.liquid.s_kJ_kgK, y: tToDisplay(sv.T_K, u) })), ...sat.slice().reverse().map(sv => ({ x: sv.vapour.s_kJ_kgK, y: tToDisplay(sv.T_K, u) }))];
   const Tmax = 1073.15;
   const isobars = state.steamP_kPa.map((P, i) => {
-    const pts = [];
+    const raw = [];
     let ts = null;
     if (P < P_CRIT) { ts = steamSat({ P_kPa: P }); }
     for (const T of linspace(T_TRIPLE, Tmax, 120)) {
       if (ts && Math.abs(T - ts.T_K) < 1e-6) continue;
-      try { const st = steam(T, P); pts.push({ x: st.s_kJ_kgK, y: tToDisplay(T, u) }); } catch { /* outside IF97 */ }
+      try { const st = steam(T, P); raw.push({ T_K: T, s: st.s_kJ_kgK, h: st.h_kJ_kg, rho: st.rho_kg_m3, phase: st.phase }); } catch { /* outside IF97 */ }
     }
-    if (ts) pts.push({ x: ts.liquid.s_kJ_kgK, y: tToDisplay(ts.T_K, u) }, { x: ts.vapour.s_kJ_kgK, y: tToDisplay(ts.T_K, u) });
-    pts.sort((a, b) => a.x - b.x);
-    return { P, ts, series: { name: fmtP(P, u), color: SERIES(i), segments: [{ points: pts }] } };
+    if (ts) raw.push({ T_K: ts.T_K, s: ts.liquid.s_kJ_kgK, h: ts.liquid.h_kJ_kg, rho: ts.liquid.rho_kg_m3, phase: "saturated liquid" },
+      { T_K: ts.T_K, s: ts.vapour.s_kJ_kgK, h: ts.vapour.h_kJ_kg, rho: ts.vapour.rho_kg_m3, phase: "saturated vapour" });
+    raw.sort((a, b) => a.s - b.s);
+    const pts = raw.map(q => ({ x: q.s, y: tToDisplay(q.T_K, u) }));
+    return { P, ts, raw, series: { name: fmtP(P, u), color: SERIES(i), segments: [{ points: pts }] } };
   });
   const series = [{ name: "", color: "var(--fug-fg)", width: 1.6, segments: [{ points: dome }] }, ...isobars.map(b => b.series)];
   const xMax = Math.ceil(Math.max(...series.flatMap(sr => sr.segments[0].points.map(q => q.x))));
@@ -981,7 +1059,13 @@ function steamView(ctx) {
       { label: "Viscosity", tier: "standard", text: "IAPWS R12-08, industrial form" },
       { label: "Thermal conductivity", tier: "standard", text: "IAPWS R15-11, industrial form" }]),
     sourceLinks(["iapws-r7-97", "iapws-r12-08", "iapws-r15-11"])));
-  return { data: `IAPWS-IF97 (${TIER_LABEL.standard})` };
+  return { data: `IAPWS-IF97 (${TIER_LABEL.standard})`, export: () => ({
+    title: "Water and steam: temperature-entropy chart and saturation table", file: "steam",
+    about: [["Standard", "IAPWS-IF97 (IAPWS R7-97(2012)); viscosity IAPWS R12-08, thermal conductivity IAPWS R15-11"],
+      ["Reference state", "internal energy and entropy of the saturated liquid at the triple point are zero"], ["Units", `T in ${tU(u)}, P in ${u.P}; per kg`]],
+    tables: steamTables({ units: u, dome: sat, isobars: isobars.map(b => ({ P: b.P, points: b.raw, note: `${b.raw.length} points, ordered by entropy as drawn` })),
+      table: rowsT.map(T => steamSat({ T_K: T })) }),
+  }) };
 }
 
 // ---------------------------------------------------------------------------------------

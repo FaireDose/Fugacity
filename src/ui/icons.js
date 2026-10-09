@@ -66,6 +66,8 @@ const P = {
   theme: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>',
   grid: '<path d="M12 3.5 21 19.5H3z"/><path d="M7.5 11.5h9M5.2 15.5h13.6M9.8 7.5l5.4 12M14.2 7.5l-5.4 12" stroke-width="1"/>',
   check: '<path d="m5.5 12.5 4 4 9-9"/>',
+  // a speech bubble: feedback and discussion
+  chat: '<path d="M4.5 5.5h15v10.5h-8.5L7 19.5v-3.5H4.5z"/><path d="M8 9.5h8M8 12.5h5" class="a"/>',
   // the library: an open book
   book: '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5v13" class="a"/>',
   star: '<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.4L12 16l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z"/><path d="M12 8.2v5.3" class="a"/>',
