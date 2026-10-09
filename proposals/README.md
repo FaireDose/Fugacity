@@ -28,3 +28,6 @@ interface or file format, the steps of the core track in the
 | 0006 | [The first flowsheet: streams, blocks, recycles and a Flowsheet workspace](0006-first-flowsheet.md) | Accepted |
 | 0007 | [Solubility and liquid-liquid equilibria](0007-solubility-and-liquid-liquid.md) | Accepted |
 | 0008 | [UNIFAC as the predicted tier, and the next 50 components](0008-unifac-and-next-components.md) | Accepted (UNIFAC part on hold) |
+| 0009 | [Components for green and bio-based chemistry](0009-green-chemistry-components.md) | Draft |
+| 0010 | [Reactions and reactors: one reaction description, five reactor blocks](0010-reactions-and-reactors.md) | Draft |
+| 0011 | [Agents on a checked database: from new literature to compared process routes](0011-agents-and-literature.md) | Draft |
