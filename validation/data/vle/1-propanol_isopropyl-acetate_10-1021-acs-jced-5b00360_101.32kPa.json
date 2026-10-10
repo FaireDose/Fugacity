@@ -1,0 +1,159 @@
+{
+ "_about": "1-Propanol (1) + Isopropyl acetate (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "F. M. Casimiro, D. S. M. Constantino, C. S. M. Pereira, O. Ferreira, A. E. Rodrigues, S. P. Pinho, Vapor-Liquid Equilibrium of Binary Mixtures Containing Isopropyl Acetate and Alkanols at 101.32 kPa, J. Chem. Eng. Data 60 (2015) 3181-3186",
+  "doi": "10.1021/acs.jced.5b00360",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00360.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 8, 9. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "isopropyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.32,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0236,
+   361.31,
+   0.031200000000000006
+  ],
+  [
+   0.062,
+   361.21,
+   0.07210000000000005
+  ],
+  [
+   0.0752,
+   361.11,
+   0.08899999999999997
+  ],
+  [
+   0.1347,
+   360.91,
+   0.14990000000000003
+  ],
+  [
+   0.1778,
+   360.81,
+   0.18189999999999995
+  ],
+  [
+   0.2446,
+   360.81,
+   0.23660000000000003
+  ],
+  [
+   0.2646,
+   360.91,
+   0.2531
+  ],
+  [
+   0.3312,
+   360.91,
+   0.2996
+  ],
+  [
+   0.4202,
+   361.31,
+   0.35319999999999996
+  ],
+  [
+   0.4872,
+   361.71,
+   0.40990000000000004
+  ],
+  [
+   0.5645,
+   362.41,
+   0.4605
+  ],
+  [
+   0.6168,
+   362.81,
+   0.5031
+  ],
+  [
+   0.6608,
+   363.3,
+   0.5413
+  ],
+  [
+   0.6948,
+   363.8,
+   0.5798
+  ],
+  [
+   0.7135,
+   364.3,
+   0.5989
+  ],
+  [
+   0.7686,
+   364.9,
+   0.6534
+  ],
+  [
+   0.7948,
+   365.5,
+   0.6800999999999999
+  ],
+  [
+   0.8255,
+   366.1,
+   0.7133
+  ],
+  [
+   0.8542,
+   366.6,
+   0.749
+  ],
+  [
+   0.9028,
+   367.4,
+   0.7967
+  ],
+  [
+   0.9109,
+   367.6,
+   0.8291
+  ],
+  [
+   0.9283,
+   368.2,
+   0.8537
+  ],
+  [
+   0.9438,
+   368.6,
+   0.8827
+  ],
+  [
+   0.9572,
+   369.0,
+   0.9056
+  ],
+  [
+   0.9696,
+   369.4,
+   0.9304
+  ],
+  [
+   0.9781,
+   369.6,
+   0.9488
+  ],
+  [
+   0.9867,
+   369.9,
+   0.9667
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0040. To be checked by a person against the record (AGENTS.md rule 4)."
+}

@@ -1,0 +1,104 @@
+{
+ "_about": "2-Propanol (1) + Cyclohexanone (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "K. Zhang, D. Xu, Y. Zhou, P. Shi, J. Gao, Y. Wang, Isobaric Vapor-Liquid Phase Equilibrium Measurements, Correlation, and Prediction for Separation of the Mixtures of Cyclohexanone and Alcohols, J. Chem. Eng. Data 63 (2018) 2038-2045",
+  "doi": "10.1021/acs.jced.8b00033",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00033.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 17, 18. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "cyclohexanone"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   428.6,
+   0.0
+  ],
+  [
+   0.016,
+   423.0,
+   0.15739999999999998
+  ],
+  [
+   0.0385,
+   416.3,
+   0.3133
+  ],
+  [
+   0.0485,
+   413.7,
+   0.368
+  ],
+  [
+   0.0757,
+   407.5,
+   0.485
+  ],
+  [
+   0.1105,
+   401.1,
+   0.5898
+  ],
+  [
+   0.1591,
+   394.0,
+   0.6880999999999999
+  ],
+  [
+   0.2141,
+   387.8,
+   0.7608
+  ],
+  [
+   0.2948,
+   381.1,
+   0.8286
+  ],
+  [
+   0.3876,
+   375.0,
+   0.8791
+  ],
+  [
+   0.4485,
+   371.9,
+   0.9002
+  ],
+  [
+   0.5415,
+   367.8,
+   0.9265
+  ],
+  [
+   0.6542,
+   364.0,
+   0.947
+  ],
+  [
+   0.7668,
+   360.8,
+   0.9659
+  ],
+  [
+   0.8747,
+   358.0,
+   0.9813
+  ],
+  [
+   1.0,
+   355.3,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0041. Pure-component boiling points of the set within 0.50 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

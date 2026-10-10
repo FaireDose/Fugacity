@@ -1,0 +1,159 @@
+{
+ "_about": "Methyl acetate (1) + n-Heptane (2): isobaric bubble temperatures at 1500.0 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of methyl acetate, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "P. S. Badajoz, D. Garcia-Vera, A. Marrero-Perez, N. Padron-Guerra, T. Mujica-Gonzalez, Measurement of VLE Data by Using an Experimental Installation with Automatic Control: Modeling of Binary Systems of Methyl Acetate or Ethyl Acetate with n-Heptane or 2,2,4-Trimethylpentane at Both 0.1 and 1.5 MPa, J. Chem. Eng. Data 64 (2019) 5591-5608",
+  "doi": "10.1021/acs.jced.9b00668",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.9b00668.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 14, 15. The table number in the article was not checked."
+ },
+ "components": [
+  "methyl-acetate",
+  "n-heptane"
+ ],
+ "kind": "isobaric-tx",
+ "P_kPa": 1500.0,
+ "columns": [
+  "x_1",
+  "T_K"
+ ],
+ "rows": [
+  [
+   0.0,
+   498.65
+  ],
+  [
+   0.019,
+   495.85
+  ],
+  [
+   0.035,
+   493.05
+  ],
+  [
+   0.05,
+   490.65
+  ],
+  [
+   0.076,
+   487.35
+  ],
+  [
+   0.093,
+   484.55
+  ],
+  [
+   0.119,
+   481.25
+  ],
+  [
+   0.148,
+   477.25
+  ],
+  [
+   0.175,
+   474.25
+  ],
+  [
+   0.217,
+   469.7
+  ],
+  [
+   0.288,
+   462.69
+  ],
+  [
+   0.316,
+   460.28
+  ],
+  [
+   0.372,
+   455.89
+  ],
+  [
+   0.401,
+   454.18
+  ],
+  [
+   0.428,
+   452.6
+  ],
+  [
+   0.491,
+   449.35
+  ],
+  [
+   0.521,
+   448.01
+  ],
+  [
+   0.558,
+   446.83
+  ],
+  [
+   0.596,
+   445.54
+  ],
+  [
+   0.624,
+   444.56
+  ],
+  [
+   0.646,
+   443.62
+  ],
+  [
+   0.68,
+   442.61
+  ],
+  [
+   0.738,
+   440.9
+  ],
+  [
+   0.769,
+   440.31
+  ],
+  [
+   0.796,
+   439.62
+  ],
+  [
+   0.827,
+   438.81
+  ],
+  [
+   0.855,
+   438.34
+  ],
+  [
+   0.885,
+   437.83
+  ],
+  [
+   0.91,
+   437.29
+  ],
+  [
+   0.936,
+   436.97
+  ],
+  [
+   0.959,
+   436.56
+  ],
+  [
+   0.977,
+   436.25
+  ],
+  [
+   0.992,
+   436.17
+  ],
+  [
+   1.0,
+   436.08
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Fitted to the bubble temperatures alone (Barker's method): no set of this pair with vapour compositions passes the consistency point test, or none was measured. Pure-component boiling points of the set within 0.49 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

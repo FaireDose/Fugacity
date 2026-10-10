@@ -1,0 +1,144 @@
+{
+ "_about": "Ethanol (1) + Isooctane (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "C. Pienaar, C. Schwarz, J. H. Knoetze, A. Burger, Vapor Liquid Liquid Equilibria Measurements for the Dehydration of Ethanol, Isopropanol, and n-Propanol via Azeotropic Distillation Using DIPE and Isooctane as Entrainers, J. Chem. Eng. Data 58 (2013) 537-550",
+  "doi": "10.1021/je300847v",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je300847v.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "ethanol",
+  "isooctane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   372.35,
+   0.0
+  ],
+  [
+   0.1406,
+   346.48,
+   0.5971
+  ],
+  [
+   0.1456,
+   346.48,
+   0.5813
+  ],
+  [
+   0.1698,
+   346.35,
+   0.592
+  ],
+  [
+   0.1914,
+   345.65,
+   0.5986
+  ],
+  [
+   0.2058,
+   345.65,
+   0.6056
+  ],
+  [
+   0.2203,
+   345.65,
+   0.6007
+  ],
+  [
+   0.2398,
+   345.05,
+   0.5988
+  ],
+  [
+   0.2451,
+   345.0,
+   0.6087
+  ],
+  [
+   0.2659,
+   345.0,
+   0.6103
+  ],
+  [
+   0.2922,
+   344.95,
+   0.6112
+  ],
+  [
+   0.293,
+   344.94,
+   0.61
+  ],
+  [
+   0.2962,
+   344.79,
+   0.6113
+  ],
+  [
+   0.6299,
+   344.57,
+   0.6454
+  ],
+  [
+   0.6337,
+   344.57,
+   0.6422
+  ],
+  [
+   0.7999,
+   344.62,
+   0.6566
+  ],
+  [
+   0.8078,
+   344.62,
+   0.6706
+  ],
+  [
+   0.8161,
+   344.6,
+   0.674
+  ],
+  [
+   0.9377,
+   346.75,
+   0.7921
+  ],
+  [
+   0.9412,
+   346.8,
+   0.7817
+  ],
+  [
+   0.9494,
+   347.42,
+   0.8034
+  ],
+  [
+   0.9544,
+   347.55,
+   0.8053
+  ],
+  [
+   0.9575,
+   347.65,
+   0.8201
+  ],
+  [
+   1.0,
+   351.47,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0089. Pure-component boiling points of the set within 0.13 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

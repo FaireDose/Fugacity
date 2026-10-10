@@ -1,0 +1,99 @@
+{
+ "_about": "2-Propanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "B. S. Gupta, M. Taha, M. J. Lee, A green process for recovery of 1-propanol/2-propanol from their aqueous solutions: Experimental and MD simulation studies, J. Chem. Thermodyn. 105 (2017) 76-85",
+  "doi": "10.1016/j.jct.2016.10.001",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2016.10.001.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   373.2,
+   0.0
+  ],
+  [
+   0.004,
+   369.7,
+   0.123
+  ],
+  [
+   0.006,
+   369.2,
+   0.129
+  ],
+  [
+   0.009,
+   367.3,
+   0.201
+  ],
+  [
+   0.017,
+   364.4,
+   0.282
+  ],
+  [
+   0.027,
+   361.7,
+   0.354
+  ],
+  [
+   0.05,
+   358.5,
+   0.455
+  ],
+  [
+   0.234,
+   355.1,
+   0.531
+  ],
+  [
+   0.297,
+   355.0,
+   0.541
+  ],
+  [
+   0.402,
+   354.5,
+   0.567
+  ],
+  [
+   0.477,
+   354.2,
+   0.584
+  ],
+  [
+   0.61,
+   353.6,
+   0.644
+  ],
+  [
+   0.685,
+   353.5,
+   0.685
+  ],
+  [
+   0.871,
+   354.0,
+   0.844
+  ],
+  [
+   1.0,
+   355.5,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0094. Pure-component boiling points of the set within 0.08 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

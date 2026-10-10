@@ -1,0 +1,124 @@
+{
+ "_about": "1-Butanol (1) + Ethylbenzene (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "B. Yang, H. Wan, G. Guan, Isobaric vapor liquid equilibium for the binary systerms of  1-butanol with o-xylene, m-xylene, p-xylene, and  ethylbenzene at 101.33 kPa, J. Chem. Eng. Data 57 (2012) 18-25",
+  "doi": "10.1021/je201053v",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je201053v.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 11, 12. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "ethylbenzene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   409.27,
+   0.0
+  ],
+  [
+   0.0386,
+   404.97,
+   0.1472
+  ],
+  [
+   0.0635,
+   402.83,
+   0.2167
+  ],
+  [
+   0.1118,
+   399.62,
+   0.3033
+  ],
+  [
+   0.1637,
+   396.81,
+   0.3804
+  ],
+  [
+   0.2288,
+   394.27,
+   0.4561
+  ],
+  [
+   0.2862,
+   392.49,
+   0.4932
+  ],
+  [
+   0.4272,
+   390.81,
+   0.5764
+  ],
+  [
+   0.4911,
+   390.3,
+   0.6089
+  ],
+  [
+   0.5732,
+   390.05,
+   0.6468
+  ],
+  [
+   0.6033,
+   389.74,
+   0.6647
+  ],
+  [
+   0.6546,
+   389.49,
+   0.6965
+  ],
+  [
+   0.7031,
+   389.34,
+   0.7163
+  ],
+  [
+   0.7438,
+   389.28,
+   0.741
+  ],
+  [
+   0.7992,
+   389.38,
+   0.7899
+  ],
+  [
+   0.8415,
+   389.49,
+   0.8159
+  ],
+  [
+   0.8966,
+   389.79,
+   0.8662
+  ],
+  [
+   0.945,
+   390.3,
+   0.9283
+  ],
+  [
+   0.982,
+   390.7,
+   0.9763
+  ],
+  [
+   1.0,
+   390.85,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0096. Pure-component boiling points of the set within 0.11 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

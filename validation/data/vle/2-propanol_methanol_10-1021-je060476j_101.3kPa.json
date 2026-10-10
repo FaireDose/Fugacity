@@ -1,0 +1,124 @@
+{
+ "_about": "2-Propanol (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "G. Zhang, B. L. Weeks, J. Wei, Vapor-Liquid Equilibria Data for Methanol + 2-Propanol+ 2-Methyl-2-butanol and Constituent Binary Systems at 101.3 kPa, J. Chem. Eng. Data 52 (2007) 878-883",
+  "doi": "10.1021/je060476j",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je060476j.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   337.68,
+   0.0
+  ],
+  [
+   0.146,
+   339.2,
+   0.08899999999999997
+  ],
+  [
+   0.222,
+   340.05,
+   0.136
+  ],
+  [
+   0.305,
+   341.05,
+   0.18799999999999994
+  ],
+  [
+   0.386,
+   342.1,
+   0.243
+  ],
+  [
+   0.436,
+   342.8,
+   0.279
+  ],
+  [
+   0.465,
+   343.22,
+   0.30000000000000004
+  ],
+  [
+   0.536,
+   344.32,
+   0.357
+  ],
+  [
+   0.607,
+   345.52,
+   0.41800000000000004
+  ],
+  [
+   0.671,
+   346.72,
+   0.481
+  ],
+  [
+   0.711,
+   347.52,
+   0.524
+  ],
+  [
+   0.76,
+   348.6,
+   0.583
+  ],
+  [
+   0.794,
+   349.4,
+   0.627
+  ],
+  [
+   0.827,
+   350.2,
+   0.6719999999999999
+  ],
+  [
+   0.869,
+   351.32,
+   0.738
+  ],
+  [
+   0.887,
+   351.85,
+   0.769
+  ],
+  [
+   0.907,
+   352.42,
+   0.804
+  ],
+  [
+   0.943,
+   353.54,
+   0.873
+  ],
+  [
+   0.964,
+   354.22,
+   0.916
+  ],
+  [
+   1.0,
+   355.5,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0008. Pure-component boiling points of the set within 0.05 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

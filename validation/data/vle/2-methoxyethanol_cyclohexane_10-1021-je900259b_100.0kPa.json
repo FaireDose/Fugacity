@@ -1,0 +1,124 @@
+{
+ "_about": "2-Methoxyethanol (1) + Cyclohexane (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of 2-methoxyethanol, boiling temperature in K, vapour mole fraction of 2-methoxyethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "B. Marrufo, S. Loras, M. Sanchotello, Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures with Cyclohexane, Cyclohexene, and 2-Methoxyethanol at 100 kPa, J. Chem. Eng. Data 55 (2010) 62-68",
+  "doi": "10.1021/je900259b",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je900259b.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 12, 13. The table number in the article was not checked."
+ },
+ "components": [
+  "2-methoxyethanol",
+  "cyclohexane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 100.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.019,
+   352.34,
+   0.04600000000000004
+  ],
+  [
+   0.066,
+   351.18,
+   0.09699999999999998
+  ],
+  [
+   0.121,
+   350.99,
+   0.119
+  ],
+  [
+   0.15,
+   351.03,
+   0.132
+  ],
+  [
+   0.221,
+   351.1,
+   0.135
+  ],
+  [
+   0.266,
+   351.17,
+   0.137
+  ],
+  [
+   0.325,
+   351.36,
+   0.14
+  ],
+  [
+   0.37,
+   351.48,
+   0.14600000000000002
+  ],
+  [
+   0.416,
+   351.55,
+   0.14800000000000002
+  ],
+  [
+   0.474,
+   351.85,
+   0.15300000000000002
+  ],
+  [
+   0.534,
+   352.21,
+   0.15700000000000003
+  ],
+  [
+   0.613,
+   352.8,
+   0.16800000000000004
+  ],
+  [
+   0.669,
+   353.54,
+   0.17000000000000004
+  ],
+  [
+   0.716,
+   354.52,
+   0.17500000000000004
+  ],
+  [
+   0.748,
+   355.47,
+   0.18400000000000005
+  ],
+  [
+   0.848,
+   361.04,
+   0.23399999999999999
+  ],
+  [
+   0.881,
+   363.75,
+   0.28300000000000003
+  ],
+  [
+   0.936,
+   375.57,
+   0.44399999999999995
+  ],
+  [
+   0.965,
+   382.99,
+   0.613
+  ],
+  [
+   0.988,
+   391.8,
+   0.84
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0047. To be checked by a person against the record (AGENTS.md rule 4)."
+}

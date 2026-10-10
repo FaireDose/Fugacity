@@ -1,0 +1,74 @@
+{
+ "_about": "Methanol (1) + Water (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "X. Zhang, X. Hao, X. Yang, C. Jian, Experimental isobaric vapour-liquid equilibrium data for the binary system (N, N-dimethyl acetamide + dimethyl sulfoxide) and the quaternary system (sec-butyl acetate + sec-butyl alcohol + N, N-dimethyl acetamide + dimethyl sulfoxide) at 101.3 kPa, J. Chem. Thermodyn. 136 (2019) 132-140",
+  "doi": "10.1016/j.jct.2019.05.005",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2019.05.005.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.023,
+   369.5,
+   0.123
+  ],
+  [
+   0.071,
+   365.15,
+   0.311
+  ],
+  [
+   0.117,
+   360.49,
+   0.423
+  ],
+  [
+   0.202,
+   355.02,
+   0.587
+  ],
+  [
+   0.306,
+   350.77,
+   0.688
+  ],
+  [
+   0.379,
+   348.22,
+   0.739
+  ],
+  [
+   0.522,
+   345.02,
+   0.815
+  ],
+  [
+   0.615,
+   343.58,
+   0.847
+  ],
+  [
+   0.805,
+   340.52,
+   0.912
+  ],
+  [
+   0.914,
+   338.47,
+   0.958
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0052. To be checked by a person against the record (AGENTS.md rule 4)."
+}

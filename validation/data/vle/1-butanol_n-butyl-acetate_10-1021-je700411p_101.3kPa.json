@@ -1,0 +1,129 @@
+{
+ "_about": "1-Butanol (1) + n-Butyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "E. Lladosa, J. B. Monton, M. C. Burguet, R. Munoz, Phase Equilibrium for the Esterification Reaction of Acetic Acid + Butan-1-ol at 101.3 kPa, J. Chem. Eng. Data 53 (2008) 108-115",
+  "doi": "10.1021/je700411p",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je700411p.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "n-butyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   399.05,
+   0.0
+  ],
+  [
+   0.058,
+   397.48,
+   0.103
+  ],
+  [
+   0.116,
+   396.08,
+   0.191
+  ],
+  [
+   0.166,
+   395.02,
+   0.256
+  ],
+  [
+   0.22,
+   393.98,
+   0.321
+  ],
+  [
+   0.275,
+   393.07,
+   0.379
+  ],
+  [
+   0.325,
+   392.34,
+   0.425
+  ],
+  [
+   0.38,
+   391.78,
+   0.473
+  ],
+  [
+   0.43,
+   391.23,
+   0.517
+  ],
+  [
+   0.485,
+   390.72,
+   0.559
+  ],
+  [
+   0.541,
+   390.44,
+   0.601
+  ],
+  [
+   0.596,
+   390.17,
+   0.64
+  ],
+  [
+   0.651,
+   389.93,
+   0.681
+  ],
+  [
+   0.708,
+   389.74,
+   0.723
+  ],
+  [
+   0.756,
+   389.54,
+   0.759
+  ],
+  [
+   0.802,
+   389.55,
+   0.797
+  ],
+  [
+   0.847,
+   389.56,
+   0.836
+  ],
+  [
+   0.891,
+   389.68,
+   0.878
+  ],
+  [
+   0.933,
+   389.83,
+   0.921
+  ],
+  [
+   0.97,
+   390.13,
+   0.963
+  ],
+  [
+   1.0,
+   390.46,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0063. Pure-component boiling points of the set within 0.28 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

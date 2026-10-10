@@ -1,0 +1,84 @@
+{
+ "_about": "Acetonitrile (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Y. Li, P. Bai, Q. Zhuang, Isobaric vapor liquid equilibrium for binary system of methanol and acetonitrile, Fluid Phase Equilib. 340 (2013) 42-45",
+  "doi": "10.1016/j.fluid.2012.12.003",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.12.003.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "acetonitrile",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   338.41,
+   0.0
+  ],
+  [
+   0.038,
+   338.04,
+   0.05500000000000005
+  ],
+  [
+   0.134,
+   336.96,
+   0.14
+  ],
+  [
+   0.195,
+   337.02,
+   0.18600000000000005
+  ],
+  [
+   0.234,
+   337.09,
+   0.21499999999999997
+  ],
+  [
+   0.354,
+   337.71,
+   0.29400000000000004
+  ],
+  [
+   0.398,
+   338.09,
+   0.31299999999999994
+  ],
+  [
+   0.563,
+   339.38,
+   0.4
+  ],
+  [
+   0.69,
+   340.55,
+   0.471
+  ],
+  [
+   0.829,
+   344.6,
+   0.62
+  ],
+  [
+   0.946,
+   350.19,
+   0.8109999999999999
+  ],
+  [
+   1.0,
+   355.66,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0054. Pure-component boiling points of the set within 0.85 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

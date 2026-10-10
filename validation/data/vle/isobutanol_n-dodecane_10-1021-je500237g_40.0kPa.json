@@ -1,0 +1,79 @@
+{
+ "_about": "Isobutanol (1) + n-Dodecane (2): isobaric T-x-y at 40.0 kPa. Rows: liquid mole fraction of isobutanol, boiling temperature in K, vapour mole fraction of isobutanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Z. Tebbal, P. T. Ngema, C. Narasigadu, L. Negadi, D. Ramjugernath, Vapor Liquid Equilibrium Data for Binary Systems of n-Dodecane + {Propan-1-ol, Butan-1-ol, 2-Methylpropan-1-ol} at 40 kPa, J. Chem. Eng. Data 59 (2014) 1710-1713",
+  "doi": "10.1021/je500237g",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je500237g.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 17, 18. The table number in the article was not checked."
+ },
+ "components": [
+  "isobutanol",
+  "n-dodecane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 40.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   453.7,
+   0.0
+  ],
+  [
+   0.045,
+   420.8,
+   0.671
+  ],
+  [
+   0.078,
+   402.6,
+   0.839
+  ],
+  [
+   0.464,
+   365.5,
+   0.981
+  ],
+  [
+   0.558,
+   364.2,
+   0.983
+  ],
+  [
+   0.705,
+   362.7,
+   0.985
+  ],
+  [
+   0.822,
+   361.0,
+   0.989
+  ],
+  [
+   0.895,
+   359.8,
+   0.99
+  ],
+  [
+   0.941,
+   358.7,
+   0.995
+  ],
+  [
+   0.964,
+   358.2,
+   0.996
+  ],
+  [
+   1.0,
+   357.6,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0024. Pure-component boiling points of the set within 0.18 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

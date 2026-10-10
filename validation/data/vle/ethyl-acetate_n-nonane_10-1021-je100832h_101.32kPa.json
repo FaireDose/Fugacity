@@ -1,0 +1,154 @@
+{
+ "_about": "Ethyl acetate (1) + n-Nonane (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of ethyl acetate, boiling temperature in K, vapour mole fraction of ethyl acetate, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "L. Fernandez, E. Perez, J. Ortega, J. Canosa, J. Wisniak, Measurements of the Excess Properties and Vapor-Liquid Equilibria at 101.32 kPa for Mixtures of Ethyl Ethanoate + Alkanes (from C5 to C10) , J. Chem. Eng. Data 55 (2010) 5519-5533",
+  "doi": "10.1021/je100832h",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100832h.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 35, 36. The table number in the article was not checked."
+ },
+ "components": [
+  "ethyl-acetate",
+  "n-nonane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.32,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   423.94,
+   0.0
+  ],
+  [
+   0.01,
+   420.0,
+   0.118
+  ],
+  [
+   0.017,
+   417.06,
+   0.189
+  ],
+  [
+   0.031,
+   412.1,
+   0.303
+  ],
+  [
+   0.045,
+   407.91,
+   0.39
+  ],
+  [
+   0.055,
+   405.01,
+   0.444
+  ],
+  [
+   0.073,
+   400.4,
+   0.523
+  ],
+  [
+   0.093,
+   396.55,
+   0.583
+  ],
+  [
+   0.12,
+   391.49,
+   0.652
+  ],
+  [
+   0.159,
+   385.31,
+   0.726
+  ],
+  [
+   0.187,
+   381.8,
+   0.762
+  ],
+  [
+   0.227,
+   377.45,
+   0.804
+  ],
+  [
+   0.261,
+   374.65,
+   0.826
+  ],
+  [
+   0.338,
+   369.47,
+   0.864
+  ],
+  [
+   0.412,
+   367.15,
+   0.879
+  ],
+  [
+   0.486,
+   363.75,
+   0.9
+  ],
+  [
+   0.564,
+   361.5,
+   0.915
+  ],
+  [
+   0.635,
+   359.01,
+   0.93
+  ],
+  [
+   0.712,
+   357.15,
+   0.942
+  ],
+  [
+   0.792,
+   355.5,
+   0.953
+  ],
+  [
+   0.854,
+   354.15,
+   0.965
+  ],
+  [
+   0.897,
+   353.0,
+   0.974
+  ],
+  [
+   0.94,
+   351.92,
+   0.985
+  ],
+  [
+   0.964,
+   351.19,
+   0.991
+  ],
+  [
+   0.981,
+   350.7,
+   0.995
+  ],
+  [
+   1.0,
+   350.15,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0072. Pure-component boiling points of the set within 0.07 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

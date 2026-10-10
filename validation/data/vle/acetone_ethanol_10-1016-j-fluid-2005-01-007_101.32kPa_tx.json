@@ -1,0 +1,107 @@
+{
+ "_about": "Acetone (1) + Ethanol (2): isobaric bubble temperatures at 101.32 kPa (no vapour compositions are fitted). Rows: liquid mole fraction of acetone, boiling temperature in K, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "H. C. Ku, C. H. Tu, Isobaric vapor liquid equilibria for mixtures of acetone, ethanol, and 2,2,4-trimethylpentane at 101.3 kPa, Fluid Phase Equilib. 231 (2005) 99-108",
+  "doi": "10.1016/j.fluid.2005.01.007",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.01.007.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "acetone",
+  "ethanol"
+ ],
+ "kind": "isobaric-tx",
+ "P_kPa": 101.32,
+ "columns": [
+  "x_1",
+  "T_K"
+ ],
+ "rows": [
+  [
+   0.0,
+   351.44
+  ],
+  [
+   0.044,
+   348.91
+  ],
+  [
+   0.085,
+   346.65
+  ],
+  [
+   0.132,
+   344.53
+  ],
+  [
+   0.175,
+   342.69
+  ],
+  [
+   0.227,
+   341.17
+  ],
+  [
+   0.276,
+   339.81
+  ],
+  [
+   0.328,
+   338.39
+  ],
+  [
+   0.38,
+   337.32
+  ],
+  [
+   0.433,
+   336.24
+  ],
+  [
+   0.481,
+   335.37
+  ],
+  [
+   0.538,
+   334.51
+  ],
+  [
+   0.586,
+   333.78
+  ],
+  [
+   0.639,
+   333.06
+  ],
+  [
+   0.688,
+   332.43
+  ],
+  [
+   0.745,
+   331.81
+  ],
+  [
+   0.796,
+   331.2
+  ],
+  [
+   0.849,
+   330.66
+  ],
+  [
+   0.901,
+   330.17
+  ],
+  [
+   0.951,
+   329.69
+  ],
+  [
+   1.0,
+   329.26
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Fitted to the bubble temperatures alone (Barker's method): no set of this pair with vapour compositions passes the consistency point test, or none was measured. Pure-component boiling points of the set within 0.13 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

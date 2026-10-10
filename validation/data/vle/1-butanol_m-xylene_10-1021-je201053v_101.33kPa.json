@@ -1,0 +1,129 @@
+{
+ "_about": "1-Butanol (1) + m-Xylene (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of 1-butanol, boiling temperature in K, vapour mole fraction of 1-butanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "B. Yang, H. Wan, G. Guan, Isobaric vapor liquid equilibium for the binary systerms of  1-butanol with o-xylene, m-xylene, p-xylene, and  ethylbenzene at 101.33 kPa, J. Chem. Eng. Data 57 (2012) 18-25",
+  "doi": "10.1021/je201053v",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je201053v.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 15, 16. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "m-xylene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   412.27,
+   0.0
+  ],
+  [
+   0.0367,
+   407.08,
+   0.146
+  ],
+  [
+   0.1487,
+   398.57,
+   0.3884
+  ],
+  [
+   0.2405,
+   396.13,
+   0.499
+  ],
+  [
+   0.298,
+   394.63,
+   0.5336
+  ],
+  [
+   0.3112,
+   393.36,
+   0.5448
+  ],
+  [
+   0.3846,
+   392.75,
+   0.5968
+  ],
+  [
+   0.4787,
+   391.58,
+   0.6287
+  ],
+  [
+   0.4974,
+   391.21,
+   0.6515
+  ],
+  [
+   0.5376,
+   390.58,
+   0.653
+  ],
+  [
+   0.6008,
+   390.09,
+   0.6854
+  ],
+  [
+   0.6597,
+   389.81,
+   0.7136
+  ],
+  [
+   0.718,
+   389.63,
+   0.7435
+  ],
+  [
+   0.7716,
+   389.55,
+   0.7882
+  ],
+  [
+   0.8315,
+   389.59,
+   0.822
+  ],
+  [
+   0.8709,
+   389.7,
+   0.8498
+  ],
+  [
+   0.8972,
+   389.82,
+   0.8734
+  ],
+  [
+   0.925,
+   390.01,
+   0.9058
+  ],
+  [
+   0.9444,
+   390.18,
+   0.9276
+  ],
+  [
+   0.9582,
+   390.32,
+   0.9467
+  ],
+  [
+   1.0,
+   390.85,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0076. Pure-component boiling points of the set within 0.11 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

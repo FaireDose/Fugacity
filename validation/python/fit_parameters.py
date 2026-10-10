@@ -5,6 +5,13 @@ file, and which parameters are free.
 
     python validation/python/fit_parameters.py            # fit and print, no changes
     python validation/python/fit_parameters.py --write    # fit and update binaries.json
+    python validation/python/fit_parameters.py --only 1-propanol+water ... [--write]   # those pairs only
+
+Besides FITS below, the fit definitions written by vle_batch.py (validation/data/vle/fits.json:
+one isobaric T-x-y or isothermal P-x set from the NIST TRC ThermoML Archive per pair, with check
+sets) are fitted, temperature-independent. A generated fit is written only when it follows its
+data (GATE below) and predicts no liquid-liquid split in the data range; otherwise the reason is
+printed and the pair keeps what it had.
 
 Objective: bubble temperature (weight 1/0.5 K) and vapour composition (1/0.01) for
 isobaric T-x-y data; relative pressure (1/0.5 %) for isothermal P-x data; excess
@@ -22,6 +29,8 @@ Data kinds a FITS entry can use:
                    each with "components", "kind", "columns" and "rows":
                      kind "isobaric-txy"  columns x_1, y_1, T_K or T_C; "P_kPa". Rows of
                                           pure components are left out.
+                     kind "isobaric-tx"   columns x_1, T_K: bubble temperatures without the
+                                          vapour (Barker's method: T only is fitted).
                      kind "lle"           columns T_K and x_1_I / x_1_II / x_2_I / x_2_II
                                           (mole fractions in liquids I and II). Rows with
                                           both liquids are fitted (isoactivity); rows with
@@ -95,17 +104,17 @@ def txy_file(name, pair):
     """Isobaric T-x-y file as (P_kPa, [(x1, T_K, y1)]) with x1, y1 of pair[0]. Pure-component
     rows are left out: they test the vapour-pressure equations, not the pair parameters."""
     d = load(name)
-    if d.get("kind") != "isobaric-txy":
-        raise ValueError(f"{name}: kind {d.get('kind')!r} is not isobaric-txy")
+    if d.get("kind") not in ("isobaric-txy", "isobaric-tx"):
+        raise ValueError(f"{name}: kind {d.get('kind')!r} is not isobaric-txy or isobaric-tx")
     flip = _orient(d, name, pair)
     col = {c: k for k, c in enumerate(d["columns"])}
     pts = []
     for r in d["rows"]:
-        x1, y1 = r[col["x_1"]], r[col["y_1"]]
+        x1, y1 = r[col["x_1"]], (r[col["y_1"]] if "y_1" in col else None)
         T = r[col["T_K"]] if "T_K" in col else r[col["T_C"]] + 273.15
         if x1 <= 0 or x1 >= 1:
             continue
-        pts.append((1 - x1, T, 1 - y1) if flip else (x1, T, y1))
+        pts.append((1 - x1, T, None if y1 is None else 1 - y1) if flip else (x1, T, y1))
     return d["P_kPa"], pts
 
 
@@ -203,7 +212,7 @@ def file_sets(spec, key="files"):
             if spec["pair"] != ("water", "ethylene-glycol"):
                 raise ValueError(f"{name}: pair {spec['pair']}")
             out.append(("txy", name, (P, pts)))
-        elif kind == "isobaric-txy":
+        elif kind in ("isobaric-txy", "isobaric-tx"):
             out.append(("txy", name, txy_file(name, spec["pair"])))
         elif kind == "lle":
             out.append(("lle", name, lle_file(name, spec["pair"])))
@@ -325,6 +334,38 @@ FITS = [
 ]
 
 
+# Generated fits (vle_batch.py): validation/data/vle/fits.json
+GENERATED_FILE = VAL / "vle" / "fits.json"
+GENERATED = [dict(pair=tuple(f["pair"]), data="txy-file", file=f["file"], check=f.get("check", []), temperature_dependent=False,
+                  describe=f["describe"], generated=True,
+                  # UNIQUAC needs r and q of both components
+                  models=["NRTL", "UNIQUAC"] if all(COMPONENTS[c].get("uniquac") for c in f["pair"]) else ["NRTL"])
+             for f in (json.loads(GENERATED_FILE.read_text())["fits"] if GENERATED_FILE.exists() else [])]
+# A generated fit must follow the data it is fitted to: AAD in T and y for T-x-y, in P for P-x.
+GATE = {"T_K": 0.5, "y": 0.012, "P_pct": 1.5}
+
+
+def gate(spec, model, params):
+    """None if a generated fit follows its data within GATE, else the reason."""
+    i, j = spec["pair"]
+    sets = file_sets(spec)
+    txy = [c for kind, _, c in sets if kind == "txy"]
+    if txy:
+        dT, dy = txy_deviations(txy, model, i, j, [params])
+        if np.mean(dT) > GATE["T_K"] or (len(dy) and np.mean(dy) > GATE["y"]):
+            return f"AAD {np.mean(dT):.2f} K, {np.mean(dy) if len(dy) else float('nan'):.4f} in y (limits {GATE['T_K']} K, {GATE['y']})"
+    px = [p for kind, _, c in sets if kind == "px" for p in c]
+    if px:
+        s = System([i, j], model, params=[params])
+        dev = []
+        for T, x1, P, ps in px:
+            s.psat_fixed = list(ps)
+            dev.append(abs(s.equilibrium([x1, 1 - x1], T)[0] / P - 1) * 100)
+        if np.mean(dev) > GATE["P_pct"]:
+            return f"AAD {np.mean(dev):.2f} % in P (limit {GATE['P_pct']} %)"
+    return None
+
+
 def make_params(model, i, j, p, alpha=0.3):
     a_ij, a_ji = (p[2], p[3]) if len(p) > 2 else (0.0, 0.0)
     e = dict(model=model, i=i, j=j, a_ij=float(a_ij), a_ji=float(a_ji), b_ij=float(p[0]), b_ji=float(p[1]))
@@ -351,7 +392,7 @@ def file_residuals(s, sets, single=False):
             P, pts = c
             for x1, T, y1 in pts:
                 Tc, y = s.bubble_t([x1, 1 - x1], P)
-                r += [(Tc - T) / 0.5, (y[0] - y1) / 0.01]
+                r += [(Tc - T) / 0.5] + ([] if y1 is None else [(y[0] - y1) / 0.01])
         elif kind == "lle":
             for T, a, b in c:
                 if a is not None and b is not None:
@@ -442,7 +483,9 @@ def txy_deviations(sets, model, i, j, params):
     for P, pts in sets:
         for x1, T, y1 in pts:
             Tc, y = s.bubble_t([x1, 1 - x1], P)
-            dT.append(abs(Tc - T)); dy.append(abs(y[0] - y1))
+            dT.append(abs(Tc - T))
+            if y1 is not None:
+                dy.append(abs(y[0] - y1))
     return np.array(dT), np.array(dy)
 
 
@@ -471,7 +514,8 @@ def describe_fit(sets, model, i, j, params, minor=False):
     txy = [c for kind, _, c in sets if kind == "txy"]
     if txy:
         dT, dy = txy_deviations(txy, model, i, j, params)
-        out.append(f"AAD {np.mean(dT):.2f} K in T, {np.mean(dy):.4f} in y (max {dT.max():.2f} K, {dy.max():.4f})")
+        out.append(f"AAD {np.mean(dT):.2f} K in T, {np.mean(dy):.4f} in y (max {dT.max():.2f} K, {dy.max():.4f})" if len(dy)
+                   else f"AAD {np.mean(dT):.2f} K in T (max {dT.max():.2f} K; no vapour compositions)")
     lle = [p for kind, _, c in sets if kind == "lle" for p in c]
     if lle:
         dI, dII, miss, rI, rII = [], [], 0, [], []
@@ -645,7 +689,8 @@ def point_test(spec, nterms=4):
     compositions it predicts with the measured ones. Mean |dy| below 0.01 is the usual pass
     criterion. Returns None when the fit has no T-x-y data."""
     i, j = spec["pair"]
-    sets = txy_sets(spec)
+    sets = [(P, [p for p in pts if p[2] is not None]) for P, pts in (txy_sets(spec) or [])]
+    sets = [(P, pts) for P, pts in sets if pts]
     if not sets:
         return None
 
@@ -673,9 +718,12 @@ def point_test(spec, nterms=4):
     return float(np.mean(dy))
 
 
-def main(write):
+def main(write, only=None):
     binaries = json.loads(BIN_FILE.read_text())
-    for spec in FITS:
+    rejected = []
+    for spec in FITS + GENERATED:
+        if only is not None and "+".join(sorted(spec["pair"])) not in only:
+            continue
         test = ""
         if spec["data"] == "txy-file":
             dy_test = point_test(spec)
@@ -684,7 +732,24 @@ def main(write):
                 test = f" Data consistency point test (Redlich-Kister fit to T-x): mean |dy| {dy_test:.3f}{' (passes, < 0.01)' if dy_test < 0.01 else ' (fails, >= 0.01)'}."
         for model in spec.get("models", ["NRTL", "UNIQUAC"]):
             params, _ = fit(spec, model)
-            if spec["data"] == "txy-file":
+            if spec.get("generated"):
+                # NRTL: alpha 0.3, else the other usual values 0.2 and 0.47 (a set that predicts a
+                # spurious liquid split with one alpha may not with another)
+                for alpha in ((0.3, 0.2, 0.47) if model == "NRTL" else (None,)):
+                    if alpha not in (None, 0.3):
+                        params, _ = fit(dict(spec, alpha=alpha), model)
+                    try:
+                        check_phase_splits(spec, model, params)
+                        why = gate(spec, model, params)
+                    except (SystemExit, Exception) as e:
+                        why = str(e)
+                    if not why:
+                        break
+                if why:
+                    rejected.append((spec["pair"], model, why))
+                    print(f"REJECTED {model} {spec['pair']}: {why}")
+                    continue
+            elif spec["data"] == "txy-file":
                 check_phase_splits(spec, model, params)
             q = quality(spec, model, params) + test
             params["source"] = f"{spec['describe']} {q}"
@@ -732,10 +797,17 @@ def main(write):
                     break
             else:
                 recs.append(params)   # a pair without parameters so far
+    for pair, model, why in rejected:
+        print(f"not written: {model} {pair[0]} + {pair[1]}: {why}")
     if write:
         BIN_FILE.write_text(json.dumps(binaries, indent=2) + "\n")
         print(f"updated {BIN_FILE}")
 
 
 if __name__ == "__main__":
-    main("--write" in sys.argv)
+    args = sys.argv[1:]
+    only = None
+    if "--only" in args:
+        k = args.index("--only")
+        only = {"+".join(sorted(p.split("+"))) for p in args[k + 1:] if not p.startswith("--")}
+    main("--write" in args, only)

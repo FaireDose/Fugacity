@@ -1,0 +1,84 @@
+{
+ "_about": "Acetonitrile (1) + Ethyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Q. Li, L. Cao, X. Sun, P. Liu, B. Wang, Isobaric Vapor  -  Liquid Equilibrium for Ethyl Acetate + Acetonitrile +  1  -  Butyl-3-methylimidazolium Hexa  fl  uorophosphate at 101.3 kPa, J. Chem. Eng. Data 58 (2013) 1112-1116",
+  "doi": "10.1021/je301204w",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je301204w.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "acetonitrile",
+  "ethyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   349.9,
+   0.0
+  ],
+  [
+   0.053,
+   349.5,
+   0.062000000000000055
+  ],
+  [
+   0.148,
+   349.0,
+   0.17000000000000004
+  ],
+  [
+   0.255,
+   348.6,
+   0.264
+  ],
+  [
+   0.352,
+   348.5,
+   0.347
+  ],
+  [
+   0.45,
+   348.7,
+   0.42300000000000004
+  ],
+  [
+   0.553,
+   349.0,
+   0.508
+  ],
+  [
+   0.655,
+   349.6,
+   0.5920000000000001
+  ],
+  [
+   0.757,
+   350.4,
+   0.6839999999999999
+  ],
+  [
+   0.855,
+   351.6,
+   0.785
+  ],
+  [
+   0.952,
+   353.2,
+   0.92
+  ],
+  [
+   1.0,
+   354.3,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0040. Pure-component boiling points of the set within 0.51 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

@@ -1,0 +1,129 @@
+{
+ "_about": "1-Propanol (1) + N,N-Dimethylformamide (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 1-propanol, boiling temperature in K, vapour mole fraction of 1-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "E. Lladosa, J. B. Monton, M. C. Burguet, R. Munoz, Phase Equilibria Involved in Extractive Distillation of Dipropyl Ether + 1-Propyl Alcohol Using N,N-Dimethylformamide as Entrainer, J. Chem. Eng. Data 52 (2007) 532-537",
+  "doi": "10.1021/je0604479",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0604479.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 12, 13. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "dmf"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   425.63,
+   0.0
+  ],
+  [
+   0.064,
+   419.92,
+   0.218
+  ],
+  [
+   0.115,
+   414.9,
+   0.372
+  ],
+  [
+   0.172,
+   409.78,
+   0.5
+  ],
+  [
+   0.226,
+   405.38,
+   0.602
+  ],
+  [
+   0.285,
+   401.23,
+   0.686
+  ],
+  [
+   0.338,
+   397.57,
+   0.742
+  ],
+  [
+   0.391,
+   394.27,
+   0.79
+  ],
+  [
+   0.445,
+   390.98,
+   0.833
+  ],
+  [
+   0.499,
+   388.02,
+   0.869
+  ],
+  [
+   0.553,
+   385.37,
+   0.896
+  ],
+  [
+   0.603,
+   383.06,
+   0.919
+  ],
+  [
+   0.656,
+   380.85,
+   0.937
+  ],
+  [
+   0.707,
+   378.82,
+   0.952
+  ],
+  [
+   0.755,
+   377.02,
+   0.965
+  ],
+  [
+   0.802,
+   375.4,
+   0.975
+  ],
+  [
+   0.847,
+   373.95,
+   0.982
+  ],
+  [
+   0.892,
+   372.69,
+   0.988
+  ],
+  [
+   0.933,
+   371.58,
+   0.993
+  ],
+  [
+   0.969,
+   370.71,
+   0.997
+  ],
+  [
+   1.0,
+   369.75,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0099. Pure-component boiling points of the set within 0.75 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

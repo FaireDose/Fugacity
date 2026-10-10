@@ -1,0 +1,129 @@
+{
+ "_about": "2-Butanone (1) + Methanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-butanone, boiling temperature in K, vapour mole fraction of 2-butanone, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Z. Li, Q. Li, R. Qiao, K. Zhang, X. Song, C. Li, H. Tang, Y. Liu, Isobaric vapor-liquid equilibrium for methanol + methyl ethyl ketone + bis(trifluoromethylsulfonyl)imide-based ionic liquids at 101.3 kPa, Fluid Phase Equilib. 427 (2016) 90-96",
+  "doi": "10.1016/j.fluid.2016.06.048",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.06.048.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "2-butanone",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   337.9,
+   0.0
+  ],
+  [
+   0.044,
+   337.6,
+   0.05400000000000005
+  ],
+  [
+   0.1,
+   337.4,
+   0.11399999999999999
+  ],
+  [
+   0.148,
+   337.4,
+   0.15100000000000002
+  ],
+  [
+   0.209,
+   337.4,
+   0.19799999999999995
+  ],
+  [
+   0.26,
+   337.5,
+   0.22799999999999998
+  ],
+  [
+   0.312,
+   337.7,
+   0.262
+  ],
+  [
+   0.359,
+   338.0,
+   0.28700000000000003
+  ],
+  [
+   0.401,
+   338.2,
+   0.31100000000000005
+  ],
+  [
+   0.452,
+   338.6,
+   0.33999999999999997
+  ],
+  [
+   0.514,
+   339.0,
+   0.379
+  ],
+  [
+   0.563,
+   339.6,
+   0.41400000000000003
+  ],
+  [
+   0.607,
+   340.0,
+   0.44499999999999995
+  ],
+  [
+   0.674,
+   340.8,
+   0.488
+  ],
+  [
+   0.72,
+   341.7,
+   0.525
+  ],
+  [
+   0.778,
+   342.7,
+   0.5840000000000001
+  ],
+  [
+   0.824,
+   344.1,
+   0.639
+  ],
+  [
+   0.879,
+   345.7,
+   0.722
+  ],
+  [
+   0.921,
+   347.7,
+   0.796
+  ],
+  [
+   0.961,
+   349.8,
+   0.886
+  ],
+  [
+   1.0,
+   352.8,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0066. Pure-component boiling points of the set within 0.33 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

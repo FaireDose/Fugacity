@@ -1,0 +1,108 @@
+{
+ "_about": "1-Butanol (1) + 1,4-Dioxane (2): isothermal total pressures at 363.15 K. Rows: temperature in K, liquid mole fraction of 1-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "B. S. Reddy, K. V. Rao, Measurement and correlation of binary vapor liquid equilibria of isomeric butanols with 1,4-dioxane, Fluid Phase Equilib. 264 (2008) 76-85",
+  "doi": "10.1016/j.fluid.2007.11.002",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.11.002.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 23, 24. The table number in the article was not checked."
+ },
+ "components": [
+  "1-butanol",
+  "dioxane"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   363.15,
+   0.0,
+   70.91
+  ],
+  [
+   363.15,
+   0.0422,
+   69.85
+  ],
+  [
+   363.15,
+   0.1783,
+   67.32
+  ],
+  [
+   363.15,
+   0.3708,
+   62.12
+  ],
+  [
+   363.15,
+   0.4012,
+   61.18
+  ],
+  [
+   363.15,
+   0.4828,
+   58.25
+  ],
+  [
+   363.15,
+   0.5435,
+   56.52
+  ],
+  [
+   363.15,
+   0.5909,
+   54.79
+  ],
+  [
+   363.15,
+   0.6358,
+   52.79
+  ],
+  [
+   363.15,
+   0.6842,
+   50.65
+  ],
+  [
+   363.15,
+   0.7531,
+   47.72
+  ],
+  [
+   363.15,
+   0.7967,
+   45.85
+  ],
+  [
+   363.15,
+   0.8223,
+   44.25
+  ],
+  [
+   363.15,
+   0.8716,
+   41.99
+  ],
+  [
+   363.15,
+   0.9348,
+   37.99
+  ],
+  [
+   363.15,
+   0.9785,
+   35.72
+  ],
+  [
+   363.15,
+   1.0,
+   34.12
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

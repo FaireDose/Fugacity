@@ -1,0 +1,99 @@
+{
+ "_about": "2-Propanol (1) + Acetonitrile (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "W. Zhu, L. Qing, B. Liu, X. Cai, Z. Fan, Effect of imidazolium-based ionic liquid on vapor-liquid equilibria of 2-propanol + acetonitrile binary system at 101.3 kPa, Fluid Phase Equilib. 409 (2016) 383-387",
+  "doi": "10.1016/j.fluid.2015.10.035",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2015.10.035.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "acetonitrile"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   354.59,
+   0.0
+  ],
+  [
+   0.053,
+   352.6,
+   0.102
+  ],
+  [
+   0.096,
+   351.52,
+   0.172
+  ],
+  [
+   0.193,
+   349.83,
+   0.281
+  ],
+  [
+   0.298,
+   349.0,
+   0.366
+  ],
+  [
+   0.399,
+   348.48,
+   0.427
+  ],
+  [
+   0.449,
+   348.4,
+   0.455
+  ],
+  [
+   0.501,
+   348.43,
+   0.481
+  ],
+  [
+   0.576,
+   348.63,
+   0.53
+  ],
+  [
+   0.609,
+   348.75,
+   0.539
+  ],
+  [
+   0.708,
+   349.29,
+   0.601
+  ],
+  [
+   0.81,
+   350.42,
+   0.688
+  ],
+  [
+   0.9,
+   352.14,
+   0.793
+  ],
+  [
+   0.965,
+   353.03,
+   0.878
+  ],
+  [
+   1.0,
+   355.49,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0085. Pure-component boiling points of the set within 0.22 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

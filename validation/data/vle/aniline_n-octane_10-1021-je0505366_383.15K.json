@@ -1,0 +1,128 @@
+{
+ "_about": "Aniline (1) + n-Octane (2): isothermal total pressures at 383.15 K. Rows: temperature in K, liquid mole fraction of aniline, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "A. Grenner, M. Klauck, R. Meinhardt, R. Schumann, J. Schmelzer, Ternary Liquid-Liquid(-Liquid) Equilibria of Aniline + Cyclohexylamine + Water, Aniline + Cyclohexylamine + Octane, Aniline + Water + Toluene, and Aniline + Water + Octane, J. Chem. Eng. Data 51 (2006) 1009-1014",
+  "doi": "10.1021/je0505366",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je0505366.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 13. The table number in the article was not checked."
+ },
+ "components": [
+  "aniline",
+  "n-octane"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   383.15,
+   0.0,
+   64.09
+  ],
+  [
+   383.15,
+   0.062,
+   63.6
+  ],
+  [
+   383.15,
+   0.083,
+   63.27
+  ],
+  [
+   383.15,
+   0.122,
+   62.52
+  ],
+  [
+   383.15,
+   0.153,
+   61.96
+  ],
+  [
+   383.15,
+   0.189,
+   61.13
+  ],
+  [
+   383.15,
+   0.224,
+   60.15
+  ],
+  [
+   383.15,
+   0.254,
+   59.66
+  ],
+  [
+   383.15,
+   0.277,
+   59.39
+  ],
+  [
+   383.15,
+   0.349,
+   58.6
+  ],
+  [
+   383.15,
+   0.361,
+   58.58
+  ],
+  [
+   383.15,
+   0.392,
+   58.29
+  ],
+  [
+   383.15,
+   0.45,
+   57.65
+  ],
+  [
+   383.15,
+   0.514,
+   57.35
+  ],
+  [
+   383.15,
+   0.531,
+   57.05
+  ],
+  [
+   383.15,
+   0.581,
+   56.35
+  ],
+  [
+   383.15,
+   0.6,
+   56.2
+  ],
+  [
+   383.15,
+   0.678,
+   55.52
+  ],
+  [
+   383.15,
+   0.882,
+   47.33
+  ],
+  [
+   383.15,
+   0.911,
+   42.59
+  ],
+  [
+   383.15,
+   1.0,
+   9.21
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

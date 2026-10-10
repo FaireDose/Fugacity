@@ -1,0 +1,78 @@
+{
+ "_about": "2-Butanol (1) + Acetone (2): isothermal total pressures at 373.15 K. Rows: temperature in K, liquid mole fraction of 2-butanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "P. Reddy, J. D. Raal, D. Ramjugernath, A novel dynamic recirculating apparatus for vapour-liquid equilibrium measurements at moderate pressures and temperatures, Fluid Phase Equilib. 358 (2013) 121-130",
+  "doi": "10.1016/j.fluid.2013.07.044",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2013.07.044.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 8, 9. The table number in the article was not checked."
+ },
+ "components": [
+  "2-butanol",
+  "acetone"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   373.15,
+   0.0,
+   369.4
+  ],
+  [
+   373.15,
+   0.058,
+   352.1
+  ],
+  [
+   373.15,
+   0.075,
+   347.2
+  ],
+  [
+   373.15,
+   0.135,
+   331.6
+  ],
+  [
+   373.15,
+   0.171,
+   321.0
+  ],
+  [
+   373.15,
+   0.382,
+   272.3
+  ],
+  [
+   373.15,
+   0.454,
+   257.7
+  ],
+  [
+   373.15,
+   0.585,
+   225.2
+  ],
+  [
+   373.15,
+   0.931,
+   123.7
+  ],
+  [
+   373.15,
+   0.963,
+   114.0
+  ],
+  [
+   373.15,
+   1.0,
+   102.9
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

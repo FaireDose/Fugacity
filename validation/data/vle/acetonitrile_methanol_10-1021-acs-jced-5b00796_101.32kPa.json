@@ -1,0 +1,104 @@
+{
+ "_about": "Acetonitrile (1) + Methanol (2): isobaric T-x-y at 101.32 kPa. Rows: liquid mole fraction of acetonitrile, boiling temperature in K, vapour mole fraction of acetonitrile, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Y. Zhang, D. Yu, F. Guo, Y. Shen, J. Zhou, Z. Li, Q. Li, Vapor Liquid Equilibria Measurement of (Methanol + Ethanenitrile + Bis(trifluoromethylsulfonyl) Imide)-Based Ionic Liquids at 101.3 kPa, J. Chem. Eng. Data 61 (2016) 2202-2208",
+  "doi": "10.1021/acs.jced.5b00796",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.5b00796.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 3, 4. The table number in the article was not checked."
+ },
+ "components": [
+  "acetonitrile",
+  "methanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.32,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   337.85,
+   0.0
+  ],
+  [
+   0.052,
+   337.45,
+   0.06599999999999995
+  ],
+  [
+   0.098,
+   337.0,
+   0.11599999999999999
+  ],
+  [
+   0.146,
+   336.7,
+   0.16200000000000003
+  ],
+  [
+   0.198,
+   336.55,
+   0.19599999999999995
+  ],
+  [
+   0.252,
+   336.65,
+   0.23199999999999998
+  ],
+  [
+   0.3,
+   336.85,
+   0.258
+  ],
+  [
+   0.354,
+   337.15,
+   0.28600000000000003
+  ],
+  [
+   0.402,
+   337.45,
+   0.31200000000000006
+  ],
+  [
+   0.452,
+   337.8,
+   0.34199999999999997
+  ],
+  [
+   0.502,
+   338.2,
+   0.362
+  ],
+  [
+   0.614,
+   339.35,
+   0.42400000000000004
+  ],
+  [
+   0.716,
+   341.15,
+   0.492
+  ],
+  [
+   0.81,
+   343.45,
+   0.5860000000000001
+  ],
+  [
+   0.914,
+   347.85,
+   0.748
+  ],
+  [
+   1.0,
+   354.25,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0043. Pure-component boiling points of the set within 0.57 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

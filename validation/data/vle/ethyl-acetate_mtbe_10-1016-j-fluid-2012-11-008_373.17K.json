@@ -1,0 +1,88 @@
+{
+ "_about": "Ethyl acetate (1) + MTBE (2): isothermal total pressures at 373.17 K. Rows: temperature in K, liquid mole fraction of ethyl acetate, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "C. Narasigadu, P. Naidoo, C. Coquelet, D. Richon, D. Ramjugernath, A novel static analytical apparatus for phase equilibrium measurements, Fluid Phase Equilib. 338 (2013) 188-196",
+  "doi": "10.1016/j.fluid.2012.11.008",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2012.11.008.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "ethyl-acetate",
+  "mtbe"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   373.17,
+   0.0,
+   363.3
+  ],
+  [
+   373.17,
+   0.174,
+   343.6
+  ],
+  [
+   373.17,
+   0.235,
+   335.5
+  ],
+  [
+   373.17,
+   0.315,
+   325.9
+  ],
+  [
+   373.17,
+   0.4,
+   314.1
+  ],
+  [
+   373.17,
+   0.452,
+   306.5
+  ],
+  [
+   373.17,
+   0.535,
+   293.5
+  ],
+  [
+   373.17,
+   0.61,
+   280.2
+  ],
+  [
+   373.17,
+   0.702,
+   265.4
+  ],
+  [
+   373.17,
+   0.761,
+   254.3
+  ],
+  [
+   373.17,
+   0.851,
+   237.7
+  ],
+  [
+   373.17,
+   0.923,
+   221.2
+  ],
+  [
+   373.17,
+   1.0,
+   203.9
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

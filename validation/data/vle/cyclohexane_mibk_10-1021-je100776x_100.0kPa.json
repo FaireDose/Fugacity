@@ -1,0 +1,129 @@
+{
+ "_about": "Cyclohexane (1) + Methyl isobutyl ketone (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of cyclohexane, boiling temperature in K, vapour mole fraction of cyclohexane, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "B. Marrufo, S. Loras, M. Sanchotello, Isobaric Vapor-Liquid Equilibria for Binary and Ternary Mixtures with Cyclohexane, Cyclohexene, and Methyl Isobutyl Ketone at 100 kPa, J. Chem. Eng. Data 55 (2010) 5812-5817",
+  "doi": "10.1021/je100776x",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je100776x.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "cyclohexane",
+  "mibk"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 100.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.019,
+   386.18,
+   0.072
+  ],
+  [
+   0.046,
+   383.47,
+   0.168
+  ],
+  [
+   0.093,
+   379.36,
+   0.3
+  ],
+  [
+   0.141,
+   375.68,
+   0.407
+  ],
+  [
+   0.189,
+   372.75,
+   0.486
+  ],
+  [
+   0.231,
+   370.2,
+   0.547
+  ],
+  [
+   0.284,
+   367.59,
+   0.61
+  ],
+  [
+   0.34,
+   365.23,
+   0.662
+  ],
+  [
+   0.395,
+   363.35,
+   0.708
+  ],
+  [
+   0.449,
+   361.59,
+   0.743
+  ],
+  [
+   0.511,
+   360.17,
+   0.77
+  ],
+  [
+   0.545,
+   359.4,
+   0.784
+  ],
+  [
+   0.602,
+   358.22,
+   0.809
+  ],
+  [
+   0.654,
+   357.29,
+   0.832
+  ],
+  [
+   0.714,
+   356.32,
+   0.855
+  ],
+  [
+   0.769,
+   355.67,
+   0.875
+  ],
+  [
+   0.812,
+   355.02,
+   0.895
+  ],
+  [
+   0.867,
+   354.41,
+   0.918
+  ],
+  [
+   0.917,
+   353.96,
+   0.943
+  ],
+  [
+   0.963,
+   353.6,
+   0.972
+  ],
+  [
+   0.987,
+   353.41,
+   0.989
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0038. To be checked by a person against the record (AGENTS.md rule 4)."
+}

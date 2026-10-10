@@ -1,0 +1,89 @@
+{
+ "_about": "Methanol (1) + Methyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "W. Shang, X. Cui, X. Yu, Y. Zhang, T. Feng, J. He, X. Zhang, J. Wang, Isobaric vapor-liquid equilibrium for methanol + methyl acetate with ionic liquids [OMMIM][Tf2N] and [OMIM][Tf2N] as entrainers at 101.3 kPa, Fluid Phase Equilib. 473 (2018) 90-97",
+  "doi": "10.1016/j.fluid.2018.05.031",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.05.031.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "methyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   330.05,
+   0.0
+  ],
+  [
+   0.0975,
+   327.85,
+   0.151
+  ],
+  [
+   0.211,
+   326.95,
+   0.257
+  ],
+  [
+   0.309,
+   326.7,
+   0.323
+  ],
+  [
+   0.388,
+   326.75,
+   0.359
+  ],
+  [
+   0.483,
+   326.95,
+   0.407
+  ],
+  [
+   0.597,
+   327.65,
+   0.464
+  ],
+  [
+   0.686,
+   328.6,
+   0.52
+  ],
+  [
+   0.821,
+   330.75,
+   0.634
+  ],
+  [
+   0.88,
+   332.45,
+   0.713
+  ],
+  [
+   0.929,
+   334.15,
+   0.81
+  ],
+  [
+   0.949,
+   335.1,
+   0.853
+  ],
+  [
+   1.0,
+   337.65,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0040. Pure-component boiling points of the set within 0.14 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

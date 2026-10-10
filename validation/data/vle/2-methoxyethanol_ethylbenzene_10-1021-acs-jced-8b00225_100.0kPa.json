@@ -1,0 +1,104 @@
+{
+ "_about": "2-Methoxyethanol (1) + Ethylbenzene (2): isobaric T-x-y at 100.0 kPa. Rows: liquid mole fraction of 2-methoxyethanol, boiling temperature in K, vapour mole fraction of 2-methoxyethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "D. Shen, T. Chen, P. Bai, X. Guo, Isobaric Vapor-Liquid Equilibrium for Binary and Ternary Systems of 2-Methoxyethanol, Ethylbenzene, and Dimethyl Sulfoxide at 100.00 kPa, J. Chem. Eng. Data 63 (2018) 3345-3352",
+  "doi": "10.1021/acs.jced.8b00225",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/acs.jced.8b00225.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "2-methoxyethanol",
+  "ethylbenzene"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 100.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0421,
+   402.18,
+   0.1938
+  ],
+  [
+   0.0803,
+   398.7,
+   0.2913
+  ],
+  [
+   0.1094,
+   397.02,
+   0.3412
+  ],
+  [
+   0.1755,
+   394.38,
+   0.4167
+  ],
+  [
+   0.2749,
+   392.5,
+   0.4821
+  ],
+  [
+   0.4298,
+   391.32,
+   0.5426
+  ],
+  [
+   0.5069,
+   391.12,
+   0.5712
+  ],
+  [
+   0.5751,
+   391.08,
+   0.5998
+  ],
+  [
+   0.654,
+   391.09,
+   0.6418
+  ],
+  [
+   0.6974,
+   391.12,
+   0.6543
+  ],
+  [
+   0.7533,
+   391.41,
+   0.6878
+  ],
+  [
+   0.8239,
+   392.09,
+   0.7379
+  ],
+  [
+   0.8999,
+   393.43,
+   0.8187
+  ],
+  [
+   0.9187,
+   393.91,
+   0.8419
+  ],
+  [
+   0.9538,
+   395.05,
+   0.8951
+  ],
+  [
+   0.9806,
+   396.2,
+   0.9499
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0061. To be checked by a person against the record (AGENTS.md rule 4)."
+}

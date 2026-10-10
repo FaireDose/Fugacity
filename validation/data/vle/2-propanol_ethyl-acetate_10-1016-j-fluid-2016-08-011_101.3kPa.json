@@ -1,0 +1,99 @@
+{
+ "_about": "2-Propanol (1) + Ethyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Z. Zhang, A. Zhang, K. Wu, Q. Zhang, A. Hu, W. Li, Separation of ethyl acetate and 2-propanol azeotropic mixture using ionic liquids as entrainers, Fluid Phase Equilib. 429 (2016) 331-338",
+  "doi": "10.1016/j.fluid.2016.08.011",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2016.08.011.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "ethyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   350.14,
+   0.0
+  ],
+  [
+   0.058,
+   349.45,
+   0.07699999999999996
+  ],
+  [
+   0.182,
+   348.72,
+   0.20199999999999996
+  ],
+  [
+   0.236,
+   348.58,
+   0.249
+  ],
+  [
+   0.269,
+   348.55,
+   0.275
+  ],
+  [
+   0.291,
+   348.53,
+   0.29000000000000004
+  ],
+  [
+   0.317,
+   348.58,
+   0.31100000000000005
+  ],
+  [
+   0.435,
+   348.79,
+   0.397
+  ],
+  [
+   0.513,
+   349.21,
+   0.44699999999999995
+  ],
+  [
+   0.631,
+   349.99,
+   0.54
+  ],
+  [
+   0.716,
+   350.79,
+   0.613
+  ],
+  [
+   0.757,
+   351.23,
+   0.656
+  ],
+  [
+   0.803,
+   351.72,
+   0.7090000000000001
+  ],
+  [
+   0.906,
+   353.04,
+   0.845
+  ],
+  [
+   1.0,
+   355.37,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0063. Pure-component boiling points of the set within 0.12 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

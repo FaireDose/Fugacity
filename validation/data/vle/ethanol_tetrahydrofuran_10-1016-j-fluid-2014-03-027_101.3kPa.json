@@ -1,0 +1,74 @@
+{
+ "_about": "Ethanol (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of ethanol, boiling temperature in K, vapour mole fraction of ethanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "L. Cao, P. Liu, B. Wang, Q. Li, Vapor-liquid equilibria for tetrahydrofuran + ethanol system containing three different ionic liquids at 101.3 kPa, Fluid Phase Equilib. 372 (2014) 49-55",
+  "doi": "10.1016/j.fluid.2014.03.027",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.03.027.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "ethanol",
+  "tetrahydrofuran"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.046,
+   338.9,
+   0.049000000000000044
+  ],
+  [
+   0.102,
+   338.8,
+   0.09899999999999998
+  ],
+  [
+   0.202,
+   339.0,
+   0.17500000000000004
+  ],
+  [
+   0.299,
+   339.7,
+   0.22899999999999998
+  ],
+  [
+   0.38,
+   340.2,
+   0.28
+  ],
+  [
+   0.512,
+   341.5,
+   0.365
+  ],
+  [
+   0.615,
+   342.7,
+   0.44999999999999996
+  ],
+  [
+   0.702,
+   344.3,
+   0.5329999999999999
+  ],
+  [
+   0.811,
+   346.3,
+   0.6599999999999999
+  ],
+  [
+   0.902,
+   348.5,
+   0.798
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0057. To be checked by a person against the record (AGENTS.md rule 4)."
+}

@@ -1,0 +1,94 @@
+{
+ "_about": "2-Propanol (1) + Isopropyl acetate (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of 2-propanol, boiling temperature in K, vapour mole fraction of 2-propanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Z. Zhang, R. Lu, W. Li, J. Chen, Q. Zhang, Separation of isopropyl acetate + isopropanol azeotropic mixture using ionic liquids with acetate anion as entrainers, Fluid Phase Equilib. 498 (2019) 116-121",
+  "doi": "10.1016/j.fluid.2019.06.016",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2019.06.016.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "2-propanol",
+  "isopropyl-acetate"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.026,
+   360.65,
+   0.05700000000000005
+  ],
+  [
+   0.06,
+   359.69,
+   0.12
+  ],
+  [
+   0.1,
+   358.57,
+   0.18400000000000005
+  ],
+  [
+   0.155,
+   357.45,
+   0.258
+  ],
+  [
+   0.256,
+   355.94,
+   0.363
+  ],
+  [
+   0.363,
+   354.85,
+   0.44999999999999996
+  ],
+  [
+   0.489,
+   354.01,
+   0.538
+  ],
+  [
+   0.593,
+   353.7,
+   0.61
+  ],
+  [
+   0.694,
+   353.67,
+   0.6839999999999999
+  ],
+  [
+   0.783,
+   353.85,
+   0.757
+  ],
+  [
+   0.859,
+   354.21,
+   0.829
+  ],
+  [
+   0.904,
+   354.52,
+   0.877
+  ],
+  [
+   0.955,
+   354.95,
+   0.938
+  ],
+  [
+   0.98,
+   355.18,
+   0.972
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0036. To be checked by a person against the record (AGENTS.md rule 4)."
+}

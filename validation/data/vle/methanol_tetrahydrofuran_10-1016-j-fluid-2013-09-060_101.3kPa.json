@@ -1,0 +1,99 @@
+{
+ "_about": "Methanol (1) + Tetrahydrofuran (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of methanol, boiling temperature in K, vapour mole fraction of methanol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Q. Li, P. Liu, L. Cao, F. Wen-jun, S. Zhang, B. Wang, Vapor-Liquid Equilibrium for Tetrahydrofuran + Methanol + Tetrafluoroborate-based ionic liquids at  101.3 kPa, Fluid Phase Equilib. 360 (2013) 439-444",
+  "doi": "10.1016/j.fluid.2013.09.060",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2013.09.060.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 1, 2. The table number in the article was not checked."
+ },
+ "components": [
+  "methanol",
+  "tetrahydrofuran"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.083,
+   336.4,
+   0.16600000000000004
+  ],
+  [
+   0.102,
+   336.1,
+   0.19799999999999995
+  ],
+  [
+   0.17,
+   334.1,
+   0.28500000000000003
+  ],
+  [
+   0.218,
+   333.7,
+   0.31100000000000005
+  ],
+  [
+   0.289,
+   333.3,
+   0.381
+  ],
+  [
+   0.325,
+   333.0,
+   0.39
+  ],
+  [
+   0.383,
+   332.8,
+   0.43100000000000005
+  ],
+  [
+   0.482,
+   332.4,
+   0.493
+  ],
+  [
+   0.534,
+   332.4,
+   0.518
+  ],
+  [
+   0.607,
+   332.7,
+   0.567
+  ],
+  [
+   0.691,
+   333.2,
+   0.619
+  ],
+  [
+   0.756,
+   333.5,
+   0.6679999999999999
+  ],
+  [
+   0.805,
+   333.9,
+   0.716
+  ],
+  [
+   0.863,
+   334.8,
+   0.776
+  ],
+  [
+   0.901,
+   335.5,
+   0.833
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0064. To be checked by a person against the record (AGENTS.md rule 4)."
+}

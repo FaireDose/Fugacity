@@ -1,0 +1,88 @@
+{
+ "_about": "1-Propanol (1) + 1,2-Dichloroethane (2): isothermal total pressures at 313.15 K. Rows: temperature in K, liquid mole fraction of 1-propanol, pressure in kPa, as stored in the ThermoML Archive record. Rows with x_1 = 0 and 1 are the pure-component pressures measured with the same set.",
+ "source": {
+  "citation": "V. Gil-Hernandez, P. Garcia-Gimenez, S. Otin, M. Artal, I. Velasco, (Vapor + liquid) equilibria for the binary mixtures (1-propanol + dibromomethane, or + bromochloromethane, or + 1,2-dichloroethane or +1-bromo-2-chloroethane) at T = 313.15 K., J. Chem. Thermodyn. 37 (2005) 7-12",
+  "doi": "10.1016/j.jct.2004.07.012",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2004.07.012.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 10, 11. The table number in the article was not checked."
+ },
+ "components": [
+  "1-propanol",
+  "dichloroethane"
+ ],
+ "kind": "isothermal-px",
+ "columns": [
+  "T_K",
+  "x_1",
+  "P_kPa"
+ ],
+ "rows": [
+  [
+   313.15,
+   0.0,
+   21.047
+  ],
+  [
+   313.15,
+   0.1711,
+   22.304
+  ],
+  [
+   313.15,
+   0.241,
+   22.279
+  ],
+  [
+   313.15,
+   0.329,
+   21.994
+  ],
+  [
+   313.15,
+   0.3506,
+   21.927
+  ],
+  [
+   313.15,
+   0.4378,
+   21.628
+  ],
+  [
+   313.15,
+   0.4786,
+   21.363
+  ],
+  [
+   313.15,
+   0.697,
+   18.749
+  ],
+  [
+   313.15,
+   0.7486,
+   17.657
+  ],
+  [
+   313.15,
+   0.823,
+   15.512
+  ],
+  [
+   313.15,
+   0.8523,
+   14.503
+  ],
+  [
+   313.15,
+   0.9008,
+   12.619
+  ],
+  [
+   313.15,
+   1.0,
+   7.182
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. To be checked by a person against the record (AGENTS.md rule 4)."
+}

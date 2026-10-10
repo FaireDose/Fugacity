@@ -1,0 +1,124 @@
+{
+ "_about": "Ethylene glycol (1) + Propylene glycol (2): isobaric T-x-y at 10.0 kPa. Rows: liquid mole fraction of ethylene glycol, boiling temperature in K, vapour mole fraction of ethylene glycol, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "L. Zhang, W. Wu, Y. Sun, L. Li, B. Jiang, X. Li, N. Yang, H. Ding, Isobaric Vapor Liquid Equilibria for the Binary Mixtures Composed of Ethylene Glycol, 1,2-Propylene Glycol, 1,2-Butanediol, and 1,3-Butanediol at 10.00 kPa, J. Chem. Eng. Data 58 (2013) 1308-1315",
+  "doi": "10.1021/je400082c",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1021/je400082c.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 9, 10. The table number in the article was not checked."
+ },
+ "components": [
+  "ethylene-glycol",
+  "propylene-glycol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 10.0,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   398.23,
+   0.0
+  ],
+  [
+   0.05,
+   398.45,
+   0.040000000000000036
+  ],
+  [
+   0.109,
+   398.72,
+   0.08799999999999997
+  ],
+  [
+   0.193,
+   399.13,
+   0.15500000000000003
+  ],
+  [
+   0.31,
+   399.75,
+   0.251
+  ],
+  [
+   0.351,
+   399.99,
+   0.28500000000000003
+  ],
+  [
+   0.395,
+   400.25,
+   0.32299999999999995
+  ],
+  [
+   0.426,
+   400.45,
+   0.354
+  ],
+  [
+   0.463,
+   400.69,
+   0.387
+  ],
+  [
+   0.516,
+   401.04,
+   0.42900000000000005
+  ],
+  [
+   0.554,
+   401.32,
+   0.46399999999999997
+  ],
+  [
+   0.6,
+   401.67,
+   0.511
+  ],
+  [
+   0.64,
+   401.98,
+   0.5509999999999999
+  ],
+  [
+   0.695,
+   402.45,
+   0.602
+  ],
+  [
+   0.746,
+   402.92,
+   0.653
+  ],
+  [
+   0.798,
+   403.44,
+   0.712
+  ],
+  [
+   0.837,
+   403.88,
+   0.762
+  ],
+  [
+   0.895,
+   404.57,
+   0.837
+  ],
+  [
+   0.957,
+   405.42,
+   0.9299999999999999
+  ],
+  [
+   1.0,
+   406.09,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0030. Pure-component boiling points of the set within 0.20 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

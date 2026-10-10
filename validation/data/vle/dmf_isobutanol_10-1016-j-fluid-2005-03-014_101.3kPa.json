@@ -1,0 +1,124 @@
+{
+ "_about": "N,N-Dimethylformamide (1) + Isobutanol (2): isobaric T-x-y at 101.3 kPa. Rows: liquid mole fraction of n,n-dimethylformamide, boiling temperature in K, vapour mole fraction of n,n-dimethylformamide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "R. Munoz, J. B. Monton, M. C. Burguet, J. de la Torre, Phase equilibria in the systems isobutyl alcohol +N,N-dimethylformamide, isobutyl acetate +N,N-dimethylformamide and isobutyl alcohol + isobutyl acetate +N,N-dimethylformamide at 101.3 kPa, Fluid Phase Equilib. 232 (2005) 62-69",
+  "doi": "10.1016/j.fluid.2005.03.014",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2005.03.014.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 8, 9. The table number in the article was not checked."
+ },
+ "components": [
+  "dmf",
+  "isobutanol"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.3,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0,
+   381.09,
+   0.0
+  ],
+  [
+   0.063,
+   382.06,
+   0.01200000000000001
+  ],
+  [
+   0.105,
+   383.2,
+   0.02100000000000002
+  ],
+  [
+   0.149,
+   384.64,
+   0.031000000000000028
+  ],
+  [
+   0.192,
+   385.97,
+   0.04400000000000004
+  ],
+  [
+   0.241,
+   387.69,
+   0.05900000000000005
+  ],
+  [
+   0.291,
+   389.26,
+   0.07599999999999996
+  ],
+  [
+   0.346,
+   391.86,
+   0.10899999999999999
+  ],
+  [
+   0.398,
+   393.97,
+   0.136
+  ],
+  [
+   0.456,
+   395.95,
+   0.16400000000000003
+  ],
+  [
+   0.506,
+   398.11,
+   0.19999999999999996
+  ],
+  [
+   0.554,
+   400.58,
+   0.242
+  ],
+  [
+   0.615,
+   403.28,
+   0.29500000000000004
+  ],
+  [
+   0.672,
+   405.92,
+   0.361
+  ],
+  [
+   0.725,
+   408.99,
+   0.43300000000000005
+  ],
+  [
+   0.774,
+   411.65,
+   0.51
+  ],
+  [
+   0.836,
+   414.98,
+   0.615
+  ],
+  [
+   0.896,
+   418.45,
+   0.742
+  ],
+  [
+   0.943,
+   421.95,
+   0.851
+  ],
+  [
+   1.0,
+   425.63,
+   1.0
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0055. Pure-component boiling points of the set within 0.37 K of the vapour-pressure records. To be checked by a person against the record (AGENTS.md rule 4)."
+}

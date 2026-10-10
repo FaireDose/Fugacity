@@ -1,0 +1,104 @@
+{
+ "_about": "Dimethyl sulfoxide (1) + Water (2): isobaric T-x-y at 13.33 kPa. Rows: liquid mole fraction of dimethyl sulfoxide, boiling temperature in K, vapour mole fraction of dimethyl sulfoxide, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Y. Peng, L. Ping, S. Lu, J. Mao, Vapor liquid equilibria for water + acetic acid + (N,N-dimethylformamide or dimethyl sulfoxide) at 13.33 kPa, Fluid Phase Equilib. 275 (2009) 27-32",
+  "doi": "10.1016/j.fluid.2008.09.010",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2008.09.010.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 4, 5. The table number in the article was not checked."
+ },
+ "components": [
+  "dmso",
+  "water"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 13.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.1854,
+   331.1,
+   0.0024999999999999467
+  ],
+  [
+   0.2671,
+   335.65,
+   0.008700000000000041
+  ],
+  [
+   0.3257,
+   338.15,
+   0.016800000000000037
+  ],
+  [
+   0.4152,
+   344.05,
+   0.024399999999999977
+  ],
+  [
+   0.48,
+   349.95,
+   0.05800000000000005
+  ],
+  [
+   0.6237,
+   361.15,
+   0.12029999999999996
+  ],
+  [
+   0.6557,
+   362.65,
+   0.14649999999999996
+  ],
+  [
+   0.7246,
+   368.35,
+   0.21530000000000005
+  ],
+  [
+   0.7561,
+   370.55,
+   0.2388
+  ],
+  [
+   0.7842,
+   373.45,
+   0.2881
+  ],
+  [
+   0.8292,
+   377.65,
+   0.3718
+  ],
+  [
+   0.8388,
+   378.95,
+   0.4023
+  ],
+  [
+   0.8492,
+   380.45,
+   0.4214
+  ],
+  [
+   0.8765,
+   383.15,
+   0.518
+  ],
+  [
+   0.9061,
+   386.27,
+   0.5920000000000001
+  ],
+  [
+   0.912,
+   388.15,
+   0.6182000000000001
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0074. To be checked by a person against the record (AGENTS.md rule 4)."
+}

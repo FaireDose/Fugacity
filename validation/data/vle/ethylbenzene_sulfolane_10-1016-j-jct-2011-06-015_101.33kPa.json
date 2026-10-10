@@ -1,0 +1,84 @@
+{
+ "_about": "Ethylbenzene (1) + Sulfolane (2): isobaric T-x-y at 101.33 kPa. Rows: liquid mole fraction of ethylbenzene, boiling temperature in K, vapour mole fraction of ethylbenzene, as stored in the ThermoML Archive record (mole fractions of the other component converted with x_1 = 1 - x_2).",
+ "source": {
+  "citation": "Z. Wang, L. Huang, S. Xia, P. Ma, Isobaric (vapour + liquid) equilibria for sulfolane with toluene, ethylbenzene, and isopropylbenzene at 101.33 kPa, J. Chem. Thermodyn. 43 (2011) 1865-1869",
+  "doi": "10.1016/j.jct.2011.06.015",
+  "open_copy": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2011.06.015.html",
+  "access": "The journal article may be subscription-only; the same data is public in the NIST TRC ThermoML Archive (NIST open license).",
+  "tables": "ThermoML record, PureOrMixtureData 7, 8. The table number in the article was not checked."
+ },
+ "components": [
+  "ethylbenzene",
+  "sulfolane"
+ ],
+ "kind": "isobaric-txy",
+ "P_kPa": 101.33,
+ "columns": [
+  "x_1",
+  "T_K",
+  "y_1"
+ ],
+ "rows": [
+  [
+   0.0337,
+   492.15,
+   0.8111
+  ],
+  [
+   0.0613,
+   473.0,
+   0.912
+  ],
+  [
+   0.066,
+   463.6,
+   0.9296
+  ],
+  [
+   0.0949,
+   456.6,
+   0.9531
+  ],
+  [
+   0.1462,
+   446.35,
+   0.9698
+  ],
+  [
+   0.2184,
+   432.07,
+   0.9823
+  ],
+  [
+   0.3436,
+   425.5,
+   0.9857
+  ],
+  [
+   0.4788,
+   419.05,
+   0.9899
+  ],
+  [
+   0.5405,
+   417.75,
+   0.9909
+  ],
+  [
+   0.6459,
+   415.95,
+   0.9914
+  ],
+  [
+   0.7983,
+   413.39,
+   0.9974
+  ],
+  [
+   0.8958,
+   411.69,
+   0.9982
+  ]
+ ],
+ "notes": "Read with validation/python/vle_batch.py. Consistency point test (Redlich-Kister fit to T-x): mean |dy| 0.0042. To be checked by a person against the record (AGENTS.md rule 4)."
+}
