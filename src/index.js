@@ -1,5 +1,5 @@
 /**
- * Fugacity: chemical process simulation that runs in the browser.
+ * CHEPTA: chemical process simulation that runs in the browser.
  *
  * Units in the programming interface: temperature in K, pressure in kPa,
  * compositions as mole fractions. The interfaces (mount, mountProperties, app) convert
@@ -9,7 +9,7 @@ import { createSystem, listComponents, findComponent, MODELS } from "./thermo/sy
 import { bubbleT, bubbleP, pureBoilingPoints } from "./equilibrium/bubble.js";
 import { dewT, dewP } from "./equilibrium/dew.js";
 import { flash, rachfordRice } from "./equilibrium/flash.js";
-import { FugacityError, ERROR_CODES, isFugacityError } from "./util/errors.js";
+import { CheptaError, ERROR_CODES, isCheptaError } from "./util/errors.js";
 import { txy, pxy, ternaryGrid } from "./equilibrium/diagrams.js";
 import { residueCurve } from "./equilibrium/residue.js";
 import { binaryAzeotropes, findAzeotrope } from "./equilibrium/azeotrope.js";
@@ -51,5 +51,7 @@ export {
   solveFlowsheet, checkFlowsheet, inspectFlowsheet, flowsheetStatus,
   runFlowsheet, normalizeFlowsheet, flowsheetSystem, flowsheetDocStatus,
   checkProject, readProject, PROJECT_FORMAT,
-  FugacityError, ERROR_CODES, isFugacityError,
+  CheptaError, ERROR_CODES, isCheptaError,
+  // the names before the rename to CHEPTA (version 0.3): the same class and function
+  CheptaError as FugacityError, isCheptaError as isFugacityError,
 };

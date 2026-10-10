@@ -1,13 +1,13 @@
-# 0003: The Fugacity Library: sources you can see and choose
+# 0003: The CHEPTA Library: sources you can see and choose
 
 - **Status:** Draft
-- **Author(s):** Fugacity maintainers
+- **Author(s):** CHEPTA maintainers
 - **Discussion:** this pull request
 - **Roadmap item:** A2 (data registry), A3 (quality tiers); B4 (project files)
 
 ## Problem
 
-Every parameter in Fugacity has a source, but the source is a line of free text inside
+Every parameter in CHEPTA has a source, but the source is a line of free text inside
 each record. That has three drawbacks:
 
 1. **You can't choose.** When a pair has two good parameter sets, for example the ChemSep
@@ -72,18 +72,18 @@ Each record keeps its text `source` (backward compatible) and gains `source_ids`
 The `replaced` entries of today become ordinary non-default sets. The same scheme applies
 to k_ij, Henry constants and, later, pure-component property records.
 
-### 3. Choosing in code: `Fugacity.library`
+### 3. Choosing in code: `CHEPTA.library`
 
 ```js
-Fugacity.library.sources()                       // all sources, with what uses each one
-Fugacity.library.source("chemsep-8.3")           // one source
-Fugacity.library.sets("acetone", "chloroform", "UNIQUAC")
+CHEPTA.library.sources()                       // all sources, with what uses each one
+CHEPTA.library.source("chemsep-8.3")           // one source
+CHEPTA.library.sets("acetone", "chloroform", "UNIQUAC")
 // -> [{ set: "fitted-gao2018", default: true, tier: "fitted", sources: [...], valid },
 //     { set: "chemsep", tier: "databank", sources: [...] }]
-Fugacity.library.add({ model: "NRTL", i: "water", j: "ethanol", set: "my-paper",
+CHEPTA.library.add({ model: "NRTL", i: "water", j: "ethanol", set: "my-paper",
   params: { a_ij, a_ji, b_ij, b_ji, alpha }, source: { title, doi, url } })   // tier "user", this page only
 
-const s = Fugacity.system({
+const s = CHEPTA.system({
   components: ["methanol", "acetone", "chloroform"], model: "UNIQUAC",
   sets: { "acetone+chloroform": "chemsep" },      // per pair, optional
   prefer: ["fitted", "databank"]                   // or a global rule, e.g. ["databank"]
@@ -137,7 +137,7 @@ No new thermodynamics. The tests check that:
 1. `sources.json` from the existing records (a migration script; every generated entry
    checked by a person), `source_ids` and `set` names on all records, LICENSES.md
    generated; tests.
-2. Selection in the engine (`sets`, `prefer`, `Fugacity.library`, `add`), with the
+2. Selection in the engine (`sets`, `prefer`, `CHEPTA.library`, `add`), with the
    tests above.
 3. The Library tab, the per-pair selectors and the source browser in the workbench.
 4. Later: the same for k_ij, Henry constants and pure-component properties.

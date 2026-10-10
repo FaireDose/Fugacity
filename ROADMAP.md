@@ -1,6 +1,6 @@
 # Roadmap
 
-## Where Fugacity is going
+## Where CHEPTA is going
 
 **Today:** phase equilibria, pure-component properties, steam tables and cubic equations
 of state, running in an AI chat, every number traceable to an open source.
@@ -28,7 +28,7 @@ it, and follow [CONTRIBUTING.md](CONTRIBUTING.md). The tracks and the release pl
   [proposal](proposals/README.md) first, then code.
 - **Bridges track (B):** getting data and results in and out: exports, imports, sharing,
   and links to other tools and simulators.
-- **Assistant compatibility track (C):** Fugacity working in every AI chat.
+- **Assistant compatibility track (C):** CHEPTA working in every AI chat.
 - **Data track (D):** more components and better parameters from open sources.
 - **Cost engineering track (E):** equipment sizing, capital and operating cost, cost of
   product.
@@ -65,7 +65,7 @@ an implementation, and tests. A step can start when the steps it depends on are 
 ## Bridges track
 
 Engineers adopt a tool when their data gets in and their results get out. These items
-connect Fugacity to spreadsheets, reports, data sources and other simulators, using open
+connect CHEPTA to spreadsheets, reports, data sources and other simulators, using open
 formats and open standards only.
 
 | Item | What | Depends on | Status |
@@ -75,11 +75,11 @@ formats and open standards only.
 | **B3** | Import open data files: read NIST ThermoML XML files and turn them into validation data and contribution packages with the source block filled in, which speeds up the data track | D3 | Open |
 | **B4** | Project files: save and load a whole study (components, models, overrides, flowsheet) as one readable JSON file | A7 | Started: the workbench (format 1, `src/ui/project.js`); the flowsheet follows with A7 |
 | **B5** | Use from notebooks and spreadsheets: call the engine from Python notebooks and from spreadsheet functions, with the same numbers as in the browser | A1, A9 | Open |
-| **B6** | Other simulators: exchange flowsheets with open-source simulators where the file format is openly documented, and study the CAPE-OPEN interface standard so Fugacity's thermodynamics can be used by other simulators and the other way round | A1, A7 | Open |
+| **B6** | Other simulators: exchange flowsheets with open-source simulators where the file format is openly documented, and study the CAPE-OPEN interface standard so CHEPTA's thermodynamics can be used by other simulators and the other way round | A1, A7 | Open |
 
 ## Assistant compatibility track
 
-Fugacity pages should work in every AI chat that can show HTML. Each item: test the
+CHEPTA pages should work in every AI chat that can show HTML. Each item: test the
 one-line setup, document what works, and fix or report what doesn't.
 
 | Item | What | Status |
@@ -132,7 +132,7 @@ sources, assumptions) that anyone can re-run and check.
 |---|---|---|---|
 | **G1** | Tool interface for agents: every calculation callable as JSON in, JSON out, deterministic, with error messages that tell the agent what to fix | A9, A10 | Open |
 | **G2** | Literature to route: an agent reads open papers and expired patents and extracts process routes (reactions, conditions, conversions, yields, separations) into a route file, every value cited | D8 | Open |
-| **G3** | Route to flowsheet: an agent builds a flowsheet for each route, simulates it with Fugacity, and closes material and energy balances | G1, G2, A8 | Open |
+| **G3** | Route to flowsheet: an agent builds a flowsheet for each route, simulates it with CHEPTA, and closes material and energy balances | G1, G2, A8 | Open |
 | **G4** | Route comparison: yield, energy use, equipment, cost of production (E4), CO₂ and safety flags side by side, with a recommendation that states its assumptions and uncertainty | G3, E4, E5 | Open |
 | **G5** | Benchmarks: published open case studies with known answers (for example textbook processes and open techno-economic reports), used to measure how well agents do before anyone trusts them | G4 | Open |
 | **G6** | Design-study view: routes, flowsheets, costs and sources in one page an engineer can review, change and sign off | G4, A11, E6 | Open |
@@ -161,12 +161,12 @@ sources, assumptions) that anyone can re-run and check.
 - [x] Contributing guide with four ways to help; data wanted list; contributor skill for Claude
 - [x] Governance, security policy, code of conduct, proposal process
 - [x] Core (architecture) and data tracks in this roadmap
-- [x] First release on npm, so artifacts can load Fugacity with one line; trusted publishing
+- [x] First release on npm, so artifacts can load CHEPTA with one line; trusted publishing
 
 ### v0.1.3 – AI-first contributing
 
 - [x] AGENTS.md for all assistants and coding agents; llms.txt
-- [x] Contribution package format with a check (`npm run check-package`, `Fugacity.checkPackage`)
+- [x] Contribution package format with a check (`npm run check-package`, `CHEPTA.checkPackage`)
 - [x] Starter prompts, instructions for any assistant, skills in `ai/`
 - [x] AI-prepared contribution form; three contribution levels in CONTRIBUTING.md
 
@@ -177,7 +177,7 @@ sources, assumptions) that anyone can re-run and check.
 - [x] Henry's law for gases in water
 - [x] Property explorer; engineering report on every pull request
 - [x] Refits to open data for the methanol + acetone + chloroform and ethanol + water + ethyl acetate pairs (D1 in part); ternary azeotrope checks
-- [x] Workbench interface with a ribbon (`Fugacity.app`)
+- [x] Workbench interface with a ribbon (`CHEPTA.app`)
 - [ ] Property package with mixture enthalpy (A1)
 - [ ] Data packs; UNIFAC (Dortmund) as the `predicted` tier (A2, A3)
 

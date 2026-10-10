@@ -25,7 +25,7 @@ test("a project keeps the settings of every workspace and opens to the same work
   const s = worked();
   const doc = projectOf(s, { version: "9.9.9", now: new Date("2026-10-06T12:00:00Z") });
   assert.equal(doc.fugacity_project, PROJECT_FORMAT);
-  assert.equal(doc.saved_with, "fugacity 9.9.9");
+  assert.equal(doc.saved_with, "chepta 9.9.9");
   assert.equal(doc.saved_at, "2026-10-06T12:00:00.000Z");
   assert.equal(doc.title, "Column feed");
   assert.equal(doc.workbench.view, "flash");
@@ -92,12 +92,12 @@ test("a component this library does not know is refused by name", () => {
 
 test("file names", () => {
   // a name given by the person is kept as typed, without characters that file systems refuse
-  assert.equal(projectFileName(worked()), "Column feed.fugacity.json");
-  assert.equal(projectFileName({ title: "Run 2: ethanol/water?  " }), "Run 2- ethanol-water.fugacity.json");
-  assert.equal(projectFileName({ title: "flash.fugacity.json" }), "flash.fugacity.json");
-  assert.equal(projectFileName({ title: " ... ", components: ["water"] }), "fugacity-water.fugacity.json");
-  assert.equal(projectFileName(initialState({ components: ["ethanol", "water"] })), "fugacity-ethanol-water.fugacity.json");
-  assert.equal(projectFileName(initialState({ components: [] })), "fugacity-workbench.fugacity.json", "the empty workbench (no components chosen)");
+  assert.equal(projectFileName(worked()), "Column feed.chepta.json");
+  assert.equal(projectFileName({ title: "Run 2: ethanol/water?  " }), "Run 2- ethanol-water.chepta.json");
+  assert.equal(projectFileName({ title: "flash.chepta.json" }), "flash.chepta.json");
+  assert.equal(projectFileName({ title: " ... ", components: ["water"] }), "chepta-water.chepta.json");
+  assert.equal(projectFileName(initialState({ components: ["ethanol", "water"] })), "chepta-ethanol-water.chepta.json");
+  assert.equal(projectFileName(initialState({ components: [] })), "chepta-workbench.chepta.json", "the empty workbench (no components chosen)");
 });
 
 // ---- format 2: the flowsheet (proposal 0006, step 4)

@@ -1,4 +1,4 @@
-// Checks a Fugacity contribution package (the JSON an AI assistant prepares for a
+// Checks a CHEPTA contribution package (the JSON an AI assistant prepares for a
 // contributor). Used by `npm run check-package <file>` and by the tests.
 // It checks structure and plausibility only; a reviewer still checks the numbers
 // against the source. The person confirms they checked every number with a required

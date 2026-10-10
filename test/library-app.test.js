@@ -1,4 +1,4 @@
-// The Fugacity Library in the workbench (proposal 0003, step 3): the DOM-free part
+// The CHEPTA Library in the workbench (proposal 0003, step 3): the DOM-free part
 // (state, rules, per-pair choices, source search).
 import { test } from "node:test";
 import assert from "node:assert/strict";

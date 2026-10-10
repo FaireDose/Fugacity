@@ -1,4 +1,4 @@
-// Styles for the Fugacity interface. Everything is scoped under .fug so the
+// Styles for the CHEPTA interface. Everything is scoped under .fug so the
 // widget can sit inside any page. Colours follow the host's light/dark setting:
 // prefers-color-scheme, overridden by data-theme="light|dark" on <html>.
 const LIGHT = `
@@ -80,9 +80,9 @@ export const CSS = `
 
 let injected = false;
 export function injectStyles(doc = document) {
-  if (injected || doc.getElementById("fugacity-styles")) return;
+  if (injected || doc.getElementById("chepta-styles")) return;
   const s = doc.createElement("style");
-  s.id = "fugacity-styles";
+  s.id = "chepta-styles";
   s.textContent = CSS;
   doc.head.appendChild(s);
   injected = true;
@@ -132,9 +132,9 @@ export const PROPERTIES_CSS = `
 /** Inject the base styles and the property-explorer section (once per document). */
 export function injectPropertiesStyles(doc = document) {
   injectStyles(doc);
-  if (doc.getElementById("fugacity-styles-properties")) return;
+  if (doc.getElementById("chepta-styles-properties")) return;
   const el = doc.createElement("style");
-  el.id = "fugacity-styles-properties";
+  el.id = "chepta-styles-properties";
   el.textContent = PROPERTIES_CSS;
   doc.head.appendChild(el);
 }

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://fairedose.github.io/Fugacity/schema/project-2.json",
-  "title": "Fugacity project, format 2",
-  "description": "A workbench project with an optional flowsheet (src/ui/project.js, src/flowsheet/document.js; proposal 0006). Units: K, kPa, kmol/h, kg/h, kW. The structure is checked here; connections, degrees of freedom and values are checked by Fugacity.checkProject(doc), which names every problem.",
+  "$id": "https://fairedose.github.io/CHEPTA/schema/project-2.json",
+  "title": "CHEPTA project, format 2",
+  "description": "A workbench project with an optional flowsheet (src/ui/project.js, src/flowsheet/document.js; proposal 0006). Units: K, kPa, kmol/h, kg/h, kW. The structure is checked here; connections, degrees of freedom and values are checked by CHEPTA.checkProject(doc), which names every problem.",
   "type": "object",
   "required": ["fugacity_project", "workbench"],
   "properties": {
@@ -19,7 +19,7 @@
     "flowsheet": {
       "type": "object",
       "properties": {
-        "components": { "type": "array", "items": { "type": "string" }, "description": "Names, ids, formulas or CAS numbers of Fugacity.listComponents()." },
+        "components": { "type": "array", "items": { "type": "string" }, "description": "Names, ids, formulas or CAS numbers of CHEPTA.listComponents()." },
         "thermo": {
           "type": "object",
           "properties": {

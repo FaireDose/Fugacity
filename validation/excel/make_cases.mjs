@@ -1,4 +1,4 @@
-// Writes the concept-model workbooks of the cases in check_concept.py and, for each edit, Fugacity's own result
+// Writes the concept-model workbooks of the cases in check_concept.py and, for each edit, CHEPTA's own result
 // for the edited flowsheet (the reference). Usage: node make_cases.mjs <out dir>
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { runFlowsheet, normalizeFlowsheet } from "../../src/index.js";
@@ -16,7 +16,7 @@ const drum = (components, model, feed, T, P) => ({
 });
 // each edit: [what, kind ("feed" component | "T" | "P"), new value]
 const CASES = {
-  "recycle (NRTL, ethanol + water, example)": [JSON.parse(readFileSync(new URL("../../examples/flowsheet-recycle.fugacity.json", import.meta.url))).flowsheet,
+  "recycle (NRTL, ethanol + water, example)": [JSON.parse(readFileSync(new URL("../../examples/flowsheet-recycle.chepta.json", import.meta.url))).flowsheet,
     [["feed ethanol 30 -> 45 kmol/h", "feed", "ethanol", 45], ["drum 360 -> 358 K", "T", null, 358], ["drum 360 -> 363 K", "T", null, 363]]],
   "drum (UNIQUAC, methanol + acetone + chloroform)": [drum(["methanol", "acetone", "chloroform"], "UNIQUAC", { methanol: 30, acetone: 30, chloroform: 40 }, 331, 101.325),
     [["feed chloroform 40 -> 45 kmol/h", "feed", "chloroform", 45], ["drum 331 -> 330.5 K", "T", null, 330.5]]],

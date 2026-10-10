@@ -1,6 +1,6 @@
 # Code of conduct
 
-Fugacity is built by students, engineers, academics and hobbyists from many countries.
+CHEPTA is built by students, engineers, academics and hobbyists from many countries.
 To keep it a place where everyone can contribute:
 
 - **Be respectful.** Criticise data and code, not people. Assume good intent.

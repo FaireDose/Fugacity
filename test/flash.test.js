@@ -4,7 +4,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, rachfordRice, FugacityError, pure } from "../src/index.js";
+import { system, rachfordRice, CheptaError, pure } from "../src/index.js";
 
 const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/flash.json", import.meta.url)));
 
@@ -99,7 +99,7 @@ test("speed: a two-phase T-P flash of a ternary under 5 ms", () => {
 
 test("flash errors: specification, acetic acid enthalpy, liquid split", () => {
   const s = system({ components: ["ethanol", "water"], model: "NRTL" });
-  const code = (fn, c, re) => assert.throws(fn, e => e instanceof FugacityError && e.code === c && re.test(e.message), String(re));
+  const code = (fn, c, re) => assert.throws(fn, e => e instanceof CheptaError && e.code === c && re.test(e.message), String(re));
   code(() => s.flash({ z: [0.5, 0.5], T: 350 }), "BAD_INPUT", /two of T, P, H, VF/);
   code(() => s.flash({ z: [0.5, 0.5], T: 350, P: 100, H: 0 }), "BAD_INPUT", /two of T, P, H, VF/);
   code(() => s.flash({ z: [0.5, 0.5], P: 100, VF: 1.5 }), "BAD_INPUT", /VF must be between 0 and 1/);

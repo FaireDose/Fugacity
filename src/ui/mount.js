@@ -28,15 +28,15 @@ const TIER = { fitted: "fitted to experimental data", databank: "databank", pred
  * @param {"mole"|"mass"} [cfg.basis="mole"]  compositions in the readouts: mole fractions or wt %
  * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" };
  *   pairs with more than one set also get a selector under "Parameter sources"
- * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  rule for every pair (see Fugacity.library)
+ * @param {"best"|"fitted"|"databank"|string[]} [cfg.prefer]  rule for every pair (see CHEPTA.library)
  * @returns {{update:(patch:object)=>void, state:object}}
  *
  * @example
- * Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
+ * CHEPTA.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
  */
 export function mount(target, cfg = {}) {
   const root = typeof target === "string" ? document.querySelector(target) : target;
-  if (!root) throw new Error(`Fugacity.mount: no element matches "${target}".`);
+  if (!root) throw new Error(`CHEPTA.mount: no element matches "${target}".`);
   injectStyles(root.ownerDocument);
 
   const norm = m => (String(m || "NRTL").toUpperCase() === "IDEAL" ? "ideal" : String(m || "NRTL").toUpperCase());
@@ -51,7 +51,7 @@ export function mount(target, cfg = {}) {
     grid: cfg.grid ?? 40,
     allowMissingPairs: !!cfg.allowMissingPairs,
     title: cfg.title,
-    feedbackUrl: cfg.feedbackUrl ?? "https://github.com/FaireDose/Fugacity/issues/new/choose",
+    feedbackUrl: cfg.feedbackUrl ?? "https://github.com/FaireDose/CHEPTA/issues/new/choose",
     sets: normalizeSets(cfg.sets),
     prefer: normalizePrefer(cfg.prefer),
   };
@@ -143,7 +143,7 @@ export function mount(target, cfg = {}) {
       ...issues.map(k => h("div", { class: "fug-warn", role: "note" }, h("strong", {}, `Known deviation (${k.model}): `), k.message, ` Reference: ${k.reference}.`)),
       h("div", { class: "fug-main" }, plot, side),
       h("div", { class: "fug-foot" }, sources.length ? h("div", {}, "Parameter sources:") : null, ...sources,
-        h("div", {}, "Calculated live in this page by Fugacity. Predictions, not measurements. ",
+        h("div", {}, "Calculated live in this page by CHEPTA. Predictions, not measurements. ",
           state.feedbackUrl ? h("a", { href: state.feedbackUrl, target: "_blank", rel: "noopener" }, "Report a problem or suggest data") : null)));
 
     if (error) { plot.replaceChildren(h("div", { class: "fug-err", role: "alert" }, error)); side.hidden = true; return; }

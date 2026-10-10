@@ -1,6 +1,6 @@
 # Security and integrity
 
-Fugacity's results are used for teaching and engineering, so two things matter: that the
+CHEPTA's results are used for teaching and engineering, so two things matter: that the
 code and data cannot be changed without review, and that problems are reported and fixed
 quickly.
 
@@ -10,7 +10,7 @@ quickly.
   compromised release): report it privately through GitHub's *Report a vulnerability*
   button on the Security tab of the repository. Do not open a public issue.
 - **Wrong results** (a bad parameter, a calculation error): open a public
-  [Data](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml)
+  [Data](https://github.com/FaireDose/CHEPTA/issues/new?template=ai-contribution.yml)
   issue of type *Correction*. Wrong numbers are not secret; fixing them in the open lets
   everyone check.
 

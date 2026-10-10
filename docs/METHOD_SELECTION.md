@@ -26,9 +26,9 @@ Read on 2026-10-09:
    - an activity model: NRTL or UNIQUAC (Wilson when there is only one liquid);
    - for the vapour, the ideal gas at low pressure, or an equation of state.
 4. **Polar, above 10 bar:** PSRK, or a cubic equation with Wong–Sandler or MHV2 mixing rules.
-   **Fugacity does not have these yet**; such mixtures are outside what it can calculate well.
+   **CHEPTA does not have these yet**; such mixtures are outside what it can calculate well.
 5. **Electrolytes** (salts, ionized acids and bases): electrolyte NRTL or Pitzer. **Not in
-   Fugacity yet.**
+   CHEPTA yet.**
 6. **Reduced temperature** by Kay's rule, Tr = T / Σ zᵢ Tc,ᵢ:
    - above about 0.75 (with no second liquid expected): an equation of state;
    - below it: an activity model for the liquid.
@@ -37,14 +37,14 @@ Read on 2026-10-09:
 7. **Two liquids:**
    - NRTL and UNIQUAC describe them; Wilson can't.
    - A cubic equation of state with the classical mixing rule is not used where a second liquid
-     forms. Water + hydrocarbons need special treatment, which Fugacity doesn't have.
+     forms. Water + hydrocarbons need special treatment, which CHEPTA doesn't have.
 8. **Physical sense:** no temperature below the melting point of a component that is present
    (it would freeze), and parameters used only within the temperature range they were fitted
    to.
 
-## What this means for Fugacity today
+## What this means for CHEPTA today
 
-| Mixture | Method in Fugacity | Status |
+| Mixture | Method in CHEPTA | Status |
 |---|---|---|
 | Hydrocarbons and light gases, any pressure | Peng–Robinson or SRK with the databank's k_ij | covered |
 | Polar liquids below 10 bar | NRTL or UNIQUAC with fitted or databank pairs; ideal-gas or PR/SRK vapour | covered where the pairs exist (docs/DATA_WANTED.md) |

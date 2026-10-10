@@ -25,7 +25,7 @@ export { EOS_MODELS, listComponents, findComponent };
  * @param {number[]|((T:number)=>number[])} [cfg.psat]  override pure vapour pressures (kPa),
  *        e.g. with the pure-component values measured alongside an isothermal data set
  * @param {Object<string,string>} [cfg.sets]  parameter set per pair, e.g. { "acetone+chloroform": "chemsep" }
- *        (pair in any order, any component name); see Fugacity.library.sets()
+ *        (pair in any order, any component name); see CHEPTA.library.sets()
  * @param {string[]} [cfg.prefer]  tiers in order of preference for every pair, e.g. ["fitted", "databank"];
  *        without sets or prefer each pair uses its default set
  * @param {"ideal"|"PR"|"SRK"} [cfg.vapour="ideal"]  vapour model of an activity-coefficient system:

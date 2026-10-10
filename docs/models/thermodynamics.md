@@ -1,6 +1,6 @@
 # Thermodynamic models (layers 0 and 1)
 
-What Fugacity calculates for a phase: activity coefficients, fugacity coefficients, vapour
+What CHEPTA calculates for a phase: activity coefficients, fugacity coefficients, vapour
 pressures, enthalpies and pure-component properties. Each section names the source file. The
 file's header comment is the authoritative statement of the equations and their open
 references; this page is a map of them. Algorithms that use these models (bubble and dew points,

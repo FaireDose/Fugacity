@@ -3,7 +3,7 @@
 For every pair of the components that NRTL and UNIQUAC describe (those with UNIQUAC r and q in
 src/data/components.json, as docs/DATA_WANTED.md counts them), this lists:
 
-  - the parameter sets Fugacity has (src/data/binaries.json): fitted, databank, none;
+  - the parameter sets CHEPTA has (src/data/binaries.json): fitted, databank, none;
   - whether the ChemSep databank (Artistic License 2.0, as shipped with the open-source thermo
     library) has NRTL or UNIQUAC parameters for it;
   - the records of the NIST TRC ThermoML Archive (open data, free to read even where the article is

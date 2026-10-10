@@ -1,14 +1,14 @@
 # 0006: The first flowsheet: streams, blocks, recycles and a Flowsheet workspace
 
 - **Status:** Accepted (by the lead maintainer, 2026-10-06)
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A5 (streams), A6 (unit operation interface), A7 (flowsheet file
   format), A8 (flowsheet solver), A11 (views); bridges B4 (project files); release v0.4
 
 ## Problem
 
-Fugacity can flash one feed. A process is several units joined by streams: a feed is mixed with a
+CHEPTA can flash one feed. A process is several units joined by streams: a feed is mixed with a
 recycle, flashed, its liquid split, part of it sent back. Today an engineer has to copy the outlet
 of one flash by hand into the next, cannot close a recycle, and cannot keep the result.
 
@@ -47,7 +47,7 @@ property package (the `system` of proposal 0001), so phase split and enthalpy ar
 }
 ```
 
-- `Fugacity.stream(sys, { T_K, P_kPa, flow_kmol_h })` flashes at T and P;
+- `CHEPTA.stream(sys, { T_K, P_kPa, flow_kmol_h })` flashes at T and P;
   `{ P_kPa, H_kW, flow_kmol_h }` flashes at P and enthalpy (P-H flash, proposal 0001).
 - Internal units are SI-based and as in the engine (K, kPa, kmol/h, kW); the interface converts.
 - A stream with zero flow is allowed (a closed valve, an empty purge) and carries T and P only.
@@ -112,7 +112,7 @@ a newer engine reads every older format version).
 ```json
 {
   "fugacity_project": 2,
-  "saved_with": "fugacity 0.4.0",
+  "saved_with": "chepta 0.4.0",
   "title": "Methanol recovery with recycle",
   "workbench": { "view": "flowsheet", "model": "NRTL", "vapour": "ideal" },
   "flowsheet": {
@@ -145,12 +145,12 @@ a newer engine reads every older format version).
 
 - Positions (`x`, `y`) are only for the drawing. Port names are fixed by the block type; a
   block with several outlets of the same kind (`out`) gets them in order.
-- `results` is a record of the last converged calculation, for reading without Fugacity; it is
+- `results` is a record of the last converged calculation, for reading without CHEPTA; it is
   never used as input, except that a converged tear stream may seed the next calculation.
 - Units are stated in every key (`T_K`, `P_kPa`, `flow_kmol_h`); ARCHITECTURE.md's example
   with `T_C` is changed to `T_K` to follow the SI rule, with the interface converting.
 - A JSON schema (`docs/schema/project-2.json`) lets an AI assistant check a file it writes
-  (A10), and `Fugacity.checkProject(doc)` returns the problems as a list.
+  (A10), and `CHEPTA.checkProject(doc)` returns the problems as a list.
 
 ### 5. Where flowsheets are kept: on the computer and in the cloud
 
@@ -161,7 +161,7 @@ All three ways use the same file, so a flowsheet moves freely between them:
 - **In the browser**: the workbench keeps an automatic copy of the open flowsheet in the
   page's own browser storage, and offers to restore it after the page is reloaded. This is a
   convenience for the one browser, not a place to keep work.
-- **In an AI chat or other host page**: `Fugacity.app(el, { storage })`, where `storage` is
+- **In an AI chat or other host page**: `CHEPTA.app(el, { storage })`, where `storage` is
   given by the page that hosts the workbench:
   `{ list(): Promise<string[]>, get(name), put(name, project), remove(name) }`. A chat page can
   connect it to the persistent storage its platform gives pages, so flowsheets are kept with
@@ -170,7 +170,7 @@ All three ways use the same file, so a flowsheet moves freely between them:
   (A10): "add a heater before V1 to 80 °C" becomes an edit of the file, checked with
   `checkProject` before it is opened.
 
-Fugacity itself never sends a flowsheet anywhere; only the host page decides where `storage`
+CHEPTA itself never sends a flowsheet anywhere; only the host page decides where `storage`
 puts it.
 
 ### 6. The Flowsheet workspace (A11): set up first, then draw
@@ -276,7 +276,7 @@ balances.
 - ARCHITECTURE.md: layers 3–5 get the interfaces of sections 1–3; the file example switches
   from `T_C` to `T_K`.
 - The skill and `use.md` gain a short section: build or edit a flowsheet file, check it with
-  `checkProject`, open it with `Fugacity.app(el, { project })`.
+  `checkProject`, open it with `CHEPTA.app(el, { project })`.
 - Size: the stream, blocks and solver are small (a few tens of kB unminified). The canvas is
   the largest new piece of the interface.
 
@@ -295,8 +295,8 @@ balances.
   simpler to keep and share; a flowsheet alone is a project with only the `flowsheet` key filled.
 - **Free drawing (any shape, any port).** Fixed ports per block type keep files readable by
   people and assistants, and keep the solver simple.
-- **Saving to a Fugacity server.** It would need accounts and hosting and would break the rule
-  that Fugacity runs without a server. The host page's own storage covers the chat case.
+- **Saving to a CHEPTA server.** It would need accounts and hosting and would break the rule
+  that CHEPTA runs without a server. The host page's own storage covers the chat case.
 
 ## Steps
 
@@ -306,7 +306,7 @@ coding agent (for example the Flash workspace, or one benchmark of proposal 0004
 
 | Step | Pull request | Tests | Effort |
 |---|---|---|---|
-| 1 | **Streams** (`src/stream/`): `Fugacity.stream`, enthalpy flow, unit conversion at the edges; search for an open worked example | against `reference_flash.py` | 1 session |
+| 1 | **Streams** (`src/stream/`): `CHEPTA.stream`, enthalpy flow, unit conversion at the edges; search for an open worked example | against `reference_flash.py` | 1 session |
 | 2 | **Blocks**: `registerUnit`, Feed, Mixer, Splitter, Component separator, Flash drum, Heater, Product, each with spec checks and balances | per block, hand balances and the Python flash | 1–2 sessions |
 | 3 | **Solver** (`src/flowsheet/`): graph, loops, tear selection, direct substitution and Wegstein, errors; `reference_flowsheet.py` (equation-oriented) | closed-form recycle, Python comparison, failure cases | 1–2 sessions |
 | 4 | **File format 2**: flowsheet in the project file, schema, `checkProject`, format 1 still read | round trip, old files, schema errors | 1 session |

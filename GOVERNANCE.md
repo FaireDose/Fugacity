@@ -1,13 +1,13 @@
 # Governance
 
-How decisions are made in Fugacity, who can do what, and how to take on more
+How decisions are made in CHEPTA, who can do what, and how to take on more
 responsibility. This document changes only through an accepted proposal.
 
 ## Roles
 
 | Role | Who | Can |
 |---|---|---|
-| **User** | Anyone using Fugacity, in an AI chat, a web page or code | Open issues, comment, vote in polls |
+| **User** | Anyone using CHEPTA, in an AI chat, a web page or code | Open issues, comment, vote in polls |
 | **Contributor** | Anyone who has submitted a contribution package or a pull request, with or without an AI assistant | Propose changes and proposals |
 | **Data reviewer** | Experienced chemical engineers and academics, listed in `.github/CODEOWNERS` | Approve changes to `src/data/` and `validation/` |
 | **Maintainer** | People with write access, listed below | Merge approved pull requests, triage issues, publish releases |
@@ -79,6 +79,6 @@ Everyone follows the [code of conduct](CODE_OF_CONDUCT.md). Maintainers enforce 
 
 ## Money and trademarks
 
-Fugacity has no funding. If that changes, how funds are used will be decided by proposal
-and published. The name "Fugacity" as used by this project, and the repository, are held
+CHEPTA has no funding. If that changes, how funds are used will be decided by proposal
+and published. The name "CHEPTA" as used by this project, and the repository, are held
 by the lead maintainer on behalf of the project.

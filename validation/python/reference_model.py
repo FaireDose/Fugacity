@@ -1,5 +1,5 @@
 """
-Independent Python implementation of the Fugacity VLE model, used to check the
+Independent Python implementation of the CHEPTA VLE model, used to check the
 JavaScript engine. It reads the same data files (src/data/*.json) but shares no
 code with it. Requires numpy and scipy.
 

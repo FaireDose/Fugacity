@@ -1,4 +1,4 @@
-"""Reference values for Fugacity's steam tables (IAPWS-IF97 and the IAPWS transport releases).
+"""Reference values for CHEPTA's steam tables (IAPWS-IF97 and the IAPWS transport releases).
 
 Writes validation/data/iapws/coolprop_grid.json: a grid of (T, P) states over every IF97
 region, evaluated with two independent implementations in CoolProp 8.0.0 (open source, MIT):

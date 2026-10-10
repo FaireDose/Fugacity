@@ -55,7 +55,7 @@ def webbook_id(cas):
 
 
 def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "Fugacity data script (https://github.com/FaireDose/Fugacity)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "CHEPTA data script (https://github.com/FaireDose/CHEPTA)"})
     for attempt in range(6):  # the WebBook gateway sometimes times out (HTTP 502-504)
         try:
             with urllib.request.urlopen(req, timeout=120) as f:

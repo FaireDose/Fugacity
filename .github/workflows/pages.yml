@@ -1,10 +1,10 @@
 # Publishes the project website on GitHub Pages from main: a live demo of the workbench
 # (built from this commit) and short addresses for the AI-assistant instructions:
-#   https://fairedose.github.io/Fugacity/          live workbench
-#   https://fairedose.github.io/Fugacity/use.md    instructions for using Fugacity in a chat
-#   https://fairedose.github.io/Fugacity/agents.md the rules for assistants and agents
-#   https://fairedose.github.io/Fugacity/install   how to install the skill
-#   https://fairedose.github.io/Fugacity/skill.zip the skill (contributor-skill.zip too)
+#   https://fairedose.github.io/CHEPTA/          live workbench
+#   https://fairedose.github.io/CHEPTA/use.md    instructions for using CHEPTA in a chat
+#   https://fairedose.github.io/CHEPTA/agents.md the rules for assistants and agents
+#   https://fairedose.github.io/CHEPTA/install   how to install the skill
+#   https://fairedose.github.io/CHEPTA/skill.zip the skill (contributor-skill.zip too)
 # One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
 # Actions are pinned to commit SHAs; each job gets only the permissions it needs.
 name: Website
@@ -37,9 +37,9 @@ jobs:
         run: |
           mkdir -p _site
           cp site/index.html site/install.html _site/
-          (cd ai/skills && zip -qr ../../_site/skill.zip fugacity && zip -qr ../../_site/contributor-skill.zip fugacity-contributor)
-          cp dist/fugacity.js _site/fugacity.js
-          cp ai/instructions/use-fugacity.md _site/use.md
+          (cd ai/skills && zip -qr ../../_site/skill.zip chepta && zip -qr ../../_site/contributor-skill.zip chepta-contributor)
+          cp dist/chepta.js _site/chepta.js
+          cp ai/instructions/use-chepta.md _site/use.md
           cp AGENTS.md _site/agents.md
           cp llms.txt _site/llms.txt
           mkdir -p _site/schema && cp docs/schema/*.json _site/schema/

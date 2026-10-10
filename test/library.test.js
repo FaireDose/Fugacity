@@ -1,5 +1,5 @@
-// The Fugacity Library, engine (proposal 0003, step 2): choosing between parameter sets with
-// `sets` and `prefer`, info.pairs, warnings, and Fugacity.library.
+// The CHEPTA Library, engine (proposal 0003, step 2): choosing between parameter sets with
+// `sets` and `prefer`, info.pairs, warnings, and CHEPTA.library.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";

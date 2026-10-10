@@ -1,5 +1,5 @@
 /**
- * Icons for the workbench: small line drawings on a 24 x 24 grid, drawn for Fugacity
+ * Icons for the workbench: small line drawings on a 24 x 24 grid, drawn for CHEPTA
  * (most are tiny phase diagrams). They use currentColor, so they follow the theme;
  * an element with class "a" takes the accent colour.
  */

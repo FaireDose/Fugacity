@@ -1,13 +1,13 @@
 # 0002: Pure-component properties, gases and the Peng–Robinson equation of state
 
 - **Status:** Accepted (merged in #8, 2026-10-01)
-- **Author(s):** Fugacity maintainers
+- **Author(s):** CHEPTA maintainers
 - **Discussion:** this pull request
 - **Roadmap item:** A1 (property package), D4 (heat capacity and heat of vaporization), Later: equations of state; v0.2
 
 ## Problem
 
-Fugacity knows only what vapour-liquid equilibrium needs: vapour pressure and activity
+CHEPTA knows only what vapour-liquid equilibrium needs: vapour pressure and activity
 coefficients for ten liquids. Engineers also need pure-component properties (density,
 heat capacity, enthalpy, heat of vaporization, viscosity, thermal conductivity) at
 different temperatures and pressures, steam tables for water, and common gases
@@ -81,7 +81,7 @@ If none has the property, it is marked **"no open data"** with the list of sourc
 searched, and the interface says so. Nothing is estimated silently. Values from old
 sources are labelled with their year, so reviewers can judge them.
 
-Correlation coefficients are **fitted by Fugacity** to the chosen source over a stated
+Correlation coefficients are **fitted by CHEPTA** to the chosen source over a stated
 temperature range, using the DIPPR equation forms (100, 101, 102, 105, 106, 107). Each
 record states the source, the fit range, and the maximum deviation from the source.
 
@@ -119,17 +119,17 @@ method, labelled as such in the interface).
 ### 6. Programming interface
 
 ```js
-const w = Fugacity.pure("water");
+const w = CHEPTA.pure("water");
 w.psat(373.15)              // kPa
 w.tsat(101.325)             // K
 w.props(373.15, 101.325)    // { phase, rho, h, cp, mu, k, ... } with units and sources
-Fugacity.steam(T_K, P_kPa)  // IAPWS-IF97 directly
-Fugacity.system({ components: ["methane", "nitrogen"], model: "PR" })
+CHEPTA.steam(T_K, P_kPa)  // IAPWS-IF97 directly
+CHEPTA.system({ components: ["methane", "nitrogen"], model: "PR" })
 ```
 
 ### 7. Property explorer
 
-`Fugacity.mountProperties("#app", { component: "water" })`: choose a component and a
+`CHEPTA.mountProperties("#app", { component: "water" })`: choose a component and a
 property; curve against temperature, for several pressures where the property depends on
 pressure; a steam-table style table; units switch (°C/K, bar/kPa, kg/m³, ...); the source
 and tier of every curve shown under it.

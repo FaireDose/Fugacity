@@ -1,5 +1,5 @@
 /**
- * Fugacity.system(): a thermodynamic system (layer 1, src/thermo/system.js) with the
+ * CHEPTA.system(): a thermodynamic system (layer 1, src/thermo/system.js) with the
  * calculation methods of layer 2 attached. Kept in its own file so that both the public
  * entry point (src/index.js) and the workbench view (src/ui/app.js) use the same function.
  */
@@ -19,7 +19,7 @@ import { fail } from "./util/errors.js";
  * Create a system with calculation methods attached.
  *
  * @example
- * const s = Fugacity.system({ components: ["water", "acetic acid"], model: "NRTL" });
+ * const s = CHEPTA.system({ components: ["water", "acetic acid"], model: "NRTL" });
  * s.bubbleT([0.5, 0.5], 101.325)   // { T: 377.2, y: [...], gamma: [...] }
  */
 export function system(cfg) {

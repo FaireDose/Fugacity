@@ -1,7 +1,7 @@
 # Benchmark processes and their pairs
 
 Proposal [0004](../proposals/0004-first-50-components.md), step 1: the benchmark processes,
-their components, and the binary pairs each one needs, with what Fugacity and the ChemSep
+their components, and the binary pairs each one needs, with what CHEPTA and the ChemSep
 databank have today. **A draft for the team to change**: which pairs matter is an
 engineering decision, recorded here before any data is added.
 
@@ -20,7 +20,7 @@ How to read the tables:
   boiling point at or below 298.15 K, from the `chemicals` library): *EOS* only, or *Henry*
   for a gas dilute in water; an activity model cannot describe a component above its
   critical temperature.
-- **Fugacity now**: the pair's parameter sets in `src/data/` today (tier in brackets).
+- **CHEPTA now**: the pair's parameter sets in `src/data/` today (tier in brackets).
 - **ChemSep NRTL / UNIQUAC / PR k_ij / Henry**: the pair is in the ChemSep databank
   (Artistic License 2.0), as shipped with the open-source `thermo` library. A databank
   pair is tier `databank`; where open experimental data exist, step 3 fits the pair to
@@ -30,7 +30,7 @@ How to read the tables:
 
 ## The components: 49 in the benchmarks, 1 new
 
-| Component | CAS | In Fugacity | Liquid at 25 °C, 1 atm |
+| Component | CAS | In CHEPTA | Liquid at 25 °C, 1 atm |
 |---|---|---|---|
 | 1-butanol | 71-36-3 | yes | yes |
 | 1-propanol | 71-23-8 | yes | yes |
@@ -84,7 +84,7 @@ How to read the tables:
 
 ## Ethanol dehydration (extractive and azeotropic distillation)
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | ethanol + water | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
 | ethanol + ethylene glycol | activity | EOS | 1 | NRTL, UNIQUAC, k_ij (databank, fitted) | yes | yes | – | – |
@@ -97,7 +97,7 @@ Key components: ethanol, water, ethylene glycol, cyclohexane. 6 pairs.
 
 ## Ethyl acetate by esterification
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | acetic acid + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 | acetic acid + ethyl acetate | activity | EOS | 1 | NRTL, UNIQUAC (fitted) | – | – | – | – |
@@ -110,7 +110,7 @@ Key components: acetic acid, ethanol, ethyl acetate, water. 6 pairs.
 
 ## Methanol synthesis from syngas, with gas cleaning by cold methanol
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | hydrogen + carbon monoxide | EOS | – | 2 | k_ij | – | – | yes | – |
 | hydrogen + carbon dioxide | EOS | – | 2 | k_ij | – | – | yes | – |
@@ -153,7 +153,7 @@ Key components: methanol, water, carbon dioxide, hydrogen sulfide, dimethyl ethe
 
 ## Air separation (small case for equations of state)
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | nitrogen + oxygen | EOS | – | 1 | k_ij | – | – | yes | – |
 | nitrogen + argon | EOS | – | 1 | k_ij | – | – | yes | – |
@@ -163,7 +163,7 @@ Key components: nitrogen, oxygen, argon. 3 pairs.
 
 ## Light hydrocarbons and refrigeration
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | methane + ethane | EOS | – | 2 | k_ij | – | – | yes | – |
 | methane + ethylene | EOS | – | 2 | k_ij | – | – | yes | – |
@@ -198,7 +198,7 @@ Key components: ethane, ethylene, propane, propylene, n-butane, isobutane. 28 pa
 
 ## Aromatics (BTX) and styrene
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | benzene + toluene | EOS | activity | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
 | benzene + o-xylene | EOS | activity | 1 | – | – | – | – | – |
@@ -226,7 +226,7 @@ Key components: benzene, toluene, ethylbenzene, styrene, p-xylene, m-xylene, o-x
 
 ## Solvent recovery (pharmaceutical and coatings solvents)
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | acetone + methanol | activity | EOS | 1 | NRTL, UNIQUAC (databank, fitted) | yes | yes | – | – |
 | acetone + ethanol | activity | EOS | 1 | NRTL, UNIQUAC (databank) | yes | yes | – | – |
@@ -404,7 +404,7 @@ Key components: water, methanol, ethanol, acetone, ethyl acetate, toluene. 171 p
 
 ## Higher boilers and glycols
 
-| Pair | Primary | Second | Priority | Fugacity now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
+| Pair | Primary | Second | Priority | CHEPTA now | ChemSep NRTL | ChemSep UNIQUAC | ChemSep PR k_ij | ChemSep Henry |
 |---|---|---|---|---|---|---|---|---|
 | propylene glycol + glycerol | activity | EOS | 1 | – | – | – | – | – |
 | propylene glycol + phenol | activity | EOS | 1 | – | – | – | – | – |
@@ -430,8 +430,8 @@ Key components: water, propylene glycol, glycerol, phenol. 15 pairs.
 
 | Parameters for the model | Primary, all | Primary, priority 1 | Second, all | Second, priority 1 |
 |---|--:|--:|--:|--:|
-| In Fugacity now | 103 | 53 | 15 | 14 |
-| In ChemSep, not yet in Fugacity | 2 | 0 | 0 | 0 |
+| In CHEPTA now | 103 | 53 | 15 | 14 |
+| In ChemSep, not yet in CHEPTA | 2 | 0 | 0 | 0 |
 | Neither: search open data, else missing (an EOS uses k_ij = 0 with a warning) | 176 | 43 | 200 | 51 |
 
 Every pair, including one with a ChemSep set, is checked against open experimental data in

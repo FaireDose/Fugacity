@@ -57,7 +57,7 @@ function present(st) {
  * On the saturation line itself the liquid is returned; use steamSat for both phases.
  *
  * @example
- * Fugacity.steam(573.15, 1000)   // superheated steam at 300 °C, 10 bar: h_kJ_kg ≈ 3051
+ * CHEPTA.steam(573.15, 1000)   // superheated steam at 300 °C, 10 bar: h_kJ_kg ≈ 3051
  * @returns {{region:number, phase:"liquid"|"vapour"|"supercritical", T_K:number, P_kPa:number,
  *   rho_kg_m3:number, v_m3_kg:number, h_kJ_kg:number, s_kJ_kgK:number, u_kJ_kg:number,
  *   cp_kJ_kgK:number, cv_kJ_kgK:number, w_m_s:number, mu_Pa_s:number|null, k_W_mK:number|null,

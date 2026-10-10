@@ -5,7 +5,7 @@
  * optionally `details` (for example the last iterate of a solver). The message is written
  * for an engineer. Errors keep their class: range problems stay RangeErrors, so pages and
  * scripts that test `instanceof RangeError` or show `e.message` keep working, and
- * `e instanceof Fugacity.FugacityError` is true for all of them.
+ * `e instanceof CHEPTA.CheptaError` is true for all of them.
  *
  *   BAD_INPUT       the input is wrong: unknown name, wrong number of mole fractions,
  *                   negative pressure, a mistyped option
@@ -32,10 +32,10 @@ function brand(e, code, details) {
 }
 
 /**
- * The class to test against: `e instanceof FugacityError` is true for every error made by
+ * The class to test against: `e instanceof CheptaError` is true for every error made by
  * `fail` or `failRange`, whatever its base class.
  */
-export class FugacityError extends Error {
+export class CheptaError extends Error {
   constructor(code, message, details) {
     super(message);
     brand(this, code, details);
@@ -55,7 +55,7 @@ export function failRange(code, message, details) {
   return brand(new RangeError(message), code, details);
 }
 
-/** True when e is a Fugacity error with the given code (or any code if none is given). */
-export function isFugacityError(e, code) {
-  return e instanceof FugacityError && (code == null || e.code === code);
+/** True when e is a CHEPTA error with the given code (or any code if none is given). */
+export function isCheptaError(e, code) {
+  return e instanceof CheptaError && (code == null || e.code === code);
 }

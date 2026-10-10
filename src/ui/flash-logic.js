@@ -203,12 +203,12 @@ export function csvField(v) {
 export function flashCsv(table, meta = {}) {
   const lines = [];
   const line = cells => lines.push(cells.map(csvField).join(","));
-  line(["Fugacity flash", meta.title ?? ""]);
+  line(["CHEPTA flash", meta.title ?? ""]);
   if (meta.model) line(["Model", meta.model]);
   if (meta.spec) line(["Specification", meta.spec]);
   for (const [label, value, unit] of meta.summary ?? []) line([label, value, unit ?? ""]);
   for (const s of meta.sources ?? []) line(["Source", s]);
-  if (meta.version) line(["Calculated with", `Fugacity ${meta.version}`]);
+  if (meta.version) line(["Calculated with", `CHEPTA ${meta.version}`]);
   line([]);
   line(["Quantity", "Unit", ...table.columns]);
   for (const r of table.rows) line([r.label, r.unit, ...r.values]);

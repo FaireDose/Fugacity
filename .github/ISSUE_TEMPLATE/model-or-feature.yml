@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this to claim a roadmap item or to propose something new; you can draft the text with your AI assistant (prompts in [ai/START_PROMPTS.md](https://github.com/FaireDose/Fugacity/blob/main/ai/START_PROMPTS.md)). New models, algorithms, layers, interfaces and file formats become a proposal in [proposals/](https://github.com/FaireDose/Fugacity/blob/main/proposals/README.md) before code is merged.
+        Use this to claim a roadmap item or to propose something new; you can draft the text with your AI assistant (prompts in [ai/START_PROMPTS.md](https://github.com/FaireDose/CHEPTA/blob/main/ai/START_PROMPTS.md)). New models, algorithms, layers, interfaces and file formats become a proposal in [proposals/](https://github.com/FaireDose/CHEPTA/blob/main/proposals/README.md) before code is merged.
   - type: dropdown
     id: area
     attributes:

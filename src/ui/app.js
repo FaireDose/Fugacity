@@ -1,5 +1,5 @@
 /**
- * Workbench: Fugacity.app(target, config).
+ * Workbench: CHEPTA.app(target, config).
  *
  * Layout, from top to bottom:
  *  - the navigation bar: one tab per calculation task (Phase equilibrium, Flash, Gas solubility,
@@ -62,7 +62,7 @@ const NEEDS_EOS = {
 const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY)[view];
 
 /**
- * Put the Fugacity workbench into a page element.
+ * Put the CHEPTA workbench into a page element.
  *
  * The workbench has five workspaces, one per task: Phase equilibrium (T-x-y, ternary map,
  * azeotropes, P-x-y and phase envelope, each with the model chosen in the toolbar: an
@@ -119,11 +119,11 @@ const needsOf = (view, model) => (isEosModel(model) ? NEEDS_EOS : NEEDS_ACTIVITY
  *   see applyPatch in app-logic.js
  *
  * @example
- * Fugacity.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
+ * CHEPTA.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
  */
 export function app(target, cfg = {}) {
   const root = typeof target === "string" ? document.querySelector(target) : target;
-  if (!root) throw new Error(`Fugacity.app: no element matches "${target}".`);
+  if (!root) throw new Error(`CHEPTA.app: no element matches "${target}".`);
   const doc = root.ownerDocument;
   injectAppStyles(doc);
 
@@ -294,7 +294,7 @@ export function app(target, cfg = {}) {
       } } },
       icon(u.icon, 17), h("span", { class: "fa-util-label" }, u.label))));
     titleBar.replaceChildren(
-      h("div", { class: "fa-brand" }, icon("logo", 22), h("span", { class: "fa-name" }, "Fugacity")),
+      h("div", { class: "fa-brand" }, icon("logo", 22), h("span", { class: "fa-name" }, "CHEPTA")),
       nav, utils,
       h("button", { type: "button", class: "fa-icon-btn fa-collapse", title: state.ribbon ? "Hide the toolbar" : "Show the toolbar",
         "aria-label": state.ribbon ? "Hide the toolbar" : "Show the toolbar", "aria-expanded": String(state.ribbon), "aria-controls": ribbon.id, "data-fk": "collapse",
@@ -707,7 +707,7 @@ export function app(target, cfg = {}) {
       ...(cond ? [cell("", cond)] : []),
       st.info?.data ? cell("fa-grow", st.info.data) : h("span", { class: "fa-grow" }),
       cell("fa-hide-narrow", `${u.T === "K" ? "K" : "°C"}, ${u.P}, ${state.basis === "mass" ? "wt %" : "mol frac"}`),
-      cell("", `Fugacity ${pkg.version}`));
+      cell("", `CHEPTA ${pkg.version}`));
   }
 
   /** The name of the calculation on the canvas, e.g. "Methanol, acetone and chloroform". */
@@ -795,7 +795,7 @@ export function app(target, cfg = {}) {
     const fail = e => { openStatus.textContent = ""; openStatus.append(h("div", { class: "fug-err", role: "alert" }, `Not opened: ${e.message}`)); };
     const open = (text, name) => {
       try { loadProject(text); } catch (e) { fail(e); return; }
-      ui.projectNote = `Opened ${name}. Everything was calculated again with Fugacity ${pkg.version}.`;
+      ui.projectNote = `Opened ${name}. Everything was calculated again with CHEPTA ${pkg.version}.`;
       set({ utility: "project" }, { canvas: false });
     };
     const fileId = `fa-pfile-${uid}`;
@@ -832,7 +832,7 @@ export function app(target, cfg = {}) {
       const picker = typeof window !== "undefined" ? window.showSaveFilePicker : null;
       if (picker) {
         try {
-          const handle = await picker.call(window, { suggestedName: name, types: [{ description: "Fugacity project", accept: { "application/json": [".json"] } }] });
+          const handle = await picker.call(window, { suggestedName: name, types: [{ description: "CHEPTA project", accept: { "application/json": [".json"] } }] });
           const w = await handle.createWritable();
           await w.write(text); await w.close();
           status.textContent = `Saved ${handle.name}.`;
@@ -860,9 +860,9 @@ export function app(target, cfg = {}) {
             on: { click: () => copyText(projectText(doc()), status, box, { what: "project", done: "Project copied: paste it into a file or a chat to keep it." }) } }, icon("copy", 15), "Copy")),
         status, box,
         h("p", { class: "fa-in-hint" }, "Save opens your browser's Save dialog where it can (choose the folder and the name); otherwise the file goes to your Downloads folder."),
-        h("p", { class: "fa-in-hint" }, "Your projects and exports are yours: Fugacity claims no rights in what you create with it.")),
+        h("p", { class: "fa-in-hint" }, "Your projects and exports are yours: CHEPTA claims no rights in what you create with it.")),
       drawerSection("Open",
-        h("p", {}, "A project file (.fugacity.json) saved with Save. It replaces what is open now; the results are calculated again."),
+        h("p", {}, "A project file (.chepta.json) saved with Save. It replaces what is open now; the results are calculated again."),
         h("div", { class: "fa-in-actions" },
           h("label", { class: "fa-mini", for: fileId, role: "button", tabindex: "0", "data-fk": "proj-open",
             on: { keydown: ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); file.click(); } } } }, icon("file", 15), "Open a file…"), file),
@@ -883,7 +883,7 @@ export function app(target, cfg = {}) {
         openStatus),
       ...stores.map(storeSection),
       drawerSection("From code",
-        h("p", { class: "fa-in-hint" }, "const w = Fugacity.app(\"#app\"); w.save() returns the project; w.load(project) opens one; Fugacity.app(\"#app\", { project }) starts from one; { storage: { list(), get(name), put(name, project), remove(name) } } keeps projects in the page's own storage (for example an AI chat's); { autosave: false } turns off the copy in this browser.")));
+        h("p", { class: "fa-in-hint" }, "const w = CHEPTA.app(\"#app\"); w.save() returns the project; w.load(project) opens one; CHEPTA.app(\"#app\", { project }) starts from one; { storage: { list(), get(name), put(name, project), remove(name) } } keeps projects in the page's own storage (for example an AI chat's); { autosave: false } turns off the copy in this browser.")));
   }
 
   /** A store (this browser, or the host page's storage): save under the project's name, and the list. */
@@ -962,7 +962,7 @@ export function app(target, cfg = {}) {
           h("p", {}, chosen ? `${chosen} pair${chosen === 1 ? "" : "s"} set by hand.` : "Each pair can use another set: its menu is in the Inputs panel of the phase-equilibrium diagrams."),
           h("button", { type: "button", class: "fa-mini", disabled: !chosen && rule === "best", "data-fk": "lib-reset",
             on: { click: () => set({ sets: null, prefer: null }) } }, icon("clear", 15), "Back to the defaults"),
-          h("p", { class: "fa-in-hint" }, "Sets from a paper: Fugacity.library.add() (this page only).")),
+          h("p", { class: "fa-in-hint" }, "Sets from a paper: CHEPTA.library.add() (this page only).")),
         drawerSection("Sources",
           h("p", {}, "Every source once: what it is, why it is open, what uses it."),
           h("button", { type: "button", class: "fa-mini", "data-fk": "lib-browse", on: { click: () => { ui.sources.mine = false; set({ utility: "sources" }, { canvas: false }); } } }, icon("book", 15), "Browse sources")));

@@ -70,7 +70,7 @@ def splits_note(rec):
 
 
 def all_pairs(doc):
-    """Every pair among the components that ChemSep has and Fugacity has no set for, as
+    """Every pair among the components that ChemSep has and CHEPTA has no set for, as
     PAIRS entries."""
     have = {frozenset((r["i"], r["j"])) for r in doc["pairs"]}
     ids = sorted(COMPONENTS)

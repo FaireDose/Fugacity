@@ -1,5 +1,5 @@
 /**
- * The Fugacity Library (proposal 0003): the sources behind every parameter, and the choice
+ * The CHEPTA Library (proposal 0003): the sources behind every parameter, and the choice
  * between parameter sets when a pair has more than one.
  *
  * Data (layer 0): src/data/sources.json lists every source once, with an id; the records in
@@ -257,7 +257,7 @@ function computeUsedBy() {
 
 /** What uses a source: parameter sets, Henry's law constants, pure-component records, files. */
 function usedBy(id) {
-  if (!sourcesData.sources[id] && !userSources.has(id)) throw fail("BAD_INPUT", `Unknown source "${id}". See Fugacity.library.sources().`);
+  if (!sourcesData.sources[id] && !userSources.has(id)) throw fail("BAD_INPUT", `Unknown source "${id}". See CHEPTA.library.sources().`);
   if (!usedByCache) usedByCache = computeUsedBy();
   return (usedByCache.get(id) ?? []).map(x => ({ ...x }));
 }
@@ -270,7 +270,7 @@ function sources() {
 /** One source by id, with what uses it. */
 function source(id) {
   const s = sourceEntry(String(id));
-  if (!s) throw fail("BAD_INPUT", `Unknown source "${id}". See Fugacity.library.sources() for the ${Object.keys(sourcesData.sources).length} sources.`);
+  if (!s) throw fail("BAD_INPUT", `Unknown source "${id}". See CHEPTA.library.sources() for the ${Object.keys(sourcesData.sources).length} sources.`);
   return { ...s, usedBy: usedBy(s.id) };
 }
 
@@ -331,7 +331,7 @@ function range(v, what) {
  * @returns {object} the set, as library.sets() lists it
  *
  * @example
- * Fugacity.library.add({ model: "NRTL", i: "water", j: "ethanol", set: "my-paper",
+ * CHEPTA.library.add({ model: "NRTL", i: "water", j: "ethanol", set: "my-paper",
  *   params: { b_ij: 670, b_ji: -40, alpha: 0.3 }, source: { title: "My measurements", url: "https://..." } });
  */
 function add(spec) {
@@ -382,7 +382,7 @@ function add(spec) {
     if (!s.url && !s.doi) throw fail("BAD_INPUT", "library.add: source needs a url or a doi, so that others can check it.");
     let id = "user-" + (s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "source");
     for (let n = 2; userSources.has(id) || sourcesData.sources[id]; n++) id = id.replace(/-\d+$/, "") + "-" + n;
-    const entry = { title: s.title, kind: "user", access: s.access ? String(s.access) : "Supplied in this page; not checked by Fugacity's reviewers" };
+    const entry = { title: s.title, kind: "user", access: s.access ? String(s.access) : "Supplied in this page; not checked by CHEPTA's reviewers" };
     for (const k of ["authors", "year", "doi", "url", "published"]) if (s[k] != null) entry[k] = s[k];
     userSources.set(id, entry);
     ids = [id];
@@ -401,6 +401,6 @@ function add(spec) {
 }
 
 /**
- * Fugacity.library: browse the sources and parameter sets, and add sets for this page.
+ * CHEPTA.library: browse the sources and parameter sets, and add sets for this page.
  */
 export const library = { sources, source, sets, usedBy, add, tiers: TIERS.slice() };
