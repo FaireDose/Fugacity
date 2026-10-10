@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fugacity workbench</title>
+<title>CHEPTA workbench</title>
 <style>
   body { margin: 0; padding: 16px; background: #e4e8ec; font-family: system-ui, sans-serif; }
   @media (prefers-color-scheme: dark) { body { background: #0b0e11; } }
@@ -10,12 +10,12 @@
 <body>
 <div id="app"></div>
 <!-- In an artifact or a page, load the published script instead:
-     <script src="https://cdn.jsdelivr.net/npm/fugacity@0.2/dist/fugacity.js"></script> -->
-<script src="../dist/fugacity.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/chepta@0.2/dist/chepta.js"></script> -->
+<script src="../dist/chepta.js"></script>
 <script>
   // ?start=steam&components=water,ethanol opens another view (for trying it out)
   const q = new URLSearchParams(location.search);
-  Fugacity.app("#app", {
+  CHEPTA.app("#app", {
     start: q.get("start") || "ternary",
     components: q.get("components") ? q.get("components").split(",") : ["methanol", "acetone", "chloroform"],
     model: "NRTL",

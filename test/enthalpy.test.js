@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, pure, FugacityError } from "../src/index.js";
+import { system, pure, CheptaError } from "../src/index.js";
 
 const load = p => JSON.parse(readFileSync(new URL(p, import.meta.url)));
 const { cases } = load("../validation/fixtures/enthalpy.json");
@@ -117,7 +117,7 @@ test("excess enthalpy of acetic acid + ethylene glycol against Schmid et al. (20
 });
 
 test("errors: dimerizing acid, phase name, above the critical temperature", () => {
-  const code = (fn, c, re) => assert.throws(fn, e => e instanceof FugacityError && e.code === c && re.test(e.message));
+  const code = (fn, c, re) => assert.throws(fn, e => e instanceof CheptaError && e.code === c && re.test(e.message));
   const a = system({ components: ["acetic acid", "ethylene glycol"], model: "NRTL" });
   code(() => a.enthalpy("liquid", 350, 101.325, [0.5, 0.5]), "NOT_AVAILABLE", /dimerizes.*excessEnthalpy/);
   assert.ok(Number.isFinite(a.enthalpy("liquid", 350, 101.325, [0, 1])), "pure glycol has an enthalpy");
@@ -132,6 +132,6 @@ test("errors: dimerizing acid, phase name, above the critical temperature", () =
 
 test("acetic acid enthalpies are refused also when the chemical theory is switched off", () => {
   const s = system({ components: ["acetic acid", "ethylene glycol"], model: "NRTL", association: false });
-  assert.throws(() => s.enthalpy("liquid", 350, 101.325, [0.5, 0.5]), e => e instanceof FugacityError && e.code === "NOT_AVAILABLE");
+  assert.throws(() => s.enthalpy("liquid", 350, 101.325, [0.5, 0.5]), e => e instanceof CheptaError && e.code === "NOT_AVAILABLE");
   assert.ok(Number.isFinite(s.excessEnthalpy([0.5, 0.5], 323.15)));
 });

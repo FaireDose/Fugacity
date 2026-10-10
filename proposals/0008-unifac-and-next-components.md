@@ -3,7 +3,7 @@
 - **Status:** Accepted (by the lead maintainer, 2026-10-06). Part A (UNIFAC) is on hold: nothing
   of it is implemented until DDBST has answered on the use of the published parameters and the
   maintainer decides. Part B (components) goes ahead.
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A3 (quality tiers and prediction); data track (components);
   proposal 0004 (the first 50 components) as the model for choosing them
@@ -32,7 +32,7 @@
     better for excess enthalpies and temperature trends.
 
   Both pages say that "many new, updated and revised parameters" are available only to members
-  of the UNIFAC Consortium; Fugacity would use only the published tables. Neither page states
+  of the UNIFAC Consortium; CHEPTA would use only the published tables. Neither page states
   a licence for the published values, so the maintainer asks DDBST before anything is added
   (AGENTS.md rule 1: numbers only from sources that anyone can read **and use** freely).
   The open-source `thermo` library (MIT) ships both published tables, citing the DDBST pages;

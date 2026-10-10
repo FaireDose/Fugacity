@@ -1,5 +1,5 @@
 """
-The Fugacity Library (proposal 0003), step 1: one list of sources, src/data/sources.json,
+The CHEPTA Library (proposal 0003), step 1: one list of sources, src/data/sources.json,
 and records that point to it by id.
 
     python validation/python/make_sources.py           # update the files
@@ -627,7 +627,7 @@ def licenses_md(old, table):
     intro = [
         "Every source is listed once in [`sources.json`](sources.json), with an id; parameter records",
         "refer to it in `source_ids` (their text `source` stays). The table below is generated from",
-        "that file. Parameters fitted for Fugacity (tier `fitted`, with `validation/python/`) are",
+        "that file. Parameters fitted for CHEPTA (tier `fitted`, with `validation/python/`) are",
         "MIT-licensed like the code; the data they were fitted to keeps the terms of its source.",
         "",
     ]
@@ -692,7 +692,7 @@ def main(check):
         print("sources not used by any record or file:", ", ".join(unused))
     sources = dict(sorted(sources.items()))
     out_sources = {
-        "_about": "The Fugacity Library (proposal 0003): every source once, with an id. Records in the other data files refer to it in `source_ids`. kind: " + ", ".join(KINDS) + ". url: where anyone can read the numbers (the open copy); doi: the original publication; access: why it is open; via: the open copy the numbers were taken from, when it is not the source itself; files: repository files (code, validation data) that use the source besides the data records. Made by validation/python/make_sources.py; entries can be corrected by hand (the script keeps them).",
+        "_about": "The CHEPTA Library (proposal 0003): every source once, with an id. Records in the other data files refer to it in `source_ids`. kind: " + ", ".join(KINDS) + ". url: where anyone can read the numbers (the open copy); doi: the original publication; access: why it is open; via: the open copy the numbers were taken from, when it is not the source itself; files: repository files (code, validation data) that use the source besides the data records. Made by validation/python/make_sources.py; entries can be corrected by hand (the script keeps them).",
         "sources": sources,
     }
 

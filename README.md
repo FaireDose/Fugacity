@@ -1,14 +1,18 @@
-# Fugacity
+# CHEPTA
+
+**Chemical Engineering Process Tools for Agents.** Formerly *Fugacity*: the project was renamed
+in version 0.3.0. Pages written for the old name keep working: the script also defines the old
+global `Fugacity`, and project files saved by Fugacity open unchanged.
 
 Open chemical process simulation built for AI chats. Ask your assistant (ChatGPT, Claude,
 Gemini or another) for a phase diagram, and it opens a live interface that calculates
-right in the chat, in your browser. Fugacity starts with vapour-liquid equilibria and
+right in the chat, in your browser. CHEPTA starts with vapour-liquid equilibria and
 grows through volunteer contributions, one tested layer at a time, toward full flowsheets.
 
-**Try the workbench now: <https://fairedose.github.io/Fugacity/>** (runs in your browser,
+**Try the workbench now: <https://fairedose.github.io/CHEPTA/>** (runs in your browser,
 nothing to install).
 
-![The Fugacity workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
+![The CHEPTA workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
 
 > **Status: early (v0.3.0).** 92 components, activity models and cubic equations of state,
 > pure-component properties, steam tables, the flash, and a first flowsheet with recycles,
@@ -30,27 +34,27 @@ Paste one of these into your assistant (the last two need one that can open web 
 
 **Load the workbench** (the assistant opens no link; the workbench opens empty and you choose the components):
 
-> Load the Fugacity workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
-> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
+> Load the CHEPTA workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
+> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script><script>CHEPTA.app("#app", { components: [] })</script>`
 
 **Load it with your components:**
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. Load the Fugacity workbench with methanol, acetone and chloroform at 1 atm.
+> Read https://fairedose.github.io/CHEPTA/use.md and follow it. Load the CHEPTA workbench with methanol, acetone and chloroform at 1 atm.
 
 **Ask for a property value:**
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
+> Read https://fairedose.github.io/CHEPTA/use.md and follow it. What are the density and viscosity of liquid water at 80 °C and 1 bar?
 > Give the source of each value.
 
-(Fugacity answers 971.8 kg/m³ and 0.354 mPa·s, from IAPWS-IF97 and the IAPWS viscosity
-release.) For the first, the assistant writes a few lines that load Fugacity, and the
+(CHEPTA answers 971.8 kg/m³ and 0.354 mPa·s, from IAPWS-IF97 and the IAPWS viscosity
+release.) For the first, the assistant writes a few lines that load CHEPTA, and the
 workbench opens live in the
-chat (tested in Claude artifacts; other chats: [compatibility](ai/README.md#which-chats-can-show-fugacity-pages)).
-To have it always at hand, install the Fugacity skill once: the steps for Claude, ChatGPT,
+chat (tested in Claude artifacts; other chats: [compatibility](ai/README.md#which-chats-can-show-chepta-pages)).
+To have it always at hand, install the CHEPTA skill once: the steps for Claude, ChatGPT,
 Claude Code and Codex, and one line for the custom instructions of other assistants, are at
-**<https://fairedose.github.io/Fugacity/install>**. The skill itself is
-<https://fairedose.github.io/Fugacity/skill.zip>. Then just
-ask, for example *"Open the Fugacity workbench with ethanol and water"*.
+**<https://fairedose.github.io/CHEPTA/install>**. The skill itself is
+<https://fairedose.github.io/CHEPTA/skill.zip>. Then just
+ask, for example *"Open the CHEPTA workbench with ethanol and water"*.
 
 ## What it does today
 
@@ -71,52 +75,52 @@ In any web page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script>
 <script>
-  Fugacity.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
-  // or a single view: Fugacity.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
+  CHEPTA.app("#app", { start: "ternary", components: ["methanol", "acetone", "chloroform"] });
+  // or a single view: CHEPTA.mount("#app", { components: ["water", "acetic acid", "ethylene glycol"] });
 </script>
 ```
 
 From code (K, kPa, mole fractions):
 
 ```js
-const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
+const s = CHEPTA.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T: 376.36, y: [0.645, 0.355], gamma: [1.306, 1.164] }
 s.dewT([0.5, 0.5], 101.325);      // { T: 378.91, x: [0.333, 0.667], gamma, ... } 
 // activity model for the liquid, Peng-Robinson or SRK for the vapour
-Fugacity.system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" }).bubbleT([0.5, 0.5], 1500);
+CHEPTA.system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" }).bubbleT([0.5, 0.5], 1500);
 // mixture enthalpy, J/mol, reference ideal gas at 298.15 K
-Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" }).enthalpy("liquid", 350, 101.325, [0.5, 0.5]);
+CHEPTA.system({ components: ["ethanol", "water"], model: "NRTL" }).enthalpy("liquid", 350, 101.325, [0.5, 0.5]);
 // flash: { z, T, P }, { z, P, H }, { z, P, VF } or { z, T, VF }; feed conditions add the heat duty
-Fugacity.system({ components: ["ethanol", "water"], model: "NRTL" })
+CHEPTA.system({ components: ["ethanol", "water"], model: "NRTL" })
   .flash({ z: [0.4, 0.6], T: 355, P: 101.325 }, { feed: { T: 298.15, P: 101.325 } });
 // { T, P, VF: 0.479, H_J_mol, phases: [{ type, fraction, composition, h_J_mol }, ...], duty_J_mol: 24582, warnings, sources }
 // two liquids: water + ethyl acetate boil at their three-phase point, 343.76 K (NRTL)
-Fugacity.system({ components: ["water", "ethyl acetate"], model: "NRTL" }).flash({ z: [0.5, 0.5], P: 101.325, VF: 0.2 });
+CHEPTA.system({ components: ["water", "ethyl acetate"], model: "NRTL" }).flash({ z: [0.5, 0.5], P: 101.325, VF: 0.2 });
 // phases: vapour 0.2, liquid "Ethyl acetate-rich" 0.450, liquid "Water-rich" 0.350
 s.azeotropes(101.325);            // [{ x, T, type }]
 // errors carry a code: BAD_INPUT, OUT_OF_RANGE, MISSING_DATA, NO_CONVERGENCE, PHASE_SPLIT, NOT_AVAILABLE
 try { s.bubbleT([0.5, 0.5, 0], 101.325); } catch (e) { e.code; }   // "BAD_INPUT"
 
-Fugacity.pure("water").tsat(101.325);         // 373.1243 K (IAPWS-IF97)
-Fugacity.pure("benzene").props(298.15, 101.325); // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }
-Fugacity.steam(573.15, 1000);                 // { region: 2, h_kJ_kg: 3051.7, v_m3_kg: 0.25798, ... }
+CHEPTA.pure("water").tsat(101.325);         // 373.1243 K (IAPWS-IF97)
+CHEPTA.pure("benzene").props(298.15, 101.325); // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }
+CHEPTA.steam(573.15, 1000);                 // { region: 2, h_kJ_kg: 3051.7, v_m3_kg: 0.25798, ... }
 
-const g = Fugacity.system({ components: ["methane", "ethane"], model: "PR" });
+const g = CHEPTA.system({ components: ["methane", "ethane"], model: "PR" });
 g.bubbleP([0.3, 0.7], 200);                   // { P: 1618.1, y: [0.862, 0.138], stability, warnings }
-Fugacity.gasSolubility("oxygen", 298.15, 21.2); // mole fraction in water, 4.86e-6
+CHEPTA.gasSolubility("oxygen", 298.15, 21.2); // mole fraction in water, 4.86e-6
 ```
 
 Property explorer in a page:
 
 ```html
 <script>
-  Fugacity.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
+  CHEPTA.mountProperties("#app", { component: "water", property: "enthalpy", pressures_kPa: [100, 1000] });
 </script>
 ```
 
-More in [`examples/`](examples) and [ai/instructions/use-fugacity.md](ai/instructions/use-fugacity.md).
+More in [`examples/`](examples) and [ai/instructions/use-chepta.md](ai/instructions/use-chepta.md).
 
 ## How we know the numbers are right
 
@@ -179,6 +183,6 @@ change reviewed by someone other than its author.
 
 Code: MIT. Data: under the license of its source, see [src/data/LICENSES.md](src/data/LICENSES.md).
 
-The repository therefore carries two licences on purpose: the MIT license ([LICENSE](LICENSE)) for Fugacity's own code, and the licences of the redistributed data, chiefly the Artistic License 2.0 of the ChemSep databank, whose text must travel with the data it covers ([src/data/LICENSES.md](src/data/LICENSES.md)).
+The repository therefore carries two licences on purpose: the MIT license ([LICENSE](LICENSE)) for CHEPTA's own code, and the licences of the redistributed data, chiefly the Artistic License 2.0 of the ChemSep databank, whose text must travel with the data it covers ([src/data/LICENSES.md](src/data/LICENSES.md)).
 
-**Your files and results are yours.** Project files, flowsheets, exports (CSV, Excel) and the numbers and diagrams you make with Fugacity belong to the people who make them. The MIT license covers the Fugacity software, not what you create with it: Fugacity claims no rights in your inputs or results and puts no conditions on their use, commercial use included. Exports may repeat a few values from Fugacity's data (for example molar masses); their sources are listed in [src/data/LICENSES.md](src/data/LICENSES.md).
+**Your files and results are yours.** Project files, flowsheets, exports (CSV, Excel) and the numbers and diagrams you make with CHEPTA belong to the people who make them. The MIT license covers the CHEPTA software, not what you create with it: CHEPTA claims no rights in your inputs or results and puts no conditions on their use, commercial use included. Exports may repeat a few values from CHEPTA's data (for example molar masses); their sources are listed in [src/data/LICENSES.md](src/data/LICENSES.md).

@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, FugacityError } from "../src/index.js";
+import { system, CheptaError } from "../src/index.js";
 
 const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/gamma_phi_vapour.json", import.meta.url)));
 
@@ -64,7 +64,7 @@ test("diagrams and azeotropes work with a cubic vapour", () => {
 });
 
 test("vapour options are checked", () => {
-  const err = (fn, code, re) => assert.throws(fn, e => e instanceof FugacityError && e.code === code && re.test(e.message));
+  const err = (fn, code, re) => assert.throws(fn, e => e instanceof CheptaError && e.code === code && re.test(e.message));
   err(() => system({ components: ["ethanol", "water"], model: "NRTL", vapour: "virial" }), "BAD_INPUT", /Unknown vapour model "virial"/);
   err(() => system({ components: ["methane", "ethane"], model: "PR", vapour: "SRK" }), "BAD_INPUT", /describes both phases/);
   err(() => system({ components: ["water", "acetic acid"], model: "NRTL", vapour: "PR" }), "NOT_AVAILABLE", /dimerizes/);
@@ -100,7 +100,7 @@ test("high pressure: a pure component boils at its vapour pressure; above a crit
   assert.ok(s.bubbleT([0.5, 0.5], 5000).warnings.some(w => /Poynting correction uses the liquid density/.test(w)));
   // above it: an error with a code, not a number
   const e = system({ components: ["ethanol", "water"], model: "NRTL", vapour: "PR" });
-  assert.throws(() => e.bubbleP([0.5, 0.5], 520), err => err instanceof FugacityError && err.code === "OUT_OF_RANGE" && /above its critical temperature/.test(err.message));
+  assert.throws(() => e.bubbleP([0.5, 0.5], 520), err => err instanceof CheptaError && err.code === "OUT_OF_RANGE" && /above its critical temperature/.test(err.message));
   // the ideal-gas vapour keeps its earlier behaviour there
   assert.ok(Number.isFinite(system({ components: ["ethanol", "water"], model: "NRTL" }).bubbleP([0.5, 0.5], 520).P));
 });

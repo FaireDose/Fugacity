@@ -1,4 +1,4 @@
-// Workbench navigation (Fugacity.app): workspaces, the inputs of each view, their checks,
+// Workbench navigation (CHEPTA.app): workspaces, the inputs of each view, their checks,
 // the supporting panels, and the seven acceptance workflows at the state level (DOM-free).
 // The same workflows are checked in a browser with Playwright (see the pull request).
 import { test } from "node:test";

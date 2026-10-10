@@ -423,7 +423,7 @@ SEED = 20261008
 # (https://processdesign.mccormick.northwestern.edu/index.php/Property_package, free to read):
 #   - nonpolar real components (light gases, hydrocarbons): Peng-Robinson or SRK, at any pressure;
 #   - polar non-electrolytes below 10 bar with interaction parameters: NRTL or UNIQUAC (Wilson without two liquids);
-#     above 10 bar PSRK or a cubic equation with Wong-Sandler / MHV2 mixing rules, which Fugacity does not have: no case;
+#     above 10 bar PSRK or a cubic equation with Wong-Sandler / MHV2 mixing rules, which CHEPTA does not have: no case;
 #   - an equation of state only where no second liquid is expected; an activity model where the reduced temperature
 #     by Kay's rule, T / sum(z_i Tc_i), is below about 0.75.
 # And a physical one: no drum below the melting (triple) point of a component present above 0.1 % (it would freeze).
@@ -575,7 +575,7 @@ def write_doc(cases):
          "feed (test). The tolerance against VMGSim, set before the comparison: 10 %% for every component above 1 %% of "
          "its product stream (a different program and a different Peng-Robinson, VMGSim's \"advanced\" variant with its "
          "own k_ij).", "",
-         "| Component | Feed | P1, Fugacity | P1, VMGSim APR | P1, FLOWTRAN | P2, Fugacity | P2, VMGSim APR | P2, FLOWTRAN |",
+         "| Component | Feed | P1, CHEPTA | P1, VMGSim APR | P1, FLOWTRAN | P2, CHEPTA | P2, VMGSim APR | P2, FLOWTRAN |",
          "|---|---|---|---|---|---|---|---|"]
     feed = CAVETT["feed"]["flow"]
     for i, c in enumerate(ids):
@@ -588,7 +588,7 @@ def write_doc(cases):
     L += ["", pub["notes"], "",
           "Drums: " + "; ".join("%s %.2f K, vapour fraction %.4f" % (k, d["T_K"], d["VF"]) for k, d in cav["drums"].items()) + ".",
           "", "Cavett (1963) and Rosen and Pauls (1977) found this problem slow to converge (propane builds up in all three "
-          "loops). At Fugacity's tolerance (1e-8, relative), Wegstein needed 170 iterations and direct substitution 222; "
+          "loops). At CHEPTA's tolerance (1e-8, relative), Wegstein needed 170 iterations and direct substitution 222; "
           "Broyden's method, now the default, needs 37.", "",
           "## Generated flowsheets", "",
           "| Case | Components | Recycles (reference tears) | Drums: vapour fraction at the solution | Liquids (thermo FlashVLN) |",

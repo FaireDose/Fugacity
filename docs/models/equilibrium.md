@@ -1,6 +1,6 @@
 # Equilibrium algorithms (layer 2)
 
-How Fugacity finds the phases. Every algorithm here takes a system from
+How CHEPTA finds the phases. Every algorithm here takes a system from
 [thermodynamics.md](thermodynamics.md) and gets its numbers only by asking that system:
 
 - activity coefficients;

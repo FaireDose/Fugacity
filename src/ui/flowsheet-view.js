@@ -748,14 +748,14 @@ function csvTools(ctx, fs, res, u) {
       setTimeout(() => URL.revokeObjectURL(url), 2000);
       status.textContent = concept
         ? `Saved ${name}: every flow is a formula, the flash drums included (an approximation for concept design: constant activity coefficients at the drum's T and P; see its About sheet). If nothing was downloaded, the page does not allow downloads.`
-        : `Saved ${name}: blue cells are inputs, black cells formulas, grey cells values from Fugacity (see its About sheet). If nothing was downloaded, the page does not allow downloads.`;
+        : `Saved ${name}: blue cells are inputs, black cells formulas, grey cells values from CHEPTA (see its About sheet). If nothing was downloaded, the page does not allow downloads.`;
     } catch (e) { status.textContent = `The Excel file could not be made: ${e.message}`; }
   };
   return [h("div", { class: "fa-in-actions" },
-    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx", title: "An Excel workbook with the balances as formulas; the flash drum outlets as values from Fugacity", on: { click: excel(false) } }, icon("table", 15), "Download Excel"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx", title: "An Excel workbook with the balances as formulas; the flash drum outlets as values from CHEPTA", on: { click: excel(false) } }, icon("table", 15), "Download Excel"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-xlsx-concept",
       title: "An Excel workbook where the flash drums are formulas too (K = γ·Psat/P, Rachford-Rice), so the whole mass balance recalculates when you change feeds, splits, or a drum's T and P: an approximation for concept design",
       on: { click: excel(true) } }, icon("table", 15), "Excel concept model"),
-    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv", on: { click: () => ctx.saveText(csv, "fugacity-flowsheet-streams.csv", "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
+    h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv", on: { click: () => ctx.saveText(csv, "chepta-flowsheet-streams.csv", "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "fs-csv-copy", on: { click: () => ctx.copyText(csv, status, box) } }, icon("copy", 15), "Copy CSV")), status, box];
 }

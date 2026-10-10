@@ -24,7 +24,7 @@ Rejected draws:
 
 Peng-Robinson with the databank's k_ij (ChemSep). Flows as printed (mol/hr); the flowsheet is homogeneous in the flows, so the units do not matter. The engine agrees with the reference below to better than 2e-5 of the feed (test). The tolerance against VMGSim, set before the comparison: 10 %% for every component above 1 %% of its product stream (a different program and a different Peng-Robinson, VMGSim's "advanced" variant with its own k_ij).
 
-| Component | Feed | P1, Fugacity | P1, VMGSim APR | P1, FLOWTRAN | P2, Fugacity | P2, VMGSim APR | P2, FLOWTRAN |
+| Component | Feed | P1, CHEPTA | P1, VMGSim APR | P1, FLOWTRAN | P2, CHEPTA | P2, VMGSim APR | P2, FLOWTRAN |
 |---|---|---|---|---|---|---|---|
 | Nitrogen | 358.2 | 358.20 | 358.2 | 358.2 | 0.00 | 0 | 0.0009 |
 | Carbon dioxide | 4965.6 | 4958.87 | 4961.79 | 4964.7 | 6.73 | 3.81 | 4.73 |
@@ -48,7 +48,7 @@ FLOWTRAN's P1 ethane, 2883.2, is above the feed (2395.5); Rosen reads it as a ty
 
 Drums: FL2 322.04 K, vapour fraction 0.4063; FL1 310.93 K, vapour fraction 0.7527; FL3 308.71 K, vapour fraction 0.3963; FL4 302.59 K, vapour fraction 0.2632.
 
-Cavett (1963) and Rosen and Pauls (1977) found this problem slow to converge (propane builds up in all three loops). At Fugacity's tolerance (1e-8, relative), Wegstein needed 170 iterations and direct substitution 222; Broyden's method, now the default, needs 37.
+Cavett (1963) and Rosen and Pauls (1977) found this problem slow to converge (propane builds up in all three loops). At CHEPTA's tolerance (1e-8, relative), Wegstein needed 170 iterations and direct substitution 222; Broyden's method, now the default, needs 37.
 
 ## Generated flowsheets
 

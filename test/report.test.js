@@ -5,7 +5,7 @@ import {
   deviation, withinTolerance, classify, NotAvailable, runCases, compare, renderMarkdown, renderHtml,
   loadCases, loadReferences, formatDeviation, MAX_MARKDOWN,
 } from "../scripts/engineering-report.mjs";
-import * as Fugacity from "../src/index.js";
+import * as CHEPTA from "../src/index.js";
 
 const tolerances = {
   rel1: { rel: 0.01 }, abs05: { abs: 0.5, unit: "K" }, info5: { rel: 0.05, informational: true },
@@ -63,9 +63,9 @@ test("feature detection: functions missing in a version are 'not available', not
   assert.equal(r.tb.T_C.status, "ok");
   assert.ok(Math.abs(r.tb.T_C.value - (351.0 - 273.15)) < 1e-12);
   assert.equal(r.rho.rho_kg_m3.status, "na");
-  assert.match(r.rho.rho_kg_m3.reason, /Fugacity\.pure\(\) is not available/);
+  assert.match(r.rho.rho_kg_m3.reason, /CHEPTA\.pure\(\) is not available/);
   assert.equal(r.steam.h_kJ_kg.status, "na");
-  assert.match(r.steam.h_kJ_kg.reason, /Fugacity\.steam\(\) is not available/);
+  assert.match(r.steam.h_kJ_kg.reason, /CHEPTA\.steam\(\) is not available/);
   assert.equal(r.sat.P_bar.status, "na");
   assert.equal(r.pr.rho_kg_m3.status, "na");
   assert.match(r.pr.rho_kg_m3.reason, /Unknown model "PR"/);
@@ -171,7 +171,7 @@ test("the Markdown report stays under the comment size limit", () => {
 
 test("the cases run on the current source without errors, and the HTML report is self-contained", () => {
   const cases = loadCases();
-  const res = runCases(Fugacity, cases, { curves: false });
+  const res = runCases(CHEPTA, cases, { curves: false });
   const errors = Object.entries(res.results).flatMap(([id, q]) =>
     Object.entries(q).filter(([, r]) => r.status === "error").map(([k, r]) => `${id} ${k}: ${r.reason}`));
   assert.deepEqual(errors, []);

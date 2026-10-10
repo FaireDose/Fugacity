@@ -1,11 +1,11 @@
 ---
-name: fugacity
-description: Build live chemical-engineering tools in an artifact with the open-source Fugacity library - process flowsheets with recycles (feeds, mixers, splitters, separators, flash drums, heaters), phase diagrams (T-x-y, ternary maps, residue curves, azeotropes), bubble and dew points (activity models or Peng-Robinson/SRK), pure-component properties, steam tables and gas solubility in water. Use when the user asks for VLE, phase diagrams, physical properties of the supported components, steam properties or Henry's law.
+name: chepta
+description: Build live chemical-engineering tools in an artifact with the open-source CHEPTA library - process flowsheets with recycles (feeds, mixers, splitters, separators, flash drums, heaters), phase diagrams (T-x-y, ternary maps, residue curves, azeotropes), bubble and dew points (activity models or Peng-Robinson/SRK), pure-component properties, steam tables and gas solubility in water. Use when the user asks for VLE, phase diagrams, physical properties of the supported components, steam properties or Henry's law.
 ---
 
-# Fugacity: phase equilibria and properties in an artifact
+# CHEPTA: phase equilibria and properties in an artifact
 
-Fugacity is an open-source JavaScript library (https://github.com/FaireDose/Fugacity)
+CHEPTA is an open-source JavaScript library (https://github.com/FaireDose/CHEPTA)
 that calculates vapour-liquid equilibria in the viewer's browser. Use it instead of
 writing thermodynamics by hand: the models and parameters are validated, and the page
 only needs a few lines.
@@ -18,21 +18,21 @@ whole page:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script>
 <script>
-  Fugacity.app("#app", { components: [] });
+  CHEPTA.app("#app", { components: [] });
 </script>
 ```
 
 The page loads the library from jsdelivr (pinned version) when it opens. Do not download,
-read, inline, count or test `fugacity.js` (about 850 KB) first, and do not check components
+read, inline, count or test `chepta.js` (about 850 KB) first, and do not check components
 or models in a code sandbox before building the page: the workbench has the component
 pickers, examples, models, pressure, units and parameter sources. With `components: []`
 it opens empty and the user chooses; if the user names components, a diagram or
 conditions, pass them:
 
 ```js
-Fugacity.app("#app", {
+CHEPTA.app("#app", {
   start: "ternary",   // "txy", "ternary", "azeotropes", "pxy", "envelope", "flash", "henry", "solid", "sle", "properties", "steam"
   components: ["methanol", "acetone", "chloroform"],
   model: "NRTL",      // "NRTL", "UNIQUAC", "ideal", "PR", "SRK"
@@ -40,13 +40,13 @@ Fugacity.app("#app", {
 });
 ```
 
-For one diagram without the ribbon, call `Fugacity.mount`:
+For one diagram without the ribbon, call `CHEPTA.mount`:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script>
 <script>
-  Fugacity.mount("#app", {
+  CHEPTA.mount("#app", {
     components: ["water", "acetic acid", "ethylene glycol"],
     model: "NRTL",        // "NRTL", "UNIQUAC" or "ideal"
     P_kPa: 101.325
@@ -66,12 +66,12 @@ For one diagram without the ribbon, call `Fugacity.mount`:
 
 ## Flowsheets
 
-When the user describes a process (a feed, units, conditions, a recycle), write it as a Fugacity
+When the user describes a process (a feed, units, conditions, a recycle), write it as a CHEPTA
 project with a flowsheet and open it in the workbench's Flowsheet tab:
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script>
 <script>
   const project = {
     fugacity_project: 2,
@@ -93,7 +93,7 @@ project with a flowsheet and open it in the workbench's Flowsheet tab:
       ]
     }
   };
-  Fugacity.app("#app", { project });
+  CHEPTA.app("#app", { project });
 </script>
 ```
 
@@ -107,17 +107,17 @@ project with a flowsheet and open it in the workbench's Flowsheet tab:
   stream per outlet); flash in, vapour, liquid, liquid2 (optional); heater in, out; product in.
   Splitters, separators and heaters may take several inlets (mixed first).
 - Before giving me the page, check the project in code you can run:
-  `Fugacity.checkProject(project)` lists every problem (connections and degrees of freedom,
+  `CHEPTA.checkProject(project)` lists every problem (connections and degrees of freedom,
   e.g. "Flash drum V1: missing: one more of T_K, P_kPa, VF or duty_kW"); fix them all.
-  `Fugacity.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles); a
+  `CHEPTA.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles); a
   recycle without a way out throws an error that says so. The schema is at
-  https://fairedose.github.io/Fugacity/schema/project-2.json.
-- If the user gives a project file (`.fugacity.json`), open it the same way with `{ project }`;
+  https://fairedose.github.io/CHEPTA/schema/project-2.json.
+- If the user gives a project file (`.chepta.json`), open it the same way with `{ project }`;
   to change it, edit the JSON, check it again and open it.
 
 **Keeping work in the chat.** The workbench saves projects as files (File menu), in the
 browser, and, if this chat gives its pages persistent storage, there too: pass that storage
-to the workbench as `Fugacity.app("#app", { storage: { list, get, put, remove } })`, four
+to the workbench as `CHEPTA.app("#app", { storage: { list, get, put, remove } })`, four
 functions that list the saved names, return a project, keep a project under a name, and
 delete one (promises are fine). Only do this with storage the chat platform really offers;
 otherwise leave it out and tell the user to use File > Save or Copy.
@@ -128,18 +128,18 @@ When the user wants values rather than a diagram, use the calculation functions
 (temperature in K, pressure in kPa, mole fractions):
 
 ```js
-const s = Fugacity.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
+const s = CHEPTA.system({ components: ["water", "acetic acid"], model: "UNIQUAC" });
 s.bubbleT([0.5, 0.5], 101.325);   // { T, y, gamma }
 s.bubbleP([0.5, 0.5], 373.15);    // { P, y, gamma }
 s.txy(101.325, 51);               // [{ x, T, y }, ...]
 s.azeotropes(101.325);            // binary: [{ x, T, type }]
 s.residueCurve([0.3, 0.3, 0.4], 101.325);
-Fugacity.listComponents();        // what the databank holds
+CHEPTA.listComponents();        // what the databank holds
 // solid-liquid equilibrium (a pure solid; model "ideal", "NRTL" or "UNIQUAC"): solubility at T, curve, eutectic
-const sl = Fugacity.system({ components: ["benzoic acid", "ethanol"], model: "ideal" });
+const sl = CHEPTA.system({ components: ["benzoic acid", "ethanol"], model: "ideal" });
 sl.solidSolubility("benzoic acid", 298.15);   // { xSolute, x, gamma, xIdeal, Tm_K, Hfus_J_mol, splits, notes }
 sl.solubilityCurve("benzoic acid", { T_from: 280, T_to: 340, n: 31 });
-Fugacity.system({ components: ["benzene", "naphthalene"], model: "ideal" }).sleDiagram();   // liquidus and eutectic
+CHEPTA.system({ components: ["benzene", "naphthalene"], model: "ideal" }).sleDiagram();   // liquidus and eutectic
 ```
 
 The ideal solubility (model "ideal") is close to measured data only where the solvent is chemically
@@ -150,32 +150,32 @@ yet: say so to the user.
 ## Properties, steam and gases
 
 ```js
-const w = Fugacity.pure("water");
+const w = CHEPTA.pure("water");
 w.tsat(101.325);                  // K
 w.props(423.15, 101.325);         // { phase, rho_kg_m3, cp_J_molK, h_J_mol, mu_Pa_s, k_W_mK, sources, notes }
-Fugacity.steam(573.15, 1000);     // IAPWS-IF97, steam-table units (kJ/kg, m3/kg)
-Fugacity.steamSat({ P_kPa: 1000 });
+CHEPTA.steam(573.15, 1000);     // IAPWS-IF97, steam-table units (kJ/kg, m3/kg)
+CHEPTA.steamSat({ P_kPa: 1000 });
 
-const g = Fugacity.system({ components: ["methane", "ethane"], model: "PR" });   // or "SRK"
+const g = CHEPTA.system({ components: ["methane", "ethane"], model: "PR" });   // or "SRK"
 g.bubbleP([0.3, 0.7], 200);       // { P, y, stability, warnings }
 g.dewT([0.5, 0.5], 2000);         // { T, x, ... }
-Fugacity.gasSolubility("oxygen", 298.15, 21.2);   // mole fraction in water
+CHEPTA.gasSolubility("oxygen", 298.15, 21.2);   // mole fraction in water
 ```
 
 For a property explorer (curves at several pressures, saturation table, units switch):
-`Fugacity.mountProperties("#app", { component: "water", property: "enthalpy" })`.
+`CHEPTA.mountProperties("#app", { component: "water", property: "enthalpy" })`.
 Properties: "density", "enthalpy", "cp", "viscosity", "conductivity", "vapourPressure", or a
-name in `Fugacity.PROPERTY_NAMES`. Missing data comes back as null with a note: report it,
+name in `CHEPTA.PROPERTY_NAMES`. Missing data comes back as null with a note: report it,
 don't fill it in.
 
 ## Rules
 
-- Only use components that `Fugacity.listComponents()` returns. Version 0.3.0 holds 92
+- Only use components that `CHEPTA.listComponents()` returns. Version 0.3.0 holds 92
   components (water, alcohols, glycols, ketones, esters, aromatics, alkanes, light gases
   and more). Not every pair has parameters: the widget names missing pairs, and equation-of-state results carry
   `warnings` for pairs without k_ij. If the user asks for other chemicals or pairs, say
   they are not in the databank yet and point to
-  https://github.com/FaireDose/Fugacity/blob/main/CONTRIBUTING.md; do not invent parameters.
+  https://github.com/FaireDose/CHEPTA/blob/main/CONTRIBUTING.md; do not invent parameters.
 - Missing binary parameters raise an error that names the pair. Do not switch on
   `allowMissingPairs` without telling the user that those pairs will be treated as ideal.
 - Results are model predictions. Say so, and point to the parameter sources the widget

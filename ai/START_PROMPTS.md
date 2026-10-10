@@ -8,45 +8,45 @@ instead. Replace the parts in **bold** with your own choice.
 Your own assistant account does the work; the project never asks for your keys or
 passwords.
 
-## Use Fugacity
+## Use CHEPTA
 
 ### Load the workbench (fastest)
 
 The assistant needs to open no link for this one:
 
-> Load the Fugacity workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
-> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/fugacity@0.3.0/dist/fugacity.js"></script><script>Fugacity.app("#app", { components: [] })</script>`
+> Load the CHEPTA workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
+> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script><script>CHEPTA.app("#app", { components: [] })</script>`
 
 It opens empty; choose the components in it.
 
 ### Load the workbench with your components
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. Load the Fugacity workbench with **methanol, acetone and chloroform** at 1 atm.
+> Read https://fairedose.github.io/CHEPTA/use.md and follow it. Load the CHEPTA workbench with **methanol, acetone and chloroform** at 1 atm.
 
 If the assistant says it cannot open that address, give it
-https://raw.githubusercontent.com/FaireDose/Fugacity/main/ai/instructions/use-fugacity.md
+https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ai/instructions/use-chepta.md
 (the same file), or paste the file into the chat.
 
 ### Build a flowsheet
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. Build a Fugacity flowsheet:
+> Read https://fairedose.github.io/CHEPTA/use.md and follow it. Build a CHEPTA flowsheet:
 > **100 kmol/h of 30 mol % ethanol in water at 25 °C and 1 atm, heated to a vapour fraction of
 > 0.4, then separated in a flash drum; 70 % of the liquid goes back to the heater**. Check it
-> with Fugacity.checkProject before you show it, and open it in the workbench.
+> with CHEPTA.checkProject before you show it, and open it in the workbench.
 
 ### Ask for a property value
 
-> Read https://fairedose.github.io/Fugacity/use.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
+> Read https://fairedose.github.io/CHEPTA/use.md and follow it. What are the **density and viscosity of liquid water at 80 °C and 1 bar**?
 > Give the source of each value.
 
 ## Develop the simulator
 
 ### Add a thermodynamic model
 
-> Read https://fairedose.github.io/Fugacity/agents.md,
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md and
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/proposals/0000-template.md.
-> I want to add the **Wilson activity model** to Fugacity. Help me write the proposal:
+> Read https://fairedose.github.io/CHEPTA/agents.md,
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ARCHITECTURE.md and
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/proposals/0000-template.md.
+> I want to add the **Wilson activity model** to CHEPTA. Help me write the proposal:
 > the equations with open references, which layer and interface it extends, which new
 > component data it needs and from which open sources, and how we will validate it
 > (independent implementation and open data).
@@ -56,9 +56,9 @@ liquid-liquid equilibria.
 
 ### Build an algorithm or a unit operation
 
-> Read https://fairedose.github.io/Fugacity/agents.md,
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md and
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md.
+> Read https://fairedose.github.io/CHEPTA/agents.md,
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ARCHITECTURE.md and
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ROADMAP.md.
 > I want to work on **the isothermal (PT) flash**. Explain which roadmap and architecture
 > steps it depends on, propose the algorithm with open references, and write the tests
 > that would prove it right. If I give you access to my fork, implement it.
@@ -70,30 +70,30 @@ flash drum, recycle solver, shortcut column, McCabe–Thiele view.
 
 > Follow AGENTS.md. Implement **proposal 0001 (property package)** in this repository:
 > code in the right layer, tests against an independent calculation and open data, all
-> checks passing. Then open a pull request to FaireDose/Fugacity with the template filled
+> checks passing. Then open a pull request to FaireDose/CHEPTA with the template filled
 > in.
 
 ## Shape the roadmap
 
 ### Propose a new roadmap item
 
-> Read https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md and
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ARCHITECTURE.md. I think
-> Fugacity should support **[your idea, for example reactive distillation]**. Help me
+> Read https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ROADMAP.md and
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ARCHITECTURE.md. I think
+> CHEPTA should support **[your idea, for example reactive distillation]**. Help me
 > write it up as a roadmap item: why it matters, what it depends on, and the steps.
 
 ### Review a proposal
 
-> Read https://fairedose.github.io/Fugacity/agents.md. Review
-> **https://github.com/FaireDose/Fugacity/pull/NN** as an experienced process engineer:
+> Read https://fairedose.github.io/CHEPTA/agents.md. Review
+> **https://github.com/FaireDose/CHEPTA/pull/NN** as an experienced process engineer:
 > check the equations against their references, the validation plan, and whether it fits
 > the architecture. List concrete objections and what would resolve them. I will post the
 > review myself.
 
 ### Work on the ambitious tracks: cost engineering and agentic design
 
-> Read https://fairedose.github.io/Fugacity/agents.md and
-> https://raw.githubusercontent.com/FaireDose/Fugacity/main/ROADMAP.md (cost engineering
+> Read https://fairedose.github.io/CHEPTA/agents.md and
+> https://raw.githubusercontent.com/FaireDose/CHEPTA/main/ROADMAP.md (cost engineering
 > and agentic design tracks). Help me with item **E2: equipment cost correlations**. Find
 > correlations in open sources only (open-access articles, open government or university
 > reports, free books), with the year of their cost basis, and draft a proposal: which
@@ -107,10 +107,10 @@ answer.
 
 ### Find open data for a pair
 
-> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
+> Read https://fairedose.github.io/CHEPTA/agents.md and follow it.
 > I want to contribute open experimental vapour-liquid equilibrium data for
 > **water + 1-propanol**. Search open sources (open-access articles, the NIST ThermoML
-> Archive, open repositories), tell me what you find with links, and prepare a Fugacity
+> Archive, open repositories), tell me what you find with links, and prepare a CHEPTA
 > contribution package from the best data set. Do not use numbers you have not read in
 > the source.
 
@@ -118,15 +118,15 @@ Pick your pair from the [data wanted list](../docs/DATA_WANTED.md).
 
 ### Add a component
 
-> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
-> Help me add **1-propanol** to Fugacity: constants from the NIST Chemistry WebBook,
+> Read https://fairedose.github.io/CHEPTA/agents.md and follow it.
+> Help me add **1-propanol** to CHEPTA: constants from the NIST Chemistry WebBook,
 > vapour-pressure coefficients from an open source, UNIQUAC r and q. Prepare a
 > contribution package of type "component" and list every source.
 
 ### Report a wrong result
 
-> Read https://fairedose.github.io/Fugacity/agents.md and follow it.
-> Fugacity gives **[what you saw]** for **[system and conditions]**, but **[open source]**
+> Read https://fairedose.github.io/CHEPTA/agents.md and follow it.
+> CHEPTA gives **[what you saw]** for **[system and conditions]**, but **[open source]**
 > reports **[value]**. Help me prepare a contribution package of type "correction".
 
 ## After the assistant answers
@@ -135,7 +135,7 @@ Read the result critically; you are the engineer. Check every number against its
 then submit:
 
 - proposals and development ideas: the
-  [Proposal, model or feature](https://github.com/FaireDose/Fugacity/issues/new?template=model-or-feature.yml)
+  [Proposal, model or feature](https://github.com/FaireDose/CHEPTA/issues/new?template=model-or-feature.yml)
   form, or let your coding agent open a pull request ([CONTRIBUTING.md](../CONTRIBUTING.md));
 - data packages, components, corrections: the
-  [Data](https://github.com/FaireDose/Fugacity/issues/new?template=ai-contribution.yml) form.
+  [Data](https://github.com/FaireDose/CHEPTA/issues/new?template=ai-contribution.yml) form.

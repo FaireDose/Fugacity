@@ -43,7 +43,7 @@ test("workbook: an About sheet, then one sheet per table with title, note, label
     tables: [{ name: "Data", note: "two rows", columns: [{ label: "x", unit: "mol/mol" }, { label: "T", unit: "°C" }], rows: [[0, 100], [1, NaN]] }] };
   const sheets = diagramSheets(desc, { version: "9.9.9", date: new Date("2026-10-09T00:00:00Z") });
   assert.deepEqual(sheets.map(s => s.name), ["About", "Data"]);
-  assert.deepEqual(sheets[0].rows[2], ["Exported from", "Fugacity 9.9.9"]);
+  assert.deepEqual(sheets[0].rows[2], ["Exported from", "CHEPTA 9.9.9"]);
   assert.deepEqual(sheets[0].rows[3], ["Date", "2026-10-09"]);
   assert.deepEqual(sheets[1].rows.slice(2, 4), [[{ v: "x", s: "bold" }, { v: "T", s: "bold" }], ["mol/mol", "°C"]]);
   assert.deepEqual(sheets[1].rows.slice(4), [[0, 100], [1, null]], "a value the engine has not got stays an empty cell");
@@ -61,8 +61,8 @@ test("sheet and file names follow Excel's rules", () => {
   assert.equal(names[1], "Methanol + acetone  1 2");
   assert.ok(names.every(n => n.length <= 31 && !/[[\]:*?/\\]/.test(n)));
   assert.equal(new Set(names.map(n => n.toLowerCase())).size, names.length, "unique, ignoring case");
-  assert.equal(exportFileName({ file: "txy ethanol water" }), "fugacity-txy-ethanol-water.xlsx");
-  assert.equal(exportFileName({ title: "Solubility of β-carotène / 2" }), "fugacity-solubility-of-carotene-2.xlsx");
+  assert.equal(exportFileName({ file: "txy ethanol water" }), "chepta-txy-ethanol-water.xlsx");
+  assert.equal(exportFileName({ title: "Solubility of β-carotène / 2" }), "chepta-solubility-of-carotene-2.xlsx");
 });
 
 test("T-x-y: every one of the 101 compositions drawn, T in the display unit, wt % next to mole fractions", () => {
@@ -141,7 +141,7 @@ test("feedback: the bug form opens with the setup in its 'What happened' field; 
   const bug = new URL(links[0].url);
   assert.equal(bug.origin + bug.pathname, `${REPO_URL}/issues/new`);
   assert.equal(bug.searchParams.get("template"), "bug.yml");
-  assert.match(bug.searchParams.get("what"), /^Fugacity 0\.3\.0\. Phase equilibrium, T-x-y diagram: Ethanol and water; NRTL\.\n\nWhat happened:/);
+  assert.match(bug.searchParams.get("what"), /^CHEPTA 0\.3\.0\. Phase equilibrium, T-x-y diagram: Ethanol and water; NRTL\.\n\nWhat happened:/);
   assert.equal(links[2].url, `${REPO_URL}/discussions`);
   // the templates and the field id exist in the repository
   for (const l of links.filter(l => l.url.includes("template="))) {

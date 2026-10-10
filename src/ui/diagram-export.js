@@ -12,7 +12,7 @@
  *                rows: [[0, 0, 100.0], ...] }] }
  *
  * and diagramXlsx(desc, { version, date }) returns the bytes of a workbook: an "About" sheet
- * (what was calculated, the settings and the Fugacity version), then one sheet per table with a
+ * (what was calculated, the settings and the CHEPTA version), then one sheet per table with a
  * title, the note, a row of column labels, a row of units and the data. Values only, no
  * formulas: every number comes from the engine, as on the canvas. A cell that the engine could
  * not calculate is left empty. DOM-free (tested in test/diagram-export.test.js).
@@ -44,14 +44,14 @@ export function diagramSheets(desc, { version = "", date = new Date() } = {}) {
     rows: [
       [{ v: desc.title, s: "head" }],
       [],
-      ["Exported from", `Fugacity ${version}`.trim()],
+      ["Exported from", `CHEPTA ${version}`.trim()],
       ["Date", date.toISOString().slice(0, 10)],
       ...(desc.about ?? []).map(([k, v]) => [k, cell(v)]),
       [],
       [{ v: "Sheets", s: "bold" }],
       ...desc.tables.map((t, i) => [names[i + 1], `${t.rows.length} row${t.rows.length === 1 ? "" : "s"}${t.note ? `. ${t.note}` : ""}`]),
       [],
-      ["", "Values calculated by Fugacity with the settings above, as drawn on the canvas; no formulas. Empty cells: the engine found no solution there (the canvas leaves a gap)."],
+      ["", "Values calculated by CHEPTA with the settings above, as drawn on the canvas; no formulas. Empty cells: the engine found no solution there (the canvas leaves a gap)."],
     ],
   };
   const sheets = desc.tables.map((t, i) => {
@@ -80,9 +80,9 @@ export function diagramXlsx(desc, opts) {
   return xlsx(diagramSheets(desc, opts));
 }
 
-/** "fugacity-txy-ethanol-water.xlsx": lower case, letters, digits and hyphens only. */
+/** "chepta-txy-ethanol-water.xlsx": lower case, letters, digits and hyphens only. */
 export function exportFileName(desc) {
   const slug = String(desc.file ?? desc.title ?? "diagram").toLowerCase().normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
-  return `fugacity-${slug || "diagram"}.xlsx`;
+  return `chepta-${slug || "diagram"}.xlsx`;
 }

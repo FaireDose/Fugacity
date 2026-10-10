@@ -1,5 +1,5 @@
 /**
- * Workbench canvases (Fugacity.app): each function draws one view into the canvas, writes
+ * Workbench canvases (CHEPTA.app): each function draws one view into the canvas, writes
  * the readout into the Results panel and returns { data } for the status bar. The source
  * browser (sourcesPanel) fills the Sources drawer. A view receives the state with
  * `components` set to the checked inputs of that view (and `z` to its own feed).
@@ -8,7 +8,7 @@
  * steam(), steamSat(), henry(), henryInfo(), gasSolubility()) or from the existing
  * renderers (renderTxy, renderTernary, mountProperties). Where the engine has no value or
  * throws, the view says so and draws nothing there; nothing is estimated. Sources come from
- * the library (Fugacity.library, src/thermo/library.js).
+ * the library (CHEPTA.library, src/thermo/library.js).
  */
 import { h, s, text, ticks, basisView } from "./dom.js";
 import { icon } from "./icons.js";
@@ -648,7 +648,7 @@ function flashView(ctx) {
   };
   const csv = flashCsv(table, meta);
   const status = h("div", { class: "fug-foot", "aria-live": "polite" }), csvBox = h("div");
-  const file = `fugacity-flash-${ids.join("-")}.csv`;
+  const file = `chepta-flash-${ids.join("-")}.csv`;
   const tools = h("div", { class: "fa-in-actions" },
     h("button", { type: "button", class: "fa-mini", "data-fk": "csv-save", on: { click: () => saveText(csv, file, "text/csv;charset=utf-8", status) } }, icon("download", 15), "Download CSV"),
     h("button", { type: "button", class: "fa-mini", "data-fk": "csv-copy", on: { click: () => copyText(csv, status, csvBox) } }, icon("copy", 15), "Copy CSV"));
@@ -1096,14 +1096,14 @@ export function sourcesPanel({ ids, what, uid, look }) {
   const byKind = kinds.map(k => [KIND_LABEL[k] ?? k, all.filter(s => s.kind === k).length]).sort((a, b) => b[1] - a[1]);
   draw();
   return h("div", { class: "fa-src-panel" },
-    h("p", { class: "fa-src-summary" }, `${all.length} open sources (${byKind.map(([k, n]) => `${k}: ${n}`).join(", ")}). Every number in Fugacity comes from one of them, each free to read.`),
+    h("p", { class: "fa-src-summary" }, `${all.length} open sources (${byKind.map(([k, n]) => `${k}: ${n}`).join(", ")}). Every number in CHEPTA comes from one of them, each free to read.`),
     h("div", { class: "fa-src-tools" },
       h("div", { class: "fa-search fa-src-search" }, icon("search", 16), search), kindSel,
       h("label", { class: "fa-check-label", for: mine.id }, mine, ids.length ? `Only those used by the current calculation (${what})` : "Only those used by the current calculation (no inputs chosen)"), count),
     list,
     h("details", { class: "fa-dev" }, h("summary", {}, "In code"),
-      h("div", { class: "fa-src-text" }, "Fugacity.library.sources(), .source(id), .sets(i, j, model), .usedBy(id); Fugacity.system({ …, sets: { \"acetone+chloroform\": \"chemsep\" }, prefer: [\"databank\"] })."),
-      h("div", { class: "fa-src-text" }, "Fugacity.library.add({ model, i, j, set, params, source }) adds a set from a paper for this page only (tier “user”); nothing is saved."),
+      h("div", { class: "fa-src-text" }, "CHEPTA.library.sources(), .source(id), .sets(i, j, model), .usedBy(id); CHEPTA.system({ …, sets: { \"acetone+chloroform\": \"chemsep\" }, prefer: [\"databank\"] })."),
+      h("div", { class: "fa-src-text" }, "CHEPTA.library.add({ model, i, j, set, params, source }) adds a set from a paper for this page only (tier “user”); nothing is saved."),
       h("div", { class: "fa-src-text" }, "A new source is cited once in src/data/sources.json and referred to by id (AGENTS.md).")));
 }
 

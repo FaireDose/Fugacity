@@ -8,7 +8,7 @@
  * A cell is null (empty), a number, a string, or { v, f, s }: a value, a formula (without the
  * leading "="; the value is its cached result, shown before the sheet recalculates) and a style:
  * "bold", "input" (blue: a number the person may change), "value" (grey italic: calculated by
- * Fugacity, not a formula) or "formula" (black). With { iterate: true } the workbook allows
+ * CHEPTA, not a formula) or "formula" (black). With { iterate: true } the workbook allows
  * circular references (a recycle written as formulas) and solves them by iteration.
  *
  * Zip: stored entries (no compression), CRC-32 per the zip specification (APPNOTE.TXT,

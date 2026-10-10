@@ -1,14 +1,14 @@
 # 0001: Property package and flash
 
 - **Status:** Accepted (by the lead maintainer, 2026-10-02)
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** core track A1 (property package) and A4 (equilibrium solver contract);
   release v0.3 (flash)
 
 ## Problem
 
-Fugacity can draw phase diagrams but cannot yet answer the first question of every
+CHEPTA can draw phase diagrams but cannot yet answer the first question of every
 process calculation: *a feed of known composition is brought to these conditions; how
 much vapour and liquid come out, of what composition, and with what enthalpy?* That is a
 **flash**, and every unit after it (heater, valve, flash drum, column stage, reactor
@@ -33,7 +33,7 @@ flowsheets, cost engineering), which all need a flash with enthalpy.
 
 ### 1. The property package is the system
 
-`Fugacity.system(...)` already holds the components, the model and the chosen parameter
+`CHEPTA.system(...)` already holds the components, the model and the chosen parameter
 sets with their sources. It becomes the **property package**: the same object gains
 enthalpy, dew points for activity models and the flash. No second name to learn.
 
@@ -42,14 +42,14 @@ flash, bubble and dew point works with every combination:
 
 ```js
 // activity model for the liquid, equation of state for the vapour ("gamma-phi")
-const pp = Fugacity.system({
+const pp = CHEPTA.system({
   components: ["toluene", "chloroform"],
   model: "NRTL",           // liquid: NRTL | UNIQUAC | ideal
   vapour: "PR"             // vapour: ideal (default) | PR | SRK
 });
 
 // one equation of state for both phases ("phi-phi")
-const eos = Fugacity.system({ components: ["toluene", "chloroform"], model: "PR" });
+const eos = CHEPTA.system({ components: ["toluene", "chloroform"], model: "PR" });
 // sets, prefer, allowMissingPairs, kij: as today (proposal 0003)
 ```
 
@@ -158,7 +158,7 @@ deviation, so nobody mistakes it for a validated number.
 
 The same rules for bubble, dew and every flash:
 
-- **Converge or throw.** A solver that does not converge throws a `FugacityError` with a
+- **Converge or throw.** A solver that does not converge throws a `CheptaError` with a
   `code` (`NO_CONVERGENCE`, `OUT_OF_RANGE`, `MISSING_DATA`, `BAD_INPUT`, `PHASE_SPLIT` for
   more phases than the calculation handles, `NOT_AVAILABLE` for a calculation a model
   does not have yet), a message an
@@ -206,14 +206,14 @@ References (all open):
 - Residual enthalpy of cubic equations of state: as cited in `src/thermo/eos/cubic.js`.
 
 Validation (the tests compare against independent calculations and data, never against
-Fugacity's own earlier output):
+CHEPTA's own earlier output):
 
 | Check | Reference | Tolerance |
 |---|---|---|
 | TP, PH and VF flashes, NRTL and UNIQUAC, 2 and 3 components | `thermo` `FlashVL` with the same parameters (Python script in `validation/python/`) | T 0.01 K, phase fractions 1e-4, compositions 1e-5, h 1 J/mol |
 | The same with a Peng–Robinson and an SRK vapour (φ, φ^sat, Poynting) | `thermo` `FlashVL` with a cubic gas phase and the same corrections | as above |
 | TP and PH flashes, Peng–Robinson and SRK, gas mixtures | `thermo` and CoolProp with the same k_ij | as above |
-| Flash at the bubble and dew points | Fugacity's bubble and dew solvers, which are already validated against data | VF = 0 and 1 within 1e-8 |
+| Flash at the bubble and dew points | CHEPTA's bubble and dew solvers, which are already validated against data | VF = 0 and 1 within 1e-8 |
 | Round trip: TP flash → H → PH flash | itself | T within 1e-6 K |
 | Pure water PH flash at 1 atm and 10 bar | IAPWS-IF97 (`validation/data/iapws`) | T 0.01 K; with an ideal-gas vapour the enthalpy deviation must equal the residual enthalpy of saturated steam (from IF97) within 1 J/mol; with PR or SRK it is reported |
 | Liquid-liquid split, water + ethyl acetate | the three open LLE data sets already in `validation/data/` | report the deviation; no tolerance tuned to pass |
@@ -228,7 +228,7 @@ result moved.
   `mount`, `mountProperties` and `app` keep their behaviour and results.
 - New methods and one new option: `vapour` for activity models (default `"ideal"`, as
   today), `dewT` and `dewP` for activity models, `phase`, `enthalpy`, `flash`.
-- Solver errors become `FugacityError` objects. They are still `Error`s with the same
+- Solver errors become `CheptaError` objects. They are still `Error`s with the same
   messages, so existing pages that show `e.message` keep working.
 - The workbench gains a **Flash** workspace (feed, specification, model, result table
   with phases and sources) in a later step.
@@ -236,7 +236,7 @@ result moved.
 
 ## Alternatives considered
 
-- **A separate `Fugacity.propertyPackage()` object** (the first draft of this proposal):
+- **A separate `CHEPTA.propertyPackage()` object** (the first draft of this proposal):
   rejected, because `system()` already holds components, model and parameter sources;
   two names for the same thing would confuse users and AI assistants.
 - **Flash only for equations of state** (simpler, one model for both phases): rejected;
@@ -251,7 +251,7 @@ result moved.
 
 Each step is one pull request with its tests and an updated engineering report.
 
-1. **Solver rules and dew points:** `FugacityError`, input checks, `dewT`/`dewP` for
+1. **Solver rules and dew points:** `CheptaError`, input checks, `dewT`/`dewP` for
    activity models, validated against `thermo`.
 2. **Vapour model choice for activity models:** `vapour: "PR" | "SRK"` with φ, φ^sat and
    the Poynting correction in bubble, dew and the diagrams; validated against `thermo`.

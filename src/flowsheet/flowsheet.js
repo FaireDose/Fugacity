@@ -1,7 +1,7 @@
 /**
  * Flowsheet solver (layer 5; proposal 0006, step 3; roadmap A8).
  *
- *   Fugacity.solveFlowsheet(sys, {
+ *   CHEPTA.solveFlowsheet(sys, {
  *     blocks:  [{ id: "F1", type: "feed", spec: { ... } }, { id: "M1", type: "mixer" }, ...],
  *     streams: [{ id: "S1", from: "F1.out", to: "M1.in" }, ..., { id: "S5", from: "SP1.out", to: "M1.in", tear: true }],
  *     solver:  { maxIterations: 50, tolerance: 1e-8 }
@@ -243,7 +243,7 @@ function chooseTears(nodes, edges) {
  * @param {object} fs   { blocks, streams, solver }
  */
 export function solveFlowsheet(sys, fs) {
-  if (!sys || typeof sys.flash !== "function") throw fail("BAD_INPUT", "solveFlowsheet: the first argument must be a system, e.g. Fugacity.system({ components, model }).");
+  if (!sys || typeof sys.flash !== "function") throw fail("BAD_INPUT", "solveFlowsheet: the first argument must be a system, e.g. CHEPTA.system({ components, model }).");
   const opt = { ...SOLVER_DEFAULTS, ...(fs?.solver ?? {}) };
   if (!(Number.isInteger(opt.maxIterations) && opt.maxIterations >= 1)) throw fail("BAD_INPUT", `solver.maxIterations must be a positive whole number (got ${opt.maxIterations}).`);
   if (!(opt.tolerance > 0 && opt.tolerance < 0.1)) throw fail("BAD_INPUT", `solver.tolerance must be between 0 and 0.1 (got ${opt.tolerance}).`);

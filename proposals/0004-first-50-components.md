@@ -1,13 +1,13 @@
 # 0004: The first 50 components, chosen by process
 
 - **Status:** Accepted (by the lead maintainer, 2026-10-02)
-- **Author(s):** Fugacity maintainers (drafted with an AI assistant)
+- **Author(s):** CHEPTA maintainers (drafted with an AI assistant)
 - **Discussion:** this pull request
 - **Roadmap item:** data track D5 (about 50 components), with D2 (pairs fitted to open data)
 
 ## Problem
 
-Fugacity has 16 components. That is enough to show the method, but too few for real
+CHEPTA has 16 components. That is enough to show the method, but too few for real
 process work: most questions an engineer brings involve at least one chemical that is not
 there.
 
@@ -108,7 +108,7 @@ searched ("no open data"):
 - the calculation stops with an error that names the pair, unless the user allows
   ideal behaviour for it, which then shows as a warning on every result;
 - users can enter their own parameters for their own work (tier `user`,
-  `Fugacity.library.add`, proposal 0003), clearly marked and never mixed into the
+  `CHEPTA.library.add`, proposal 0003), clearly marked and never mixed into the
   shared data;
 - the pair goes onto [DATA_WANTED.md](../docs/DATA_WANTED.md), so contributors with
   access to a laboratory or to new open publications can fill it;
@@ -120,7 +120,7 @@ Commercial databases (DDB, DIPPR, DECHEMA) are never used, as in AGENTS.md rule 
 ### 4. Known difficult cases, flagged up front
 
 - **Ammonia + water, carbon dioxide + water, hydrogen sulfide + water** at high
-  concentrations involve ions (electrolytes). Fugacity covers them only as dilute gases
+  concentrations involve ions (electrolytes). CHEPTA covers them only as dilute gases
   (Henry's law) or with equations of state at conditions where that is defensible; each
   gets a note in the data and a warning in results.
 - **Glycerol, phenol, propylene glycol**: high boilers with few open vapour-liquid data;

@@ -1,5 +1,5 @@
 /**
- * Workbench (Fugacity.app): the DOM-free part. Configuration, state changes (navigation
+ * Workbench (CHEPTA.app): the DOM-free part. Configuration, state changes (navigation
  * between workspaces, the inputs each view keeps, the supporting panels), which views can
  * run for a list of components, component search, and display formatting. The workspaces
  * and the checks of the inputs are in workspaces.js.
@@ -41,8 +41,8 @@ export const VIEWS = {
   steam: { workspace: "steam", label: "Steam tables" },
 };
 
-/** Fugacity's repository: its issue forms (.github/ISSUE_TEMPLATE) and its Discussions forum. */
-export const REPO_URL = "https://github.com/FaireDose/Fugacity";
+/** CHEPTA's repository: its issue forms (.github/ISSUE_TEMPLATE) and its Discussions forum. */
+export const REPO_URL = "https://github.com/FaireDose/CHEPTA";
 
 /**
  * The links of the Feedback panel. The bug form opens with its "What happened" field (id
@@ -51,13 +51,13 @@ export const REPO_URL = "https://github.com/FaireDose/Fugacity";
  * Everything goes to public GitHub pages, which need a free GitHub account.
  */
 export function feedbackLinks({ version = "", setup = "", repo = REPO_URL } = {}) {
-  const what = `Fugacity ${version}${setup ? `. ${setup}` : ""}.\n\nWhat happened:\n\nWhat I expected:\n`;
+  const what = `CHEPTA ${version}${setup ? `. ${setup}` : ""}.\n\nWhat happened:\n\nWhat I expected:\n`;
   return [
     { id: "bug", label: "Report a bug", hint: "Something does not work, looks wrong, or stops with an error. The form opens with your setup filled in.",
       url: `${repo}/issues/new?template=bug.yml&what=${encodeURIComponent(what)}` },
     { id: "idea", label: "Suggest an improvement", hint: "A feature, a view, a unit operation or a model you need.",
       url: `${repo}/issues/new?template=model-or-feature.yml` },
-    { id: "forum", label: "Ask or discuss in the forum", hint: "Questions, ideas still taking shape, how others use Fugacity: GitHub Discussions.",
+    { id: "forum", label: "Ask or discuss in the forum", hint: "Questions, ideas still taking shape, how others use CHEPTA: GitHub Discussions.",
       url: `${repo}/discussions` },
     { id: "data", label: "Suggest data or a correction", hint: "Open measured data for a pair or a component, or a value that disagrees with an open source.",
       url: `${repo}/issues/new?template=ai-contribution.yml` },
@@ -212,7 +212,7 @@ const DEFAULTS = {
 };
 
 /**
- * Normalize the configuration of Fugacity.app into the initial state. Unknown models,
+ * Normalize the configuration of CHEPTA.app into the initial state. Unknown models,
  * units and components throw (a typo is never silently ignored).
  *
  * The model: `model` is one of ALL_MODELS and is used by every phase-equilibrium diagram;
@@ -328,7 +328,7 @@ function cleanList(list) {
 /**
  * Apply a change to the state and return the new state (the input is not modified).
  *
- * Accepts the configuration keys of Fugacity.app and:
+ * Accepts the configuration keys of CHEPTA.app and:
  *  - navigation: `workspace` (a WORKSPACES id: opens it on the view it remembers), `view`
  *    (a view id, which also selects its workspace; `start` is the same), `tab` (the ribbon
  *    tabs of earlier versions, LEGACY_TABS);

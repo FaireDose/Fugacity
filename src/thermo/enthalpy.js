@@ -64,7 +64,7 @@ function checkPhase(phase) {
   throw fail("BAD_INPUT", `Phase must be "liquid" or "vapour" (got ${JSON.stringify(phase)}).`);
 }
 
-/** Call fn(); if it throws a Fugacity error, add the component and the quantity to the message. */
+/** Call fn(); if it throws a CHEPTA error, add the component and the quantity to the message. */
 function named(name, what, fn) {
   try { return fn(); } catch (e) {
     if (!e || !e.code) throw e;

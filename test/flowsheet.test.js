@@ -10,7 +10,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, solveFlowsheet, checkFlowsheet, FugacityError } from "../src/index.js";
+import { system, solveFlowsheet, checkFlowsheet, CheptaError } from "../src/index.js";
 
 const { cases } = JSON.parse(readFileSync(new URL("../validation/fixtures/flowsheet.json", import.meta.url)));
 const close = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a} vs ${b}`);
@@ -109,7 +109,7 @@ test("a loop that cannot converge throws, with the reason", () => {
   const sys = system({ components: c.components, model: c.model });
   const fs = recycleFlowsheet(c);
   fs.solver = { maxIterations: 15 };
-  assert.throws(() => solveFlowsheet(sys, fs), err => err instanceof FugacityError && err.code === "NO_CONVERGENCE"
+  assert.throws(() => solveFlowsheet(sys, fs), err => err instanceof CheptaError && err.code === "NO_CONVERGENCE"
     && /The loop through .* did not converge/.test(err.message) && /purge/.test(err.message), "throws NO_CONVERGENCE");
 });
 
@@ -157,7 +157,7 @@ test("structure errors name the block or stream", () => {
     [mod(fs => { fs.streams.splice(2, 1); fs.blocks.splice(4, 1); }), /Flash drum V1: connect a stream to its vapour outlet/],
     [mod(fs => { fs.streams.push({ id: "S1", from: "V1.liquid2", to: "P2.in" }); }), /Two streams are called S1/],
     [{ blocks: [], streams: [] }, /no blocks/],
-  ]) assert.throws(() => checkFlowsheet(fs), err => err instanceof FugacityError && re.test(err.message), re.source);
+  ]) assert.throws(() => checkFlowsheet(fs), err => err instanceof CheptaError && re.test(err.message), re.source);
 });
 
 test("solver methods: direct substitution reaches the same answer as Wegstein and Broyden, in more iterations", () => {

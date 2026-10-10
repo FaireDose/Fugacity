@@ -4,7 +4,7 @@
   "name": "ChemSep interaction parameter files pr.ipd and srk.ipd (DECHEMA Peng-Robinson / Soave-Redlich-Kwong EOS data; library created by A. L. Dill 1996 and J. A. Clark 2014, updated by H. Kooijman)",
   "copy_used": "https://github.com/DanWBR/dwsim/tree/windows/DWSIM.Thermodynamics/Assets/ChemSepIPD",
   "license": "Artistic License 2.0, Copyright Harry Kooijman and Ross Taylor",
-  "selection": "Where the file lists several DECHEMA data sets for a pair (entries_in_file > 1; the others are in `alternatives`), Fugacity uses the entry kept in the ChemSep pr.ipd copy distributed with the thermo library 0.6.1, and for SRK the entry from the same DECHEMA page. `printed` is the value as printed in the file; `conditions` is the file's comment (DECHEMA page, temperature and pressure range of the data)."
+  "selection": "Where the file lists several DECHEMA data sets for a pair (entries_in_file > 1; the others are in `alternatives`), CHEPTA uses the entry kept in the ChemSep pr.ipd copy distributed with the thermo library 0.6.1, and for SRK the entry from the same DECHEMA page. `printed` is the value as printed in the file; `conditions` is the file's comment (DECHEMA page, temperature and pressure range of the data)."
  },
  "pairs": [
   {
@@ -316,7 +316,7 @@
    "kij": 0.3989,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to 29 bubble pressures: AAD 6.54 %, deviations -9.2 to 12.2 %",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to 29 bubble pressures: AAD 6.54 %, deviations -9.2 to 12.2 %",
     "data": [
      "validation/data/eos/tsuji2005_hydrogen_toluene.json",
      "validation/data/eos/aslam2016_hydrogen_toluene.json"
@@ -6019,7 +6019,7 @@
    "kij": -0.0931,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.72 K in T (max 1.47 K), 0.0222 in y (max 0.0748)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.72 K in T (max 1.47 K), 0.0222 in y (max 0.0748)",
     "data": [
      "validation/data/ethanol_water_101kPa.json"
     ],
@@ -6048,7 +6048,7 @@
    "kij": -0.086,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.12 K in T (max 2.08 K), 0.0257 in y (max 0.1119)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 21 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.12 K in T (max 2.08 K), 0.0257 in y (max 0.1119)",
     "data": [
      "validation/data/ethanol_water_101kPa.json"
     ],
@@ -6077,7 +6077,7 @@
    "kij": -0.0415,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.31 K in T (max 0.83 K), 0.0100 in y (max 0.0286)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.31 K in T (max 0.83 K), 0.0100 in y (max 0.0286)",
     "data": [
      "validation/data/ethanol_ethylene-glycol_101kPa.json"
     ],
@@ -6106,7 +6106,7 @@
    "kij": -0.0425,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.25 K in T (max 0.83 K), 0.0079 in y (max 0.0211)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 15 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 0.25 K in T (max 0.83 K), 0.0079 in y (max 0.0211)",
     "data": [
      "validation/data/ethanol_ethylene-glycol_101kPa.json"
     ],
@@ -6135,7 +6135,7 @@
    "kij": -0.0371,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.88 K in T (max 8.76 K), 0.0485 in y (max 0.1138)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 1.88 K in T (max 8.76 K), 0.0485 in y (max 0.1138)",
     "data": [
      "validation/data/water_ethylene-glycol_101kPa_kamihama2012.json"
     ],
@@ -6164,7 +6164,7 @@
    "kij": -0.0311,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 2.01 K in T (max 7.98 K), 0.0404 in y (max 0.0959)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 19 bubble temperatures of Kamihama et al. (2012) at 101.3 kPa: AAD 2.01 K in T (max 7.98 K), 0.0404 in y (max 0.0959)",
     "data": [
      "validation/data/water_ethylene-glycol_101kPa_kamihama2012.json"
     ],
@@ -6193,7 +6193,7 @@
    "kij": 0.0205,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.40 K in T (max 1.02 K), 0.0220 in y (max 0.0425)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.40 K in T (max 1.02 K), 0.0220 in y (max 0.0425)",
     "data": [
      "validation/data/ethyl-acetate_ethanol_101kPa.json"
     ],
@@ -6222,7 +6222,7 @@
    "kij": 0.0296,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.26 K in T (max 0.60 K), 0.0149 in y (max 0.0294)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 24 bubble temperatures of Calvar et al. (2005) at 101.3 kPa: AAD 0.26 K in T (max 0.60 K), 0.0149 in y (max 0.0294)",
     "data": [
      "validation/data/ethyl-acetate_ethanol_101kPa.json"
     ],
@@ -6251,7 +6251,7 @@
    "kij": -0.0077,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.44 % in P (deviations -6.6 to 6.2 %)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.44 % in P (deviations -6.6 to 6.2 %)",
     "data": [
      "validation/data/dimethyl-ether_methanol_px_park2007.json"
     ],
@@ -6356,7 +6356,7 @@
    "kij": -0.0124,
    "tier": "fitted",
    "source": {
-    "fit": "Fitted for Fugacity with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.04 % in P (deviations -5.7 to 5.4 %)",
+    "fit": "Fitted for CHEPTA with validation/python/eos_fit_kij.py to the 35 total pressures of Park et al. (2007) at 323.15 K (the equation of state's own vapour pressures): AAD 3.04 % in P (deviations -5.7 to 5.4 %)",
     "data": [
      "validation/data/dimethyl-ether_methanol_px_park2007.json"
     ],

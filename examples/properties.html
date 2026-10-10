@@ -4,15 +4,15 @@
 <title>Property explorer</title>
 <body style="margin:0; padding:16px; font-family:system-ui, sans-serif">
 <div id="app"></div>
-<!-- Local build (npm run build). In an AI-chat artifact, load dist/fugacity.js of a
+<!-- Local build (npm run build). In an AI-chat artifact, load dist/chepta.js of a
      release that includes mountProperties from the jsDelivr CDN instead (v0.2.0 and later). -->
-<script src="../dist/fugacity.js"></script>
+<script src="../dist/chepta.js"></script>
 <script>
   // Optional: ?component=methanol&property=enthalpy&theme=dark in the address
   const q = new URLSearchParams(location.search);
   if (q.get("theme")) document.documentElement.dataset.theme = q.get("theme");
   if (q.get("theme") === "dark") document.body.style.background = "#121517";
-  window.view = Fugacity.mountProperties("#app", {
+  window.view = CHEPTA.mountProperties("#app", {
     component: q.get("component") || "water",
     property: q.get("property") || "density",
     pressures_kPa: q.get("pressures") ? q.get("pressures").split(",").map(Number) : [100, 500, 1000],

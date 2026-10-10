@@ -214,7 +214,7 @@ function solve(sys, z, given, kind, opts = {}) {
   // Diagnose: a bubble-point liquid that splits into two liquids at the Wilson estimate
   const gases = comps.filter((c, i) => z[i] >= 0.05 && c.Tc_K < 298.15);
   const gasHint = bubble && gases.length
-    ? ` ${gases.map(c => `${c.name} (Tc = ${c.Tc_K} K)`).join(", ")} is a gas at ambient conditions: for a gas dissolved in a liquid use a small mole fraction, or Henry's law (Fugacity.gasSolubility) for gases in water.`
+    ? ` ${gases.map(c => `${c.name} (Tc = ${c.Tc_K} K)`).join(", ")} is a gas at ambient conditions: for a gas dissolved in a liquid use a small mole fraction, or Henry's law (CHEPTA.gasSolubility) for gases in water.`
     : "";
   if (bubble && n > 1 && opts.stability !== false) {
     // test the liquid at a few states on the liquid side of the Wilson estimate
@@ -251,7 +251,7 @@ export const eosDewP = (sys, y, T, opts) => solve(sys, y, T, "dewP", opts);
 /** Dew temperature at P (kPa) for vapour y. Returns { T (K), x, ..., stability, warnings }. */
 export const eosDewT = (sys, y, P, opts) => solve(sys, y, P, "dewT", opts);
 
-/** Methods attached by Fugacity.system() to an equation-of-state system. */
+/** Methods attached by CHEPTA.system() to an equation-of-state system. */
 export function eosMethods(sys) {
   return {
     bubbleT: (x, P, opts) => eosBubbleT(sys, x, P, opts),

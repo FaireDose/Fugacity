@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes how Fugacity is built and how it is meant to grow from
+This document describes how CHEPTA is built and how it is meant to grow from
 phase equilibria to full flowsheets. It is the reference for every contribution,
 human or AI: new work should fit these layers and interfaces, or change this
 document first.
@@ -56,7 +56,7 @@ the interface shows the label next to every result:
 
 | Tier | Meaning |
 |---|---|
-| `fitted` | Regressed for Fugacity from cited experimental data (`validation/python/fit_parameters.py`) |
+| `fitted` | Regressed for CHEPTA from cited experimental data (`validation/python/fit_parameters.py`) |
 | `standard` | Computed from an official standard (IAPWS for water) |
 | `databank` | Taken from an openly licensed parameter set (ChemSep, Artistic License 2.0) |
 | `predicted` | Group contribution (modified UNIFAC, Dortmund) where no fitted or databank pair exists. **Planned for v0.2** |
@@ -78,11 +78,11 @@ databank grows, data ships as **data packs**: small script files that register
 themselves with the core.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/fugacity.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fugacity@0.2.0/dist/data/solvents.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.2.0/dist/chepta.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chepta@0.2.0/dist/data/solvents.js"></script>
 ```
 
-Each pack calls `Fugacity.registerData({ components, pairs, groups })`. The core stays
+Each pack calls `CHEPTA.registerData({ components, pairs, groups })`. The core stays
 small, and a page loads only the chemicals it needs. The core bundle includes a small
 default set (the current ten components).
 
@@ -91,7 +91,7 @@ default set (the current ten components).
 One interface for every model, so layers above never know which model is in use:
 
 ```js
-const pkg = Fugacity.propertyPackage({ components: [...], liquid: "NRTL", vapour: "ideal" });
+const pkg = CHEPTA.propertyPackage({ components: [...], liquid: "NRTL", vapour: "ideal" });
 pkg.gammas(x, T)            // activity coefficients
 pkg.kValues(T, P, x, y)     // y_i / x_i
 pkg.enthalpy("liquid", T, P, x)   // J/mol, planned for v0.2
@@ -113,12 +113,12 @@ Algorithms take a property package and never look inside it:
 ## Layer 3: stream
 
 ```js
-const sys = Fugacity.system({ components: ["water", "ethanol"], model: "NRTL" });
-const s = Fugacity.stream(sys, { flow_kmol_h: { water: 60, ethanol: 40 }, T_K: 355, P_kPa: 101.325 });
+const sys = CHEPTA.system({ components: ["water", "ethanol"], model: "NRTL" });
+const s = CHEPTA.stream(sys, { flow_kmol_h: { water: 60, ethanol: 40 }, T_K: 355, P_kPa: 101.325 });
 // { T_K, P_kPa, flow_kmol_h: { water, ethanol }, F_kmol_h, mass_kg_h, z, VF,
 //   phases: [{ type, fraction, composition, F_kmol_h, flow_kmol_h, h_J_mol }],
 //   h_J_mol, H_kW, MW, warnings, sources }
-Fugacity.stream(sys, { flow_kmol_h, P_kPa: 101.325, H_kW: s.H_kW });   // P-H: gives back T
+CHEPTA.stream(sys, { flow_kmol_h, P_kPa: 101.325, H_kW: s.H_kW });   // P-H: gives back T
 ```
 
 A stream is always created by a flash, so its phase split and enthalpy are consistent
@@ -132,17 +132,17 @@ Every unit has the same shape, so contributors can add units independently
 (`src/units/units.js`):
 
 ```js
-Fugacity.registerUnit({
+CHEPTA.registerUnit({
   type: "heater", label: "Heater / cooler",
   inlets: [{ port: "in" }],
   outlets: [{ port: "out" }],                 // { port, min, max }: several streams on one port when max > 1
   checkSpec(spec, { sys, outletCount }) { /* normalize, or throw BAD_INPUT naming the problem */ },
   solve({ sys, inlets, spec, outletCount }) {
-    // material and energy balances + equilibrium (streams from Fugacity.stream)
+    // material and energy balances + equilibrium (streams from CHEPTA.stream)
     return { outlets: { out }, duty_kW, notes };
   }
 });
-Fugacity.runUnit("heater", { sys, inlets: { in: s }, spec: { T_K: 350 } });
+CHEPTA.runUnit("heater", { sys, inlets: { in: s }, spec: { T_K: 350 } });
 // { outlets, duty_kW, balance: { material, energy_kW }, notes }
 ```
 
@@ -161,8 +161,8 @@ CSTR, plug flow) with a common description of reactions, heat exchangers and com
 
 A flowsheet is part of a project file (format 2, `src/ui/project.js`; schema
 `docs/schema/project-2.json`). An engineer can read it, GitHub shows exactly what changed,
-and an AI assistant can write it, check it with `Fugacity.checkProject(doc)` and solve it with
-`Fugacity.runFlowsheet(doc)`:
+and an AI assistant can write it, check it with `CHEPTA.checkProject(doc)` and solve it with
+`CHEPTA.runFlowsheet(doc)`:
 
 ```json
 {
@@ -206,14 +206,14 @@ Sequential modular, as in most commercial simulators: order the units, choose te
 streams to break recycles, and converge them with Broyden's quasi-Newton method (the
 default), Wegstein acceleration or direct substitution (`solver: { method, tolerance,
 maxIterations }` per flowsheet; see [docs/models/flowsheet.md](docs/models/flowsheet.md))
-(`Fugacity.solveFlowsheet(sys, { blocks, streams, solver })`, `src/flowsheet/flowsheet.js`; a
+(`CHEPTA.solveFlowsheet(sys, { blocks, streams, solver })`, `src/flowsheet/flowsheet.js`; a
 loop that does not converge throws NO_CONVERGENCE naming the loop and its tear streams). Design
 specifications ("adjust the reflux until the distillate purity is 99 %") are an outer
 loop. An equation-oriented mode can come later.
 
 ## Layer 6: interface
 
-- `Fugacity.mount(element, config)` puts a view into a page. Views so far: T-x-y and
+- `CHEPTA.mount(element, config)` puts a view into a page. Views so far: T-x-y and
   ternary. Planned: P-x-y, McCabe–Thiele, flowsheet drawing, stream tables.
 - Views only call the layers below; they never contain thermodynamics.
 - Heavy calculations (large ternary grids, columns) move to a background worker so

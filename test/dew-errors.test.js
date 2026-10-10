@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { system, dewT, dewP, createSystem, FugacityError, ERROR_CODES, isFugacityError, pure, steam } from "../src/index.js";
+import { system, dewT, dewP, createSystem, CheptaError, ERROR_CODES, isCheptaError, pure, steam } from "../src/index.js";
 
 const load = p => JSON.parse(readFileSync(new URL(p, import.meta.url)));
 
@@ -78,7 +78,7 @@ test("equation-of-state systems keep their dew points", () => {
 
 test("inputs are checked before any solver runs", () => {
   const s = system({ components: ["ethanol", "water"], model: "NRTL" });
-  const bad = (fn, re) => assert.throws(fn, e => e instanceof FugacityError && e.code === "BAD_INPUT" && re.test(e.message), String(re));
+  const bad = (fn, re) => assert.throws(fn, e => e instanceof CheptaError && e.code === "BAD_INPUT" && re.test(e.message), String(re));
   bad(() => s.dewT([0.5], 101.325), /Vapour composition: give 2 mole fractions \(got 1\)/);
   bad(() => s.bubbleT([0.5, 0.5, 0], 101.325), /Liquid composition: give 2 mole fractions \(got 3\)/);
   bad(() => s.bubbleT([1.2, -0.2], 101.325), /must not be negative/);
@@ -100,10 +100,10 @@ test("inputs are checked before any solver runs", () => {
 test("errors carry codes and keep their class", () => {
   assert.deepEqual([...ERROR_CODES], ["BAD_INPUT", "OUT_OF_RANGE", "MISSING_DATA", "NO_CONVERGENCE", "PHASE_SPLIT", "NOT_AVAILABLE"]);
   const code = (fn, c, cls = Error) => assert.throws(fn, e => {
-    assert.ok(e instanceof FugacityError, `not a FugacityError: ${e.message}`);
+    assert.ok(e instanceof CheptaError, `not a CheptaError: ${e.message}`);
     assert.ok(e instanceof cls, `${e.message}: not a ${cls.name}`);
     assert.equal(e.code, c, e.message);
-    assert.ok(isFugacityError(e, c));
+    assert.ok(isCheptaError(e, c));
     return true;
   });
   code(() => system({ components: ["water", "unobtainium"] }), "BAD_INPUT");
@@ -118,7 +118,7 @@ test("errors carry codes and keep their class", () => {
   code(() => pure("acetic acid").liquidEnthalpy(330), "NOT_AVAILABLE");
   // messages are unchanged, so pages that show e.message keep working
   assert.throws(() => system({ components: ["water", "water"] }), /appears twice/);
-  // a plain Error is not a FugacityError
-  assert.ok(!(new Error("x") instanceof FugacityError));
-  assert.ok(new FugacityError("BAD_INPUT", "x") instanceof FugacityError);
+  // a plain Error is not a CheptaError
+  assert.ok(!(new Error("x") instanceof CheptaError));
+  assert.ok(new CheptaError("BAD_INPUT", "x") instanceof CheptaError);
 });

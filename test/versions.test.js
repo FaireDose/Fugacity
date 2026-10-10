@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-// Every page and instruction that loads Fugacity from the CDN must use the current version,
+// Every page and instruction that loads CHEPTA from the CDN must use the current version,
 // so assistants never build pages with an outdated or unpublished release.
 // Design documents (ARCHITECTURE, ROADMAP, proposals) may mention other versions as examples.
 const EXEMPT = ["ARCHITECTURE.md", "ROADMAP.md", "proposals"];
