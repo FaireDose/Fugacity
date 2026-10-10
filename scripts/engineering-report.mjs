@@ -675,12 +675,12 @@ export function machineryChanges(baseDir, headDir) {
 
 // ------------------------------------------------------------------ Markdown
 
-const ICON = { ok: "✅", out: "⚠️", outInfo: "⚠️ (report only)", noRef: "no reference", na: "not available", error: "❌ error", lost: "⚠️ lost" };
+const ICON = { ok: "✅", out: "⚠️", outInfo: "⚠️ (report only)", noRef: "no reference", na: "not available", error: "❌ error", lost: "❌ lost" };
 const esc = s => String(s ?? "").replace(/\|/g, "\\|").replace(/[\r\n]+/g, " ");
 const cell = r => r.status === "ok" ? fmtValue(r.key, r.value) : r.status === "na" ? "n/a" : "error";
 
 function statusText(row) {
-  let t = ICON[row.status];
+  let t = row.status === "out" && severity(row) === "large" ? "❌" : ICON[row.status];
   if (row.newer && row.status !== "na") t = `🆕 ${t}`;
   else if (row.changed) t = `✏️ ${t}`;
   else if (row.asOnMain && (row.status === "out" || row.status === "outInfo")) t += " as on main";
@@ -698,24 +698,67 @@ const MD_HEAD = "| Property | Conditions | Unit | main | this PR | Reference | D
 
 export function summaryLines(s) {
   return [
-    `| ✅ within tolerance | ⚠️ out of tolerance | 🆕 new | ✏️ changed | ⚠️ lost | ❌ errors | no reference | not available |`,
+    `| ✅ within tolerance | ⚠️ out of tolerance | 🆕 new | ✏️ changed | ❌ lost | ❌ errors | no reference | not available |`,
     `|--:|--:|--:|--:|--:|--:|--:|--:|`,
     `| ${s.ok} | ${s.out + s.outInfo}${s.outInfo ? ` (${s.outInfo} report only)` : ""} | ${s.newer} | ${s.changed} | ${s.lost} | ${s.error} | ${s.noRef} | ${s.na} |`,
   ];
 }
 
+/** How far out of tolerance a result must be to count as a large deviation: this many times the tolerance. */
+export const LARGE = 2;
+
 /**
- * Pull request comment. Short summary, then per group only the rows that changed or are out
- * of tolerance, then everything in a collapsed block. Kept under MAX_MARKDOWN characters.
+ * Severity of a result for the comment: "large" (the calculation fails, a result is lost, or the
+ * deviation is more than LARGE times the tolerance), "small" (out of tolerance by less, a known
+ * issue, or a report-only comparison), "ok" (within tolerance), or null (not checked: no
+ * reference, or not available).
+ */
+export function severity(r) {
+  if (r.status === "error" || r.status === "lost") return "large";
+  if (r.status === "ok") return "ok";
+  if (r.status === "outInfo" || (r.status === "out" && r.known)) return "small";
+  if (r.status === "out") {
+    const limit = r.tol?.rel ?? r.tol?.abs;
+    return num(r.dev) && num(limit) && Math.abs(r.dev) > LARGE * limit ? "large" : "small";
+  }
+  return null;
+}
+
+/** Counts of a list of rows: large, small, ok, not checked, and changed by the pull request. */
+export function tally(rows) {
+  const t = { large: 0, small: 0, ok: 0, unchecked: 0, changed: 0 };
+  for (const r of rows) {
+    t[severity(r) ?? "unchecked"]++;
+    if (r.changed || r.newer || r.lost) t.changed++;
+  }
+  return t;
+}
+
+const NBSP = " ";
+const pad = (n, w) => NBSP.repeat(Math.max(0, w - String(n).length)) + n;
+
+/**
+ * Pull request comment. The totals, then one collapsed block per group whose title starts with
+ * its counts (❌ large, ⚠️ small, ✅ ok); a block opens on its problems (large first, then small,
+ * then results changed from main that are within tolerance), its known issues with their
+ * reasons, and, collapsed again, every result of the group. Kept under MAX_MARKDOWN characters:
+ * the full lists go first, then the longest problem lists are shortened, pointing to the HTML report.
  */
 export function renderMarkdown(cmp, meta = {}) {
+  const groups = cmp.groups.map(g => ({ ...g, t: tally(g.rows) }));
+  const all = tally(groups.flatMap(g => g.rows));
   const s = cmp.summary;
+  const changedText = [s.changed && `✏️ ${s.changed} changed`, s.newer && `🆕 ${s.newer} new`, s.lost && `❌ ${s.lost} lost`].filter(Boolean).join(", ");
   const head = [
     `## Engineering report`,
     ``,
     `**${esc(meta.headLabel ?? "this PR")}** compared with **${esc(meta.baseLabel ?? "main")}** and with independent references, ${s.total} results.`,
     ``,
-    ...summaryLines(s),
+    all.changed ? `**This pull request changes ${all.changed} result${all.changed > 1 ? "s" : ""}** (${changedText}).` : `**No result changed from main.**`,
+    ``,
+    `| ❌ large | ⚠️ small | ✅ ok | not checked |`,
+    `|--:|--:|--:|--:|`,
+    `| ${all.large} | ${all.small} | ${all.ok} | ${all.unchecked} |`,
     ``,
   ];
   const m = meta.machinery;
@@ -724,46 +767,64 @@ export function renderMarkdown(cmp, meta = {}) {
       ? `> ℹ️ This pull request adds the engineering report itself; there is no earlier report to compare with.`
       : `> ⚠️ **This pull request changes the report itself** (${m.changed.map(f => "`" + esc(f) + "`").join(", ")}). Check those changes (cases, references, tolerances, script) before relying on the ✅ marks.`, ``);
   }
-  // known issues first, so that a long list of changes never pushes them out of the comment
-  const known = cmp.groups.flatMap(g => g.rows.filter(r => r.known));
-  if (known.length) {
-    head.push(`### Known issues`, ``, `Out of tolerance, with a stated reason; left as they are for now.`, ``,
-      ...known.map(r => `- **${esc(r.property)}** (${formatDeviation(r.dev, r.tol, r.key)}): ${esc(r.known)}`), ``);
-  }
-  const changes = [];
-  for (const g of cmp.groups) {
-    const rows = g.rows.filter(r => r.show);
-    if (!rows.length) continue;
-    changes.push(`### ${g.title}`, ``, MD_HEAD, ...rows.map(mdRow), ``);
-  }
-  if (!changes.length) changes.push(`No result changed and every result with a reference is within tolerance.`, ``);
+  head.push(`Open a group to see its problems.`, ``);
 
+  const w = String(Math.max(...groups.map(g => Math.max(g.t.large, g.t.small, g.t.ok)), 0)).length;
+  const order = { large: 0, small: 1, ok: 2 };
+  const parts = groups.filter(g => g.rows.length).map(g => {
+    const problems = g.rows.filter(r => severity(r) === "large" || severity(r) === "small" || (r.show && severity(r) !== null) || r.changed || r.newer)
+      .sort((a, b) => (order[severity(a)] ?? 3) - (order[severity(b)] ?? 3));
+    const listed = g.rows.filter(r => !(r.base.status === "na" && r.head.status === "na"));
+    const none = g.rows.length - listed.length;
+    const counts = `<code>❌${NBSP}${pad(g.t.large, w)}${NBSP} ⚠️${NBSP}${pad(g.t.small, w)}${NBSP} ✅${NBSP}${pad(g.t.ok, w)}</code>`;
+    const extra = g.t.changed ? ` · ✏️ ${g.t.changed} changed` : "";
+    return {
+      size: listed.length,
+      summary: `<details><summary>${counts}&ensp;<b>${esc(g.title)}</b>${extra}</summary>`,
+      problems, keepProblems: problems.length,
+      known: g.rows.filter(r => r.known),
+      unchecked: g.t.unchecked,
+      full: [`<details><summary>All ${listed.length} results of this group</summary>`, ``, ...(listed.length ? [MD_HEAD, ...listed.map(mdRow), ``] : []),
+        ...(none ? [`*${none} result${none > 1 ? "s" : ""} not available in either version (see the HTML report for the reasons).*`, ``] : []), `</details>`, ``],
+      withFull: true,
+    };
+  });
   const legend = [
-    `<sub>Deviation = this PR minus reference (relative for properties, absolute for temperatures and compositions). ` +
-    `🆕 = not available on main; ✏️ = changed from main; ⚠️ lost = computed on main but not in this PR; "report only" = informational, does not block (an equation of state against a reference equation of state, or an excess enthalpy compared with data the fit used or predicted outside the fitted range). ` +
+    `<sub>❌ large = the calculation fails, a result computed on main is lost, or the deviation is more than ${LARGE} times the tolerance; ` +
+    `⚠️ small = out of tolerance by less, a known issue, or a report-only comparison (an equation of state against a reference equation of state, or an excess enthalpy compared with data the fit used or predicted outside the fitted range); ` +
+    `not checked = no reference, or not available in this version. ` +
+    `Deviation = this PR minus reference (relative for properties, absolute for temperatures and compositions). ` +
+    `🆕 = not available on main; ✏️ = changed from main; ❌ lost = computed on main but not in this PR; "as on main" = already out of tolerance on main and unchanged. ` +
     `Tolerances and sources: \`validation/report/README.md\`.${meta.htmlNote ? " " + meta.htmlNote : ""}</sub>`, ``,
   ];
-  const detailsOpen = [`<details><summary>All ${s.total} results</summary>`, ``];
-  const detailsClose = [`</details>`, ``];
-  let all = [];
-  for (const g of cmp.groups) {
-    // Results available in neither version are only counted here (they are listed in the HTML report).
-    const rows = g.rows.filter(r => !(r.base.status === "na" && r.head.status === "na"));
-    const none = g.rows.length - rows.length;
-    all.push(`#### ${g.title}`, ``);
-    if (rows.length) all.push(MD_HEAD, ...rows.map(mdRow), ``);
-    if (none) all.push(`*${none} result${none > 1 ? "s" : ""} not available in either version (see the HTML report for the reasons).*`, ``);
+  const short = `*The full list is too long for a comment: see the HTML report.*`;
+  const renderPart = p => {
+    const out = [p.summary, ``];
+    if (p.problems.length) {
+      const rows = p.problems.slice(0, p.keepProblems);
+      out.push(MD_HEAD, ...rows.map(mdRow), ``);
+      if (rows.length < p.problems.length) out.push(`*${p.problems.length - rows.length} more: see the HTML report.*`, ``);
+    } else out.push(`Nothing to look at: every result with a reference is within tolerance and none changed.`, ``);
+    if (p.known.length) out.push(`Known issues, left as they are for now:`, ``, ...p.known.map(r => `- **${esc(r.property)}** (${formatDeviation(r.dev, r.tol, r.key)}): ${esc(r.known)}`), ``);
+    if (p.unchecked) out.push(`*${p.unchecked} result${p.unchecked > 1 ? "s" : ""} not checked (no reference, or not available).*`, ``);
+    out.push(...(p.withFull ? p.full : [short, ``]), `</details>`, ``);
+    return out;
+  };
+  const build = () => [...head, ...parts.flatMap(renderPart), ...legend].join("\n");
+  let md = build();
+  // too long: drop the full lists, largest first, then shorten the longest problem lists
+  for (const p of [...parts].sort((a, b) => b.size - a.size)) {
+    if (md.length <= MAX_MARKDOWN) break;
+    p.withFull = false;
+    md = build();
   }
-  const build = a => [...head, ...changes, ...detailsOpen, ...a, ...detailsClose, ...legend].join("\n");
-  let md = build(all);
-  if (md.length > MAX_MARKDOWN) {
-    // Drop rows from the full list (keep the changes) until the comment fits.
-    const note = `*The full list is too long for a comment: see the HTML report.*`;
-    let keep = all.length;
-    while (keep > 0 && build([...all.slice(0, keep), "", note]).length > MAX_MARKDOWN) keep = Math.floor(keep * 0.9);
-    md = build([...all.slice(0, keep), "", note]);
-    if (md.length > MAX_MARKDOWN) md = md.slice(0, MAX_MARKDOWN - 200) + "\n\n*(truncated: see the HTML report)*\n";
+  while (md.length > MAX_MARKDOWN) {
+    const p = parts.reduce((a, b) => (b.keepProblems > a.keepProblems ? b : a), parts[0]);
+    if (!p || p.keepProblems === 0) break;
+    p.keepProblems = Math.floor(p.keepProblems * 0.9);
+    md = build();
   }
+  if (md.length > MAX_MARKDOWN) md = md.slice(0, MAX_MARKDOWN - 200) + "\n\n*(truncated: see the HTML report)*\n";
   return md;
 }
 
@@ -877,7 +938,7 @@ function htmlTable(rows, refs) {
 export function renderHtml(cmp, refs, cases, base, head, meta = {}) {
   const s = cmp.summary;
   const tiles = [["✅ within tolerance", s.ok], ["⚠️ out of tolerance", s.out + s.outInfo], ["🆕 new", s.newer], ["✏️ changed", s.changed],
-    ["⚠️ lost", s.lost], ["❌ errors", s.error], ["no reference", s.noRef], ["not available", s.na]]
+    ["❌ lost", s.lost], ["❌ errors", s.error], ["no reference", s.noRef], ["not available", s.na]]
     .map(([l, v]) => `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
   const m = meta.machinery;
   const banner = m?.changed?.length

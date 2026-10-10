@@ -133,6 +133,18 @@ These apply to every piece of work, on top of [AGENTS.md](../AGENTS.md).
 
 ### 2026-10-10
 
+- **`chepta@0.3.0` is on npm** (staged with the one-time token and approved on npmjs.com; served by
+  jsDelivr). Still to do by the maintainer: steps 4.4 and 4.5 under Open items (trusted publisher,
+  then delete the token and the secret), deprecate `fugacity`, and optionally deprecate the
+  placeholder `chepta@0.0.0-stage`.
+- **Front page:** the maintainer edits README.md directly (new flowsheet screenshot, shorter
+  rename note, the "model predictions" sentence reworded, a shorter load prompt, updated
+  parameter counts).
+- **Engineering report comment made shorter:** the top gives the totals (❌ large, ⚠️ small,
+  ✅ ok, not checked) and whether the pull request changes results; each group is folded, its
+  title starting with its own counts, and opens on its problems, with every result folded
+  again inside. ❌ large = a failed or lost calculation, or a deviation of more than twice the
+  tolerance; the tolerances themselves are unchanged.
 - **The rename is done on GitHub:** the repository is `FaireDose/CHEPTA`, #90 is merged, and the website
   is at https://fairedose.github.io/CHEPTA/. Next: the first npm upload of `chepta` with a one-time
   token (#93 merged; the steps are under Open items), after the pair data (#91).

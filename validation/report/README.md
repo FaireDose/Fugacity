@@ -48,18 +48,27 @@ hand except the NIST WebBook spot values, which are listed with their page and t
 
 ## How to read the comment
 
-- The **summary** counts: ✅ within tolerance, ⚠️ out of tolerance, 🆕 new (not available
-  on main), ✏️ changed from main, ⚠️ lost (computed on main but not in the pull request),
-  ❌ errors, no reference, not available.
-- The **tables** list only what changed or is out of tolerance: property, conditions, main,
-  this PR, reference, deviation (this PR minus reference; relative for properties, absolute
-  for temperatures and compositions), status. "⚠️ as on main" marks a result that was
-  already out of tolerance on main and did not change.
+- The **top** says whether the pull request changes any result (✏️ changed from main, 🆕 new:
+  not available on main, ❌ lost: computed on main but not in the pull request) and gives the
+  totals: ❌ large, ⚠️ small, ✅ ok, not checked.
+  - ❌ **large**: the calculation fails, a result computed on main is lost, or the deviation
+    is more than twice the tolerance (`LARGE` in `scripts/engineering-report.mjs`).
+  - ⚠️ **small**: out of tolerance by less than that, a known issue, or a report-only
+    comparison.
+  - **not checked**: no reference, or not available in the version under test.
+- Below come the **groups** (boiling points, azeotropes, bubble points, flashes, properties,
+  steam, equation of state, measured data), each folded, its title starting with its own
+  ❌ ⚠️ ✅ counts and the number of results the pull request changes. Opening a group shows
+  its problems: the large ones first, then the small ones, then the results changed from
+  main that are within tolerance, with property, conditions, main, this PR, reference,
+  deviation (this PR minus reference; relative for properties, absolute for temperatures
+  and compositions) and status. "as on main" marks a result that was already out of
+  tolerance on main and did not change. Inside, folded again, is every result of the group
+  (left out when the comment would be too long; the HTML report always has them).
 - **Known issues** are results out of tolerance that the project has decided to leave as
   they are for now, with the reason (a case's `"known"` field in `cases.json`; for the
   measured-data group, `KNOWN` in `validation/python/check_measured.py`). They keep their ⚠️,
-  are marked "(known issue)", and are listed with their reason under "Known issues" in the
-  comment. The mark disappears by itself once the result is back within tolerance.
+  are marked "(known issue)", and are listed with their reason under the group's problems. The mark disappears by itself once the result is back within tolerance.
 - **"not available"** means the version under test has no function or no data for that
   result (for example steam tables before they exist). It is not a failure.
 - The **HTML report** (artifact `engineering-report` of the workflow run, linked from the
@@ -70,7 +79,8 @@ hand except the NIST WebBook spot values, which are listed with their page and t
 
 A reviewer can be a person or an AI assistant that did not write the change.
 
-1. **Read the summary.** Lost results and errors need an explanation in the pull request.
+1. **Read the top of the comment.** Lost results, errors and every ❌ need an explanation in
+   the pull request; open the groups whose counts show ❌ or ⚠️, or ✏️ changes.
 2. **For every ✏️ changed or 🆕 new result**, ask whether the change is intended by the pull
    request (a new property, a better fit) and whether it moves towards the reference. Open
    the plot: a change at one point should not break the curve elsewhere.
