@@ -23,10 +23,18 @@ Newest first. Pull requests are in `FaireDose/Fugacity`.
   2. Merge the rename pull request (it already uses the new links).
   3. Settings → Pages: check that the site is served at `https://fairedose.github.io/CHEPTA/`
      (the Pages workflow runs on the merge).
-  4. npm: the name `chepta` was free on 2026-10-09. On npmjs.com create the package's trusted
-     publisher (Packages → chepta → Settings → Trusted publishing, this repository and
-     `.github/workflows/publish.yml`); the first upload may need the token route described in the
-     workflow. Then publish the v0.3.0 GitHub release: the workflow builds and stages it.
+  4. npm (the name `chepta` was free on 2026-10-10). npm adds a trusted publisher only to a package
+     that exists, so the first upload uses a token, once:
+     1. npmjs.com → profile picture → Access Tokens → Generate New Token → Granular Access Token:
+        expiry 1 day, Packages and scopes: Read and write, All packages. Copy the token.
+     2. GitHub → Settings → Secrets and variables → Actions → New repository secret: name `NPM_TOKEN`,
+        the token as value.
+     3. Publish the v0.3.0 GitHub release (Releases → the draft, or Draft a new release with tag
+        `v0.3.0`). The Publish workflow uploads `chepta@0.3.0` with the token and attaches the skills.
+     4. npmjs.com → Packages → chepta → Settings → Trusted publishing → GitHub Actions: owner
+        `FaireDose`, repository `CHEPTA`, workflow `publish.yml`.
+     5. Delete the `NPM_TOKEN` secret on GitHub and the token on npmjs.com. Later releases are staged
+        by the workflow without a token and approved on npmjs.com.
   5. npm: deprecate the old package with a pointer, `npm deprecate fugacity "Renamed: use chepta"`.
   6. Optional: check for an existing trademark (for example in the EUIPO and USPTO search
      tools) before wider promotion, and register the name where you want it protected.
