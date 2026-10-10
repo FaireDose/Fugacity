@@ -109,8 +109,9 @@ project with a flowsheet and open it in the workbench's Flowsheet tab:
 - Before giving me the page, check the project in code you can run:
   `CHEPTA.checkProject(project)` lists every problem (connections and degrees of freedom,
   e.g. "Flash drum V1: missing: one more of T_K, P_kPa, VF or duty_kW"); fix them all.
-  `CHEPTA.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles); a
-  recycle without a way out throws an error that says so. The schema is at
+  `CHEPTA.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles; a
+  recycle without a way out throws an error that says so), but the workbench does that
+  itself when it opens: see "Let the workbench do the work" below. The schema is at
   https://fairedose.github.io/CHEPTA/schema/project-2.json.
 - If the user gives a project file (`.chepta.json`), open it the same way with `{ project }`;
   to change it, edit the JSON, check it again and open it.
@@ -121,6 +122,27 @@ to the workbench as `CHEPTA.app("#app", { storage: { list, get, put, remove } })
 functions that list the saved names, return a project, keep a project under a name, and
 delete one (promises are fine). Only do this with storage the chat platform really offers;
 otherwise leave it out and tell the user to use File > Save or Copy.
+
+**Let the workbench do the work.** Whatever the workbench shows, it can also export, and
+it does so on the user's computer at no cost to the chat. So:
+- When the user asks for an Excel file, a CSV or a table of something the workbench can show,
+  open the workbench with it (the project, components or diagram) and tell the user which button
+  to click. Do not make the file yourself (no openpyxl, pandas or hand-written formulas),
+  and do not compute again in code what the workbench calculates. The buttons:
+  - flowsheet: Flowsheet tab, under the stream table: **Download Excel** (the balances as
+    formulas, the flash drum outlets as values from CHEPTA), **Excel concept model** (the
+    flash drums as formulas too, an approximation for concept design), **Download CSV**,
+    **Copy CSV**;
+  - diagrams and property curves: the **Excel** button above the diagram (every point
+    drawn, in the units shown, with an About sheet of the settings and sources);
+  - flash: **Download CSV** and **Copy CSV** under the stream table;
+  - the whole work: **File > Save** (a `.chepta.json` project that opens again).
+- After `CHEPTA.checkProject(project)` finds no problems, give the user the page: the workbench
+  solves the flowsheet when it opens. Run `CHEPTA.runFlowsheet` in code only when the user asks
+  for numbers in the chat.
+- If the workbench cannot do what the user asks (an export, a block or a unit it does not have),
+  or the page cannot download files here, say so in one sentence and ask the user before you
+  build it yourself. Missing features can be asked for with the workbench's Feedback button.
 
 ## Calculate numbers directly
 
@@ -170,7 +192,7 @@ don't fill it in.
 
 ## Rules
 
-- Only use components that `CHEPTA.listComponents()` returns. Version 0.3.0 holds 92
+- Only use components that `CHEPTA.listComponents()` returns. Version 0.3.0 holds 94
   components (water, alcohols, glycols, ketones, esters, aromatics, alkanes, light gases
   and more). Not every pair has parameters: the widget names missing pairs, and equation-of-state results carry
   `warnings` for pairs without k_ij. If the user asks for other chemicals or pairs, say

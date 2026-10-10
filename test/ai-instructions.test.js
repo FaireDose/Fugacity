@@ -29,3 +29,23 @@ test("examples/flowsheet-recycle.chepta.json is the same project, and solves", (
   assert.deepEqual(file, projectIn(read("ai/instructions/use-chepta.md")));
   assert.ok(checkProject(file).ok);
 });
+
+// The instructions send the assistant to the workbench's own export buttons instead of making files
+// itself; the names they give must be the names on the buttons.
+const BUTTONS = { "src/ui/flowsheet-view.js": ["Download Excel", "Excel concept model", "Download CSV", "Copy CSV"],
+  "src/ui/app.js": ["Excel"], "src/ui/app-views.js": ["Download CSV", "Copy CSV"] };
+for (const file of ["ai/instructions/use-chepta.md", "ai/skills/chepta/SKILL.md"]) {
+  test(`${file}: points to the workbench's export buttons by their names`, () => {
+    const md = read(file);
+    assert.match(md, /\*\*Let the workbench do the work\.\*\*/);
+    assert.match(md, /Do not make the file yourself/);
+    for (const [src, names] of Object.entries(BUTTONS)) {
+      const code = read(src);
+      for (const n of names) {
+        assert.ok(code.includes(`"${n}")`), `${src} has a button "${n}"`);
+        assert.ok(md.includes(`**${n}**`), `${file} names "${n}"`);
+      }
+    }
+    assert.ok(md.includes("**File > Save**"));
+  });
+}
