@@ -64,18 +64,19 @@ jobs:
       # Trusted publishing: npm checks this workflow by OpenID Connect; no token is used, and the version
       # is staged for approval on npmjs.com. Exception, the first upload of a new package name: npm adds a
       # trusted publisher only to a package that exists, so that one upload uses an NPM_TOKEN secret (a
-      # granular token with write access, a day's expiry) and is published directly. Delete the secret and
-      # the token right after it, then add this workflow as the package's trusted publisher.
-      - name: Publish
+      # granular token with write access, a day's expiry). It is staged too: npm no longer accepts direct
+      # publishing with a token ("restricting npm bypass-2FA granular access tokens", GitHub changelog
+      # 2026-07-31), and staging creates a new package since 2026-10-02 ("npm staged publishing now
+      # supports creating new packages"). Approve it on npmjs.com, delete the secret and the token, then
+      # add this workflow as the package's trusted publisher.
+      - name: Stage the version on npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [ -n "$NODE_AUTH_TOKEN" ]; then
-            echo "::warning::NPM_TOKEN is set: first upload with a token. Delete the secret and the token after this run."
-            npm publish --provenance --access public
-          else
-            npm stage publish --provenance --access public
+            echo "::warning::NPM_TOKEN is set: first upload with a token. Approve the staged version on npmjs.com, then delete the secret and the token."
           fi
+          npm stage publish --provenance --access public
 
   skills:
     needs: verify

@@ -30,7 +30,11 @@ Newest first. Pull requests are in `FaireDose/Fugacity`.
      2. GitHub → Settings → Secrets and variables → Actions → New repository secret: name `NPM_TOKEN`,
         the token as value.
      3. Publish the v0.3.0 GitHub release (Releases → the draft, or Draft a new release with tag
-        `v0.3.0`). The Publish workflow uploads `chepta@0.3.0` with the token and attaches the skills.
+        `v0.3.0`). The Publish workflow stages `chepta@0.3.0` with the token and attaches the skills
+        (if the release already exists: Actions → Publish to npm → Run workflow, from `main`).
+     3b. npmjs.com: approve the staged version with your 2FA code (the package's Staged Packages, or the
+        link in npm's e-mail). Direct publishing with a token is refused by npm since 2026; staging is
+        how a token can create a new package (GitHub changelog, 2026-10-02).
      4. npmjs.com → Packages → chepta → Settings → Trusted publishing → GitHub Actions: owner
         `FaireDose`, repository `CHEPTA`, workflow `publish.yml`.
      5. Delete the `NPM_TOKEN` secret on GitHub and the token on npmjs.com. Later releases are staged
