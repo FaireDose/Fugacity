@@ -40,6 +40,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
     "test": "node --test test/*.test.js",
     "prepublishOnly": "npm run build && npm test",
     "wanted": "node scripts/data-wanted.mjs",

@@ -1,0 +1,43 @@
+# A preview of the workbench for every pull request: one HTML file with the library inside, built from the
+# pull request's code (scripts/preview.mjs). A reviewer downloads it from the run's summary page and opens it
+# in a browser to try the change before approving: no install, no server, nothing deployed.
+#   Pull request > Checks > Preview > Summary > Artifacts > workbench-preview-pr-<number>
+# (downloading needs a GitHub login; the file is kept for 14 days). Read-only token; nothing is published.
+name: Preview
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run build
+      - name: Build the one-file preview
+        env:
+          PREVIEW_LABEL: "Pull request #${{ github.event.pull_request.number }}"
+          PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+          PREVIEW_URL: ${{ github.event.pull_request.html_url }}
+        run: node scripts/preview.mjs preview/workbench-preview.html
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: workbench-preview-pr-${{ github.event.pull_request.number }}
+          path: preview/workbench-preview.html
+          retention-days: 14
+      - name: How to open it
+        run: |
+          {
+            echo "## Workbench preview"
+            echo ""
+            echo "Download **workbench-preview-pr-${{ github.event.pull_request.number }}** under *Artifacts* below, unzip it and open"
+            echo "\`workbench-preview.html\` in Chrome, Edge, Firefox or Safari. It runs offline, built from commit"
+            echo "\`${{ github.event.pull_request.head.sha }}\`."
+          } >> "$GITHUB_STEP_SUMMARY"
