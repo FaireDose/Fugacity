@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  deviation, withinTolerance, classify, NotAvailable, runCases, compare, renderMarkdown, renderHtml,
+  deviation, withinTolerance, classify, NotAvailable, runCases, compare, renderMarkdown, renderHtml, severity, tally,
   loadCases, loadReferences, formatDeviation, MAX_MARKDOWN,
 } from "../scripts/engineering-report.mjs";
 import * as CHEPTA from "../src/index.js";
@@ -133,12 +133,25 @@ test("comparison: within tolerance, out of tolerance, new, changed, lost, no ref
     { ok: summary.ok, out: summary.out, outInfo: summary.outInfo, newer: summary.newer, changed: summary.changed, lost: summary.lost, noRef: summary.noRef },
     { ok: 2, out: 1, outInfo: 1, newer: 3, changed: 1, lost: 1, noRef: 1 });
 
+  assert.equal(severity(row("a")), "ok");
+  assert.equal(severity(row("b")), "small", "0.78 K off with a 0.5 K tolerance: out, but by less than LARGE times");
+  assert.equal(severity(row("d")), "small", "report only");
+  assert.equal(severity(row("e")), null, "no reference: not checked");
+  assert.equal(severity(row("f")), "large", "lost");
+  assert.deepEqual(tally(groups[0].rows), { large: 1, small: 2, ok: 2, unchecked: 1, changed: 5 });
+
   const md = renderMarkdown({ groups, summary });
-  const [top] = md.split("<details>");
-  assert.ok(top.indexOf("✅ within tolerance") < top.indexOf("### G"), "summary comes first");
-  assert.ok(!top.includes("| Water: normal boiling point"), "unchanged result within tolerance is only in the details");
-  assert.ok(top.includes("| Ethanol: normal boiling point"));
-  assert.ok(top.includes("⚠️ lost"));
+  const [top, group] = md.split("<details><summary><code>");
+  assert.ok(top.includes("| ❌ large | ⚠️ small | ✅ ok | not checked |\n|--:|--:|--:|--:|\n| 1 | 2 | 2 | 1 |"), "the totals come first");
+  assert.match(top, /This pull request changes 5 results/);
+  assert.doesNotMatch(top, /normal boiling point/, "no result outside the groups");
+  assert.ok(group.startsWith("❌\u00a01\u00a0 ⚠️\u00a02\u00a0 ✅\u00a02</code>&ensp;<b>G</b> · ✏️ 5 changed</summary>"), "the group starts with its counts");
+  const [problems, full] = group.split("All 6 results of this group");
+  assert.ok(problems.includes("| Ethanol: normal boiling point") && problems.includes("❌ lost"));
+  assert.ok(problems.indexOf("| Methane") < problems.indexOf("| Water: liquid density"), "small before changed results within tolerance");
+  assert.ok(!problems.includes("| Water: normal boiling point"), "an unchanged result within tolerance is only in the full list");
+  assert.ok(full.includes("| Water: normal boiling point"));
+  assert.ok(problems.indexOf("| Toluene") < problems.indexOf("| Ethanol"), "large before small");
 });
 
 test("a known issue is marked, listed with its reason, and only while it is out of tolerance", () => {
@@ -155,7 +168,7 @@ test("a known issue is marked, listed with its reason, and only while it is out 
   assert.equal(row("k").known, "a stated reason");
   assert.equal(row("m").known, null, "within tolerance: no longer a known issue");
   const md = renderMarkdown({ groups, summary });
-  assert.match(md, /### Known issues/);
+  assert.match(md, /Known issues, left as they are for now/);
   assert.match(md, /a stated reason/);
   assert.doesNotMatch(md, /fixed since/);
   assert.match(md, /⚠️ as on main \(known issue\)/);

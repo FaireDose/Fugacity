@@ -120,8 +120,9 @@ project with a flowsheet and open it in the workbench's Flowsheet tab:
 - Before giving me the page, check the project in code you can run:
   `CHEPTA.checkProject(project)` lists every problem (connections and degrees of freedom,
   e.g. "Flash drum V1: missing: one more of T_K, P_kPa, VF or duty_kW"); fix them all.
-  `CHEPTA.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles); a
-  recycle without a way out throws an error that says so. The schema is at
+  `CHEPTA.runFlowsheet(project)` solves it (streams, energy streams in kW, recycles; a
+  recycle without a way out throws an error that says so), but the workbench does that
+  itself when it opens: see "Let the workbench do the work" below. The schema is at
   https://fairedose.github.io/CHEPTA/schema/project-2.json.
 - If I give you a project file (`.chepta.json`), open it the same way with `{ project }`;
   to change it, edit the JSON, check it again and open it.
@@ -133,8 +134,29 @@ functions that list the saved names, return a project, keep a project under a na
 delete one (promises are fine). Only do this with storage the chat platform really offers;
 otherwise leave it out and tell me to use File > Save or Copy.
 
+**Let the workbench do the work.** Whatever the workbench shows, it can also export, and
+it does so on my computer at no cost to this chat. So:
+- When I ask for an Excel file, a CSV or a table of something the workbench can show,
+  open the workbench with it (the project, components or diagram) and tell me which button
+  to click. Do not make the file yourself (no openpyxl, pandas or hand-written formulas),
+  and do not compute again in code what the workbench calculates. The buttons:
+  - flowsheet: Flowsheet tab, under the stream table: **Download Excel** (the balances as
+    formulas, the flash drum outlets as values from CHEPTA), **Excel concept model** (the
+    flash drums as formulas too, an approximation for concept design), **Download CSV**,
+    **Copy CSV**;
+  - diagrams and property curves: the **Excel** button above the diagram (every point
+    drawn, in the units shown, with an About sheet of the settings and sources);
+  - flash: **Download CSV** and **Copy CSV** under the stream table;
+  - the whole work: **File > Save** (a `.chepta.json` project that opens again).
+- After `CHEPTA.checkProject(project)` finds no problems, give me the page: the workbench
+  solves the flowsheet when it opens. Run `CHEPTA.runFlowsheet` in code only when I ask you
+  for numbers in the chat.
+- If the workbench cannot do what I ask (an export, a block or a unit it does not have),
+  or the page cannot download files here, say so in one sentence and ask me before you
+  build it yourself. Missing features can be asked for with the workbench's Feedback button.
+
 **Rules**
-- Version 0.3.0 holds 92 components: `CHEPTA.listComponents()` lists them (water,
+- Version 0.3.0 holds 94 components: `CHEPTA.listComponents()` lists them (water,
   alcohols, glycols, ketones, esters, aromatics, alkanes, light gases and more). Not every
   pair has parameters; the page names missing pairs. For other chemicals, say they are not
   in the databank yet and point me to
