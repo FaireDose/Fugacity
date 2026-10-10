@@ -74,7 +74,23 @@ tracks"* in [ai/START_PROMPTS.md](ai/START_PROMPTS.md).
 ## What happens next
 
 Every pull request runs the automatic tests and is reviewed by someone other than its
-author; data changes need a data reviewer. Roles and decisions:
+author; data changes need a data reviewer.
+
+### Reviewing a pull request
+
+A review is two things: reading what changed, and trying it.
+
+1. **What changed:** the pull request's *Files changed* tab. For data, compare a few numbers with the
+   cited source; the reviewer checklist in the pull request says what to look at.
+2. **Try it:** every pull request gets a workbench preview, built from its code. Open the pull request's
+   *Checks* tab, choose **Preview**, then **Summary**, and download **workbench-preview-pr-&lt;number&gt;**
+   under *Artifacts* (you need to be logged in to GitHub). Unzip it and open `workbench-preview.html` in
+   your browser: it runs offline. Try what the pull request says it changes, and a few things it should
+   not have changed.
+3. **The automatic checks:** a green tick next to *Test* means every test passed; the engineering report
+   comment shows how results moved against `main`.
+
+Anything that looks wrong goes into a comment on the pull request (or a review with *Request changes*). Roles and decisions:
 [GOVERNANCE.md](GOVERNANCE.md). Larger changes and new roadmap items go through a
 [proposal](proposals/README.md); reviewing other people's proposals with your engineering
 judgement is one of the most useful contributions.
