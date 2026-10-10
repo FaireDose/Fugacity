@@ -1,26 +1,24 @@
 # CHEPTA
 
 **Chemical Engineering Process Tools for Agents.** Formerly *Fugacity*: the project was renamed
-in version 0.3.0. Pages written for the old name keep working: the script also defines the old
-global `Fugacity`, and project files saved by Fugacity open unchanged.
+in version 0.3.0. 
 
-Open chemical process simulation built for AI chats. Ask your assistant (ChatGPT, Claude,
+Open chemical process simulation built for AI chats which aims to grow for support of AI Process Design. Ask your assistant (ChatGPT, Claude,
 Gemini or another) for a phase diagram, and it opens a live interface that calculates
-right in the chat, in your browser. CHEPTA starts with vapour-liquid equilibria and
-grows through volunteer contributions, one tested layer at a time, toward full flowsheets.
+right in the chat, in your browser. CHEPTA started with vapour-liquid equilibria, simple flowsheets and
+will grow through volunteer contributions, one tested layer at a time, toward a more complex tool, which engineers can use to take faster decisions.
 
 **Try the workbench now: <https://fairedose.github.io/CHEPTA/>** (runs in your browser,
 nothing to install).
 
-![The CHEPTA workbench: ribbon, component list, ternary map of methanol, acetone and chloroform with residue curves and azeotropes, inspector with sources](docs/images/app.png)
+![The CHEPTA workbench: a solved flowsheet of ethanol and water with a mixer, flash drum, splitter and recycle, the stream table and the material and energy balances](docs/images/flowsheet.png)
 
 > **Status: early (v0.3.0).** 92 components, activity models and cubic equations of state,
-> pure-component properties, steam tables, the flash, and a first flowsheet with recycles,
-> degrees of freedom and energy streams, in a workbench with project files.
-> Results are model predictions. Check them against data before using them for design.
+> pure-component properties, steam tables, the flash unit, and a first flowsheet in a workbench with files that can exported or saved.
+> Results are real model predictions. They are calculated with published thermodynamic models and parameters; the workbench shows the source and quality tier of each one. As with any simulator, check them against measured data before you use them for design.
 
-**Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria and properties →
-next flash, streams, unit operations, reaction engineering, distillation and flowsheets,
+**Where it's going** ([roadmap](ROADMAP.md)): today phase equilibria, properties,
+ flash, streams, unit operations -> next : reaction engineering, distillation and more complex flowsheets,
 growing towards models of all the common units, with **bridges** to spreadsheets, reports
 and other simulators → then **cost
 engineering** (equipment sizing, capital and operating cost, cost per kg of product) →
@@ -34,8 +32,7 @@ Paste one of these into your assistant (the last two need one that can open web 
 
 **Load the workbench** (the assistant opens no link; the workbench opens empty and you choose the components):
 
-> Load the CHEPTA workbench. Make an HTML artifact with exactly this code, and do not download or inspect the library first:
-> `<div id="app"></div><script src="https://cdn.jsdelivr.net/npm/chepta@0.3.0/dist/chepta.js"></script><script>CHEPTA.app("#app", { components: [] })</script>`
+> Read https://fairedose.github.io/CHEPTA/use.md and open the CHEPTA workbench as an artefact in this chat.
 
 **Load it with your components:**
 
@@ -60,16 +57,16 @@ ask, for example *"Open the CHEPTA workbench with ethanol and water"*.
 
 | | |
 |---|---|
-| **Components** | liquids: water, methanol, ethanol, acetone, chloroform, benzene, toluene, ethyl acetate, acetic acid, ethylene glycol; gases: oxygen, nitrogen, hydrogen, methane, ethane, ethylene |
+| **Components** | liquids, gases and few solids: around 92 compounds which can grow fast |
 | **Pure-component properties** | vapour pressure, liquid density, heat capacity (liquid and ideal gas), heat of vaporization, viscosity and thermal conductivity (liquid and vapour), surface tension, enthalpy; each with its source, range and fit deviation |
 | **Water and steam** | IAPWS-IF97 (all regions), IAPWS viscosity (2008) and thermal conductivity (2011) |
-| **Binary parameters** | NRTL/UNIQUAC for 100 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for 127 pairs; Henry constants for 10 gases in water |
+| **Binary parameters** | NRTL/UNIQUAC for > 200 pairs, each labelled *fitted to data* or *databank*; Peng–Robinson and SRK k_ij for >120 pairs; Henry constants for 10 gases in water |
 | **Models** | NRTL, UNIQUAC, ideal (with acetic acid dimerization); Peng–Robinson, SRK |
 | **Calculations** | bubble temperature and pressure, T-x-y, P-x-y, ternary grids, residue curves, azeotropes, liquid phase-split check, with every model (activity models and PR/SRK); flash (T-P, P-H, P-VF, T-VF, heat duty) with vapour, liquid, two liquids, or vapour + two liquids (NRTL, UNIQUAC); with PR/SRK bubble and dew points with a stability test; gas solubility in water |
-| **Interface** | Workbench with a ribbon (`app`): components; T-x-y, P-x-y, ternary map, azeotropes and phase envelope, each with the model chosen in the toolbar (NRTL, UNIQUAC or ideal with a vapour model, or Peng–Robinson/SRK); a Flash workspace with a stream table and CSV export; a Flowsheet workspace: choose components and method, place feeds, mixers, splitters, component separators, flash drums and heaters, connect them on a canvas, see the degrees of freedom of every block, solve with recycles, and read the stream table and the energy streams; gas solubility, property curves, steam tables, units, mol/wt % (the diagrams are drawn in the chosen basis); a button hides the background layers; an Excel button on the canvas downloads the numbers behind the diagram or table shown (every point drawn, in the units shown, with an About sheet of the settings and sources); a Feedback panel links to the bug and improvement forms and the GitHub Discussions forum; project files: File saves the work (to a file, in this browser, or in the host page's storage such as an AI chat's; an automatic copy of the open work is offered back after a reload) (components, model, conditions, the inputs of every workspace, the flash feed and specification, and the flash stream table as a record) as a JSON file and opens it again. Single views: `mount` (T-x-y or ternary), `mountProperties` (property explorer) |
+| **Interface** | Workbench with a ribbon. Try it :) |
 
 A full ternary map (861 bubble points plus ten residue curves) takes well under a second
-in the browser. If a pair has no parameters yet, the interface says which one.
+in the browser. If a pair has no parameters yet, the interface says which one. Looks Amazing, try it! :)
 
 In any web page:
 
@@ -122,6 +119,26 @@ Property explorer in a page:
 
 More in [`examples/`](examples) and [ai/instructions/use-chepta.md](ai/instructions/use-chepta.md).
 
+## Contribute
+
+You bring the engineering judgement, your AI assistant does the typing; you don't need to
+program. Two ways:
+
+1. **Talk to your assistant, then submit a form**: a proposal, data, or a bug.
+2. **Join as a contributor** (anyone can) and let your coding agent open pull requests.
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). The rules are in [AGENTS.md](AGENTS.md):
+only sources anyone can read for free, every number cited and checked by a person, every
+change reviewed by someone other than its author.
+
+## More
+
+- [docs/README.md](docs/README.md): every document by topic, with one page each for the thermodynamic models, the equilibrium algorithms and the flowsheet
+- [docs/DECISIONS.md](docs/DECISIONS.md): what has been decided and what is pending
+- [ARCHITECTURE.md](ARCHITECTURE.md): the layers from data to flowsheet and the data quality tiers
+- [ROADMAP.md](ROADMAP.md): what comes next
+- [GOVERNANCE.md](GOVERNANCE.md) and [SECURITY.md](SECURITY.md): how decisions are made and how the project is protected
+
 ## How we know the numbers are right
 
 Every model is checked automatically on each change (`npm test`):
@@ -159,25 +176,6 @@ densities and underestimate the residual enthalpy of polar vapours (methanol, ac
 Liquid properties are at saturation (pressure effect neglected); acetic acid liquid
 enthalpy is not given until association is included.
 
-## Contribute
-
-You bring the engineering judgement, your AI assistant does the typing; you don't need to
-program. Two ways:
-
-1. **Talk to your assistant, then submit a form**: a proposal, data, or a bug.
-2. **Join as a contributor** (anyone can) and let your coding agent open pull requests.
-
-Start with [CONTRIBUTING.md](CONTRIBUTING.md). The rules are in [AGENTS.md](AGENTS.md):
-only sources anyone can read for free, every number cited and checked by a person, every
-change reviewed by someone other than its author.
-
-## More
-
-- [docs/README.md](docs/README.md): every document by topic, with one page each for the thermodynamic models, the equilibrium algorithms and the flowsheet
-- [docs/DECISIONS.md](docs/DECISIONS.md): what has been decided and what is pending
-- [ARCHITECTURE.md](ARCHITECTURE.md): the layers from data to flowsheet and the data quality tiers
-- [ROADMAP.md](ROADMAP.md): what comes next
-- [GOVERNANCE.md](GOVERNANCE.md) and [SECURITY.md](SECURITY.md): how decisions are made and how the project is protected
 
 ## License
 
